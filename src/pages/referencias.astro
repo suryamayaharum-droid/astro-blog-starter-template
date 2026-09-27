@@ -1,0 +1,72 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { referenceArtists } from '../data/references';
+const base=import.meta.env.BASE_URL;
+const lanes=[...new Set(referenceArtists.map(a=>a.lane).filter(Boolean))].sort();
+---
+<!doctype html><html lang="pt-BR"><head><BaseHead title="Atlas de Referências · Harum Noir" description="50 artistas, canais e ateliês para explorar desenho, carvão, grafite, figura, processo e repertório."/></head>
+<body><Header/><main>
+<section class="page-hero">
+  <div class="eyebrow">ATLAS DE REFERÊNCIAS · EDIÇÃO 001</div>
+  <h1>Cinquenta portas para olhar melhor.</h1>
+  <p>Uma seleção aberta de artistas, professores e ateliês que ampliam nosso repertório. Não é ranking nem receita. Cada ficha indica o que vale observar e leva sempre de volta às páginas originais de quem criou.</p>
+</section>
+
+<div class="ref-toolbar">
+  <input id="ref-search" class="ref-search" type="search" placeholder="Buscar artista, técnica, carvão, figura…" aria-label="Buscar referências"/>
+  <div class="ref-chips"><button class="ref-chip active" data-filter="all">Todos</button>{lanes.map(l=><button class="ref-chip" data-filter={l.toLowerCase()}>{l}</button>)}</div>
+</div>
+
+<section class="section">
+<div id="ref-grid" class="reference-grid">
+{referenceArtists.map(a=><article class="reference-card" data-lane={a.lane.toLowerCase()} data-search={`${a.name} ${a.focus} ${a.archetype} ${a.lane}`.toLowerCase()}>
+  <div class="reference-media">
+    <img class="reference-fallback" src={`${base}noir/reference-fallback.svg`} alt="" />
+    {a.videoId && <img class="reference-thumb" src={`https://i.ytimg.com/vi/${a.videoId}/hqdefault.jpg`} alt={`Referência visual de ${a.name}`} loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()" />}
+    <span class="reference-rank">{String(a.rank).padStart(2,'0')}</span>
+  </div>
+  <div class="reference-body">
+    <span class="card-kicker">{a.focus}</span>
+    <h2>{a.name}</h2>
+    <p>{a.curator}</p>
+    <div class="reference-links">
+      {a.youtube && <a href={a.youtube} target="_blank" rel="noreferrer">YouTube ↗</a>}
+      {a.instagram && <a href={a.instagram} target="_blank" rel="noreferrer">Instagram ↗</a>}
+      {a.site && <a href={a.site} target="_blank" rel="noreferrer">Site ↗</a>}
+    </div>
+  </div>
+</article>)}
+</div>
+<p id="ref-empty" class="ref-empty">Nenhuma referência encontrada.</p>
+</section>
+
+<section class="section"><div class="journal"><div class="paper">
+<div class="eyebrow" style="color:#8a734b">COMO USAR ESTE ATLAS</div>
+<h2>Referência não é destino.</h2>
+<p class="lead">Olhe para decisões, não para superfícies.</p>
+<p>Em vez de perguntar “como eu faço igual?”, procure entender o princípio: como o artista organiza valor, gesto, silêncio, narrativa, rotina, comunidade ou processo. Depois feche a referência e desenhe.</p>
+<a href={`${base}roubar-como-artista`}>Ler “Roubar como artista, sem virar cópia” →</a>
+</div></div></section>
+
+<script is:inline>
+(() => {
+  const input=document.querySelector('#ref-search');
+  const cards=[...document.querySelectorAll('.reference-card')];
+  const chips=[...document.querySelectorAll('.ref-chip')];
+  const empty=document.querySelector('#ref-empty');
+  let lane='all';
+  const apply=()=>{
+    const q=(input?.value||'').toLowerCase().trim();let n=0;
+    cards.forEach(card=>{
+      const show=(lane==='all'||card.dataset.lane===lane)&&(!q||(card.dataset.search||'').includes(q));
+      card.style.display=show?'':'none'; if(show)n++;
+    });
+    if(empty) empty.style.display=n?'none':'block';
+  };
+  input?.addEventListener('input',apply);
+  chips.forEach(ch=>ch.addEventListener('click',()=>{lane=ch.dataset.filter||'all';chips.forEach(x=>x.classList.remove('active'));ch.classList.add('active');apply();}));
+})();
+</script>
+</main><Footer/></body></html>
