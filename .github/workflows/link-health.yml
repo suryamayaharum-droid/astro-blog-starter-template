@@ -2,6 +2,11 @@ name: Harum Noir Link Health
 
 on:
   workflow_dispatch:
+  push:
+    paths:
+      - "src/data/references.ts"
+      - "scripts/check_public_links.mjs"
+      - ".github/workflows/link-health.yml"
   schedule:
     - cron: "17 9 * * 1"
 
