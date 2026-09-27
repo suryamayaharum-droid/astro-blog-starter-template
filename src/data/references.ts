@@ -1788,7 +1788,7 @@ export const referenceArtists:PublicReference[]=[
       {
         "type": "Arquivo / sketchbooks",
         "title": "Sketchbooks — Karl Kopinski",
-        "url": "https://karlkopinski.com/collections/sketchbooks",
+        "url": "https://karlkopinski.com/gallery-category/sketchbook/",
         "observe": "Volumes de caderno transformam anos de estudos em objetos editoriais e colecionáveis.",
         "tags": "sketchbook; coleção; produto; repertório"
       },
