@@ -1,0 +1,28 @@
+name: Harum Noir Link Health
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 9 * * 1"
+
+permissions:
+  contents: read
+
+jobs:
+  check-links:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Check public reference links
+        run: node scripts/check_public_links.mjs
+      - name: Upload link health report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: harum-noir-link-health
+          path: link-health.json
+          retention-days: 30
