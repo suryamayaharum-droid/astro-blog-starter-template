@@ -667,7 +667,7 @@ export const referenceArtists:PublicReference[]=[
     "instagram": "",
     "site": "https://www.lovelifedrawing.com/",
     "lane": "Técnica / figura",
-    "videoId": "",
+    "videoId": "NAY5N76VP8M",
     "refs": [
       {
         "type": "Série / gesto",
@@ -1279,7 +1279,7 @@ export const referenceArtists:PublicReference[]=[
     "instagram": "https://www.instagram.com/chommang/",
     "site": "https://linktr.ee/chommang",
     "lane": "Ásia / rotina / anatomia",
-    "videoId": "",
+    "videoId": "qJX_82UFcVs",
     "refs": [
       {
         "type": "Conteúdo / top video",
@@ -1603,7 +1603,7 @@ export const referenceArtists:PublicReference[]=[
     "instagram": "https://www.instagram.com/aaronblaiseart/",
     "site": "https://creatureartteacher.com/",
     "lane": "Alcance / mestre",
-    "videoId": "",
+    "videoId": "c8s6Md4RXqg",
     "refs": [
       {
         "type": "Conteúdo / outlier",
@@ -1639,7 +1639,7 @@ export const referenceArtists:PublicReference[]=[
     "instagram": "https://www.instagram.com/bucciblog/",
     "site": "https://www.marcobucci.com/",
     "lane": "Fundamentos / clareza",
-    "videoId": "",
+    "videoId": "zmUMhMs5vFE",
     "refs": [
       {
         "type": "Conteúdo / outlier",

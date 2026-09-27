@@ -119,3 +119,18 @@ h1,h2,h3{font-family:Georgia,"Times New Roman",serif;font-weight:400}
 @media(max-width:1050px){.path-index{grid-template-columns:repeat(2,1fr)}.journey-intro{grid-template-columns:1fr}}@media(max-width:680px){.path-index{grid-template-columns:1fr}.path-index-card{min-height:auto}.journey{padding:38px 0}}
 
 .journey-next{margin:12px 0 0!important;color:var(--muted)!important;font-size:.78rem!important}.journey-next a{color:var(--paper);text-decoration:none;border-bottom:1px solid var(--gold-dim);margin-left:8px}.journey-next a:hover{color:var(--gold)}
+
+/* noir-mobile-density-v1 */
+@media(max-width:680px){
+  .streamHero,.profileHero{min-height:430px;margin-bottom:18px;border-radius:0 0 16px 16px}
+  .streamHeroCopy,.profileCopy{min-height:430px;padding:42px 18px 24px}
+  .streamHeroCopy h2,.profileCopy h2{font-size:clamp(44px,16vw,72px)}
+  .streamRail{grid-auto-columns:minmax(76vw,76vw);gap:8px;padding-bottom:12px}
+  .streamMedia{border-radius:11px}
+  .streamBody{padding:7px 2px}
+  .streamBody h3{font-size:16px}
+  .section{padding:26px 0}
+  .head{margin-bottom:11px}
+  .head h2{font-size:32px}
+  .streamSearchShell{top:54px;padding:8px 0}
+}
