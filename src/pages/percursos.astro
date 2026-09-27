@@ -27,7 +27,8 @@ const paths=[
    <div class="journey-intro">
      <div class="journey-image"><img src={base+'noir/'+p.image} alt=""/></div>
      <div><span class="eyebrow">PERCURSO {p.n}</span><h2>{p.title}</h2><p>{p.text}</p>
-       <div class="actions"><a class="btn primary" href={base+'cadernos#'+p.caderno}>Abrir caderno</a><a class="btn" href={base+'temporadas#t'+p.temporada}>Ir à temporada</a><a class="btn" href={base+'atelier'}>Praticar no atelier</a></div>
+       <div class="actions"><a class="btn primary" href={base+'cadernos#'+p.caderno}>Abrir caderno</a></div>
+       <p class="journey-next">Depois, se quiser aprofundar: <a href={base+'temporadas#t'+p.temporada}>temporada</a><a href={base+'atelier'}>atelier</a></p>
      </div>
    </div>
    <div class="stream-head"><div><span class="eyebrow">REFERÊNCIAS DO PERCURSO</span><h3>Olhe por ângulos diferentes</h3></div></div>

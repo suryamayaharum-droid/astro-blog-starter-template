@@ -18,7 +18,8 @@ const catalog=JSON.stringify(referenceArtists.map(a=>({rank:a.rank,slug:a.slug,n
    <span class="eyebrow">EM DESTAQUE · CARVÃO & MATÉRIA</span>
    <h1>{featured.name}</h1>
    <p>{featured.special}</p>
-   <div class="actions"><a class="btn primary" href={base+'referencias/'+featured.slug}>Ver referência</a><a class="btn" href={featured.youtube} target="_blank" rel="noreferrer">YouTube ↗</a></div>
+   <div class="actions"><a class="btn primary" href={base+'referencias/'+featured.slug}>Entrar nesta referência</a></div>
+   <p class="journey-next">Fonte original: <a href={featured.youtube} target="_blank" rel="noreferrer">YouTube ↗</a></p>
  </div>
 </section>
 
