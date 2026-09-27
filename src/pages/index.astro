@@ -4,7 +4,10 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import { cadernos, fundamentos, temporadas } from '../data/public';
+import {referenceArtists,byRank} from '../data/references';
 const base=import.meta.env.BASE_URL;
+const startRanks=[17,39,9,18,38,36,27,50];
+const startRefs=startRanks.map(byRank).filter(Boolean);
 ---
 <!doctype html><html lang="pt-BR"><head><BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION}/></head>
 <body><Header/><main>
@@ -12,36 +15,42 @@ const base=import.meta.env.BASE_URL;
   <div class="hero-copy">
     <div class="eyebrow">ATELIER EDITORIAL · SALVADOR</div>
     <h1>Traço,<br/>corpo e <em>presença.</em></h1>
-    <p>Um lugar para olhar desenho com mais tempo. Carvão, gesto, anatomia, memória, silêncio e processo — organizados como cadernos que você pode atravessar no seu próprio ritmo.</p>
-    <div class="actions"><a class="btn primary" href={`${base}cadernos`}>Abrir os cadernos</a><a class="btn gold" href={`${base}atelier`}>Entrar no atelier</a></div>
+    <p>Um jardim editorial de desenho, carvão, gesto, anatomia, memória e processo. Entre por uma referência, por um caderno ou por uma temporada — e caminhe.</p>
+    <div class="actions"><a class="btn primary" href={base+'referencias'}>Explorar referências</a><a class="btn gold" href={base+'atelier'}>Entrar no atelier</a></div>
   </div>
   <div class="hero-art">
-    <img src={`${base}noir/figure-01.svg`} alt="Estudo abstrato autoral de figura em carvão" />
+    <img src={base+'noir/figure-01.svg'} alt="Estudo abstrato autoral de figura em carvão" />
     <div class="hero-note">O desenho não precisa terminar em todos os lugares. Precisa permanecer onde importa.</div>
   </div>
 </section>
 
+<section class="stream-section">
+  <div class="stream-head"><div><span class="eyebrow">JARDIM DE REFERÊNCIAS</span><h2>Comece por estas presenças</h2></div><p>Carvão, gesto, processo, figura, memória visual e sketchbook.</p></div>
+  <div class="stream-rail">{startRefs.map(a=><a class="stream-card" href={base+'referencias/'+a!.slug}><div class="stream-card-media"><img class="stream-fallback" src={base+'noir/reference-fallback.svg'} alt=""/>{a!.videoId&&<img class="stream-thumb" src={'https://i.ytimg.com/vi/'+a!.videoId+'/hqdefault.jpg'} alt={'Referência visual de '+a!.name} loading="lazy" onerror="this.remove()"/>}<span class="stream-rank">{String(a!.rank).padStart(2,'0')}</span></div><div class="stream-card-body"><span>{a!.focus}</span><h3>{a!.name}</h3></div></a>)}</div>
+  <div class="actions"><a class="btn" href={base+'referencias'}>Ver atlas completo →</a></div>
+</section>
+
 <section class="section">
-  <div class="section-head"><div><div class="eyebrow">COMECE POR AQUI</div><h2>Aprender a olhar.</h2></div><p>Quatro movimentos simples sustentam tudo o que vem depois.</p></div>
+  <div class="section-head"><div><div class="eyebrow">QUATRO MOVIMENTOS</div><h2>Aprender a olhar.</h2></div><p>Observar, estruturar, organizar e traduzir sustentam o que vem depois.</p></div>
   <div class="paper-grid">{fundamentos.map(f=><article class="paper-card"><div class="num">{f.n}</div><h3>{f.title}</h3><p>{f.text}</p></article>)}</div>
 </section>
 
-<section class="section">
-  <div class="section-head"><div><div class="eyebrow">CADERNOS DE PRESENÇA</div><h2>Uma biblioteca que respira.</h2></div><p>Estudo, processo e narrativa visual sem transformar cada página numa aula.</p></div>
-  <div class="rail">{cadernos.map(c=><a class="card" href={`${base}cadernos#${c.slug}`}><div class="card-media"><img src={`${base}noir/${c.image}`} alt="" loading="lazy"/></div><div class="card-body"><span class="card-kicker">{c.kicker}</span><h3>{c.title}</h3><p>{c.summary}</p></div></a>)}</div>
+<section class="stream-section">
+  <div class="stream-head"><div><span class="eyebrow">CADERNOS DE PRESENÇA</span><h2>Uma biblioteca que respira</h2></div><p>Estudo, processo e narrativa visual sem transformar cada página numa aula.</p></div>
+  <div class="stream-rail">{cadernos.map(c=><a class="stream-card" href={base+'cadernos#'+c.slug}><div class="stream-card-media"><img src={base+'noir/'+c.image} alt="" loading="lazy"/></div><div class="stream-card-body"><span>{c.kicker}</span><h3>{c.title}</h3></div></a>)}</div>
 </section>
 
 <section class="section editorial-split">
-  <div class="panel"><div class="eyebrow">ATELIER ABERTO</div><h2>Professor próximo. Artista exigente. Processo visível.</h2><p>O conteúdo gratuito não é uma vitrine vazia: ele deve dar algo para observar, praticar e levar de volta ao desenho. O aprofundamento acontece em camadas.</p><div class="actions"><a class="btn gold" href={`${base}atelier`}>Ver o método</a></div></div>
+  <div class="panel"><div class="eyebrow">ATELIER ABERTO</div><h2>Professor próximo. Artista exigente. Processo visível.</h2><p>Conteúdo gratuito deve devolver algo para a prática: uma observação, um exercício, uma correção possível.</p><div class="actions"><a class="btn gold" href={base+'atelier'}>Abrir o atelier</a></div></div>
   <div class="panel"><div class="quote">Olhar se treina.<br/>Decisão se constrói.</div></div>
 </section>
 
-<section class="section">
-  <div class="section-head"><div><div class="eyebrow">TEMPORADAS</div><h2>Sete percursos.</h2></div><p>Cada temporada aprofunda uma parte do corpo, da observação ou da linguagem.</p></div>
-  <div class="rail">{temporadas.map(t=><a class="card" href={`${base}temporadas#t${t.n}`}><div class="card-body" style="min-height:190px;display:flex;flex-direction:column;justify-content:space-between"><span class="card-kicker">TEMPORADA {t.n}</span><div><h3>{t.title}</h3><p>{t.text}</p></div></div></a>)}</div>
+<section class="stream-section">
+  <div class="stream-head"><div><span class="eyebrow">TEMPORADAS</span><h2>Sete percursos</h2></div><p>Corpo, expressão, anatomia, personagem, relação, matéria e síntese.</p></div>
+  <div class="stream-rail">{temporadas.map(t=><a class="stream-card" href={base+'temporadas#t'+t.n}><div class="stream-card-media"><img src={base+'noir/trace-01.svg'} alt=""/></div><div class="stream-card-body"><span>TEMPORADA {t.n}</span><h3>{t.title}</h3></div></a>)}</div>
 </section>
 
 <section class="section">
-  <div class="journal"><div class="paper"><div class="eyebrow" style="color:#8a734b">CARTA DO ATELIER · 001</div><h2>O desenho ainda precisa de silêncio.</h2><p class="lead">Nem todo conteúdo precisa disputar atenção. Alguns precisam devolver atenção para quem olha.</p><p>Nesta primeira carta, o ponto de partida é simples: acompanhar um processo sem transformá-lo imediatamente em explicação. Observar a mão, o tempo, o apagamento, a hesitação e a escolha.</p><div class="actions"><a class="btn gold" href={`${base}carta`}>Ler a carta</a></div></div></div>
+  <div class="journal"><div class="paper"><div class="eyebrow" style="color:#8a734b">CARTA DO ATELIER · 001</div><h2>O desenho ainda precisa de silêncio.</h2><p class="lead">Nem todo conteúdo precisa disputar atenção. Alguns precisam devolver atenção para quem olha.</p><p>A Carta organiza uma referência, uma pergunta e um exercício para levar de volta ao papel.</p><div class="actions"><a class="btn gold" href={base+'carta'}>Ler a carta</a><a class="btn" href={base+'arquivo'}>Abrir arquivo</a></div></div></div>
 </section>
 </main><Footer/></body></html>

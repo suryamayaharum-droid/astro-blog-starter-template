@@ -110,3 +110,6 @@ h1,h2,h3{font-family:Georgia,"Times New Roman",serif;font-weight:400}
 .ref-source{display:block;text-decoration:none}.source-arrow{display:inline-block;margin-top:12px;font-size:.73rem;color:var(--gold)}
 [hidden]{display:none!important}
 @media(max-width:760px){.stream-hero,.profile-hero{margin:0 -16px 18px;min-height:68vh}.stream-hero-copy,.profile-copy{min-height:68vh;padding:90px 20px 45px}.stream-hero-copy h1,.profile-copy h1{font-size:clamp(3.5rem,17vw,5.3rem)}.stream-head{align-items:flex-start;flex-direction:column;gap:4px}.stream-rail{grid-auto-columns:76vw}.stream-search-shell{top:55px}}
+
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:6px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.stream-card,.card,.btn,.reference-thumb{transition:none!important}.stream-card:hover,.card:hover,.btn:hover{transform:none!important}}
