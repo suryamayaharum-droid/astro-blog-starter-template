@@ -2,71 +2,88 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { referenceArtists } from '../data/references';
+import {referenceArtists,referenceCollections,byRank} from '../data/references';
 const base=import.meta.env.BASE_URL;
-const lanes=[...new Set(referenceArtists.map(a=>a.lane).filter(Boolean))].sort();
+const featured=byRank(17)!;
+const catalog=JSON.stringify(referenceArtists.map(a=>({rank:a.rank,slug:a.slug,name:a.name,focus:a.focus,videoId:a.videoId,lane:a.lane})));
 ---
-<!doctype html><html lang="pt-BR"><head><BaseHead title="Atlas de Referências · Harum Noir" description="50 artistas, canais e ateliês para explorar desenho, carvão, grafite, figura, processo e repertório."/></head>
-<body><Header/><main>
-<section class="page-hero">
-  <div class="eyebrow">ATLAS DE REFERÊNCIAS · EDIÇÃO 001</div>
-  <h1>Cinquenta portas para olhar melhor.</h1>
-  <p>Uma seleção aberta de artistas, professores e ateliês que ampliam nosso repertório. Não é ranking nem receita. Cada ficha indica o que vale observar e leva sempre de volta às páginas originais de quem criou.</p>
+<!doctype html><html lang="pt-BR"><head><BaseHead title="Atlas de Referências · Harum Noir" description="Um atlas visual de artistas, desenho, carvão, grafite, figura, processo e repertório."/></head>
+<body><Header/><main class="stream-main">
+<section class="stream-hero">
+ <div class="stream-hero-media">
+  <img src={featured.videoId ? 'https://i.ytimg.com/vi/'+featured.videoId+'/maxresdefault.jpg' : base+'noir/reference-fallback.svg'} alt="" onerror={"this.src='"+base+"noir/reference-fallback.svg'"}/>
+ </div>
+ <div class="stream-hero-shade"></div>
+ <div class="stream-hero-copy">
+   <span class="eyebrow">EM DESTAQUE · CARVÃO & MATÉRIA</span>
+   <h1>{featured.name}</h1>
+   <p>{featured.special}</p>
+   <div class="actions"><a class="btn primary" href={base+'referencias/'+featured.slug}>Ver referência</a><a class="btn" href={featured.youtube} target="_blank" rel="noreferrer">YouTube ↗</a></div>
+ </div>
 </section>
 
-<div class="ref-toolbar">
-  <input id="ref-search" class="ref-search" type="search" placeholder="Buscar artista, técnica, carvão, figura…" aria-label="Buscar referências"/>
-  <div class="ref-chips"><button class="ref-chip active" data-filter="all">Todos</button>{lanes.map(l=><button class="ref-chip" data-filter={l.toLowerCase()}>{l}</button>)}</div>
+<section class="stream-search-shell">
+  <input id="stream-search" class="stream-search" type="search" placeholder="Buscar artista, técnica, carvão, gesto…" aria-label="Buscar no atlas"/>
+</section>
+
+<section id="recent-section" class="stream-section" hidden>
+ <div class="stream-head"><div><span class="eyebrow">SEU CAMINHO</span><h2>Continuar explorando</h2></div></div>
+ <div id="recent-rail" class="stream-rail"></div>
+</section>
+
+<div id="collections-view">
+{referenceCollections.map(col=>{
+ const items=col.ranks.map(byRank).filter(Boolean);
+ return <section class="stream-section" id={col.id}>
+  <div class="stream-head"><div><span class="eyebrow">COLEÇÃO</span><h2>{col.title}</h2></div><p>{col.subtitle}</p></div>
+  <div class="stream-rail">
+   {items.map(a=><a class="stream-card" href={base+'referencias/'+a!.slug}>
+    <div class="stream-card-media">
+      <img class="stream-fallback" src={base+'noir/reference-fallback.svg'} alt="" />
+      {a!.videoId&&<img class="stream-thumb" src={'https://i.ytimg.com/vi/'+a!.videoId+'/hqdefault.jpg'} alt={'Referência visual de '+a!.name} loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"/>}
+      <span class="stream-rank">{String(a!.rank).padStart(2,'0')}</span>
+    </div>
+    <div class="stream-card-body"><span>{a!.focus}</span><h3>{a!.name}</h3></div>
+   </a>)}
+  </div>
+ </section>
+})}
 </div>
 
-<section class="section">
-<div id="ref-grid" class="reference-grid">
-{referenceArtists.map(a=><article class="reference-card" data-lane={a.lane.toLowerCase()} data-search={`${a.name} ${a.focus} ${a.archetype} ${a.lane}`.toLowerCase()}>
-  <div class="reference-media">
-    <img class="reference-fallback" src={`${base}noir/reference-fallback.svg`} alt="" />
-    {a.videoId && <img class="reference-thumb" src={`https://i.ytimg.com/vi/${a.videoId}/hqdefault.jpg`} alt={`Referência visual de ${a.name}`} loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()" />}
-    <span class="reference-rank">{String(a.rank).padStart(2,'0')}</span>
-  </div>
-  <div class="reference-body">
-    <span class="card-kicker">{a.focus}</span>
-    <h2>{a.name}</h2>
-    <p>{a.curator}</p>
-    <div class="reference-links">
-      {a.youtube && <a href={a.youtube} target="_blank" rel="noreferrer">YouTube ↗</a>}
-      {a.instagram && <a href={a.instagram} target="_blank" rel="noreferrer">Instagram ↗</a>}
-      {a.site && <a href={a.site} target="_blank" rel="noreferrer">Site ↗</a>}
-    </div>
-  </div>
-</article>)}
-</div>
-<p id="ref-empty" class="ref-empty">Nenhuma referência encontrada.</p>
+<section id="search-view" class="stream-section" hidden>
+ <div class="stream-head"><div><span class="eyebrow">BUSCA</span><h2>Resultados</h2></div></div>
+ <div id="search-grid" class="reference-grid"></div>
+ <p id="search-empty" class="ref-empty">Nenhuma referência encontrada.</p>
 </section>
 
 <section class="section"><div class="journal"><div class="paper">
 <div class="eyebrow" style="color:#8a734b">COMO USAR ESTE ATLAS</div>
 <h2>Referência não é destino.</h2>
 <p class="lead">Olhe para decisões, não para superfícies.</p>
-<p>Em vez de perguntar “como eu faço igual?”, procure entender o princípio: como o artista organiza valor, gesto, silêncio, narrativa, rotina, comunidade ou processo. Depois feche a referência e desenhe.</p>
-<a href={`${base}roubar-como-artista`}>Ler “Roubar como artista, sem virar cópia” →</a>
+<p>Abra uma referência, observe um princípio e volte para o papel. O Atlas existe para ampliar repertório, não para substituir linguagem própria.</p>
+<a href={base+'roubar-como-artista'}>Roubar como artista, sem virar cópia →</a>
 </div></div></section>
 
-<script is:inline>
-(() => {
-  const input=document.querySelector('#ref-search');
-  const cards=[...document.querySelectorAll('.reference-card')];
-  const chips=[...document.querySelectorAll('.ref-chip')];
-  const empty=document.querySelector('#ref-empty');
-  let lane='all';
-  const apply=()=>{
-    const q=(input?.value||'').toLowerCase().trim();let n=0;
-    cards.forEach(card=>{
-      const show=(lane==='all'||card.dataset.lane===lane)&&(!q||(card.dataset.search||'').includes(q));
-      card.style.display=show?'':'none'; if(show)n++;
-    });
-    if(empty) empty.style.display=n?'none':'block';
-  };
-  input?.addEventListener('input',apply);
-  chips.forEach(ch=>ch.addEventListener('click',()=>{lane=ch.dataset.filter||'all';chips.forEach(x=>x.classList.remove('active'));ch.classList.add('active');apply();}));
+<script is:inline define:vars={{catalog,base}}>
+(()=>{
+ const data=JSON.parse(catalog);
+ const search=document.querySelector('#stream-search');
+ const collections=document.querySelector('#collections-view');
+ const searchView=document.querySelector('#search-view');
+ const grid=document.querySelector('#search-grid');
+ const empty=document.querySelector('#search-empty');
+ const fallback=base+'noir/reference-fallback.svg';
+ const card=(a)=>'<a class="reference-card" href="'+base+'referencias/'+a.slug+'"><div class="reference-media"><img class="reference-fallback" src="'+fallback+'" alt="">'+(a.videoId?'<img class="reference-thumb" src="https://i.ytimg.com/vi/'+a.videoId+'/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()">':'')+'<span class="reference-rank">'+String(a.rank).padStart(2,'0')+'</span></div><div class="reference-body"><span class="card-kicker">'+a.focus+'</span><h2>'+a.name+'</h2><p>Entrar na ficha →</p></div></a>';
+ const apply=()=>{
+   const q=(search?.value||'').toLowerCase().trim();
+   if(!q){collections.hidden=false;searchView.hidden=true;return;}
+   collections.hidden=true;searchView.hidden=false;
+   const found=data.filter(a=>(a.name+' '+a.focus+' '+a.lane).toLowerCase().includes(q));
+   grid.innerHTML=found.map(card).join('');empty.style.display=found.length?'none':'block';
+ };
+ search?.addEventListener('input',apply);
+ const rec=JSON.parse(localStorage.getItem('noir_recent_refs')||'[]').filter(slug=>data.some(a=>a.slug===slug)).slice(0,8);
+ if(rec.length){const section=document.querySelector('#recent-section');const rail=document.querySelector('#recent-rail');rail.innerHTML=rec.map(slug=>card(data.find(a=>a.slug===slug))).join('');section.hidden=false;}
 })();
 </script>
 </main><Footer/></body></html>

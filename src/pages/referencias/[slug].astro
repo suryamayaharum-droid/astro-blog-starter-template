@@ -1,0 +1,36 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import {referenceArtists,referenceCollections} from '../../data/references';
+export function getStaticPaths(){return referenceArtists.map(artist=>({params:{slug:artist.slug},props:{artist}}));}
+const {artist}=Astro.props;
+const base=import.meta.env.BASE_URL;
+const relatedRanks=referenceCollections.find(c=>c.ranks.includes(artist.rank))?.ranks.filter(r=>r!==artist.rank).slice(0,6)||[];
+const related=relatedRanks.map(r=>referenceArtists.find(a=>a.rank===r)).filter(Boolean);
+const hero=artist.videoId ? 'https://i.ytimg.com/vi/'+artist.videoId+'/maxresdefault.jpg' : base+'noir/reference-fallback.svg';
+---
+<!doctype html><html lang="pt-BR"><head><BaseHead title={artist.name+' · Referências · Harum Noir'} description={artist.special}/></head><body><Header/><main class="stream-main">
+<section class="profile-hero">
+ <div class="profile-media"><img src={hero} alt={'Referência visual de '+artist.name} onerror={"this.src='"+base+"noir/reference-fallback.svg'"}/></div>
+ <div class="profile-shade"></div>
+ <div class="profile-copy"><span class="eyebrow">ATLAS · {String(artist.rank).padStart(2,'0')}</span><h1>{artist.name}</h1><p>{artist.special}</p><div class="actions">
+   {artist.youtube&&<a class="btn primary" href={artist.youtube} target="_blank" rel="noreferrer">YouTube ↗</a>}
+   {artist.instagram&&<a class="btn" href={artist.instagram} target="_blank" rel="noreferrer">Instagram ↗</a>}
+   {artist.site&&<a class="btn" href={artist.site} target="_blank" rel="noreferrer">Site oficial ↗</a>}
+ </div></div>
+</section>
+<section class="section editorial-split">
+ <div class="panel"><div class="eyebrow">O QUE OBSERVAR</div><h2>{artist.focus}</h2><p>{artist.special}</p></div>
+ <div class="panel"><div class="eyebrow">LEITURA</div><div class="quote">{artist.archetype}</div><p>Use esta ficha como ponto de partida. O aprofundamento deve acontecer sempre nas fontes originais.</p></div>
+</section>
+{artist.refs.length>0&&<section class="stream-section"><div class="stream-head"><div><span class="eyebrow">REFERÊNCIAS SELECIONADAS</span><h2>Comece por estas</h2></div></div><div class="reference-grid">
+ {artist.refs.map(ref=><a class="archive-item ref-source" href={ref.url} target="_blank" rel="noreferrer"><span class="card-kicker">{ref.type}</span><h3>{ref.title}</h3><p>{ref.observe}</p><span class="source-arrow">Abrir fonte ↗</span></a>)}
+</div></section>}
+{related.length>0&&<section class="stream-section"><div class="stream-head"><div><span class="eyebrow">CONTINUE</span><h2>Na mesma vizinhança</h2></div></div><div class="stream-rail">
+ {related.map(a=><a class="stream-card" href={base+'referencias/'+a!.slug}><div class="stream-card-media"><img class="stream-fallback" src={base+'noir/reference-fallback.svg'} alt=""/>{a!.videoId&&<img class="stream-thumb" src={'https://i.ytimg.com/vi/'+a!.videoId+'/hqdefault.jpg'} alt="" loading="lazy" onerror="this.remove()"/>}</div><div class="stream-card-body"><span>{a!.focus}</span><h3>{a!.name}</h3></div></a>)}
+</div></section>}
+<script is:inline define:vars={{slug:artist.slug}}>
+(()=>{const k='noir_recent_refs';const a=JSON.parse(localStorage.getItem(k)||'[]').filter(x=>x!==slug);a.unshift(slug);localStorage.setItem(k,JSON.stringify(a.slice(0,12)));})();
+</script>
+</main><Footer/></body></html>
