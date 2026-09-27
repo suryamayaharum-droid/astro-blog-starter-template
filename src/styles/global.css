@@ -134,3 +134,9 @@ h1,h2,h3{font-family:Georgia,"Times New Roman",serif;font-weight:400}
   .head h2{font-size:32px}
   .streamSearchShell{top:54px;padding:8px 0}
 }
+
+/* noir-caderno-cycle-v1 */
+.cadernoCycle,.caderno-cycle{margin-top:17px;padding-top:14px;border-top:1px solid rgba(179,154,105,.28);display:grid;gap:10px}
+.cadernoCycle p,.caderno-cycle p{margin:0!important;font-size:12px!important;line-height:1.55!important;color:#aaa49c!important}
+.cadernoCycle b,.caderno-cycle b{display:block;margin-bottom:3px;color:#b39a69;text-transform:uppercase;letter-spacing:.13em;font-size:9px}
+@media(max-width:680px){.cadernoCycle,.caderno-cycle{gap:8px;margin-top:14px;padding-top:12px}}
