@@ -8,7 +8,7 @@ const results=[];
 
 async function check(url){
   const controller=new AbortController();
-  const timer=setTimeout(()=>controller.abort(),12000);
+  const timer=setTimeout(()=>controller.abort(),8000);
   try{
     let res=await fetch(url,{method:"HEAD",redirect:"follow",signal:controller.signal,headers:{"user-agent":"HarumNoir-LinkHealth/1.0"}});
     if([405,501].includes(res.status)){
@@ -23,11 +23,18 @@ async function check(url){
   }finally{clearTimeout(timer)}
 }
 
-for(const url of urls){
-  const result=await check(url);
-  results.push(result);
-  console.log(`${result.state.toUpperCase().padEnd(7)} ${String(result.status??"-").padEnd(4)} ${url}`);
+let cursor=0;
+async function worker(){
+  while(true){
+    const index=cursor++;
+    if(index>=urls.length) return;
+    const url=urls[index];
+    const result=await check(url);
+    results[index]=result;
+    console.log(`${result.state.toUpperCase().padEnd(7)} ${String(result.status??"-").padEnd(4)} ${url}`);
+  }
 }
+await Promise.all(Array.from({length:Math.min(12,urls.length)},()=>worker()));
 const summary={
   checkedAt:new Date().toISOString(),
   total:results.length,
