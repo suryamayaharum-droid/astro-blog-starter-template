@@ -13,6 +13,10 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: harum-noir-link-health
+  cancel-in-progress: true
+
 jobs:
   check-links:
     runs-on: ubuntu-latest
