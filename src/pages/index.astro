@@ -3,48 +3,45 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import { cadernos, fundamentos, temporadas } from '../data/public';
+const base=import.meta.env.BASE_URL;
 ---
+<!doctype html><html lang="pt-BR"><head><BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION}/></head>
+<body><Header/><main>
+<section class="hero">
+  <div class="hero-copy">
+    <div class="eyebrow">ATELIER EDITORIAL · SALVADOR</div>
+    <h1>Traço,<br/>corpo e <em>presença.</em></h1>
+    <p>Um lugar para olhar desenho com mais tempo. Carvão, gesto, anatomia, memória, silêncio e processo — organizados como cadernos que você pode atravessar no seu próprio ritmo.</p>
+    <div class="actions"><a class="btn primary" href={`${base}cadernos`}>Abrir os cadernos</a><a class="btn gold" href={`${base}atelier`}>Entrar no atelier</a></div>
+  </div>
+  <div class="hero-art">
+    <img src={`${base}noir/figure-01.svg`} alt="Estudo abstrato autoral de figura em carvão" />
+    <div class="hero-note">O desenho não precisa terminar em todos os lugares. Precisa permanecer onde importa.</div>
+  </div>
+</section>
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to <a href="https://docs.astro.build/"
-					>read the docs
-				</a> or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out <a
-					href="https://github.com/Charca/astro-blog-template"
-					>astro-blog-template
-				</a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
-		</main>
-		<Footer />
-	</body>
-</html>
+<section class="section">
+  <div class="section-head"><div><div class="eyebrow">COMECE POR AQUI</div><h2>Aprender a olhar.</h2></div><p>Quatro movimentos simples sustentam tudo o que vem depois.</p></div>
+  <div class="paper-grid">{fundamentos.map(f=><article class="paper-card"><div class="num">{f.n}</div><h3>{f.title}</h3><p>{f.text}</p></article>)}</div>
+</section>
+
+<section class="section">
+  <div class="section-head"><div><div class="eyebrow">CADERNOS DE PRESENÇA</div><h2>Uma biblioteca que respira.</h2></div><p>Estudo, processo e narrativa visual sem transformar cada página numa aula.</p></div>
+  <div class="rail">{cadernos.map(c=><a class="card" href={`${base}cadernos#${c.slug}`}><div class="card-media"><img src={`${base}noir/${c.image}`} alt="" loading="lazy"/></div><div class="card-body"><span class="card-kicker">{c.kicker}</span><h3>{c.title}</h3><p>{c.summary}</p></div></a>)}</div>
+</section>
+
+<section class="section editorial-split">
+  <div class="panel"><div class="eyebrow">ATELIER ABERTO</div><h2>Professor próximo. Artista exigente. Processo visível.</h2><p>O conteúdo gratuito não é uma vitrine vazia: ele deve dar algo para observar, praticar e levar de volta ao desenho. O aprofundamento acontece em camadas.</p><div class="actions"><a class="btn gold" href={`${base}atelier`}>Ver o método</a></div></div>
+  <div class="panel"><div class="quote">Olhar se treina.<br/>Decisão se constrói.</div></div>
+</section>
+
+<section class="section">
+  <div class="section-head"><div><div class="eyebrow">TEMPORADAS</div><h2>Sete percursos.</h2></div><p>Cada temporada aprofunda uma parte do corpo, da observação ou da linguagem.</p></div>
+  <div class="rail">{temporadas.map(t=><a class="card" href={`${base}temporadas#t${t.n}`}><div class="card-body" style="min-height:190px;display:flex;flex-direction:column;justify-content:space-between"><span class="card-kicker">TEMPORADA {t.n}</span><div><h3>{t.title}</h3><p>{t.text}</p></div></div></a>)}</div>
+</section>
+
+<section class="section">
+  <div class="journal"><div class="paper"><div class="eyebrow" style="color:#8a734b">CARTA DO ATELIER · 001</div><h2>O desenho ainda precisa de silêncio.</h2><p class="lead">Nem todo conteúdo precisa disputar atenção. Alguns precisam devolver atenção para quem olha.</p><p>Nesta primeira carta, o ponto de partida é simples: acompanhar um processo sem transformá-lo imediatamente em explicação. Observar a mão, o tempo, o apagamento, a hesitação e a escolha.</p><div class="actions"><a class="btn gold" href={`${base}carta`}>Ler a carta</a></div></div></div>
+</section>
+</main><Footer/></body></html>

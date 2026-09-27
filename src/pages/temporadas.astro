@@ -1,0 +1,8 @@
+---
+import BaseHead from '../components/BaseHead.astro';import Header from '../components/Header.astro';import Footer from '../components/Footer.astro';import {temporadas} from '../data/public';
+---
+<!doctype html><html lang="pt-BR"><head><BaseHead title="Temporadas · Harum Noir" description="Sete percursos editoriais de gesto, expressão, anatomia, personagem, relação, matéria e síntese."/></head><body><Header/><main>
+<section class="page-hero"><div class="eyebrow">TEMPORADAS</div><h1>Sete formas de aprofundar o olhar.</h1><p>Não são cursos fechados em caixas. São percursos editoriais que podem ser revisitados em ordens diferentes conforme a necessidade do desenho.</p></section>
+<section class="section"><div class="season-grid">{temporadas.map(t=><article class="season" id={`t${t.n}`}><div><div class="n">{t.n}</div><h3>{t.title}</h3><p>{t.text}</p></div><span class="card-kicker">EM DESENVOLVIMENTO CONTÍNUO</span></article>)}</div></section>
+<section class="section"><div class="panel"><div class="eyebrow">COMO LER</div><h2>Sem pressa de “concluir”.</h2><p>Uma temporada amadurece por estudo, repetição e edição. Quando uma página não acrescenta uma nova relação, ela não precisa existir.</p></div></section>
+</main><Footer/></body></html>

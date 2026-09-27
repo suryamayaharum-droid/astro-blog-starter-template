@@ -1,0 +1,16 @@
+---
+import BaseHead from '../components/BaseHead.astro';import Header from '../components/Header.astro';import Footer from '../components/Footer.astro';import {cadernos} from '../data/public';const base=import.meta.env.BASE_URL;
+---
+<!doctype html><html lang="pt-BR"><head><BaseHead title="Cadernos de Presença · Harum Noir" description="Uma série editorial de desenho, gesto, olhar, memória e vestígio."/></head><body><Header/><main>
+<section class="page-hero"><div class="eyebrow">CADERNOS DE PRESENÇA</div><h1>Desenhar para permanecer.</h1><p>Os cadernos não são capítulos fechados. São estados de atenção que voltam, se cruzam e mudam conforme o desenho amadurece.</p></section>
+{cadernos.map((c,i)=><section class="section editorial-split" id={c.slug}>
+  <div class="card"><div class="card-media" style="aspect-ratio:4/3"><img src={`${base}noir/${c.image}`} alt="" /></div></div>
+  <div class="panel"><div class="eyebrow">{c.kicker}</div><h2>{c.title}</h2><p>{c.summary}</p><p>{[
+  "Presença começa quando paramos de tentar nomear tudo o que vemos e passamos a notar peso, distância, direção e pausa.",
+  "O gesto não copia contornos. Ele procura força, intenção e ritmo antes que o desenho fique pesado demais para se mover.",
+  "Olhar é também editar: decidir o que merece borda, o que pode desaparecer e onde a atenção deve permanecer.",
+  "Memória não é reprodução. É aquilo que sobrevive depois que a referência sai de diante dos olhos.",
+  "Vestígio é o que fica quando retiramos o excesso: marca, poeira, borda perdida, silêncio."
+  ][i]}</p></div>
+</section>)}
+</main><Footer/></body></html>
