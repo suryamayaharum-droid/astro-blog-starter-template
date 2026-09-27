@@ -1,0 +1,39 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import {referenceArtists} from '../data/references';
+const base=import.meta.env.BASE_URL;
+const find=(slug)=>referenceArtists.find(a=>a.slug===slug);
+const paths=[
+  {id:"carvao",n:"01",title:"Carvão & presença",text:"Matéria, gesto, borda, apagamento e a decisão de onde a figura realmente existe.",image:"figure-01.svg",refs:["mad-charcoal","silvie-mahdal","zin-lim","dirk-dzimirsky"],caderno:"presenca",temporada:"01"},
+  {id:"figura",n:"02",title:"Figura viva",text:"Peso, ritmo, centro de massa, anatomia e movimento antes do acabamento.",image:"gesture-01.svg",refs:["proko","love-life-drawing","chommang","steve-huston"],caderno:"gesto",temporada:"01"},
+  {id:"silencio",n:"03",title:"Silêncio & processo",text:"Quando o processo, o tempo, a mão e o som do material carregam a narrativa.",image:"trace-01.svg",refs:["peter-draws","akihito-yoshitomi","daria-callie","jono-dry"],caderno:"vestigio",temporada:"07"},
+  {id:"estrutura",n:"04",title:"Estrutura & anatomia",text:"Construção, proporção, perspectiva, cabeça, mãos e organização antes da superfície.",image:"eye-01.svg",refs:["proko","sinix-design","moderndayjames","stephen-bauman","new-masters-academy"],caderno:"olhar",temporada:"03"},
+  {id:"mundo",n:"05",title:"Sketchbook & mundo autoral",text:"Caderno como laboratório, arquivo, narrativa e lugar onde uma linguagem começa a acumular memória.",image:"memory-01.svg",refs:["karl-kopinski","kim-jung-gi-super-ani","drawingwiffwaffles","aaron-blaise"],caderno:"memoria",temporada:"04"},
+];
+---
+<!doctype html><html lang="pt-BR"><head><BaseHead title="Percursos · Harum Noir" description="Caminhos curatoriais que ligam referências, cadernos, atelier, temporadas e prática."/></head>
+<body><Header/><main>
+<section class="page-hero"><div class="eyebrow">PERCURSOS</div><h1>Escolha por onde entrar.</h1><p>O site não precisa ser lido em ordem. Cada percurso aproxima referências, estudo e prática em torno de uma pergunta diferente.</p></section>
+
+<section class="path-index">
+ {paths.map(p=><a class="path-index-card" href={'#'+p.id}><span>{p.n}</span><strong>{p.title}</strong><small>{p.text}</small></a>)}
+</section>
+
+{paths.map(p=>{
+ const refs=p.refs.map(find).filter(Boolean);
+ return <section class="journey" id={p.id}>
+   <div class="journey-intro">
+     <div class="journey-image"><img src={base+'noir/'+p.image} alt=""/></div>
+     <div><span class="eyebrow">PERCURSO {p.n}</span><h2>{p.title}</h2><p>{p.text}</p>
+       <div class="actions"><a class="btn primary" href={base+'cadernos#'+p.caderno}>Abrir caderno</a><a class="btn" href={base+'temporadas#t'+p.temporada}>Ir à temporada</a><a class="btn" href={base+'atelier'}>Praticar no atelier</a></div>
+     </div>
+   </div>
+   <div class="stream-head"><div><span class="eyebrow">REFERÊNCIAS DO PERCURSO</span><h3>Olhe por ângulos diferentes</h3></div></div>
+   <div class="stream-rail">{refs.map(a=><a class="stream-card" href={base+'referencias/'+a!.slug}><div class="stream-card-media"><img class="stream-fallback" src={base+'noir/reference-fallback.svg'} alt=""/>{a!.videoId&&<img class="stream-thumb" src={'https://i.ytimg.com/vi/'+a!.videoId+'/hqdefault.jpg'} alt={'Referência visual de '+a!.name} loading="lazy" onerror="this.remove()"/>}</div><div class="stream-card-body"><span>{a!.focus}</span><h3>{a!.name}</h3></div></a>)}</div>
+ </section>
+})}
+
+<section class="section"><div class="journal"><div class="paper"><div class="eyebrow" style="color:#8a734b">UMA REGRA</div><h2>O percurso termina no papel.</h2><p class="lead">Navegar é só a primeira metade.</p><p>Escolha uma referência, extraia uma pergunta e faça um estudo. O jardim só funciona quando alguma coisa volta para a mão.</p><a href={base+'roubar-como-artista'}>Como estudar referência sem virar cópia →</a></div></div></section>
+</main><Footer/></body></html>

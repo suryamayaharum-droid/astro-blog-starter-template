@@ -16,7 +16,7 @@ const startRefs=startRanks.map(byRank).filter(Boolean);
     <div class="eyebrow">ATELIER EDITORIAL · SALVADOR</div>
     <h1>Traço,<br/>corpo e <em>presença.</em></h1>
     <p>Um jardim editorial de desenho, carvão, gesto, anatomia, memória e processo. Entre por uma referência, por um caderno ou por uma temporada — e caminhe.</p>
-    <div class="actions"><a class="btn primary" href={base+'referencias'}>Explorar referências</a><a class="btn gold" href={base+'atelier'}>Entrar no atelier</a></div>
+    <div class="actions"><a class="btn primary" href={base+'referencias'}>Explorar referências</a><a class="btn gold" href={base+'percursos'}>Escolher um percurso</a><a class="btn" href={base+'atelier'}>Entrar no atelier</a></div>
   </div>
   <div class="hero-art">
     <img src={base+'noir/figure-01.svg'} alt="Estudo abstrato autoral de figura em carvão" />
@@ -40,7 +40,7 @@ const startRefs=startRanks.map(byRank).filter(Boolean);
   <div class="stream-rail">{cadernos.map(c=><a class="stream-card" href={base+'cadernos#'+c.slug}><div class="stream-card-media"><img src={base+'noir/'+c.image} alt="" loading="lazy"/></div><div class="stream-card-body"><span>{c.kicker}</span><h3>{c.title}</h3></div></a>)}</div>
 </section>
 
-<section class="section editorial-split">
+<section class="stream-section"><div class="stream-head"><div><span class="eyebrow">PERCURSOS</span><h2>Caminhos pelo jardim</h2></div><p>Entre por carvão, figura, silêncio, estrutura ou sketchbook.</p></div><div class="path-list"><a class="path-row" href={base+'percursos#carvao'}><strong>Carvão</strong><span>matéria, gesto e presença</span><b>→</b></a><a class="path-row" href={base+'percursos#figura'}><strong>Figura</strong><span>peso, gesto e anatomia</span><b>→</b></a><a class="path-row" href={base+'percursos#silencio'}><strong>Silêncio</strong><span>processo, tempo e atmosfera</span><b>→</b></a></div></section><section class="section editorial-split">
   <div class="panel"><div class="eyebrow">ATELIER ABERTO</div><h2>Professor próximo. Artista exigente. Processo visível.</h2><p>Conteúdo gratuito deve devolver algo para a prática: uma observação, um exercício, uma correção possível.</p><div class="actions"><a class="btn gold" href={base+'atelier'}>Abrir o atelier</a></div></div>
   <div class="panel"><div class="quote">Olhar se treina.<br/>Decisão se constrói.</div></div>
 </section>
