@@ -14,6 +14,9 @@ export type OpenLibraryCollection = {
   thesis: string;
   rule: string;
   destination: string;
+  practice: string;
+  nextHref: string;
+  nextLabel: string;
   sources: OpenLibrarySource[];
 };
 
@@ -25,6 +28,9 @@ export const openLibraryCollections: OpenLibraryCollection[] = [
     thesis: "O sketchbook como sistema de pensamento: ensaio, memória, observação e seleção — não miniatura de portfólio.",
     rule: "Comparar sequências e decisões. Uma página importa também pelo que vem antes e depois dela.",
     destination: "Sketchbook · repertório · memória",
+    practice: "Faça três folhas em dias diferentes repetindo um mesmo motivo — uma mão, animal, janela ou objeto. Mude o contexto e, no fim, marque o que reapareceu sem você planejar.",
+    nextHref: "cadernos#memoria",
+    nextLabel: "Levar ao Caderno Memória",
     sources: [
       {
         creator: "Leo Gestel",
@@ -83,6 +89,9 @@ export const openLibraryCollections: OpenLibraryCollection[] = [
     thesis: "A anatomia muda quando muda a cultura visual. Comparar sistemas históricos ajuda a separar estrutura corporal de convenção gráfica.",
     rule: "Usar anatomia para compreender forma e função; não transformar o corpo em aparência clínica nem tratar um cânone como universal.",
     destination: "Anatomia · sistemas · história visual",
+    practice: "Escolha um único sistema corporal e compare duas fontes históricas. Depois redesenhe sem copiar a convenção gráfica de nenhuma delas: use apenas eixo, massas e relações.",
+    nextHref: "temporadas#t03",
+    nextLabel: "Levar à Temporada 03",
     sources: [
       {
         creator: "Andreas Vesalius",
@@ -133,6 +142,9 @@ export const openLibraryCollections: OpenLibraryCollection[] = [
     thesis: "Métodos acadêmicos podem treinar precisão, construção e comparação sem determinar a estética final do artista.",
     rule: "Método é ferramenta. Assimilar estrutura; não copiar acabamento nem transformar academia em estilo.",
     destination: "Fundamentos · proporção · construção",
+    practice: "Desenhe a mesma pose em três estados: primeiro proporção e contorno; depois massas construtivas; por fim esconda a referência e redesenhe de memória.",
+    nextHref: "atelier",
+    nextLabel: "Levar ao Atelier",
     sources: [
       {
         creator: "Charles Bargue / Jean-Léon Gérôme",
@@ -167,6 +179,9 @@ export const openLibraryCollections: OpenLibraryCollection[] = [
     thesis: "Mão é gesto, função, peso, idade, contato e relação com o corpo — não uma peça anatômica genérica.",
     rule: "Desenhar a mão fazendo alguma coisa. Comparar relações e ações antes de decorar um esquema.",
     destination: "Mãos · gesto · função",
+    practice: "Escolha uma ação real — segurar, puxar, apoiar, escrever. Desenhe a mão em cinco momentos da ação, com tempos curtos, e finalize apenas um deles.",
+    nextHref: "temporadas#t03",
+    nextLabel: "Levar à Temporada 03",
     sources: [
       {
         creator: "Francis Augustus Lathrop",
@@ -225,6 +240,9 @@ export const openLibraryCollections: OpenLibraryCollection[] = [
     thesis: "Perfil, inclinação, idade e expressão mudam sem exigir um rosto-padrão. O objetivo é observar relações, não diagnosticar pessoas.",
     rule: "Sem fisiognomia determinista: nunca inferir caráter, inteligência ou personalidade a partir de traços físicos.",
     destination: "Cabeça · expressão · direção",
+    practice: "Use o mesmo rosto em cinco inclinações. Comece apenas com crânio, mandíbula, eixo e pescoço; depois acrescente duas expressões sem abandonar essa estrutura.",
+    nextHref: "cadernos#olhar",
+    nextLabel: "Levar ao Caderno Olhar",
     sources: [
       {
         creator: "John Singer Sargent",
