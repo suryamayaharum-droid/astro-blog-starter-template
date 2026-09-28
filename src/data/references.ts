@@ -1839,7 +1839,7 @@ export const referenceArtists:PublicReference[]=[
     "special": "Organiza anatomia e gesto como um sistema de formas simples que pode ser aplicado tanto à observação quanto à invenção.",
     "site": "https://figuredrawing.info/",
     "lane": "Mestres / anatomia",
-    "videoId": "hYnwHx3dZj8",
+    "videoId": "HEavseCLG6c",
     "youtube": "",
     "instagram": "",
     "refs": [
