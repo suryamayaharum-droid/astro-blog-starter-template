@@ -47,6 +47,11 @@ const sourceCount = openLibraryCollections.reduce((sum, collection) => sum + col
             <p style="margin-bottom:0">{collection.rule}</p>
           </div>
         </div>
+        <div style="margin-top:22px">
+          <div class="eyebrow">PRÁTICA DE SAÍDA</div>
+          <p>{collection.practice}</p>
+          <div class="actions"><a class="btn gold" href={base+collection.nextHref}>{collection.nextLabel} →</a></div>
+        </div>
       </div>
       <div class="card">
         <div class="card-media" style="aspect-ratio:4/5">
