@@ -1818,8 +1818,6 @@ export const referenceArtists:PublicReference[]=[
   "site": "https://vilppuacademy.com/",
   "lane": "Mestres / figura",
   "videoId": "",
-  "observe": "Estudar gesto como síntese, desenho do natural, construção e clareza de intenção.",
-  "tags": "gesto; figura; anatomia; mestre",
   "youtube": "",
   "instagram": "",
   "refs": [
@@ -1842,8 +1840,6 @@ export const referenceArtists:PublicReference[]=[
   "site": "https://figuredrawing.info/",
   "lane": "Mestres / anatomia",
   "videoId": "",
-  "observe": "Observar simplificação da anatomia, ritmo, superfície e mecânica corporal.",
-  "tags": "anatomia; figura; gesto; construção",
   "youtube": "",
   "instagram": "",
   "refs": [
@@ -1866,8 +1862,6 @@ export const referenceArtists:PublicReference[]=[
   "site": "https://www.peterhanstyleart.com/",
   "lane": "Design / sketching",
   "videoId": "",
-  "observe": "Estudar confiança de linha, forma tridimensional e desenho como resolução de problemas.",
-  "tags": "sketching; forma; perspectiva; design",
   "youtube": "",
   "instagram": "",
   "refs": [
@@ -1890,8 +1884,6 @@ export const referenceArtists:PublicReference[]=[
   "site": "https://designstudiopress.com/products/how-to-draw",
   "lane": "Design / perspectiva",
   "videoId": "",
-  "observe": "Observar grids, elipses, construção, sombra e geração de forma a partir da perspectiva.",
-  "tags": "perspectiva; design; construção; ambiente",
   "youtube": "",
   "instagram": "",
   "refs": [
@@ -1914,8 +1906,6 @@ export const referenceArtists:PublicReference[]=[
   "site": "https://nathanfowkesart.artstation.com/",
   "lane": "Visual development",
   "videoId": "",
-  "observe": "Estudar simplificação de cena, composição, atmosfera, ritmo de valores e storytelling visual.",
-  "tags": "visdev; atmosfera; composição; narrativa",
   "youtube": "",
   "instagram": "",
   "refs": [
@@ -1938,8 +1928,6 @@ export const referenceArtists:PublicReference[]=[
   "site": "https://jamesgurney.com/",
   "lane": "Mestres / imaginação",
   "videoId": "",
-  "observe": "Observar como estudo do real alimenta desenho imaginativo, luz, cor e narrativa.",
-  "tags": "sketching; observação; imaginação; luz",
   "youtube": "",
   "instagram": "",
   "refs": [
@@ -1962,8 +1950,6 @@ export const referenceArtists:PublicReference[]=[
   "site": "https://ahmedaldoori.com/",
   "lane": "Digital / fundamentos",
   "videoId": "",
-  "observe": "Estudar simplificação de forma, value grouping, cor e processo de pintura digital.",
-  "tags": "digital; valor; cor; retrato",
   "youtube": "",
   "instagram": "",
   "refs": [
@@ -1986,8 +1972,6 @@ export const referenceArtists:PublicReference[]=[
   "site": "https://www.imaginismstudios.com/bobby-chiu",
   "lane": "Character / ensino",
   "videoId": "",
-  "observe": "Observar uso de referência, shape language, narrativa de personagem e comunidade educacional.",
-  "tags": "character; concept; referência; ensino",
   "youtube": "",
   "instagram": "",
   "refs": [
@@ -2010,8 +1994,6 @@ export const referenceArtists:PublicReference[]=[
   "site": "https://fzdschool.com/",
   "lane": "Concept design",
   "videoId": "",
-  "observe": "Estudar pensamento de design, thumbnails, iteração, clareza funcional e apresentação.",
-  "tags": "concept; design; indústria; portfólio",
   "youtube": "",
   "instagram": "",
   "refs": [
@@ -2034,8 +2016,6 @@ export const referenceArtists:PublicReference[]=[
   "site": "https://www.artstation.com/krenz",
   "lane": "Ásia / fundamentos",
   "videoId": "",
-  "observe": "Observar value studies, lineart, figura, cor e transição entre estudo e ilustração.",
-  "tags": "figura; valor; cor; Ásia",
   "youtube": "",
   "instagram": "",
   "refs": [
@@ -2058,8 +2038,6 @@ export const referenceArtists:PublicReference[]=[
   "site": "https://tbchoi.artstation.com/",
   "lane": "Ásia / character",
   "videoId": "gemaRYPzgC4",
-  "observe": "Estudar simplificação anatômica, expressão, mãos, pernas e aplicação em character design.",
-  "tags": "anatomia; character; mãos; expressão",
   "youtube": "",
   "instagram": "",
   "refs": [
@@ -2082,8 +2060,6 @@ export const referenceArtists:PublicReference[]=[
   "site": "https://www.youtube.com/watch?v=KcC27wSNIv0",
   "lane": "Japão / ilustração",
   "videoId": "KcC27wSNIv0",
-  "observe": "Observar como correções pontuais revelam composição, leitura, gesto e hierarquia visual.",
-  "tags": "Japão; crítica; ilustração; personagem",
   "youtube": "",
   "instagram": "",
   "refs": [
@@ -2106,8 +2082,6 @@ export const referenceArtists:PublicReference[]=[
   "site": "https://davidfinchart.com/",
   "lane": "Quadrinhos / técnica",
   "videoId": "",
-  "observe": "Estudar anatomia aplicada, perspectiva, luta, gesto, hachura e clareza de cena.",
-  "tags": "quadrinhos; anatomia; perspectiva; gesto",
   "youtube": "",
   "instagram": "",
   "refs": [
@@ -2130,8 +2104,6 @@ export const referenceArtists:PublicReference[]=[
   "site": "https://marshallart.gumroad.com/",
   "lane": "Mestres / ensino",
   "videoId": "",
-  "observe": "Observar Bridgman, perspectiva, estrutura e como princípios históricos viram exercícios atuais.",
-  "tags": "perspectiva; Bridgman; anatomia; ensino",
   "youtube": "",
   "instagram": "",
   "refs": [
@@ -2154,8 +2126,6 @@ export const referenceArtists:PublicReference[]=[
   "site": "https://www.dorian.art/",
   "lane": "Acadêmico / ensino",
   "videoId": "",
-  "observe": "Estudar luz na forma, academic drawing, processo e estrutura de feedback.",
-  "tags": "acadêmico; luz; retrato; ensino",
   "youtube": "",
   "instagram": "",
   "refs": [
@@ -2178,8 +2148,6 @@ export const referenceArtists:PublicReference[]=[
   "site": "https://diegocatalan.com/",
   "lane": "Anatomia / figura",
   "videoId": "",
-  "observe": "Observar estrutura óssea, musculatura, landmarks e tradução para desenho de figura.",
-  "tags": "anatomia; figura; estrutura; retrato",
   "youtube": "",
   "instagram": "",
   "refs": [
@@ -2202,8 +2170,6 @@ export const referenceArtists:PublicReference[]=[
   "site": "https://www.henryyanart.com/",
   "lane": "Figura / carvão",
   "videoId": "",
-  "observe": "Estudar massas, bordas, gesto, economia e presença no desenho do natural.",
-  "tags": "figura; carvão; gesto; massa",
   "youtube": "",
   "instagram": "",
   "refs": [
@@ -2226,8 +2192,6 @@ export const referenceArtists:PublicReference[]=[
   "site": "https://robertliberace.com/",
   "lane": "Mestres / figura",
   "videoId": "",
-  "observe": "Observar movimento, anatomia, desenho gestual e acabamento clássico.",
-  "tags": "figura; anatomia; movimento; clássico",
   "youtube": "",
   "instagram": "",
   "refs": [
@@ -2250,8 +2214,6 @@ export const referenceArtists:PublicReference[]=[
   "site": "https://www.aristidesarts.com/",
   "lane": "Atelier / clássico",
   "videoId": "",
-  "observe": "Estudar block-in, master copy, cast drawing, figura, retrato e disciplina de observação.",
-  "tags": "atelier; clássico; figura; observação",
   "youtube": "",
   "instagram": "",
   "refs": [
@@ -2274,8 +2236,6 @@ export const referenceArtists:PublicReference[]=[
   "site": "https://www.corneliahernes.art/",
   "lane": "Atelier / retrato",
   "videoId": "",
-  "observe": "Observar desenho acadêmico, retrato, figura e passagem do estudo para pintura.",
-  "tags": "retrato; figura; clássico; atelier",
   "youtube": "",
   "instagram": "",
   "refs": [
@@ -2298,8 +2258,6 @@ export const referenceArtists:PublicReference[]=[
   "site": "https://ecbaugh.com/",
   "lane": "Retrato / atmosfera",
   "videoId": "",
-  "observe": "Estudar bordas, foco, luz atmosférica e construção de presença no retrato.",
-  "tags": "retrato; atmosfera; luz; figura",
   "youtube": "",
   "instagram": "",
   "refs": [
@@ -2322,8 +2280,6 @@ export const referenceArtists:PublicReference[]=[
   "site": "https://www.icuong.com/",
   "lane": "Retrato / pastel",
   "videoId": "",
-  "observe": "Observar modelagem suave, valor, bordas e estrutura de retrato.",
-  "tags": "pastel; retrato; valor; figura",
   "youtube": "",
   "instagram": "",
   "refs": [
@@ -2346,8 +2302,6 @@ export const referenceArtists:PublicReference[]=[
   "site": "https://www.sadievaleriatelier.com/",
   "lane": "Atelier / ensino",
   "videoId": "",
-  "observe": "Estudar progressão de Bargue, cast, drapery, figura e observação precisa.",
-  "tags": "atelier; Bargue; carvão; figura",
   "youtube": "",
   "instagram": "",
   "refs": [
@@ -2370,8 +2324,6 @@ export const referenceArtists:PublicReference[]=[
   "site": "https://www.iliyamirochnik.com/",
   "lane": "Acadêmico / figura",
   "videoId": "",
-  "observe": "Observar estrutura, desenho de figura, portrait studies e síntese entre tradição e expressão.",
-  "tags": "acadêmico; russo; figura; retrato",
   "youtube": "",
   "instagram": "",
   "refs": [
@@ -2394,8 +2346,6 @@ export const referenceArtists:PublicReference[]=[
   "site": "https://www.florenceacademyofart.edu/",
   "lane": "Escola / atelier",
   "videoId": "",
-  "observe": "Estudar currículo, figura diária, cast drawing, anatomia e progressão técnica.",
-  "tags": "atelier; escola; clássico; figura",
   "youtube": "",
   "instagram": "",
   "refs": [
@@ -2418,8 +2368,6 @@ export const referenceArtists:PublicReference[]=[
   "site": "https://www.academyofartbarcelona.com/",
   "lane": "Escola / figura",
   "videoId": "",
-  "observe": "Observar organização de atelier, desenho do natural, figura e formação internacional.",
-  "tags": "academia; figura; atelier; Europa",
   "youtube": "",
   "instagram": "",
   "refs": [
@@ -2442,8 +2390,6 @@ export const referenceArtists:PublicReference[]=[
   "site": "https://grandcentralatelier.org/",
   "lane": "Escola / atelier",
   "videoId": "",
-  "observe": "Estudar block-in, cast drawing, portrait sketch, rendering e continuidade de prática.",
-  "tags": "atelier; cast; figura; retrato",
   "youtube": "",
   "instagram": "",
   "refs": [
@@ -2466,8 +2412,6 @@ export const referenceArtists:PublicReference[]=[
   "site": "https://www.artstudentsleague.org/",
   "lane": "Escola / Nova York",
   "videoId": "",
-  "observe": "Observar variedade de abordagens de figura, retrato, linha, tom, anatomia e crítica.",
-  "tags": "escola; figura; retrato; anatomia",
   "youtube": "",
   "instagram": "",
   "refs": [
@@ -2490,8 +2434,6 @@ export const referenceArtists:PublicReference[]=[
   "site": "https://www.marcleone-artist.com/",
   "lane": "Biblioteca / ensino",
   "videoId": "",
-  "observe": "Estudar estrutura de biblioteca, demos, fundamentos e continuidade de estudo.",
-  "tags": "biblioteca; desenho; fundamentos; ensino",
   "youtube": "",
   "instagram": "",
   "refs": [
@@ -2514,8 +2456,6 @@ export const referenceArtists:PublicReference[]=[
   "site": "https://schoolism.com/",
   "lane": "Escola / digital",
   "videoId": "",
-  "observe": "Observar como cursos, live classes, workshops e entrevistas formam um ecossistema de aprendizagem.",
-  "tags": "escola; digital; character; visdev",
   "youtube": "",
   "instagram": "",
   "refs": [
@@ -2538,8 +2478,6 @@ export const referenceArtists:PublicReference[]=[
   "site": "http://www.drawingforce.com/",
   "lane": "Figura / movimento",
   "videoId": "",
-  "observe": "Estudar ritmo, forças, curvas, oposição e energia aplicada ao corpo.",
-  "tags": "figura; gesto; movimento; força",
   "youtube": "",
   "instagram": "",
   "refs": [
@@ -2562,8 +2500,6 @@ export const referenceArtists:PublicReference[]=[
   "site": "https://www.tomfoxdraws.com/",
   "lane": "Anatomia / construção",
   "videoId": "",
-  "observe": "Estudar mannequinização, formas simples, proporção, perspectiva e roupa sobre corpo.",
-  "tags": "anatomia; perspectiva; construção; roupa",
   "youtube": "",
   "instagram": "",
   "refs": [
@@ -2586,8 +2522,6 @@ export const referenceArtists:PublicReference[]=[
   "site": "https://trentk.gumroad.com/",
   "lane": "Concept / carreira",
   "videoId": "",
-  "observe": "Observar pipeline, design, produtividade, indústria e criação de IP própria.",
-  "tags": "concept; games; carreira; quadrinhos",
   "youtube": "",
   "instagram": "",
   "refs": [
@@ -2610,8 +2544,6 @@ export const referenceArtists:PublicReference[]=[
   "site": "https://linktr.ee/ergojosh",
   "lane": "Digital / comunidade",
   "videoId": "",
-  "observe": "Estudar processo, iteração, ferramentas digitais e narrativa pessoal de prática.",
-  "tags": "digital; processo; comunidade; estudo",
   "youtube": "",
   "instagram": "",
   "refs": [
@@ -2634,8 +2566,6 @@ export const referenceArtists:PublicReference[]=[
   "site": "https://angelganev.artstation.com/",
   "lane": "Digital / retrato",
   "videoId": "Bj42mJyIScc",
-  "observe": "Observar iluminação de rosto, cor, textura e progressão de pintura digital.",
-  "tags": "digital; retrato; luz; cor",
   "youtube": "",
   "instagram": "",
   "refs": [
@@ -2658,8 +2588,6 @@ export const referenceArtists:PublicReference[]=[
   "site": "https://lavendertowne.wixsite.com/lavendertowne",
   "lane": "Ilustração / narrativa",
   "videoId": "",
-  "observe": "Estudar estilização, personagem, sketchbook e como a voz pessoal sustenta o conteúdo.",
-  "tags": "ilustração; personagem; narrativa; estilo",
   "youtube": "",
   "instagram": "",
   "refs": [
@@ -2682,8 +2610,6 @@ export const referenceArtists:PublicReference[]=[
   "site": "https://linktr.ee/kooleen",
   "lane": "Digital / alcance",
   "videoId": "",
-  "observe": "Observar correção visual, exagero, rosto, apelo de personagem e ritmo curto.",
-  "tags": "digital; rosto; humor; alcance",
   "youtube": "",
   "instagram": "",
   "refs": [
@@ -2706,8 +2632,6 @@ export const referenceArtists:PublicReference[]=[
   "site": "https://rossdraws.com/",
   "lane": "Digital / narrativa",
   "videoId": "4lQ4JtlDebM",
-  "observe": "Estudar cor, personagem, apresentação, worldbuilding e transformação do processo em experiência.",
-  "tags": "digital; personagem; cor; worldbuilding",
   "youtube": "",
   "instagram": "",
   "refs": [
@@ -2730,8 +2654,6 @@ export const referenceArtists:PublicReference[]=[
   "site": "https://links.loish.net/",
   "lane": "Digital / autoral",
   "videoId": "",
-  "observe": "Estudar gesto, shape language, cor, consistência autoral e ecossistema de aprendizado.",
-  "tags": "digital; gesto; personagem; autoral",
   "youtube": "",
   "instagram": "",
   "refs": [
@@ -2754,8 +2676,6 @@ export const referenceArtists:PublicReference[]=[
   "site": "https://wlop.artstation.com/",
   "lane": "Digital / atmosfera",
   "videoId": "",
-  "observe": "Estudar composição, luz, pele, profundidade e equilíbrio entre detalhe e atmosfera.",
-  "tags": "digital; atmosfera; luz; personagem",
   "youtube": "",
   "instagram": "",
   "refs": [
@@ -2778,8 +2698,6 @@ export const referenceArtists:PublicReference[]=[
   "site": "https://guweiz.artstation.com/",
   "lane": "Digital / sketchbook",
   "videoId": "",
-  "observe": "Estudar silhueta, ambiente, narrativa implícita e passagem entre sketch e imagem final.",
-  "tags": "ilustração; sketchbook; ambiente; narrativa",
   "youtube": "",
   "instagram": "",
   "refs": [
@@ -2802,8 +2720,6 @@ export const referenceArtists:PublicReference[]=[
   "site": "https://gallerypascal.com/",
   "lane": "Ilustração / storytelling",
   "videoId": "",
-  "observe": "Estudar narrativa silenciosa, composição, luz emocional e relação entre personagens e espaço.",
-  "tags": "storytelling; luz; composição; ilustração",
   "youtube": "",
   "instagram": "",
   "refs": [
@@ -2826,8 +2742,6 @@ export const referenceArtists:PublicReference[]=[
   "site": "https://www.mrjakeparker.com/",
   "lane": "Ink / narrativa",
   "videoId": "",
-  "observe": "Estudar consistência de prática, inking, storytelling visual e construção de desafio coletivo.",
-  "tags": "ink; hábito; quadrinhos; comunidade",
   "youtube": "",
   "instagram": "",
   "refs": [
@@ -2850,8 +2764,6 @@ export const referenceArtists:PublicReference[]=[
   "site": "https://www.silvertoons.com/",
   "lane": "Character / ensino",
   "videoId": "WvLcmrdjeVQ",
-  "observe": "Estudar life drawing, shape language, caricatura e design de personagem.",
-  "tags": "character; caricatura; observação; ensino",
   "youtube": "",
   "instagram": "",
   "refs": [
@@ -2874,8 +2786,6 @@ export const referenceArtists:PublicReference[]=[
   "site": "https://www.shane-wolf.com/",
   "lane": "Figura / acadêmico",
   "videoId": "",
-  "observe": "Estudar estudos de figura, desenho preparatório, composição e energia de marca.",
-  "tags": "figura; desenho; composição; acadêmico",
   "youtube": "",
   "instagram": "",
   "refs": [
@@ -2898,8 +2808,6 @@ export const referenceArtists:PublicReference[]=[
   "site": "https://anthonyryder.fineaw.com/",
   "lane": "Retrato / técnica",
   "videoId": "",
-  "observe": "Estudar block-in, forma, luz, poster, tonal progression e desenho de retrato.",
-  "tags": "block-in; retrato; luz; tonalidade",
   "youtube": "",
   "instagram": "",
   "refs": [
@@ -2922,8 +2830,6 @@ export const referenceArtists:PublicReference[]=[
   "site": "https://drawabox.com/",
   "lane": "Fundamentos / prática",
   "videoId": "",
-  "observe": "Estudar progressão de exercícios, repetição deliberada e compreensão espacial.",
-  "tags": "fundamentos; perspectiva; caixas; prática",
   "youtube": "",
   "instagram": "",
   "refs": [
@@ -2946,8 +2852,6 @@ export const referenceArtists:PublicReference[]=[
   "site": "https://www.gnomon.edu/",
   "lane": "Escola / indústria",
   "videoId": "",
-  "observe": "Observar integração de drawing fundamentals, figura, perspectiva e produção digital.",
-  "tags": "escola; figura; perspectiva; indústria",
   "youtube": "",
   "instagram": "",
   "refs": [
@@ -2970,8 +2874,6 @@ export const referenceArtists:PublicReference[]=[
   "site": "https://www.svslearn.com/",
   "lane": "Escola / narrativa",
   "videoId": "",
-  "observe": "Estudar currículo por projetos, crítica, comunidade e visual storytelling.",
-  "tags": "ilustração; narrativa; comunidade; escola",
   "youtube": "",
   "instagram": "",
   "refs": [
@@ -2994,8 +2896,6 @@ export const referenceArtists:PublicReference[]=[
   "site": "https://brainstormschool.com/",
   "lane": "Escola / concept",
   "videoId": "",
-  "observe": "Estudar foundation, concept design, visual development, worldbuilding e portfolio.",
-  "tags": "concept; escola; visdev; portfólio",
   "youtube": "",
   "instagram": "",
   "refs": [
@@ -3018,8 +2918,6 @@ export const referenceArtists:PublicReference[]=[
   "site": "https://www.nicolasuribeart.com/",
   "lane": "Figura / retrato",
   "videoId": "",
-  "observe": "Estudar life drawing, construção de retrato, pintura direta e continuidade de prática.",
-  "tags": "figura; retrato; life drawing; pintura",
   "youtube": "",
   "instagram": "",
   "refs": [
