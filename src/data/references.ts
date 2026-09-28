@@ -1817,7 +1817,7 @@ export const referenceArtists:PublicReference[]=[
     "special": "Ensina desenho como pensamento e comunicação, com décadas de prática em figura, anatomia e sketching.",
     "site": "https://vilppuacademy.com/",
     "lane": "Mestres / figura",
-    "videoId": "",
+    "videoId": "DomkADJ4We0",
     "youtube": "",
     "instagram": "",
     "refs": [
@@ -1839,7 +1839,7 @@ export const referenceArtists:PublicReference[]=[
     "special": "Organiza anatomia e gesto como um sistema de formas simples que pode ser aplicado tanto à observação quanto à invenção.",
     "site": "https://figuredrawing.info/",
     "lane": "Mestres / anatomia",
-    "videoId": "",
+    "videoId": "hYnwHx3dZj8",
     "youtube": "",
     "instagram": "",
     "refs": [
@@ -2138,7 +2138,7 @@ export const referenceArtists:PublicReference[]=[
     "special": "Ensina fundamentos por análise de mestres, perspectiva e anatomia, conectando desenho a narrativa e observação.",
     "site": "https://marshallart.gumroad.com/",
     "lane": "Mestres / ensino",
-    "videoId": "",
+    "videoId": "SUYumBh0p2Q",
     "youtube": "",
     "instagram": "",
     "refs": [
@@ -2864,7 +2864,7 @@ export const referenceArtists:PublicReference[]=[
     "special": "Transforma fundamentos em exercícios cumulativos de linha, espaço, perspectiva e construção tridimensional.",
     "site": "https://drawabox.com/",
     "lane": "Fundamentos / prática",
-    "videoId": "",
+    "videoId": "N3Tm0UDDHgs",
     "youtube": "",
     "instagram": "",
     "refs": [
