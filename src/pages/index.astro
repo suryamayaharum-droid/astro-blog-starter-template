@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import { cadernos, fundamentos, temporadas } from '../data/public';
+import { openLibraryCollections } from '../data/openLibrary';
 import {referenceArtists,byRank} from '../data/references';
 const base=import.meta.env.BASE_URL;
 const startRanks=[17,39,9,18,38,36,27,50];
@@ -38,6 +39,21 @@ const startRefs=startRanks.map(byRank).filter(Boolean);
 <section class="stream-section">
   <div class="stream-head"><div><span class="eyebrow">CADERNOS DE PRESENÇA</span><h2>Uma biblioteca que respira</h2></div><p>Estudo, processo e narrativa visual sem transformar cada página numa aula.</p></div>
   <div class="stream-rail">{cadernos.map(c=><a class="stream-card" href={base+'cadernos#'+c.slug}><div class="stream-card-media"><img src={base+'noir/'+c.image} alt="" loading="lazy"/></div><div class="stream-card-body"><span>{c.kicker}</span><h3>{c.title}</h3></div></a>)}</div>
+</section>
+
+<section class="stream-section">
+  <div class="stream-head">
+    <div><span class="eyebrow">BIBLIOTECA ABERTA</span><h2>Fonte antes de fórmula</h2></div>
+    <p>Sketchbooks, anatomia histórica, atelier, mãos e cabeça organizados por problema de desenho — sempre apontando para a instituição de origem.</p>
+  </div>
+  <div class="archive-grid">
+    {openLibraryCollections.map(c=><a class="archive-item" href={base+'biblioteca#'+c.id}>
+      <span class="card-kicker">{c.kicker}</span>
+      <h3>{c.title}</h3>
+      <p>{c.thesis}</p>
+    </a>)}
+  </div>
+  <div class="actions"><a class="btn gold" href={base+'biblioteca'}>Abrir biblioteca →</a></div>
 </section>
 
 <section class="stream-section"><div class="stream-head"><div><span class="eyebrow">PERCURSOS</span><h2>Caminhos pelo jardim</h2></div><p>Entre por carvão, figura, silêncio, estrutura ou sketchbook.</p></div><div class="path-list"><a class="path-row" href={base+'percursos#carvao'}><strong>Carvão</strong><span>matéria, gesto e presença</span><b>→</b></a><a class="path-row" href={base+'percursos#figura'}><strong>Figura</strong><span>peso, gesto e anatomia</span><b>→</b></a><a class="path-row" href={base+'percursos#silencio'}><strong>Silêncio</strong><span>processo, tempo e atmosfera</span><b>→</b></a></div></section><section class="section editorial-split">
