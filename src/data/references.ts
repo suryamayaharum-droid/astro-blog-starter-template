@@ -1423,7 +1423,7 @@ export const referenceArtists:PublicReference[]=[
     "instagram": "https://www.instagram.com/dariacallie/",
     "site": "https://dariacallie.com/",
     "lane": "Leste Europeu / processo",
-    "videoId": "",
+    "videoId": "pwLo3lGsJQ4",
     "refs": [
       {
         "type": "Método / bio",
