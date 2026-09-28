@@ -1027,7 +1027,7 @@ export const referenceArtists:PublicReference[]=[
     "instagram": "https://www.instagram.com/theportraitart/",
     "site": "https://www.theportraitart.com/",
     "lane": "Núcleo carvão / produto",
-    "videoId": "",
+    "videoId": "OY1OJ71egHs",
     "refs": [
       {
         "type": "Conteúdo / série",
@@ -1135,7 +1135,7 @@ export const referenceArtists:PublicReference[]=[
     "instagram": "",
     "site": "https://www.jdhillberry.com/",
     "lane": "Núcleo técnico / grafite",
-    "videoId": "",
+    "videoId": "qdXbB5-3mCU",
     "refs": [
       {
         "type": "Método / tutorial",
@@ -1351,7 +1351,7 @@ export const referenceArtists:PublicReference[]=[
     "instagram": "",
     "site": "https://www.kimjunggi.net/",
     "lane": "Ásia / live drawing / composição",
-    "videoId": "",
+    "videoId": "kKtGVJiOC2Q",
     "refs": [
       {
         "type": "Método / biografia",
@@ -1495,7 +1495,7 @@ export const referenceArtists:PublicReference[]=[
     "instagram": "https://www.instagram.com/slewp/",
     "site": "https://www.studioslew.org/",
     "lane": "Alcance / atelier / comunidade",
-    "videoId": "",
+    "videoId": "zM7jmmdDoC8",
     "refs": [
       {
         "type": "Conteúdo / outlier",
@@ -1531,7 +1531,7 @@ export const referenceArtists:PublicReference[]=[
     "instagram": "",
     "site": "",
     "lane": "Ásia / carvão / evergreen",
-    "videoId": "",
+    "videoId": "WaEbJpisXFg",
     "refs": [
       {
         "type": "Conteúdo / top video",
@@ -1783,7 +1783,7 @@ export const referenceArtists:PublicReference[]=[
     "instagram": "https://www.instagram.com/karlkopinski/",
     "site": "https://karlkopinski.com/",
     "lane": "Sketchbook / repertório",
-    "videoId": "",
+    "videoId": "XF_shGImfbc",
     "refs": [
       {
         "type": "Arquivo / sketchbooks",
