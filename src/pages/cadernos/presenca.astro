@@ -1,0 +1,72 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+const base=import.meta.env.BASE_URL;
+const atrasos=[
+  {n:"01",title:"Nome",text:"Antes de pensar 'braço', 'rosto' ou 'mão', observe direção, tamanho, temperatura de valor e relação com o espaço ao redor."},
+  {n:"02",title:"Contorno",text:"Não feche a figura cedo demais. Comece por intervalos, massas e distâncias. O corpo pode aparecer antes de ganhar uma borda completa."},
+  {n:"03",title:"Detalhe",text:"Escolha um ponto de maior atenção e deixe o restante respirar. Presença não exige que tudo seja igualmente explicado."},
+  {n:"04",title:"Correção",text:"Espere um pouco antes de apagar. Um desvio pode revelar que você está vendo por hábito, não necessariamente que o desenho já fracassou."},
+];
+const campo=[
+  {k:"CENTRO",title:"O que prende sua atenção primeiro?",text:"Marque apenas a região que naturalmente puxa seu olhar. Não a transforme imediatamente em detalhe; descubra por que ela domina."},
+  {k:"BORDA",title:"Onde a figura quase desaparece?",text:"Procure encontros em que pele, roupa, sombra e fundo podem compartilhar uma borda incompleta."},
+  {k:"INTERVALO",title:"Quanto espaço existe entre as coisas?",text:"Compare vazio entre braço e torso, cabeça e ombro, corpo e margem. O espaço negativo também descreve a figura."},
+  {k:"PERIFERIA",title:"O que você percebe sem olhar diretamente?",text:"Deixe o centro de interesse quieto por alguns instantes e observe o que continua legível na visão periférica."},
+];
+const encontros=[
+  ["I","Dois minutos sem desenhar","Observe a figura inteira. Escolha três relações: maior massa, maior vazio e direção dominante. Só então toque o papel."],
+  ["II","Dez minutos com poucas marcas","Use o mínimo de linhas possível para registrar peso, distância e silêncio. Se começar a decorar, volte para as relações grandes."],
+  ["III","Um ponto nítido","Permita detalhe em apenas uma região. Faça o restante existir por massa, borda perdida ou sugestão."],
+  ["IV","Afastar","Coloque o desenho a alguns passos de distância. Veja o que permanece sem depender de pequenos detalhes."],
+];
+---
+<!doctype html><html lang="pt-BR"><head><BaseHead title="Caderno Presença · Harum Noir" description="Um caderno editorial sobre atenção, relações visuais, espaço negativo, borda, foco e silêncio antes do automatismo."/></head><body><Header/><main>
+<section class="page-hero"><div class="eyebrow">CADERNO I · PRESENÇA</div><h1>Ficar antes de explicar.</h1><p>Presença começa quando você atrasa o impulso de nomear, contornar e corrigir. Primeiro, permaneça diante das relações que já existem.</p></section>
+
+<section class="section editorial-split">
+  <div class="card"><div class="card-media"><img src={base+'noir/figure-01.svg'} alt=""/></div></div>
+  <div class="panel"><div class="eyebrow">ANTES DE SABER O QUE É</div><h2>Veja relações antes de objetos.</h2><p>Quando você reconhece uma figura, o cérebro tenta economizar trabalho: completa formas, corrige proporções e oferece símbolos conhecidos. O desenho começa a ficar mais atento quando você interrompe esse atalho.</p><p>Em vez de perguntar “como desenho isso?”, experimente perguntar “o que está maior, mais escuro, mais próximo, mais vazio ou mais inclinado do que eu esperava?”.</p><div class="quote" style="margin-top:28px">Presença é tempo suficiente para o hábito deixar de comandar sozinho.</div></div>
+</section>
+
+<section class="section">
+  <div class="section-head"><div><span class="eyebrow">QUATRO ATRASOS</span><h2>Não resolva tão cedo.</h2></div><p>Adiar uma decisão por alguns instantes pode revelar informação que desapareceria sob um desenho automático.</p></div>
+  <div class="paper-grid">{atrasos.map(a=><article class="paper-card"><div class="num">{a.n}</div><h3>{a.title}</h3><p>{a.text}</p></article>)}</div>
+</section>
+
+<section class="section">
+  <div class="section-head"><div><span class="eyebrow">CAMPO DE ATENÇÃO</span><h2>A figura também é o espaço ao redor dela.</h2></div><p>Presença não acontece só no objeto principal. Ela aparece na relação entre foco, silêncio, borda e intervalo.</p></div>
+  <div class="archive-grid">{campo.map(c=><article class="archive-item"><span class="card-kicker">{c.k}</span><h3>{c.title}</h3><p>{c.text}</p></article>)}</div>
+</section>
+
+<section class="section editorial-split">
+  <div class="panel"><div class="eyebrow">UM TESTE SIMPLES</div><h2>Descreva sem usar nomes.</h2><p>Olhe para a referência e passe trinta segundos descrevendo apenas relações visuais. Evite palavras como olho, mão, perna, cabelo ou roupa.</p><div class="journal"><div class="rule">Use palavras de relação: maior, menor, inclinado, comprimido, aberto, próximo, escuro, interrompido, pesado, vazio.</div></div><p>Quando o vocabulário muda, o desenho costuma mudar junto. Você deixa de procurar símbolos e começa a medir acontecimentos.</p></div>
+  <div class="panel"><div class="eyebrow">PONTE</div><div class="quote">Presença prepara o terreno. Gesto percebe o movimento. Olhar percebe onde a atenção permanece.</div><div class="actions"><a class="btn" href={base+'cadernos/gesto'}>Continuar para Gesto →</a><a class="btn" href={base+'cadernos/olhar'}>Continuar para Olhar →</a></div></div>
+</section>
+
+<section class="section"><div class="journal"><div class="paper">
+  <div class="eyebrow" style="color:#8a734b">QUATRO ENCONTROS</div>
+  <h2>Treinar atenção sem transformar atenção em rigidez.</h2>
+  <p class="lead">A proposta não é desenhar devagar. É perceber antes de automatizar.</p>
+  {encontros.map(e=><><h2>{e[0]} · {e[1]}</h2><p>{e[2]}</p></>)}
+  <div class="rule"><strong>Vestígio:</strong> ao terminar, marque uma região que você quase não percebeu no começo e escreva o que fez ela aparecer para você.</div>
+</div></div></section>
+
+<section class="section">
+  <div class="section-head"><div><span class="eyebrow">QUANDO PARAR</span><h2>Nem toda ausência é falta.</h2></div><p>Um estudo pode estar inteiro sem estar preenchido.</p></div>
+  <div class="archive-grid">
+    <article class="archive-item"><span class="card-kicker">LEITURA</span><h3>O peso ainda funciona de longe?</h3><p>Afaste-se. Se direção, massa e foco permanecem, talvez você não precise acrescentar mais informação.</p></article>
+    <article class="archive-item"><span class="card-kicker">SILÊNCIO</span><h3>Há uma área que pode continuar quieta?</h3><p>Resista à vontade de preencher todo espaço vazio. Uma zona silenciosa pode aumentar a força da região escolhida.</p></article>
+    <article class="archive-item"><span class="card-kicker">DECISÃO</span><h3>O próximo traço melhora ou apenas ocupa?</h3><p>Quando a resposta não estiver clara, pare. Guardar uma pergunta pode ser mais útil do que fechar a folha por hábito.</p></article>
+  </div>
+</section>
+
+<section class="section"><div class="journal"><div class="paper">
+  <h2>Presença não é lentidão.</h2>
+  <p class="lead">É não deixar o reconhecimento terminar o desenho antes de você começar a observar.</p>
+  <p>Depois dessa pausa, o gesto pode entrar com mais liberdade e a anatomia pode entrar com mais precisão — porque ambas passam a responder ao que você realmente viu.</p>
+  <div class="rule"><strong>Vestígio final:</strong> escolha uma única relação visual que você quer carregar para a próxima sessão. Não uma técnica inteira. Uma relação.</div>
+  <p><a href={base+'cadernos'}>Voltar aos Cadernos →</a></p>
+</div></div></section>
+</main><Footer/></body></html>
