@@ -1099,7 +1099,7 @@ export const referenceArtists:PublicReference[]=[
     "instagram": "https://www.instagram.com/arinze/",
     "site": "https://arinzestanley.com/",
     "lane": "Obra / conceito",
-    "videoId": "",
+    "videoId": "Kttn4qq7W3c",
     "refs": [
       {
         "type": "Obra / portfólio",
