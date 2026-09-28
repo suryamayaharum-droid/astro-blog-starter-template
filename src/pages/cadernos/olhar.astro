@@ -1,0 +1,73 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+const base=import.meta.env.BASE_URL;
+const estrutura=[
+  {n:"01",title:"Globo",text:"Pense primeiro numa esfera. As pálpebras não são dois riscos: elas envolvem um volume e mudam de curva quando o olho gira."},
+  {n:"02",title:"Órbita",text:"O olho não flutua no rosto. Sobrancelha, raiz do nariz, têmpora e maçã do rosto constroem o espaço onde ele existe."},
+  {n:"03",title:"Fenda",text:"Observe a abertura entre as pálpebras como forma variável. Evite o símbolo pronto de amêndoa; cada direção de olhar reorganiza essa fenda."},
+  {n:"04",title:"Par",text:"Dois olhos pertencem à mesma cabeça, mas raramente repetem exatamente a mesma forma. Perspectiva, tensão e assimetria importam."},
+];
+const desvios=[
+  {k:"DIREÇÃO",title:"Olhos sobem. A cabeça não.",text:"Mantenha a cabeça quase imóvel e leve apenas o olhar para cima. Perceba quanto da íris some e como a pálpebra superior responde."},
+  {k:"PRESSÃO",title:"Um olho quase fecha.",text:"Comprima uma bochecha, aperte um lado do rosto ou force um sorriso. Observe como o olho muda sem precisar atuar uma emoção inteira."},
+  {k:"ASSIMETRIA",title:"Desconfiança sem legenda.",text:"Levante uma sobrancelha, tensione uma pálpebra e deixe a outra mais solta. Não iguale os dois lados cedo demais."},
+  {k:"EXCESSO",title:"A careta pode ensinar.",text:"Exagere nariz, sobrancelha e abertura dos olhos. Depois reduza. O excesso revela estruturas que a expressão neutra esconde."},
+];
+const folhas=[
+  ["I","Esfera antes do olho","Desenhe globos em diferentes rotações. Acrescente só o suficiente de pálpebra para mostrar como ela contorna o volume."],
+  ["II","Aberturas","Faça várias fendas palpebrais sem íris. Compare inclinação, espessura, canto interno, canto externo e quantidade de branco aparente."],
+  ["III","Direções","Mantenha a mesma cabeça e mova o olhar: cima, baixo, lado, diagonal, perto. Deixe a pupila para o final."],
+  ["IV","Caretas","Escolha expressões estranhas, apertadas ou desequilibradas. Desenhe também sobrancelha, raiz do nariz e parte da bochecha."],
+  ["V","Síntese","Faça um olhar mais resolvido. Preserve pelo menos uma assimetria ou borda estranha que dê presença em vez de polir tudo."],
+];
+---
+<!doctype html><html lang="pt-BR"><head><BaseHead title="Caderno Olhar · Harum Noir" description="Um caderno editorial sobre globo ocular, órbita, direção, tensão, expressão e estranhamento."/></head><body><Header/><main>
+<section class="page-hero"><div class="eyebrow">CADERNO III · OLHAR</div><h1>O olhar não mora na íris.</h1><p>Antes da expressão, existe uma esfera dentro de uma órbita. Antes do detalhe, existem direção, pressão, assimetria e bordas que fazem o rosto responder.</p></section>
+
+<section class="section editorial-split">
+  <div class="card"><div class="card-media"><img src={base+'noir/eye-01.svg'} alt=""/></div></div>
+  <div class="panel"><div class="eyebrow">ANTES DE DESENHAR UM OLHO</div><h2>Desenhe o lugar onde ele acontece.</h2><p>Um olho isolado vira símbolo com facilidade. Quando você percebe a órbita, o globo, as pálpebras e os planos próximos do rosto, a expressão deixa de depender de uma pupila bonita.</p><div class="quote" style="margin-top:28px">O olhar começa no volume e termina na presença.</div></div>
+</section>
+
+<section class="section">
+  <div class="section-head"><div><span class="eyebrow">FISIOLOGIA VISUAL</span><h2>Quatro coisas antes da expressão</h2></div><p>Estrutura não serve para engessar o desenho. Serve para que a estranheza tenha onde acontecer.</p></div>
+  <div class="paper-grid">{estrutura.map(s=><article class="paper-card"><div class="num">{s.n}</div><h3>{s.title}</h3><p>{s.text}</p></article>)}</div>
+</section>
+
+<section class="section">
+  <div class="section-head"><div><span class="eyebrow">DIREÇÃO</span><h2>Não mova só a pupila</h2></div><p>Quando o olhar muda, a relação entre globo, pálpebras e face também muda.</p></div>
+  <div class="archive-grid">
+    <article class="archive-item"><span class="card-kicker">CABEÇA × OLHOS</span><h3>Duas direções podem coexistir.</h3><p>A cabeça aponta para um lugar enquanto os olhos procuram outro. Essa diferença produz tensão sem precisar exagerar a expressão.</p></article>
+    <article class="archive-item"><span class="card-kicker">CONVERGÊNCIA</span><h3>Veja para onde os dois olhos realmente apontam.</h3><p>Em distâncias curtas, os eixos se aproximam. Em vista lateral ou três-quartos, um olho não repete simplesmente o outro.</p></article>
+    <article class="archive-item"><span class="card-kicker">PÁLPEBRA</span><h3>A abertura responde ao giro.</h3><p>Íris e pupila não deslizam sobre uma folha plana. O globo gira por baixo das pálpebras e muda a quantidade de forma visível.</p></article>
+  </div>
+</section>
+
+<section class="section"><div class="journal"><div class="paper">
+  <div class="eyebrow" style="color:#8a734b">LABORATÓRIO DE ESTRANHEZA</div>
+  <h2>O olhar mais interessante nem sempre é o mais bonito.</h2>
+  <p class="lead">Careta, tensão e assimetria revelam coisas que o rosto neutro esconde.</p>
+  {desvios.map(d=><><h2>{d.title}</h2><p><strong>{d.k}.</strong> {d.text}</p></>)}
+  <div class="rule">Se um olho ficou “esquisito”, descubra primeiro se a estrutura está errada ou se a expressão é que está rompendo a simetria. São problemas diferentes.</div>
+</div></div></section>
+
+<section class="section editorial-split">
+  <div class="panel"><div class="eyebrow">O ROSTO PARTICIPA</div><h2>Nariz, sobrancelha e bochecha também olham.</h2><p>A raiz do nariz aproxima ou separa formas. A sobrancelha cria peso sobre a órbita. A bochecha empurra a pálpebra inferior. Até a boca pode alterar a leitura do olhar porque muda a tensão do rosto inteiro.</p><p>Quando estudar expressão, deixe de recortar apenas dois olhos flutuando. Dê a eles um pedaço suficiente do rosto para que a tensão tenha continuidade.</p></div>
+  <div class="panel"><div class="eyebrow">BORDA</div><div class="quote">Nem todo contorno precisa existir com a mesma força.</div><p>Deixe algumas bordas desaparecerem na sombra, no cílio, na órbita ou no encontro com o nariz. O olhar pode ficar mais presente quando você para de explicar tudo.</p><div class="actions"><a class="btn" href={base+'referencias'}>Estudar pelo Atlas →</a></div></div>
+</section>
+
+<section class="section">
+  <div class="section-head"><div><span class="eyebrow">CINCO FOLHAS</span><h2>Uma pequena investigação</h2></div><p>Cada folha muda a pergunta. Não transforme todas em páginas finalizadas.</p></div>
+  <div class="archive-grid">{folhas.map(f=><article class="archive-item"><span class="card-kicker">FOLHA {f[0]}</span><h3>{f[1]}</h3><p>{f[2]}</p></article>)}</div>
+</section>
+
+<section class="section"><div class="journal"><div class="paper">
+  <h2>Pare de desenhar o símbolo do olho.</h2>
+  <p class="lead">Desenhe uma esfera pressionada por tecido, alojada numa face, apontando para alguma coisa.</p>
+  <p>Depois, quando a estrutura estiver presente, permita que o rosto fique estranho. Um olhar vivo não precisa parecer confortável.</p>
+  <div class="rule"><strong>Vestígio:</strong> escolha um estudo que ficou estranho por um bom motivo. Não o corrija completamente. Escreva ao lado o que aquela assimetria revelou.</div>
+  <p><a href={base+'cadernos'}>Voltar aos Cadernos →</a></p>
+</div></div></section>
+</main><Footer/></body></html>
