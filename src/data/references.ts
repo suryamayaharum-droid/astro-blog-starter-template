@@ -1383,7 +1383,7 @@ export const referenceArtists:PublicReference[]=[
     "archetype": "Carvão expressivo estruturado",
     "focus": "Carvão / figura / retrato / gesto",
     "special": "Une estrutura acadêmica e gesto expressivo; organiza o ensino em linha, tom, borda, espaço, ritmo e emoção.",
-    "youtube": "",
+    "youtube": "https://www.youtube.com/channel/UCXLrVStuoz-DlVVwfkoQ4jA",
     "instagram": "https://www.instagram.com/zinlimart/",
     "site": "https://www.zinlim.com/",
     "lane": "Núcleo carvão / método",
