@@ -31,6 +31,18 @@ const paths=[
        <p class="journey-next">Depois, se quiser aprofundar: <a href={base+'temporadas#t'+p.temporada}>temporada</a><a href={base+'atelier'}>atelier</a></p>
      </div>
    </div>
+   {p.id==="mundo"&&<div class="journal" style="margin-top:28px"><div class="paper">
+     <div class="eyebrow" style="color:#8a734b">CADERNO COMO UNIVERSO</div>
+     <h2>O mundo autoral aparece antes de virar estilo.</h2>
+     <p class="lead">Primeiro vêm as recorrências.</p>
+     <p>Uma mão desenhada muitas vezes. Um animal que volta. A mesma janela. Um tipo de sombra. Uma anotação que só faz sentido para quem desenhou. O sketchbook fica interessante quando deixa de ser vitrine e começa a registrar relações.</p>
+     <div class="path-index" style="margin-top:18px">
+       <div class="path-index-card"><span>01</span><strong>Repertório</strong><small>Desenhe coisas diferentes sem exigir que cada página prove alguma coisa.</small></div>
+       <div class="path-index-card"><span>02</span><strong>Recorrência</strong><small>Observe o que reaparece espontaneamente: temas, formas, gestos, personagens e lugares.</small></div>
+       <div class="path-index-card"><span>03</span><strong>Conexão</strong><small>Comece a aproximar elementos que antes estavam separados. É aí que um universo começa.</small></div>
+     </div>
+     <p style="font-size:.82rem;opacity:.72;margin-top:18px">Fontes abertas para observar o caderno como processo: <a href="https://www.rijksmuseum.nl/en/collection/object/Schetsboek--8ac2d7c29817cfff23657152a2165d3a" target="_blank" rel="noreferrer">Leo Gestel · Rijksmuseum</a> · <a href="https://www.si.edu/object/sketchbook-page%3Achndm_1984-86-4-46" target="_blank" rel="noreferrer">Kenyon Cox · Smithsonian</a> · <a href="https://www.metmuseum.org/art/collection/search/14878" target="_blank" rel="noreferrer">Francis William Edmonds · The Met</a>.</p>
+   </div></div>}
    <div class="stream-head"><div><span class="eyebrow">REFERÊNCIAS DO PERCURSO</span><h3>Olhe por ângulos diferentes</h3></div></div>
    <div class="stream-rail">{refs.map(a=><a class="stream-card" href={base+'referencias/'+a!.slug}><div class="stream-card-media"><img class="stream-fallback" src={base+'noir/reference-fallback.svg'} alt=""/>{a!.videoId&&<img class="stream-thumb" src={'https://i.ytimg.com/vi/'+a!.videoId+'/hqdefault.jpg'} alt={'Referência visual de '+a!.name} loading="lazy" onerror="this.remove()"/>}</div><div class="stream-card-body"><span>{a!.focus}</span><h3>{a!.name}</h3></div></a>)}</div>
  </section>
