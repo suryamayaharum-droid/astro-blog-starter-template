@@ -6,11 +6,11 @@ import {referenceArtists} from '../data/references';
 const base=import.meta.env.BASE_URL;
 const find=(slug)=>referenceArtists.find(a=>a.slug===slug);
 const paths=[
-  {id:"carvao",n:"01",title:"Carvão & presença",text:"Matéria, gesto, borda, apagamento e a decisão de onde a figura realmente existe.",image:"figure-01.svg",refs:["mad-charcoal","silvie-mahdal","zin-lim","dirk-dzimirsky"],caderno:"presenca",temporada:"01"},
-  {id:"figura",n:"02",title:"Figura viva",text:"Peso, ritmo, centro de massa, anatomia e movimento antes do acabamento.",image:"gesture-01.svg",refs:["proko","love-life-drawing","chommang","steve-huston"],caderno:"gesto",temporada:"01"},
-  {id:"silencio",n:"03",title:"Silêncio & processo",text:"Quando o processo, o tempo, a mão e o som do material carregam a narrativa.",image:"trace-01.svg",refs:["peter-draws","akihito-yoshitomi","daria-callie","jono-dry"],caderno:"vestigio",temporada:"07"},
-  {id:"estrutura",n:"04",title:"Estrutura & anatomia",text:"Construção, proporção, perspectiva, cabeça, mãos e organização antes da superfície.",image:"eye-01.svg",refs:["proko","sinix-design","moderndayjames","stephen-bauman","new-masters-academy"],caderno:"olhar",temporada:"03"},
-  {id:"mundo",n:"05",title:"Sketchbook & mundo autoral",text:"Caderno como laboratório, arquivo, narrativa e lugar onde uma linguagem começa a acumular memória.",image:"memory-01.svg",refs:["karl-kopinski","kim-jung-gi-super-ani","drawingwiffwaffles","aaron-blaise"],caderno:"memoria",temporada:"04"},
+  {id:"carvao",n:"01",title:"Carvão & presença",text:"Matéria, gesto, borda, apagamento e a decisão de onde a figura realmente existe.",image:"figure-01.svg",refs:["mad-charcoal","silvie-mahdal","zin-lim","dirk-dzimirsky"],caderno:"presenca",temporada:"01",biblioteca:"atelier-historico-aberto"},
+  {id:"figura",n:"02",title:"Figura viva",text:"Peso, ritmo, centro de massa, anatomia e movimento antes do acabamento.",image:"gesture-01.svg",refs:["proko","love-life-drawing","chommang","steve-huston"],caderno:"gesto",temporada:"01",biblioteca:"anatomias-do-mundo"},
+  {id:"silencio",n:"03",title:"Silêncio & processo",text:"Quando o processo, o tempo, a mão e o som do material carregam a narrativa.",image:"trace-01.svg",refs:["peter-draws","akihito-yoshitomi","daria-callie","jono-dry"],caderno:"vestigio",temporada:"07",biblioteca:"caderno-como-universo"},
+  {id:"estrutura",n:"04",title:"Estrutura & anatomia",text:"Construção, proporção, perspectiva, cabeça, mãos e organização antes da superfície.",image:"eye-01.svg",refs:["proko","sinix-design","moderndayjames","stephen-bauman","new-masters-academy"],caderno:"olhar",temporada:"03",biblioteca:"maos-sem-formula"},
+  {id:"mundo",n:"05",title:"Sketchbook & mundo autoral",text:"Caderno como laboratório, arquivo, narrativa e lugar onde uma linguagem começa a acumular memória.",image:"memory-01.svg",refs:["karl-kopinski","kim-jung-gi-super-ani","drawingwiffwaffles","aaron-blaise"],caderno:"memoria",temporada:"04",biblioteca:"caderno-como-universo"},
 ];
 ---
 <!doctype html><html lang="pt-BR"><head><BaseHead title="Percursos · Harum Noir" description="Caminhos curatoriais que ligam referências, cadernos, atelier, temporadas e prática."/></head>
@@ -27,7 +27,7 @@ const paths=[
    <div class="journey-intro">
      <div class="journey-image"><img src={base+'noir/'+p.image} alt=""/></div>
      <div><span class="eyebrow">PERCURSO {p.n}</span><h2>{p.title}</h2><p>{p.text}</p>
-       <div class="actions"><a class="btn primary" href={base+'cadernos#'+p.caderno}>Abrir caderno</a></div>
+       <div class="actions"><a class="btn primary" href={base+'cadernos#'+p.caderno}>Abrir caderno</a><a class="btn" href={base+'biblioteca#'+p.biblioteca}>Abrir fontes</a></div>
        <p class="journey-next">Depois, se quiser aprofundar: <a href={base+'temporadas#t'+p.temporada}>temporada</a><a href={base+'atelier'}>atelier</a></p>
      </div>
    </div>
@@ -41,7 +41,7 @@ const paths=[
        <div class="path-index-card"><span>02</span><strong>Recorrência</strong><small>Observe o que reaparece espontaneamente: temas, formas, gestos, personagens e lugares.</small></div>
        <div class="path-index-card"><span>03</span><strong>Conexão</strong><small>Comece a aproximar elementos que antes estavam separados. É aí que um universo começa.</small></div>
      </div>
-     <p style="font-size:.82rem;opacity:.72;margin-top:18px">Fontes abertas para observar o caderno como processo: <a href="https://www.rijksmuseum.nl/en/collection/object/Schetsboek--8ac2d7c29817cfff23657152a2165d3a" target="_blank" rel="noreferrer">Leo Gestel · Rijksmuseum</a> · <a href="https://www.si.edu/object/sketchbook-page%3Achndm_1984-86-4-46" target="_blank" rel="noreferrer">Kenyon Cox · Smithsonian</a> · <a href="https://www.metmuseum.org/art/collection/search/14878" target="_blank" rel="noreferrer">Francis William Edmonds · The Met</a>.</p>
+     <p style="font-size:.82rem;opacity:.72;margin-top:18px">Fontes abertas para observar o caderno como processo: <a href="https://www.rijksmuseum.nl/en/collection/object/Schetsboek--8ac2d7c29817cfff23657152a2165d3a" target="_blank" rel="noreferrer">Leo Gestel · Rijksmuseum</a> · <a href="https://www.si.edu/object/sketchbook-page%3Achndm_1984-86-4-46" target="_blank" rel="noreferrer">Kenyon Cox · Smithsonian</a> · <a href="https://www.metmuseum.org/art/collection/search/14878" target="_blank" rel="noreferrer">Francis William Edmonds · The Met</a>.</p><p><a href={base+"biblioteca#caderno-como-universo"}>Abrir a coleção completa na Biblioteca →</a></p>
    </div></div>}
    <div class="stream-head"><div><span class="eyebrow">REFERÊNCIAS DO PERCURSO</span><h3>Olhe por ângulos diferentes</h3></div></div>
    <div class="stream-rail">{refs.map(a=><a class="stream-card" href={base+'referencias/'+a!.slug}><div class="stream-card-media"><img class="stream-fallback" src={base+'noir/reference-fallback.svg'} alt=""/>{a!.videoId&&<img class="stream-thumb" src={'https://i.ytimg.com/vi/'+a!.videoId+'/hqdefault.jpg'} alt={'Referência visual de '+a!.name} loading="lazy" onerror="this.remove()"/>}</div><div class="stream-card-body"><span>{a!.focus}</span><h3>{a!.name}</h3></div></a>)}</div>
