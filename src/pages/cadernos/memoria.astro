@@ -1,0 +1,65 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+const base=import.meta.env.BASE_URL;
+const rastros=[
+  {n:"01",title:"Direção",text:"Que inclinação sobreviveu sem você tentar lembrar? Coluna, cabeça, eixo do torso ou relação entre as pernas."},
+  {n:"02",title:"Proporção",text:"O que sua memória aumentou, encurtou ou deslocou? Não corrija ainda. Marque o desvio."},
+  {n:"03",title:"Ausência",text:"O que desapareceu por completo? Às vezes o esquecido revela o que sua atenção nunca chegou a registrar."},
+  {n:"04",title:"Insistência",text:"Qual detalhe reapareceu com força mesmo sem ser essencial? Ele pode indicar um vício, uma preferência ou uma semente de linguagem."},
+];
+const ciclos=[
+  {k:"A",title:"Olhar",text:"Observe por dois minutos sem desenhar. Tente perceber relações grandes: eixo, massas, distância, direção e um detalhe que você gostaria de reter."},
+  {k:"B",title:"Esconder",text:"Retire a referência de verdade. Não deixe uma miniatura aberta ao lado. A interrupção faz parte do exercício."},
+  {k:"C",title:"Reconstruir",text:"Desenhe por três a cinco minutos sem procurar perfeição. Registre primeiro aquilo que voltou sozinho."},
+  {k:"D",title:"Comparar",text:"Reabra a referência e use outra cor, grafite mais leve ou pequenas marcas para indicar diferenças. Não redesenhe tudo por cima."},
+  {k:"E",title:"Repetir",text:"Esconda outra vez. Faça uma segunda versão levando apenas uma correção estrutural com você."},
+];
+const folhas=[
+  ["I","Silhueta lembrada","Observe uma pose por um minuto. Esconda. Desenhe somente a massa externa e os vazios principais."],
+  ["II","Dois gestos","Veja duas poses em sequência e depois tente reconstruir ambas na mesma folha sem consultar a referência."],
+  ["III","Rosto reduzido","Observe direção da cabeça, eixo dos olhos, nariz e boca. Depois desenhe apenas essas relações, sem buscar semelhança fotográfica."],
+  ["IV","Detalhe sobrevivente","Escolha mão, pé, dobra, cabelo ou perfil. Observe brevemente, esconda e desenhe o que permaneceu mais nítido."],
+  ["V","Versão contaminada","Depois de comparar, faça uma nova versão permitindo conscientemente que um dos seus desvios permaneça."],
+];
+---
+<!doctype html><html lang="pt-BR"><head><BaseHead title="Caderno Memória · Harum Noir" description="Um caderno editorial sobre observação, ausência, reconstrução, comparação e desvio autoral."/></head><body><Header/><main>
+<section class="page-hero"><div class="eyebrow">CADERNO IV · MEMÓRIA</div><h1>Quando a referência some, outra imagem começa.</h1><p>Memória aqui não é prova de fidelidade. É uma maneira de descobrir o que sua atenção reteve, o que sua mão inventou e quais desvios insistem em voltar.</p></section>
+
+<section class="section editorial-split">
+  <div class="card"><div class="card-media"><img src={base+'noir/memory-01.svg'} alt=""/></div></div>
+  <div class="panel"><div class="eyebrow">UMA AUSÊNCIA NECESSÁRIA</div><h2>Esconder também faz parte do desenho.</h2><p>Enquanto a referência permanece aberta, você pode voltar a ela a cada dúvida. Quando ela desaparece, o desenho revela outra coisa: quais relações realmente entraram no seu olhar.</p><p>O objetivo não é provar que você “tem boa memória”. É separar observação de hábito.</p><div class="quote" style="margin-top:28px">O erro de lembrança pode ser mais informativo que uma cópia obediente.</div></div>
+</section>
+
+<section class="section">
+  <div class="section-head"><div><span class="eyebrow">UM CICLO COMPLETO</span><h2>Olhar, perder, reconstruir.</h2></div><p>Cada etapa muda a tarefa. Não transforme comparação em punição.</p></div>
+  <div class="archive-grid">{ciclos.map(c=><article class="archive-item"><span class="card-kicker">{c.k}</span><h3>{c.title}</h3><p>{c.text}</p></article>)}</div>
+</section>
+
+<section class="section"><div class="journal"><div class="paper">
+  <div class="eyebrow" style="color:#8a734b">MAPA DO QUE FICOU</div>
+  <h2>Compare sem apagar a primeira tentativa.</h2>
+  <p class="lead">O primeiro desenho é evidência. Se você o corrige até desaparecer, perde justamente a parte mais útil.</p>
+  {rastros.map(r=><><h2>{r.n} · {r.title}</h2><p>{r.text}</p></>)}
+  <div class="rule">Use marcas discretas: círculo, seta, linha tracejada, palavra curta. O objetivo é ler o desvio, não transformar a folha numa ficha técnica.</div>
+</div></div></section>
+
+<section class="section editorial-split">
+  <div class="panel"><div class="eyebrow">NÃO CONFUNDA</div><h2>Esquecer não é falhar.</h2><p>Algumas ausências aparecem porque você ainda não observou uma relação com atenção. Outras aparecem porque seu desenho simplifica naturalmente certas coisas.</p><p>As duas situações pedem respostas diferentes: uma pode exigir estudo estrutural; a outra pode merecer investigação autoral.</p></div>
+  <div class="panel"><div class="eyebrow">SEGUNDA PASSAGEM</div><div class="quote">Corrija uma coisa. Preserve outra.</div><p>Na segunda reconstrução, não tente “consertar tudo”. Leve apenas uma correção clara e deixe um desvio interessante sobreviver. Assim comparação vira repertório, não policiamento.</p><div class="actions"><a class="btn" href={base+'referencias'}>Escolher uma referência no Atlas →</a></div></div>
+</section>
+
+<section class="section">
+  <div class="section-head"><div><span class="eyebrow">CINCO FOLHAS</span><h2>Uma pequena arqueologia da atenção</h2></div><p>As folhas não precisam parecer finalizadas. Elas precisam deixar vestígios legíveis do processo.</p></div>
+  <div class="paper-grid">{folhas.map(f=><article class="paper-card"><div class="num">{f[0]}</div><h3>{f[1]}</h3><p>{f[2]}</p></article>)}</div>
+</section>
+
+<section class="section"><div class="journal"><div class="paper">
+  <h2>Procure o desvio que volta.</h2>
+  <p class="lead">Uma deformação repetida pode ser erro estrutural. Pode ser também preferência. A diferença aparece quando você começa a observar o padrão.</p>
+  <p>Guarde algumas primeiras versões sem corrigir. Depois de várias folhas, compare não apenas com as referências, mas entre os seus próprios desenhos.</p>
+  <div class="rule"><strong>Vestígio:</strong> circule uma coisa que você sempre esquece e uma coisa que você sempre exagera. Leve essas duas pistas para o próximo estudo.</div>
+  <p><a href={base+'cadernos'}>Voltar aos Cadernos →</a></p>
+</div></div></section>
+</main><Footer/></body></html>
