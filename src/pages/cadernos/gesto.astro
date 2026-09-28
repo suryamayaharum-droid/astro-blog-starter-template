@@ -1,0 +1,75 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+const base=import.meta.env.BASE_URL;
+const tempos=[
+  {n:"30s",title:"Encontrar",text:"Não desenhe partes. Procure uma única linha de ação e a direção geral das massas."},
+  {n:"2m",title:"Sustentar",text:"Acrescente caixa torácica, quadril e apoios sem perder a curva que fez o corpo começar a mover."},
+  {n:"5m",title:"Escolher",text:"Decida onde a borda precisa aparecer e onde pode desaparecer. Detalhe só se ainda houver gesto."},
+];
+const encontros=[
+  {n:"01",title:"Queda",text:"Observe para onde o peso desce. Desenhe primeiro a direção da gravidade e só depois o corpo que responde a ela."},
+  {n:"02",title:"Giro",text:"Procure duas direções que não concordam: ombros para um lado, quadril para outro. Deixe a torção organizar a figura."},
+  {n:"03",title:"Apoio",text:"Encontre o ponto que realmente sustenta o corpo. Faça todo o resto depender desse contato com chão, banco ou parede."},
+  {n:"04",title:"Suspensão",text:"Procure o instante em que o gesto parece continuar para além da pose. Preserve essa tensão antes de fechar o contorno."},
+];
+---
+<!doctype html><html lang="pt-BR"><head><BaseHead title="Caderno Gesto · Harum Noir" description="Um caderno editorial sobre peso, direção, ritmo e gesto antes do detalhe."/></head><body><Header/><main>
+<section class="page-hero"><div class="eyebrow">CADERNO II · GESTO</div><h1>Antes do contorno, o corpo já aconteceu.</h1><p>Este caderno não pede acabamento. Ele pede que você encontre direção, peso e ritmo antes de começar a descrever.</p></section>
+
+<section class="section editorial-split">
+  <div class="card"><div class="card-media"><img src={base+'noir/gesture-01.svg'} alt=""/></div></div>
+  <div class="panel">
+    <div class="eyebrow">UMA IDEIA PARA CARREGAR</div>
+    <h2>Gesto não é pose.</h2>
+    <p>Pose é aquilo que conseguimos nomear. Gesto é o que ainda está acontecendo: uma queda, um giro, uma resistência, um apoio, uma direção que atravessa o corpo.</p>
+    <p>Antes de procurar anatomia pequena, procure a decisão grande. O desenho pode estar incompleto e ainda assim permanecer vivo.</p>
+    <div class="quote" style="margin-top:28px">Procure o que empurra, cai, torce, sustenta ou hesita.</div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><div><span class="eyebrow">ANTES DO DETALHE</span><h2>Três perguntas silenciosas</h2></div><p>Não são regras de acabamento. São maneiras de atrasar o detalhe o suficiente para perceber o corpo.</p></div>
+  <div class="archive-grid">
+    <article class="archive-item"><span class="card-kicker">EIXO</span><h3>Para onde a figura quer ir?</h3><p>Encontre a direção dominante antes de medir pequenas proporções. Uma linha pode carregar mais movimento que vinte contornos.</p></article>
+    <article class="archive-item"><span class="card-kicker">PESO</span><h3>Onde o corpo realmente repousa?</h3><p>Veja o que suporta, o que comprime e o que fica livre. Peso muda quadril, ombros, coluna e a maneira como o espaço se distribui.</p></article>
+    <article class="archive-item"><span class="card-kicker">OPOSIÇÃO</span><h3>O que está indo contra o quê?</h3><p>Uma pose ganha tensão quando direções diferentes convivem. Compare cabeça, caixa torácica, quadril, braços e pernas como vetores.</p></article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><div><span class="eyebrow">A MESMA POSE</span><h2>Três tempos</h2></div><p>Repita sem tentar fazer uma versão “melhor”. Observe o que sobrevive quando o tempo muda.</p></div>
+  <div class="paper-grid">
+    {tempos.map(t=><article class="paper-card"><div class="num">{t.n}</div><h3>{t.title}</h3><p>{t.text}</p></article>)}
+  </div>
+</section>
+
+<section class="section editorial-split">
+  <div class="panel">
+    <div class="eyebrow">ERRO FÉRTIL</div>
+    <h2>Não corrija cedo demais.</h2>
+    <p>Se uma curva ficou longa demais mas carrega o movimento, mantenha-a por alguns minutos. Se um ombro parece estranho, pergunte primeiro se a estranheza está ajudando a direção.</p>
+    <div class="journal"><div class="rule">Corrigir anatomia é importante. Apagar a energia antes de entendê-la é outra coisa.</div></div>
+  </div>
+  <div class="panel">
+    <div class="eyebrow">PONTE</div>
+    <div class="quote">A estrutura entra para sustentar o gesto, não para substituí-lo.</div>
+    <div class="actions">
+      <a class="btn" href={base+'percursos#figura'}>Percurso Figura viva →</a>
+      <a class="btn" href={base+'referencias'}>Abrir o Atlas →</a>
+    </div>
+  </div>
+</section>
+
+<section class="section"><div class="journal"><div class="paper">
+  <div class="eyebrow" style="color:#8a734b">CADERNO DE CAMPO</div>
+  <h2>Quatro encontros com a mesma pergunta.</h2>
+  <p class="lead">Onde o movimento começa antes que o contorno apareça?</p>
+  {encontros.map(e=><><h2>{e.n} · {e.title}</h2><p>{e.text}</p></>)}
+  <div class="rule"><strong>Vestígio:</strong> depois de cada estudo, marque a curva que mais carregou movimento e escreva uma frase curta sobre o detalhe que mais atrapalhou. Não precisa resolver na mesma folha.</div>
+  <h2>Pare antes de ficar obediente.</h2>
+  <p>O objetivo deste caderno não é colecionar poses corretas. É reconhecer quais decisões fazem o corpo continuar acontecendo no papel.</p>
+  <p><a href={base+'cadernos'}>Voltar aos Cadernos →</a></p>
+</div></div></section>
+</main><Footer/></body></html>
