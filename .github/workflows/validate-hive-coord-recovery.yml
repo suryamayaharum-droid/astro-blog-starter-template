@@ -1,0 +1,29 @@
+name: Validate HIVE Coordination Recovery
+
+on:
+  push:
+    branches:
+      - ci/validate-hive-coord-recovery
+  workflow_dispatch:
+
+jobs:
+  validate-hive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout HIVE feature branch
+        uses: actions/checkout@v4
+        with:
+          repository: suryamayaharum-droid/SARASWATI-HIVE-MIND
+          ref: feature/coord-expired-execution-recovery-signal
+          path: hive
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run focused coordination tests
+        working-directory: hive
+        run: |
+          python -m unittest             tests.test_harum_dispatcher             tests.test_harum_coordination_doctor             tests.test_harum_meta_coordinator -v
