@@ -1063,7 +1063,7 @@ export const referenceArtists:PublicReference[]=[
     "instagram": "https://www.instagram.com/kelvinokafor_art/",
     "site": "https://kelvinokaforart.com/",
     "lane": "Núcleo grafite / retrato",
-    "videoId": "",
+    "videoId": "iWJD9HXWmlU",
     "refs": [
       {
         "type": "Obra / método",
@@ -1207,7 +1207,7 @@ export const referenceArtists:PublicReference[]=[
     "instagram": "https://www.instagram.com/emanuele_dascanio/",
     "site": "https://emanueledascanio.org/",
     "lane": "Núcleo obra / processo longo",
-    "videoId": "",
+    "videoId": "Dvy8DRaU62s",
     "refs": [
       {
         "type": "Conteúdo / biblioteca",
@@ -1387,7 +1387,7 @@ export const referenceArtists:PublicReference[]=[
     "instagram": "https://www.instagram.com/zinlimart/",
     "site": "https://www.zinlim.com/",
     "lane": "Núcleo carvão / método",
-    "videoId": "",
+    "videoId": "AiDgwicx6FM",
     "refs": [
       {
         "type": "Método / currículo",
