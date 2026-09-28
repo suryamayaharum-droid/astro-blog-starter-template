@@ -1807,7 +1807,1231 @@ export const referenceArtists:PublicReference[]=[
         "tags": "instagram; sketchbook; processo"
       }
     ]
-  }
+  },
+{
+  "rank": 51,
+  "slug": "glenn-vilppu",
+  "name": "Glenn Vilppu",
+  "archetype": "Mestre de gesto e comunicação visual",
+  "focus": "Figura / gesto / anatomia / desenho do natural",
+  "special": "Ensina desenho como pensamento e comunicação, com décadas de prática em figura, anatomia e sketching.",
+  "site": "https://vilppuacademy.com/",
+  "lane": "Mestres / figura",
+  "videoId": "",
+  "observe": "Estudar gesto como síntese, desenho do natural, construção e clareza de intenção.",
+  "tags": "gesto; figura; anatomia; mestre",
+  "youtube": "",
+  "instagram": "",
+  "refs": [
+    {
+      "type": "Fonte oficial / pesquisa",
+      "title": "Glenn Vilppu",
+      "url": "https://vilppuacademy.com/",
+      "observe": "Estudar gesto como síntese, desenho do natural, construção e clareza de intenção.",
+      "tags": "gesto; figura; anatomia; mestre"
+    }
+  ]
+},
+{
+  "rank": 52,
+  "slug": "michael-hampton",
+  "name": "Michael Hampton",
+  "archetype": "Estrutura anatômica para invenção",
+  "focus": "Figura / anatomia / gesto / construção",
+  "special": "Organiza anatomia e gesto como um sistema de formas simples que pode ser aplicado tanto à observação quanto à invenção.",
+  "site": "https://figuredrawing.info/",
+  "lane": "Mestres / anatomia",
+  "videoId": "",
+  "observe": "Observar simplificação da anatomia, ritmo, superfície e mecânica corporal.",
+  "tags": "anatomia; figura; gesto; construção",
+  "youtube": "",
+  "instagram": "",
+  "refs": [
+    {
+      "type": "Fonte oficial / pesquisa",
+      "title": "Michael Hampton",
+      "url": "https://figuredrawing.info/",
+      "observe": "Observar simplificação da anatomia, ritmo, superfície e mecânica corporal.",
+      "tags": "anatomia; figura; gesto; construção"
+    }
+  ]
+},
+{
+  "rank": 53,
+  "slug": "peter-han",
+  "name": "Peter Han",
+  "archetype": "Dynamic sketching como linguagem",
+  "focus": "Sketching / design / perspectiva / forma",
+  "special": "Conecta fundamentos de forma, textura, perspectiva e observação a um desenho rápido, decidido e comunicativo.",
+  "site": "https://www.peterhanstyleart.com/",
+  "lane": "Design / sketching",
+  "videoId": "",
+  "observe": "Estudar confiança de linha, forma tridimensional e desenho como resolução de problemas.",
+  "tags": "sketching; forma; perspectiva; design",
+  "youtube": "",
+  "instagram": "",
+  "refs": [
+    {
+      "type": "Fonte oficial / pesquisa",
+      "title": "Peter Han",
+      "url": "https://www.peterhanstyleart.com/",
+      "observe": "Estudar confiança de linha, forma tridimensional e desenho como resolução de problemas.",
+      "tags": "sketching; forma; perspectiva; design"
+    }
+  ]
+},
+{
+  "rank": 54,
+  "slug": "scott-robertson",
+  "name": "Scott Robertson",
+  "archetype": "Engenharia visual da imaginação",
+  "focus": "Perspectiva / design / objetos / ambientes",
+  "special": "Transforma perspectiva e construção espacial em ferramentas para desenhar objetos e ambientes imaginados com precisão.",
+  "site": "https://designstudiopress.com/products/how-to-draw",
+  "lane": "Design / perspectiva",
+  "videoId": "",
+  "observe": "Observar grids, elipses, construção, sombra e geração de forma a partir da perspectiva.",
+  "tags": "perspectiva; design; construção; ambiente",
+  "youtube": "",
+  "instagram": "",
+  "refs": [
+    {
+      "type": "Fonte oficial / pesquisa",
+      "title": "Scott Robertson",
+      "url": "https://designstudiopress.com/products/how-to-draw",
+      "observe": "Observar grids, elipses, construção, sombra e geração de forma a partir da perspectiva.",
+      "tags": "perspectiva; design; construção; ambiente"
+    }
+  ]
+},
+{
+  "rank": 55,
+  "slug": "nathan-fowkes",
+  "name": "Nathan Fowkes",
+  "archetype": "Atmosfera + visual development",
+  "focus": "Visual development / cor / ambiente / desenho",
+  "special": "Une observação, composição e atmosfera a uma prática de visual development muito ligada à narrativa.",
+  "site": "https://nathanfowkesart.artstation.com/",
+  "lane": "Visual development",
+  "videoId": "",
+  "observe": "Estudar simplificação de cena, composição, atmosfera, ritmo de valores e storytelling visual.",
+  "tags": "visdev; atmosfera; composição; narrativa",
+  "youtube": "",
+  "instagram": "",
+  "refs": [
+    {
+      "type": "Fonte oficial / pesquisa",
+      "title": "Nathan Fowkes",
+      "url": "https://nathanfowkesart.artstation.com/",
+      "observe": "Estudar simplificação de cena, composição, atmosfera, ritmo de valores e storytelling visual.",
+      "tags": "visdev; atmosfera; composição; narrativa"
+    }
+  ]
+},
+{
+  "rank": 56,
+  "slug": "james-gurney",
+  "name": "James Gurney",
+  "archetype": "Imaginação apoiada em observação",
+  "focus": "Sketching / luz / cor / construção imaginativa",
+  "special": "Constrói mundos imaginários com forte base em observação, maquetes, desenho e estudo direto da luz.",
+  "site": "https://jamesgurney.com/",
+  "lane": "Mestres / imaginação",
+  "videoId": "",
+  "observe": "Observar como estudo do real alimenta desenho imaginativo, luz, cor e narrativa.",
+  "tags": "sketching; observação; imaginação; luz",
+  "youtube": "",
+  "instagram": "",
+  "refs": [
+    {
+      "type": "Fonte oficial / pesquisa",
+      "title": "James Gurney",
+      "url": "https://jamesgurney.com/",
+      "observe": "Observar como estudo do real alimenta desenho imaginativo, luz, cor e narrativa.",
+      "tags": "sketching; observação; imaginação; luz"
+    }
+  ]
+},
+{
+  "rank": 57,
+  "slug": "ahmed-aldoori",
+  "name": "Ahmed Aldoori",
+  "archetype": "Fundamentos digitais com voz autoral",
+  "focus": "Pintura digital / valor / cor / retrato",
+  "special": "Combina fundamentos de forma, valor, cor e luz com prática autoral e ensino digital acessível.",
+  "site": "https://ahmedaldoori.com/",
+  "lane": "Digital / fundamentos",
+  "videoId": "",
+  "observe": "Estudar simplificação de forma, value grouping, cor e processo de pintura digital.",
+  "tags": "digital; valor; cor; retrato",
+  "youtube": "",
+  "instagram": "",
+  "refs": [
+    {
+      "type": "Fonte oficial / pesquisa",
+      "title": "Ahmed Aldoori",
+      "url": "https://ahmedaldoori.com/",
+      "observe": "Estudar simplificação de forma, value grouping, cor e processo de pintura digital.",
+      "tags": "digital; valor; cor; retrato"
+    }
+  ]
+},
+{
+  "rank": 58,
+  "slug": "bobby-chiu",
+  "name": "Bobby Chiu",
+  "archetype": "Personagem + ecossistema de ensino",
+  "focus": "Character design / desenho / concept art",
+  "special": "Conecta desenho de personagens, concept art, ensino e construção de comunidade em torno do processo criativo.",
+  "site": "https://www.imaginismstudios.com/bobby-chiu",
+  "lane": "Character / ensino",
+  "videoId": "",
+  "observe": "Observar uso de referência, shape language, narrativa de personagem e comunidade educacional.",
+  "tags": "character; concept; referência; ensino",
+  "youtube": "",
+  "instagram": "",
+  "refs": [
+    {
+      "type": "Fonte oficial / pesquisa",
+      "title": "Bobby Chiu",
+      "url": "https://www.imaginismstudios.com/bobby-chiu",
+      "observe": "Observar uso de referência, shape language, narrativa de personagem e comunidade educacional.",
+      "tags": "character; concept; referência; ensino"
+    }
+  ]
+},
+{
+  "rank": 59,
+  "slug": "feng-zhu-fzd",
+  "name": "Feng Zhu / FZD",
+  "archetype": "Design thinking para entretenimento",
+  "focus": "Concept design / ambiente / veículos / indústria",
+  "special": "Trata desenho como ferramenta de decisão para concept design, portfólio e solução visual em entretenimento.",
+  "site": "https://fzdschool.com/",
+  "lane": "Concept design",
+  "videoId": "",
+  "observe": "Estudar pensamento de design, thumbnails, iteração, clareza funcional e apresentação.",
+  "tags": "concept; design; indústria; portfólio",
+  "youtube": "",
+  "instagram": "",
+  "refs": [
+    {
+      "type": "Fonte oficial / pesquisa",
+      "title": "Feng Zhu / FZD",
+      "url": "https://fzdschool.com/",
+      "observe": "Estudar pensamento de design, thumbnails, iteração, clareza funcional e apresentação.",
+      "tags": "concept; design; indústria; portfólio"
+    }
+  ]
+},
+{
+  "rank": 60,
+  "slug": "krenz-cushart",
+  "name": "Krenz Cushart",
+  "archetype": "Estudo técnico + ilustração asiática",
+  "focus": "Figura / cor / valor / personagem",
+  "special": "Mistura estudos rigorosos de figura, valor, luz e cor com ilustração e character design de forte apelo visual.",
+  "site": "https://www.artstation.com/krenz",
+  "lane": "Ásia / fundamentos",
+  "videoId": "",
+  "observe": "Observar value studies, lineart, figura, cor e transição entre estudo e ilustração.",
+  "tags": "figura; valor; cor; Ásia",
+  "youtube": "",
+  "instagram": "",
+  "refs": [
+    {
+      "type": "Fonte oficial / pesquisa",
+      "title": "Krenz Cushart",
+      "url": "https://www.artstation.com/krenz",
+      "observe": "Observar value studies, lineart, figura, cor e transição entre estudo e ilustração.",
+      "tags": "figura; valor; cor; Ásia"
+    }
+  ]
+},
+{
+  "rank": 61,
+  "slug": "tb-choi",
+  "name": "TB Choi",
+  "archetype": "Anatomia aplicada a personagem",
+  "focus": "Figura / anatomia / character design / storyboard",
+  "special": "Converte observação anatômica em dicas práticas de corpo, mãos, pernas, expressão e desenho de personagem.",
+  "site": "https://tbchoi.artstation.com/",
+  "lane": "Ásia / character",
+  "videoId": "gemaRYPzgC4",
+  "observe": "Estudar simplificação anatômica, expressão, mãos, pernas e aplicação em character design.",
+  "tags": "anatomia; character; mãos; expressão",
+  "youtube": "",
+  "instagram": "",
+  "refs": [
+    {
+      "type": "Fonte oficial / pesquisa",
+      "title": "TB Choi",
+      "url": "https://tbchoi.artstation.com/",
+      "observe": "Estudar simplificação anatômica, expressão, mãos, pernas e aplicação em character design.",
+      "tags": "anatomia; character; mãos; expressão"
+    }
+  ]
+},
+{
+  "rank": 62,
+  "slug": "naoki-saito",
+  "name": "Naoki Saito",
+  "archetype": "Correção visual + cultura de ilustração japonesa",
+  "focus": "Ilustração / personagem / crítica / melhoria",
+  "special": "Transforma crítica e correção de ilustrações em conteúdo de aprendizagem direta sobre desenho, composição e apelo.",
+  "site": "https://www.youtube.com/watch?v=KcC27wSNIv0",
+  "lane": "Japão / ilustração",
+  "videoId": "KcC27wSNIv0",
+  "observe": "Observar como correções pontuais revelam composição, leitura, gesto e hierarquia visual.",
+  "tags": "Japão; crítica; ilustração; personagem",
+  "youtube": "",
+  "instagram": "",
+  "refs": [
+    {
+      "type": "Fonte oficial / pesquisa",
+      "title": "Naoki Saito",
+      "url": "https://www.youtube.com/watch?v=KcC27wSNIv0",
+      "observe": "Observar como correções pontuais revelam composição, leitura, gesto e hierarquia visual.",
+      "tags": "Japão; crítica; ilustração; personagem"
+    }
+  ]
+},
+{
+  "rank": 63,
+  "slug": "david-finch",
+  "name": "David Finch",
+  "archetype": "Desenho de quadrinhos com ensino técnico",
+  "focus": "Anatomia / gesto / perspectiva / quadrinhos",
+  "special": "Une experiência de quadrinhos a uma biblioteca didática de anatomia, perspectiva, luz, gesto e narrativa.",
+  "site": "https://davidfinchart.com/",
+  "lane": "Quadrinhos / técnica",
+  "videoId": "",
+  "observe": "Estudar anatomia aplicada, perspectiva, luta, gesto, hachura e clareza de cena.",
+  "tags": "quadrinhos; anatomia; perspectiva; gesto",
+  "youtube": "",
+  "instagram": "",
+  "refs": [
+    {
+      "type": "Fonte oficial / pesquisa",
+      "title": "David Finch",
+      "url": "https://davidfinchart.com/",
+      "observe": "Estudar anatomia aplicada, perspectiva, luta, gesto, hachura e clareza de cena.",
+      "tags": "quadrinhos; anatomia; perspectiva; gesto"
+    }
+  ]
+},
+{
+  "rank": 64,
+  "slug": "marshall-vandruff",
+  "name": "Marshall Vandruff",
+  "archetype": "Professor de desenho através dos mestres",
+  "focus": "Perspectiva / anatomia / gesto / storytelling",
+  "special": "Ensina fundamentos por análise de mestres, perspectiva e anatomia, conectando desenho a narrativa e observação.",
+  "site": "https://marshallart.gumroad.com/",
+  "lane": "Mestres / ensino",
+  "videoId": "",
+  "observe": "Observar Bridgman, perspectiva, estrutura e como princípios históricos viram exercícios atuais.",
+  "tags": "perspectiva; Bridgman; anatomia; ensino",
+  "youtube": "",
+  "instagram": "",
+  "refs": [
+    {
+      "type": "Fonte oficial / pesquisa",
+      "title": "Marshall Vandruff",
+      "url": "https://marshallart.gumroad.com/",
+      "observe": "Observar Bridgman, perspectiva, estrutura e como princípios históricos viram exercícios atuais.",
+      "tags": "perspectiva; Bridgman; anatomia; ensino"
+    }
+  ]
+},
+{
+  "rank": 65,
+  "slug": "dorian-iten",
+  "name": "Dorian Iten",
+  "archetype": "Precisão acadêmica + ensino contemporâneo",
+  "focus": "Desenho acadêmico / luz / forma / retrato",
+  "special": "Combina treino acadêmico, shading, desenho e ensino digital com clareza visual e feedback.",
+  "site": "https://www.dorian.art/",
+  "lane": "Acadêmico / ensino",
+  "videoId": "",
+  "observe": "Estudar luz na forma, academic drawing, processo e estrutura de feedback.",
+  "tags": "acadêmico; luz; retrato; ensino",
+  "youtube": "",
+  "instagram": "",
+  "refs": [
+    {
+      "type": "Fonte oficial / pesquisa",
+      "title": "Dorian Iten",
+      "url": "https://www.dorian.art/",
+      "observe": "Estudar luz na forma, academic drawing, processo e estrutura de feedback.",
+      "tags": "acadêmico; luz; retrato; ensino"
+    }
+  ]
+},
+{
+  "rank": 66,
+  "slug": "diego-catalan",
+  "name": "Diego Catalán",
+  "archetype": "Anatomia artística estrutural",
+  "focus": "Anatomia / figura / retrato / desenho estrutural",
+  "special": "Trata anatomia como ferramenta de compreensão da máquina humana aplicada diretamente ao desenho do natural.",
+  "site": "https://diegocatalan.com/",
+  "lane": "Anatomia / figura",
+  "videoId": "",
+  "observe": "Observar estrutura óssea, musculatura, landmarks e tradução para desenho de figura.",
+  "tags": "anatomia; figura; estrutura; retrato",
+  "youtube": "",
+  "instagram": "",
+  "refs": [
+    {
+      "type": "Fonte oficial / pesquisa",
+      "title": "Diego Catalán",
+      "url": "https://diegocatalan.com/",
+      "observe": "Observar estrutura óssea, musculatura, landmarks e tradução para desenho de figura.",
+      "tags": "anatomia; figura; estrutura; retrato"
+    }
+  ]
+},
+{
+  "rank": 67,
+  "slug": "henry-yan",
+  "name": "Henry Yan",
+  "archetype": "Figura viva com economia de meios",
+  "focus": "Figura / carvão / pintura / desenho do natural",
+  "special": "Une gesto, massa, carvão e observação direta em desenhos de figura de leitura forte e econômica.",
+  "site": "https://www.henryyanart.com/",
+  "lane": "Figura / carvão",
+  "videoId": "",
+  "observe": "Estudar massas, bordas, gesto, economia e presença no desenho do natural.",
+  "tags": "figura; carvão; gesto; massa",
+  "youtube": "",
+  "instagram": "",
+  "refs": [
+    {
+      "type": "Fonte oficial / pesquisa",
+      "title": "Henry Yan",
+      "url": "https://www.henryyanart.com/",
+      "observe": "Estudar massas, bordas, gesto, economia e presença no desenho do natural.",
+      "tags": "figura; carvão; gesto; massa"
+    }
+  ]
+},
+{
+  "rank": 68,
+  "slug": "robert-liberace",
+  "name": "Robert Liberace",
+  "archetype": "Draftsmanship + anatomia clássica",
+  "focus": "Figura / anatomia / desenho / pintura",
+  "special": "Combina anatomia, história da arte, desenho e pintura em estudos de figura com forte senso de movimento.",
+  "site": "https://robertliberace.com/",
+  "lane": "Mestres / figura",
+  "videoId": "",
+  "observe": "Observar movimento, anatomia, desenho gestual e acabamento clássico.",
+  "tags": "figura; anatomia; movimento; clássico",
+  "youtube": "",
+  "instagram": "",
+  "refs": [
+    {
+      "type": "Fonte oficial / pesquisa",
+      "title": "Robert Liberace",
+      "url": "https://robertliberace.com/",
+      "observe": "Observar movimento, anatomia, desenho gestual e acabamento clássico.",
+      "tags": "figura; anatomia; movimento; clássico"
+    }
+  ]
+},
+{
+  "rank": 69,
+  "slug": "juliette-aristides",
+  "name": "Juliette Aristides",
+  "archetype": "Atelier clássico como prática de atenção",
+  "focus": "Desenho clássico / figura / retrato / atelier",
+  "special": "Defende o desenho como prática lenta de observação e organiza treinamento clássico em progressão de atelier.",
+  "site": "https://www.aristidesarts.com/",
+  "lane": "Atelier / clássico",
+  "videoId": "",
+  "observe": "Estudar block-in, master copy, cast drawing, figura, retrato e disciplina de observação.",
+  "tags": "atelier; clássico; figura; observação",
+  "youtube": "",
+  "instagram": "",
+  "refs": [
+    {
+      "type": "Fonte oficial / pesquisa",
+      "title": "Juliette Aristides",
+      "url": "https://www.aristidesarts.com/",
+      "observe": "Estudar block-in, master copy, cast drawing, figura, retrato e disciplina de observação.",
+      "tags": "atelier; clássico; figura; observação"
+    }
+  ]
+},
+{
+  "rank": 70,
+  "slug": "cornelia-hernes",
+  "name": "Cornelia Hernes",
+  "archetype": "Retrato clássico + ensino internacional",
+  "focus": "Retrato / figura / desenho clássico / pintura",
+  "special": "Cruza formação acadêmica, retrato, figura e ensino global com atenção refinada a desenho e presença.",
+  "site": "https://www.corneliahernes.art/",
+  "lane": "Atelier / retrato",
+  "videoId": "",
+  "observe": "Observar desenho acadêmico, retrato, figura e passagem do estudo para pintura.",
+  "tags": "retrato; figura; clássico; atelier",
+  "youtube": "",
+  "instagram": "",
+  "refs": [
+    {
+      "type": "Fonte oficial / pesquisa",
+      "title": "Cornelia Hernes",
+      "url": "https://www.corneliahernes.art/",
+      "observe": "Observar desenho acadêmico, retrato, figura e passagem do estudo para pintura.",
+      "tags": "retrato; figura; clássico; atelier"
+    }
+  ]
+},
+{
+  "rank": 71,
+  "slug": "ec-baugh",
+  "name": "E. C. Baugh",
+  "archetype": "Retrato atmosférico contemporâneo",
+  "focus": "Retrato / desenho / pintura / luz",
+  "special": "Trabalha retrato e figura com atmosfera cinematográfica, desenho sólido e controle de luz.",
+  "site": "https://ecbaugh.com/",
+  "lane": "Retrato / atmosfera",
+  "videoId": "",
+  "observe": "Estudar bordas, foco, luz atmosférica e construção de presença no retrato.",
+  "tags": "retrato; atmosfera; luz; figura",
+  "youtube": "",
+  "instagram": "",
+  "refs": [
+    {
+      "type": "Fonte oficial / pesquisa",
+      "title": "E. C. Baugh",
+      "url": "https://ecbaugh.com/",
+      "observe": "Estudar bordas, foco, luz atmosférica e construção de presença no retrato.",
+      "tags": "retrato; atmosfera; luz; figura"
+    }
+  ]
+},
+{
+  "rank": 72,
+  "slug": "cuong-nguyen",
+  "name": "Cuong Nguyen",
+  "archetype": "Pastel figurativo de alta precisão",
+  "focus": "Pastel / retrato / figura / valor",
+  "special": "Usa desenho e pastel para construir retratos e figuras com transições delicadas de valor e forte presença.",
+  "site": "https://www.icuong.com/",
+  "lane": "Retrato / pastel",
+  "videoId": "",
+  "observe": "Observar modelagem suave, valor, bordas e estrutura de retrato.",
+  "tags": "pastel; retrato; valor; figura",
+  "youtube": "",
+  "instagram": "",
+  "refs": [
+    {
+      "type": "Fonte oficial / pesquisa",
+      "title": "Cuong Nguyen",
+      "url": "https://www.icuong.com/",
+      "observe": "Observar modelagem suave, valor, bordas e estrutura de retrato.",
+      "tags": "pastel; retrato; valor; figura"
+    }
+  ]
+},
+{
+  "rank": 73,
+  "slug": "sadie-valeri",
+  "name": "Sadie Valeri",
+  "archetype": "Atelier clássico traduzido para online",
+  "focus": "Grafite / carvão / figura / atelier",
+  "special": "Organiza Bargue, cast drawing, drapery e figura em um currículo clássico progressivo e acessível online.",
+  "site": "https://www.sadievaleriatelier.com/",
+  "lane": "Atelier / ensino",
+  "videoId": "",
+  "observe": "Estudar progressão de Bargue, cast, drapery, figura e observação precisa.",
+  "tags": "atelier; Bargue; carvão; figura",
+  "youtube": "",
+  "instagram": "",
+  "refs": [
+    {
+      "type": "Fonte oficial / pesquisa",
+      "title": "Sadie Valeri",
+      "url": "https://www.sadievaleriatelier.com/",
+      "observe": "Estudar progressão de Bargue, cast, drapery, figura e observação precisa.",
+      "tags": "atelier; Bargue; carvão; figura"
+    }
+  ]
+},
+{
+  "rank": 74,
+  "slug": "iliya-mirochnik",
+  "name": "Iliya Mirochnik",
+  "archetype": "Academia russa + expressão contemporânea",
+  "focus": "Desenho / retrato / figura / tradição russa",
+  "special": "Parte de formação acadêmica russa rigorosa para construir desenho figurativo com voz contemporânea.",
+  "site": "https://www.iliyamirochnik.com/",
+  "lane": "Acadêmico / figura",
+  "videoId": "",
+  "observe": "Observar estrutura, desenho de figura, portrait studies e síntese entre tradição e expressão.",
+  "tags": "acadêmico; russo; figura; retrato",
+  "youtube": "",
+  "instagram": "",
+  "refs": [
+    {
+      "type": "Fonte oficial / pesquisa",
+      "title": "Iliya Mirochnik",
+      "url": "https://www.iliyamirochnik.com/",
+      "observe": "Observar estrutura, desenho de figura, portrait studies e síntese entre tradição e expressão.",
+      "tags": "acadêmico; russo; figura; retrato"
+    }
+  ]
+},
+{
+  "rank": 75,
+  "slug": "florence-academy-of-art",
+  "name": "The Florence Academy of Art",
+  "archetype": "Atelier clássico internacional",
+  "focus": "Desenho / figura / pintura / escultura",
+  "special": "Mantém uma formação intensiva em observação, desenho acadêmico, anatomia, figura e tradição realista.",
+  "site": "https://www.florenceacademyofart.edu/",
+  "lane": "Escola / atelier",
+  "videoId": "",
+  "observe": "Estudar currículo, figura diária, cast drawing, anatomia e progressão técnica.",
+  "tags": "atelier; escola; clássico; figura",
+  "youtube": "",
+  "instagram": "",
+  "refs": [
+    {
+      "type": "Fonte oficial / pesquisa",
+      "title": "The Florence Academy of Art",
+      "url": "https://www.florenceacademyofart.edu/",
+      "observe": "Estudar currículo, figura diária, cast drawing, anatomia e progressão técnica.",
+      "tags": "atelier; escola; clássico; figura"
+    }
+  ]
+},
+{
+  "rank": 76,
+  "slug": "barcelona-academy-of-art",
+  "name": "Barcelona Academy of Art",
+  "archetype": "Academia figurativa internacional",
+  "focus": "Desenho / pintura / escultura / figura",
+  "special": "Reúne ensino figurativo e comunidade internacional com professores atuantes e formação intensiva.",
+  "site": "https://www.academyofartbarcelona.com/",
+  "lane": "Escola / figura",
+  "videoId": "",
+  "observe": "Observar organização de atelier, desenho do natural, figura e formação internacional.",
+  "tags": "academia; figura; atelier; Europa",
+  "youtube": "",
+  "instagram": "",
+  "refs": [
+    {
+      "type": "Fonte oficial / pesquisa",
+      "title": "Barcelona Academy of Art",
+      "url": "https://www.academyofartbarcelona.com/",
+      "observe": "Observar organização de atelier, desenho do natural, figura e formação internacional.",
+      "tags": "academia; figura; atelier; Europa"
+    }
+  ]
+},
+{
+  "rank": 77,
+  "slug": "grand-central-atelier",
+  "name": "Grand Central Atelier",
+  "archetype": "Atelier contemporâneo de tradição clássica",
+  "focus": "Cast drawing / figura / retrato / pintura",
+  "special": "Mantém uma metodologia sequencial de desenho, figura e retrato com forte cultura de atelier.",
+  "site": "https://grandcentralatelier.org/",
+  "lane": "Escola / atelier",
+  "videoId": "",
+  "observe": "Estudar block-in, cast drawing, portrait sketch, rendering e continuidade de prática.",
+  "tags": "atelier; cast; figura; retrato",
+  "youtube": "",
+  "instagram": "",
+  "refs": [
+    {
+      "type": "Fonte oficial / pesquisa",
+      "title": "Grand Central Atelier",
+      "url": "https://grandcentralatelier.org/",
+      "observe": "Estudar block-in, cast drawing, portrait sketch, rendering e continuidade de prática.",
+      "tags": "atelier; cast; figura; retrato"
+    }
+  ]
+},
+{
+  "rank": 78,
+  "slug": "art-students-league-new-york",
+  "name": "Art Students League of New York",
+  "archetype": "Escola aberta de prática artística",
+  "focus": "Desenho / figura / retrato / anatomia",
+  "special": "Combina tradição de atelier, diversidade de professores e prática contínua de desenho e figura.",
+  "site": "https://www.artstudentsleague.org/",
+  "lane": "Escola / Nova York",
+  "videoId": "",
+  "observe": "Observar variedade de abordagens de figura, retrato, linha, tom, anatomia e crítica.",
+  "tags": "escola; figura; retrato; anatomia",
+  "youtube": "",
+  "instagram": "",
+  "refs": [
+    {
+      "type": "Fonte oficial / pesquisa",
+      "title": "Art Students League of New York",
+      "url": "https://www.artstudentsleague.org/",
+      "observe": "Observar variedade de abordagens de figura, retrato, linha, tom, anatomia e crítica.",
+      "tags": "escola; figura; retrato; anatomia"
+    }
+  ]
+},
+{
+  "rank": 79,
+  "slug": "marc-leone-drawing-database",
+  "name": "Marc Leone / The Drawing Database",
+  "archetype": "Biblioteca aberta de instrução",
+  "focus": "Desenho / fundamentos / figura / arquivo",
+  "special": "Transforma aulas e demonstrações em um arquivo extenso de desenho e fundamentos disponível online.",
+  "site": "https://www.marcleone-artist.com/",
+  "lane": "Biblioteca / ensino",
+  "videoId": "",
+  "observe": "Estudar estrutura de biblioteca, demos, fundamentos e continuidade de estudo.",
+  "tags": "biblioteca; desenho; fundamentos; ensino",
+  "youtube": "",
+  "instagram": "",
+  "refs": [
+    {
+      "type": "Fonte oficial / pesquisa",
+      "title": "Marc Leone / The Drawing Database",
+      "url": "https://www.marcleone-artist.com/",
+      "observe": "Estudar estrutura de biblioteca, demos, fundamentos e continuidade de estudo.",
+      "tags": "biblioteca; desenho; fundamentos; ensino"
+    }
+  ]
+},
+{
+  "rank": 80,
+  "slug": "schoolism",
+  "name": "Schoolism",
+  "archetype": "Escola digital de artistas da indústria",
+  "focus": "Character / visdev / pintura / narrativa",
+  "special": "Reúne profissionais de alto nível em cursos de character, visual development, storytelling e pintura digital.",
+  "site": "https://schoolism.com/",
+  "lane": "Escola / digital",
+  "videoId": "",
+  "observe": "Observar como cursos, live classes, workshops e entrevistas formam um ecossistema de aprendizagem.",
+  "tags": "escola; digital; character; visdev",
+  "youtube": "",
+  "instagram": "",
+  "refs": [
+    {
+      "type": "Fonte oficial / pesquisa",
+      "title": "Schoolism",
+      "url": "https://schoolism.com/",
+      "observe": "Observar como cursos, live classes, workshops e entrevistas formam um ecossistema de aprendizagem.",
+      "tags": "escola; digital; character; visdev"
+    }
+  ]
+},
+{
+  "rank": 81,
+  "slug": "mike-mattesi-force",
+  "name": "Mike Mattesi / FORCE Drawing",
+  "archetype": "Energia e função no desenho de figura",
+  "focus": "Figura / gesto / anatomia / movimento",
+  "special": "Trata figura como fluxo de forças, ritmo, direção e função em vez de contorno estático.",
+  "site": "http://www.drawingforce.com/",
+  "lane": "Figura / movimento",
+  "videoId": "",
+  "observe": "Estudar ritmo, forças, curvas, oposição e energia aplicada ao corpo.",
+  "tags": "figura; gesto; movimento; força",
+  "youtube": "",
+  "instagram": "",
+  "refs": [
+    {
+      "type": "Fonte oficial / pesquisa",
+      "title": "Mike Mattesi / FORCE Drawing",
+      "url": "http://www.drawingforce.com/",
+      "observe": "Estudar ritmo, forças, curvas, oposição e energia aplicada ao corpo.",
+      "tags": "figura; gesto; movimento; força"
+    }
+  ]
+},
+{
+  "rank": 82,
+  "slug": "tom-fox",
+  "name": "Tom Fox",
+  "archetype": "Anatomia simplificada para construção",
+  "focus": "Anatomia / figura / perspectiva / roupa",
+  "special": "Usa formas simplificadas e construção espacial para tornar anatomia, corpo e roupa desenháveis em perspectiva.",
+  "site": "https://www.tomfoxdraws.com/",
+  "lane": "Anatomia / construção",
+  "videoId": "",
+  "observe": "Estudar mannequinização, formas simples, proporção, perspectiva e roupa sobre corpo.",
+  "tags": "anatomia; perspectiva; construção; roupa",
+  "youtube": "",
+  "instagram": "",
+  "refs": [
+    {
+      "type": "Fonte oficial / pesquisa",
+      "title": "Tom Fox",
+      "url": "https://www.tomfoxdraws.com/",
+      "observe": "Estudar mannequinização, formas simples, proporção, perspectiva e roupa sobre corpo.",
+      "tags": "anatomia; perspectiva; construção; roupa"
+    }
+  ]
+},
+{
+  "rank": 83,
+  "slug": "trent-kaniuga",
+  "name": "Trent Kaniuga",
+  "archetype": "Concept art + produção profissional",
+  "focus": "Concept art / games / quadrinhos / carreira",
+  "special": "Transforma décadas de produção em games e quadrinhos em conteúdo sobre design, processo e vida profissional.",
+  "site": "https://trentk.gumroad.com/",
+  "lane": "Concept / carreira",
+  "videoId": "",
+  "observe": "Observar pipeline, design, produtividade, indústria e criação de IP própria.",
+  "tags": "concept; games; carreira; quadrinhos",
+  "youtube": "",
+  "instagram": "",
+  "refs": [
+    {
+      "type": "Fonte oficial / pesquisa",
+      "title": "Trent Kaniuga",
+      "url": "https://trentk.gumroad.com/",
+      "observe": "Observar pipeline, design, produtividade, indústria e criação de IP própria.",
+      "tags": "concept; games; carreira; quadrinhos"
+    }
+  ]
+},
+{
+  "rank": 84,
+  "slug": "ergojosh",
+  "name": "ErgoJosh",
+  "archetype": "Processo digital + vida criativa",
+  "focus": "Ilustração digital / retrato / processo",
+  "special": "Mistura desenho digital, estudo, ferramentas e reflexão sobre prática criativa em linguagem próxima de comunidade.",
+  "site": "https://linktr.ee/ergojosh",
+  "lane": "Digital / comunidade",
+  "videoId": "",
+  "observe": "Estudar processo, iteração, ferramentas digitais e narrativa pessoal de prática.",
+  "tags": "digital; processo; comunidade; estudo",
+  "youtube": "",
+  "instagram": "",
+  "refs": [
+    {
+      "type": "Fonte oficial / pesquisa",
+      "title": "ErgoJosh",
+      "url": "https://linktr.ee/ergojosh",
+      "observe": "Estudar processo, iteração, ferramentas digitais e narrativa pessoal de prática.",
+      "tags": "digital; processo; comunidade; estudo"
+    }
+  ]
+},
+{
+  "rank": 85,
+  "slug": "angel-ganev",
+  "name": "Angel Ganev",
+  "archetype": "Retrato digital + breakdown visual",
+  "focus": "Retrato / pintura digital / luz / cor",
+  "special": "Usa retrato digital, timelapse e breakdowns para tornar decisões de cor, luz e acabamento fáceis de observar.",
+  "site": "https://angelganev.artstation.com/",
+  "lane": "Digital / retrato",
+  "videoId": "Bj42mJyIScc",
+  "observe": "Observar iluminação de rosto, cor, textura e progressão de pintura digital.",
+  "tags": "digital; retrato; luz; cor",
+  "youtube": "",
+  "instagram": "",
+  "refs": [
+    {
+      "type": "Fonte oficial / pesquisa",
+      "title": "Angel Ganev",
+      "url": "https://angelganev.artstation.com/",
+      "observe": "Observar iluminação de rosto, cor, textura e progressão de pintura digital.",
+      "tags": "digital; retrato; luz; cor"
+    }
+  ]
+},
+{
+  "rank": 86,
+  "slug": "lavendertowne",
+  "name": "LavenderTowne",
+  "archetype": "Narrativa pessoal + estilização",
+  "focus": "Ilustração / personagem / sketchbook / storytelling",
+  "special": "Combina desenho estilizado, personagem e storytelling pessoal em formatos acessíveis e reconhecíveis.",
+  "site": "https://lavendertowne.wixsite.com/lavendertowne",
+  "lane": "Ilustração / narrativa",
+  "videoId": "",
+  "observe": "Estudar estilização, personagem, sketchbook e como a voz pessoal sustenta o conteúdo.",
+  "tags": "ilustração; personagem; narrativa; estilo",
+  "youtube": "",
+  "instagram": "",
+  "refs": [
+    {
+      "type": "Fonte oficial / pesquisa",
+      "title": "LavenderTowne",
+      "url": "https://lavendertowne.wixsite.com/lavendertowne",
+      "observe": "Estudar estilização, personagem, sketchbook e como a voz pessoal sustenta o conteúdo.",
+      "tags": "ilustração; personagem; narrativa; estilo"
+    }
+  ]
+},
+{
+  "rank": 87,
+  "slug": "kooleen",
+  "name": "Kooleen",
+  "archetype": "Humor + crítica de desenho",
+  "focus": "Ilustração digital / rosto / personagem",
+  "special": "Transforma correções, humor e desenho digital em conteúdo curto de alta legibilidade e forte personalidade.",
+  "site": "https://linktr.ee/kooleen",
+  "lane": "Digital / alcance",
+  "videoId": "",
+  "observe": "Observar correção visual, exagero, rosto, apelo de personagem e ritmo curto.",
+  "tags": "digital; rosto; humor; alcance",
+  "youtube": "",
+  "instagram": "",
+  "refs": [
+    {
+      "type": "Fonte oficial / pesquisa",
+      "title": "Kooleen",
+      "url": "https://linktr.ee/kooleen",
+      "observe": "Observar correção visual, exagero, rosto, apelo de personagem e ritmo curto.",
+      "tags": "digital; rosto; humor; alcance"
+    }
+  ]
+},
+{
+  "rank": 88,
+  "slug": "rossdraws",
+  "name": "RossDraws",
+  "archetype": "Mundo autoral + entretenimento visual",
+  "focus": "Ilustração / personagem / cor / worldbuilding",
+  "special": "Conecta ilustração digital, personagens, livros, mundos próprios e conteúdo de processo com alto apelo visual.",
+  "site": "https://rossdraws.com/",
+  "lane": "Digital / narrativa",
+  "videoId": "4lQ4JtlDebM",
+  "observe": "Estudar cor, personagem, apresentação, worldbuilding e transformação do processo em experiência.",
+  "tags": "digital; personagem; cor; worldbuilding",
+  "youtube": "",
+  "instagram": "",
+  "refs": [
+    {
+      "type": "Fonte oficial / pesquisa",
+      "title": "RossDraws",
+      "url": "https://rossdraws.com/",
+      "observe": "Estudar cor, personagem, apresentação, worldbuilding e transformação do processo em experiência.",
+      "tags": "digital; personagem; cor; worldbuilding"
+    }
+  ]
+},
+{
+  "rank": 89,
+  "slug": "loish",
+  "name": "Loish",
+  "archetype": "Linguagem autoral + educação digital",
+  "focus": "Ilustração / personagem / cor / gesto",
+  "special": "Mantém identidade visual consistente enquanto compartilha processos, brushes, estudos e construção de personagem.",
+  "site": "https://links.loish.net/",
+  "lane": "Digital / autoral",
+  "videoId": "",
+  "observe": "Estudar gesto, shape language, cor, consistência autoral e ecossistema de aprendizado.",
+  "tags": "digital; gesto; personagem; autoral",
+  "youtube": "",
+  "instagram": "",
+  "refs": [
+    {
+      "type": "Fonte oficial / pesquisa",
+      "title": "Loish",
+      "url": "https://links.loish.net/",
+      "observe": "Estudar gesto, shape language, cor, consistência autoral e ecossistema de aprendizado.",
+      "tags": "digital; gesto; personagem; autoral"
+    }
+  ]
+},
+{
+  "rank": 90,
+  "slug": "wlop",
+  "name": "WLOP",
+  "archetype": "Narrativa pictórica cinematográfica",
+  "focus": "Pintura digital / personagem / atmosfera / composição",
+  "special": "Constrói cenas digitais de alto impacto por atmosfera, luz, personagem e composição cinematográfica.",
+  "site": "https://wlop.artstation.com/",
+  "lane": "Digital / atmosfera",
+  "videoId": "",
+  "observe": "Estudar composição, luz, pele, profundidade e equilíbrio entre detalhe e atmosfera.",
+  "tags": "digital; atmosfera; luz; personagem",
+  "youtube": "",
+  "instagram": "",
+  "refs": [
+    {
+      "type": "Fonte oficial / pesquisa",
+      "title": "WLOP",
+      "url": "https://wlop.artstation.com/",
+      "observe": "Estudar composição, luz, pele, profundidade e equilíbrio entre detalhe e atmosfera.",
+      "tags": "digital; atmosfera; luz; personagem"
+    }
+  ]
+},
+{
+  "rank": 91,
+  "slug": "guweiz",
+  "name": "Guweiz",
+  "archetype": "Sketchbook + atmosfera urbana",
+  "focus": "Ilustração / desenho / personagem / ambiente",
+  "special": "Une desenho, personagens e ambientes urbanos com atmosfera reconhecível e forte continuidade de sketchbook.",
+  "site": "https://guweiz.artstation.com/",
+  "lane": "Digital / sketchbook",
+  "videoId": "",
+  "observe": "Estudar silhueta, ambiente, narrativa implícita e passagem entre sketch e imagem final.",
+  "tags": "ilustração; sketchbook; ambiente; narrativa",
+  "youtube": "",
+  "instagram": "",
+  "refs": [
+    {
+      "type": "Fonte oficial / pesquisa",
+      "title": "Guweiz",
+      "url": "https://guweiz.artstation.com/",
+      "observe": "Estudar silhueta, ambiente, narrativa implícita e passagem entre sketch e imagem final.",
+      "tags": "ilustração; sketchbook; ambiente; narrativa"
+    }
+  ]
+},
+{
+  "rank": 92,
+  "slug": "pascal-campion",
+  "name": "Pascal Campion",
+  "archetype": "Storytelling cotidiano por luz",
+  "focus": "Ilustração / narrativa / luz / composição",
+  "special": "Transforma cenas cotidianas em histórias por enquadramento, luz, gesto e atmosfera.",
+  "site": "https://www.campionpascal.com/",
+  "lane": "Ilustração / storytelling",
+  "videoId": "",
+  "observe": "Estudar narrativa silenciosa, composição, luz emocional e relação entre personagens e espaço.",
+  "tags": "storytelling; luz; composição; ilustração",
+  "youtube": "",
+  "instagram": "",
+  "refs": [
+    {
+      "type": "Fonte oficial / pesquisa",
+      "title": "Pascal Campion",
+      "url": "https://www.campionpascal.com/",
+      "observe": "Estudar narrativa silenciosa, composição, luz emocional e relação entre personagens e espaço.",
+      "tags": "storytelling; luz; composição; ilustração"
+    }
+  ]
+},
+{
+  "rank": 93,
+  "slug": "jake-parker",
+  "name": "Jake Parker",
+  "archetype": "Hábito de desenho + propriedade intelectual",
+  "focus": "Ink / desenho / quadrinhos / storytelling",
+  "special": "Conecta prática diária, desenho a tinta, quadrinhos, livros e desafios comunitários como Inktober.",
+  "site": "https://www.mrjakeparker.com/",
+  "lane": "Ink / narrativa",
+  "videoId": "",
+  "observe": "Estudar consistência de prática, inking, storytelling visual e construção de desafio coletivo.",
+  "tags": "ink; hábito; quadrinhos; comunidade",
+  "youtube": "",
+  "instagram": "",
+  "refs": [
+    {
+      "type": "Fonte oficial / pesquisa",
+      "title": "Jake Parker",
+      "url": "https://www.mrjakeparker.com/",
+      "observe": "Estudar consistência de prática, inking, storytelling visual e construção de desafio coletivo.",
+      "tags": "ink; hábito; quadrinhos; comunidade"
+    }
+  ]
+},
+{
+  "rank": 94,
+  "slug": "stephen-silver",
+  "name": "Stephen Silver",
+  "archetype": "Character design + observação",
+  "focus": "Character design / caricatura / life drawing",
+  "special": "Constrói personagem a partir de observação, gesto, caricatura e clareza de shape, com forte vocação didática.",
+  "site": "https://www.silvertoons.com/",
+  "lane": "Character / ensino",
+  "videoId": "WvLcmrdjeVQ",
+  "observe": "Estudar life drawing, shape language, caricatura e design de personagem.",
+  "tags": "character; caricatura; observação; ensino",
+  "youtube": "",
+  "instagram": "",
+  "refs": [
+    {
+      "type": "Fonte oficial / pesquisa",
+      "title": "Stephen Silver",
+      "url": "https://www.silvertoons.com/",
+      "observe": "Estudar life drawing, shape language, caricatura e design de personagem.",
+      "tags": "character; caricatura; observação; ensino"
+    }
+  ]
+},
+{
+  "rank": 95,
+  "slug": "shane-wolf",
+  "name": "Shane Wolf",
+  "archetype": "Figura acadêmica com energia contemporânea",
+  "focus": "Figura / desenho / composição / atelier",
+  "special": "Trabalha desenho e figura com intensidade gestual, estudo anatômico e pesquisa compositiva.",
+  "site": "https://www.shane-wolf.com/",
+  "lane": "Figura / acadêmico",
+  "videoId": "",
+  "observe": "Estudar estudos de figura, desenho preparatório, composição e energia de marca.",
+  "tags": "figura; desenho; composição; acadêmico",
+  "youtube": "",
+  "instagram": "",
+  "refs": [
+    {
+      "type": "Fonte oficial / pesquisa",
+      "title": "Shane Wolf",
+      "url": "https://www.shane-wolf.com/",
+      "observe": "Estudar estudos de figura, desenho preparatório, composição e energia de marca.",
+      "tags": "figura; desenho; composição; acadêmico"
+    }
+  ]
+},
+{
+  "rank": 96,
+  "slug": "anthony-ryder",
+  "name": "Anthony Ryder",
+  "archetype": "Forma e luz em progressão rigorosa",
+  "focus": "Retrato / figura / block-in / tonalidade",
+  "special": "Organiza desenho figurativo por block-in, direção de luz, forma e progressão tonal extremamente controlada.",
+  "site": "https://anthonyryder.fineaw.com/",
+  "lane": "Retrato / técnica",
+  "videoId": "",
+  "observe": "Estudar block-in, forma, luz, poster, tonal progression e desenho de retrato.",
+  "tags": "block-in; retrato; luz; tonalidade",
+  "youtube": "",
+  "instagram": "",
+  "refs": [
+    {
+      "type": "Fonte oficial / pesquisa",
+      "title": "Anthony Ryder",
+      "url": "https://anthonyryder.fineaw.com/",
+      "observe": "Estudar block-in, forma, luz, poster, tonal progression e desenho de retrato.",
+      "tags": "block-in; retrato; luz; tonalidade"
+    }
+  ]
+},
+{
+  "rank": 97,
+  "slug": "drawabox-irshad-karim",
+  "name": "Drawabox / Irshad Karim",
+  "archetype": "Fundamentos por exercício deliberado",
+  "focus": "Linhas / caixas / perspectiva / construção",
+  "special": "Transforma fundamentos em exercícios cumulativos de linha, espaço, perspectiva e construção tridimensional.",
+  "site": "https://drawabox.com/",
+  "lane": "Fundamentos / prática",
+  "videoId": "",
+  "observe": "Estudar progressão de exercícios, repetição deliberada e compreensão espacial.",
+  "tags": "fundamentos; perspectiva; caixas; prática",
+  "youtube": "",
+  "instagram": "",
+  "refs": [
+    {
+      "type": "Fonte oficial / pesquisa",
+      "title": "Drawabox / Irshad Karim",
+      "url": "https://drawabox.com/",
+      "observe": "Estudar progressão de exercícios, repetição deliberada e compreensão espacial.",
+      "tags": "fundamentos; perspectiva; caixas; prática"
+    }
+  ]
+},
+{
+  "rank": 98,
+  "slug": "gnomon",
+  "name": "Gnomon",
+  "archetype": "Formação para produção visual",
+  "focus": "Desenho / concept / VFX / games / figura",
+  "special": "Combina fundamentos tradicionais, figure drawing e perspectiva com pipelines contemporâneos de games, animação e VFX.",
+  "site": "https://www.gnomon.edu/",
+  "lane": "Escola / indústria",
+  "videoId": "",
+  "observe": "Observar integração de drawing fundamentals, figura, perspectiva e produção digital.",
+  "tags": "escola; figura; perspectiva; indústria",
+  "youtube": "",
+  "instagram": "",
+  "refs": [
+    {
+      "type": "Fonte oficial / pesquisa",
+      "title": "Gnomon",
+      "url": "https://www.gnomon.edu/",
+      "observe": "Observar integração de drawing fundamentals, figura, perspectiva e produção digital.",
+      "tags": "escola; figura; perspectiva; indústria"
+    }
+  ]
+},
+{
+  "rank": 99,
+  "slug": "svslearn",
+  "name": "SVSLearn",
+  "archetype": "Storytelling visual + comunidade",
+  "focus": "Ilustração / quadrinhos / narrativa / desenho",
+  "special": "Ensina ilustração por projetos, personagens, mundos e storytelling dentro de uma comunidade orientada à prática.",
+  "site": "https://www.svslearn.com/",
+  "lane": "Escola / narrativa",
+  "videoId": "",
+  "observe": "Estudar currículo por projetos, crítica, comunidade e visual storytelling.",
+  "tags": "ilustração; narrativa; comunidade; escola",
+  "youtube": "",
+  "instagram": "",
+  "refs": [
+    {
+      "type": "Fonte oficial / pesquisa",
+      "title": "SVSLearn",
+      "url": "https://www.svslearn.com/",
+      "observe": "Estudar currículo por projetos, crítica, comunidade e visual storytelling.",
+      "tags": "ilustração; narrativa; comunidade; escola"
+    }
+  ]
+},
+{
+  "rank": 100,
+  "slug": "brainstorm-school",
+  "name": "Brainstorm School",
+  "archetype": "Concept art orientado à indústria",
+  "focus": "Concept art / visual development / design / portfólio",
+  "special": "Reúne fundamentos, character, environment, worldbuilding e portfolio development em aulas com profissionais da indústria.",
+  "site": "https://brainstormschool.com/",
+  "lane": "Escola / concept",
+  "videoId": "",
+  "observe": "Estudar foundation, concept design, visual development, worldbuilding e portfolio.",
+  "tags": "concept; escola; visdev; portfólio",
+  "youtube": "",
+  "instagram": "",
+  "refs": [
+    {
+      "type": "Fonte oficial / pesquisa",
+      "title": "Brainstorm School",
+      "url": "https://brainstormschool.com/",
+      "observe": "Estudar foundation, concept design, visual development, worldbuilding e portfolio.",
+      "tags": "concept; escola; visdev; portfólio"
+    }
+  ]
+},
+{
+  "rank": 101,
+  "slug": "nicolas-uribe",
+  "name": "Nicolas Uribe",
+  "archetype": "Figura e retrato com prática de vida",
+  "focus": "Figura / retrato / pintura / life drawing",
+  "special": "Une desenho de modelo vivo, retrato e pintura figurativa com prática constante e ensino.",
+  "site": "https://www.nicolasuribeart.com/",
+  "lane": "Figura / retrato",
+  "videoId": "",
+  "observe": "Estudar life drawing, construção de retrato, pintura direta e continuidade de prática.",
+  "tags": "figura; retrato; life drawing; pintura",
+  "youtube": "",
+  "instagram": "",
+  "refs": [
+    {
+      "type": "Fonte oficial / pesquisa",
+      "title": "Nicolas Uribe",
+      "url": "https://www.nicolasuribeart.com/",
+      "observe": "Estudar life drawing, construção de retrato, pintura direta e continuidade de prática.",
+      "tags": "figura; retrato; life drawing; pintura"
+    }
+  ]
+}
 ];
 export const referenceCollections:ReferenceCollection[]=[
   {
@@ -1913,7 +3137,86 @@ export const referenceCollections:ReferenceCollection[]=[
       39,
       43
     ]
-  }
+  },
+{
+  "id": "mestres-figura-anatomia-2",
+  "title": "Mestres · figura & anatomia",
+  "subtitle": "Estrutura, gesto, observação, anatomia e desenho do natural.",
+  "ranks": [
+    51,
+    52,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    82,
+    95,
+    96,
+    97,
+    101
+  ]
+},
+{
+  "id": "design-imaginacao-2",
+  "title": "Imaginação & design",
+  "subtitle": "Perspectiva, sketching, visual development, concept e construção de mundos.",
+  "ranks": [
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    83
+  ]
+},
+{
+  "id": "ateliers-globais-2",
+  "title": "Ateliers & escolas globais",
+  "subtitle": "Métodos, comunidades, currículo e tradição aplicada ao presente.",
+  "ranks": [
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    98,
+    99,
+    100
+  ]
+},
+{
+  "id": "digital-personagem-narrativa-2",
+  "title": "Personagem & narrativa digital",
+  "subtitle": "Ilustração, personagem, atmosfera, storytelling e linguagem autoral.",
+  "ranks": [
+    84,
+    85,
+    86,
+    87,
+    88,
+    89,
+    90,
+    91,
+    92,
+    93,
+    94
+  ]
+}
 ];
 export const byRank=(rank:number)=>referenceArtists.find(a=>a.rank===rank);
 export const bySlug=(slug:string)=>referenceArtists.find(a=>a.slug===slug);
