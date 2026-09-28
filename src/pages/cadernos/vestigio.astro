@@ -1,0 +1,80 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+const base=import.meta.env.BASE_URL;
+const retiradas=[
+  {n:"01",title:"Apagar",text:"Retire informação onde ela já não sustenta peso, direção ou foco. Não use a borracha apenas para corrigir; use-a também para editar."},
+  {n:"02",title:"Interromper",text:"Pare uma linha antes de completar o contorno. Veja se a forma continua existindo por continuidade, sombra, gesto ou memória visual."},
+  {n:"03",title:"Perder",text:"Deixe algumas bordas desaparecerem em sombra, papel ou matéria. Nem toda passagem precisa de separação explícita."},
+  {n:"04",title:"Preservar",text:"Escolha poucas marcas que não serão tocadas novamente. Um desenho ganha força quando alguma decisão deixa de ser renegociada."},
+];
+const materia=[
+  {k:"PRESSÃO",title:"Nem toda marca entra do mesmo jeito.",text:"Compare carvão apoiado, arrastado, quebrado e quase suspenso. A intensidade da matéria pode indicar presença sem contornar tudo."},
+  {k:"PÓ",title:"O resíduo também registra movimento.",text:"Esfumaçado, poeira e restos de carvão podem permanecer como campo, não apenas como sujeira a eliminar."},
+  {k:"PAPEL",title:"O branco não é ausência automática.",text:"Quando o papel permanece visível, ele participa da leitura. Proteja algumas áreas em vez de preenchê-las no final."},
+  {k:"BORDA",title:"Uma borda pode existir só por diferença.",text:"Valor, textura e direção já podem separar formas. Linha não é a única maneira de construir limite."},
+];
+const encontros=[
+  ["I","Desenhe e retire","Faça um estudo curto. Depois remova deliberadamente uma região inteira sem escolher a parte mais fácil. Observe o que ainda sustenta a figura."],
+  ["II","Trinta por cento","Apague aproximadamente um terço da informação visível. Não reconstrua imediatamente. Espere e descubra o que realmente ficou faltando."],
+  ["III","Bordas perdidas","Escolha três encontros de forma e enfraqueça suas bordas até quase desaparecerem. Preserve apenas um ponto de maior nitidez."],
+  ["IV","Última marca","Antes de terminar, decida qual será o último traço. Depois dele, não acrescente nada. Aprenda a reconhecer a vontade de continuar por ansiedade."],
+];
+---
+<!doctype html><html lang="pt-BR"><head><BaseHead title="Caderno Vestígio · Harum Noir" description="Um caderno editorial sobre subtração, apagamento, bordas perdidas, silêncio, matéria e o momento de parar."/></head><body><Header/><main>
+<section class="page-hero"><div class="eyebrow">CADERNO V · VESTÍGIO</div><h1>Retirar também é desenhar.</h1><p>Vestígio é aquilo que continua presente depois que parte da imagem desaparece. Apagar, interromper e deixar vazio podem ser decisões, não perdas.</p></section>
+
+<section class="section editorial-split">
+  <div class="card"><div class="card-media"><img src={base+'noir/trace-01.svg'} alt=""/></div></div>
+  <div class="panel"><div class="eyebrow">O QUE SOBRA</div><h2>Nem toda presença precisa permanecer inteira.</h2><p>Quando um desenho começa a funcionar, surge uma tentação comum: proteger tudo o que já apareceu. Vestígio propõe o contrário. Pergunte o que pode sair sem que o desenho perca sua força.</p><p>O objetivo não é fazer parecer inacabado. É descobrir quais marcas carregam mais do que ocupam.</p><div class="quote" style="margin-top:28px">O vazio fica interessante quando sabemos o que ele escolheu não repetir.</div></div>
+</section>
+
+<section class="section">
+  <div class="section-head"><div><span class="eyebrow">QUATRO RETIRADAS</span><h2>Editar com ausência.</h2></div><p>Subtração não é um efeito final. Ela pode participar da construção desde o começo.</p></div>
+  <div class="paper-grid">{retiradas.map(r=><article class="paper-card"><div class="num">{r.n}</div><h3>{r.title}</h3><p>{r.text}</p></article>)}</div>
+</section>
+
+<section class="section"><div class="journal"><div class="paper">
+  <div class="eyebrow" style="color:#8a734b">EXPERIMENTO CENTRAL</div>
+  <h2>Apague 30% e não conserte imediatamente.</h2>
+  <p class="lead">A primeira vontade depois de apagar costuma ser reconstruir. Espere.</p>
+  <p>Olhe o desenho de longe. Descubra o que ainda existe por continuidade, espaço negativo, peso e hábito perceptivo. Só reconstrua aquilo cuja ausência realmente derrubou a leitura.</p>
+  <div class="rule">Se você consegue dizer exatamente por que uma região precisa voltar, reconstrua. Se a resposta for apenas “porque estava ali antes”, deixe faltar um pouco mais.</div>
+</div></div></section>
+
+<section class="section">
+  <div class="section-head"><div><span class="eyebrow">MATÉRIA</span><h2>O papel também participa.</h2></div><p>Vestígio não acontece apenas no desenho da figura. Ele também aparece na relação entre carvão, pressão, poeira, borda e superfície.</p></div>
+  <div class="archive-grid">{materia.map(m=><article class="archive-item"><span class="card-kicker">{m.k}</span><h3>{m.title}</h3><p>{m.text}</p></article>)}</div>
+</section>
+
+<section class="section editorial-split">
+  <div class="panel"><div class="eyebrow">CORREÇÃO × EDIÇÃO</div><h2>Apagar um erro e retirar uma explicação são coisas diferentes.</h2><p>Correção tenta alinhar o desenho ao que você decidiu observar. Edição pergunta se determinada informação ainda precisa existir.</p><div class="journal"><div class="rule">Uma forma pode estar correta e ainda assim ser excessiva.</div></div><p>Depois de corrigir proporção e estrutura, ainda resta uma escolha autoral: quanto dessa estrutura merece permanecer visível?</p></div>
+  <div class="panel"><div class="eyebrow">PONTE</div><div class="quote">Presença ensina a perceber. Gesto ensina a mover. Olhar ensina a escolher foco. Vestígio pergunta o que pode desaparecer.</div><div class="actions"><a class="btn" href={base+'cadernos/presenca'}>Voltar à Presença →</a><a class="btn" href={base+'cadernos/gesto'}>Rever Gesto →</a></div></div>
+</section>
+
+<section class="section"><div class="journal"><div class="paper">
+  <div class="eyebrow" style="color:#8a734b">QUATRO ENCONTROS</div>
+  <h2>Aprender a perder sem empobrecer.</h2>
+  <p class="lead">Cada encontro retira uma segurança diferente.</p>
+  {encontros.map(e=><><h2>{e[0]} · {e[1]}</h2><p>{e[2]}</p></>)}
+  <div class="rule"><strong>Vestígio:</strong> fotografe ou registre o desenho antes de qualquer reconstrução. Compare o estado reduzido com a versão anterior e anote qual ausência aumentou a presença.</div>
+</div></div></section>
+
+<section class="section">
+  <div class="section-head"><div><span class="eyebrow">O MOMENTO DE PARAR</span><h2>Terminar não é preencher.</h2></div><p>Às vezes o desenho termina quando a próxima decisão deixaria tudo mais obediente.</p></div>
+  <div class="archive-grid">
+    <article class="archive-item"><span class="card-kicker">DISTÂNCIA</span><h3>A leitura sobrevive de longe?</h3><p>Se massa, direção e foco continuam funcionando, o pequeno detalhe talvez não seja necessário.</p></article>
+    <article class="archive-item"><span class="card-kicker">RESPIRAÇÃO</span><h3>Existe espaço para o papel continuar aparecendo?</h3><p>Não transforme toda zona silenciosa em tarefa pendente. Algumas áreas precisam continuar disponíveis.</p></article>
+    <article class="archive-item"><span class="card-kicker">ANSIEDADE</span><h3>Você está acrescentando porque viu algo ou porque ainda não quer parar?</h3><p>Essa diferença é pequena na mão e enorme no resultado.</p></article>
+  </div>
+</section>
+
+<section class="section"><div class="journal"><div class="paper">
+  <h2>O desenho não precisa guardar tudo o que aconteceu nele.</h2>
+  <p class="lead">Algumas decisões só ficam fortes depois que seus rastros menores desaparecem.</p>
+  <p>Vestígio é o que resiste à retirada: uma direção, uma borda, uma mancha, um silêncio ou uma única marca que continua organizando o resto.</p>
+  <div class="rule"><strong>Vestígio final:</strong> escolha uma coisa para não reconstruir.</div>
+  <p><a href={base+'cadernos'}>Voltar aos Cadernos →</a></p>
+</div></div></section>
+</main><Footer/></body></html>
