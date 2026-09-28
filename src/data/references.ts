@@ -2799,7 +2799,7 @@ export const referenceArtists:PublicReference[]=[
   "archetype": "Storytelling cotidiano por luz",
   "focus": "Ilustração / narrativa / luz / composição",
   "special": "Transforma cenas cotidianas em histórias por enquadramento, luz, gesto e atmosfera.",
-  "site": "https://www.campionpascal.com/",
+  "site": "https://gallerypascal.com/",
   "lane": "Ilustração / storytelling",
   "videoId": "",
   "observe": "Estudar narrativa silenciosa, composição, luz emocional e relação entre personagens e espaço.",
@@ -2810,7 +2810,7 @@ export const referenceArtists:PublicReference[]=[
     {
       "type": "Fonte oficial / pesquisa",
       "title": "Pascal Campion",
-      "url": "https://www.campionpascal.com/",
+      "url": "https://gallerypascal.com/",
       "observe": "Estudar narrativa silenciosa, composição, luz emocional e relação entre personagens e espaço.",
       "tags": "storytelling; luz; composição; ilustração"
     }
