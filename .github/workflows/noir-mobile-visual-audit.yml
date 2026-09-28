@@ -1,0 +1,37 @@
+name: Harum Noir Mobile Visual Audit
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/noir-mobile-visual-audit.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Install Playwright Chromium
+        run: |
+          npm init -y >/dev/null 2>&1
+          npm install playwright@1.50.1 --no-save
+          npx playwright install --with-deps chromium
+
+      - name: Capture mobile screenshots
+        run: |
+          mkdir -p screenshots
+          npx playwright screenshot --browser chromium --device "iPhone 13" --full-page --wait-for-timeout 2500 "https://chatbot-seven-phi-94.vercel.app/noir" screenshots/home.png
+          npx playwright screenshot --browser chromium --device "iPhone 13" --full-page --wait-for-timeout 2500 "https://chatbot-seven-phi-94.vercel.app/noir/referencias" screenshots/atlas.png
+          npx playwright screenshot --browser chromium --device "iPhone 13" --full-page --wait-for-timeout 2500 "https://chatbot-seven-phi-94.vercel.app/noir/referencias/cesar-santos" screenshots/artist-cesar-santos.png
+          npx playwright screenshot --browser chromium --device "iPhone 13" --full-page --wait-for-timeout 2500 "https://chatbot-seven-phi-94.vercel.app/noir/percursos" screenshots/percursos.png
+
+      - name: Upload screenshots
+        uses: actions/upload-artifact@v4
+        with:
+          name: harum-noir-mobile-audit
+          path: screenshots/*.png
+          if-no-files-found: error
+          retention-days: 7
