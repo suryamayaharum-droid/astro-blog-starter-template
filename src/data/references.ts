@@ -919,7 +919,7 @@ export const referenceArtists:PublicReference[]=[
     "instagram": "",
     "site": "https://www.santocesar.com/",
     "lane": "Atelier / técnica",
-    "videoId": "",
+    "videoId": "hgQ2NWYoSL8",
     "refs": [
       {
         "type": "Galeria / artista",
@@ -955,7 +955,7 @@ export const referenceArtists:PublicReference[]=[
     "instagram": "https://www.instagram.com/stephenbaumanartwork/",
     "site": "https://www.stephenbaumanartwork.com/",
     "lane": "Núcleo técnico / retrato",
-    "videoId": "",
+    "videoId": "DDuJFZ6b_Og",
     "refs": [
       {
         "type": "Curso / block-in",
@@ -1171,7 +1171,7 @@ export const referenceArtists:PublicReference[]=[
     "instagram": "https://www.instagram.com/dirk_dzimirsky/",
     "site": "https://www.dzimirsky.com/",
     "lane": "Núcleo Noir / obra",
-    "videoId": "",
+    "videoId": "sFPdt3ZzyCs",
     "refs": [
       {
         "type": "Obra / portfólio",
@@ -1243,7 +1243,7 @@ export const referenceArtists:PublicReference[]=[
     "instagram": "https://www.instagram.com/wattsatelier/",
     "site": "https://www.wattsatelier.com/",
     "lane": "Atelier / educação",
-    "videoId": "",
+    "videoId": "O5Vy3vD-RPg",
     "refs": [
       {
         "type": "Conteúdo / canal",
@@ -1315,7 +1315,7 @@ export const referenceArtists:PublicReference[]=[
     "instagram": "",
     "site": "",
     "lane": "Ásia / processo silencioso",
-    "videoId": "",
+    "videoId": "AyIOZSR08zQ",
     "refs": [
       {
         "type": "Conteúdo / top video",
@@ -1747,7 +1747,7 @@ export const referenceArtists:PublicReference[]=[
     "instagram": "https://www.instagram.com/stevehustonartist/",
     "site": "https://stevehustonart.com/",
     "lane": "Mestre / figura",
-    "videoId": "",
+    "videoId": "PBf5Q-7BdHI",
     "refs": [
       {
         "type": "Método / mestre",
