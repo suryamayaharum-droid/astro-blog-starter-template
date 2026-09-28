@@ -23,10 +23,37 @@ jobs:
       - name: Capture mobile screenshots
         run: |
           mkdir -p screenshots
-          npx playwright screenshot --browser chromium --device "iPhone 13" --full-page --wait-for-timeout 2500 "https://chatbot-seven-phi-94.vercel.app/noir" screenshots/home.png
-          npx playwright screenshot --browser chromium --device "iPhone 13" --full-page --wait-for-timeout 2500 "https://chatbot-seven-phi-94.vercel.app/noir/referencias" screenshots/atlas.png
-          npx playwright screenshot --browser chromium --device "iPhone 13" --full-page --wait-for-timeout 2500 "https://chatbot-seven-phi-94.vercel.app/noir/referencias/cesar-santos" screenshots/artist-cesar-santos.png
-          npx playwright screenshot --browser chromium --device "iPhone 13" --full-page --wait-for-timeout 2500 "https://chatbot-seven-phi-94.vercel.app/noir/percursos" screenshots/percursos.png
+          node <<'NODE'
+          const { chromium } = require('playwright');
+          (async () => {
+            const browser = await chromium.launch({ headless: true });
+            const context = await browser.newContext({
+              viewport: { width: 390, height: 844 },
+              deviceScaleFactor: 1,
+              isMobile: true,
+              hasTouch: true,
+              locale: 'pt-BR'
+            });
+            const page = await context.newPage();
+            const targets = [
+              ['home', 'https://chatbot-seven-phi-94.vercel.app/noir'],
+              ['atlas', 'https://chatbot-seven-phi-94.vercel.app/noir/referencias'],
+              ['artist-cesar-santos', 'https://chatbot-seven-phi-94.vercel.app/noir/referencias/cesar-santos'],
+              ['percursos', 'https://chatbot-seven-phi-94.vercel.app/noir/percursos']
+            ];
+            for (const [name, url] of targets) {
+              await page.goto(url, { waitUntil: 'networkidle', timeout: 45000 });
+              await page.waitForTimeout(1500);
+              await page.screenshot({ path: `screenshots/${name}.png`, fullPage: true });
+              console.log(name, await page.title(), await page.evaluate(() => ({
+                width: document.documentElement.scrollWidth,
+                height: document.documentElement.scrollHeight,
+                viewport: [window.innerWidth, window.innerHeight]
+              })));
+            }
+            await browser.close();
+          })().catch(err => { console.error(err); process.exit(1); });
+          NODE
 
       - name: Upload screenshots
         uses: actions/upload-artifact@v4
