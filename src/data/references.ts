@@ -516,7 +516,7 @@ export const referenceArtists:PublicReference[]=[
     "instagram": "https://www.instagram.com/artofchloerose/",
     "site": "https://chloerose.art/",
     "lane": "Alcance / curiosidade",
-    "videoId": "",
+    "videoId": "h9LDmDJ0_Cs",
     "refs": [
       {
         "type": "Canal / curiosidade",
@@ -1459,7 +1459,7 @@ export const referenceArtists:PublicReference[]=[
     "instagram": "",
     "site": "https://www.stevenzapata.com/",
     "lane": "Processo / pensamento / grafite",
-    "videoId": "",
+    "videoId": "pESaqI1X9pg",
     "refs": [
       {
         "type": "Conteúdo / top video",
@@ -1567,7 +1567,7 @@ export const referenceArtists:PublicReference[]=[
     "instagram": "https://www.instagram.com/newmastersacademy/",
     "site": "https://www.nma.art/",
     "lane": "Atelier / biblioteca",
-    "videoId": "",
+    "videoId": "oQNfh3LgWk4",
     "refs": [
       {
         "type": "Biblioteca / escola",
@@ -1675,7 +1675,7 @@ export const referenceArtists:PublicReference[]=[
     "instagram": "https://www.instagram.com/moderndayjames/",
     "site": "",
     "lane": "Estrutura / perspectiva",
-    "videoId": "",
+    "videoId": "g5gKA7hu7Fc",
     "refs": [
       {
         "type": "Conteúdo / canal",
@@ -1711,7 +1711,7 @@ export const referenceArtists:PublicReference[]=[
     "instagram": "https://www.instagram.com/art.prof/",
     "site": "https://artprof.org/",
     "lane": "Newsletter / comunidade",
-    "videoId": "",
+    "videoId": "lMr3351EGCA",
     "refs": [
       {
         "type": "Newsletter / editorial",
