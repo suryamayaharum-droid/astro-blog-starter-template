@@ -11,7 +11,7 @@ import BaseHead from '../components/BaseHead.astro';import Header from '../compo
   "Olhar é também editar: decidir o que merece borda, o que pode desaparecer e onde a atenção deve permanecer.",
   "Memória não é reprodução. É aquilo que sobrevive depois que a referência sai de diante dos olhos.",
   "Vestígio é o que fica quando retiramos o excesso: marca, poeira, borda perdida, silêncio."
-  ][i]}</p><div class="caderno-cycle"><p><b>Pergunta</b>{c.question}</p><p><b>Prática</b>{c.practice}</p><p><b>Vestígio</b>{c.residue}</p></div></div>
+  ][i]}</p><div class="caderno-cycle"><p><b>Pergunta</b>{c.question}</p><p><b>Prática</b>{c.practice}</p><p><b>Vestígio</b>{c.residue}</p></div>{c.slug==="gesto"&&<div class="actions"><a class="btn" href={base+"cadernos/gesto"}>Entrar no Caderno Gesto →</a></div>}</div>
 </section>)}
 <section class="section"><div class="journal"><div class="paper"><h2>Um caderno não termina quando a folha termina.</h2><p class="lead">Leve uma pergunta para o próximo desenho.</p><p>O objetivo não é completar todos os exercícios. É perceber quais problemas continuam voltando e merecem virar estudo, aula ou projeto.</p><p><a href={base+'atelier'}>Levar uma dessas perguntas para o Atelier →</a></p></div></div></section>
 </main><Footer/></body></html>
