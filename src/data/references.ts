@@ -120,7 +120,7 @@ export const referenceArtists:PublicReference[]=[
     "instagram": "",
     "site": "https://www.jazzastudios.com/",
     "lane": "Alcance / entretenimento",
-    "videoId": "",
+    "videoId": "w2fKxNDsXuw",
     "refs": [
       {
         "type": "Canal / entretenimento",
@@ -300,7 +300,7 @@ export const referenceArtists:PublicReference[]=[
     "instagram": "https://www.instagram.com/silviemahdal_art/",
     "site": "https://www.silviemahdal.com/",
     "lane": "Núcleo carvão",
-    "videoId": "",
+    "videoId": "zl3YRqHBFCc",
     "refs": [
       {
         "type": "Portfólio / obras",
@@ -444,7 +444,7 @@ export const referenceArtists:PublicReference[]=[
     "instagram": "",
     "site": "https://thevirtualinstructor.com/",
     "lane": "Educação / biblioteca",
-    "videoId": "",
+    "videoId": "xbE0vYgng00",
     "refs": [
       {
         "type": "Curso / carvão",
@@ -552,7 +552,7 @@ export const referenceArtists:PublicReference[]=[
     "instagram": "https://www.instagram.com/alphonsodunn/",
     "site": "https://www.alphonsodunn.com/",
     "lane": "Técnica",
-    "videoId": "",
+    "videoId": "NvjB0rj6yAc",
     "refs": [
       {
         "type": "Biblioteca de vídeos",
@@ -991,7 +991,7 @@ export const referenceArtists:PublicReference[]=[
     "instagram": "https://www.instagram.com/heather12ooney/",
     "site": "https://www.heather-rooney.com/",
     "lane": "Núcleo grafite / alcance",
-    "videoId": "",
+    "videoId": "1TZy-Yc_HTc",
     "refs": [
       {
         "type": "Obra / portfólio",
