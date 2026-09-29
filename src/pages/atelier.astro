@@ -1,5 +1,5 @@
 ---
-import BaseHead from '../components/BaseHead.astro';import Header from '../components/Header.astro';import Footer from '../components/Footer.astro';import {fundamentos} from '../data/public';const base=import.meta.env.BASE_URL;
+import BaseHead from '../components/BaseHead.astro';import Header from '../components/Header.astro';import Footer from '../components/Footer.astro';import {fundamentos} from '../data/public';const base=import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 ---
 <!doctype html><html lang="pt-BR"><head><BaseHead title="Atelier · Harum Noir" description="Observar, estruturar, organizar e traduzir: um percurso de prática em desenho."/></head><body><Header/><main>
 <section class="page-hero"><div class="eyebrow">ATELIER ABERTO</div><h1>Prática antes de performance.</h1><p>Um atelier é mais do que um lugar onde alguém demonstra habilidade. É um ambiente onde o olhar é treinado, a correção fica visível e a evolução pode ser acompanhada.</p></section>

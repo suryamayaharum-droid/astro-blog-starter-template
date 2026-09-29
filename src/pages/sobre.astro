@@ -1,5 +1,5 @@
 ---
-import BaseHead from '../components/BaseHead.astro';import Header from '../components/Header.astro';import Footer from '../components/Footer.astro';const base=import.meta.env.BASE_URL;
+import BaseHead from '../components/BaseHead.astro';import Header from '../components/Header.astro';import Footer from '../components/Footer.astro';const base=import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 ---
 <!doctype html><html lang="pt-BR"><head><BaseHead title="Sobre · Harum Noir" description="Harum Noir é um atelier editorial de desenho, corpo, presença e processo."/></head><body><Header/><main>
 <section class="page-hero"><div class="eyebrow">SOBRE</div><h1>Um atelier que também publica.</h1><p>Harum Noir nasce da prática de desenho e da vontade de tornar visível aquilo que normalmente desaparece entre uma referência e uma obra pronta: observação, tentativa, correção, dúvida, repertório e escolha.</p></section>

@@ -6,7 +6,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import { cadernos, fundamentos, temporadas } from '../data/public';
 import { openLibraryCollections } from '../data/openLibrary';
 import {referenceArtists,byRank} from '../data/references';
-const base=import.meta.env.BASE_URL;
+const base=import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 const startRanks=[17,39,9,18,38,36,27,50];
 const startRefs=startRanks.map(byRank).filter(Boolean);
 ---

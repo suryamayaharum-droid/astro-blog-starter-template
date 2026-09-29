@@ -3,7 +3,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import {referenceArtists} from '../data/references';
-const base=import.meta.env.BASE_URL;
+const base=import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 const find=(slug)=>referenceArtists.find(a=>a.slug===slug);
 const paths=[
   {id:"carvao",n:"01",title:"Carvão & presença",text:"Matéria, gesto, borda, apagamento e a decisão de onde a figura realmente existe.",image:"figure-01.svg",refs:["mad-charcoal","silvie-mahdal","zin-lim","dirk-dzimirsky"],caderno:"presenca",temporada:"01",biblioteca:"atelier-historico-aberto"},
