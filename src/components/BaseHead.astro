@@ -2,7 +2,7 @@
 import '../styles/global.css';
 interface Props { title:string; description:string; image?:string; }
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 const { title, description, image = `${base}noir/og.svg` } = Astro.props;
 const imageURL = image.startsWith('http') ? image : new URL(image, Astro.site);
 ---
