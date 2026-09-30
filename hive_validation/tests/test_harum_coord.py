@@ -14,7 +14,19 @@ class HarumCoordTests(unittest.TestCase):
             p.write_text(json.dumps(value,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
         w(".harum-assembly/state.json",{
             "schema":"harum.assembly-state/v2","version":2,"last_event":None,"assets":{},"incidents":[],
-            "instances":{},"work_items":{"W1":{"work_id":"W1","events":[],"status":"available"}},
+            "instances":{
+                "actor-a":{
+                    "role":"visual-curator",
+                    "roles":["visual-curator"],
+                    "last_seen":"2026-09-30T20:00:00+00:00",
+                    "expires_at":"2099-01-01T00:00:00+00:00",
+                    "capabilities":[],
+                    "connectors":[],
+                    "skills":[],
+                    "reachability":"active",
+                    "dispatch_modes":["local-runtime"]
+                }
+            },"work_items":{"W1":{"work_id":"W1","events":[],"status":"available"}},
             "help_requests":{},"decisions":{},"conflicts":[],"inboxes":{},"idempotency":{},"current_checkpoint":{"event_id":"c1","payload":{"project":"HARUM NOIR"}}
         })
         (self.root/".harum-assembly/events.jsonl").write_text("",encoding="utf-8")
