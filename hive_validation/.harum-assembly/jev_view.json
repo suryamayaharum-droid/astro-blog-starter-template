@@ -1,0 +1,250 @@
+{
+  "schema": "harum.jev-coordination-view/v1",
+  "source_state_schema": "harum.assembly-state/v2",
+  "last_event": "evt-hn-percurso-sketchbook-deepen-progress-20260928",
+  "checkpoint": {
+    "event_id": "evt-hn-streaming-checkpoint-20260927",
+    "occurred_at": "2026-09-27T19:49:31Z",
+    "payload": {
+      "project": "HARUM NOIR public ecosystem",
+      "state": "stable",
+      "github_pages": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/",
+      "vercel": "https://chatbot-seven-phi-94.vercel.app/noir",
+      "catalog": {
+        "artists": 50,
+        "collections": 7,
+        "journeys": 5,
+        "links_checked": 208,
+        "broken_links": 0
+      },
+      "current_rule": "Do not reopen infrastructure first; continue visual/editorial layer.",
+      "next": [
+        "increase verified artist-specific visual coverage",
+        "refine mobile density from screenshots",
+        "deepen Caderno pages with original Noir studies"
+      ]
+    },
+    "evidence": [
+      "docs/HARUMVERSO_CHECKPOINT.md",
+      "systems/harum_noir_public_surface_manifest.json"
+    ]
+  },
+  "open_work": [
+    {
+      "work_id": "HN-PERCURSO-SKETCHBOOK-DEEPEN-012",
+      "events": [
+        "evt-hn-percurso-sketchbook-deepen-created-20260928",
+        "evt-hn-percurso-sketchbook-deepen-claim-20260928",
+        "evt-hn-percurso-sketchbook-deepen-recovery-claim-20260928",
+        "evt-hn-percurso-sketchbook-deepen-progress-20260928"
+      ],
+      "updated_at": "2026-09-28T18:12:00Z",
+      "status": "executing",
+      "target_role": "narrative-editor",
+      "owner": "chatgpt-sol-editorial-recovery-20260928",
+      "payload": {
+        "summary": "FAZENDO: Percurso 05 aprofundado nos dois espelhos; aguardando validação externa de deploy/build antes de fechar.",
+        "lease_id": "lease-hn-sketchbook-deepen-012-20260928T1805Z",
+        "expires_at": "2026-09-28T18:32:00Z",
+        "intent_key": "hn-percurso-05-sketchbook-universe-deepen",
+        "fencing_token": 2
+      }
+    }
+  ],
+  "open_help_requests": [],
+  "open_decisions": {},
+  "conflicts": [],
+  "role_inboxes": {
+    "work-instance": [
+      "evt-hn-caderno-gesto-source-audit-help-20260927"
+    ],
+    "coding-instance": [
+      "evt-meaw-coord-hardening-validation-request-20260928"
+    ]
+  },
+  "rules": {
+    "authority": "advisory_only",
+    "no_hidden_chain_of_thought": true,
+    "no_permission_expansion": true,
+    "live_external_state_overrides_repo": true,
+    "secrets_forbidden": true,
+    "coordination_doctor": "core/meaw/harum_coordination_doctor.py",
+    "global_continuity": "docs/GLOBAL_CONTINUITY_INSTRUCTION.md",
+    "claim_one_bounded_work_item": true,
+    "anti_entropy": "systems/harum_anti_entropy.json",
+    "digest_before_cross_peer_bundle": true,
+    "dispatch_plan": "state/coordination/dispatch_plan.json",
+    "dispatcher_advisory_only": true,
+    "coordination_health": "state/coordination/health.json",
+    "meta_coordination": "state/coordination/meta_plan.json",
+    "meta_advisory_only": true
+  },
+  "completed_work": [
+    {
+      "work_id": "HN-WEB-VISUAL-SCREENSHOT-004",
+      "status": "succeeded",
+      "completed_at": "2026-09-28T02:45:00Z",
+      "evidence": [
+        "docs/HN_WEB_VISUAL_SCREENSHOT_004.md",
+        "github-actions:36370082259:attempt-2:success",
+        "vercel:dpl_4CrKXC3N1fjBs7azo8T2qa4uoJUv:READY"
+      ]
+    },
+    {
+      "work_id": "MEAW-SCHEDULER-VALIDATE-001",
+      "status": "succeeded",
+      "completed_at": "2026-09-28T03:12:00Z",
+      "evidence": [
+        "docs/MEAW_SCHEDULER_VALIDATE_001.md",
+        "portable-selftest:4/4-pass",
+        "commit:a32a16899c49a8c50b756c7c0425b934e122aeb8"
+      ]
+    },
+    {
+      "work_id": "HN-CADERNO-GESTO-EDITORIAL-004",
+      "status": "succeeded",
+      "completed_at": "2026-09-28T03:25:00Z",
+      "evidence": [
+        "docs/HN_CADERNO_GESTO_EDITORIAL_004.md",
+        "chatbot:bf08df3bcec3efad914e53f570f8fc07db808a9c",
+        "astro:5224b07067d5713fa717535fc3206add760ffacc",
+        "vercel:dpl_6eeD8a9TkbQM6tW26kC9fJLMnrxY:READY",
+        "github-actions:36373114020:success"
+      ]
+    },
+    {
+      "work_id": "HN-CADERNO-OLHAR-EDITORIAL-005",
+      "status": "succeeded",
+      "completed_at": "2026-09-28T03:45:00Z",
+      "evidence": [
+        "docs/HN_CADERNO_OLHAR_EDITORIAL_005.md",
+        "chatbot:ef30479d1ffc5ebb011f7689328477ce14c1522b",
+        "chatbot:f316adedb87d6bc4581bafae9f5c0ee1b63f61d3",
+        "astro:9b2608dee04cade023c679703ccd8f195752d012",
+        "astro:40917e8224bf8af423744dec60e76e46295661fb",
+        "github-actions:36373884641:success",
+        "vercel:dpl_AQaL1putVXNN4bPJnhxiVCyMTTJq:READY",
+        "parallel-fix:73c675186e474e031edceaf3aececee229932cab",
+        "http:/noir/cadernos/olhar:200",
+        "http:/noir/cadernos:200"
+      ]
+    },
+    {
+      "work_id": "HN-ATLAS-101-VISUAL-SOURCES-001",
+      "status": "succeeded",
+      "completed_at": "2026-09-28T03:46:00Z",
+      "evidence": [
+        "astro:3a4357bc5d7b33753dbbbf7ecc2e7683a45dd150",
+        "github-actions:36374739968:success",
+        "github-actions:36374739990:success",
+        "chatbot:03c5ade74747bea954232beafc33be0d3c3c6b99",
+        "vercel:dpl_8DfzAmUFyPC9jgQF8raGJ6ebbCSX:READY",
+        "http:vercel-preview:/noir/referencias/james-gurney:200"
+      ]
+    },
+    {
+      "work_id": "HN-CADERNO-MEMORIA-EDITORIAL-009",
+      "status": "succeeded",
+      "completed_at": "2026-09-28T04:24:00Z",
+      "evidence": [
+        "docs/HN_CADERNO_MEMORIA_EDITORIAL_009.md",
+        "chatbot:2b57b814d4520d4bad48ef332324058d6c2124e6",
+        "chatbot:d9d30fa680877f098121ff55f6c3273b47828e9a",
+        "chatbot:6faefc1ab1053cdaa31481626f19c48cbcffac30",
+        "vercel:dpl_Bx425GdsrvCKsLabm59Dg1vopFYK:READY",
+        "github-actions:36376104646:success",
+        "http:/noir/cadernos/memoria:200",
+        "http:/noir/cadernos:memoria-cta-present"
+      ]
+    },
+    {
+      "work_id": "HN-NEXT-BUILD-UNBLOCK-011",
+      "status": "succeeded",
+      "completed_at": "2026-09-28T04:24:00Z",
+      "evidence": [
+        "docs/HN_NEXT_BUILD_UNBLOCK_011.md",
+        "vercel:dpl_GAfmzaQZobcGykrqPM7tW4GX5y8g:READY",
+        "vercel:dpl_Gr2YZG6XP6bWXcpLnqphdS97FwTQ:ERROR",
+        "chatbot:6faefc1ab1053cdaa31481626f19c48cbcffac30",
+        "vercel:dpl_Bx425GdsrvCKsLabm59Dg1vopFYK:READY"
+      ],
+      "note": "Production unblocked by quarantine. Experimental live-ingest remains unvalidated and isolated."
+    },
+    {
+      "work_id": "HN-CADERNO-VESTIGIO-EDITORIAL-010",
+      "status": "succeeded",
+      "completed_at": "2026-09-28T04:25:00Z",
+      "evidence": [
+        "docs/HN_CADERNO_VESTIGIO_EDITORIAL_010.md",
+        "chatbot:0888eb28ee25e559e7ee3fa7bc2b3f9dd1aebb26",
+        "chatbot:ab7cee79d9a38aa574f871ebf69d8400d07ee470",
+        "vercel:dpl_HVDso5ip1DxvJkr5rRaWVgfCvc7D:READY",
+        "astro:15dc8d33c399aa624c62d0f27cb94ba76bc0c1d8",
+        "astro:755f28b6eebc8f1e5256cb43fca7f52a34e1db46",
+        "github-actions:36376204700:success",
+        "github-actions:36377397051:success",
+        "http:/noir/cadernos:200",
+        "http:/noir/cadernos:vestigio-cta-present",
+        "http:/noir/cadernos/vestigio:200"
+      ],
+      "note": "Owner completed final route/index validation; canonical Cadernos are 5/5 deep and publicly navigable."
+    },
+    {
+      "work_id": "HN-ATLAS-101-VISUAL-SOURCES-002",
+      "status": "succeeded",
+      "completed_at": "2026-09-28T13:34:00Z",
+      "owner": "chatgpt-sol-atlas-recovery-20260928",
+      "evidence": [
+        "docs/HN_ATLAS_101_VISUAL_SOURCES_002_SUPPORT.md",
+        "docs/HN_ATLAS_101_VISUAL_SOURCES_002_POSTDEPLOY.md",
+        "docs/HN_ATLAS_101_VISUAL_SOURCES_002_PROVENANCE_SUPPORT_002.md",
+        "chatbot:5393de3a9b42d336874b245b46d30468bab43f1e",
+        "astro:bcfba4625f349d324deba6529e74d4a252812e63",
+        "chatbot:d5e18527d9b3c0a2cd2c0d85255e794bfee85337",
+        "astro:53f9c035ea4e9049a52025169a7d47834220c07e",
+        "vercel:dpl_9NJuJFcijhPeJGZvgmfgtGct3Yg7:READY",
+        "github-actions:36428548032:success",
+        "github-actions:36428547816:success",
+        "http:/noir/referencias/michael-hampton:200",
+        "coverage:101-total:64-specific:37-fallback"
+      ],
+      "note": "Recovered from stale claim under fencing token 1; provenance closed and both mirrors validated."
+    },
+    {
+      "work_id": "MEAW-COORD-HARDEN-CAUSAL-001",
+      "status": "succeeded",
+      "completed_at": "2026-09-28T13:40:00Z",
+      "owner": "chatgpt-sol-coding-validation-20260928",
+      "evidence": [
+        "commit:6ec897be964b41dbebc04d59deaad5cabf72072a",
+        "commit:33b6125306b8f88e288900cf4a388bbb4b4366d7",
+        "commit:dff572d6cf8bacdf9c2d3dcf40efe831a9c154f7",
+        "docs/MEAW_COORD_HARDEN_CAUSAL_001_VALIDATION.md",
+        "commit:48c6e0b115795b8f7ccdb602174469e8f16f7e57",
+        "portable-selftest:7/7-pass",
+        "watermark-tests:2/2-pass",
+        "projection-sync:dispatch:42d9a1acb06ac1a9717de5d38b53d6f9901036dd",
+        "projection-sync:health:92e2c913387d5e5d9a81c16d384d491ef292e670",
+        "projection-sync:meta:a9a7245a336ca049a26585d6a5995ab361ac33c0",
+        "projection-sync:capability-board:bde6f78a64e7b6db8959a6aae11830dc5302d5ca",
+        "projection-sync:capsule:a9a5e26bff5d2857009c8a1e24db96ec66da521c",
+        "projection-watermark:evt-meaw-coding-validator-hello-20260928"
+      ],
+      "note": "7/7 self-test + 2/2 watermark tests + live projection sync; recovered for terminal close after original owner went stale."
+    }
+  ],
+  "answered_help_requests": [
+    {
+      "request_id": "MEAW-COORD-HARDEN-CAUSAL-001-validation",
+      "work_id": "MEAW-COORD-HARDEN-CAUSAL-001",
+      "status": "answered",
+      "answered_by": "chatgpt-sol-coding-validation-20260928",
+      "answered_at": "2026-09-28T13:33:00Z",
+      "answer": "PASS: portable coordination self-test 7/7 and watermark projection tests 2/2.",
+      "evidence": [
+        "docs/MEAW_COORD_HARDEN_CAUSAL_001_VALIDATION.md",
+        "commit:48c6e0b115795b8f7ccdb602174469e8f16f7e57"
+      ]
+    }
+  ]
+}
