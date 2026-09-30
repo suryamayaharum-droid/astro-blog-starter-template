@@ -8,6 +8,7 @@ from core.meaw.harum_coordination_doctor import diagnose
 from core.meaw.harum_context_capsule import build_capsule
 from core.meaw.harum_meta_coordinator import build_meta_plan
 from core.meaw.capability_board import build_capability_board
+from core.meaw.harum_projection_freshness import projection_generator_fingerprint
 
 def load(path: str) -> dict[str,Any]:
     p=Path(path)
@@ -24,6 +25,7 @@ def refresh(
     assembly_state:dict[str,Any],validation:dict[str,Any],meta_policy:dict[str,Any]|None=None,
     persisted_passports:list[dict[str,Any]]|None=None,
 )->dict[str,Any]:
+    generator_fingerprint=projection_generator_fingerprint()
     dispatch=build_dispatch_plan(
         jev=jev,tree=tree,registry=registry,leases=leases,policy=policy,
         instance_state=assembly_state or None,
@@ -37,10 +39,14 @@ def refresh(
         assembly_state=assembly_state or {},dispatch=dispatch,registry=registry,
         persisted_passports=persisted_passports or [],
     )
-    capsule=build_capsule(panel=panel,jev=jev,dispatch=dispatch,health=health,validation=validation,meta=meta)
+    capsule=build_capsule(
+        panel=panel,jev=jev,dispatch=dispatch,health=health,validation=validation,
+        meta=meta,generator_fingerprint=generator_fingerprint,
+    )
     source_last_event=jev.get("last_event")
     for projection in (dispatch,health,meta,board):
         projection["source_last_event"]=source_last_event
+        projection["source_generator_fingerprint"]=generator_fingerprint
     return {"dispatch":dispatch,"health":health,"meta":meta,"capsule":capsule,"capability_board":board}
 
 def main():
@@ -79,6 +85,7 @@ def main():
       "primary_move":(result["meta"].get("primary_move") or {}).get("work_id"),
       "capsule_sha256":result["capsule"].get("content_sha256"),
       "capability_board":result["capability_board"].get("summary",{}),
+      "generator_fingerprint":result["dispatch"].get("source_generator_fingerprint"),
     },ensure_ascii=False))
 
 if __name__=="__main__":
