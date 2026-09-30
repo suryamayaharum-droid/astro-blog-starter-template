@@ -27,4 +27,5 @@ jobs:
             tests.test_harum_coord \
             tests.test_harum_dispatcher \
             tests.test_harum_coordination_doctor \
-            tests.test_harum_meta_coordinator -v
+            tests.test_harum_meta_coordinator \
+            tests.test_harum_context_capsule -v
