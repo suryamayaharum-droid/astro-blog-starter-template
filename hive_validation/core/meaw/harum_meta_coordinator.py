@@ -103,6 +103,8 @@ def build_meta_plan(*,dispatch:dict[str,Any],tree:dict[str,Any],health:dict[str,
             "is_current_focus":is_product,"is_support":is_support,"reason":" · ".join(reasons),
             "recovery_candidate":bool(row.get("recovery_candidate")),
             "dispatch_reason":row.get("reason"),
+            "candidate_instances":row.get("candidate_instances",[]) or [],
+            "recovery":row.get("recovery"),
             "write_scope":row.get("write_scope",[]) or [],"max_helpers":row.get("max_helpers",0),
         }
         recommendations.append(item)
@@ -110,7 +112,9 @@ def build_meta_plan(*,dispatch:dict[str,Any],tree:dict[str,Any],health:dict[str,
             stale.append({"work_id":row["work_id"],"state":row.get("state"),"age_hours":round(age_hours,2),"severity":"urgent" if age_hours>=urgent_hours else "warning","suggestion":"answer existing help / claim / handoff / supersede; do not open duplicate work"})
 
     available_ranked=sorted([x for x in recommendations if x["state"]=="available"],key=lambda x:(-x["meta_score"],-x["priority"],x["work_id"]))
+    recovery_ranked=sorted([x for x in recommendations if x.get("recovery_candidate")],key=lambda x:(-x["meta_score"],-x["priority"],x["work_id"]))
     primary=available_ranked[0] if available_ranked else None
+    primary_recovery=recovery_ranked[0] if recovery_ranked else None
 
     max_wave=int((policy.get("parallelism",{}) or {}).get("max_primary_wave",3) or 3)
     wave=[];roles=set();scopes=[]
@@ -137,8 +141,9 @@ def build_meta_plan(*,dispatch:dict[str,Any],tree:dict[str,Any],health:dict[str,
                 "action":"answer/accept existing request instead of creating parallel work"
             })
 
-    open_product=sum(1 for x in recommendations if x["state"] in {"available","leased","blocked","waiting-capacity"} and x["is_current_focus"])
-    open_support=sum(1 for x in recommendations if x["state"] in {"available","leased","blocked","waiting-capacity"} and x["is_support"])
+    active_states={"available","leased","blocked","waiting-capacity"}
+    open_product=sum(1 for x in recommendations if (x["state"] in active_states or x.get("recovery_candidate")) and x["is_current_focus"])
+    open_support=sum(1 for x in recommendations if (x["state"] in active_states or x.get("recovery_candidate")) and x["is_support"])
     total=max(1,open_product+open_support);support_ratio=open_support/total
     max_ratio=float((policy.get("anti_overcoordination",{}) or {}).get("max_support_ratio_when_healthy",0.34) or 0.34)
     over=bool(healthy and product_available and support_ratio>max_ratio)
@@ -150,6 +155,7 @@ def build_meta_plan(*,dispatch:dict[str,Any],tree:dict[str,Any],health:dict[str,
         "source_last_event":jev.get("last_event"),
         "generated_at":datetime.datetime.fromtimestamp(ts,datetime.timezone.utc).isoformat(),
         "mode":mode,"health":health.get("status"),"primary_move":primary,
+        "primary_recovery":primary_recovery,"recovery_queue":recovery_ranked[:5],
         "critical_path":available_ranked[:5],"parallel_wave":wave,
         "collaboration_suggestions":collaboration[:6],"stagnation":stale[:8],
         "coordination_budget":{"open_product":open_product,"open_support":open_support,"support_ratio":round(support_ratio,3),"max_support_ratio_when_healthy":max_ratio,"overcoordination":over,"action":guard_action},
