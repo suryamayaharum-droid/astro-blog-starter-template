@@ -40,5 +40,29 @@ class MetaCoordinatorTests(unittest.TestCase):
         self.assertEqual(plan["primary_move"]["dispatch_reason"],"expired-lease-recovery")
         self.assertIn("recovery-candidate",plan["primary_move"]["reason"])
 
+    def test_unroutable_recovery_is_exposed_without_becoming_primary_move(self):
+        dispatch={"assignments":[{
+          "work_id":"HN-X","state":"unroutable","priority":106,
+          "candidate_roles":["narrative-editor"],"candidate_instances":[],
+          "write_scope":[],"recovery_candidate":True,
+          "reason":"expired-lease-recovery",
+          "recovery":{"previous_owner":"old-owner","previous_fencing_token":2}
+        }]}
+        tree={"root":{"id":"HARUM","children":[
+          {"id":"HARUM-NOIR","children":[{"id":"HN-X","state":"open","priority":91}]}
+        ]}}
+        jev={"open_work":[{"work_id":"HN-X","status":"executing","owner":"old-owner"}],"open_help_requests":[]}
+        plan=build_meta_plan(
+            dispatch=dispatch,tree=tree,health={"status":"degraded"},
+            jev=jev,policy={},now=0
+        )
+        self.assertIsNone(plan["primary_move"])
+        self.assertEqual(plan["primary_recovery"]["work_id"],"HN-X")
+        self.assertTrue(plan["primary_recovery"]["recovery_candidate"])
+        self.assertEqual(plan["primary_recovery"]["candidate_instances"],[])
+        self.assertEqual(plan["primary_recovery"]["recovery"]["previous_owner"],"old-owner")
+        self.assertEqual(plan["recovery_queue"][0]["work_id"],"HN-X")
+        self.assertEqual(plan["coordination_budget"]["open_product"],1)
+
 
 if __name__=="__main__":unittest.main()
