@@ -10,8 +10,8 @@
   "health": {
     "status": "degraded",
     "issues": 0,
-    "warnings": 6,
-    "next_safe_action": "repair warnings before expanding scope"
+    "warnings": 3,
+    "next_safe_action": "recover or close orphaned work before expanding scope"
   },
   "checkpoint": {
     "event_id": "evt-hn-streaming-checkpoint-20260927",
@@ -62,7 +62,7 @@
       "priority": 106,
       "meta_score": 138,
       "unlocks": 0,
-      "age_hours": 50.63,
+      "age_hours": 50.71,
       "is_current_focus": true,
       "is_support": false,
       "reason": "base=106 · current-focus+20 · age+12 · recovery-candidate",
@@ -89,7 +89,7 @@
         "priority": 106,
         "meta_score": 138,
         "unlocks": 0,
-        "age_hours": 50.63,
+        "age_hours": 50.71,
         "is_current_focus": true,
         "is_support": false,
         "reason": "base=106 · current-focus+20 · age+12 · recovery-candidate",
@@ -257,5 +257,5 @@
     "no_secrets": true,
     "claim_before_execution": true
   },
-  "content_sha256": "3b29ada3e35f35830ec085a9216a0d5ed34ece550b458210ba82aa035d7baa10"
+  "content_sha256": "df9cf77f1694510851efec22e00edfa23ac005d9e0e1afdf8c29141c2e665b92"
 }

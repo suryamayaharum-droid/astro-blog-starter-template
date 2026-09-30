@@ -1,7 +1,7 @@
 {
   "schema": "harum.dispatch-plan/v2",
   "source_last_event": "evt-hn-percurso-sketchbook-deepen-progress-20260928",
-  "generated_at": "2026-09-30T20:49:41.966770+00:00",
+  "generated_at": "2026-09-30T20:54:33.066994+00:00",
   "assignments": [
     {
       "work_id": "HN-PERCURSO-SKETCHBOOK-DEEPEN-012",
@@ -54,17 +54,17 @@
   },
   "load": {
     "roles": {
-      "coordination-auditor": 0,
+      "editorial-director": 0,
       "work-instance": 0,
-      "visual-curator": 0,
+      "research-scout": 0,
       "growth-analyst": 0,
+      "operator": 0,
+      "coordination-auditor": 0,
       "coding-instance": 0,
       "narrative-editor": 0,
-      "operator": 0,
-      "editorial-director": 0,
-      "rights-guard": 0,
-      "research-scout": 0,
-      "fascination-curator": 0
+      "fascination-curator": 0,
+      "visual-curator": 0,
+      "rights-guard": 0
     },
     "branches": {}
   },
