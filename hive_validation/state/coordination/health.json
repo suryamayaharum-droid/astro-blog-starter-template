@@ -1,7 +1,7 @@
 {
   "schema": "harum.coordination-health/v3",
   "source_last_event": "evt-hn-percurso-sketchbook-deepen-progress-20260928",
-  "checked_at": "2026-09-30T20:44:16.246410+00:00",
+  "checked_at": "2026-09-30T20:49:41.966956+00:00",
   "status": "degraded",
   "counts": {
     "issues": 0,
@@ -29,17 +29,17 @@
     {
       "code": "stale-instance-heartbeat",
       "instance": "chatgpt-sol-coding-validation-20260928",
-      "age_seconds": 198496
+      "age_seconds": 198821
     },
     {
       "code": "stale-instance-heartbeat",
       "instance": "chatgpt-sol-editorial-sketchbook-20260928",
-      "age_seconds": 197986
+      "age_seconds": 198311
     },
     {
       "code": "stale-instance-heartbeat",
       "instance": "chatgpt-sol-editorial-recovery-20260928",
-      "age_seconds": 181936
+      "age_seconds": 182261
     },
     {
       "code": "dispatcher-has-unroutable-work",

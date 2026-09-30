@@ -54,9 +54,63 @@
   "meta_advice": {
     "mode": "repair-first",
     "primary_move": null,
+    "primary_recovery": {
+      "work_id": "HN-PERCURSO-SKETCHBOOK-DEEPEN-012",
+      "state": "unroutable",
+      "branch": "HARUM-NOIR",
+      "role": "narrative-editor",
+      "priority": 106,
+      "meta_score": 138,
+      "unlocks": 0,
+      "age_hours": 50.63,
+      "is_current_focus": true,
+      "is_support": false,
+      "reason": "base=106 · current-focus+20 · age+12 · recovery-candidate",
+      "recovery_candidate": true,
+      "dispatch_reason": "expired-lease-recovery",
+      "candidate_instances": [],
+      "recovery": {
+        "previous_owner": "chatgpt-sol-editorial-recovery-20260928",
+        "previous_lease_id": "lease-hn-sketchbook-deepen-012-20260928T1805Z",
+        "previous_fencing_token": 2
+      },
+      "write_scope": [
+        "chatbot:app/noir/percursos/page.tsx",
+        "astro:src/pages/percursos.astro"
+      ],
+      "max_helpers": 0
+    },
+    "recovery_queue": [
+      {
+        "work_id": "HN-PERCURSO-SKETCHBOOK-DEEPEN-012",
+        "state": "unroutable",
+        "branch": "HARUM-NOIR",
+        "role": "narrative-editor",
+        "priority": 106,
+        "meta_score": 138,
+        "unlocks": 0,
+        "age_hours": 50.63,
+        "is_current_focus": true,
+        "is_support": false,
+        "reason": "base=106 · current-focus+20 · age+12 · recovery-candidate",
+        "recovery_candidate": true,
+        "dispatch_reason": "expired-lease-recovery",
+        "candidate_instances": [],
+        "recovery": {
+          "previous_owner": "chatgpt-sol-editorial-recovery-20260928",
+          "previous_lease_id": "lease-hn-sketchbook-deepen-012-20260928T1805Z",
+          "previous_fencing_token": 2
+        },
+        "write_scope": [
+          "chatbot:app/noir/percursos/page.tsx",
+          "astro:src/pages/percursos.astro"
+        ],
+        "max_helpers": 0
+      }
+    ],
     "parallel_wave": [],
     "coordination_budget": {
-      "open_product": 0,
+      "open_product": 1,
       "open_support": 0,
       "support_ratio": 0.0,
       "max_support_ratio_when_healthy": 0.34,
@@ -203,5 +257,5 @@
     "no_secrets": true,
     "claim_before_execution": true
   },
-  "content_sha256": "3fa850d31a4a2d9e719a4ccb2a08bab00213a8f5a04c8d3e62e2d88181e5772c"
+  "content_sha256": "3b29ada3e35f35830ec085a9216a0d5ed34ece550b458210ba82aa035d7baa10"
 }
