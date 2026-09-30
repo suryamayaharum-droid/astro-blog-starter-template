@@ -207,8 +207,28 @@ def diagnose(
             warnings.append({"code":"active-work-without-lease","work_id":work_id,"owner":work.get("owner")})
             repairs.append({"action":"claim-lease-or-return-work-to-available","work_id":work_id})
 
+    dormant_instances=[]
     if assembly_state:
         for instance_id,row in (assembly_state.get("instances",{}) or {}).items():
+            expires=_parse_time(row.get("expires_at"))
+            reachability=str(row.get("reachability") or "active")
+            if expires and expires<=now:
+                dormant_instances.append({
+                    "instance":instance_id,
+                    "role":row.get("role"),
+                    "reachability":reachability,
+                    "reason":"ttl-expired",
+                    "expired_at":expires.isoformat(),
+                })
+                continue
+            if reachability in {"offline","manual-resume"}:
+                dormant_instances.append({
+                    "instance":instance_id,
+                    "role":row.get("role"),
+                    "reachability":reachability,
+                    "reason":"non-live-reachability",
+                })
+                continue
             last=_parse_time(row.get("last_seen"))
             if last and (now-last).total_seconds()>instance_stale_seconds:
                 warnings.append({"code":"stale-instance-heartbeat","instance":instance_id,"age_seconds":int((now-last).total_seconds())})
@@ -220,8 +240,26 @@ def diagnose(
             repairs.append({"action":"run-projection-refresh-before-claim"})
         summary=dispatch_plan.get("summary",{}) or {}
         if int(summary.get("unroutable",0) or 0)>0:
-            warnings.append({"code":"dispatcher-has-unroutable-work","count":int(summary.get("unroutable",0) or 0)})
-            repairs.append({"action":"add-capability-or-target-role-to-unroutable-work"})
+            unroutable=[
+                row for row in (dispatch_plan.get("assignments",[]) or [])
+                if row.get("state")=="unroutable"
+            ]
+            recovery_unroutable=[
+                row.get("work_id") for row in unroutable
+                if row.get("recovery_candidate") and row.get("work_id")
+            ]
+            warnings.append({
+                "code":"dispatcher-has-unroutable-work",
+                "count":int(summary.get("unroutable",0) or 0),
+                "recovery_work_ids":recovery_unroutable,
+            })
+            if recovery_unroutable:
+                repairs.append({
+                    "action":"activate-compatible-instance-for-recovery-or-owner-close",
+                    "work_ids":recovery_unroutable,
+                })
+            else:
+                repairs.append({"action":"add-capability-or-target-role-to-unroutable-work"})
 
     if dispatch_policy:
         capacity=dispatch_policy.get("capacity",{}) or {}
@@ -267,11 +305,14 @@ def diagnose(
         "issues":len(issues),"warnings":len(warnings),"open_work":len(open_work),
         "open_help":len(jev.get("open_help_requests",[])),"active_leases":len(active),
         "known_instances":len((assembly_state or {}).get("instances",{}) or {}),
+        "dormant_instances":len(dormant_instances),
       },
       "issues":issues,"warnings":warnings,"suggested_repairs":repairs,
       "recovery_candidates":recovery_candidates,
+      "dormant_instances":dormant_instances,
       "next_safe_action":(
         "resolve issues before new mutation" if issues else
+        "recover or close orphaned work before expanding scope" if recovery_candidates else
         "repair warnings before expanding scope" if warnings else
         "claim one bounded highest-priority dependency-ready compatible work item"
       )
