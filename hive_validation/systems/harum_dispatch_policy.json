@@ -1,0 +1,84 @@
+{
+  "schema": "harum.dispatch-policy/v1",
+  "status": "active-advisory",
+  "capacity": {
+    "global_max_active_leases": 6,
+    "default_per_role_max_active": 1,
+    "per_role_max_active": {
+      "work-instance": 2,
+      "research-scout": 2,
+      "visual-curator": 1,
+      "narrative-editor": 1,
+      "fascination-curator": 1,
+      "rights-guard": 1,
+      "growth-analyst": 1,
+      "coding-instance": 2,
+      "coordination-auditor": 1
+    },
+    "per_branch_max_active": {
+      "HN-WEB": 2,
+      "HN-RADAR": 2,
+      "HN-CURATION": 2,
+      "MEAW": 2
+    }
+  },
+  "priority": {
+    "dependency_unblock_bonus": 7,
+    "max_unblock_count": 3,
+    "urgent_bonus": 20,
+    "age_bonus_per_hour": 0.5,
+    "max_age_bonus": 15,
+    "risk_penalty_scale": 20
+  },
+  "collaboration": {
+    "default_max_helpers": 2,
+    "helper_lease_required": true,
+    "owner_remains_accountable": true,
+    "helper_does_not_inherit_external_write_permission": true
+  },
+  "write_scope": {
+    "collision_mode": "prefix-aware",
+    "explicit_collaboration_required_for_shared_mutation": true
+  },
+  "rules": [
+    "Dependencies must be satisfied before work becomes available.",
+    "Unknown dependencies and dependency cycles are coordination errors.",
+    "Capacity limits create backpressure instead of spawning more concurrent work.",
+    "An active write_scope lease blocks overlapping mutation scopes.",
+    "Helpers may join only through explicit helper leases and never replace the accountable owner.",
+    "Priority score is advisory and explainable; it never creates permission.",
+    "When concrete instance state is available, connector/skill requirements must match a fresh instance passport before routing.",
+    "Explicit duplicate intent keys block duplicate execution; probable lexical overlap only warns."
+  ],
+  "capability_federation": {
+    "instance_passport_required_when_instance_state_available": true,
+    "stale_or_expired_passports_are_not_routable": true,
+    "verified_connector_preference": true,
+    "connector_auth_stays_local": true,
+    "no_credential_transfer": true
+  },
+  "task_relay": {
+    "schema": "systems/task_relay.schema.json",
+    "implementation": "core/meaw/task_relay.py",
+    "claim_before_execution": true,
+    "credentials_forbidden": true,
+    "input_refs_preferred_over_copied_content": true,
+    "result_receipt_required": true
+  },
+  "intent_deduplication": {
+    "explicit_intent_key_blocks_duplicates": true,
+    "probable_similarity_warn_only": true,
+    "probable_similarity_threshold": 0.82,
+    "canonical_selection": "highest-priority-then-work-id",
+    "collaboration_rule": "Use helper lease, handoff or explicit subtask instead of opening another work item with the same intent_key."
+  },
+  "prewrite_guard": {
+    "implementation": "core/meaw/harum_prewrite_guard.py",
+    "command": "python -m core.meaw.harum_coord guard-write --actor <actor> --scope <repo:path>",
+    "required_before_connector_mutation": true,
+    "block_on_other_claimed_owner": true,
+    "block_on_other_active_lease": true,
+    "blocked_mode": "support-only",
+    "note": "Coordination guard does not grant external write permission."
+  }
+}
