@@ -1,0 +1,86 @@
+{
+  "schema": "harum.coordination-health/v3",
+  "source_last_event": "evt-hn-percurso-sketchbook-deepen-progress-20260928",
+  "checked_at": "2026-09-30T20:44:16.246410+00:00",
+  "status": "degraded",
+  "counts": {
+    "issues": 0,
+    "warnings": 6,
+    "open_work": 1,
+    "open_help": 0,
+    "active_leases": 0,
+    "known_instances": 3
+  },
+  "issues": [],
+  "warnings": [
+    {
+      "code": "expired-work-lease",
+      "work_id": "HN-PERCURSO-SKETCHBOOK-DEEPEN-012",
+      "owner": "chatgpt-sol-editorial-recovery-20260928"
+    },
+    {
+      "code": "orphaned-active-work-expired-lease",
+      "work_id": "HN-PERCURSO-SKETCHBOOK-DEEPEN-012",
+      "owner": "chatgpt-sol-editorial-recovery-20260928",
+      "lease_id": "lease-hn-sketchbook-deepen-012-20260928T1805Z",
+      "fencing_token": 2,
+      "reason": "expired-primary-lease"
+    },
+    {
+      "code": "stale-instance-heartbeat",
+      "instance": "chatgpt-sol-coding-validation-20260928",
+      "age_seconds": 198496
+    },
+    {
+      "code": "stale-instance-heartbeat",
+      "instance": "chatgpt-sol-editorial-sketchbook-20260928",
+      "age_seconds": 197986
+    },
+    {
+      "code": "stale-instance-heartbeat",
+      "instance": "chatgpt-sol-editorial-recovery-20260928",
+      "age_seconds": 181936
+    },
+    {
+      "code": "dispatcher-has-unroutable-work",
+      "count": 1
+    }
+  ],
+  "suggested_repairs": [
+    {
+      "action": "reclaim-expired-lease",
+      "work_id": "HN-PERCURSO-SKETCHBOOK-DEEPEN-012"
+    },
+    {
+      "action": "recovery-claim-with-new-fencing-token-or-owner-complete",
+      "work_id": "HN-PERCURSO-SKETCHBOOK-DEEPEN-012",
+      "previous_lease_id": "lease-hn-sketchbook-deepen-012-20260928T1805Z",
+      "previous_fencing_token": 2
+    },
+    {
+      "action": "expire-instance-and-release-owned-leases-after-verification",
+      "instance": "chatgpt-sol-coding-validation-20260928"
+    },
+    {
+      "action": "expire-instance-and-release-owned-leases-after-verification",
+      "instance": "chatgpt-sol-editorial-sketchbook-20260928"
+    },
+    {
+      "action": "expire-instance-and-release-owned-leases-after-verification",
+      "instance": "chatgpt-sol-editorial-recovery-20260928"
+    },
+    {
+      "action": "add-capability-or-target-role-to-unroutable-work"
+    }
+  ],
+  "recovery_candidates": [
+    {
+      "work_id": "HN-PERCURSO-SKETCHBOOK-DEEPEN-012",
+      "owner": "chatgpt-sol-editorial-recovery-20260928",
+      "lease_id": "lease-hn-sketchbook-deepen-012-20260928T1805Z",
+      "fencing_token": 2,
+      "reason": "expired-primary-lease"
+    }
+  ],
+  "next_safe_action": "repair warnings before expanding scope"
+}

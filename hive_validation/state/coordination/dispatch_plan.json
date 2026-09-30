@@ -1,0 +1,81 @@
+{
+  "schema": "harum.dispatch-plan/v2",
+  "source_last_event": "evt-hn-percurso-sketchbook-deepen-progress-20260928",
+  "generated_at": "2026-09-30T20:44:16.246121+00:00",
+  "assignments": [
+    {
+      "work_id": "HN-PERCURSO-SKETCHBOOK-DEEPEN-012",
+      "state": "unroutable",
+      "candidate_roles": [
+        "narrative-editor"
+      ],
+      "candidate_instances": [],
+      "target_role": "narrative-editor",
+      "required_capabilities": [
+        "editorial-bridges",
+        "story-structure"
+      ],
+      "required_connectors": [],
+      "required_skills": [],
+      "required_surfaces": [],
+      "require_verified_connectors": false,
+      "priority": 106,
+      "score_breakdown": {
+        "base": 91,
+        "dependency_unblock_bonus": 0,
+        "urgent_bonus": 0,
+        "age_bonus": 15,
+        "risk_penalty": 0
+      },
+      "reason": "expired-lease-recovery",
+      "recovery_candidate": true,
+      "claim_required": true,
+      "branch": "HN-WEB",
+      "write_scope": [
+        "chatbot:app/noir/percursos/page.tsx",
+        "astro:src/pages/percursos.astro"
+      ],
+      "max_helpers": 0,
+      "recovery": {
+        "previous_owner": "chatgpt-sol-editorial-recovery-20260928",
+        "previous_lease_id": "lease-hn-sketchbook-deepen-012-20260928T1805Z",
+        "previous_fencing_token": 2
+      }
+    }
+  ],
+  "summary": {
+    "available": 0,
+    "leased": 0,
+    "waiting_capacity": 0,
+    "blocked": 0,
+    "unroutable": 1,
+    "active_leases": 0,
+    "global_capacity": 6
+  },
+  "load": {
+    "roles": {
+      "coordination-auditor": 0,
+      "rights-guard": 0,
+      "narrative-editor": 0,
+      "growth-analyst": 0,
+      "operator": 0,
+      "fascination-curator": 0,
+      "visual-curator": 0,
+      "research-scout": 0,
+      "coding-instance": 0,
+      "editorial-director": 0,
+      "work-instance": 0
+    },
+    "branches": {}
+  },
+  "rules": {
+    "advisory_only": true,
+    "claim_before_execution": true,
+    "one_owner_per_work_item": true,
+    "dependencies_before_execution": true,
+    "capacity_backpressure": true,
+    "write_scope_collision_prevention": true,
+    "helpers_require_explicit_helper_lease": true,
+    "lease_is_not_external_write_permission": true
+  }
+}

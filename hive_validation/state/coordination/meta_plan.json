@@ -1,0 +1,27 @@
+{
+  "schema": "harum.meta-coordination-plan/v1",
+  "source_last_event": "evt-hn-percurso-sketchbook-deepen-progress-20260928",
+  "generated_at": "2026-09-30T20:44:16.246517+00:00",
+  "mode": "repair-first",
+  "health": "degraded",
+  "primary_move": null,
+  "critical_path": [],
+  "parallel_wave": [],
+  "collaboration_suggestions": [],
+  "stagnation": [],
+  "coordination_budget": {
+    "open_product": 0,
+    "open_support": 0,
+    "support_ratio": 0.0,
+    "max_support_ratio_when_healthy": 0.34,
+    "overcoordination": false,
+    "action": "repair-coordination-before-expanding-work"
+  },
+  "rules": {
+    "advisory_only": true,
+    "never_auto_claim": true,
+    "never_expand_permissions": true,
+    "product_focus_when_healthy": true,
+    "prefer_existing_work_and_help": true
+  }
+}
