@@ -1,0 +1,1119 @@
+{
+  "schema": "harum.instance-passports/v1",
+  "passports": [
+    {
+      "schema": "harum.instance-capability-passport/v1",
+      "actor_id": "chatgpt-sol-session-20260927-2151",
+      "updated_at": "2026-09-28T00:51:00+00:00",
+      "expires_at": "2026-09-28T02:51:00+00:00",
+      "roles": [
+        "coding-instance",
+        "research-scout",
+        "work-instance",
+        "coordination-auditor"
+      ],
+      "capabilities": [
+        "artifact-production",
+        "coordination-health",
+        "cross-file-research",
+        "deploy-validation",
+        "dispatch-planning",
+        "reference-enrichment",
+        "repository-patch",
+        "source-verification",
+        "tests"
+      ],
+      "connectors": [
+        {
+          "id": "github",
+          "provider": "GitHub",
+          "status": "verified",
+          "capabilities": [
+            "repo-read",
+            "repo-write",
+            "workflow-observe",
+            "commit-write"
+          ],
+          "requires_user_auth": true,
+          "evidence": [
+            "GitHub reads/writes succeeded in this session"
+          ]
+        },
+        {
+          "id": "vercel",
+          "provider": "Vercel",
+          "status": "verified",
+          "capabilities": [
+            "project-read",
+            "deployment-read",
+            "deployment-verify"
+          ],
+          "requires_user_auth": true,
+          "evidence": [
+            "Vercel deployment reads succeeded in this session"
+          ]
+        },
+        {
+          "id": "adobe",
+          "provider": "Adobe",
+          "status": "declared",
+          "capabilities": [
+            "image-edit",
+            "design",
+            "pdf"
+          ],
+          "requires_user_auth": true,
+          "evidence": [
+            "tool namespace present in current ChatGPT runtime; user connection not re-verified in this session"
+          ]
+        },
+        {
+          "id": "airtable",
+          "provider": "Airtable",
+          "status": "declared",
+          "capabilities": [
+            "records-read",
+            "records-write"
+          ],
+          "requires_user_auth": true,
+          "evidence": [
+            "tool namespace present in current ChatGPT runtime; user connection not re-verified in this session"
+          ]
+        },
+        {
+          "id": "canva",
+          "provider": "Canva",
+          "status": "declared",
+          "capabilities": [
+            "design-read",
+            "design-edit",
+            "design-create"
+          ],
+          "requires_user_auth": true,
+          "evidence": [
+            "tool namespace present in current ChatGPT runtime; user connection not re-verified in this session"
+          ]
+        },
+        {
+          "id": "descript",
+          "provider": "Descript",
+          "status": "declared",
+          "capabilities": [
+            "audio-video-edit"
+          ],
+          "requires_user_auth": true,
+          "evidence": [
+            "tool namespace present in current ChatGPT runtime; user connection not re-verified in this session"
+          ]
+        },
+        {
+          "id": "dropbox",
+          "provider": "Dropbox",
+          "status": "declared",
+          "capabilities": [
+            "file-read",
+            "file-write",
+            "share"
+          ],
+          "requires_user_auth": true,
+          "evidence": [
+            "tool namespace present in current ChatGPT runtime; user connection not re-verified in this session"
+          ]
+        },
+        {
+          "id": "elevenlabs",
+          "provider": "ElevenLabs",
+          "status": "declared",
+          "capabilities": [
+            "voice",
+            "audio",
+            "agents"
+          ],
+          "requires_user_auth": true,
+          "evidence": [
+            "tool namespace present in current ChatGPT runtime; user connection not re-verified in this session"
+          ]
+        },
+        {
+          "id": "gamma",
+          "provider": "Gamma",
+          "status": "declared",
+          "capabilities": [
+            "presentation-create",
+            "document-create"
+          ],
+          "requires_user_auth": true,
+          "evidence": [
+            "tool namespace present in current ChatGPT runtime; user connection not re-verified in this session"
+          ]
+        },
+        {
+          "id": "gmail",
+          "provider": "Gmail",
+          "status": "declared",
+          "capabilities": [
+            "mail-read",
+            "mail-write"
+          ],
+          "requires_user_auth": true,
+          "evidence": [
+            "tool namespace present in current ChatGPT runtime; user connection not re-verified in this session"
+          ]
+        },
+        {
+          "id": "google-calendar",
+          "provider": "Google Calendar",
+          "status": "declared",
+          "capabilities": [
+            "calendar-read",
+            "calendar-write"
+          ],
+          "requires_user_auth": true,
+          "evidence": [
+            "tool namespace present in current ChatGPT runtime; user connection not re-verified in this session"
+          ]
+        },
+        {
+          "id": "google-contacts",
+          "provider": "Google Contacts",
+          "status": "declared",
+          "capabilities": [
+            "contacts-read"
+          ],
+          "requires_user_auth": true,
+          "evidence": [
+            "tool namespace present in current ChatGPT runtime; user connection not re-verified in this session"
+          ]
+        },
+        {
+          "id": "google-drive",
+          "provider": "Google Drive",
+          "status": "declared",
+          "capabilities": [
+            "file-search",
+            "file-read",
+            "file-write"
+          ],
+          "requires_user_auth": true,
+          "evidence": [
+            "tool namespace present in current ChatGPT runtime; user connection not re-verified in this session"
+          ]
+        },
+        {
+          "id": "heygen",
+          "provider": "HeyGen",
+          "status": "declared",
+          "capabilities": [
+            "video-create",
+            "avatar"
+          ],
+          "requires_user_auth": true,
+          "evidence": [
+            "tool namespace present in current ChatGPT runtime; user connection not re-verified in this session"
+          ]
+        },
+        {
+          "id": "neon",
+          "provider": "Neon",
+          "status": "declared",
+          "capabilities": [
+            "postgres",
+            "storage",
+            "functions"
+          ],
+          "requires_user_auth": true,
+          "evidence": [
+            "tool namespace present in current ChatGPT runtime; user connection not re-verified in this session"
+          ]
+        },
+        {
+          "id": "openai-platform",
+          "provider": "OpenAI Platform",
+          "status": "declared",
+          "capabilities": [
+            "api-key-setup"
+          ],
+          "requires_user_auth": true,
+          "evidence": [
+            "tool namespace present in current ChatGPT runtime; user connection not re-verified in this session"
+          ]
+        },
+        {
+          "id": "supabase",
+          "provider": "Supabase",
+          "status": "declared",
+          "capabilities": [
+            "postgres",
+            "auth",
+            "storage",
+            "functions"
+          ],
+          "requires_user_auth": true,
+          "evidence": [
+            "tool namespace present in current ChatGPT runtime; user connection not re-verified in this session"
+          ]
+        },
+        {
+          "id": "windsor-ai",
+          "provider": "Windsor ai",
+          "status": "declared",
+          "capabilities": [
+            "marketing-analytics",
+            "data-read"
+          ],
+          "requires_user_auth": true,
+          "evidence": [
+            "tool namespace present in current ChatGPT runtime; user connection not re-verified in this session"
+          ]
+        }
+      ],
+      "skills": [
+        {
+          "id": "skills://plugins/stark-ai-developer/animated-readme-logo",
+          "category": "stark-ai-developer",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/stark-ai-developer/architecture-compass",
+          "category": "stark-ai-developer",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/stark-ai-developer/codex-spec-interviewer",
+          "category": "stark-ai-developer",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/stark-ai-developer/drawio-diagrams",
+          "category": "stark-ai-developer",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/app-69312da8e4dc81919370cb86fd172b6c/adobe-batch-edit-photos",
+          "category": "app-69312da8e4dc81919370cb86fd172b6c",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/app-69312da8e4dc81919370cb86fd172b6c/adobe-create-mockups",
+          "category": "app-69312da8e4dc81919370cb86fd172b6c",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/app-69312da8e4dc81919370cb86fd172b6c/adobe-create-social-variations",
+          "category": "app-69312da8e4dc81919370cb86fd172b6c",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/app-69312da8e4dc81919370cb86fd172b6c/adobe-design-from-template",
+          "category": "app-69312da8e4dc81919370cb86fd172b6c",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/app-69312da8e4dc81919370cb86fd172b6c/adobe-fonts",
+          "category": "app-69312da8e4dc81919370cb86fd172b6c",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/app-69312da8e4dc81919370cb86fd172b6c/adobe-retouch-portraits",
+          "category": "app-69312da8e4dc81919370cb86fd172b6c",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/app-69312da8e4dc81919370cb86fd172b6c/adobe-edit-quick-cut",
+          "category": "app-69312da8e4dc81919370cb86fd172b6c",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/airtable/airtable-cli",
+          "category": "airtable",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/airtable/airtable-filters",
+          "category": "airtable",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/airtable/airtable-overview",
+          "category": "airtable",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/windsor-ai/windsor",
+          "category": "windsor-ai",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/app-69b31dc2110c8191b8b47dc98fe5a052/clean-up-dropbox-content",
+          "category": "app-69b31dc2110c8191b8b47dc98fe5a052",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/app-69b31dc2110c8191b8b47dc98fe5a052/collect-files-with-request",
+          "category": "app-69b31dc2110c8191b8b47dc98fe5a052",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/app-69b31dc2110c8191b8b47dc98fe5a052/find-dropbox-content",
+          "category": "app-69b31dc2110c8191b8b47dc98fe5a052",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/app-69b31dc2110c8191b8b47dc98fe5a052/inspect-dropbox-file",
+          "category": "app-69b31dc2110c8191b8b47dc98fe5a052",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/app-69b31dc2110c8191b8b47dc98fe5a052/organize-dropbox-folder",
+          "category": "app-69b31dc2110c8191b8b47dc98fe5a052",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/app-69b31dc2110c8191b8b47dc98fe5a052/share-dropbox-content",
+          "category": "app-69b31dc2110c8191b8b47dc98fe5a052",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/supabase/supabase",
+          "category": "supabase",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/supabase/supabase-postgres-best-practices",
+          "category": "supabase",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/neon-postgres/neon",
+          "category": "neon-postgres",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/neon-postgres/neon-ai-gateway",
+          "category": "neon-postgres",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/neon-postgres/neon-functions",
+          "category": "neon-postgres",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/neon-postgres/neon-object-storage",
+          "category": "neon-postgres",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/neon-postgres/neon-postgres",
+          "category": "neon-postgres",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/agent-simplification",
+          "category": "app-6a8d784b60cc81919aeafbfaeda5fbcf",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/agents",
+          "category": "app-6a8d784b60cc81919aeafbfaeda5fbcf",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/agents-platform",
+          "category": "app-6a8d784b60cc81919aeafbfaeda5fbcf",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/architect-agent-memory",
+          "category": "app-6a8d784b60cc81919aeafbfaeda5fbcf",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/architect-branches-versions-merge",
+          "category": "app-6a8d784b60cc81919aeafbfaeda5fbcf",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/architect-create-client-tool",
+          "category": "app-6a8d784b60cc81919aeafbfaeda5fbcf",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/architect-create-llm-test",
+          "category": "app-6a8d784b60cc81919aeafbfaeda5fbcf",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/architect-create-simulation-test",
+          "category": "app-6a8d784b60cc81919aeafbfaeda5fbcf",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/architect-create-tool-test",
+          "category": "app-6a8d784b60cc81919aeafbfaeda5fbcf",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/architect-create-webhook-tool",
+          "category": "app-6a8d784b60cc81919aeafbfaeda5fbcf",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/architect-edit-existing-tool",
+          "category": "app-6a8d784b60cc81919aeafbfaeda5fbcf",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/architect-edit-string-fields",
+          "category": "app-6a8d784b60cc81919aeafbfaeda5fbcf",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/architect-edit-workflows",
+          "category": "app-6a8d784b60cc81919aeafbfaeda5fbcf",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/architect-explain-test-runs",
+          "category": "app-6a8d784b60cc81919aeafbfaeda5fbcf",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/architect-explore-agent",
+          "category": "app-6a8d784b60cc81919aeafbfaeda5fbcf",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/architect-generate-agent",
+          "category": "app-6a8d784b60cc81919aeafbfaeda5fbcf",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/architect-get-agent-ci-green",
+          "category": "app-6a8d784b60cc81919aeafbfaeda5fbcf",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/architect-llm-selection",
+          "category": "app-6a8d784b60cc81919aeafbfaeda5fbcf",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/architect-manage-procedures",
+          "category": "app-6a8d784b60cc81919aeafbfaeda5fbcf",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/architect-migrate-from-competitor",
+          "category": "app-6a8d784b60cc81919aeafbfaeda5fbcf",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/architect-migrate-to-procedures",
+          "category": "app-6a8d784b60cc81919aeafbfaeda5fbcf",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/architect-mock-all-tools",
+          "category": "app-6a8d784b60cc81919aeafbfaeda5fbcf",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/architect-post-call-data",
+          "category": "app-6a8d784b60cc81919aeafbfaeda5fbcf",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/architect-review-live-calls",
+          "category": "app-6a8d784b60cc81919aeafbfaeda5fbcf",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/architect-schedule-launch",
+          "category": "app-6a8d784b60cc81919aeafbfaeda5fbcf",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/architect-secure-for-production",
+          "category": "app-6a8d784b60cc81919aeafbfaeda5fbcf",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/architect-structured-procedures",
+          "category": "app-6a8d784b60cc81919aeafbfaeda5fbcf",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/architect-troubleshoot-tool-errors",
+          "category": "app-6a8d784b60cc81919aeafbfaeda5fbcf",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/architect-turn-taking-latency",
+          "category": "app-6a8d784b60cc81919aeafbfaeda5fbcf",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/architect-update-config-safely",
+          "category": "app-6a8d784b60cc81919aeafbfaeda5fbcf",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/code-tools",
+          "category": "app-6a8d784b60cc81919aeafbfaeda5fbcf",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/creative-studio",
+          "category": "app-6a8d784b60cc81919aeafbfaeda5fbcf",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/dubbing",
+          "category": "app-6a8d784b60cc81919aeafbfaeda5fbcf",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/fix-agent-qa-ticket",
+          "category": "app-6a8d784b60cc81919aeafbfaeda5fbcf",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/music",
+          "category": "app-6a8d784b60cc81919aeafbfaeda5fbcf",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/setup-api-key",
+          "category": "app-6a8d784b60cc81919aeafbfaeda5fbcf",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/sound-effects",
+          "category": "app-6a8d784b60cc81919aeafbfaeda5fbcf",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/speech-engine",
+          "category": "app-6a8d784b60cc81919aeafbfaeda5fbcf",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/speech-to-text",
+          "category": "app-6a8d784b60cc81919aeafbfaeda5fbcf",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/text-to-speech",
+          "category": "app-6a8d784b60cc81919aeafbfaeda5fbcf",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/voice-changer",
+          "category": "app-6a8d784b60cc81919aeafbfaeda5fbcf",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/voice-isolator",
+          "category": "app-6a8d784b60cc81919aeafbfaeda5fbcf",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/openai-templates/artifact-template-analytics-dashboard",
+          "category": "openai-templates",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/openai-templates/artifact-template-business-review",
+          "category": "openai-templates",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/openai-templates/artifact-template-design-report",
+          "category": "openai-templates",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/openai-templates/artifact-template-experiment-analysis",
+          "category": "openai-templates",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/openai-templates/artifact-template-financial-budget",
+          "category": "openai-templates",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/openai-templates/artifact-template-investment-committee-memo",
+          "category": "openai-templates",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/openai-templates/artifact-template-legal-memorandum",
+          "category": "openai-templates",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/openai-templates/artifact-template-market-trends-report",
+          "category": "openai-templates",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/openai-templates/artifact-template-minimal-letterhead",
+          "category": "openai-templates",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/openai-templates/artifact-template-operating-calendar",
+          "category": "openai-templates",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/openai-templates/artifact-template-operating-review",
+          "category": "openai-templates",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/openai-templates/artifact-template-project-kickoff",
+          "category": "openai-templates",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/openai-templates/artifact-template-project-tracker",
+          "category": "openai-templates",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/openai-templates/artifact-template-sales-pipeline",
+          "category": "openai-templates",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/openai-templates/artifact-template-simple-dark-mode",
+          "category": "openai-templates",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/openai-templates/artifact-template-simple-light-mode",
+          "category": "openai-templates",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/openai-templates/artifact-template-strategy-memorandum",
+          "category": "openai-templates",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/openai-templates/artifact-template-system-design",
+          "category": "openai-templates",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/openai-templates/artifact-template-team-alignment",
+          "category": "openai-templates",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/openai-templates/artifact-template-three-statement-forecast",
+          "category": "openai-templates",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/template-creator/template-creator",
+          "category": "template-creator",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/presentations-router/presentation",
+          "category": "presentations-router",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/pdf-router/pdf",
+          "category": "pdf-router",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/documents-router/document",
+          "category": "documents-router",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/google-drive/google-docs",
+          "category": "google-drive",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/google-drive/google-drive",
+          "category": "google-drive",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/google-drive/google-drive-comments",
+          "category": "google-drive",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/google-drive/google-sheets",
+          "category": "google-drive",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/google-drive/google-slides",
+          "category": "google-drive",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/plugin-management/plugin-management",
+          "category": "plugin-management",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/spreadsheets-router/spreadsheet",
+          "category": "spreadsheets-router",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/canva/canva-brand-check",
+          "category": "canva",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/canva/canva-branded-presentation",
+          "category": "canva",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/canva/canva-bulk-create",
+          "category": "canva",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/canva/canva-translate-design",
+          "category": "canva",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/canva/canva-edit-design",
+          "category": "canva",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/canva/canva-design-feedback",
+          "category": "canva",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/canva/canva-implement-feedback",
+          "category": "canva",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/canva/canva-resize-for-social-media",
+          "category": "canva",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/vercel/agent-browser",
+          "category": "vercel",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/vercel/agent-browser-verify",
+          "category": "vercel",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/vercel/ai-elements",
+          "category": "vercel",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/vercel/ai-gateway",
+          "category": "vercel",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/vercel/ai-generation-persistence",
+          "category": "vercel",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/vercel/ai-sdk",
+          "category": "vercel",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/vercel/auth",
+          "category": "vercel",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/vercel/bootstrap",
+          "category": "vercel",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/vercel/cdn-caching",
+          "category": "vercel",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/vercel/chat-sdk",
+          "category": "vercel",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/vercel/cms",
+          "category": "vercel",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/vercel/cron-jobs",
+          "category": "vercel",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/vercel/deployments-cicd",
+          "category": "vercel",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/vercel/email",
+          "category": "vercel",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/vercel/env-vars",
+          "category": "vercel",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/vercel/eve",
+          "category": "vercel",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/vercel/geist",
+          "category": "vercel",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/vercel/geistdocs",
+          "category": "vercel",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/vercel/investigation-mode",
+          "category": "vercel",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/vercel/json-render",
+          "category": "vercel",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/vercel/knowledge-update",
+          "category": "vercel",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/vercel/marketplace",
+          "category": "vercel",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/vercel/micro",
+          "category": "vercel",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/vercel/microfrontends",
+          "category": "vercel",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/vercel/ncc",
+          "category": "vercel",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/vercel/next-cache-components",
+          "category": "vercel",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/vercel/next-forge",
+          "category": "vercel",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/vercel/next-upgrade",
+          "category": "vercel",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/vercel/nextjs",
+          "category": "vercel",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/vercel/observability",
+          "category": "vercel",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/vercel/payments",
+          "category": "vercel",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/vercel/react-best-practices",
+          "category": "vercel",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/vercel/routing-middleware",
+          "category": "vercel",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/vercel/runtime-cache",
+          "category": "vercel",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/vercel/satori",
+          "category": "vercel",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/vercel/shadcn",
+          "category": "vercel",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/vercel/sign-in-with-vercel",
+          "category": "vercel",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/vercel/swr",
+          "category": "vercel",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/vercel/turbopack",
+          "category": "vercel",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/vercel/turborepo",
+          "category": "vercel",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/vercel/v0-dev",
+          "category": "vercel",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/vercel/vercel-agent",
+          "category": "vercel",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/vercel/vercel-api",
+          "category": "vercel",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/vercel/vercel-cli",
+          "category": "vercel",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/vercel/vercel-connect",
+          "category": "vercel",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/vercel/vercel-firewall",
+          "category": "vercel",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/vercel/vercel-flags",
+          "category": "vercel",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/vercel/vercel-functions",
+          "category": "vercel",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/vercel/vercel-queues",
+          "category": "vercel",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/vercel/vercel-sandbox",
+          "category": "vercel",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/vercel/vercel-services",
+          "category": "vercel",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/vercel/vercel-storage",
+          "category": "vercel",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/vercel/verification",
+          "category": "vercel",
+          "capabilities": []
+        },
+        {
+          "id": "skills://plugins/vercel/workflow",
+          "category": "vercel",
+          "capabilities": []
+        }
+      ],
+      "capacity": {
+        "max_parallel_claims": 1
+      },
+      "constraints": [
+        "connector namespace presence is not proof of user connection",
+        "current chat is not a persistent endpoint after session expiry",
+        "GitHub and Vercel connectors are verified in this session; research enrichment is verified through current web/source work",
+        "execution surfaces: no mounted HIVE repo shell and no executable mobile browser/screenshot surface in this session"
+      ],
+      "preferred_work_types": [
+        "coordination",
+        "research",
+        "repository-patch",
+        "deploy-validation"
+      ],
+      "reachability": "active",
+      "dispatch_modes": [
+        "local-runtime"
+      ],
+      "security": {
+        "contains_credentials": false,
+        "grants_permissions": false,
+        "auth_boundary": "connector authorization remains local to this ChatGPT runtime"
+      },
+      "surfaces": [
+        "connector-api",
+        "github-api",
+        "vercel-api",
+        "web-research"
+      ]
+    }
+  ]
+}
