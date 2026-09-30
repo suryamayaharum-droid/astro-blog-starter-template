@@ -1,0 +1,30 @@
+name: Validate HIVE Projection Freshness
+
+on:
+  push:
+    branches:
+      - ci/validate-hive-projection-freshness
+  workflow_dispatch:
+
+jobs:
+  validate-hive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout validation bundle
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run coordination regression suite
+        working-directory: hive_validation
+        run: |
+          python -m unittest \
+            tests.test_harum_projection_freshness \
+            tests.test_harum_coord \
+            tests.test_harum_dispatcher \
+            tests.test_harum_coordination_doctor \
+            tests.test_harum_meta_coordinator -v
