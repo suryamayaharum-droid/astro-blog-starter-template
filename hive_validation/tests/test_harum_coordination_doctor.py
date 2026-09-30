@@ -107,5 +107,58 @@ class CoordinationDoctorTests(unittest.TestCase):
         self.assertEqual(report["recovery_candidates"][0]["fencing_token"],3)
 
 
+    def test_explicitly_expired_instance_is_dormant_not_stale_warning(self):
+        panel,jev,tree,registry,leases,bootstrap,policy=self.base()
+        assembly={"instances":{
+            "expired-peer":{
+                "role":"visual-curator",
+                "reachability":"active",
+                "last_seen":"2026-09-27T18:00:00Z",
+                "expires_at":"2026-09-27T19:00:00Z",
+            }
+        }}
+        report=diagnose(
+            panel=panel,jev=jev,tree=tree,registry=registry,leases=leases,
+            bootstrap=bootstrap,assembly_state=assembly,dispatch_policy=policy,
+            now=datetime.datetime(2026,9,27,20,10,tzinfo=datetime.timezone.utc),
+            instance_stale_seconds=3600,
+        )
+        codes={x["code"] for x in report["warnings"]}
+        self.assertNotIn("stale-instance-heartbeat",codes)
+        self.assertEqual(report["counts"]["dormant_instances"],1)
+        self.assertEqual(report["dormant_instances"][0]["instance"],"expired-peer")
+        self.assertEqual(report["dormant_instances"][0]["reason"],"ttl-expired")
+
+    def test_recovery_candidate_drives_next_safe_action(self):
+        panel,jev,tree,registry,leases,bootstrap,policy=self.base()
+        jev["open_work"][0].update({"status":"executing","owner":"old-owner"})
+        leases["leases"]["w1"]={
+            "owner":"old-owner",
+            "role":"visual-curator",
+            "lease_id":"expired-1",
+            "fencing_token":4,
+            "expires_at":100,
+        }
+        dispatch={
+            "assignments":[{
+                "work_id":"w1",
+                "state":"unroutable",
+                "recovery_candidate":True,
+            }],
+            "summary":{"unroutable":1},
+        }
+        report=diagnose(
+            panel=panel,jev=jev,tree=tree,registry=registry,leases=leases,
+            bootstrap=bootstrap,dispatch_plan=dispatch,dispatch_policy=policy,
+            now=datetime.datetime.fromtimestamp(101,datetime.timezone.utc),
+        )
+        self.assertEqual(
+            report["next_safe_action"],
+            "recover or close orphaned work before expanding scope",
+        )
+        repair_actions={x["action"] for x in report["suggested_repairs"]}
+        self.assertIn("activate-compatible-instance-for-recovery-or-owner-close",repair_actions)
+
+
 if __name__=="__main__":
     unittest.main()
