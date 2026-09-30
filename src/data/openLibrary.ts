@@ -106,7 +106,7 @@ export const openLibraryCollections: OpenLibraryCollection[] = [
         title: "Ontleding des menschelyken lichaams",
         source: "National Library of Medicine",
         url: "https://www.nlm.nih.gov/exhibition/historicalanatomies/bidloo_home.html",
-        observe: "Corpo, objetos de atelier e espaço físico aparecem juntos.",
+        observe: "Corpo, objetos de ateliê e espaço físico aparecem juntos.",
         rights: "Public domain"
       },
       {
@@ -137,14 +137,14 @@ export const openLibraryCollections: OpenLibraryCollection[] = [
   },
   {
     id: "atelier-historico-aberto",
-    kicker: "ATELIER HISTÓRICO",
-    title: "Atelier histórico aberto",
+    kicker: "ATELIÊ HISTÓRICO",
+    title: "Ateliê histórico aberto",
     thesis: "Métodos acadêmicos podem treinar precisão, construção e comparação sem determinar a estética final do artista.",
     rule: "Método é ferramenta. Assimilar estrutura; não copiar acabamento nem transformar academia em estilo.",
     destination: "Fundamentos · proporção · construção",
     practice: "Desenhe a mesma pose em três estados: primeiro proporção e contorno; depois massas construtivas; por fim esconda a referência e redesenhe de memória.",
     nextHref: "atelier",
-    nextLabel: "Levar ao Atelier",
+    nextLabel: "Levar ao Ateliê",
     sources: [
       {
         creator: "Charles Bargue / Jean-Léon Gérôme",

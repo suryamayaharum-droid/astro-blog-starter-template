@@ -13,7 +13,7 @@ const paths=[
   {id:"mundo",n:"05",title:"Sketchbook & mundo autoral",text:"Caderno como laboratório, arquivo, narrativa e lugar onde uma linguagem começa a acumular memória.",image:"memory-01.svg",refs:["karl-kopinski","kim-jung-gi-super-ani","drawingwiffwaffles","aaron-blaise"],caderno:"memoria",temporada:"04",biblioteca:"caderno-como-universo"},
 ];
 ---
-<!doctype html><html lang="pt-BR"><head><BaseHead title="Percursos · Harum Noir" description="Caminhos curatoriais que ligam referências, cadernos, atelier, temporadas e prática."/></head>
+<!doctype html><html lang="pt-BR"><head><BaseHead title="Percursos · Harum Noir" description="Caminhos curatoriais que ligam referências, cadernos, ateliê, temporadas e prática."/></head>
 <body><Header/><main>
 <section class="page-hero"><div class="eyebrow">PERCURSOS</div><h1>Escolha por onde entrar.</h1><p>O site não precisa ser lido em ordem. Cada percurso aproxima referências, estudo e prática em torno de uma pergunta diferente.</p></section>
 
@@ -28,7 +28,7 @@ const paths=[
      <div class="journey-image"><img src={base+'noir/'+p.image} alt=""/></div>
      <div><span class="eyebrow">PERCURSO {p.n}</span><h2>{p.title}</h2><p>{p.text}</p>
        <div class="actions"><a class="btn primary" href={base+'cadernos#'+p.caderno}>Abrir caderno</a><a class="btn" href={base+'biblioteca#'+p.biblioteca}>Abrir fontes</a></div>
-       <p class="journey-next">Depois, se quiser aprofundar: <a href={base+'temporadas#t'+p.temporada}>temporada</a><a href={base+'atelier'}>atelier</a></p>
+       <p class="journey-next">Depois, se quiser aprofundar: <a href={base+'temporadas#t'+p.temporada}>temporada</a><a href={base+'atelier'}>ateliê</a></p>
      </div>
    </div>
    {p.id==="mundo"&&<div class="journal" style="margin-top:28px"><div class="paper">

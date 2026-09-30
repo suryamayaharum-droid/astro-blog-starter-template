@@ -2,7 +2,7 @@
 import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-const base=import.meta.env.BASE_URL;
+const base=import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 const estrutura=[
   {n:"01",title:"Globo",text:"Pense primeiro numa esfera. As pálpebras não são dois riscos: elas envolvem um volume e mudam de curva quando o olho gira."},
   {n:"02",title:"Órbita",text:"O olho não flutua no rosto. Sobrancelha, raiz do nariz, têmpora e maçã do rosto constroem o espaço onde ele existe."},

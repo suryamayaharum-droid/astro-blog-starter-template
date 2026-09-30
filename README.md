@@ -4,9 +4,9 @@ Site editorial público de desenho, carvão, figura, observação e processo aut
 
 ## Estrutura pública
 - Cadernos de Presença
-- Atelier Aberto
+- Ateliê Aberto
 - Temporadas
-- Carta do Atelier
+- Carta do Ateliê
 - Arquivo Aberto
 - Sobre
 

@@ -2,7 +2,7 @@
 import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-const base=import.meta.env.BASE_URL;
+const base=import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 const atrasos=[
   {n:"01",title:"Nome",text:"Antes de pensar 'braço', 'rosto' ou 'mão', observe direção, tamanho, temperatura de valor e relação com o espaço ao redor."},
   {n:"02",title:"Contorno",text:"Não feche a figura cedo demais. Comece por intervalos, massas e distâncias. O corpo pode aparecer antes de ganhar uma borda completa."},

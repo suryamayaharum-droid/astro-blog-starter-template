@@ -5,7 +5,7 @@ import Footer from '../../components/Footer.astro';
 import {referenceArtists,referenceCollections} from '../../data/references';
 export function getStaticPaths(){return referenceArtists.map(artist=>({params:{slug:artist.slug},props:{artist}}));}
 const {artist}=Astro.props;
-const base=import.meta.env.BASE_URL;
+const base=import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 const relatedRanks=referenceCollections.find(c=>c.ranks.includes(artist.rank))?.ranks.filter(r=>r!==artist.rank).slice(0,6)||[];
 const related=relatedRanks.map(r=>referenceArtists.find(a=>a.rank===r)).filter(Boolean);
 const hero=artist.videoId ? 'https://i.ytimg.com/vi/'+artist.videoId+'/maxresdefault.jpg' : base+'noir/reference-fallback.svg';

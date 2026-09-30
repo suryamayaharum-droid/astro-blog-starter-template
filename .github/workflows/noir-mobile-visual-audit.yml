@@ -1,4 +1,4 @@
-name: Harum Noir Mobile Visual Audit
+name: Harum Noir Mobile Visual Audit · GitHub Pages
 
 on:
   workflow_dispatch:
@@ -35,12 +35,13 @@ jobs:
               { name: '390x844', width: 390, height: 844 },
               { name: '412x915', width: 412, height: 915 }
             ];
+            const base = 'https://suryamayaharum-droid.github.io/astro-blog-starter-template';
             const targets = [
-              ['home', 'https://chatbot-seven-phi-94.vercel.app/noir'],
-              ['atlas', 'https://chatbot-seven-phi-94.vercel.app/noir/referencias'],
-              ['artist-cesar-santos', 'https://chatbot-seven-phi-94.vercel.app/noir/referencias/cesar-santos'],
-              ['artist-silvie-mahdal', 'https://chatbot-seven-phi-94.vercel.app/noir/referencias/silvie-mahdal'],
-              ['percursos', 'https://chatbot-seven-phi-94.vercel.app/noir/percursos']
+              ['home', `${base}/`],
+              ['atlas', `${base}/referencias/`],
+              ['artist-cesar-santos', `${base}/referencias/cesar-santos/`],
+              ['artist-silvie-mahdal', `${base}/referencias/silvie-mahdal/`],
+              ['percursos', `${base}/percursos/`]
             ];
             const metrics = [];
 

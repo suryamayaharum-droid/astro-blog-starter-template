@@ -2,17 +2,17 @@
 import BaseHead from '../components/BaseHead.astro';import Header from '../components/Header.astro';import Footer from '../components/Footer.astro';const base=import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 const itens=[
 ["Atlas de Referências","50 artistas, ateliês e professores organizados por curadoria.",`${base}referencias`],
-["Biblioteca Aberta","Fontes públicas e institucionais organizadas por sketchbook, anatomia, atelier, mãos e cabeça.",`${base}biblioteca`],
+["Biblioteca Aberta","Fontes públicas e institucionais organizadas por sketchbook, anatomia, ateliê, mãos e cabeça.",`${base}biblioteca`],
 ["Cadernos de Presença","Série editorial em torno de gesto, olhar, memória e vestígio.",`${base}cadernos`],
-["Atelier Aberto","Fundamentos e exercícios organizados para prática.",`${base}atelier`],
+["Ateliê Aberto","Fundamentos e exercícios organizados para prática.",`${base}atelier`],
 ["Temporadas","Sete percursos de aprofundamento.",`${base}temporadas`],
-["Carta do Atelier","Edições públicas e gratuitas.",`${base}carta`],
+["Carta do Ateliê","Edições públicas e gratuitas.",`${base}carta`],
 ["Modelo Vivo e Gesto · texto aberto","Documento público da primeira temporada.",`${base}vault/E01_MODELO_VIVO_GESTO.md`],
 ["RSS da Carta","Feed aberto para acompanhar novas edições.",`${base}rss.xml`],
-["Espelho alternativo","Segunda hospedagem pública do Harum Noir para continuidade e redundância.","https://chatbot-seven-phi-94.vercel.app/noir"],
+["Site principal Studio 23","Atendimento, portfólio documental e canais oficiais do estúdio.","https://tattoostudio23.suryamaya-harum.chatgpt.site/"],
 ];
 ---
 <!doctype html><html lang="pt-BR"><head><BaseHead title="Arquivo · Harum Noir" description="Acesso público aos cadernos, temporadas, cartas e materiais abertos do Harum Noir."/></head><body><Header/><main>
-<section class="page-hero"><div class="eyebrow">ARQUIVO ABERTO</div><h1>O que pode circular, circula.</h1><p>O arquivo público reúne apenas materiais prontos para serem vistos fora do atelier. Rascunhos, pesquisa bruta e processos internos permanecem fora daqui.</p></section>
+<section class="page-hero"><div class="eyebrow">ARQUIVO ABERTO</div><h1>O que pode circular, circula.</h1><p>O arquivo público reúne apenas materiais prontos para serem vistos fora do ateliê. Rascunhos, pesquisa bruta e processos internos permanecem fora daqui.</p></section>
 <section class="section"><div class="archive-grid">{itens.map(i=><a class="archive-item" href={i[2]}><span class="card-kicker">ABERTO</span><h3>{i[0]}</h3><p>{i[1]}</p></a>)}</div></section>
 </main><Footer/></body></html>

@@ -912,13 +912,13 @@ export const referenceArtists:PublicReference[]=[
     "rank": 26,
     "slug": "cesar-santos",
     "name": "Cesar Santos",
-    "archetype": "Atelier clássico contemporâneo",
+    "archetype": "Ateliê clássico contemporâneo",
     "focus": "Desenho acadêmico / carvão / pintura",
-    "special": "Une treinamento acadêmico, desenho e pintura em etapas visíveis; forte autoridade de atelier e demonstração do natural.",
+    "special": "Une treinamento acadêmico, desenho e pintura em etapas visíveis; forte autoridade de ateliê e demonstração do natural.",
     "youtube": "https://www.youtube.com/@santocesart",
     "instagram": "",
     "site": "https://www.santocesar.com/",
-    "lane": "Atelier / técnica",
+    "lane": "Ateliê / técnica",
     "videoId": "hgQ2NWYoSL8",
     "refs": [
       {
@@ -926,7 +926,7 @@ export const referenceArtists:PublicReference[]=[
         "title": "Cesar Santos — Official Gallery",
         "url": "https://www.santocesar.com/",
         "observe": "Relação entre desenho acadêmico, figura e pintura final.",
-        "tags": "atelier; acadêmico; figura; pintura"
+        "tags": "ateliê; acadêmico; figura; pintura"
       },
       {
         "type": "Ensino / etapas",
@@ -1155,7 +1155,7 @@ export const referenceArtists:PublicReference[]=[
         "type": "Produto / materiais",
         "title": "Drawing Supplies & Pencil Kits",
         "url": "https://www.jdhillberrytutorials.com/supply-store.html",
-        "observe": "Materiais de atelier viram kit ligado ao método de ensino.",
+        "observe": "Materiais de ateliê viram kit ligado ao método de ensino.",
         "tags": "materiais; kit; produto; técnica"
       }
     ]
@@ -1238,11 +1238,11 @@ export const referenceArtists:PublicReference[]=[
     "name": "Watts Atelier of the Arts",
     "archetype": "Atelier clássico como mídia",
     "focus": "Figura / retrato / desenho acadêmico",
-    "special": "Converte tradição de atelier em conteúdo digital por demonstrações completas, entrevistas, aulas e comunidade.",
+    "special": "Converte tradição de ateliê em conteúdo digital por demonstrações completas, entrevistas, aulas e comunidade.",
     "youtube": "https://www.youtube.com/@wattsatelier",
     "instagram": "https://www.instagram.com/wattsatelier/",
     "site": "https://www.wattsatelier.com/",
-    "lane": "Atelier / educação",
+    "lane": "Ateliê / educação",
     "videoId": "O5Vy3vD-RPg",
     "refs": [
       {
@@ -1250,7 +1250,7 @@ export const referenceArtists:PublicReference[]=[
         "title": "Watts Atelier — YouTube",
         "url": "https://www.youtube.com/@wattsatelier",
         "observe": "Demonstrações completas, entrevistas e ensino tradicional adaptado ao vídeo.",
-        "tags": "atelier; demonstração; entrevista; figura"
+        "tags": "ateliê; demonstração; entrevista; figura"
       },
       {
         "type": "Método / comunidade",
@@ -1310,7 +1310,7 @@ export const referenceArtists:PublicReference[]=[
     "name": "Akihito Yoshitomi",
     "archetype": "Mangaká + processo silencioso",
     "focus": "Lápis / caneta / sketchbook / mangá",
-    "special": "Mostra desenho quase como documentação de atelier: sketchbooks, caneta, lápis e processo longo com pouca dependência de fala.",
+    "special": "Mostra desenho quase como documentação de ateliê: sketchbooks, caneta, lápis e processo longo com pouca dependência de fala.",
     "youtube": "https://www.youtube.com/@akihitoyoshitomi3758",
     "instagram": "",
     "site": "",
@@ -1418,7 +1418,7 @@ export const referenceArtists:PublicReference[]=[
     "name": "Daria Callie",
     "archetype": "Processo íntimo + retrato",
     "focus": "Pintura figurativa / retrato / desenho",
-    "special": "Publica poucas peças comparada a canais de volume, mas sustenta audiência grande com retrato, timelapse e narrativa de atelier.",
+    "special": "Publica poucas peças comparada a canais de volume, mas sustenta audiência grande com retrato, timelapse e narrativa de ateliê.",
     "youtube": "https://www.youtube.com/@dariacallie",
     "instagram": "https://www.instagram.com/dariacallie/",
     "site": "https://dariacallie.com/",
@@ -1430,7 +1430,7 @@ export const referenceArtists:PublicReference[]=[
         "title": "Studio process and artist statement",
         "url": "https://dariacallie.com/bio/",
         "observe": "Combina abstração e realismo do retrato; publica processo desde 2016 para audiência global.",
-        "tags": "retrato; processo; narrativa; atelier"
+        "tags": "retrato; processo; narrativa; ateliê"
       },
       {
         "type": "Obra + conteúdo",
@@ -1489,12 +1489,12 @@ export const referenceArtists:PublicReference[]=[
     "slug": "slew-sam-lewis",
     "name": "SLEW (Sam Lewis)",
     "archetype": "Fine art transformada em entretenimento",
-    "focus": "Desenho / pintura / atelier / desafios",
+    "focus": "Desenho / pintura / ateliê / desafios",
     "special": "Conseguiu tornar prática de fine art acessível a público amplo usando desafios, competição, estúdio e personalidade, sem abandonar estudo sério.",
     "youtube": "https://www.youtube.com/channel/UCyPUBwc9IQl2FZZa0_Tn32Q",
     "instagram": "https://www.instagram.com/slewp/",
     "site": "https://www.studioslew.org/",
-    "lane": "Alcance / atelier / comunidade",
+    "lane": "Alcance / ateliê / comunidade",
     "videoId": "zM7jmmdDoC8",
     "refs": [
       {
@@ -1515,8 +1515,8 @@ export const referenceArtists:PublicReference[]=[
         "type": "Ecossistema / escola",
         "title": "Studio SLEW Mission",
         "url": "https://www.studioslew.org/mission",
-        "observe": "Atelier tradicional modernizado como comunidade acessível, com modelos e prática contínua.",
-        "tags": "atelier; comunidade; escola; missão"
+        "observe": "Ateliê tradicional modernizado como comunidade acessível, com modelos e prática contínua.",
+        "tags": "ateliê; comunidade; escola; missão"
       }
     ]
   },
@@ -1560,13 +1560,13 @@ export const referenceArtists:PublicReference[]=[
     "rank": 44,
     "slug": "new-masters-academy",
     "name": "New Masters Academy",
-    "archetype": "Biblioteca de atelier em escala",
+    "archetype": "Biblioteca de ateliê em escala",
     "focus": "Figura / retrato / anatomia / desenho acadêmico",
-    "special": "Transforma a tradição de atelier em uma biblioteca global de aulas, demonstrações, referência de modelo vivo e formação progressiva.",
+    "special": "Transforma a tradição de ateliê em uma biblioteca global de aulas, demonstrações, referência de modelo vivo e formação progressiva.",
     "youtube": "https://www.youtube.com/@NewMastersAcademyorgNMA",
     "instagram": "https://www.instagram.com/newmastersacademy/",
     "site": "https://www.nma.art/",
-    "lane": "Atelier / biblioteca",
+    "lane": "Ateliê / biblioteca",
     "videoId": "oQNfh3LgWk4",
     "refs": [
       {
@@ -1574,7 +1574,7 @@ export const referenceArtists:PublicReference[]=[
         "title": "New Masters Academy",
         "url": "https://www.nma.art/",
         "observe": "Como uma escola organiza centenas de horas de figura, anatomia, retrato, desenho e pintura em trilhas navegáveis.",
-        "tags": "atelier; biblioteca; currículo; figura"
+        "tags": "ateliê; biblioteca; currículo; figura"
       },
       {
         "type": "Conteúdo / canal",
@@ -1761,7 +1761,7 @@ export const referenceArtists:PublicReference[]=[
         "title": "Draw & Jaw",
         "url": "https://stevehustonart.com/",
         "observe": "Sessões recorrentes gratuitas misturam desenho e conversa.",
-        "tags": "live; atelier; conversa; figura"
+        "tags": "live; ateliê; conversa; figura"
       },
       {
         "type": "Rede / portfólio",
@@ -2243,11 +2243,11 @@ export const referenceArtists:PublicReference[]=[
     "rank": 69,
     "slug": "juliette-aristides",
     "name": "Juliette Aristides",
-    "archetype": "Atelier clássico como prática de atenção",
-    "focus": "Desenho clássico / figura / retrato / atelier",
-    "special": "Defende o desenho como prática lenta de observação e organiza treinamento clássico em progressão de atelier.",
+    "archetype": "Ateliê clássico como prática de atenção",
+    "focus": "Desenho clássico / figura / retrato / ateliê",
+    "special": "Defende o desenho como prática lenta de observação e organiza treinamento clássico em progressão de ateliê.",
     "site": "https://www.aristidesarts.com/",
-    "lane": "Atelier / clássico",
+    "lane": "Ateliê / clássico",
     "videoId": "",
     "youtube": "",
     "instagram": "",
@@ -2257,7 +2257,7 @@ export const referenceArtists:PublicReference[]=[
         "title": "Juliette Aristides",
         "url": "https://www.aristidesarts.com/",
         "observe": "Estudar block-in, master copy, cast drawing, figura, retrato e disciplina de observação.",
-        "tags": "atelier; clássico; figura; observação"
+        "tags": "ateliê; clássico; figura; observação"
       }
     ]
   },
@@ -2269,7 +2269,7 @@ export const referenceArtists:PublicReference[]=[
     "focus": "Retrato / figura / desenho clássico / pintura",
     "special": "Cruza formação acadêmica, retrato, figura e ensino global com atenção refinada a desenho e presença.",
     "site": "https://www.corneliahernes.art/",
-    "lane": "Atelier / retrato",
+    "lane": "Ateliê / retrato",
     "videoId": "",
     "youtube": "",
     "instagram": "",
@@ -2279,7 +2279,7 @@ export const referenceArtists:PublicReference[]=[
         "title": "Cornelia Hernes",
         "url": "https://www.corneliahernes.art/",
         "observe": "Observar desenho acadêmico, retrato, figura e passagem do estudo para pintura.",
-        "tags": "retrato; figura; clássico; atelier"
+        "tags": "retrato; figura; clássico; ateliê"
       }
     ]
   },
@@ -2331,11 +2331,11 @@ export const referenceArtists:PublicReference[]=[
     "rank": 73,
     "slug": "sadie-valeri",
     "name": "Sadie Valeri",
-    "archetype": "Atelier clássico traduzido para online",
-    "focus": "Grafite / carvão / figura / atelier",
+    "archetype": "Ateliê clássico traduzido para online",
+    "focus": "Grafite / carvão / figura / ateliê",
     "special": "Organiza Bargue, cast drawing, drapery e figura em um currículo clássico progressivo e acessível online.",
     "site": "https://www.sadievaleriatelier.com/",
-    "lane": "Atelier / ensino",
+    "lane": "Ateliê / ensino",
     "videoId": "",
     "youtube": "",
     "instagram": "",
@@ -2345,7 +2345,7 @@ export const referenceArtists:PublicReference[]=[
         "title": "Sadie Valeri",
         "url": "https://www.sadievaleriatelier.com/",
         "observe": "Estudar progressão de Bargue, cast, drapery, figura e observação precisa.",
-        "tags": "atelier; Bargue; carvão; figura"
+        "tags": "ateliê; Bargue; carvão; figura"
       }
     ]
   },
@@ -2375,11 +2375,11 @@ export const referenceArtists:PublicReference[]=[
     "rank": 75,
     "slug": "florence-academy-of-art",
     "name": "The Florence Academy of Art",
-    "archetype": "Atelier clássico internacional",
+    "archetype": "Ateliê clássico internacional",
     "focus": "Desenho / figura / pintura / escultura",
     "special": "Mantém uma formação intensiva em observação, desenho acadêmico, anatomia, figura e tradição realista.",
     "site": "https://www.florenceacademyofart.edu/",
-    "lane": "Escola / atelier",
+    "lane": "Escola / ateliê",
     "videoId": "",
     "youtube": "",
     "instagram": "",
@@ -2389,7 +2389,7 @@ export const referenceArtists:PublicReference[]=[
         "title": "The Florence Academy of Art",
         "url": "https://www.florenceacademyofart.edu/",
         "observe": "Estudar currículo, figura diária, cast drawing, anatomia e progressão técnica.",
-        "tags": "atelier; escola; clássico; figura"
+        "tags": "ateliê; escola; clássico; figura"
       }
     ]
   },
@@ -2410,8 +2410,8 @@ export const referenceArtists:PublicReference[]=[
         "type": "Fonte oficial / pesquisa",
         "title": "Barcelona Academy of Art",
         "url": "https://www.academyofartbarcelona.com/",
-        "observe": "Observar organização de atelier, desenho do natural, figura e formação internacional.",
-        "tags": "academia; figura; atelier; Europa"
+        "observe": "Observar organização de ateliê, desenho do natural, figura e formação internacional.",
+        "tags": "academia; figura; ateliê; Europa"
       }
     ]
   },
@@ -2419,11 +2419,11 @@ export const referenceArtists:PublicReference[]=[
     "rank": 77,
     "slug": "grand-central-atelier",
     "name": "Grand Central Atelier",
-    "archetype": "Atelier contemporâneo de tradição clássica",
+    "archetype": "Ateliê contemporâneo de tradição clássica",
     "focus": "Cast drawing / figura / retrato / pintura",
-    "special": "Mantém uma metodologia sequencial de desenho, figura e retrato com forte cultura de atelier.",
+    "special": "Mantém uma metodologia sequencial de desenho, figura e retrato com forte cultura de ateliê.",
     "site": "https://grandcentralatelier.org/",
-    "lane": "Escola / atelier",
+    "lane": "Escola / ateliê",
     "videoId": "",
     "youtube": "",
     "instagram": "",
@@ -2433,7 +2433,7 @@ export const referenceArtists:PublicReference[]=[
         "title": "Grand Central Atelier",
         "url": "https://grandcentralatelier.org/",
         "observe": "Estudar block-in, cast drawing, portrait sketch, rendering e continuidade de prática.",
-        "tags": "atelier; cast; figura; retrato"
+        "tags": "ateliê; cast; figura; retrato"
       }
     ]
   },
@@ -2443,7 +2443,7 @@ export const referenceArtists:PublicReference[]=[
     "name": "Art Students League of New York",
     "archetype": "Escola aberta de prática artística",
     "focus": "Desenho / figura / retrato / anatomia",
-    "special": "Combina tradição de atelier, diversidade de professores e prática contínua de desenho e figura.",
+    "special": "Combina tradição de ateliê, diversidade de professores e prática contínua de desenho e figura.",
     "site": "https://www.artstudentsleague.org/",
     "lane": "Escola / Nova York",
     "videoId": "",
@@ -2816,7 +2816,7 @@ export const referenceArtists:PublicReference[]=[
     "slug": "shane-wolf",
     "name": "Shane Wolf",
     "archetype": "Figura acadêmica com energia contemporânea",
-    "focus": "Figura / desenho / composição / atelier",
+    "focus": "Figura / desenho / composição / ateliê",
     "special": "Trabalha desenho e figura com intensidade gestual, estudo anatômico e pesquisa compositiva.",
     "site": "https://www.shane-wolf.com/",
     "lane": "Figura / acadêmico",
@@ -3029,7 +3029,7 @@ export const referenceCollections:ReferenceCollection[]=[
   },
   {
     "id": "atelier-ensino",
-    "title": "Atelier & ensino",
+    "title": "Ateliê & ensino",
     "subtitle": "Progressão, correção, currículo e comunidade.",
     "ranks": [
       5,
@@ -3117,7 +3117,7 @@ export const referenceCollections:ReferenceCollection[]=[
 },
 {
   "id": "ateliers-globais-2",
-  "title": "Ateliers & escolas globais",
+  "title": "Ateliês & escolas globais",
   "subtitle": "Métodos, comunidades, currículo e tradição aplicada ao presente.",
   "ranks": [
     75,

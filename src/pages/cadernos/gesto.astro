@@ -2,7 +2,7 @@
 import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-const base=import.meta.env.BASE_URL;
+const base=import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 const tempos=[
   {n:"30s",title:"Encontrar",text:"Não desenhe partes. Procure uma única linha de ação e a direção geral das massas."},
   {n:"2m",title:"Sustentar",text:"Acrescente caixa torácica, quadril e apoios sem perder a curva que fez o corpo começar a mover."},

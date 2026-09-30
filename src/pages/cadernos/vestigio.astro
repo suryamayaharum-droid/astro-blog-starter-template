@@ -2,7 +2,7 @@
 import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-const base=import.meta.env.BASE_URL;
+const base=import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 const retiradas=[
   {n:"01",title:"Apagar",text:"Retire informação onde ela já não sustenta peso, direção ou foco. Não use a borracha apenas para corrigir; use-a também para editar."},
   {n:"02",title:"Interromper",text:"Pare uma linha antes de completar o contorno. Veja se a forma continua existindo por continuidade, sombra, gesto ou memória visual."},
