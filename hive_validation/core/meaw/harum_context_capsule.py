@@ -57,7 +57,14 @@ def build_capsule(*,panel:dict[str,Any],jev:dict[str,Any],dispatch:dict[str,Any]
       "available_work":_available(dispatch),
       "open_help":_open_help(jev),
       "dispatch_summary":dispatch.get("summary",{}),
-      "meta_advice":{"mode":(meta or {}).get("mode"),"primary_move":(meta or {}).get("primary_move"),"parallel_wave":(meta or {}).get("parallel_wave",[]),"coordination_budget":(meta or {}).get("coordination_budget",{})},
+      "meta_advice":{
+        "mode":(meta or {}).get("mode"),
+        "primary_move":(meta or {}).get("primary_move"),
+        "primary_recovery":(meta or {}).get("primary_recovery"),
+        "recovery_queue":(meta or {}).get("recovery_queue",[]),
+        "parallel_wave":(meta or {}).get("parallel_wave",[]),
+        "coordination_budget":(meta or {}).get("coordination_budget",{}),
+      },
       "public_web":{
         "github_pages":(public.get("github_pages",{}) or {}).get("url"),
         "vercel":(public.get("vercel",{}) or {}).get("url"),
