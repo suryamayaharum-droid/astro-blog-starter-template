@@ -1,0 +1,42 @@
+{
+  "schema": "harum.meta-coordination-policy/v1",
+  "status": "active-advisory",
+  "focus_roots": [
+    "HARUM-NOIR"
+  ],
+  "support_roots": [
+    "MEAW"
+  ],
+  "scoring": {
+    "focus_bonus": 20,
+    "dependency_unblock_weight": 8,
+    "support_penalty_when_healthy": 30,
+    "stale_bonus_per_hour": 1,
+    "max_stale_bonus": 12
+  },
+  "anti_overcoordination": {
+    "max_support_ratio_when_healthy": 0.34,
+    "rule": "When coordination is healthy and product work is available, do not create new support infrastructure unless it directly unblocks a named product work item.",
+    "support_work_prefixes": [
+      "MEAW-",
+      "HN-COORD-"
+    ]
+  },
+  "stagnation": {
+    "warn_after_hours": 2,
+    "urgent_after_hours": 6
+  },
+  "parallelism": {
+    "max_primary_wave": 3,
+    "require_distinct_roles": true,
+    "avoid_write_scope_overlap": true
+  },
+  "rules": [
+    "Advisory only; never auto-claim or authorize external writes.",
+    "Healthy coordination must bias toward current-focus product work.",
+    "Support work may outrank product work only when it explicitly unblocks product work, repairs unhealthy coordination, or satisfies a required validation gate.",
+    "Prefer existing help requests, handoffs and work_ids over creating new tasks.",
+    "Critical-path score must be explainable from priority, focus alignment, dependency impact, age and support penalty.",
+    "Do not persist chain-of-thought, credentials or private session state."
+  ]
+}
