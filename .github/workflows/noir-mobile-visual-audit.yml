@@ -40,6 +40,7 @@ jobs:
             const targets = [
               ['home', `${base}/`],
               ['atlas', `${base}/atlas/`],
+              ['buscar', `${base}/buscar/`],
               ['museus', `${base}/museus/`],
               ['referencias', `${base}/referencias/`],
               ['biblioteca', `${base}/biblioteca/`],
@@ -71,12 +72,19 @@ jobs:
               });
               const page = await context.newPage();
               let consoleErrors = [];
+              let failedResources = [];
               page.on('console', msg => {
                 if (msg.type() === 'error') consoleErrors.push(msg.text());
+              });
+              page.on('response', response => {
+                if (response.status() >= 400) {
+                  failedResources.push({ status: response.status(), url: response.url() });
+                }
               });
 
               for (const [name, url] of targets) {
                 consoleErrors = [];
+                failedResources = [];
                 const response = await page.goto(url, { waitUntil: 'networkidle', timeout: 45000 });
                 await page.waitForTimeout(700);
 
@@ -107,6 +115,7 @@ jobs:
                   url,
                   status: response ? response.status() : null,
                   consoleErrors: [...consoleErrors],
+                  failedResources: [...failedResources],
                   ...info
                 });
 

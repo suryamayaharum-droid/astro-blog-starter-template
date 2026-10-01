@@ -1,0 +1,127 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import EcosystemRail from '../components/EcosystemRail.astro';
+import { ecosystemHubs } from '../data/ecosystem';
+import { openLibraryCollections } from '../data/openLibrary';
+import { referenceArtists } from '../data/references';
+import { artHistoryPeriods } from '../data/artHistory';
+import { cadernos, temporadas } from '../data/public';
+
+const base=import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
+
+const items=[
+  ...ecosystemHubs.map(x=>({
+    type:"Rota",
+    title:x.title,
+    subtitle:x.description,
+    href:x.href,
+    terms:[x.kicker,x.description].join(" ")
+  })),
+  ...openLibraryCollections.map(x=>({
+    type:"Biblioteca",
+    title:x.title,
+    subtitle:x.destination,
+    href:`biblioteca#${x.id}`,
+    terms:[x.theme,x.kicker,x.thesis,x.rule,x.practice].join(" ")
+  })),
+  ...referenceArtists.map(x=>({
+    type:"Referência",
+    title:x.name,
+    subtitle:x.focus,
+    href:`referencias/${x.slug}`,
+    terms:[x.archetype,x.focus,x.special,x.lane].join(" ")
+  })),
+  ...artHistoryPeriods.map(x=>({
+    type:"História da Arte",
+    title:x.title,
+    subtitle:`${x.dates} · ${x.region}`,
+    href:`historia-da-arte#${x.id}`,
+    terms:[x.thesis,x.thought,x.curiosity,x.construction.join(" "),x.artists.map(a=>a.name+" "+a.focus).join(" ")].join(" ")
+  })),
+  ...cadernos.map(x=>({
+    type:"Caderno",
+    title:`Caderno · ${x.title}`,
+    subtitle:x.summary,
+    href:`cadernos/${x.slug}`,
+    terms:[x.question,x.practice,x.residue].join(" ")
+  })),
+  ...temporadas.map(x=>({
+    type:"Temporada",
+    title:`Temporada ${x.n} · ${x.title}`,
+    subtitle:x.text,
+    href:`temporadas#t${x.n}`,
+    terms:x.text
+  }))
+];
+const catalog=JSON.stringify(items);
+---
+<!doctype html>
+<html lang="pt-BR">
+<head><BaseHead title="Buscar · Harum Noir" description="Busca transversal no Harumverso: rotas, referências, Biblioteca, História da Arte, Cadernos e Temporadas."/></head>
+<body>
+<Header/>
+<main class="stream-main">
+  <section class="page-hero">
+    <div class="eyebrow">BUSCA TRANSVERSAL</div>
+    <h1>Uma pergunta, várias portas.</h1>
+    <p>Pesquise um artista, técnica, material, período, problema de desenho ou palavra que ficou na memória. A busca atravessa o ecossistema sem depender de servidor externo.</p>
+  </section>
+
+  <section class="stream-search-shell">
+    <input id="global-search" class="stream-search" type="search" placeholder="Ex.: carvão, gesto, mãos, memória, Degas…" aria-label="Buscar no Harumverso" autocomplete="off"/>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div><div class="eyebrow">RESULTADOS</div><h2 id="search-title">Portas para começar.</h2></div>
+      <p id="search-count"></p>
+    </div>
+    <div id="search-results" class="archive-grid"></div>
+    <div id="search-empty" class="panel" hidden>
+      <div class="eyebrow">NENHUMA CORRESPONDÊNCIA</div>
+      <h2>Tente uma pergunta menor.</h2>
+      <p>Busque por material, gesto, parte do corpo, artista, período ou princípio. Você também pode abrir o Atlas para navegar sem palavra-chave.</p>
+      <div class="actions"><a class="btn gold" href={base+'atlas'}>Abrir Atlas →</a></div>
+    </div>
+  </section>
+
+  <EcosystemRail current="buscar" limit={6} />
+
+  <script is:inline define:vars={{catalog,base}}>
+  (()=>{
+    const data=JSON.parse(catalog);
+    const input=document.querySelector('#global-search');
+    const grid=document.querySelector('#search-results');
+    const empty=document.querySelector('#search-empty');
+    const count=document.querySelector('#search-count');
+    const title=document.querySelector('#search-title');
+    const norm=(v)=>String(v||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();
+    const esc=(v)=>String(v||'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+    const card=(item)=>'<a class="archive-item" href="'+base+esc(item.href)+'"><span class="card-kicker">'+esc(item.type)+'</span><h3>'+esc(item.title)+'</h3><p>'+esc(item.subtitle)+'</p></a>';
+
+    const apply=()=>{
+      const q=norm(input?.value);
+      const found=q
+        ? data.filter(item=>norm([item.title,item.subtitle,item.type,item.terms].join(' ')).includes(q))
+        : data.slice(0,24);
+      grid.innerHTML=found.map(card).join('');
+      empty.hidden=found.length!==0;
+      count.textContent=found.length+' resultado'+(found.length===1?'':'s');
+      title.textContent=q ? 'Encontrado no ecossistema.' : 'Portas para começar.';
+      const url=new URL(location.href);
+      if(q) url.searchParams.set('q',input.value.trim()); else url.searchParams.delete('q');
+      history.replaceState(null,'',url);
+    };
+
+    const initial=new URLSearchParams(location.search).get('q')||'';
+    if(input) input.value=initial;
+    input?.addEventListener('input',apply);
+    apply();
+  })();
+  </script>
+</main>
+<Footer/>
+</body>
+</html>

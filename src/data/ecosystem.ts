@@ -8,6 +8,7 @@ export type EcosystemHub = {
 
 export const ecosystemHubs: EcosystemHub[] = [
   {id:"atlas",title:"Atlas Harum Noir",kicker:"MAPA DO ECOSSISTEMA",description:"Uma mesa de orientação entre referências, museus, história, biblioteca, percursos e prática.",href:"atlas"},
+  {id:"buscar",title:"Buscar no Harumverso",kicker:"UMA PERGUNTA · VÁRIAS PORTAS",description:"Busca transversal por rotas, artistas, técnicas, períodos, Cadernos, coleções e Temporadas.",href:"buscar"},
   {id:"percursos",title:"Percursos",kicker:"ENTRAR POR UMA PERGUNTA",description:"Cinco caminhos curatoriais que ligam referência, caderno, fonte e prática.",href:"percursos"},
   {id:"referencias",title:"Atlas de Referências",kicker:"OLHAR POR DECISÕES",description:"Artistas, professores e processos organizados por foco, não por imitação.",href:"referencias"},
   {id:"museus",title:"Museus Abertos",kicker:"ACERVOS INSTITUCIONAIS",description:"Porta de entrada para buscas em acervos, APIs e objetos de museus com origem verificável.",href:"museus"},
