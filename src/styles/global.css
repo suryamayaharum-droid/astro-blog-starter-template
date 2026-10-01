@@ -147,3 +147,23 @@ h1,h2,h3{font-family:"Cormorant Garamond",Georgia,"Times New Roman",serif;font-w
 /* arte-harum-cross-site */
 .site-header .nav-links a[href*="tattoostudio23"]{color:var(--gold);border:1px solid rgba(179,154,105,.42);padding-inline:12px}.site-header .nav-links a[href*="tattoostudio23"]:hover{background:var(--gold);color:var(--ink)}
 @media(max-width:760px){.site-header .nav-links a[href*="tattoostudio23"]{display:inline-flex!important}}
+
+/* noir-library-taxonomy-v1 */
+.map-total{color:var(--paper);font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;font-weight:800}
+.path-index{gap:12px;align-items:stretch}
+.path-index-card{position:relative;isolation:isolate;min-height:214px;padding:20px;overflow:hidden;transition:transform .2s,border-color .2s,background .2s}
+.path-index-card::before{content:"";position:absolute;inset:auto -24% -58% 36%;height:145px;background:radial-gradient(circle,rgba(179,154,105,.16),transparent 68%);z-index:-1;pointer-events:none}
+.path-index-card>*{position:relative}
+.path-index-card .path-index-number{font:2.05rem Georgia;color:var(--gold)}
+.path-index-card .path-index-topic{display:block;margin-top:13px;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:800}
+.path-index-card strong{display:block;margin:8px 0 8px;font-size:1.38rem;line-height:1.05}
+.path-index-card small{display:block;min-height:2.9em}
+.path-index-card .path-index-count{display:block;margin-top:auto;padding-top:18px;color:var(--paper-2);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase}
+.path-index-card:hover{border-color:rgba(179,154,105,.62);background:rgba(179,154,105,.055);transform:translateY(-2px)}
+.journey-meta{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.journey-count{color:var(--muted);font-size:.68rem;letter-spacing:.13em;text-transform:uppercase}
+@media(max-width:680px){
+  .path-index{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:minmax(78vw,320px);overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:var(--gold-dim) transparent;margin-right:-16px;padding:4px 16px 26px 2px}
+  .path-index-card{scroll-snap-align:start;min-height:192px}
+  .journey-meta{align-items:flex-start;flex-direction:column;gap:7px}
+}

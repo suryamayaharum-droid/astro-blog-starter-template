@@ -5,6 +5,7 @@ import Footer from '../components/Footer.astro';
 import { openLibraryCollections } from '../data/openLibrary';
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 const sourceCount = openLibraryCollections.reduce((sum, collection) => sum + collection.sources.length, 0);
+const collectionCount = openLibraryCollections.length;
 ---
 <!doctype html>
 <html lang="pt-BR">
@@ -17,22 +18,24 @@ const sourceCount = openLibraryCollections.reduce((sum, collection) => sum + col
   <section class="page-hero">
     <div class="eyebrow">BIBLIOTECA ABERTA</div>
     <h1>Fonte antes de fórmula.</h1>
-    <p>{sourceCount} entradas selecionadas deste núcleo público do Harumverso. Cada link leva à instituição de origem; a curadoria explica o que observar e como isso conversa com o Harum Noir.</p>
+    <p>{sourceCount} entradas selecionadas em {collectionCount} temas deste núcleo público do Harumverso. Cada link leva à instituição de origem; a curadoria explica o que observar e como isso conversa com o Harum Noir.</p>
     <div class="actions"><a class="btn primary" href="#colecoes">Abrir coleções</a><a class="btn" href={base+'percursos'}>Voltar aos percursos</a></div>
   </section>
 
   <section class="section" id="colecoes">
     <div class="section-head">
-      <div><div class="eyebrow">MAPA</div><h2>Cinco maneiras de entrar.</h2></div>
-      <p>A biblioteca não classifica artistas do melhor ao pior. Ela organiza problemas de desenho e fontes que ajudam a investigá-los.</p>
+      <div><div class="eyebrow">ÍNDICE TEMÁTICO</div><h2>Cinco maneiras de entrar.</h2></div>
+      <p><strong class="map-total">{sourceCount} fontes · {collectionCount} temas</strong><br/>A biblioteca não classifica artistas do melhor ao pior. Ela organiza problemas de desenho e fontes que ajudam a investigá-los.</p>
     </div>
-    <div class="path-index">
-      {openLibraryCollections.map((c,i)=><a class="path-index-card" href={'#'+c.id}>
-        <span>{String(i+1).padStart(2,'0')}</span>
+    <nav class="path-index" aria-label="Índice temático da biblioteca">
+      {openLibraryCollections.map((c,i)=><a class="path-index-card" href={'#'+c.id} aria-label={`Abrir o tema ${c.title}, com ${c.sources.length} fontes`}>
+        <span class="path-index-number">{String(i+1).padStart(2,'0')}</span>
+        <span class="path-index-topic">{c.theme}</span>
         <strong>{c.title}</strong>
         <small>{c.destination}</small>
+        <span class="path-index-count">{c.sources.length} fontes · ver tema</span>
       </a>)}
-    </div>
+    </nav>
   </section>
 
   <section class="section">
@@ -44,11 +47,11 @@ const sourceCount = openLibraryCollections.reduce((sum, collection) => sum + col
     </div>
   </section>
 
-  {openLibraryCollections.map((collection, index)=><section class="journey" id={collection.id}>
+  {openLibraryCollections.map((collection, index)=><section class="journey" id={collection.id} aria-labelledby={'heading-'+collection.id}>
     <div class="journey-intro">
       <div class="panel">
-        <div class="eyebrow">{collection.kicker}</div>
-        <h2>{collection.title}</h2>
+        <div class="journey-meta"><span class="eyebrow">{collection.kicker}</span><span class="journey-count">Tema {String(index+1).padStart(2,'0')} · {collection.sources.length} fontes</span></div>
+        <h2 id={'heading-'+collection.id}>{collection.title}</h2>
         <p>{collection.thesis}</p>
         <div class="journal" style="margin-top:24px">
           <div class="paper" style="padding:22px 24px">
@@ -70,11 +73,11 @@ const sourceCount = openLibraryCollections.reduce((sum, collection) => sum + col
     </div>
 
     <div class="stream-head" style="margin-top:26px">
-      <div><span class="eyebrow">FONTES ORIGINAIS</span><h3>O que observar</h3></div>
+      <div><span class="eyebrow">FONTES ORIGINAIS · {collection.theme}</span><h3>O que observar</h3></div>
       <p>{collection.sources.length} entradas verificadas nesta coleção.</p>
     </div>
     <div class="archive-grid">
-      {collection.sources.map(source=><a class="archive-item" href={source.url} target="_blank" rel="noreferrer">
+      {collection.sources.map(source=><a class="archive-item" href={source.url} target="_blank" rel="noreferrer" aria-label={`Abrir fonte: ${source.creator}, ${source.title}`}>
         <span class="card-kicker">{source.source}</span>
         <h3>{source.creator}</h3>
         <p><strong>{source.title}</strong></p>
