@@ -1,0 +1,24 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { imageBanks } from '../data/imageBanks';
+import '../styles/imageBanks.css';
+const base=import.meta.env.BASE_URL.endsWith('/')?import.meta.env.BASE_URL:import.meta.env.BASE_URL+'/';
+const live=imageBanks.filter(x=>x.liveFederated).length;
+---
+<!doctype html><html lang="pt-BR"><head><BaseHead title="Bancos de Imagens · Harum Noir" description="Portas de estudo para acervos públicos, Open Access e domínio público, sem importar bibliotecas inteiras para o site." /></head>
+<body><Header/><main>
+<section class="page-hero"><div class="eyebrow">HARUM NOIR · BANCOS DE IMAGENS</div><h1>Portas, não depósitos.</h1><p>Em vez de copiar acervos inteiros, o HARUM NOIR organiza caminhos para as próprias instituições — com direitos, contexto, termos de busca e leques de estudo.</p></section>
+<section class="section bank-hero-grid">
+  <div class="panel"><div class="eyebrow">CONCEITO</div><h2>O acervo continua onde nasceu.</h2><p>Nosso site vira um mapa inteligente: indica onde estudar, o que procurar e como atravessar um banco de imagens sem perder autoria, proveniência ou contexto.</p>
+    <div class="bank-stats"><div class="bank-stat"><b>{imageBanks.length}</b><span>bancos catalogados</span></div><div class="bank-stat"><b>{live}</b><span>com busca federada ativa</span></div><div class="bank-stat"><b>0</b><span>acervos inteiros importados</span></div></div>
+  </div>
+  <div class="panel"><div class="eyebrow">FLUXO</div><div class="quote">Período → banco → leque → ficha original → estudo → desenho.</div><p>Quando uma obra servir ao Atlas Histórico, guardamos a referência e a leitura — não uma cópia desnecessária da biblioteca.</p><div class="actions"><a class="btn gold" href={base+'historia-da-arte'}>Abrir Atlas Histórico</a><a class="btn" href={base+'museus'}>Busca em museus</a></div></div>
+</section>
+<section class="section"><div class="section-head"><div><div class="eyebrow">CATÁLOGO</div><h2>Escolha uma porta.</h2></div><p>Cada banco ganhou uma página própria com áreas fortes, períodos, direitos e um leque de pesquisas para abrir quando você quiser estudar.</p></div>
+<div class="bank-grid">{imageBanks.map(b=><a class="bank-card" href={base+'bancos/'+b.id+'/'}>
+  <div class="kind">{b.kind} · {b.access}</div><h3>{b.name}</h3><div class="place">{b.place}</div><p>{b.rights}</p><div class="bank-tags">{b.strengths.slice(0,4).map(x=><span>{x}</span>)}</div>
+</a>)}</div></section>
+<section class="section"><div class="journal"><div class="paper"><div class="eyebrow" style="color:#8a734b">REGRA HARUM NOIR</div><h2>Catálogo não é espelho.</h2><p class="lead">A instituição continua sendo a fonte canônica.</p><p>Nossa camada acrescenta orientação: direitos, contexto, palavras-chave e relações com os Cadernos, o Atlas e os estudos internos. Isso mantém o site leve e transforma pesquisa em método.</p></div></div></section>
+</main><Footer/></body></html>
