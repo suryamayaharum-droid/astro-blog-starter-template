@@ -1,0 +1,19 @@
+---
+import { ecosystemHubs } from '../data/ecosystem';
+const { current="", limit=4, title="Continue pelo ecossistema", kicker="PRÓXIMAS PORTAS" } = Astro.props;
+const base=import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
+const items=ecosystemHubs.filter(item=>item.id!==current).slice(0,Number(limit)||4);
+---
+<section class="section">
+  <div class="section-head">
+    <div><div class="eyebrow">{kicker}</div><h2>{title}</h2></div>
+    <p>Cada página aprofunda uma função diferente; navegue sem precisar voltar ao início.</p>
+  </div>
+  <div class="archive-grid">
+    {items.map(item=><a class="archive-item" href={base+item.href}>
+      <span class="card-kicker">{item.kicker}</span>
+      <h3>{item.title}</h3>
+      <p>{item.description}</p>
+    </a>)}
+  </div>
+</section>
