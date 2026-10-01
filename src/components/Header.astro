@@ -8,6 +8,7 @@ const links = [
   ["Cadernos","cadernos"],
   ["Biblioteca","biblioteca"],
   ["História","historia-da-arte"],
+  ["Bancos","bancos"],
   ["Museus","museus"],
   ["Ateliê","atelier"],
   ["Temporadas","temporadas"],
@@ -31,3 +32,17 @@ const links = [
     </div>
   </nav>
 </header>
+
+<script>
+try{
+  const path=location.pathname+location.search;
+  const rootPath=new URL(document.querySelector('.brand-lockup')?.href||location.href).pathname;
+  if(location.pathname!==rootPath){
+    const k='harum_noir_recent';
+    const item={path,title:document.title||'HARUM NOIR',visitedAt:Date.now()};
+    let xs=[];try{xs=JSON.parse(localStorage.getItem(k)||'[]')}catch{}
+    xs=[item,...(Array.isArray(xs)?xs:[]).filter(x=>x&&x.path!==item.path)].slice(0,12);
+    localStorage.setItem(k,JSON.stringify(xs));
+  }
+}catch{}
+</script>
