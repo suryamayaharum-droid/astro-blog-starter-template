@@ -41,6 +41,9 @@ jobs:
               ['home', `${base}/`],
               ['atlas', `${base}/atlas/`],
               ['buscar', `${base}/buscar/`],
+              ['busca', `${base}/busca/`],
+              ['bancos', `${base}/bancos/`],
+              ['composicoes-autorais', `${base}/composicoes-autorais/`],
               ['museus', `${base}/museus/`],
               ['referencias', `${base}/referencias/`],
               ['biblioteca', `${base}/biblioteca/`],
@@ -105,7 +108,8 @@ jobs:
                     textLength: body ? body.innerText.trim().length : 0,
                     nav: rect(nav),
                     hero: rect(hero),
-                    title: document.title
+                    title: document.title,
+                    brokenImages: [...document.images].filter(img => img.complete && img.naturalWidth === 0).map(img => img.currentSrc || img.src)
                   };
                 });
 
@@ -135,7 +139,8 @@ jobs:
               m.status >= 400 ||
               m.horizontalOverflow ||
               !m.nav ||
-              m.textLength < 40
+              m.textLength < 40 ||
+              (m.brokenImages && m.brokenImages.length > 0)
             );
 
             if (failures.length) {
