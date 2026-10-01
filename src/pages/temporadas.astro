@@ -1,21 +1,37 @@
 ---
 import EcosystemRail from '../components/EcosystemRail.astro';
-import BaseHead from '../components/BaseHead.astro';import Header from '../components/Header.astro';import Footer from '../components/Footer.astro';import {temporadas} from '../data/public';
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import {temporadas} from '../data/public';
+import '../styles/browse.css';
 const base=import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
-const seasonRoutes: Record<string,{href:string;label:string}> = {
-  "01": {href:"biblioteca#gesto-corpo-presenca",label:"Gesto e presença"},
-  "02": {href:"biblioteca#cabeca-em-variacao",label:"Cabeça e expressão"},
-  "03": {href:"biblioteca#anatomias-do-mundo",label:"Anatomias do mundo"},
-  "04": {href:"referencias",label:"Atlas de referências"},
-  "05": {href:"cadernos/presenca",label:"Presença e relação"},
-  "06": {href:"biblioteca#materia-negra-processos",label:"Matéria negra"},
-  "07": {href:"noir",label:"Síntese Noir"},
+const companions={
+  "01":[["Caderno Gesto","cadernos#gesto"],["Percurso Figura viva","percursos#figura"],["Buscar gesto","busca?q=figure%20gesture%20drawing"]],
+  "02":[["Cabeça em variação","biblioteca#cabeca-em-variacao"],["Caderno Olhar","cadernos#olhar"],["Buscar expressão","busca?q=portrait%20expression%20drawing"]],
+  "03":[["Anatomias do mundo","biblioteca#anatomias-do-mundo"],["Mãos sem fórmula","biblioteca#maos-sem-formula"],["Renascimento","historia-da-arte#renascimento"]],
+  "04":[["Mundo autoral","percursos#mundo"],["Atlas de referências","referencias"],["Caderno Memória","cadernos#memoria"]],
+  "05":[["Caderno Presença","cadernos#presenca"],["Buscar duas figuras","busca?q=two%20figures%20gesture"],["Mãos em relação","biblioteca#maos-sem-formula"]],
+  "06":[["Buscar animais","busca?q=animal%20drawing"],["Origens","historia-da-arte#origens"],["The Met","bancos/met/"]],
+  "07":[["Sketchbook & mundo","percursos#mundo"],["Caderno Vestígio","cadernos#vestigio"],["Ateliê","atelier"]]
 };
 ---
-<!doctype html><html lang="pt-BR"><head><BaseHead title="Temporadas · Harum Noir" description="Sete percursos editoriais de gesto, expressão, anatomia, personagem, relação, matéria e síntese."/></head><body><Header/><main>
-<section class="page-hero"><div class="eyebrow">TEMPORADAS</div><h1>Sete formas de aprofundar o olhar.</h1><p>Não são cursos fechados em caixas. São percursos editoriais que podem ser revisitados em ordens diferentes conforme a necessidade do desenho.</p></section>
-<section class="section"><div class="season-grid">{temporadas.map(t=><article class="season" id={`t${t.n}`}><div><div class="n">{t.n}</div><h3>{t.title}</h3><p>{t.text}</p>{seasonRoutes[t.n]&&<a class="source-arrow" href={base+seasonRoutes[t.n].href}>abrir {seasonRoutes[t.n].label} →</a>}</div><span class="card-kicker">EM DESENVOLVIMENTO CONTÍNUO</span></article>)}</div></section>
-<section class="section"><div class="panel"><div class="eyebrow">COMO LER</div><h2>Sem pressa de “concluir”.</h2><p>Uma temporada amadurece por estudo, repetição e edição. Quando uma página não acrescenta uma nova relação, ela não precisa existir.</p></div></section>
-<section class="section"><div class="panel"><div class="eyebrow">TEMPORADA 01 · FONTES ABERTAS</div><h2>Gesto, peso, escorço e presença.</h2><p>Estudos históricos de figura entram aqui como apoio para observar ação, centro de massa, correção e repetição. A referência volta para a mão como problema de desenho, não como estilo para copiar.</p><div class="actions"><a class="btn gold" href={base+'biblioteca#gesto-corpo-presenca'}>Abrir estudos de figura →</a><a class="btn" href={base+'historia-da-arte'}>Abrir Atlas Histórico →</a></div></div></section>
-<EcosystemRail current="temporadas" limit={5} />
+<!doctype html><html lang="pt-BR"><head><BaseHead title="Temporadas · Harum Noir" description="Sete universos editoriais de gesto, expressão, anatomia, personagem, relação, matéria e síntese."/></head>
+<body><Header/><main>
+<section class="page-hero"><div class="eyebrow">TEMPORADAS</div><h1>Sete universos para aprofundar o olhar.</h1><p>Entre pelo tema que está vivo no desenho agora. As temporadas podem ser revisitadas e cruzadas em qualquer ordem.</p></section>
+
+<section class="stream-section">
+  <div class="stream-head"><div><span class="eyebrow">CATÁLOGO</span><h2>Escolha uma temporada.</h2></div><p>Corpo, expressão, anatomia, personagem, relação, matéria e síntese.</p></div>
+  <div class="feature-rail">{temporadas.map(t=><a class="feature-card" href={'#t'+t.n}><span class="tag">TEMPORADA {t.n}</span><h3>{t.title}</h3><p>{t.text}</p><div class="session-play">abrir temporada →</div></a>)}</div>
+</section>
+
+{temporadas.map(t=><section class="section" id={'t'+t.n} style="scroll-margin-top:84px;border-top:1px solid rgba(238,231,220,.12)">
+  <div class="editorial-split">
+    <div class="panel"><div class="eyebrow">TEMPORADA {t.n}</div><h2>{t.title}</h2><p>{t.text}</p><div class="browse-quick">{(companions[t.n]||[]).map(x=><a href={base+x[1]}>{x[0]}</a>)}</div></div>
+    <div class="panel" style="display:flex;flex-direction:column;justify-content:space-between"><div class="quote">{t.n}</div><div><div class="eyebrow">RITMO</div><p>Observe → pratique → compare → feche a referência → refaça de memória.</p></div></div>
+  </div>
+</section>)}
+
+<section class="section"><div class="journal"><div class="paper"><div class="eyebrow" style="color:#8a734b">COMO USAR</div><h2>Temporada não é fila para terminar.</h2><p class="lead">É um universo para revisitar.</p><p>Quando uma pergunta reaparecer no seu trabalho, volte à temporada correspondente e atravesse outra porta. A continuidade vale mais do que “concluir episódios”.</p></div></div></section>
+<EcosystemRail current="temporadas" limit={5}/>
 </main><Footer/></body></html>
