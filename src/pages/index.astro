@@ -34,7 +34,7 @@ const studySessions=[
     <div class="browse-badge">ATELIÊ EDITORIAL · SALVADOR</div>
     <h1>Estude como quem entra num mundo.</h1>
     <p>História da arte, desenho, carvão, figura, museus e cadernos organizados como uma biblioteca de streaming: escolha uma trilha, atravesse referências e volte para o papel.</p>
-    <div class="actions"><a class="btn primary" href={base+'percursos'}>Começar um percurso</a><a class="btn gold" href={base+'bancos'}>Abrir bancos de imagens</a><a class="btn" href={base+'historia-da-arte'}>História da arte</a></div>
+    <div class="actions"><a class="btn primary" href={base+'percursos'}>Começar um percurso</a><a class="btn gold" href={base+'bancos'}>Abrir bancos de imagens</a><a class="btn" href={base+'historia-da-arte'}>História da arte</a><button class="btn surprise-btn" id="surprise-door" type="button">✦ Surpreenda-me</button></div>
   </div>
 </section>
 
@@ -137,5 +137,21 @@ try{
     shelfSection.hidden=false;
   }
 }catch{}
+const surprise=document.querySelector('#surprise-door');
+if(surprise){
+  const doors=[
+    base+'cadernos#gesto',
+    base+'historia-da-arte#barroco',
+    base+'historia-da-arte#ukiyoe',
+    base+'bancos/bndigital/',
+    base+'bancos/met/',
+    base+'percursos#figura',
+    base+'percursos#mundo',
+    base+'busca?q='+encodeURIComponent('charcoal drawing'),
+    base+'busca?q='+encodeURIComponent('hands gesture'),
+    base+'referencias'
+  ];
+  surprise.addEventListener('click',()=>{location.href=doors[Math.floor(Math.random()*doors.length)]});
+}
 </script>
 </body></html>
