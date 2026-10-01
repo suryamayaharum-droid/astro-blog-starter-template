@@ -33,3 +33,10 @@ Se houver falha, retomar desta branch e deste commit. Não voltar à R1 nem reco
 - Portanto a falha de preview deve ser tratada como gate de infraestrutura/deploy até haver log técnico que atribua erro ao lote.
 - NÃO alterar/remover as coleções para “corrigir build” sem evidência de erro em `openLibrary.ts`.
 - NÃO fazer merge enquanto o preview estiver vermelho.
+
+
+## Baseline de infraestrutura
+- Main validado no commit `1e7b94203b06e197a771ffbbbab6933de8ea141d`.
+- Harumverso CI: success.
+- GitHub Pages deploy: success.
+- Este commit de checkpoint força nova validação do PR contra o baseline corrigido.
