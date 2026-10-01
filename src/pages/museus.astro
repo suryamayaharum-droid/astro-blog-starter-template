@@ -114,5 +114,7 @@ async function run(q){
 }
 form?.addEventListener('submit',e=>{e.preventDefault();run()});
 document.querySelectorAll('[data-q]').forEach(b=>b.addEventListener('click',()=>{input.value=b.dataset.q;run(b.dataset.q)}));
+const incoming=new URLSearchParams(location.search).get('q');
+if(incoming&&incoming.trim().length>=2){input.value=incoming;run(incoming)}
 </script>
 </body></html>
