@@ -1,4 +1,5 @@
 ---
+import EcosystemRail from '../components/EcosystemRail.astro';
 import BaseHead from '../components/BaseHead.astro';import Header from '../components/Header.astro';import Footer from '../components/Footer.astro';const base=import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 const itens=[
 ["Atlas de Referências","50 artistas, ateliês e professores organizados por curadoria.",`${base}referencias`],
@@ -15,4 +16,5 @@ const itens=[
 <!doctype html><html lang="pt-BR"><head><BaseHead title="Arquivo · Harum Noir" description="Acesso público aos cadernos, temporadas, cartas e materiais abertos do Harum Noir."/></head><body><Header/><main>
 <section class="page-hero"><div class="eyebrow">ARQUIVO ABERTO</div><h1>O que pode circular, circula.</h1><p>O arquivo público reúne apenas materiais prontos para serem vistos fora do ateliê. Rascunhos, pesquisa bruta e processos internos permanecem fora daqui.</p></section>
 <section class="section"><div class="archive-grid">{itens.map(i=><a class="archive-item" href={i[2]}><span class="card-kicker">ABERTO</span><h3>{i[0]}</h3><p>{i[1]}</p></a>)}</div></section>
+<EcosystemRail current="arquivo" limit={5} />
 </main><Footer/></body></html>
