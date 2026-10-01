@@ -1,5 +1,7 @@
 ---
+import EcosystemRail from '../components/EcosystemRail.astro';
 import BaseHead from '../components/BaseHead.astro';import Header from '../components/Header.astro';import Footer from '../components/Footer.astro';
+const base=import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 ---
 <!doctype html><html lang="pt-BR"><head><BaseHead title="Roubar como artista · Harum Noir" description="Como transformar referência em repertório sem copiar assinatura."/></head><body><Header/><main>
 <section class="page-hero"><div class="eyebrow">CADERNO DE MÉTODO</div><h1>Roubar como artista, sem virar cópia.</h1><p>O gesto mais fértil não é reproduzir uma superfície. É descobrir a regra invisível por trás dela e colocá-la em conflito com tudo que você já sabe.</p></section>
@@ -9,4 +11,16 @@ import BaseHead from '../components/BaseHead.astro';import Header from '../compo
 <h2>3. Cruze referências que não combinam</h2><p>Um estudo acadêmico pode conversar com um vídeo silencioso; um sketchbook pode conversar com uma aula de anatomia; uma live pode ensinar mais sobre presença que sobre técnica.</p>
 <h2>4. Feche a referência</h2><p>Depois de estudar, desenhe sem olhar. O que sobreviver à memória já começou a ser transformado.</p>
 <div class="rule"><p class="lead">Referência boa termina em decisão própria.</p></div>
-</div></article></main><Footer/></body></html>
+</div></article><section class="section">
+  <div class="section-head"><div><div class="eyebrow">PROTOCOLO DE SAÍDA</div><h2>Seis movimentos para a referência virar repertório.</h2></div><p>A sequência evita que pesquisa termine em coleção de imagens.</p></div>
+  <div class="path-list">
+    <a class="path-row" href={base+'museus'}><strong>Localizar</strong><span>voltar à fonte e à ficha do objeto</span><b>01</b></a>
+    <a class="path-row" href={base+'referencias'}><strong>Observar</strong><span>identificar o problema visual antes da solução</span><b>02</b></a>
+    <a class="path-row" href={base+'biblioteca'}><strong>Comparar</strong><span>cruzar fontes que resolvem o problema de modos diferentes</span><b>03</b></a>
+    <a class="path-row" href={base+'atelier'}><strong>Testar</strong><span>converter o princípio em exercício próprio</span><b>04</b></a>
+    <a class="path-row" href={base+'cadernos'}><strong>Fechar</strong><span>retirar a referência e desenhar o que sobreviveu</span><b>05</b></a>
+    <a class="path-row" href={base+'arquivo'}><strong>Guardar</strong><span>arquivar apenas o que virou decisão ou vestígio útil</span><b>06</b></a>
+  </div>
+</section>
+<EcosystemRail current="metodo" limit={5} />
+</main><Footer/></body></html>
