@@ -22,3 +22,14 @@ A branch original ficou 5 commits atrás de main enquanto outras instâncias ava
 
 ## Regra de recuperação
 Se houver falha, retomar desta branch e deste commit. Não voltar à R1 nem reconstruir o lote.
+
+
+## Diagnóstico de continuidade — gate Cloudflare
+- PR #4 confirmado mergeável e sincronizado: ahead 2 / behind 0.
+- Auditoria do dataset: 8 coleções, 36 URLs, 0 IDs duplicados, 0 URLs duplicadas.
+- `/biblioteca` consome `openLibraryCollections`.
+- Cloudflare tentou preview do commit `f2e4c05...` e retornou Build Failed.
+- GitHub não fornece checks/statuses de CI para este projeto; inclusive o head atual de main aparece pending com 0 statuses.
+- Portanto a falha de preview deve ser tratada como gate de infraestrutura/deploy até haver log técnico que atribua erro ao lote.
+- NÃO alterar/remover as coleções para “corrigir build” sem evidência de erro em `openLibrary.ts`.
+- NÃO fazer merge enquanto o preview estiver vermelho.
