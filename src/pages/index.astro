@@ -125,7 +125,8 @@ try{
   const section=document.querySelector('#continue-section');
   const items=Array.isArray(xs)?xs.filter(x=>x&&x.path&&x.path!==location.pathname).slice(0,8):[];
   if(root&&section&&items.length){
-    root.innerHTML=items.map((x,i)=>'<a class="continue-card" href="'+esc(x.path)+'"><div class="continue-visual"><span>'+String(i+1).padStart(2,'0')+'</span><b>HARUM NOIR</b></div><div class="continue-body"><span>RECENTE</span><h3>'+esc(String(x.title||'HARUM NOIR').replace(/ · Harum Noir.*/i,''))+'</h3><div class="continue-bar"><i style="width:'+(72-i*6)+'%"></i></div></div></a>').join('');
+    const ago=(ts)=>{const d=Math.max(0,Date.now()-Number(ts||0));const m=Math.floor(d/60000);if(m<2)return'agora';if(m<60)return'há '+m+' min';const h=Math.floor(m/60);if(h<24)return'há '+h+' h';const days=Math.floor(h/24);return days===1?'ontem':'há '+days+' dias'};
+    root.innerHTML=items.map((x,i)=>'<a class="continue-card" href="'+esc(x.path)+'"><div class="continue-visual"><span>'+String(i+1).padStart(2,'0')+'</span><b>HARUM NOIR</b></div><div class="continue-body"><span>VISITADO '+esc(ago(x.visitedAt))+'</span><h3>'+esc(String(x.title||'HARUM NOIR').replace(/ · Harum Noir.*/i,''))+'</h3></div></a>').join('');
     section.hidden=false;
   }
   const saved=JSON.parse(localStorage.getItem('harum_noir_shelf')||'[]');
