@@ -1387,7 +1387,6 @@ export const referenceArtists:PublicReference[]=[
     "instagram": "https://www.instagram.com/zinlimart/",
     "site": "https://www.zinlim.com/",
     "lane": "Núcleo carvão / método",
-    "videoId": "AiDgwicx6FM",
     "refs": [
       {
         "type": "Método / currículo",
