@@ -234,6 +234,29 @@ export const imageBanks: ImageBank[] = [
       {label:"Livro ilustrado",query:"illustrated book",note:"sequência, página e narrativa"}
     ],
     caution:"A Repository API foi descontinuada em 2026; trate a NYPL como portal/arquivo, não como integração viva."
+  },
+  {
+    id:"bndigital",
+    name:"Biblioteca Nacional Digital",
+    place:"Rio de Janeiro · Brasil",
+    kind:"archive",
+    access:"Acervo digital público · milhões de documentos",
+    rights:"A BNDigital informa que disponibiliza documentos em domínio público ou com autorização de publicação do titular.",
+    collectionUrl:"https://bndigital.bn.gov.br/acervodigital/",
+    rightsUrl:"https://bndigital.bn.gov.br/orientacoes-de-uso-de-arquivos-digitais/",
+    docsUrl:"https://bndigital.bn.gov.br/",
+    liveFederated:false,
+    strengths:["iconografia brasileira","gravura","livros","periódicos","cartografia","memória gráfica"],
+    periods:["Brasil colonial","Império","século XIX","Primeira República","modernização gráfica"],
+    lenses:[
+      {label:"Brasil oitocentista",query:"século XIX Brasil gravura",note:"cidade, costumes, arquitetura e circulação impressa"},
+      {label:"Bahia",query:"Bahia Salvador gravura",note:"paisagem, arquitetura, porto e memória visual"},
+      {label:"Cartografia",query:"mapa Brasil",note:"linha, território, hierarquia e informação"},
+      {label:"Imprensa ilustrada",query:"periódico ilustrado",note:"imagem, tipografia e narrativa editorial"},
+      {label:"Botânica brasileira",query:"flora Brasil ilustração",note:"desenho científico, forma e repertório vegetal"},
+      {label:"Retrato histórico",query:"retrato Brasil século XIX",note:"pose, vestuário e representação social"}
+    ],
+    caution:"Livre acesso não significa que todo uso seja idêntico; confirme a situação indicada para o documento e siga as orientações de reprodução da Fundação Biblioteca Nacional."
   }
 ];
 
@@ -266,5 +289,6 @@ export const studyFans = [
   {id:"figura-peso",title:"Figura em peso",query:"figure drawing contrapposto weight",thought:"Eixo, apoio, pelve, caixa torácica e centro de massa.",bankIds:["met","getty","cma","aic"]},
   {id:"linha-japonesa",title:"Linha japonesa",query:"Japanese woodblock print ukiyo-e",thought:"Recorte, padrão, vazio e continuidade de contorno.",bankIds:["met","rijks","aic"]},
   {id:"flor-ornamento",title:"Flor, padrão & ornamento",query:"flowers ornament botanical drawing",thought:"Ritmo vegetal, repetição, arabesco e superfície.",bankIds:["paris-musees","met","cma","walters"]},
-  {id:"atelie-luz",title:"Ateliê, luz & silêncio",query:"artist studio interior light drawing",thought:"A luz como estrutura antes do contorno.",bankIds:["rijks","met","nga","getty"]}
+  {id:"atelie-luz",title:"Ateliê, luz & silêncio",query:"artist studio interior light drawing",thought:"A luz como estrutura antes do contorno.",bankIds:["rijks","met","nga","getty"]},
+  {id:"brasil-memoria",title:"Brasil · memória gráfica",query:"Brasil século XIX gravura desenho",thought:"Paisagem, imprensa, cartografia, costumes e construção visual brasileira.",bankIds:["bndigital","nypl","paris-musees"]}
 ];
