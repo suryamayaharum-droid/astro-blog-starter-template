@@ -203,3 +203,45 @@ h1,h2,h3{font-family:"Cormorant Garamond",Georgia,"Times New Roman",serif;font-w
 .mobile-dock a.is-current b{color:var(--gold)}
 
 .surprise-btn{color:var(--paper)!important}
+
+
+/* responsive-hardening-v2 · repository-informed progressive enhancement */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-padding-top:76px}
+h1,h2,h3{text-wrap:balance}
+p,li,figcaption{text-wrap:pretty}
+.stream-section,.section,.panel,.feature-card,.browse-tile,.stream-card,.card{container-type:inline-size}
+.browse-rail,.feature-rail,.stream-rail,.rail,.bank-grid{scroll-padding-inline:12px;overscroll-behavior-inline:contain}
+@container (max-width:280px){
+  .stream-card-body h3,.browse-body h3{font-size:.96rem;white-space:normal;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2}
+  .feature-card h3{font-size:1.55rem}
+}
+@supports (height:100svh){
+  @media(max-width:760px){
+    .stream-hero,.profile-hero{min-height:min(68svh,680px)}
+    .stream-hero-copy,.profile-copy{min-height:min(68svh,680px)}
+  }
+}
+@media(max-width:760px){
+  .mobile-dock{bottom:max(10px,env(safe-area-inset-bottom));padding-bottom:max(5px,env(safe-area-inset-bottom))}
+  .site-footer{padding-bottom:calc(95px + env(safe-area-inset-bottom))}
+  .browse-rail,.feature-rail,.stream-rail,.rail,.bank-grid{scrollbar-width:none}
+  .browse-rail::-webkit-scrollbar,.feature-rail::-webkit-scrollbar,.stream-rail::-webkit-scrollbar,.rail::-webkit-scrollbar,.bank-grid::-webkit-scrollbar{display:none}
+}
+@media(pointer:coarse){
+  .btn,.save-current,.mobile-dock a,.rail-nav{min-height:44px}
+  .stream-card:hover,.browse-tile:hover,.continue-card:hover,.card:hover,.path-index-card:hover{transform:none}
+}
+@media(hover:hover) and (pointer:fine){
+  .stream-card:hover{transform:scale(1.025);z-index:4}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto!important}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
+@media(prefers-contrast:more){
+  :root{--line:rgba(238,231,220,.28)}
+  .btn,.browse-tile,.continue-card,.feature-card,.stream-card-media,.card,.panel{border-color:rgba(238,231,220,.32)}
+}
+@media(forced-colors:active){
+  .btn,.save-current,.rail-nav,.mobile-dock a{forced-color-adjust:auto;border:1px solid ButtonText}
+}

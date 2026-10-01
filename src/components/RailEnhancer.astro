@@ -33,7 +33,8 @@ const enhanceRails=()=>{
     };
     const jump=(dir)=>{
       const amount=Math.max(rail.clientWidth*.82,280);
-      rail.scrollBy({left:dir*amount,behavior:'smooth'});
+      const reduce=window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+      rail.scrollBy({left:dir*amount,behavior:reduce?'auto':'smooth'});
     };
     prev.addEventListener('click',()=>jump(-1));
     next.addEventListener('click',()=>jump(1));
@@ -42,7 +43,8 @@ const enhanceRails=()=>{
       if(e.key==='ArrowRight'){e.preventDefault();jump(1)}
       if(e.key==='ArrowLeft'){e.preventDefault();jump(-1)}
     });
-    new ResizeObserver(update).observe(rail);
+    if('ResizeObserver' in window) new ResizeObserver(update).observe(rail);
+    else window.addEventListener('resize',update,{passive:true});
     requestAnimationFrame(update);
   });
 };
