@@ -48,3 +48,10 @@ Branch: `harumverso/page-feeds-2026-10-01`
 
 ## Recuperação
 Se build/deploy falhar, retomar desta branch. Não remover a malha editorial sem erro técnico atribuído aos arquivos desta frente.
+
+
+## Baseline de infraestrutura
+- Main validado no commit `1e7b94203b06e197a771ffbbbab6933de8ea141d`.
+- Harumverso CI: success.
+- GitHub Pages deploy: success.
+- Este commit de checkpoint força nova validação do PR contra o baseline corrigido.
