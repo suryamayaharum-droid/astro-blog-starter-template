@@ -1,0 +1,112 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { artHistoryPeriods, artHistorySources } from '../data/artHistory';
+import '../styles/artHistory.css';
+const base=import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
+const masterCount=artHistoryPeriods.reduce((sum,p)=>sum+p.artists.length,0);
+const metSearch=(name)=>"https://www.metmuseum.org/art/collection/search?q="+encodeURIComponent(name);
+---
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <BaseHead title="Atlas Histórico · Harum Noir" description="Guia vivo de história da arte por período, mestres, construção visual, exercícios e fontes institucionais abertas." />
+</head>
+<body>
+<Header/>
+<main>
+  <section class="page-hero">
+    <div class="eyebrow">HARUM NOIR · ATLAS HISTÓRICO</div>
+    <h1>História da arte.</h1>
+    <p>Uma página viva para estudar períodos, mestres, construção, pensamento e fontes abertas — sempre voltando da referência para a mão.</p>
+  </section>
+
+  <section class="section historyIntro">
+    <div class="panel">
+      <div class="eyebrow">COMO LER ESTA PÁGINA</div>
+      <h2>Não é uma linha única.</h2>
+      <p>Períodos se sobrepõem, regiões seguem ritmos diferentes e a história da arte não cabe numa sequência europeia simples. Esta é uma rota inicial de estudo, com trilhas paralelas quando elas ajudam a compreender desenho, corpo, composição e imagem.</p>
+      <div class="historyStats">
+        <div class="historyStat"><b>{artHistoryPeriods.length}</b><span>núcleos históricos</span></div>
+        <div class="historyStat"><b>{masterCount}</b><span>mestres e oficinas para pesquisar</span></div>
+        <div class="historyStat"><b>{artHistorySources.length}</b><span>fontes institucionais abertas</span></div>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="eyebrow">REGRA DE ESTUDO</div>
+      <div class="quote">Olhar → simplificar → reconstruir → fechar a referência → desenhar de memória.</div>
+      <p>O objetivo não é vestir o traço de outro artista. É entender uma decisão e descobrir o que ela faz quando passa pela sua mão.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div><div class="eyebrow">MAPA RÁPIDO</div><h2>Do rito ao contemporâneo.</h2></div>
+      <p>As datas são aproximações de estudo. Use os períodos como portas, não como caixas rígidas.</p>
+    </div>
+    <div class="historyIndex">
+      {artHistoryPeriods.map(p=><a href={'#'+p.id}><span>{p.dates}</span><b>{p.title}</b></a>)}
+    </div>
+  </section>
+
+  {artHistoryPeriods.map((p,i)=><section class="historyPeriod" id={p.id}>
+    <div class="periodHead">
+      <div class={'historyDiagram d-'+p.diagram} aria-label={'Diagrama de estudo: '+p.diagramLabel}>
+        <span class="hLine a"></span><span class="hLine b"></span><span class="hLine c"></span><span class="hDot x"></span><span class="hDot y"></span>
+        <small>{p.diagramLabel}</small>
+      </div>
+      <div class="periodCopy">
+        <div class="dates">{String(i+1).padStart(2,'0')} · {p.dates}</div>
+        <h2>{p.title}</h2>
+        <div class="region">{p.region}</div>
+        <p>{p.thesis}</p>
+        <div class="construction">{p.construction.map(x=><span>{x}</span>)}</div>
+        <div class="studyGrid">
+          <div class="studyCell"><b>Pensamento</b><p>{p.thought}</p></div>
+          <div class="studyCell"><b>Curiosidade útil</b><p>{p.curiosity}</p></div>
+          <div class="studyCell" style="grid-column:1/-1"><b>Estudo para a mão</b><p>{p.study}</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="masterHead">
+      <h3>Mestres para abrir.</h3>
+      <p>O botão pesquisa o nome dentro do acervo do Met. Ao reutilizar imagem, confirme na ficha do objeto a indicação Public Domain / Open Access / CC0.</p>
+    </div>
+    <div class="masters">
+      {p.artists.map(a=><article class="master">
+        <small>{a.life || p.dates}</small>
+        <h4>{a.name}</h4>
+        <p>{a.focus}</p>
+        <a href={metSearch(a.name)} target="_blank" rel="noreferrer">buscar obras no museu ↗</a>
+        {a.rights&&<p class="rights">{a.rights}</p>}
+      </article>)}
+    </div>
+  </section>)}
+
+  <section class="section" id="fontes-abertas">
+    <div class="section-head">
+      <div><div class="eyebrow">FONTES DE ESTUDO</div><h2>Comece pelas instituições.</h2></div>
+      <p>Use a web aberta como acervo, não como prova de direito. A ficha de cada objeto é quem decide se uma imagem pode ser reutilizada.</p>
+    </div>
+    <div class="sourcesGrid">
+      {artHistorySources.map(s=><a class="sourceCard" href={s.url} target="_blank" rel="noreferrer">
+        <div class="access">{s.access}</div><h3>{s.name}</h3><p>{s.note}</p>
+      </a>)}
+    </div>
+    <div class="rightsNote"><b>Domínio público não é um rótulo automático para tudo que está num museu.</b> Nesta página, a regra é simples: texto institucional serve como referência; imagem só entra no acervo reutilizável quando a própria ficha indicar Public Domain, Open Access, CC0 ou outra licença compatível.</div>
+  </section>
+
+  <section class="section">
+    <div class="journal"><div class="paper">
+      <div class="eyebrow" style="color:#8a734b">HARUM NOIR · PÁGINA VIVA</div>
+      <h2>Este atlas cresce sem mudar de endereço.</h2>
+      <p class="lead">A página foi pensada para receber novas obras, artistas, períodos, exercícios e fontes aos poucos.</p>
+      <p>Quando uma nova referência entrar no JEV, ela pode ser anexada ao período correspondente em vez de criar uma página solta. Assim o estudo histórico vira uma biblioteca contínua.</p>
+      <p><a href={base+'biblioteca'}>Voltar para a Biblioteca →</a></p>
+    </div></div>
+  </section>
+</main>
+<Footer/>
+</body>
+</html>
