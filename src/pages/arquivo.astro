@@ -2,6 +2,10 @@
 import EcosystemRail from '../components/EcosystemRail.astro';
 import BaseHead from '../components/BaseHead.astro';import Header from '../components/Header.astro';import Footer from '../components/Footer.astro';const base=import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 const itens=[
+["Atlas Harum Noir","Mapa das rotas editoriais do ecossistema.",`${base}atlas`],
+["Museus Abertos","Acervos institucionais, buscas e fontes com origem verificável.",`${base}museus`],
+["Outliers","Referências que deslocam o olhar por matéria, processo e imaginação.",`${base}outliers`],
+["Roubar como artista","Método para transformar referência em repertório sem copiar assinatura.",`${base}roubar-como-artista`],
 ["Atlas de Referências","50 artistas, ateliês e professores organizados por curadoria.",`${base}referencias`],
 ["Biblioteca Aberta","Fontes públicas e institucionais organizadas por sketchbook, anatomia, ateliê, mãos e cabeça.",`${base}biblioteca`],
 ["Cadernos de Presença","Série editorial em torno de gesto, olhar, memória e vestígio.",`${base}cadernos`],
@@ -13,7 +17,7 @@ const itens=[
 ["Site principal Studio 23","Atendimento, portfólio documental e canais oficiais do estúdio.","https://tattoostudio23.suryamaya-harum.chatgpt.site/"],
 ];
 ---
-<!doctype html><html lang="pt-BR"><head><BaseHead title="Arquivo · Harum Noir" description="Acesso público aos cadernos, temporadas, cartas e materiais abertos do Harum Noir."/></head><body><Header/><main>
+<!doctype html><html lang="pt-BR"><head><BaseHead title="Arquivo · Harum Noir" description="Acesso público ao Atlas, museus, cadernos, temporadas, cartas, métodos e materiais abertos do Harum Noir."/></head><body><Header/><main>
 <section class="page-hero"><div class="eyebrow">ARQUIVO ABERTO</div><h1>O que pode circular, circula.</h1><p>O arquivo público reúne apenas materiais prontos para serem vistos fora do ateliê. Rascunhos, pesquisa bruta e processos internos permanecem fora daqui.</p></section>
 <section class="section"><div class="archive-grid">{itens.map(i=><a class="archive-item" href={i[2]}><span class="card-kicker">ABERTO</span><h3>{i[0]}</h3><p>{i[1]}</p></a>)}</div></section>
 <EcosystemRail current="arquivo" limit={5} />

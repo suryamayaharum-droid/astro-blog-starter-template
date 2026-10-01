@@ -2,7 +2,12 @@
 import { ecosystemHubs } from '../data/ecosystem';
 const { current="", limit=4, title="Continue pelo ecossistema", kicker="PRÓXIMAS PORTAS" } = Astro.props;
 const base=import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
-const items=ecosystemHubs.filter(item=>item.id!==current).slice(0,Number(limit)||4);
+const maxItems=Number(limit)||4;
+const currentIndex=ecosystemHubs.findIndex(item=>item.id===current);
+const ordered=currentIndex>=0
+  ? [...ecosystemHubs.slice(currentIndex+1),...ecosystemHubs.slice(0,currentIndex)]
+  : ecosystemHubs;
+const items=ordered.filter(item=>item.id!==current).slice(0,maxItems);
 ---
 <section class="section">
   <div class="section-head">
