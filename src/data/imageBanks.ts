@@ -273,12 +273,12 @@ export const artHistoryBankMap: Record<string,string[]> = {
   "maneirismo":["met","getty","nga"],
   "barroco":["rijks","met","nga"],
   "rococo":["paris-musees","getty","met"],
-  "neo-romantismo":["paris-musees","nga","met"],
-  "realismo":["paris-musees","met","aic"],
+  "neo-romantismo":["paris-musees","nga","met","bndigital"],
+  "realismo":["paris-musees","met","aic","bndigital"],
   "ukiyoe":["met","rijks","aic"],
   "impressionismo":["aic","paris-musees","nga"],
   "simbolismo":["aic","paris-musees","met"],
-  "modernismos":["aic","nga","paris-musees"],
+  "modernismos":["aic","nga","paris-musees","bndigital"],
   "pos-guerra":["aic","smithsonian","nga"]
 };
 
