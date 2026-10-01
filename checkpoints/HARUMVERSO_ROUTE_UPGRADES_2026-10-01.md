@@ -29,3 +29,10 @@ Razão: não duplicar conteúdo nem simular funcionalidades inexistentes.
 - inspeção mobile
 - validar navegação Atlas → hubs → prática
 - merge após gate técnico aceitável
+
+
+## Baseline de infraestrutura
+- Main validado no commit `1e7b94203b06e197a771ffbbbab6933de8ea141d`.
+- Harumverso CI: success.
+- GitHub Pages deploy: success.
+- Este commit de checkpoint força nova validação do PR contra o baseline corrigido.
