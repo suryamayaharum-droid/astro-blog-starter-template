@@ -6,7 +6,7 @@ import { artHistoryPeriods, artHistorySources } from '../data/artHistory';
 import '../styles/artHistory.css';
 const base=import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 const masterCount=artHistoryPeriods.reduce((sum,p)=>sum+p.artists.length,0);
-const metSearch=(name)=>"https://www.metmuseum.org/art/collection/search?q="+encodeURIComponent(name);
+const museumSearch=(name)=>base+"museus?q="+encodeURIComponent(name);
 ---
 <!doctype html>
 <html lang="pt-BR">
@@ -71,14 +71,14 @@ const metSearch=(name)=>"https://www.metmuseum.org/art/collection/search?q="+enc
     </div>
     <div class="masterHead">
       <h3>Mestres para abrir.</h3>
-      <p>O botão pesquisa o nome dentro do acervo do Met. Ao reutilizar imagem, confirme na ficha do objeto a indicação Public Domain / Open Access / CC0.</p>
+      <p>O botão abre a busca federada do HARUM NOIR em museus conectados. Ao reutilizar imagem, confirme na ficha do objeto a indicação Public Domain / Open Access / CC0.</p>
     </div>
     <div class="masters">
       {p.artists.map(a=><article class="master">
         <small>{a.life || p.dates}</small>
         <h4>{a.name}</h4>
         <p>{a.focus}</p>
-        <a href={metSearch(a.name)} target="_blank" rel="noreferrer">buscar obras no museu ↗</a>
+        <a href={museumSearch(a.name)}>pesquisar em 3 museus →</a>
         {a.rights&&<p class="rights">{a.rights}</p>}
       </article>)}
     </div>
