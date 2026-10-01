@@ -4,6 +4,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { artHistoryPeriods, artHistorySources } from '../data/artHistory';
+import { artHistoryBankMap, imageBankById } from '../data/imageBanks';
 import '../styles/artHistory.css';
 const base=import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 const masterCount=artHistoryPeriods.reduce((sum,p)=>sum+p.artists.length,0);
@@ -73,6 +74,9 @@ const museumSearch=(name)=>base+"museus?q="+encodeURIComponent(name);
     <div class="masterHead">
       <h3>Mestres para abrir.</h3>
       <p>O botão abre a busca federada do HARUM NOIR em museus conectados. Ao reutilizar imagem, confirme na ficha do objeto a indicação Public Domain / Open Access / CC0.</p>
+    </div>
+    <div class="bank-strengths" style="margin:16px 0 4px">
+      {(artHistoryBankMap[p.id]||[]).map(id=>imageBankById[id]).filter(Boolean).map(bank=><a href={base+'bancos/'+bank.id+'/'}>{bank.name} ↗</a>)}
     </div>
     <div class="masters">
       {p.artists.map(a=><article class="master">
