@@ -238,3 +238,23 @@ export const imageBanks: ImageBank[] = [
 ];
 
 export const imageBankById = Object.fromEntries(imageBanks.map(x=>[x.id,x])) as Record<string,ImageBank>;
+
+
+export const artHistoryBankMap: Record<string,string[]> = {
+  "origens":["met","walters","cma"],
+  "egito-mesopotamia":["met","walters","cma"],
+  "grecia-roma":["met","getty","cma"],
+  "asia-antiga":["met","cma","walters"],
+  "medieval":["getty","walters","met"],
+  "renascimento":["met","getty","nga"],
+  "maneirismo":["met","getty","nga"],
+  "barroco":["rijks","met","nga"],
+  "rococo":["paris-musees","getty","met"],
+  "neo-romantismo":["paris-musees","nga","met"],
+  "realismo":["paris-musees","met","aic"],
+  "ukiyoe":["met","rijks","aic"],
+  "impressionismo":["aic","paris-musees","nga"],
+  "simbolismo":["aic","paris-musees","met"],
+  "modernismos":["aic","nga","paris-musees"],
+  "pos-guerra":["aic","smithsonian","nga"]
+};
