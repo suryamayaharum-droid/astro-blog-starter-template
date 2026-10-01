@@ -2,17 +2,18 @@ name: Harum Noir Mobile Visual Audit · GitHub Pages
 
 on:
   workflow_dispatch:
-  push:
-    paths:
-      - ".github/workflows/noir-mobile-visual-audit.yml"
+  workflow_run:
+    workflows: ["Deploy Harumverso to GitHub Pages"]
+    types: [completed]
 
 permissions:
   contents: read
 
 jobs:
   capture:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 18
     steps:
       - name: Install Playwright Chromium
         run: |
@@ -20,7 +21,7 @@ jobs:
           npm install playwright@1.50.1 --no-save
           npx playwright install --with-deps chromium
 
-      - name: Capture post-patch mobile matrix
+      - name: Capture mobile route matrix
         run: |
           mkdir -p screenshots
           node <<'NODE'
@@ -38,10 +39,23 @@ jobs:
             const base = 'https://suryamayaharum-droid.github.io/astro-blog-starter-template';
             const targets = [
               ['home', `${base}/`],
-              ['atlas', `${base}/referencias/`],
-              ['artist-cesar-santos', `${base}/referencias/cesar-santos/`],
-              ['artist-silvie-mahdal', `${base}/referencias/silvie-mahdal/`],
-              ['percursos', `${base}/percursos/`]
+              ['atlas', `${base}/atlas/`],
+              ['museus', `${base}/museus/`],
+              ['referencias', `${base}/referencias/`],
+              ['biblioteca', `${base}/biblioteca/`],
+              ['historia', `${base}/historia-da-arte/`],
+              ['percursos', `${base}/percursos/`],
+              ['cadernos', `${base}/cadernos/`],
+              ['caderno-memoria', `${base}/cadernos/memoria/`],
+              ['atelier', `${base}/atelier/`],
+              ['temporadas', `${base}/temporadas/`],
+              ['noir', `${base}/noir/`],
+              ['outliers', `${base}/outliers/`],
+              ['carta', `${base}/carta/`],
+              ['metodo', `${base}/roubar-como-artista/`],
+              ['arquivo', `${base}/arquivo/`],
+              ['sobre', `${base}/sobre/`],
+              ['artist-cesar-santos', `${base}/referencias/cesar-santos/`]
             ];
             const metrics = [];
 
@@ -56,10 +70,15 @@ jobs:
                 locale: 'pt-BR'
               });
               const page = await context.newPage();
+              let consoleErrors = [];
+              page.on('console', msg => {
+                if (msg.type() === 'error') consoleErrors.push(msg.text());
+              });
 
               for (const [name, url] of targets) {
+                consoleErrors = [];
                 const response = await page.goto(url, { waitUntil: 'networkidle', timeout: 45000 });
-                await page.waitForTimeout(1200);
+                await page.waitForTimeout(700);
 
                 const info = await page.evaluate(() => {
                   const root = document.documentElement;
@@ -75,6 +94,7 @@ jobs:
                     documentWidth: root.scrollWidth,
                     bodyWidth: body ? body.scrollWidth : null,
                     horizontalOverflow: root.scrollWidth > window.innerWidth + 1,
+                    textLength: body ? body.innerText.trim().length : 0,
                     nav: rect(nav),
                     hero: rect(hero),
                     title: document.title
@@ -86,6 +106,7 @@ jobs:
                   route: name,
                   url,
                   status: response ? response.status() : null,
+                  consoleErrors: [...consoleErrors],
                   ...info
                 });
 
@@ -99,11 +120,28 @@ jobs:
 
             fs.writeFileSync('screenshots/metrics.json', JSON.stringify(metrics, null, 2));
             console.log(JSON.stringify(metrics, null, 2));
+
+            const failures = metrics.filter(m =>
+              !m.status ||
+              m.status >= 400 ||
+              m.horizontalOverflow ||
+              !m.nav ||
+              m.textLength < 40
+            );
+
+            if (failures.length) {
+              console.error('MOBILE_AUDIT_FAILURES');
+              console.error(JSON.stringify(failures, null, 2));
+              await browser.close();
+              process.exit(1);
+            }
+
             await browser.close();
           })().catch(err => { console.error(err); process.exit(1); });
           NODE
 
       - name: Upload screenshots
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: harum-noir-mobile-audit-matrix
