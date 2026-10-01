@@ -111,6 +111,27 @@ jobs:
                     nav: rect(nav),
                     dock: rect(dock),
                     dockVisible: !!dock && getComputedStyle(dock).display !== 'none',
+                    dockOcclusions: (() => {
+                      if (!dock) return [];
+                      const dr = dock.getBoundingClientRect();
+                      return [...document.querySelectorAll('a[href],button,input,select,textarea')]
+                        .filter(el => !dock.contains(el))
+                        .map(el => {
+                          const r = el.getBoundingClientRect();
+                          const cs = getComputedStyle(el);
+                          const ih = Math.max(0, Math.min(r.bottom, dr.bottom) - Math.max(r.top, dr.top));
+                          const iw = Math.max(0, Math.min(r.right, dr.right) - Math.max(r.left, dr.left));
+                          const area = Math.max(1, r.width * r.height);
+                          const overlapRatio = (ih * iw) / area;
+                          return {
+                            tag: el.tagName,
+                            text: (el.textContent || el.getAttribute('aria-label') || '').trim().slice(0,80),
+                            overlapRatio,
+                            visible: cs.display !== 'none' && cs.visibility !== 'hidden' && Number(cs.opacity || 1) > 0 && r.width > 0 && r.height > 0
+                          };
+                        })
+                        .filter(x => x.visible && x.overlapRatio > .25);
+                    })(),
                     hero: rect(hero),
                     title: document.title,
                     brokenImages: [...document.images].filter(img => img.complete && img.naturalWidth === 0).map(img => img.currentSrc || img.src)
@@ -150,6 +171,7 @@ jobs:
                 !m.dockVisible ||
                 m.textLength < 40 ||
                 (m.brokenImages && m.brokenImages.length > 0) ||
+                (m.dockOcclusions && m.dockOcclusions.length > 0) ||
                 sameOriginResourceFailures.length > 0 ||
                 (m.consoleErrors && m.consoleErrors.length > 0)
               );
