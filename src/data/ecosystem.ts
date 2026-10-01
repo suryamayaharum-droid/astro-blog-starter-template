@@ -19,4 +19,7 @@ export const ecosystemHubs: EcosystemHub[] = [
   {id:"temporadas",title:"Temporadas",kicker:"APROFUNDAMENTO",description:"Sete percursos editoriais de corpo, expressão, anatomia, personagem, relação, matéria e síntese.",href:"temporadas"},
   {id:"noir",title:"Harum Noir",kicker:"TRAÇO · CORPO · PRESENÇA",description:"A página identitária que reúne os princípios editoriais e as portas de entrada do Harum Noir.",href:"noir"},
   {id:"arquivo",title:"Arquivo Aberto",kicker:"O QUE PODE CIRCULAR, CIRCULA",description:"Materiais públicos prontos, cartas, textos abertos, RSS e portas do ecossistema.",href:"arquivo"},
+  {id:"carta",title:"Carta do Ateliê",kicker:"PUBLICAÇÃO ABERTA",description:"Uma ideia, uma referência e um exercício colocados em relação.",href:"carta"},
+  {id:"metodo",title:"Roubar como artista",kicker:"MÉTODO DE REFERÊNCIA",description:"Um protocolo para extrair princípios de referências sem copiar assinatura.",href:"roubar-como-artista"},
+  {id:"sobre",title:"Sobre Harum Noir",kicker:"COMO O SISTEMA PENSA",description:"A linguagem, os limites e o fluxo editorial que conectam pesquisa, prática e arquivo.",href:"sobre"},
 ];
