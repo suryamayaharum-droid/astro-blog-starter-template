@@ -1,4 +1,5 @@
 ---
+import EcosystemRail from '../components/EcosystemRail.astro';
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -49,4 +50,5 @@ const paths=[
 })}
 
 <section class="section"><div class="journal"><div class="paper"><div class="eyebrow" style="color:#8a734b">UMA REGRA</div><h2>O percurso termina no papel.</h2><p class="lead">Navegar é só a primeira metade.</p><p>Escolha uma referência, extraia uma pergunta e faça um estudo. O jardim só funciona quando alguma coisa volta para a mão.</p><a href={base+'roubar-como-artista'}>Como estudar referência sem virar cópia →</a></div></div></section>
+<EcosystemRail current="percursos" limit={5} />
 </main><Footer/></body></html>
