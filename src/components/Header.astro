@@ -54,6 +54,15 @@ try{
     xs=[item,...(Array.isArray(xs)?xs:[]).filter(x=>x&&x.path!==item.path)].slice(0,12);
     localStorage.setItem(k,JSON.stringify(xs));
   }
+  document.querySelectorAll('.nav-links a,.mobile-dock a').forEach((a)=>{
+    if(!(a instanceof HTMLAnchorElement)) return;
+    const target=new URL(a.href,location.href);
+    const sameOrigin=target.origin===location.origin;
+    const targetPath=target.pathname.replace(/\/$/,'');
+    const currentPath=location.pathname.replace(/\/$/,'');
+    const active=sameOrigin&&(currentPath===targetPath||(targetPath&&targetPath!==rootPath.replace(/\/$/,'')&&currentPath.startsWith(targetPath+'/')));
+    if(active){a.setAttribute('aria-current','page');a.classList.add('is-current')}
+  });
   const b=document.querySelector('#save-current');
   if(b){
     if(home){b.style.display='none'}
