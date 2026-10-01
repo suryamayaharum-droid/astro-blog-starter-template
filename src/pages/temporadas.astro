@@ -1,9 +1,12 @@
 ---
+import EcosystemRail from '../components/EcosystemRail.astro';
 import BaseHead from '../components/BaseHead.astro';import Header from '../components/Header.astro';import Footer from '../components/Footer.astro';import {temporadas} from '../data/public';
+const base=import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 ---
 <!doctype html><html lang="pt-BR"><head><BaseHead title="Temporadas · Harum Noir" description="Sete percursos editoriais de gesto, expressão, anatomia, personagem, relação, matéria e síntese."/></head><body><Header/><main>
 <section class="page-hero"><div class="eyebrow">TEMPORADAS</div><h1>Sete formas de aprofundar o olhar.</h1><p>Não são cursos fechados em caixas. São percursos editoriais que podem ser revisitados em ordens diferentes conforme a necessidade do desenho.</p></section>
 <section class="section"><div class="season-grid">{temporadas.map(t=><article class="season" id={`t${t.n}`}><div><div class="n">{t.n}</div><h3>{t.title}</h3><p>{t.text}</p></div><span class="card-kicker">EM DESENVOLVIMENTO CONTÍNUO</span></article>)}</div></section>
 <section class="section"><div class="panel"><div class="eyebrow">COMO LER</div><h2>Sem pressa de “concluir”.</h2><p>Uma temporada amadurece por estudo, repetição e edição. Quando uma página não acrescenta uma nova relação, ela não precisa existir.</p></div></section>
-<section class="section"><div class="panel"><div class="eyebrow">TEMPORADA 01 · FONTES ABERTAS</div><h2>Gesto, peso, escorço e presença.</h2><p>Estudos históricos de figura entram aqui como apoio para observar ação, centro de massa, correção e repetição. A referência volta para a mão como problema de desenho, não como estilo para copiar.</p><div class="actions"><a class="btn gold" href="/biblioteca#gesto-corpo-presenca">Abrir estudos de figura →</a><a class="btn" href="/historia-da-arte">Abrir Atlas Histórico →</a></div></div></section>
+<section class="section"><div class="panel"><div class="eyebrow">TEMPORADA 01 · FONTES ABERTAS</div><h2>Gesto, peso, escorço e presença.</h2><p>Estudos históricos de figura entram aqui como apoio para observar ação, centro de massa, correção e repetição. A referência volta para a mão como problema de desenho, não como estilo para copiar.</p><div class="actions"><a class="btn gold" href={base+'biblioteca#gesto-corpo-presenca'}>Abrir estudos de figura →</a><a class="btn" href={base+'historia-da-arte'}>Abrir Atlas Histórico →</a></div></div></section>
+<EcosystemRail current="temporadas" limit={5} />
 </main><Footer/></body></html>
