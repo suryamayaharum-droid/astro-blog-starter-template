@@ -16,6 +16,14 @@ const periodIds=["grecia-roma","renascimento","barroco","ukiyoe","impressionismo
 const bankIds=["bndigital","met","rijks","getty","aic","paris-musees","walters"];
 const periods=periodIds.map(id=>artHistoryPeriods.find(p=>p.id===id)).filter(Boolean);
 const banks=bankIds.map(id=>imageBanks.find(b=>b.id===id)).filter(Boolean);
+const studySessions=[
+  {time:"12 min",title:"Gesto sem contorno",text:"Linha de ação, peso e três tempos de pose.",href:base+"cadernos#gesto"},
+  {time:"18 min",title:"Carvão & noite",text:"Massa escura, borda perdida e uma zona de luz.",href:base+"bancos#leques"},
+  {time:"20 min",title:"Mãos que fazem algo",text:"A mão como verbo: segurar, apoiar, puxar, proteger.",href:base+"busca?q="+encodeURIComponent("hands gesture drawing")},
+  {time:"22 min",title:"Barroco em duas luzes",text:"Diagonal, descoberta e narrativa antes do acabamento.",href:base+"historia-da-arte#barroco"},
+  {time:"15 min",title:"Linha japonesa",text:"Recorte, padrão, vazio e síntese gráfica.",href:base+"historia-da-arte#ukiyoe"},
+  {time:"25 min",title:"Bahia em arquivo",text:"Paisagem, cidade e memória visual pela Biblioteca Nacional Digital.",href:base+"bancos/bndigital/"}
+];
 ---
 <!doctype html><html lang="pt-BR"><head><BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION}/></head>
 <body><Header/><main>
@@ -31,6 +39,7 @@ const banks=bankIds.map(id=>imageBanks.find(b=>b.id===id)).filter(Boolean);
 </section>
 
 <div class="browse-quick">
+  <a href={base+'busca'}>Buscar</a>
   <a href={base+'referencias'}>Referências</a><a href={base+'cadernos'}>Cadernos</a><a href={base+'temporadas'}>Temporadas</a><a href={base+'biblioteca'}>Biblioteca</a><a href={base+'museus'}>Museus</a><a href={base+'atelier'}>Ateliê</a><a href={base+'composicoes-autorais'}>Autorais</a>
 </div>
 
@@ -42,6 +51,13 @@ const banks=bankIds.map(id=>imageBanks.find(b=>b.id===id)).filter(Boolean);
 <section class="stream-section" id="shelf-section" hidden>
   <div class="stream-head"><div><span class="eyebrow">MINHA ESTANTE</span><h2>O que você guardou.</h2></div><p>Favoritos ficam somente neste navegador.</p></div>
   <div class="browse-rail" id="shelf-rail"></div>
+</section>
+
+<section class="stream-section">
+  <div class="stream-head"><div><span class="eyebrow">SESSÕES CURTAS</span><h2>Escolha pelo tempo que você tem.</h2></div><p>Uma sessão não tenta ensinar tudo. Ela entrega uma pergunta, uma porta e um retorno para o papel.</p></div>
+  <div class="feature-rail">{studySessions.map((s,i)=><a class="feature-card session-card" href={s.href}>
+    <span class="tag">{s.time} · SESSÃO {String(i+1).padStart(2,'0')}</span><h3>{s.title}</h3><p>{s.text}</p><div class="session-play">▶ começar</div>
+  </a>)}</div>
 </section>
 
 <section class="stream-section">
