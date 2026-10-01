@@ -257,6 +257,52 @@ export const imageBanks: ImageBank[] = [
       {label:"Retrato histórico",query:"retrato Brasil século XIX",note:"pose, vestuário e representação social"}
     ],
     caution:"Livre acesso não significa que todo uso seja idêntico; confirme a situação indicada para o documento e siga as orientações de reprodução da Fundação Biblioteca Nacional."
+  },
+  {
+    id:"loc",
+    name:"Library of Congress",
+    place:"Washington, D.C. · EUA",
+    kind:"archive",
+    access:"JSON/YAML API pública · sem chave + conjuntos Free to Use and Reuse",
+    rights:"A API expõe muitos tipos de item; reutilize apenas materiais cuja própria ficha/coleção indique ausência de restrições conhecidas ou entrada nos conjuntos Free to Use and Reuse.",
+    collectionUrl:"https://www.loc.gov/",
+    rightsUrl:"https://www.loc.gov/free-to-use/",
+    docsUrl:"https://www.loc.gov/apis/json-and-yaml/",
+    liveFederated:false,
+    strengths:["fotografia","cartaz","mapas","gravura","desenho","livros e arquivo"],
+    periods:["século XIX","século XX","design gráfico","fotografia","cartografia"],
+    lenses:[
+      {label:"Cartazes",query:"posters",note:"composição, tipografia, propaganda e cor"},
+      {label:"Fotografia",query:"photographs portrait",note:"pose, gesto, enquadramento e documento"},
+      {label:"Mapas",query:"maps",note:"linha, hierarquia, território e legenda"},
+      {label:"Desenhos & gravuras",query:"prints drawings",note:"hachura, reprodução e circulação"},
+      {label:"Arquitetura",query:"architecture drawings",note:"estrutura, escala e documentação"},
+      {label:"Free to Use",query:"free to use and reuse",note:"conjuntos curados pela própria Library of Congress para reutilização"}
+    ],
+    caution:"A API é aberta, mas os direitos variam por item. Use a ficha de Rights & Access ou os conjuntos Free to Use and Reuse antes de reutilizar mídia."
+  },
+  {
+    id:"europeana",
+    name:"Europeana",
+    place:"Europa · agregador multinacional",
+    kind:"network",
+    access:"Agregador de patrimônio cultural + APIs / Linked Data",
+    rights:"Cada objeto carrega um rights statement padronizado. Prefira CC0, Public Domain Mark ou outra licença compatível com o uso pretendido.",
+    collectionUrl:"https://www.europeana.eu/en",
+    rightsUrl:"https://pro.europeana.eu/page/available-rights-statements",
+    docsUrl:"https://pro.europeana.eu/page/documentation",
+    liveFederated:false,
+    strengths:["museus europeus","bibliotecas","arquivos","fotografia","design","patrimônio"],
+    periods:["multiperíodo","Europa","design","fotografia","arquivo"],
+    lenses:[
+      {label:"Domínio público",query:"public domain",note:"filtrar por direitos antes de olhar volume"},
+      {label:"Desenho",query:"drawing",note:"comparar instituições e tradições diferentes"},
+      {label:"Cartaz & design",query:"poster design",note:"imagem, tipografia e circulação"},
+      {label:"Fotografia histórica",query:"historical photography",note:"documento, enquadramento e memória"},
+      {label:"Ornamento",query:"ornament pattern",note:"padrão, superfície e repertório"},
+      {label:"Moda & traje",query:"fashion costume",note:"silhueta, tecido, época e representação"}
+    ],
+    caution:"Europeana agrega milhares de instituições: o rights statement é parte essencial do registro. A API de busca usa chave; não expor credenciais no cliente."
   }
 ];
 
@@ -284,6 +330,7 @@ export const artHistoryBankMap: Record<string,string[]> = {
 
 
 export const studyFans = [
+  {id:"arquivo-impressos",title:"Arquivo, cartaz & impressão",query:"posters prints maps",thought:"Como uma imagem circula muda o modo como ela é construída.",bankIds:["loc","nypl","bndigital","europeana"]},
   {id:"maos-gesto",title:"Mãos & gesto",query:"hands gesture drawing",thought:"A mão como peso, ação, contato e narrativa.",bankIds:["met","getty","cma","nga"]},
   {id:"carvao-noite",title:"Carvão & noite",query:"charcoal drawing dark tonal study",thought:"Massa escura, borda perdida, pressão e silêncio.",bankIds:["met","aic","paris-musees","nga"]},
   {id:"figura-peso",title:"Figura em peso",query:"figure drawing contrapposto weight",thought:"Eixo, apoio, pelve, caixa torácica e centro de massa.",bankIds:["met","getty","cma","aic"]},
