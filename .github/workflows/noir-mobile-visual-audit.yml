@@ -32,6 +32,7 @@ jobs:
           (async () => {
             const browser = await chromium.launch({ headless: true });
             const viewports = [
+              { name: '320x568', width: 320, height: 568 },
               { name: '360x800', width: 360, height: 800 },
               { name: '390x844', width: 390, height: 844 },
               { name: '412x915', width: 412, height: 915 }
@@ -95,6 +96,7 @@ jobs:
                   const root = document.documentElement;
                   const body = document.body;
                   const nav = document.querySelector('nav');
+                  const dock = document.querySelector('.mobile-dock');
                   const hero = document.querySelector('.profileHero,.profile-hero,.streamHero,.stream-hero,.hero,.page-hero');
                   const rect = el => el ? (() => {
                     const r = el.getBoundingClientRect();
@@ -107,6 +109,8 @@ jobs:
                     horizontalOverflow: root.scrollWidth > window.innerWidth + 1,
                     textLength: body ? body.innerText.trim().length : 0,
                     nav: rect(nav),
+                    dock: rect(dock),
+                    dockVisible: !!dock && getComputedStyle(dock).display !== 'none',
                     hero: rect(hero),
                     title: document.title,
                     brokenImages: [...document.images].filter(img => img.complete && img.naturalWidth === 0).map(img => img.currentSrc || img.src)
@@ -134,14 +138,22 @@ jobs:
             fs.writeFileSync('screenshots/metrics.json', JSON.stringify(metrics, null, 2));
             console.log(JSON.stringify(metrics, null, 2));
 
-            const failures = metrics.filter(m =>
-              !m.status ||
-              m.status >= 400 ||
-              m.horizontalOverflow ||
-              !m.nav ||
-              m.textLength < 40 ||
-              (m.brokenImages && m.brokenImages.length > 0)
-            );
+            const failures = metrics.filter(m => {
+              const sameOriginResourceFailures = (m.failedResources || []).filter(r => {
+                try { return new URL(r.url).origin === new URL(m.url).origin; } catch { return true; }
+              });
+              return (
+                !m.status ||
+                m.status >= 400 ||
+                m.horizontalOverflow ||
+                !m.nav ||
+                !m.dockVisible ||
+                m.textLength < 40 ||
+                (m.brokenImages && m.brokenImages.length > 0) ||
+                sameOriginResourceFailures.length > 0 ||
+                (m.consoleErrors && m.consoleErrors.length > 0)
+              );
+            });
 
             if (failures.length) {
               console.error('MOBILE_AUDIT_FAILURES');
@@ -151,6 +163,65 @@ jobs:
             }
 
             await browser.close();
+          })().catch(err => { console.error(err); process.exit(1); });
+          NODE
+
+      - name: Responsive boundary smoke
+        run: |
+          node <<'NODE'
+          const { chromium } = require('playwright');
+
+          (async () => {
+            const browser = await chromium.launch({ headless: true });
+            const base = 'https://suryamayaharum-droid.github.io/astro-blog-starter-template';
+            const routes = ['/', '/atlas/', '/biblioteca/'];
+            const widths = [
+              { name: 'mobile-edge', width: 760, expectDock: true },
+              { name: 'desktop-edge', width: 761, expectDock: false },
+              { name: 'tablet', width: 1024, expectDock: false }
+            ];
+            const failures = [];
+
+            for (const cfg of widths) {
+              const context = await browser.newContext({
+                viewport: { width: cfg.width, height: 900 },
+                hasTouch: cfg.width <= 760,
+                isMobile: cfg.width <= 760,
+                locale: 'pt-BR',
+                reducedMotion: 'reduce'
+              });
+              const page = await context.newPage();
+
+              for (const route of routes) {
+                const response = await page.goto(base + route, { waitUntil: 'networkidle', timeout: 45000 });
+                await page.waitForTimeout(250);
+                const result = await page.evaluate(() => {
+                  const dock = document.querySelector('.mobile-dock');
+                  const dockVisible = !!dock && getComputedStyle(dock).display !== 'none';
+                  const overflow = document.documentElement.scrollWidth > window.innerWidth + 1;
+                  const minDockTarget = dock ? Math.min(...[...dock.querySelectorAll('a')].map(a => a.getBoundingClientRect().height)) : null;
+                  return {
+                    dockVisible,
+                    overflow,
+                    minDockTarget,
+                    scrollBehavior: getComputedStyle(document.documentElement).scrollBehavior
+                  };
+                });
+                if (!response || response.status() >= 400) failures.push({cfg, route, reason:'http', status:response?.status()});
+                if (result.overflow) failures.push({cfg, route, reason:'overflow'});
+                if (result.dockVisible !== cfg.expectDock) failures.push({cfg, route, reason:'dock-state', result});
+                if (cfg.expectDock && result.minDockTarget !== null && result.minDockTarget < 44) failures.push({cfg, route, reason:'dock-touch-target', result});
+                if (result.scrollBehavior === 'smooth') failures.push({cfg, route, reason:'reduced-motion-scroll', result});
+              }
+              await context.close();
+            }
+
+            await browser.close();
+            if (failures.length) {
+              console.error('RESPONSIVE_BOUNDARY_FAILURES');
+              console.error(JSON.stringify(failures, null, 2));
+              process.exit(1);
+            }
           })().catch(err => { console.error(err); process.exit(1); });
           NODE
 
