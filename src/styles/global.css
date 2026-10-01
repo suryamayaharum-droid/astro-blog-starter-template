@@ -254,3 +254,7 @@ p,li,figcaption{text-wrap:pretty}
   .page-hero p{font-size:.98rem;line-height:1.48}
   .page-hero .actions{margin-top:17px}
 }
+
+@media(max-width:760px){
+  html{scroll-padding-bottom:calc(92px + env(safe-area-inset-bottom))}
+}

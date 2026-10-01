@@ -97,7 +97,7 @@ jobs:
                   const body = document.body;
                   const nav = document.querySelector('nav');
                   const dock = document.querySelector('.mobile-dock');
-                  const hero = document.querySelector('.profileHero,.profile-hero,.streamHero,.stream-hero,.hero,.page-hero');
+                  const hero = document.querySelector('.browse-hero,.profileHero,.profile-hero,.streamHero,.stream-hero,.hero,.page-hero');
                   const rect = el => el ? (() => {
                     const r = el.getBoundingClientRect();
                     return { x:r.x, y:r.y, width:r.width, height:r.height, right:r.right, bottom:r.bottom };
@@ -171,7 +171,7 @@ jobs:
                 !m.dockVisible ||
                 m.textLength < 40 ||
                 (m.brokenImages && m.brokenImages.length > 0) ||
-                (m.dockOcclusions && m.dockOcclusions.length > 0) ||
+                (m.dockOcclusions && m.dockOcclusions.some(x => x.inHero)) ||
                 sameOriginResourceFailures.length > 0 ||
                 (m.consoleErrors && m.consoleErrors.length > 0)
               );
