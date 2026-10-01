@@ -39,6 +39,11 @@ const banks=bankIds.map(id=>imageBanks.find(b=>b.id===id)).filter(Boolean);
   <div class="browse-rail" id="continue-rail"></div>
 </section>
 
+<section class="stream-section" id="shelf-section" hidden>
+  <div class="stream-head"><div><span class="eyebrow">MINHA ESTANTE</span><h2>O que você guardou.</h2></div><p>Favoritos ficam somente neste navegador.</p></div>
+  <div class="browse-rail" id="shelf-rail"></div>
+</section>
+
 <section class="stream-section">
   <div class="stream-head"><div><span class="eyebrow">EM FOCO</span><h2>Leques de estudo.</h2></div><p>Comece por uma pergunta visual e atravesse vários acervos sem copiar bibliotecas para dentro do site.</p></div>
   <div class="feature-rail">{studyFans.map((fan,i)=><article class="feature-card">
@@ -106,6 +111,14 @@ try{
   if(root&&section&&items.length){
     root.innerHTML=items.map((x,i)=>'<a class="continue-card" href="'+esc(x.path)+'"><div class="continue-visual"><span>'+String(i+1).padStart(2,'0')+'</span><b>HARUM NOIR</b></div><div class="continue-body"><span>RECENTE</span><h3>'+esc(String(x.title||'HARUM NOIR').replace(/ · Harum Noir.*/i,''))+'</h3><div class="continue-bar"><i style="width:'+(72-i*6)+'%"></i></div></div></a>').join('');
     section.hidden=false;
+  }
+  const saved=JSON.parse(localStorage.getItem('harum_noir_shelf')||'[]');
+  const shelf=document.querySelector('#shelf-rail');
+  const shelfSection=document.querySelector('#shelf-section');
+  const shelfItems=Array.isArray(saved)?saved.slice(0,12):[];
+  if(shelf&&shelfSection&&shelfItems.length){
+    shelf.innerHTML=shelfItems.map((x,i)=>'<a class="browse-tile" href="'+esc(x.path)+'"><div class="browse-visual"><span class="num">'+String(i+1).padStart(2,'0')+'</span><div class="big">'+esc(String(x.title||'HARUM NOIR').replace(/ · Harum Noir.*/i,''))+'</div></div><div class="browse-body"><span>SALVO</span><h3>Voltar para este estudo →</h3></div></a>').join('');
+    shelfSection.hidden=false;
   }
 }catch{}
 </script>
