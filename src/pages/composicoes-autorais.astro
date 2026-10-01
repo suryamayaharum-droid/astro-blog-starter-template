@@ -1,0 +1,40 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+const base=import.meta.env.BASE_URL.endsWith('/')?import.meta.env.BASE_URL:import.meta.env.BASE_URL+'/';
+const hero=base+'noir/composicoes-autorais/HN_ANIME_COMPOSICOES_AUTORAIS_GALERIA_20260927_v01.webp';
+---
+<!doctype html>
+<html lang="pt-BR">
+<head><BaseHead title="Composições Autorais · Harum Noir" description="Composições autorais do Harum Noir: traço, corpo e presença."/></head>
+<body><Header/><main>
+<section class="page-hero">
+  <div class="eyebrow">HARUM NOIR · COMPOSIÇÕES AUTORAIS</div>
+  <h1>Traço, corpo e presença.</h1>
+  <p>Estudos e composições autorais reunidos como linguagem visual. Esta página apresenta desenho e pesquisa — não transforma estudo em tatuagem executada.</p>
+</section>
+
+<section class="section">
+  <div class="panel" style="padding:0;overflow:hidden">
+    <img src={hero} alt="Harum Noir — composição autoral" loading="eager" style="width:100%;aspect-ratio:16/9;object-fit:cover"/>
+    <div style="padding:clamp(20px,4vw,42px)">
+      <div class="eyebrow">HARUM NOIR</div>
+      <h2 style="margin:.15em 0">Desenho que permanece.</h2>
+      <p>Uma composição entra aqui quando amplia repertório, gesto ou narrativa sem depender de excesso. O corpo continua sendo o destino do raciocínio, mesmo quando a página ainda é estudo.</p>
+      <div class="actions">
+        <a class="btn gold" href={base+'cadernos'}>Abrir Cadernos →</a>
+        <a class="btn" href={base+'referencias'}>Referências →</a>
+        <a class="btn" href={base+'atelier'}>Ateliê →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section journal"><div class="paper">
+  <div class="eyebrow" style="color:#8a734b">ARTE HARUM</div>
+  <h2>Uma imagem não precisa explicar tudo.</h2>
+  <p class="lead">Espaço, direção, peso e silêncio também desenham.</p>
+  <p>As composições autorais funcionam como passagem entre referência, estudo e projeto: observar, reduzir, reorganizar e devolver a ideia para a mão.</p>
+</div></section>
+</main><Footer/></body></html>
