@@ -1,4 +1,5 @@
 ---
+import EcosystemRail from '../../components/EcosystemRail.astro';
 import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
@@ -62,4 +63,5 @@ const folhas=[
   <div class="rule"><strong>Vestígio:</strong> circule uma coisa que você sempre esquece e uma coisa que você sempre exagera. Leve essas duas pistas para o próximo estudo.</div>
   <p><a href={base+'cadernos'}>Voltar aos Cadernos →</a></p>
 </div></div></section>
+<EcosystemRail current="cadernos" limit={4} />
 </main><Footer/></body></html>
