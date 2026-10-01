@@ -1,5 +1,19 @@
 ---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 const base=import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
-const target=`${base}arquivo`;
+const doors=[
+["Atlas de Referências","Artistas, professores, processos e vídeos organizados por decisão visual.","referencias"],
+["Atlas Histórico","Períodos, mestres, construção, pensamento e fontes abertas.","historia-da-arte"],
+["Biblioteca Aberta","Sketchbooks, anatomia, matéria, ateliê e fontes institucionais.","biblioteca"],
+["Percursos","Caminhos que conectam referência, caderno, temporada e prática.","percursos"],
+["Outliers","Referências que deslocam o olhar por matéria, silêncio, transferência e imaginação.","outliers"],
+["Arquivo Aberto","Textos, cartas, materiais públicos e portas permanentes do ecossistema.","arquivo"],
+];
 ---
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"/><meta http-equiv="refresh" content={`0;url=${target}`}/><link rel="canonical" href={target}/><title>Harum Noir</title></head><body><a href={target}>Continuar</a></body></html>
+<!doctype html><html lang="pt-BR"><head><BaseHead title="Atlas · Harum Noir" description="Mapa de entrada para referências, história da arte, biblioteca, percursos, outliers e arquivo do Harum Noir."/></head><body><Header/><main>
+<section class="page-hero"><div class="eyebrow">ATLAS HARUM NOIR</div><h1>Um mapa, várias entradas.</h1><p>O Atlas não é uma página de conteúdo única. É a mesa de orientação do ecossistema: escolha a porta conforme a pergunta que você trouxe para o desenho.</p></section>
+<section class="section"><div class="archive-grid">{doors.map(d=><a class="archive-item" href={base+d[2]}><span class="card-kicker">ABRIR ROTA</span><h3>{d[0]}</h3><p>{d[1]}</p></a>)}</div></section>
+<section class="section"><div class="journal"><div class="paper"><div class="eyebrow" style="color:#8a734b">REGRA DO ATLAS</div><h2>Navegar não substitui desenhar.</h2><p class="lead">Entre por uma pergunta. Saia com um estudo.</p><p>Use as páginas como corredores entre repertório e prática. Quando uma referência não gerar observação, comparação ou exercício, ela ainda não virou conhecimento.</p><p><a href={base+'atelier'}>Levar a pergunta para o Ateliê →</a></p></div></div></section>
+</main><Footer/></body></html>
