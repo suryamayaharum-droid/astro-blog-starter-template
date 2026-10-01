@@ -196,3 +196,8 @@ h1,h2,h3{font-family:"Cormorant Garamond",Georgia,"Times New Roman",serif;font-w
   .rail-shell:before,.rail-shell:after{display:none}
   .browse-rail,.feature-rail,.stream-rail,.rail,.bank-grid{overscroll-behavior-inline:contain;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
 }
+
+
+.nav-links a.is-current{background:rgba(179,154,105,.10);color:var(--paper);box-shadow:inset 0 0 0 1px rgba(179,154,105,.18)}
+.mobile-dock a.is-current{background:rgba(179,154,105,.12);color:var(--paper)}
+.mobile-dock a.is-current b{color:var(--gold)}
