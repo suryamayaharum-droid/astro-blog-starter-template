@@ -1,0 +1,52 @@
+---
+---
+<div class="rail-enhancer-hook" aria-hidden="true"></div>
+<script>
+const enhanceRails=()=>{
+  const selector='.browse-rail,.feature-rail,.stream-rail,.rail,.bank-grid';
+  document.querySelectorAll(selector).forEach((rail)=>{
+    if(!(rail instanceof HTMLElement) || rail.dataset.enhancedRail==='1') return;
+    rail.dataset.enhancedRail='1';
+    rail.tabIndex=rail.tabIndex>=0?rail.tabIndex:0;
+
+    const shell=document.createElement('div');
+    shell.className='rail-shell';
+    rail.parentNode?.insertBefore(shell,rail);
+    shell.appendChild(rail);
+
+    const prev=document.createElement('button');
+    const next=document.createElement('button');
+    prev.className='rail-nav rail-nav-prev';
+    next.className='rail-nav rail-nav-next';
+    prev.type='button'; next.type='button';
+    prev.setAttribute('aria-label','Voltar neste trilho');
+    next.setAttribute('aria-label','Avançar neste trilho');
+    prev.textContent='‹'; next.textContent='›';
+    shell.append(prev,next);
+
+    const update=()=>{
+      const max=Math.max(0,rail.scrollWidth-rail.clientWidth-2);
+      const overflow=max>8;
+      shell.classList.toggle('rail-has-overflow',overflow);
+      prev.disabled=!overflow||rail.scrollLeft<=4;
+      next.disabled=!overflow||rail.scrollLeft>=max-4;
+    };
+    const jump=(dir)=>{
+      const amount=Math.max(rail.clientWidth*.82,280);
+      rail.scrollBy({left:dir*amount,behavior:'smooth'});
+    };
+    prev.addEventListener('click',()=>jump(-1));
+    next.addEventListener('click',()=>jump(1));
+    rail.addEventListener('scroll',()=>requestAnimationFrame(update),{passive:true});
+    rail.addEventListener('keydown',(e)=>{
+      if(e.key==='ArrowRight'){e.preventDefault();jump(1)}
+      if(e.key==='ArrowLeft'){e.preventDefault();jump(-1)}
+    });
+    new ResizeObserver(update).observe(rail);
+    requestAnimationFrame(update);
+  });
+};
+if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',enhanceRails,{once:true});
+else enhanceRails();
+document.addEventListener('astro:page-load',enhanceRails);
+</script>
