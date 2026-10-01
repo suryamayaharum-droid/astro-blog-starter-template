@@ -2,7 +2,7 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { imageBanks } from '../data/imageBanks';
+import { imageBanks, imageBankById, studyFans } from '../data/imageBanks';
 import '../styles/imageBanks.css';
 const base=import.meta.env.BASE_URL.endsWith('/')?import.meta.env.BASE_URL:import.meta.env.BASE_URL+'/';
 const live=imageBanks.filter(x=>x.liveFederated).length;
@@ -20,5 +20,12 @@ const live=imageBanks.filter(x=>x.liveFederated).length;
 <div class="bank-grid">{imageBanks.map(b=><a class="bank-card" href={base+'bancos/'+b.id+'/'}>
   <div class="kind">{b.kind} · {b.access}</div><h3>{b.name}</h3><div class="place">{b.place}</div><p>{b.rights}</p><div class="bank-tags">{b.strengths.slice(0,4).map(x=><span>{x}</span>)}</div>
 </a>)}</div></section>
+<section class="section" id="leques">
+  <div class="section-head"><div><div class="eyebrow">LEQUES TRANSVERSAIS</div><h2>Um tema atravessa vários acervos.</h2></div><p>Em vez de começar pelo museu, comece por um problema visual e abra várias portas lado a lado.</p></div>
+  <div class="bank-fan">{studyFans.map((fan,i)=><article class="fan-card">
+    <div class="n">{String(i+1).padStart(2,'0')}</div><div class="eyebrow">LEQUE TRANSVERSAL</div><h3>{fan.title}</h3><p>{fan.thought}</p><span class="fan-query">{fan.query}</span>
+    <div class="bank-tags" style="margin-top:15px">{fan.bankIds.map(id=>imageBankById[id]).filter(Boolean).map(bank=><a href={base+'bancos/'+bank.id+'/'}>{bank.name}</a>)}</div>
+  </article>)}</div>
+</section>
 <section class="section"><div class="journal"><div class="paper"><div class="eyebrow" style="color:#8a734b">REGRA HARUM NOIR</div><h2>Catálogo não é espelho.</h2><p class="lead">A instituição continua sendo a fonte canônica.</p><p>Nossa camada acrescenta orientação: direitos, contexto, palavras-chave e relações com os Cadernos, o Atlas e os estudos internos. Isso mantém o site leve e transforma pesquisa em método.</p></div></div></section>
 </main><Footer/></body></html>
