@@ -4,69 +4,109 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import { cadernos, fundamentos, temporadas } from '../data/public';
-import { openLibraryCollections } from '../data/openLibrary';
-import {referenceArtists,byRank} from '../data/references';
+import { referenceArtists, byRank } from '../data/references';
+import { artHistoryPeriods } from '../data/artHistory';
+import { imageBanks, studyFans } from '../data/imageBanks';
+import '../styles/browse.css';
+
 const base=import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 const startRanks=[17,39,9,18,38,36,27,50];
 const startRefs=startRanks.map(byRank).filter(Boolean);
+const periodIds=["grecia-roma","renascimento","barroco","ukiyoe","impressionismo","modernismos"];
+const bankIds=["bndigital","met","rijks","getty","aic","paris-musees","walters"];
+const periods=periodIds.map(id=>artHistoryPeriods.find(p=>p.id===id)).filter(Boolean);
+const banks=bankIds.map(id=>imageBanks.find(b=>b.id===id)).filter(Boolean);
 ---
 <!doctype html><html lang="pt-BR"><head><BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION}/></head>
 <body><Header/><main>
-<section class="hero">
-  <div class="hero-copy">
-    <div class="eyebrow">ATELIÊ EDITORIAL · SALVADOR</div>
-    <h1>Traço,<br/>corpo e <em>presença.</em></h1>
-    <p>Um jardim editorial de desenho, carvão, gesto, anatomia, memória e processo. Entre por uma referência, por um caderno ou por uma temporada — e caminhe.</p>
-    <div class="actions"><a class="btn primary" href={base+'percursos'}>Escolher um percurso</a><a class="btn" href={base+'referencias'}>Explorar livremente</a></div>
-  </div>
-  <div class="hero-art">
-    <img src={base+'noir/figure-01.svg'} alt="Estudo abstrato autoral de figura em carvão" />
-    <div class="hero-note">O desenho não precisa terminar em todos os lugares. Precisa permanecer onde importa.</div>
+<section class="browse-hero">
+  <div class="browse-hero-art"><img src={base+'noir/figure-01.svg'} alt=""/></div>
+  <div class="browse-hero-shade"></div>
+  <div class="browse-hero-copy">
+    <div class="browse-badge">ATELIÊ EDITORIAL · SALVADOR</div>
+    <h1>Estude como quem entra num mundo.</h1>
+    <p>História da arte, desenho, carvão, figura, museus e cadernos organizados como uma biblioteca de streaming: escolha uma trilha, atravesse referências e volte para o papel.</p>
+    <div class="actions"><a class="btn primary" href={base+'percursos'}>Começar um percurso</a><a class="btn gold" href={base+'bancos'}>Abrir bancos de imagens</a><a class="btn" href={base+'historia-da-arte'}>História da arte</a></div>
   </div>
 </section>
 
+<div class="browse-quick">
+  <a href={base+'referencias'}>Referências</a><a href={base+'cadernos'}>Cadernos</a><a href={base+'temporadas'}>Temporadas</a><a href={base+'biblioteca'}>Biblioteca</a><a href={base+'museus'}>Museus</a><a href={base+'atelier'}>Ateliê</a><a href={base+'composicoes-autorais'}>Autorais</a>
+</div>
+
+<section class="stream-section" id="continue-section" hidden>
+  <div class="stream-head"><div><span class="eyebrow">CONTINUAR ESTUDANDO</span><h2>Volte de onde parou.</h2></div><p>Fica salvo apenas neste aparelho.</p></div>
+  <div class="browse-rail" id="continue-rail"></div>
+</section>
+
 <section class="stream-section">
-  <div class="stream-head"><div><span class="eyebrow">JARDIM DE REFERÊNCIAS</span><h2>Comece por estas presenças</h2></div><p>Carvão, gesto, processo, figura, memória visual e sketchbook.</p></div>
+  <div class="stream-head"><div><span class="eyebrow">EM FOCO</span><h2>Leques de estudo.</h2></div><p>Comece por uma pergunta visual e atravesse vários acervos sem copiar bibliotecas para dentro do site.</p></div>
+  <div class="feature-rail">{studyFans.map((fan,i)=><article class="feature-card">
+    <span class="tag">LEQUE {String(i+1).padStart(2,'0')}</span><h3>{fan.title}</h3><p>{fan.thought}</p><div class="actions"><a class="btn" href={base+'bancos#leques'}>Abrir portas →</a></div>
+  </article>)}</div>
+</section>
+
+<section class="stream-section">
+  <div class="stream-head"><div><span class="eyebrow">JARDIM DE REFERÊNCIAS</span><h2>Presenças para observar.</h2></div><p>Carvão, gesto, processo, figura, memória visual e sketchbook.</p></div>
   <div class="stream-rail">{startRefs.map(a=><a class="stream-card" href={base+'referencias/'+a!.slug}><div class="stream-card-media"><img class="stream-fallback" src={base+'noir/reference-fallback.svg'} alt=""/>{a!.videoId&&<img class="stream-thumb" src={'https://i.ytimg.com/vi/'+a!.videoId+'/hqdefault.jpg'} alt={'Referência visual de '+a!.name} loading="lazy" onerror="this.remove()"/>}<span class="stream-rank">{String(a!.rank).padStart(2,'0')}</span></div><div class="stream-card-body"><span>{a!.focus}</span><h3>{a!.name}</h3></div></a>)}</div>
   <div class="actions"><a class="btn" href={base+'referencias'}>Ver atlas completo →</a></div>
 </section>
 
+<section class="stream-section">
+  <div class="stream-head"><div><span class="eyebrow">CADERNOS</span><h2>Escolha uma prática.</h2></div><p>Cada caderno começa por uma pergunta e termina devolvendo alguma coisa para a mão.</p></div>
+  <div class="browse-rail">{cadernos.map((c,i)=><a class="browse-tile" href={base+'cadernos#'+c.slug}>
+    <div class="browse-visual"><img src={base+'noir/'+c.image} alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.48"/><span class="num">{String(i+1).padStart(2,'0')}</span><div class="big">{c.title}</div></div>
+    <div class="browse-body"><span>{c.kicker}</span><h3>{c.question}</h3></div>
+  </a>)}</div>
+</section>
+
+<section class="stream-section">
+  <div class="stream-head"><div><span class="eyebrow">HISTÓRIA DA ARTE</span><h2>Viaje por períodos.</h2></div><p>Portas para problemas diferentes de corpo, espaço, luz, padrão e narrativa.</p></div>
+  <div class="browse-rail">{periods.map((p,i)=><a class="browse-tile" href={base+'historia-da-arte#'+p!.id}>
+    <div class="browse-visual"><span class="num">{String(i+1).padStart(2,'0')}</span><div class="big">{p!.title}</div></div>
+    <div class="browse-body"><span>{p!.dates}</span><h3>{p!.diagramLabel}</h3><p>{p!.region}</p></div>
+  </a>)}</div>
+  <div class="actions"><a class="btn gold" href={base+'historia-da-arte'}>Abrir Atlas Histórico →</a></div>
+</section>
+
+<section class="stream-section">
+  <div class="stream-head"><div><span class="eyebrow">BANCOS DE IMAGENS</span><h2>Portas para os acervos.</h2></div><p>O site guarda a rota e a pergunta; o museu continua sendo a fonte original.</p></div>
+  <div class="browse-rail">{banks.map((b,i)=><a class="browse-tile" href={base+'bancos/'+b!.id+'/'}>
+    <div class="browse-visual"><span class="num">{String(i+1).padStart(2,'0')}</span><div class="big">{b!.name}</div></div>
+    <div class="browse-body"><span>{b!.kind} · {b!.place}</span><h3>{b!.access}</h3><p>{b!.strengths.slice(0,3).join(' · ')}</p></div>
+  </a>)}</div>
+  <div class="actions"><a class="btn" href={base+'bancos'}>Ver todos os bancos →</a><a class="btn" href={base+'museus'}>Busca federada →</a></div>
+</section>
+
+<section class="stream-section">
+  <div class="stream-head"><div><span class="eyebrow">TEMPORADAS</span><h2>Sete universos.</h2></div><p>Corpo, expressão, anatomia, personagem, relação, matéria e síntese.</p></div>
+  <div class="browse-rail">{temporadas.map(t=><a class="browse-tile" href={base+'temporadas#t'+t.n}>
+    <div class="browse-visual"><span class="num">{t.n}</span><div class="big">{t.title}</div></div>
+    <div class="browse-body"><span>TEMPORADA {t.n}</span><p>{t.text}</p></div>
+  </a>)}</div>
+</section>
+
 <section class="section">
-  <div class="section-head"><div><div class="eyebrow">QUATRO MOVIMENTOS</div><h2>Aprender a olhar.</h2></div><p>Observar, estruturar, organizar e traduzir sustentam o que vem depois.</p></div>
+  <div class="section-head"><div><div class="eyebrow">QUATRO MOVIMENTOS</div><h2>Aprender a olhar.</h2></div><p>O algoritmo aqui é humano: observar, estruturar, organizar e traduzir.</p></div>
   <div class="paper-grid">{fundamentos.map(f=><article class="paper-card"><div class="num">{f.n}</div><h3>{f.title}</h3><p>{f.text}</p></article>)}</div>
 </section>
 
-<section class="stream-section">
-  <div class="stream-head"><div><span class="eyebrow">CADERNOS DE PRESENÇA</span><h2>Uma biblioteca que respira</h2></div><p>Estudo, processo e narrativa visual sem transformar cada página numa aula.</p></div>
-  <div class="stream-rail">{cadernos.map(c=><a class="stream-card" href={base+'cadernos#'+c.slug}><div class="stream-card-media"><img src={base+'noir/'+c.image} alt="" loading="lazy"/></div><div class="stream-card-body"><span>{c.kicker}</span><h3>{c.title}</h3></div></a>)}</div>
+<section class="section editorial-split">
+  <div class="panel"><div class="eyebrow">ATELIÊ ABERTO</div><h2>Menos catálogo. Mais percurso.</h2><p>O ambiente pode crescer como uma plataforma de streaming sem perder o que importa: cada sessão de navegação precisa devolver uma observação, uma pergunta ou um exercício para o desenho.</p><div class="actions"><a class="btn gold" href={base+'atelier'}>Entrar no ateliê</a></div></div>
+  <div class="panel"><div class="quote">Veja.<br/>Escolha.<br/>Estude.<br/>Volte à mão.</div></div>
 </section>
-
-<section class="stream-section">
-  <div class="stream-head">
-    <div><span class="eyebrow">BIBLIOTECA ABERTA</span><h2>Fonte antes de fórmula</h2></div>
-    <p>Sketchbooks, anatomia histórica, ateliê, mãos e cabeça organizados por problema de desenho — sempre apontando para a instituição de origem.</p>
-  </div>
-  <div class="archive-grid">
-    {openLibraryCollections.map(c=><a class="archive-item" href={base+'biblioteca#'+c.id}>
-      <span class="card-kicker">{c.kicker}</span>
-      <h3>{c.title}</h3>
-      <p>{c.thesis}</p>
-    </a>)}
-  </div>
-  <div class="actions"><a class="btn gold" href={base+'biblioteca'}>Abrir biblioteca →</a></div>
-</section>
-
-<section class="stream-section"><div class="stream-head"><div><span class="eyebrow">PERCURSOS</span><h2>Caminhos pelo jardim</h2></div><p>Entre por carvão, figura, silêncio, estrutura ou sketchbook.</p></div><div class="path-list"><a class="path-row" href={base+'percursos#carvao'}><strong>Carvão</strong><span>matéria, gesto e presença</span><b>→</b></a><a class="path-row" href={base+'percursos#figura'}><strong>Figura</strong><span>peso, gesto e anatomia</span><b>→</b></a><a class="path-row" href={base+'percursos#silencio'}><strong>Silêncio</strong><span>processo, tempo e atmosfera</span><b>→</b></a></div></section><section class="section editorial-split">
-  <div class="panel"><div class="eyebrow">ATELIÊ ABERTO</div><h2>Professor próximo. Artista exigente. Processo visível.</h2><p>Conteúdo gratuito deve devolver algo para a prática: uma observação, um exercício, uma correção possível.</p><div class="actions"><a class="btn gold" href={base+'atelier'}>Abrir o ateliê</a></div></div>
-  <div class="panel"><div class="quote">Olhar se treina.<br/>Decisão se constrói.</div></div>
-</section>
-
-<section class="stream-section">
-  <div class="stream-head"><div><span class="eyebrow">TEMPORADAS</span><h2>Sete percursos</h2></div><p>Corpo, expressão, anatomia, personagem, relação, matéria e síntese.</p></div>
-  <div class="stream-rail">{temporadas.map(t=><a class="stream-card" href={base+'temporadas#t'+t.n}><div class="stream-card-media"><img src={base+'noir/trace-01.svg'} alt=""/></div><div class="stream-card-body"><span>TEMPORADA {t.n}</span><h3>{t.title}</h3></div></a>)}</div>
-</section>
-
-<section class="section">
-  <div class="journal"><div class="paper"><div class="eyebrow" style="color:#8a734b">CARTA DO ATELIÊ · 001</div><h2>O desenho ainda precisa de silêncio.</h2><p class="lead">Nem todo conteúdo precisa disputar atenção. Alguns precisam devolver atenção para quem olha.</p><p>A Carta organiza uma referência, uma pergunta e um exercício para levar de volta ao papel.</p><div class="actions"><a class="btn gold" href={base+'carta'}>Ler a carta</a><a class="btn" href={base+'arquivo'}>Abrir arquivo</a></div></div></div>
-</section>
-</main><Footer/></body></html>
+</main><Footer/>
+<script define:vars={{base}}>
+const esc=(s)=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+try{
+  const xs=JSON.parse(localStorage.getItem('harum_noir_recent')||'[]');
+  const root=document.querySelector('#continue-rail');
+  const section=document.querySelector('#continue-section');
+  const items=Array.isArray(xs)?xs.filter(x=>x&&x.path&&x.path!==location.pathname).slice(0,8):[];
+  if(root&&section&&items.length){
+    root.innerHTML=items.map((x,i)=>'<a class="continue-card" href="'+esc(x.path)+'"><div class="continue-visual"><span>'+String(i+1).padStart(2,'0')+'</span><b>HARUM NOIR</b></div><div class="continue-body"><span>RECENTE</span><h3>'+esc(String(x.title||'HARUM NOIR').replace(/ · Harum Noir.*/i,''))+'</h3><div class="continue-bar"><i style="width:'+(72-i*6)+'%"></i></div></div></a>').join('');
+    section.hidden=false;
+  }
+}catch{}
+</script>
+</body></html>
