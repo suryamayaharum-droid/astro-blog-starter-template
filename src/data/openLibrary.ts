@@ -173,6 +173,14 @@ export const openLibraryCollections: OpenLibraryCollection[] = [
         url: "https://openlibrary.org/books/OL24433783M/The_human_figure",
         observe: "Partes do corpo são estudadas sem perder a leitura da figura inteira.",
         rights: "Scan gratuito; para uso visual preferir ativos explicitamente public domain"
+      },
+      {
+        creator: "Jean Auguste Dominique Ingres",
+        title: "Study for the Figure of Stratonice, 1834–40",
+        source: "The Metropolitan Museum of Art",
+        url: "https://www.metmuseum.org/art/collection/search/337442",
+        observe: "Grafite, giz preto, carvão esfregado e contornos incisos deixam visível a passagem do estudo para a transferência.",
+        rights: "Public domain — objeto indicado pelo Met"
       }
     ]
   },
@@ -335,6 +343,14 @@ export const openLibraryCollections: OpenLibraryCollection[] = [
         url: "https://www.nga.gov/artworks/107156-bluemner-sketchbook",
         observe: "Observação, anotação e variação coexistem no mesmo volume sem virar ficha técnica.",
         rights: "Public domain — mídia indicada pela NGA"
+      },
+      {
+        creator: "Albert Bierstadt",
+        title: "Sketchbook — 46 desenhos em grafite, 1881",
+        source: "National Gallery of Art",
+        url: "https://www.nga.gov/artworks/173183-sketchbook",
+        observe: "Um volume inteiro preserva continuidade de observação em 46 desenhos, permitindo estudar como motivos diferentes convivem dentro da mesma sequência.",
+        rights: "Public domain — mídia indicada pela NGA"
       }
     ]
   },
@@ -373,6 +389,14 @@ export const openLibraryCollections: OpenLibraryCollection[] = [
         url: "https://www.clevelandart.org/art/2018.45.a",
         observe: "Carvão solto e grafite capturam uma ação cotidiana com economia de informação e sensação de movimento.",
         rights: "Open Access — verificar metadados do objeto antes de re-hospedar"
+      },
+      {
+        creator: "Annibale Carracci",
+        title: "Crawling Male Figure (Study for Cacus), 1593",
+        source: "The Metropolitan Museum of Art",
+        url: "https://www.metmuseum.org/art/collection/search/338414",
+        observe: "O corpo junto ao chão exige leitura de apoio, compressão, tensão e escorço antes de qualquer acabamento.",
+        rights: "Public domain — objeto indicado pelo Met"
       }
     ]
   },
@@ -419,6 +443,14 @@ export const openLibraryCollections: OpenLibraryCollection[] = [
         url: "https://www.metmuseum.org/pt/perspectives/materials-and-techniques-drawing-graphite",
         observe: "Dureza, brilho, hachura, massa, blending e apagamento ampliam o vocabulário do grafite.",
         rights: "Recurso educacional; linkar, não re-hospedar mídia sem licença explícita"
+      },
+      {
+        creator: "Odilon Redon",
+        title: "The Book of Light, 1893",
+        source: "National Gallery of Art",
+        url: "https://www.nga.gov/artworks/41378-book-light",
+        observe: "Carvão sobre papel castanho usa massa, luz e atmosfera para sugerir uma imagem em vez de descrever tudo literalmente.",
+        rights: "Public domain — mídia indicada pela NGA"
       }
     ]
   }
