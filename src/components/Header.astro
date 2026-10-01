@@ -30,19 +30,36 @@ const links = [
       {links.map(([label,path]) => <a href={`${base}${path}`}>{label}</a>)}
       <a href={STUDIO_SITE} target="_blank" rel="noreferrer">Studio 23 ↗</a>
     </div>
+    <button class="save-current" id="save-current" type="button">＋ Estante</button>
   </nav>
 </header>
 
 <script>
 try{
-  const path=location.pathname+location.search;
+  const full=location.pathname+location.search;
   const rootPath=new URL(document.querySelector('.brand-lockup')?.href||location.href).pathname;
-  if(location.pathname!==rootPath){
+  const home=location.pathname===rootPath;
+  if(!home){
     const k='harum_noir_recent';
-    const item={path,title:document.title||'HARUM NOIR',visitedAt:Date.now()};
+    const item={path:full,title:document.title||'HARUM NOIR',visitedAt:Date.now()};
     let xs=[];try{xs=JSON.parse(localStorage.getItem(k)||'[]')}catch{}
     xs=[item,...(Array.isArray(xs)?xs:[]).filter(x=>x&&x.path!==item.path)].slice(0,12);
     localStorage.setItem(k,JSON.stringify(xs));
+  }
+  const b=document.querySelector('#save-current');
+  if(b){
+    if(home){b.style.display='none'}
+    else{
+      const key='harum_noir_shelf';
+      const read=()=>{try{const x=JSON.parse(localStorage.getItem(key)||'[]');return Array.isArray(x)?x:[]}catch{return[]}};
+      const paint=()=>{const on=read().some(x=>x&&x.path===full);b.textContent=on?'✓ Na estante':'＋ Estante';b.classList.toggle('saved',on)};
+      paint();
+      b.addEventListener('click',()=>{
+        let xs=read();const on=xs.some(x=>x&&x.path===full);
+        xs=on?xs.filter(x=>x&&x.path!==full):[{path:full,title:document.title||'HARUM NOIR',savedAt:Date.now()},...xs.filter(x=>x&&x.path!==full)].slice(0,24);
+        localStorage.setItem(key,JSON.stringify(xs));paint();window.dispatchEvent(new Event('harum-noir-shelf'));
+      });
+    }
   }
 }catch{}
 </script>
