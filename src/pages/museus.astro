@@ -25,7 +25,7 @@ const modeLabel={live:'conectado agora',advanced:'API avançada',dataset:'datase
       <div class="eyebrow">REDE ABERTA</div>
       <h2>O museu como biblioteca de estudo.</h2>
       <p>Em vez de depender de imagens soltas da internet, o ecossistema começa pelas instituições: metadados, direitos, imagem, data, técnica, autoria e ficha original.</p>
-      <div class="actions"><a class="btn gold" href="#busca-viva">Pesquisar agora →</a><a class="btn" href={base+'historia-da-arte'}>Ir para História da Arte</a></div>
+      <div class="actions"><a class="btn gold" href="#busca-viva">Pesquisar agora →</a><a class="btn" href={base+'bancos'}>Abrir bancos de imagens</a><a class="btn" href={base+'historia-da-arte'}>Ir para História da Arte</a></div>
     </div>
     <div class="panel">
       <div class="eyebrow">ESTADO DA CONEXÃO</div>
@@ -36,8 +36,8 @@ const modeLabel={live:'conectado agora',advanced:'API avançada',dataset:'datase
 
   <section class="museum-live" id="busca-viva">
     <div class="museum-search-head">
-      <div><div class="eyebrow">BUSCA VIVA · 3 ACERVOS</div><h2>Uma pergunta, três museus.</h2></div>
-      <p>O HARUM NOIR consulta somente resultados marcados como Public Domain / Open Access / CC0 nas integrações ativas.</p>
+      <div><div class="eyebrow">BUSCA VIVA · 3 ACERVOS</div><h2>Uma pergunta, três museus — sem copiar o acervo.</h2></div>
+      <p>O HARUM NOIR consulta metadados abertos e devolve portas para as fichas originais. Nada é espelhado na nossa biblioteca.</p>
     </div>
     <form class="museum-search" id="museum-search">
       <input id="museum-q" value="rembrandt" aria-label="Buscar em acervos abertos" placeholder="Ex.: Rembrandt, Hokusai, hands, charcoal…" />
@@ -89,7 +89,7 @@ const out=document.querySelector('#museum-results');
 const msg=document.querySelector('#museum-message');
 const badges={met:document.querySelector('[data-provider="met"]'),aic:document.querySelector('[data-provider="aic"]'),cma:document.querySelector('[data-provider="cma"]')};
 const setBadge=(id,state)=>{const b=badges[id]; if(!b)return; b.className='provider '+(state==='ok'?'ok':'down'); b.textContent=id.toUpperCase()+' · '+(state==='ok'?'ok':'indisponível');};
-const card=(w)=>'<a class="museum-work" href="'+esc(w.url)+'" target="_blank" rel="noreferrer"><div class="museum-work-media"><img src="'+esc(w.image)+'" alt="" loading="lazy"></div><div class="museum-work-body"><span>'+esc(w.museum)+'</span><h3>'+esc(w.title)+'</h3><p>'+esc(w.artist)+(w.date?' · '+esc(w.date):'')+'</p><small>'+esc(w.rights)+'</small></div></a>';
+const card=(w)=>'<a class="museum-work" href="'+esc(w.url)+'" target="_blank" rel="noreferrer"><div class="museum-work-body"><span>'+esc(w.museum)+'</span><h3>'+esc(w.title)+'</h3><p>'+esc(w.artist)+(w.date?' · '+esc(w.date):'')+'</p><small>'+esc(w.rights)+'</small></div></a>';
 async function met(q){
   const s=await fetch('https://collectionapi.metmuseum.org/public/collection/v1.1/search?q='+encodeURIComponent(q)+'&hasImages=true&isPublicDomain=true&offset=0&limit=8');
   if(!s.ok)throw 0; const j=await s.json(); const ids=(j.objectIDs||[]).slice(0,5);
