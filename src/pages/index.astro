@@ -69,7 +69,7 @@ const studySessions=[
 
 <section class="stream-section">
   <div class="stream-head"><div><span class="eyebrow">JARDIM DE REFERÊNCIAS</span><h2>Presenças para observar.</h2></div><p>Carvão, gesto, processo, figura, memória visual e sketchbook.</p></div>
-  <div class="stream-rail">{startRefs.map(a=><a class="stream-card" href={base+'referencias/'+a!.slug}><div class="stream-card-media"><img class="stream-fallback" src={base+'noir/reference-fallback.svg'} alt=""/>{a!.videoId&&<img class="stream-thumb" src={'https://i.ytimg.com/vi/'+a!.videoId+'/hqdefault.jpg'} alt={'Referência visual de '+a!.name} loading="lazy" onerror="this.remove()"/>}<span class="stream-rank">{String(a!.rank).padStart(2,'0')}</span></div><div class="stream-card-body"><span>{a!.focus}</span><h3>{a!.name}</h3></div></a>)}</div>
+  <div class="stream-rail">{startRefs.map(a=><a class="stream-card" href={base+'referencias/'+a!.slug}><div class="stream-card-media"><img class="stream-fallback" src={base+'noir/reference-fallback.svg'} alt=""/>{a!.videoId&&a!.slug!=="zin-lim"&&<img class="stream-thumb" src={'https://i.ytimg.com/vi/'+a!.videoId+'/hqdefault.jpg'} alt={'Referência visual de '+a!.name} loading="lazy" onerror="this.remove()"/>}<span class="stream-rank">{String(a!.rank).padStart(2,'0')}</span></div><div class="stream-card-body"><span>{a!.focus}</span><h3>{a!.name}</h3></div></a>)}</div>
   <div class="actions"><a class="btn" href={base+'referencias'}>Ver atlas completo →</a></div>
 </section>
 
