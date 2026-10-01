@@ -258,3 +258,13 @@ export const artHistoryBankMap: Record<string,string[]> = {
   "modernismos":["aic","nga","paris-musees"],
   "pos-guerra":["aic","smithsonian","nga"]
 };
+
+
+export const studyFans = [
+  {id:"maos-gesto",title:"Mãos & gesto",query:"hands gesture drawing",thought:"A mão como peso, ação, contato e narrativa.",bankIds:["met","getty","cma","nga"]},
+  {id:"carvao-noite",title:"Carvão & noite",query:"charcoal drawing dark tonal study",thought:"Massa escura, borda perdida, pressão e silêncio.",bankIds:["met","aic","paris-musees","nga"]},
+  {id:"figura-peso",title:"Figura em peso",query:"figure drawing contrapposto weight",thought:"Eixo, apoio, pelve, caixa torácica e centro de massa.",bankIds:["met","getty","cma","aic"]},
+  {id:"linha-japonesa",title:"Linha japonesa",query:"Japanese woodblock print ukiyo-e",thought:"Recorte, padrão, vazio e continuidade de contorno.",bankIds:["met","rijks","aic"]},
+  {id:"flor-ornamento",title:"Flor, padrão & ornamento",query:"flowers ornament botanical drawing",thought:"Ritmo vegetal, repetição, arabesco e superfície.",bankIds:["paris-musees","met","cma","walters"]},
+  {id:"atelie-luz",title:"Ateliê, luz & silêncio",query:"artist studio interior light drawing",thought:"A luz como estrutura antes do contorno.",bankIds:["rijks","met","nga","getty"]}
+];
