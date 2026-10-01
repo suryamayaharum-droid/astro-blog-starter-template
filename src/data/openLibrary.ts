@@ -9,6 +9,7 @@ export type OpenLibrarySource = {
 
 export type OpenLibraryCollection = {
   id: string;
+  theme: string;
   kicker: string;
   title: string;
   thesis: string;
@@ -23,6 +24,7 @@ export type OpenLibraryCollection = {
 export const openLibraryCollections: OpenLibraryCollection[] = [
   {
     id: "caderno-como-universo",
+    theme: "MEMÓRIA",
     kicker: "CADERNOS NOIR",
     title: "Caderno como universo",
     thesis: "O sketchbook como sistema de pensamento: ensaio, memória, observação e seleção — não miniatura de portfólio.",
@@ -84,6 +86,7 @@ export const openLibraryCollections: OpenLibraryCollection[] = [
   },
   {
     id: "anatomias-do-mundo",
+    theme: "SISTEMAS",
     kicker: "ANATOMIA SEM RIGIDEZ",
     title: "Anatomias do mundo",
     thesis: "A anatomia muda quando muda a cultura visual. Comparar sistemas históricos ajuda a separar estrutura corporal de convenção gráfica.",
@@ -137,6 +140,7 @@ export const openLibraryCollections: OpenLibraryCollection[] = [
   },
   {
     id: "atelier-historico-aberto",
+    theme: "CONSTRUÇÃO",
     kicker: "ATELIÊ HISTÓRICO",
     title: "Ateliê histórico aberto",
     thesis: "Métodos acadêmicos podem treinar precisão, construção e comparação sem determinar a estética final do artista.",
@@ -174,7 +178,8 @@ export const openLibraryCollections: OpenLibraryCollection[] = [
   },
   {
     id: "maos-sem-formula",
-    kicker: "ANATOMIA SEM RIGIDEZ",
+    theme: "GESTO",
+    kicker: "GESTO E FUNÇÃO",
     title: "Mãos sem fórmula",
     thesis: "Mão é gesto, função, peso, idade, contato e relação com o corpo — não uma peça anatômica genérica.",
     rule: "Desenhar a mão fazendo alguma coisa. Comparar relações e ações antes de decorar um esquema.",
@@ -235,6 +240,7 @@ export const openLibraryCollections: OpenLibraryCollection[] = [
   },
   {
     id: "cabeca-em-variacao",
+    theme: "EXPRESSÃO",
     kicker: "EXPRESSÃO",
     title: "Cabeça em variação",
     thesis: "Perfil, inclinação, idade e expressão mudam sem exigir um rosto-padrão. O objetivo é observar relações, não diagnosticar pessoas.",
@@ -296,6 +302,7 @@ export const openLibraryCollections: OpenLibraryCollection[] = [
   },
   {
     id: "arquivo-vivo-sketchbooks",
+    theme: "MEMÓRIA",
     kicker: "ARQUIVO VIVO",
     title: "Sketchbooks: pensar em sequência",
     thesis: "O caderno preserva tentativa, repetição, pausa, erro, anotação e retorno. A sequência revela mais do processo do que uma imagem isolada.",
@@ -333,6 +340,7 @@ export const openLibraryCollections: OpenLibraryCollection[] = [
   },
   {
     id: "gesto-corpo-presenca",
+    theme: "CORPO",
     kicker: "MODELO VIVO",
     title: "Gesto, corpo e presença",
     thesis: "A figura ganha presença quando peso, ação, escorço e correção permanecem visíveis antes do acabamento.",
@@ -370,6 +378,7 @@ export const openLibraryCollections: OpenLibraryCollection[] = [
   },
   {
     id: "materia-negra-processos",
+    theme: "MATÉRIA",
     kicker: "MATÉRIA NEGRA",
     title: "Carvão: construir, retirar, raspar",
     thesis: "Carvão não é apenas linha preta: pressão, lateral, esfuminho, apagamento, raspagem e mistura constroem luz, atmosfera e superfície.",
