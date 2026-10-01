@@ -8,7 +8,7 @@ const {artist}=Astro.props;
 const base=import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 const relatedRanks=referenceCollections.find(c=>c.ranks.includes(artist.rank))?.ranks.filter(r=>r!==artist.rank).slice(0,6)||[];
 const related=relatedRanks.map(r=>referenceArtists.find(a=>a.rank===r)).filter(Boolean);
-const hero=artist.videoId ? 'https://i.ytimg.com/vi/'+artist.videoId+'/maxresdefault.jpg' : base+'noir/reference-fallback.svg';
+const hero=artist.videoId && artist.slug!=="zin-lim" ? 'https://i.ytimg.com/vi/'+artist.videoId+'/hqdefault.jpg' : base+'noir/reference-fallback.svg';
 ---
 <!doctype html><html lang="pt-BR"><head><BaseHead title={artist.name+' · Referências · Harum Noir'} description={artist.special}/></head><body><Header/><main class="stream-main">
 <section class="profile-hero">
@@ -28,7 +28,7 @@ const hero=artist.videoId ? 'https://i.ytimg.com/vi/'+artist.videoId+'/maxresdef
  {artist.refs.map(ref=><a class="archive-item ref-source" href={ref.url} target="_blank" rel="noreferrer"><span class="card-kicker">{ref.type}</span><h3>{ref.title}</h3><p>{ref.observe}</p><span class="source-arrow">Abrir fonte ↗</span></a>)}
 </div></section>}
 {related.length>0&&<section class="stream-section"><div class="stream-head"><div><span class="eyebrow">CONTINUE</span><h2>Na mesma vizinhança</h2></div></div><div class="stream-rail">
- {related.map(a=><a class="stream-card" href={base+'referencias/'+a!.slug}><div class="stream-card-media"><img class="stream-fallback" src={base+'noir/reference-fallback.svg'} alt=""/>{a!.videoId&&<img class="stream-thumb" src={'https://i.ytimg.com/vi/'+a!.videoId+'/hqdefault.jpg'} alt="" loading="lazy" onerror="this.remove()"/>}</div><div class="stream-card-body"><span>{a!.focus}</span><h3>{a!.name}</h3></div></a>)}
+ {related.map(a=><a class="stream-card" href={base+'referencias/'+a!.slug}><div class="stream-card-media"><img class="stream-fallback" src={base+'noir/reference-fallback.svg'} alt=""/>{a!.videoId&&a!.slug!=="zin-lim"&&<img class="stream-thumb" src={'https://i.ytimg.com/vi/'+a!.videoId+'/hqdefault.jpg'} alt="" loading="lazy" onerror="this.remove()"/>}</div><div class="stream-card-body"><span>{a!.focus}</span><h3>{a!.name}</h3></div></a>)}
 </div></section>}
 <script is:inline define:vars={{slug:artist.slug}}>
 (()=>{const k='noir_recent_refs';const a=JSON.parse(localStorage.getItem(k)||'[]').filter(x=>x!==slug);a.unshift(slug);localStorage.setItem(k,JSON.stringify(a.slice(0,12)));})();
