@@ -299,5 +299,127 @@ export const openLibraryCollections: OpenLibraryCollection[] = [
         rights: "CC0"
       }
     ]
+  },
+  {
+    id: "arquivo-vivo-sketchbooks",
+    theme: "MEMÓRIA",
+    kicker: "ARQUIVO VIVO",
+    title: "Sketchbooks: pensar em sequência",
+    thesis: "O caderno preserva tentativa, repetição, pausa, erro, anotação e retorno. A sequência revela mais do processo do que uma imagem isolada.",
+    rule: "Ler páginas como continuidade de pensamento. Não transformar o sketchbook em galeria de peças acabadas.",
+    destination: "Sketchbook · processo · memória · variação",
+    practice: "Escolha um motivo e faça seis páginas sem apagar as anteriores. Em cada página mude apenas uma variável: escala, ângulo, pressão, enquadramento, tempo ou memória.",
+    nextHref: "cadernos#memoria",
+    nextLabel: "Levar ao Caderno Memória",
+    sources: [
+      {
+        creator: "Eva Gonzalès",
+        title: "Sketchbook — 86 páginas / 45 desenhos, c. década de 1860",
+        source: "National Gallery of Art",
+        url: "https://www.nga.gov/artworks/231554-sketchbook",
+        observe: "Tinta, lápis, aquarela e guache permitem ler o caderno como sequência de pensamento e não como conjunto de imagens independentes.",
+        rights: "Public domain — mídia indicada pela NGA"
+      },
+      {
+        creator: "Paul Cézanne",
+        title: "Cezanne Sketchbook — 71 desenhos / 46 folhas",
+        source: "National Gallery of Art",
+        url: "https://www.nga.gov/artworks/76219-cezanne-sketchbook",
+        observe: "Desenhos, páginas vazias, contas, listas e notas mostram que o caderno também guarda interrupção e vida cotidiana.",
+        rights: "Public domain — mídia indicada pela NGA"
+      },
+      {
+        creator: "Oscar Bluemner",
+        title: "Bluemner Sketchbook — 156 desenhos e notas, 1912",
+        source: "National Gallery of Art",
+        url: "https://www.nga.gov/artworks/107156-bluemner-sketchbook",
+        observe: "Observação, anotação e variação coexistem no mesmo volume sem virar ficha técnica.",
+        rights: "Public domain — mídia indicada pela NGA"
+      }
+    ]
+  },
+  {
+    id: "gesto-corpo-presenca",
+    theme: "CORPO",
+    kicker: "MODELO VIVO",
+    title: "Gesto, corpo e presença",
+    thesis: "A figura ganha presença quando peso, ação, escorço e correção permanecem visíveis antes do acabamento.",
+    rule: "Capturar direção, massa e relação antes de descrever superfície. Repetir para investigar, não para fabricar cópias.",
+    destination: "Modelo vivo · gesto · escorço · interação",
+    practice: "Faça cinco variações da mesma pose. Preserve em cada folha as linhas de busca e escolha só no final qual relação de peso funciona melhor.",
+    nextHref: "temporadas#t01",
+    nextLabel: "Levar à Temporada 01",
+    sources: [
+      {
+        creator: "Auguste Rodin",
+        title: "Figure Disrobing, 1900–1910",
+        source: "The Metropolitan Museum of Art",
+        url: "https://www.metmuseum.org/art/collection/search/339709",
+        observe: "O procedimento de observar o modelo enquanto a mão continua desenhando prioriza movimento e presença sobre correção acadêmica.",
+        rights: "Public domain — objeto indicado pelo Met"
+      },
+      {
+        creator: "Edgar Degas",
+        title: "Study of a Nude (Dancer at the Barre)",
+        source: "The Metropolitan Museum of Art",
+        url: "https://www.metmuseum.org/art/collection/search/834320",
+        observe: "Variações em carvão e correções visíveis transformam repetição em investigação da pose.",
+        rights: "Public domain — objeto indicado pelo Met"
+      },
+      {
+        creator: "Jean Louis Forain",
+        title: "Woman Entering a Fiacre",
+        source: "Cleveland Museum of Art",
+        url: "https://www.clevelandart.org/art/2018.45.a",
+        observe: "Carvão solto e grafite capturam uma ação cotidiana com economia de informação e sensação de movimento.",
+        rights: "Open Access — verificar metadados do objeto antes de re-hospedar"
+      }
+    ]
+  },
+  {
+    id: "materia-negra-processos",
+    theme: "MATÉRIA",
+    kicker: "MATÉRIA NEGRA",
+    title: "Carvão: construir, retirar, raspar",
+    thesis: "Carvão não é apenas linha preta: pressão, lateral, esfuminho, apagamento, raspagem e mistura constroem luz, atmosfera e superfície.",
+    rule: "Registrar processo e material. Uma técnica só entra no repertório quando a fonte permite entender o que a mão fez.",
+    destination: "Carvão · matéria · subtração · atmosfera",
+    practice: "Construa uma pequena cena apenas com massa de carvão. Recupere luz com borracha e raspagem; use linha somente no final.",
+    nextHref: "atelier",
+    nextLabel: "Experimentar no Ateliê",
+    sources: [
+      {
+        creator: "Jean-Baptiste-Camille Corot",
+        title: "Landscape (The Large Tree)",
+        source: "Cleveland Museum of Art",
+        url: "https://www.clevelandart.org/art/2008.386",
+        observe: "Ponta e lateral do carvão, esfuminho, apagamento e pincel molhado alternam linha e massa.",
+        rights: "Open Access — Cleveland Museum of Art"
+      },
+      {
+        creator: "Adolphe Appian",
+        title: "A Pond with a Fisherman along the River Ain",
+        source: "The Metropolitan Museum of Art",
+        url: "https://www.metmuseum.org/art/collection/search/336807",
+        observe: "Esfregar e raspar o carvão produz casca, reflexo e gradações luminosas por subtração.",
+        rights: "Public domain — objeto indicado pelo Met"
+      },
+      {
+        creator: "The Met",
+        title: "Materials and Techniques: Drawing — Charcoal",
+        source: "The Metropolitan Museum of Art",
+        url: "https://www.metmuseum.org/pt/perspectives/materials-and-techniques-drawing-charcoal",
+        observe: "Vocabulário técnico de pressão, ponta, lateral, esfuminho, apagamento, massa, fixativo e processo redutivo.",
+        rights: "Recurso educacional; linkar, não re-hospedar mídia sem licença explícita"
+      },
+      {
+        creator: "The Met",
+        title: "Materials and Techniques: Drawing — Graphite",
+        source: "The Metropolitan Museum of Art",
+        url: "https://www.metmuseum.org/pt/perspectives/materials-and-techniques-drawing-graphite",
+        observe: "Dureza, brilho, hachura, massa, blending e apagamento ampliam o vocabulário do grafite.",
+        rights: "Recurso educacional; linkar, não re-hospedar mídia sem licença explícita"
+      }
+    ]
   }
 ];
