@@ -1,4 +1,5 @@
 ---
+import EcosystemRail from '../../components/EcosystemRail.astro';
 import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
@@ -70,4 +71,5 @@ const folhas=[
   <div class="rule"><strong>Vestígio:</strong> escolha um estudo que ficou estranho por um bom motivo. Não o corrija completamente. Escreva ao lado o que aquela assimetria revelou.</div>
   <p><a href={base+'cadernos'}>Voltar aos Cadernos →</a></p>
 </div></div></section>
+<EcosystemRail current="cadernos" limit={4} />
 </main><Footer/></body></html>
