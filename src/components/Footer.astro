@@ -1,6 +1,7 @@
 ---
 import { HARUM_YOUTUBE, STUDIO_INSTAGRAM, STUDIO_SITE, STUDIO_NOIR } from '../consts';
 import RailEnhancer from './RailEnhancer.astro';
+import LumeGuide from './LumeGuide.astro';
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 const year = new Date().getFullYear();
 ---
@@ -28,4 +29,5 @@ const year = new Date().getFullYear();
     <span>Salvador · Bahia</span>
   </div>
 </footer>
+<LumeGuide/>
 <RailEnhancer/>
