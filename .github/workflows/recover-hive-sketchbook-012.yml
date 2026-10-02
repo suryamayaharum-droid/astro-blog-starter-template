@@ -64,7 +64,7 @@ jobs:
 
           root=Path(".")
           work_id="HN-PERCURSO-SKETCHBOOK-DEEPEN-012"
-          source_commit="20f5178596745ea0af6d71356a1982030aa54c10"
+          source_commit="4d72ed6f36e012f40edab3def77dccc41a81563e"
 
           def load(path):
               return json.loads((root/path).read_text(encoding="utf-8"))
