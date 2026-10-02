@@ -64,7 +64,7 @@ jobs:
 
           root=Path(".")
           work_id="HN-PERCURSO-SKETCHBOOK-DEEPEN-012"
-          source_commit="4d72ed6f36e012f40edab3def77dccc41a81563e"
+          source_commit="ead9e23e4309e592611469030135ddb90981f9d8"
 
           def load(path):
               return json.loads((root/path).read_text(encoding="utf-8"))
@@ -152,3 +152,4 @@ jobs:
           path: recovery_artifact
           if-no-files-found: error
           retention-days: 7
+          include-hidden-files: true
