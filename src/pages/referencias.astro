@@ -6,10 +6,19 @@ import Footer from '../components/Footer.astro';
 import {referenceArtists,referenceCollections,byRank} from '../data/references';
 const base=import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 const featured=byRank(17)!;
-const catalog=JSON.stringify(referenceArtists.map(a=>({rank:a.rank,slug:a.slug,name:a.name,focus:a.focus,videoId:a.videoId,lane:a.lane})));
+const themedCover=(artist:typeof referenceArtists[number])=>{
+ const f=artist.focus.toLowerCase();
+ return f.includes('carv')?'charcoal-marks':
+  f.includes('jap')||f.includes('ukiyo')?'moonlit-landscape':
+  f.includes('museu')||f.includes('arquivo')?'museum-gallery':
+  f.includes('botan')||f.includes('flor')?'iris-study':
+  f.includes('gesto')||f.includes('mão')?'tools-paper':
+  f.includes('sketch')||f.includes('caderno')?'open-sketchbook':'graphite-texture';
+};
+const catalog=JSON.stringify(referenceArtists.map(a=>({rank:a.rank,slug:a.slug,name:a.name,focus:a.focus,videoId:a.videoId,lane:a.lane,cover:themedCover(a)})));
 ---
 <!doctype html><html lang="pt-BR"><head><BaseHead title="Atlas de Referências · Harum Noir" description="Um atlas visual de artistas, desenho, carvão, grafite, figura, processo e repertório."/></head>
-<body><Header/><main class="stream-main">
+<body><Header/><main class="stream-main reference-composition">
 <section class="stream-hero">
  <div class="stream-hero-media">
   <img src={base+'noir/visual-atlas/charcoal-marks.webp'} alt="" onerror={"this.src='"+base+"noir/reference-fallback.svg'"}/>
@@ -25,8 +34,14 @@ const catalog=JSON.stringify(referenceArtists.map(a=>({rank:a.rank,slug:a.slug,n
 </section>
 
 <section class="stream-search-shell">
-  <input id="stream-search" class="stream-search" type="search" placeholder="Buscar artista, técnica, carvão, gesto…" aria-label="Buscar no atlas"/>
+ <label for="stream-search" class="eyebrow">ATLAS DE REFERÊNCIAS · EXPLORE POR ARTISTA OU TÉCNICA</label>
+  <input id="stream-search" class="stream-search" type="search" placeholder="Buscar artista, técnica, carvão, gesto…" aria-label="Buscar no atlas" aria-describedby="search-status"/>
+ <p id="search-status" class="search-status" role="status" aria-live="polite" aria-atomic="true">{referenceArtists.length} referências para explorar.</p>
 </section>
+<nav class="collection-index" aria-label="Coleções de referências">
+ {referenceCollections.map(col=><a href={'#'+col.id}>{col.title}</a>)}
+</nav>
+<p class="cover-note">Miniaturas de vídeos vêm do YouTube. Quando indisponíveis, a capa temática HARUM NOIR é uma composição com assistência de IA e não representa obra do artista.</p>
 
 <section id="recent-section" class="stream-section" hidden>
  <div class="stream-head"><div><span class="eyebrow">SEU CAMINHO</span><h2>Continuar explorando</h2></div></div>
@@ -41,7 +56,7 @@ const catalog=JSON.stringify(referenceArtists.map(a=>({rank:a.rank,slug:a.slug,n
   <div class="stream-rail">
    {items.map(a=><a class="stream-card" href={base+'referencias/'+a!.slug}>
     <div class="stream-card-media">
-      <img class="stream-fallback" src={base+'noir/visual-atlas/'+(a!.focus.toLowerCase().includes('carv')?'charcoal-marks':a!.focus.toLowerCase().includes('jap')?'moonlit-landscape':a!.focus.toLowerCase().includes('museu')?'museum-gallery':'graphite-texture')+'.webp'} alt="" />
+      <img class="stream-fallback" src={base+'noir/visual-atlas/'+themedCover(a!)+'.webp'} alt="" loading="lazy" decoding="async" width="640" height="640" />
       {a!.videoId&&<img class="stream-thumb" src={'https://i.ytimg.com/vi/'+a!.videoId+'/hqdefault.jpg'} alt={'Referência visual de '+a!.name} loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"/>}
       <span class="stream-rank">{String(a!.rank).padStart(2,'0')}</span>
     </div>
@@ -74,16 +89,21 @@ const catalog=JSON.stringify(referenceArtists.map(a=>({rank:a.rank,slug:a.slug,n
  const searchView=document.querySelector('#search-view');
  const grid=document.querySelector('#search-grid');
  const empty=document.querySelector('#search-empty');
- const fallback=base+'noir/visual-atlas/graphite-texture.webp';
- const card=(a)=>'<a class="reference-card" href="'+base+'referencias/'+a.slug+'"><div class="reference-media"><img class="reference-fallback" src="'+fallback+'" alt="">'+(a.videoId?'<img class="reference-thumb" src="https://i.ytimg.com/vi/'+a.videoId+'/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()">':'')+'<span class="reference-rank">'+String(a.rank).padStart(2,'0')+'</span></div><div class="reference-body"><span class="card-kicker">'+a.focus+'</span><h2>'+a.name+'</h2><p>Entrar na ficha →</p></div></a>';
+ const status=document.querySelector('#search-status');
+ const fallback=(a)=>base+'noir/visual-atlas/'+a.cover+'.webp';
+ const card=(a)=>'<a class="reference-card" href="'+base+'referencias/'+a.slug+'"><div class="reference-media"><img class="reference-fallback" src="'+fallback(a)+'" alt="" loading="lazy" decoding="async" width="640" height="640">'+(a.videoId?'<img class="reference-thumb" src="https://i.ytimg.com/vi/'+a.videoId+'/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()">':'')+'<span class="reference-rank">'+String(a.rank).padStart(2,'0')+'</span></div><div class="reference-body"><span class="card-kicker">'+a.focus+'</span><h2>'+a.name+'</h2><p>Entrar na ficha →</p></div></a>';
  const apply=()=>{
    const q=(search?.value||'').toLowerCase().trim();
-   if(!q){collections.hidden=false;searchView.hidden=true;return;}
+   if(!q){collections.hidden=false;searchView.hidden=true;status.textContent=data.length+' referências para explorar.';return;}
    collections.hidden=true;searchView.hidden=false;
    const found=data.filter(a=>(a.name+' '+a.focus+' '+a.lane).toLowerCase().includes(q));
    grid.innerHTML=found.map(card).join('');empty.style.display=found.length?'none':'block';
+   status.textContent=found.length+(found.length===1?' referência encontrada.':' referências encontradas.');
  };
  search?.addEventListener('input',apply);
+ document.querySelector('.collection-index')?.addEventListener('click',(event)=>{
+   if(event.target.closest('a')){search.value='';apply();}
+ });
  let raw;try{raw=JSON.parse(localStorage.getItem('noir_recent_refs')||'[]')}catch{raw=[]}
  const rec=(Array.isArray(raw)?raw:[]).filter(slug=>typeof slug==='string'&&data.some(a=>a.slug===slug)).slice(0,8);
  if(rec.length){const section=document.querySelector('#recent-section');const rail=document.querySelector('#recent-rail');rail.innerHTML=rec.map(slug=>card(data.find(a=>a.slug===slug))).join('');section.hidden=false;}
@@ -91,3 +111,30 @@ const catalog=JSON.stringify(referenceArtists.map(a=>({rank:a.rank,slug:a.slug,n
 </script>
 <EcosystemRail current="referencias" limit={5} />
 </main><Footer/></body></html>
+<style>
+ .reference-composition .stream-search-shell{display:grid;gap:8px;padding:16px 0}
+ .reference-composition .stream-search-shell .eyebrow{font-size:.65rem;letter-spacing:.1em}
+ .collection-index{display:flex;flex-wrap:wrap;gap:8px;padding:16px 0 8px}
+ .collection-index a{font-size:.78rem;padding:9px 12px;border:1px solid var(--line);border-radius:4px;color:var(--paper-2);text-decoration:none}
+ .collection-index a:hover,.collection-index a:focus-visible{border-color:var(--gold);color:var(--paper)}
+ .search-status{font-size:.72rem;color:var(--muted);margin:0;line-height:1.5}
+ .cover-note{font-size:.72rem;color:var(--muted);line-height:1.6;max-width:85ch;margin:12px 0 24px}
+ .reference-composition .stream-section{padding:34px 0 18px;scroll-margin-top:170px}
+ .reference-composition .stream-head{margin-bottom:18px}
+ .reference-composition .stream-head p{font-size:.88rem;line-height:1.65}
+ .reference-composition .stream-rail{gap:18px;padding-bottom:22px}
+ .reference-composition .stream-card-media{border-radius:4px}
+ .reference-composition .stream-card-body{padding:14px 2px 4px}
+ .reference-composition .stream-card-body span{display:block;font-size:.7rem;letter-spacing:.06em;line-height:1.6}
+ .reference-composition .stream-card-body h3{font-size:1.18rem;line-height:1.25;white-space:normal;overflow:visible;text-overflow:clip;display:block;margin:8px 0 0}
+ .reference-composition .reference-card{border-radius:4px;text-decoration:none;color:inherit}
+ .reference-composition .reference-body h2{font-size:1.5rem;line-height:1.2;overflow-wrap:anywhere}
+ .reference-composition .reference-body p{min-height:0;margin-top:14px}
+ @media(max-width:760px){
+  .reference-composition .stream-hero-copy .journey-next{font-size:.78rem;line-height:1.55}
+  .collection-index{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin;padding-bottom:14px}
+  .collection-index a{flex-shrink:0}
+  .reference-composition .stream-section{padding-top:26px}
+  .reference-composition .stream-card-body h3{font-size:1.12rem}
+ }
+</style>

@@ -11,6 +11,15 @@ const related=relatedRanks.map(r=>referenceArtists.find(a=>a.rank===r)).filter(B
 const visualFor=(focus:string)=>{const f=focus.toLowerCase();return f.includes("carv")?"charcoal-marks.webp":f.includes("jap")||f.includes("ukiyo")?"moonlit-landscape.webp":f.includes("museu")||f.includes("arquivo")?"museum-gallery.webp":f.includes("botan")||f.includes("flor")?"iris-study.webp":f.includes("gesto")||f.includes("mão")?"tools-paper.webp":f.includes("sketch")||f.includes("caderno")?"open-sketchbook.webp":"graphite-texture.webp";};
 const hero=base+"noir/visual-atlas/"+visualFor(artist.focus);
 const videoId=/^[A-Za-z0-9_-]{11}$/.test(artist.videoId||"")?artist.videoId:"";
+const videoChoices:{id:string;title:string}[]=[];
+if(videoId)videoChoices.push({id:videoId,title:artist.refs.find((ref:any)=>ref.url==="https://www.youtube.com/watch?v="+videoId)?.title||"Vídeo principal"});
+for(const ref of artist.refs){
+ try{
+  const url=new URL(ref.url);
+  const id=url.searchParams.get("v")||"";
+  if(url.protocol==="https:"&&["www.youtube.com","youtube.com"].includes(url.hostname)&&url.pathname==="/watch"&&/^[A-Za-z0-9_-]{11}$/.test(id)&&!videoChoices.some(v=>v.id===id))videoChoices.push({id,title:ref.title});
+ }catch{}
+}
 const videoUrl=videoId?"https://www.youtube-nocookie.com/embed/"+videoId+"?rel=0&playsinline=1&hl=pt-BR":"";
 ---
 <!doctype html><html lang="pt-BR"><head><BaseHead title={artist.name+' · Referências · Harum Noir'} description={artist.special}/></head><body><Header/><main class="stream-main">
@@ -27,14 +36,33 @@ const videoUrl=videoId?"https://www.youtube-nocookie.com/embed/"+videoId+"?rel=0
  <div class="panel"><div class="eyebrow">O QUE OBSERVAR</div><h2>{artist.focus}</h2><p>{artist.special}</p></div>
  <div class="panel"><div class="eyebrow">LEITURA</div><div class="quote">{artist.archetype}</div><p>Use esta ficha como ponto de partida. O aprofundamento deve acontecer sempre nas fontes originais.</p></div>
 </section>
-{videoUrl&&<section class="section artist-player"><div class="stream-head"><div><span class="eyebrow">VÍDEO DA FONTE ORIGINAL</span><h2>Assistir a {artist.name}</h2></div><a class="btn" href={"https://www.youtube.com/watch?v="+videoId} target="_blank" rel="noreferrer">Abrir no YouTube ↗</a></div><div class="player-frame"><iframe src={videoUrl} title={"Vídeo de referência de "+artist.name} loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div><p class="player-note">Vídeo da fonte original, sem reprodução automática. Alguns canais podem desativar a reprodução incorporada; nesse caso, use “Abrir no YouTube”.</p></section>}
+{videoUrl&&<section class="section artist-player" data-artist-player><div class="stream-head"><div><span class="eyebrow">VÍDEO DA FONTE ORIGINAL</span><h2>Assistir a {artist.name}</h2></div><a class="btn" data-player-fallback href={"https://www.youtube.com/watch?v="+videoId} target="_blank" rel="noreferrer">Abrir no YouTube ↗</a></div>{videoChoices.length>1&&<label class="player-selection">Escolha uma referência<select data-player-select aria-label={"Vídeos selecionados de "+artist.name}>{videoChoices.map(video=><option value={video.id}>{video.title}</option>)}</select></label>}<div class="player-frame"><iframe src={videoUrl} title={"Vídeo de referência de "+artist.name} loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div><p class="player-note">Vídeo da fonte original, sem reprodução automática. Alguns canais podem desativar a reprodução incorporada; nesse caso, use “Abrir no YouTube”.</p></section>}
 {artist.refs.length>0&&<section class="stream-section"><div class="stream-head"><div><span class="eyebrow">REFERÊNCIAS SELECIONADAS</span><h2>Comece por estas</h2></div></div><div class="reference-grid">
  {artist.refs.map(ref=><a class="archive-item ref-source" href={ref.url} target="_blank" rel="noreferrer"><span class="card-kicker">{ref.type}</span><h3>{ref.title}</h3><p>{ref.observe}</p><span class="source-arrow">Abrir fonte ↗</span></a>)}
 </div></section>}
 {related.length>0&&<section class="stream-section"><div class="stream-head"><div><span class="eyebrow">CONTINUE</span><h2>Na mesma vizinhança</h2></div></div><div class="stream-rail">
  {related.map(a=><a class="stream-card" href={base+'referencias/'+a!.slug}><div class="stream-card-media"><img class="stream-fallback" src={base+'noir/visual-atlas/'+visualFor(a!.focus)} alt=""/>{a!.videoId&&<img class="stream-thumb" src={'https://i.ytimg.com/vi/'+a!.videoId+'/hqdefault.jpg'} alt="" loading="lazy" onerror="this.remove()"/>}</div><div class="stream-card-body"><span>{a!.focus}</span><h3>{a!.name}</h3></div></a>)}
 </div></section>}
+<script>
+document.querySelectorAll<HTMLElement>("[data-artist-player]").forEach(section=>{
+ const select=section.querySelector<HTMLSelectElement>("[data-player-select]");
+ const frame=section.querySelector<HTMLIFrameElement>("iframe");
+ const fallback=section.querySelector<HTMLAnchorElement>("[data-player-fallback]");
+ if(!select||!frame||!fallback)return;
+ const artistTitle=frame.title;
+ select.addEventListener("change",()=>{
+  const id=select.value;
+  if(!/^[A-Za-z0-9_-]{11}$/.test(id))return;
+  const url=new URL(frame.src);
+  url.pathname="/embed/"+id;
+  frame.src=url.toString();
+  frame.title=artistTitle+" — "+select.selectedOptions[0].textContent;
+  fallback.href="https://www.youtube.com/watch?v="+id;
+ });
+});
+</script>
 <script is:inline define:vars={{slug:artist.slug}}>
 (()=>{try{const k='noir_recent_refs';let raw;try{raw=JSON.parse(localStorage.getItem(k)||'[]')}catch{raw=[]}const a=(Array.isArray(raw)?raw:[]).filter(x=>typeof x==='string'&&x!==slug);a.unshift(slug);localStorage.setItem(k,JSON.stringify(a.slice(0,12)))}catch{}})();
 </script>
-</main><Footer/><style>.cover-credit{display:block;max-width:580px;color:#aaa49b;font-size:.7rem;line-height:1.5;margin-bottom:12px}.artist-player{max-width:1160px;margin-inline:auto}.player-frame{aspect-ratio:16/9;min-height:220px;background:radial-gradient(circle at 70% 18%,rgba(179,154,105,.12),transparent 28%),#090909;border:1px solid rgba(179,154,105,.28);border-radius:16px;overflow:hidden;box-shadow:0 28px 80px rgba(0,0,0,.28)}.player-frame iframe{display:block;width:100%;height:100%;border:0}.player-note{color:#aaa49b;font-size:.82rem;margin-top:10px}</style></body></html>
+</main><Footer/><style>.player-selection{display:grid;gap:8px;max-width:620px;margin:0 0 18px;font-size:.85rem;color:#aaa49b}.player-selection select{width:100%;padding:12px;background:#151413;border:1px solid #71654f;border-radius:8px;color:#eee7dc;font:inherit}.player-selection select:focus-visible{outline:2px solid #b39a69;outline-offset:3px}.cover-credit{display:block;max-width:580px;color:#aaa49b;font-size:.7rem;line-height:1.5;margin-bottom:12px}.artist-player{max-width:1160px;margin-inline:auto}.player-frame{aspect-ratio:16/9;min-height:220px;background:radial-gradient(circle at 70% 18%,rgba(179,154,105,.12),transparent 28%),#090909;border:1px solid rgba(179,154,105,.28);border-radius:16px;overflow:hidden;box-shadow:0 28px 80px rgba(0,0,0,.28)}.player-frame iframe{display:block;width:100%;height:100%;border:0}.player-note{color:#aaa49b;font-size:.82rem;margin-top:10px}</style></body></html>
+
