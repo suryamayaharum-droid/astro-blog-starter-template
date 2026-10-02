@@ -12,7 +12,7 @@ const catalog=JSON.stringify(referenceArtists.map(a=>({rank:a.rank,slug:a.slug,n
 <body><Header/><main class="stream-main">
 <section class="stream-hero">
  <div class="stream-hero-media">
-  <img src={featured.videoId ? 'https://i.ytimg.com/vi/'+featured.videoId+'/hqdefault.jpg' : base+'noir/reference-fallback.svg'} alt="" onerror={"this.src='"+base+"noir/reference-fallback.svg'"}/>
+  <img src={base+'noir/visual-atlas/charcoal-marks.webp'} alt="" onerror={"this.src='"+base+"noir/reference-fallback.svg'"}/>
  </div>
  <div class="stream-hero-shade"></div>
  <div class="stream-hero-copy">
@@ -41,7 +41,7 @@ const catalog=JSON.stringify(referenceArtists.map(a=>({rank:a.rank,slug:a.slug,n
   <div class="stream-rail">
    {items.map(a=><a class="stream-card" href={base+'referencias/'+a!.slug}>
     <div class="stream-card-media">
-      <img class="stream-fallback" src={base+'noir/reference-fallback.svg'} alt="" />
+      <img class="stream-fallback" src={base+'noir/visual-atlas/'+(a!.focus.toLowerCase().includes('carv')?'charcoal-marks':a!.focus.toLowerCase().includes('jap')?'moonlit-landscape':a!.focus.toLowerCase().includes('museu')?'museum-gallery':'graphite-texture')+'.webp'} alt="" />
       {a!.videoId&&a!.slug!=="zin-lim"&&<img class="stream-thumb" src={'https://i.ytimg.com/vi/'+a!.videoId+'/hqdefault.jpg'} alt={'Referência visual de '+a!.name} loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"/>}
       <span class="stream-rank">{String(a!.rank).padStart(2,'0')}</span>
     </div>
