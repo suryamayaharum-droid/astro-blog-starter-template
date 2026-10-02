@@ -1,0 +1,89 @@
+{
+  "schema": "harum.coordination-health/v3",
+  "source_last_event": "evt-hn-percurso-sketchbook-deepen-progress-20260928",
+  "checked_at": "2026-09-30T20:54:33.067244+00:00",
+  "status": "degraded",
+  "counts": {
+    "issues": 0,
+    "warnings": 3,
+    "open_work": 1,
+    "open_help": 0,
+    "active_leases": 0,
+    "known_instances": 3,
+    "dormant_instances": 3
+  },
+  "issues": [],
+  "warnings": [
+    {
+      "code": "expired-work-lease",
+      "work_id": "HN-PERCURSO-SKETCHBOOK-DEEPEN-012",
+      "owner": "chatgpt-sol-editorial-recovery-20260928"
+    },
+    {
+      "code": "orphaned-active-work-expired-lease",
+      "work_id": "HN-PERCURSO-SKETCHBOOK-DEEPEN-012",
+      "owner": "chatgpt-sol-editorial-recovery-20260928",
+      "lease_id": "lease-hn-sketchbook-deepen-012-20260928T1805Z",
+      "fencing_token": 2,
+      "reason": "expired-primary-lease"
+    },
+    {
+      "code": "dispatcher-has-unroutable-work",
+      "count": 1,
+      "recovery_work_ids": [
+        "HN-PERCURSO-SKETCHBOOK-DEEPEN-012"
+      ]
+    }
+  ],
+  "suggested_repairs": [
+    {
+      "action": "reclaim-expired-lease",
+      "work_id": "HN-PERCURSO-SKETCHBOOK-DEEPEN-012"
+    },
+    {
+      "action": "recovery-claim-with-new-fencing-token-or-owner-complete",
+      "work_id": "HN-PERCURSO-SKETCHBOOK-DEEPEN-012",
+      "previous_lease_id": "lease-hn-sketchbook-deepen-012-20260928T1805Z",
+      "previous_fencing_token": 2
+    },
+    {
+      "action": "activate-compatible-instance-for-recovery-or-owner-close",
+      "work_ids": [
+        "HN-PERCURSO-SKETCHBOOK-DEEPEN-012"
+      ]
+    }
+  ],
+  "recovery_candidates": [
+    {
+      "work_id": "HN-PERCURSO-SKETCHBOOK-DEEPEN-012",
+      "owner": "chatgpt-sol-editorial-recovery-20260928",
+      "lease_id": "lease-hn-sketchbook-deepen-012-20260928T1805Z",
+      "fencing_token": 2,
+      "reason": "expired-primary-lease"
+    }
+  ],
+  "dormant_instances": [
+    {
+      "instance": "chatgpt-sol-coding-validation-20260928",
+      "role": "coding-instance",
+      "reachability": "active",
+      "reason": "ttl-expired",
+      "expired_at": "2026-09-28T14:36:00+00:00"
+    },
+    {
+      "instance": "chatgpt-sol-editorial-sketchbook-20260928",
+      "role": "narrative-editor",
+      "reachability": "active",
+      "reason": "ttl-expired",
+      "expired_at": "2026-09-28T14:44:30+00:00"
+    },
+    {
+      "instance": "chatgpt-sol-editorial-recovery-20260928",
+      "role": "narrative-editor",
+      "reachability": "active",
+      "reason": "ttl-expired",
+      "expired_at": "2026-09-28T18:32:00+00:00"
+    }
+  ],
+  "next_safe_action": "recover or close orphaned work before expanding scope"
+}

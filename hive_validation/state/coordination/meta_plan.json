@@ -1,0 +1,81 @@
+{
+  "schema": "harum.meta-coordination-plan/v1",
+  "source_last_event": "evt-hn-percurso-sketchbook-deepen-progress-20260928",
+  "generated_at": "2026-09-30T20:54:33.067359+00:00",
+  "mode": "repair-first",
+  "health": "degraded",
+  "primary_move": null,
+  "primary_recovery": {
+    "work_id": "HN-PERCURSO-SKETCHBOOK-DEEPEN-012",
+    "state": "unroutable",
+    "branch": "HARUM-NOIR",
+    "role": "narrative-editor",
+    "priority": 106,
+    "meta_score": 138,
+    "unlocks": 0,
+    "age_hours": 50.71,
+    "is_current_focus": true,
+    "is_support": false,
+    "reason": "base=106 · current-focus+20 · age+12 · recovery-candidate",
+    "recovery_candidate": true,
+    "dispatch_reason": "expired-lease-recovery",
+    "candidate_instances": [],
+    "recovery": {
+      "previous_owner": "chatgpt-sol-editorial-recovery-20260928",
+      "previous_lease_id": "lease-hn-sketchbook-deepen-012-20260928T1805Z",
+      "previous_fencing_token": 2
+    },
+    "write_scope": [
+      "chatbot:app/noir/percursos/page.tsx",
+      "astro:src/pages/percursos.astro"
+    ],
+    "max_helpers": 0
+  },
+  "recovery_queue": [
+    {
+      "work_id": "HN-PERCURSO-SKETCHBOOK-DEEPEN-012",
+      "state": "unroutable",
+      "branch": "HARUM-NOIR",
+      "role": "narrative-editor",
+      "priority": 106,
+      "meta_score": 138,
+      "unlocks": 0,
+      "age_hours": 50.71,
+      "is_current_focus": true,
+      "is_support": false,
+      "reason": "base=106 · current-focus+20 · age+12 · recovery-candidate",
+      "recovery_candidate": true,
+      "dispatch_reason": "expired-lease-recovery",
+      "candidate_instances": [],
+      "recovery": {
+        "previous_owner": "chatgpt-sol-editorial-recovery-20260928",
+        "previous_lease_id": "lease-hn-sketchbook-deepen-012-20260928T1805Z",
+        "previous_fencing_token": 2
+      },
+      "write_scope": [
+        "chatbot:app/noir/percursos/page.tsx",
+        "astro:src/pages/percursos.astro"
+      ],
+      "max_helpers": 0
+    }
+  ],
+  "critical_path": [],
+  "parallel_wave": [],
+  "collaboration_suggestions": [],
+  "stagnation": [],
+  "coordination_budget": {
+    "open_product": 1,
+    "open_support": 0,
+    "support_ratio": 0.0,
+    "max_support_ratio_when_healthy": 0.34,
+    "overcoordination": false,
+    "action": "repair-coordination-before-expanding-work"
+  },
+  "rules": {
+    "advisory_only": true,
+    "never_auto_claim": true,
+    "never_expand_permissions": true,
+    "product_focus_when_healthy": true,
+    "prefer_existing_work_and_help": true
+  }
+}
