@@ -1,5 +1,8 @@
 name: Recover HIVE Sketchbook Work 012
 
+permissions:
+  contents: write
+
 on:
   push:
     branches:
@@ -153,3 +156,13 @@ jobs:
           if-no-files-found: error
           retention-days: 7
           include-hidden-files: true
+
+      - name: Commit verified recovery output
+        run: |
+          rm -rf recovery_output
+          cp -a recovery_artifact recovery_output
+          git config user.name "HARUM Recovery Bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add recovery_output
+          git commit -m "ci: materialize verified HIVE recovery output" || exit 0
+          git push
