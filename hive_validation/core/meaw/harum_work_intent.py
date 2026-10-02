@@ -49,7 +49,7 @@ def similarity(left: dict[str,Any], right: dict[str,Any]) -> float:
     return min(1.0,title+role_bonus+cap_bonus)
 
 def detect_intent_collisions(nodes: dict[str,dict[str,Any]], *, open_ids: set[str]|None=None, probable_threshold: float=0.82) -> dict[str,list[dict[str,Any]]]:
-    ids=sorted(open_ids or set(nodes))
+    ids=sorted(set(nodes) if open_ids is None else open_ids)
     hard=[]; probable=[]
     seen_keys={}
     for work_id in ids:

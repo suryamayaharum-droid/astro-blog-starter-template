@@ -160,5 +160,26 @@ class CoordinationDoctorTests(unittest.TestCase):
         self.assertIn("activate-compatible-instance-for-recovery-or-owner-close",repair_actions)
 
 
+    def test_empty_open_work_ignores_historical_intent_similarity(self):
+        panel,jev,tree,registry,leases,bootstrap,policy=self.base()
+        jev["open_work"]=[]
+        jev["open_help_requests"]=[]
+        tree["root"]["children"]=[
+            {"id":"done-a","state":"succeeded","title":"Deep editorial Caderno Gesto page","target_role":"narrative-editor"},
+            {"id":"done-b","state":"succeeded","title":"Deep editorial Caderno Olhar page","target_role":"narrative-editor"},
+        ]
+        report=diagnose(
+            panel=panel,jev=jev,tree=tree,registry=registry,leases=leases,bootstrap=bootstrap,
+            dispatch_policy=policy,
+            now=datetime.datetime(2026,9,27,20,10,tzinfo=datetime.timezone.utc)
+        )
+        duplicate_codes=[
+            row["code"] for row in report["warnings"]
+            if row["code"]=="possible-duplicate-work-intent"
+        ]
+        self.assertEqual(duplicate_codes,[])
+        self.assertEqual(report["status"],"healthy")
+
+
 if __name__=="__main__":
     unittest.main()
