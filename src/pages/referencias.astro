@@ -18,7 +18,7 @@ const catalog=JSON.stringify(referenceArtists.map(a=>({rank:a.rank,slug:a.slug,n
  <div class="stream-hero-copy">
    <span class="eyebrow">EM DESTAQUE · CARVÃO & MATÉRIA</span>
    <h1>{featured.name}</h1>
-   <p>{featured.special}</p>
+   <p>{featured.special}</p><p class="journey-next">Capa temática HARUM NOIR · criada com assistência de IA; não representa obra do artista.</p>
    <div class="actions"><a class="btn primary" href={base+'referencias/'+featured.slug}>Entrar nesta referência</a></div>
    <p class="journey-next">Fonte original: <a href={featured.youtube} target="_blank" rel="noreferrer">YouTube ↗</a></p>
  </div>
@@ -74,7 +74,7 @@ const catalog=JSON.stringify(referenceArtists.map(a=>({rank:a.rank,slug:a.slug,n
  const searchView=document.querySelector('#search-view');
  const grid=document.querySelector('#search-grid');
  const empty=document.querySelector('#search-empty');
- const fallback=base+'noir/reference-fallback.svg';
+ const fallback=base+'noir/visual-atlas/graphite-texture.webp';
  const card=(a)=>'<a class="reference-card" href="'+base+'referencias/'+a.slug+'"><div class="reference-media"><img class="reference-fallback" src="'+fallback+'" alt="">'+(a.videoId?'<img class="reference-thumb" src="https://i.ytimg.com/vi/'+a.videoId+'/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()">':'')+'<span class="reference-rank">'+String(a.rank).padStart(2,'0')+'</span></div><div class="reference-body"><span class="card-kicker">'+a.focus+'</span><h2>'+a.name+'</h2><p>Entrar na ficha →</p></div></a>';
  const apply=()=>{
    const q=(search?.value||'').toLowerCase().trim();
@@ -84,7 +84,8 @@ const catalog=JSON.stringify(referenceArtists.map(a=>({rank:a.rank,slug:a.slug,n
    grid.innerHTML=found.map(card).join('');empty.style.display=found.length?'none':'block';
  };
  search?.addEventListener('input',apply);
- const rec=JSON.parse(localStorage.getItem('noir_recent_refs')||'[]').filter(slug=>data.some(a=>a.slug===slug)).slice(0,8);
+ let raw;try{raw=JSON.parse(localStorage.getItem('noir_recent_refs')||'[]')}catch{raw=[]}
+ const rec=(Array.isArray(raw)?raw:[]).filter(slug=>typeof slug==='string'&&data.some(a=>a.slug===slug)).slice(0,8);
  if(rec.length){const section=document.querySelector('#recent-section');const rail=document.querySelector('#recent-rail');rail.innerHTML=rec.map(slug=>card(data.find(a=>a.slug===slug))).join('');section.hidden=false;}
 })();
 </script>

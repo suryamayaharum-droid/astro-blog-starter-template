@@ -52,7 +52,7 @@ try{
     const item={path:full,title:document.title||'HARUM NOIR',visitedAt:Date.now()};
     let xs=[];try{xs=JSON.parse(localStorage.getItem(k)||'[]')}catch{}
     xs=[item,...(Array.isArray(xs)?xs:[]).filter(x=>x&&x.path!==item.path)].slice(0,12);
-    localStorage.setItem(k,JSON.stringify(xs));
+    try{localStorage.setItem(k,JSON.stringify(xs))}catch{}
   }
   document.querySelectorAll('.nav-links a,.mobile-dock a').forEach((a)=>{
     if(!(a instanceof HTMLAnchorElement)) return;
@@ -74,7 +74,7 @@ try{
       b.addEventListener('click',()=>{
         let xs=read();const on=xs.some(x=>x&&x.path===full);
         xs=on?xs.filter(x=>x&&x.path!==full):[{path:full,title:document.title||'HARUM NOIR',savedAt:Date.now()},...xs.filter(x=>x&&x.path!==full)].slice(0,24);
-        localStorage.setItem(key,JSON.stringify(xs));paint();window.dispatchEvent(new Event('harum-noir-shelf'));
+        try{localStorage.setItem(key,JSON.stringify(xs));paint();window.dispatchEvent(new Event('harum-noir-shelf'))}catch{b.textContent='Estante indisponível';b.setAttribute('aria-label','Não foi possível salvar neste navegador');}
       });
     }
   }

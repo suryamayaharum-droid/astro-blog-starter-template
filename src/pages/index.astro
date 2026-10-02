@@ -119,20 +119,22 @@ const studySessions=[
 </main><Footer/>
 <script define:vars={{base}}>
 const esc=(s)=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+const readSaved=(key)=>{try{const value=JSON.parse(localStorage.getItem(key)||'[]');return Array.isArray(value)?value:[]}catch{return[]}};
+const isLocalPath=(path)=>{try{if(typeof path!=='string')return false;const url=new URL(path,location.origin);return url.origin===location.origin&&url.pathname.startsWith(base)}catch{return false}};
 try{
-  const xs=JSON.parse(localStorage.getItem('harum_noir_recent')||'[]');
+  const xs=readSaved('harum_noir_recent');
   const root=document.querySelector('#continue-rail');
   const section=document.querySelector('#continue-section');
-  const items=Array.isArray(xs)?xs.filter(x=>x&&x.path&&x.path!==location.pathname).slice(0,8):[];
+  const items=Array.isArray(xs)?xs.filter(x=>x&&isLocalPath(x.path)&&x.path!==location.pathname).slice(0,8):[];
   if(root&&section&&items.length){
     const ago=(ts)=>{const d=Math.max(0,Date.now()-Number(ts||0));const m=Math.floor(d/60000);if(m<2)return'agora';if(m<60)return'há '+m+' min';const h=Math.floor(m/60);if(h<24)return'há '+h+' h';const days=Math.floor(h/24);return days===1?'ontem':'há '+days+' dias'};
     root.innerHTML=items.map((x,i)=>'<a class="continue-card" href="'+esc(x.path)+'"><div class="continue-visual"><span>'+String(i+1).padStart(2,'0')+'</span><b>HARUM NOIR</b></div><div class="continue-body"><span>VISITADO '+esc(ago(x.visitedAt))+'</span><h3>'+esc(String(x.title||'HARUM NOIR').replace(/ · Harum Noir.*/i,''))+'</h3></div></a>').join('');
     section.hidden=false;
   }
-  const saved=JSON.parse(localStorage.getItem('harum_noir_shelf')||'[]');
+  const saved=readSaved('harum_noir_shelf');
   const shelf=document.querySelector('#shelf-rail');
   const shelfSection=document.querySelector('#shelf-section');
-  const shelfItems=Array.isArray(saved)?saved.slice(0,12):[];
+  const shelfItems=Array.isArray(saved)?saved.filter(x=>x&&isLocalPath(x.path)).slice(0,12):[];
   if(shelf&&shelfSection&&shelfItems.length){
     shelf.innerHTML=shelfItems.map((x,i)=>'<a class="browse-tile" href="'+esc(x.path)+'"><div class="browse-visual"><span class="num">'+String(i+1).padStart(2,'0')+'</span><div class="big">'+esc(String(x.title||'HARUM NOIR').replace(/ · Harum Noir.*/i,''))+'</div></div><div class="browse-body"><span>SALVO</span><h3>Voltar para este estudo →</h3></div></a>').join('');
     shelfSection.hidden=false;
