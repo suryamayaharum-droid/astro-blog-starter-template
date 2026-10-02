@@ -1,9 +1,12 @@
 ---
+import EditorialScene from '../components/EditorialScene.astro';
+import '../styles/composition.css';
 import EcosystemRail from '../components/EcosystemRail.astro';
 import BaseHead from '../components/BaseHead.astro';import Header from '../components/Header.astro';import Footer from '../components/Footer.astro';import {cadernos} from '../data/public';const base=import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 ---
-<!doctype html><html lang="pt-BR"><head><BaseHead title="Cadernos de Presença · Harum Noir" description="Uma série editorial de desenho, gesto, olhar, memória e vestígio."/></head><body><Header/><main>
-<section class="page-hero"><div class="eyebrow">CADERNOS DE PRESENÇA</div><h1>Desenhar para permanecer.</h1><p>Os cadernos são investigações abertas: uma pergunta, uma prática e um vestígio para carregar ao próximo encontro.</p></section>
+<!doctype html><html lang="pt-BR"><head><BaseHead title="Cadernos de Presença · Harum Noir" description="Uma série editorial de desenho, gesto, olhar, memória e vestígio."/></head><body><Header/><main class="history-composition notebooks-composition">
+<section class="page-hero"><div class="editorial-opening-copy"><div class="eyebrow">CADERNOS DE PRESENÇA</div><h1>Desenhar para permanecer.</h1><p>Os cadernos são investigações abertas: uma pergunta, uma prática e um vestígio para carregar ao próximo encontro.</p></div><EditorialScene image="open-sketchbook" alt="Caderno aberto em composição temática de ateliê"/></section>
+<nav class="notebook-index" aria-label="Escolher um caderno">{cadernos.map(c=><a href={'#'+c.slug}>{c.title}</a>)}</nav>
 {cadernos.map((c,i)=><section class="section editorial-split" id={c.slug}>
   <div class="card"><div class="card-media" style="aspect-ratio:4/3"><img src={`${base}noir/${c.image}`} alt="" /></div></div>
   <div class="panel"><div class="eyebrow">{c.kicker}</div><h2>{c.title}</h2><p>{c.summary}</p><p>{[
@@ -18,3 +21,14 @@ import BaseHead from '../components/BaseHead.astro';import Header from '../compo
 <section class="section"><div class="panel"><div class="eyebrow">ARQUIVO VIVO</div><h2>O caderno como sequência de pensamento.</h2><p>Sketchbooks históricos ajudam a observar tentativa, pausa, repetição, anotação e retorno. Use a referência para entender como uma investigação continua entre páginas — não para transformar o caderno em galeria de peças prontas.</p><div class="actions"><a class="btn gold" href={base+'biblioteca#arquivo-vivo-sketchbooks'}>Abrir sketchbooks históricos →</a></div></div></section>
 <EcosystemRail current="cadernos" limit={5} />
 </main><Footer/></body></html>
+<style>
+.notebook-index{display:flex;flex-wrap:wrap;gap:10px;padding:12px 0 30px;border-bottom:1px solid var(--line)}
+.notebook-index a{padding:12px 16px;border:1px solid var(--line);border-radius:4px;color:var(--paper);text-decoration:none;font-size:14px}
+.notebook-index a:hover,.notebook-index a:focus-visible{border-color:var(--gold)}
+.notebooks-composition .editorial-split{gap:clamp(24px,5vw,72px);padding-top:56px;scroll-margin-top:100px}
+.notebooks-composition .editorial-split .card{border-radius:4px;overflow:hidden}
+.notebooks-composition .editorial-split .panel{padding:clamp(22px,3vw,40px);border-radius:4px}
+.notebooks-composition .editorial-split h2{font-size:clamp(2.3rem,4vw,4rem);line-height:1.05}
+.notebooks-composition .editorial-split p{font-size:16px;line-height:1.7;max-width:54ch}
+@media(max-width:760px){.notebooks-composition .editorial-split{padding-top:32px;gap:20px}.notebook-index a{padding:10px 12px}}
+</style>
