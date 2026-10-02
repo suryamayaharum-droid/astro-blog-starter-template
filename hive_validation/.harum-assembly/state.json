@@ -1,0 +1,1198 @@
+{
+  "schema": "harum.assembly-state/v2",
+  "version": 2,
+  "last_event": "evt-hn-percurso-sketchbook-deepen-progress-20260928",
+  "assets": {
+    "HARUM-NOIR-WEB": {
+      "events": [
+        "evt-hn-streaming-checkpoint-20260927",
+        "evt-hn-visual-help-20260927",
+        "evt-hn-fascination-help-20260927",
+        "evt-hn-cadernos-living-observed-20260927",
+        "evt-hn-cadernos-living-completed-20260927",
+        "evt-hn-caderno-gesto-source-audit-help-20260927",
+        "evt-hn-caderno-olhar-claim-20260928",
+        "evt-hn-caderno-olhar-visual-help-20260928"
+      ],
+      "last_type": "help.requested",
+      "updated_at": "2026-09-28T03:40:01Z"
+    },
+    "HARUM-NOIR-RADAR": {
+      "events": [
+        "evt-hn-research-help-20260927",
+        "evt-hn-caderno-olhar-research-help-20260928",
+        "evt-hn-atlas-101-visual-sources-001-claim-20260928",
+        "evt-hn-atlas-101-visual-sources-001-complete-20260928",
+        "evt-hn-atlas-101-visual-sources-002-claim-20260928"
+      ],
+      "last_type": "work.claimed",
+      "updated_at": "2026-09-28T04:00:00Z"
+    },
+    "HARUM-COORDINATION": {
+      "events": [
+        "evt-jev-bridge-completed-20260927",
+        "evt-coordination-fabric-v2-20260927",
+        "evt-anti-entropy-claim-20260927",
+        "evt-anti-entropy-complete-20260927",
+        "evt-hn-dispatcher-claim-20260927",
+        "evt-hn-dispatcher-completed-20260927",
+        "evt-hn-doctor-v2-claim-20260927",
+        "evt-hn-doctor-v2-completed-20260927",
+        "evt-meaw-scheduler-claim-20260927",
+        "evt-meaw-scheduler-implementation-complete-20260927",
+        "evt-meaw-scheduler-validation-help-20260927",
+        "evt-meaw-meta-coord-claim-20260928",
+        "evt-meaw-meta-coord-complete-20260928",
+        "evt-hn-olhar-projection-reconciled-20260928"
+      ],
+      "last_type": "evidence.observed",
+      "updated_at": "2026-09-28T03:46:00Z"
+    },
+    "HARUM-NOIR-CURATION": {
+      "events": [
+        "evt-parallel-fascination-observed-20260927"
+      ],
+      "last_type": "evidence.observed",
+      "updated_at": "2026-09-27T20:04:30Z"
+    }
+  },
+  "incidents": [],
+  "instances": {
+    "chatgpt-sol-coding-validation-20260928": {
+      "role": "coding-instance",
+      "roles": [
+        "coding-instance",
+        "coordination-auditor"
+      ],
+      "last_seen": "2026-09-28T13:36:00Z",
+      "expires_at": "2026-09-28T14:36:00Z",
+      "capabilities": [
+        "tests",
+        "ci",
+        "repository-patch",
+        "coordination-health",
+        "deploy-validation"
+      ],
+      "connectors": [
+        {
+          "id": "github",
+          "provider": "GitHub",
+          "status": "verified",
+          "capabilities": [
+            "repo-read",
+            "repo-write"
+          ],
+          "requires_user_auth": true,
+          "evidence": [
+            "current session GitHub read/write evidence"
+          ]
+        },
+        {
+          "id": "vercel",
+          "provider": "Vercel",
+          "status": "verified",
+          "capabilities": [
+            "deployment-read",
+            "deployment-verify"
+          ],
+          "requires_user_auth": true,
+          "evidence": [
+            "current session Vercel verification evidence"
+          ]
+        }
+      ],
+      "skills": [],
+      "capacity": {
+        "max_parallel_claims": 1
+      },
+      "constraints": [
+        "bounded-validation-only",
+        "no-product-mutation"
+      ],
+      "preferred_work_types": [
+        "tests",
+        "coordination-validation"
+      ],
+      "reachability": "active",
+      "dispatch_modes": [
+        "local-runtime"
+      ],
+      "current_focus": "HARUM / MEAW validation",
+      "security": {
+        "contains_credentials": false,
+        "grants_permissions": false,
+        "auth_boundary": "local-runtime"
+      }
+    },
+    "chatgpt-sol-editorial-sketchbook-20260928": {
+      "role": "narrative-editor",
+      "roles": [
+        "narrative-editor"
+      ],
+      "last_seen": "2026-09-28T13:44:30Z",
+      "expires_at": "2026-09-28T14:44:30Z",
+      "capabilities": [
+        "story-structure",
+        "editorial-bridges",
+        "caderno-language"
+      ],
+      "connectors": [
+        {
+          "id": "github",
+          "provider": "GitHub",
+          "status": "verified",
+          "capabilities": [
+            "repo-read",
+            "repo-write"
+          ],
+          "requires_user_auth": true,
+          "evidence": [
+            "current session repository writes"
+          ]
+        }
+      ],
+      "skills": [],
+      "capacity": {
+        "max_parallel_claims": 1
+      },
+      "constraints": [
+        "bounded-two-file-write-scope",
+        "no-new-route"
+      ],
+      "preferred_work_types": [
+        "editorial-route-deepening"
+      ],
+      "reachability": "active",
+      "dispatch_modes": [
+        "local-runtime"
+      ],
+      "current_focus": "HARUM NOIR · Percurso 05",
+      "security": {
+        "contains_credentials": false,
+        "grants_permissions": false,
+        "auth_boundary": "local-runtime"
+      }
+    },
+    "chatgpt-sol-editorial-recovery-20260928": {
+      "role": "narrative-editor",
+      "roles": [
+        "narrative-editor"
+      ],
+      "last_seen": "2026-09-28T18:12:00Z",
+      "expires_at": "2026-09-28T18:32:00Z",
+      "capabilities": [
+        "story-structure",
+        "editorial-bridges",
+        "caderno-language",
+        "repository-patch"
+      ],
+      "connectors": [
+        {
+          "id": "github",
+          "provider": "GitHub",
+          "status": "verified",
+          "capabilities": [
+            "repo-read",
+            "repo-write"
+          ],
+          "requires_user_auth": true,
+          "evidence": [
+            "current session GitHub read/write"
+          ]
+        }
+      ],
+      "skills": [],
+      "capacity": {
+        "max_parallel_claims": 1
+      },
+      "constraints": [
+        "bounded-two-file-write-scope",
+        "no-new-route"
+      ],
+      "preferred_work_types": [
+        "editorial-route-deepening"
+      ],
+      "reachability": "active",
+      "dispatch_modes": [
+        "connector-api"
+      ],
+      "current_focus": "HARUM NOIR · Percurso 05 recovery",
+      "security": {
+        "contains_credentials": false,
+        "grants_permissions": false,
+        "auth_boundary": "connector-api"
+      }
+    }
+  },
+  "work_items": {
+    "HN-WEB-STREAMING-001": {
+      "work_id": "HN-WEB-STREAMING-001",
+      "events": [
+        "evt-hn-streaming-checkpoint-20260927"
+      ],
+      "updated_at": "2026-09-27T19:49:31Z",
+      "status": "succeeded",
+      "owner": "orchestrator",
+      "result": {
+        "state": "stable",
+        "note": "Streaming/Netflix infrastructure validated on both public hosts."
+      },
+      "evidence": [
+        "docs/HARUMVERSO_CHECKPOINT.md",
+        "systems/harum_noir_public_surface_manifest.json"
+      ]
+    },
+    "HN-WEB-VISUAL-002": {
+      "work_id": "HN-WEB-VISUAL-002",
+      "events": [
+        "evt-hn-visual-help-20260927",
+        "evt-HN-WEB-VISUAL-002-help-answered-20260927",
+        "evt-HN-WEB-VISUAL-002-completed-20260927"
+      ],
+      "updated_at": "2026-09-27T23:00:10Z",
+      "status": "succeeded",
+      "owner": "parallel-visual-curator",
+      "result": {
+        "summary": "PRONTO / pass 1: mobile density reduced and 4 verified artist visuals applied; coverage 23/50. Physical-device screenshot review remains a separate next task."
+      },
+      "evidence": [
+        "docs/HN_WEB_VISUAL_002.md",
+        "docs/HN_REF_VISUAL_SOURCES_001.md",
+        "495fd181750ac07fc996bf2cfaed0347cf822380",
+        "4806b3c1534487ccea8eb1062b884bfea6df1a5f"
+      ]
+    },
+    "HN-REF-VISUAL-SOURCES-001": {
+      "work_id": "HN-REF-VISUAL-SOURCES-001",
+      "events": [
+        "evt-hn-research-help-20260927",
+        "evt-HN-REF-VISUAL-SOURCES-001-help-answered-20260927",
+        "evt-HN-REF-VISUAL-SOURCES-001-completed-20260927"
+      ],
+      "updated_at": "2026-09-27T23:00:11Z",
+      "status": "succeeded",
+      "owner": "parallel-research-scout",
+      "result": {
+        "summary": "PRONTO / lote 1: verified artist-specific public video sources for Love Life Drawing, Chommang, Aaron Blaise and Marco Bucci. 27/50 remain on local fallback."
+      },
+      "evidence": [
+        "docs/HN_REF_VISUAL_SOURCES_001.md",
+        "systems/harum_noir_reference_intelligence.json",
+        "d3db3bc941f096e74605e53dd683b9efb9899235"
+      ]
+    },
+    "HN-COORD-JEV-001": {
+      "work_id": "HN-COORD-JEV-001",
+      "events": [
+        "evt-jev-bridge-completed-20260927"
+      ],
+      "updated_at": "2026-09-27T19:51:00Z",
+      "status": "succeeded",
+      "owner": "orchestrator",
+      "result": {
+        "result": "JEV cross-instance bridge activated",
+        "commit": "dd1450d3e885bf933e052d61099e80fd2224a631",
+        "transport": "HARUM Assembly Bus v2",
+        "view": ".harum-assembly/jev_view.json",
+        "rule": "Persist evidence/handoffs, not hidden reasoning."
+      },
+      "evidence": [
+        "docs/JEV_INSTANCE_BRIDGE.md",
+        "systems/jev_instance_bridge.json",
+        "runtime/harum_assembly_bus.py",
+        "core/meaw/jev_instance_bridge.py"
+      ]
+    },
+    "HN-CURATION-FASCINATION-001": {
+      "work_id": "HN-CURATION-FASCINATION-001",
+      "events": [
+        "evt-parallel-fascination-observed-20260927"
+      ],
+      "updated_at": "2026-09-27T20:04:30Z",
+      "status": "succeeded",
+      "owner": "parallel-instance-unattributed",
+      "result": {
+        "summary": "Parallel instance added Fascination Curator, curation skill, page-curatorship contract and swarm wiring before the JEV bridge was activated.",
+        "integration_rule": "Treat this as canonical evidence already merged to main; use it to constrain future visual/editorial work rather than duplicating the layer.",
+        "commits": [
+          "c746accec816bab155e19a0a02c66fedef3785ff",
+          "8e59bbce0aa45a6f9570aef84551f12887005637",
+          "831a4c3faa112a8b4e781d7ba6288746e0073c8a",
+          "3cf372e8b165afea82dceffcbd87438800c637d4",
+          "18ebb67489668f38439975c494abf26d55cd8f42",
+          "cf877daecfdbe6a4de149b61536aaac5edbc3786"
+        ]
+      },
+      "evidence": [
+        "skills/harum-noir-fascination/SKILL.md",
+        "docs/HARUM_NOIR_PAGE_CURATORSHIP.md",
+        "systems/harum_noir_agent_team.json",
+        "SYSTEMS.md"
+      ]
+    },
+    "HN-WEB-FASCINATION-003": {
+      "work_id": "HN-WEB-FASCINATION-003",
+      "events": [
+        "evt-hn-fascination-help-20260927",
+        "evt-HN-WEB-FASCINATION-003-help-answered-20260927",
+        "evt-HN-WEB-FASCINATION-003-completed-20260927"
+      ],
+      "updated_at": "2026-09-27T23:00:12Z",
+      "status": "succeeded",
+      "owner": "parallel-fascination-curator",
+      "result": {
+        "summary": "PRONTO / verificado: CTA hierarchy corrected across Home, Atlas and Percursos without new routes or infrastructure changes."
+      },
+      "evidence": [
+        "docs/HN_WEB_FASCINATION_003.md",
+        "bdb3fb53757887696487f402febc4a761a480499",
+        "74c73f3dee157844e59a7cee1ebb0f058f8c6d16"
+      ]
+    },
+    "HN-COORD-FABRIC-002": {
+      "work_id": "HN-COORD-FABRIC-002",
+      "events": [
+        "evt-coordination-fabric-v2-20260927"
+      ],
+      "updated_at": "2026-09-27T20:12:00Z",
+      "status": "succeeded",
+      "owner": "coordination-auditor",
+      "result": {
+        "summary": "Global continuity fabric, project tree, capability registry, work leases, coordination doctor and federation builder installed.",
+        "continuity": "docs/GLOBAL_CONTINUITY_INSTRUCTION.md",
+        "portability": [
+          "portable-crdt",
+          "content-addressed-state",
+          "transport-mesh",
+          "federation-bundle"
+        ],
+        "interaction_language": [
+          "TENHO",
+          "PRECISO",
+          "FAZENDO",
+          "PRONTO",
+          "BLOQUEIO",
+          "PASSO",
+          "CONFLITO"
+        ]
+      },
+      "evidence": [
+        "systems/harum_coordination_fabric.json",
+        "systems/harum_project_tree.json",
+        "systems/harum_capability_registry.json",
+        "core/meaw/harum_coordination_doctor.py",
+        "core/meaw/harum_federation.py"
+      ]
+    },
+    "HN-COORD-ANTI-ENTROPY-004": {
+      "work_id": "HN-COORD-ANTI-ENTROPY-004",
+      "events": [
+        "evt-anti-entropy-claim-20260927",
+        "evt-anti-entropy-complete-20260927"
+      ],
+      "updated_at": "2026-09-27T22:55:00Z",
+      "status": "succeeded",
+      "owner": "chatgpt-sol-coordination-20260927",
+      "result": {
+        "summary": "PRONTO: digest-first cross-peer anti-entropy contract implemented.",
+        "capabilities": [
+          "state-digest",
+          "section-diff",
+          "peer-handshake",
+          "federation-digest"
+        ],
+        "next": "Use digest comparison before full federation import/export."
+      },
+      "evidence": [
+        "core/meaw/harum_anti_entropy.py",
+        "systems/harum_anti_entropy.json",
+        "core/meaw/harum_federation.py",
+        "docs/HARUM_FEDERATION_GUIDE.md"
+      ]
+    },
+    "HN-WEB-VISUAL-SCREENSHOT-004": {
+      "work_id": "HN-WEB-VISUAL-SCREENSHOT-004",
+      "events": [
+        "evt-HN-WEB-VISUAL-SCREENSHOT-004-help-20260927"
+      ],
+      "updated_at": "2026-09-28T03:42:00Z",
+      "status": "succeeded",
+      "owner": "chatgpt-sol-visual-audit-20260928",
+      "result": {
+        "summary": "PRONTO: matriz mobile real 15/15 PASS."
+      },
+      "evidence": [
+        "docs/HN_WEB_VISUAL_SCREENSHOT_004.md"
+      ]
+    },
+    "HN-REF-VISUAL-SOURCES-002": {
+      "work_id": "HN-REF-VISUAL-SOURCES-002",
+      "events": [
+        "evt-HN-REF-VISUAL-SOURCES-002-help-20260927"
+      ],
+      "updated_at": "2026-09-28T03:42:01Z",
+      "status": "succeeded",
+      "owner": "research-scout",
+      "result": {
+        "summary": "PRONTO: lote visual 2 publicado; cobertura avançou para 28/50 naquela etapa."
+      },
+      "evidence": [
+        "docs/HN_REF_VISUAL_SOURCES_002.md"
+      ]
+    },
+    "HN-CADERNOS-LIVING-001": {
+      "work_id": "HN-CADERNOS-LIVING-001",
+      "events": [
+        "evt-hn-cadernos-living-observed-20260927",
+        "evt-hn-cadernos-living-completed-20260927"
+      ],
+      "updated_at": "2026-09-27T23:03:01Z",
+      "status": "succeeded",
+      "owner": "parallel-editorial-instance",
+      "result": {
+        "summary": "PRONTO: Cadernos living-study-cycles v1 integrated into public structure."
+      },
+      "evidence": [
+        "docs/HN_CADERNOS_LIVING_001.md",
+        "7bc997013f99355e0988f250cfd792f366725c46",
+        "16aece03709ff7a96c6b73f27e4e9c732934f519"
+      ]
+    },
+    "HN-CADERNO-GESTO-SOURCE-AUDIT-001": {
+      "work_id": "HN-CADERNO-GESTO-SOURCE-AUDIT-001",
+      "events": [
+        "evt-hn-caderno-gesto-source-audit-help-20260927",
+        "evt-hn-caderno-gesto-source-audit-claim-20260927a",
+        "evt-hn-caderno-gesto-source-audit-complete-20260927a"
+      ],
+      "updated_at": "2026-09-28T00:03:22.735Z",
+      "status": "succeeded",
+      "owner": "chatgpt-sol-work-audit-20260927",
+      "target_role": "work-instance",
+      "payload": {
+        "summary": "FAZENDO: HN-CADERNO-GESTO-SOURCE-AUDIT-001",
+        "lease_id": "lease-hn-caderno-gesto-source-audit-001-20260927a",
+        "expires_at": "2026-09-28T00:29:43.451Z",
+        "intent_key": "hn-caderno-gesto-real-source-audit"
+      },
+      "result": {
+        "summary": "PRONTO: source audit completed; relevant project assets found but physical/authorship provenance remains incomplete."
+      },
+      "evidence": [
+        "docs/HN_CADERNO_GESTO_SOURCE_AUDIT_001.md",
+        "drive:12b2dY-JwZ4s2-VNojUFyAu4JhOaDvQgOHLW-11RtwQk",
+        "drive:1yKiXZVl9cuc2dx_Cj1JII28N5RYu5iyoqjyS_HkL-6Q",
+        "drive:1tNPn4Ziv4v2D1mfzi1sBtcGUmggU_Jq0trd1fZmU7ac",
+        "drive:1Rz9DXo-1GWaHzzWFbZjZ8r7nb1gU3ZFd"
+      ]
+    },
+    "HN-COORD-DISPATCHER-005": {
+      "work_id": "HN-COORD-DISPATCHER-005",
+      "events": [
+        "evt-hn-dispatcher-claim-20260927",
+        "evt-hn-dispatcher-completed-20260927"
+      ],
+      "updated_at": "2026-09-27T23:06:00Z",
+      "status": "succeeded",
+      "owner": "chatgpt-sol-coordination-20260927",
+      "result": {
+        "summary": "PRONTO: dispatcher routes open work by target role/capability and respects active leases without auto-claiming."
+      },
+      "evidence": [
+        "core/meaw/harum_dispatcher.py",
+        "systems/harum_dispatcher.json",
+        "state/coordination/dispatch_plan.json"
+      ]
+    },
+    "HN-COORD-DOCTOR-006": {
+      "work_id": "HN-COORD-DOCTOR-006",
+      "events": [
+        "evt-hn-doctor-v2-claim-20260927",
+        "evt-hn-doctor-v2-completed-20260927"
+      ],
+      "updated_at": "2026-09-27T23:08:00Z",
+      "status": "succeeded",
+      "owner": "chatgpt-sol-coordination-20260927",
+      "result": {
+        "summary": "PRONTO: coordination doctor v2 detects stale peers, tree/JEV drift, unroutable work, lease drift and bootstrap gaps; repairs remain advisory."
+      },
+      "evidence": [
+        "core/meaw/harum_coordination_doctor.py",
+        "state/coordination/health.json",
+        "tests/test_harum_coordination_doctor.py"
+      ]
+    },
+    "MEAW-SCHEDULER": {
+      "work_id": "MEAW-SCHEDULER",
+      "events": [
+        "evt-meaw-scheduler-claim-20260927",
+        "evt-meaw-scheduler-implementation-complete-20260927"
+      ],
+      "updated_at": "2026-09-27T23:53:50Z",
+      "status": "succeeded",
+      "owner": "chatgpt-sol-current",
+      "target_role": "coordination-auditor",
+      "payload": {
+        "summary": "Add dependency-aware scheduling, concurrency budgets, write-scope collision prevention and explicit helper leases without touching active editorial work."
+      },
+      "result": {
+        "result": "Scheduler v2 implementation complete; independent execution still pending.",
+        "features": [
+          "dependency DAG gating",
+          "capacity backpressure",
+          "write-scope collision prevention",
+          "helper leases",
+          "doctor v3"
+        ],
+        "validation": "GitHub runner produced zero-step job; portable validation handed off separately."
+      },
+      "evidence": [
+        "2377dea11f03c83efd4592c85985c4e5811b1ae6",
+        "systems/harum_dispatch_policy.json",
+        "core/meaw/harum_coordination_selftest.py",
+        "state/coordination/validation.json"
+      ]
+    },
+    "MEAW-SCHEDULER-VALIDATE-001": {
+      "work_id": "MEAW-SCHEDULER-VALIDATE-001",
+      "events": [
+        "evt-meaw-scheduler-validation-help-20260927"
+      ],
+      "updated_at": "2026-09-28T03:42:02Z",
+      "status": "succeeded",
+      "owner": "chatgpt-sol-validation-20260928",
+      "target_role": "coding-instance",
+      "result": {
+        "summary": "PASS: scheduler v2 validado independentemente 4/4."
+      },
+      "evidence": [
+        "docs/MEAW_SCHEDULER_VALIDATE_001.md"
+      ]
+    },
+    "HN-CADERNO-GESTO-PROVENANCE-002": {
+      "work_id": "HN-CADERNO-GESTO-PROVENANCE-002",
+      "events": [
+        "evt-hn-caderno-gesto-provenance-help-20260927a",
+        "evt-hn-caderno-gesto-provenance-claim-20260928",
+        "evt-hn-caderno-gesto-provenance-complete-20260928"
+      ],
+      "updated_at": "2026-09-28T00:30:00Z",
+      "status": "succeeded",
+      "owner": "chatgpt-sol-rights-guard-20260927",
+      "target_role": "rights-guard",
+      "payload": {
+        "intent_key": "hn-caderno-gesto-provenance-audit"
+      },
+      "result": {
+        "summary": "PRONTO: provenance gate closed for priority 8.",
+        "counts": {
+          "PROJECT_GENERATED": 5,
+          "DERIVED_COPY": 3,
+          "VERIFIED_USER_ORIGINAL": 0
+        },
+        "result_refs": [
+          "docs/HN_CADERNO_GESTO_PROVENANCE_002.md"
+        ]
+      },
+      "evidence": [
+        "docs/HN_CADERNO_GESTO_PROVENANCE_002.md"
+      ]
+    },
+    "MEAW-META-COORDINATOR": {
+      "work_id": "MEAW-META-COORDINATOR",
+      "events": [
+        "evt-meaw-meta-coord-claim-20260928",
+        "evt-meaw-meta-coord-complete-20260928"
+      ],
+      "updated_at": "2026-09-28T00:16:00Z",
+      "status": "succeeded",
+      "owner": "chatgpt-sol-meta-20260927",
+      "result": {
+        "summary": "PRONTO: second-order meta-coordinator added; healthy systems now bias toward Harum Noir product work and expose explainable critical path/parallel wave.",
+        "primary_move": "HN-CADERNO-GESTO-PROVENANCE-002",
+        "coordination_budget": {
+          "open_product": 3,
+          "open_support": 1,
+          "support_ratio": 0.25,
+          "max_support_ratio_when_healthy": 0.34,
+          "overcoordination": false,
+          "action": "freeze-new-coordination-work-unless-it-unblocks-a-named-product-item"
+        }
+      },
+      "evidence": [
+        "core/meaw/harum_meta_coordinator.py",
+        "systems/harum_meta_coordination.json",
+        "state/coordination/meta_plan.json",
+        "tests/test_harum_meta_coordinator.py"
+      ]
+    },
+    "HN-CADERNO-GESTO-ORIGINALS-003": {
+      "work_id": "HN-CADERNO-GESTO-ORIGINALS-003",
+      "status": "succeeded",
+      "owner": "chatgpt-sol-originals-20260927",
+      "target_role": "work-instance",
+      "updated_at": "2026-09-28T00:48:00Z",
+      "payload": {
+        "intent_key": "hn-caderno-gesto-verified-original-source",
+        "lease_id": "lease-hn-caderno-gesto-originals-003-20260928a"
+      },
+      "events": [
+        "evt-hn-caderno-gesto-originals-help-20260928",
+        "evt-hn-caderno-gesto-originals-claim-20260928",
+        "evt-hn-caderno-gesto-originals-complete-20260928"
+      ],
+      "result": {
+        "summary": "PRONTO: verified-original search closed with no verified source found in accessible records.",
+        "result": "NO_VERIFIED_USER_ORIGINAL_FOUND_IN_ACCESSIBLE_SOURCES",
+        "reopen_condition": "new identifiable photo/scan/file/atelier evidence"
+      },
+      "evidence": [
+        "docs/HN_CADERNO_GESTO_ORIGINALS_003.md",
+        "docs/HN_CADERNO_GESTO_PROVENANCE_002.md"
+      ]
+    },
+    "HN-CADERNO-OLHAR-EDITORIAL-005": {
+      "work_id": "HN-CADERNO-OLHAR-EDITORIAL-005",
+      "events": [
+        "evt-hn-caderno-olhar-claim-20260928",
+        "evt-hn-olhar-projection-reconciled-20260928"
+      ],
+      "updated_at": "2026-09-28T03:45:00Z",
+      "status": "succeeded",
+      "owner": "chatgpt-sol-editorial-olhar-20260928",
+      "target_role": "narrative-editor",
+      "payload": {
+        "summary": "FAZENDO: aprofundar Caderno Olhar com gramática própria de anatomia + expressão + estranhamento.",
+        "intent_key": "hn-caderno-olhar-deep-editorial",
+        "write_scope": [
+          "astro:src/pages/cadernos/olhar.astro",
+          "chatbot:app/noir/cadernos/olhar/page.tsx",
+          "cadernos-index-links"
+        ],
+        "depends_on": []
+      },
+      "completed_at": "2026-09-28T03:45:00Z",
+      "result": {
+        "summary": "PRONTO: deep Caderno Olhar published on GitHub Pages and Vercel."
+      },
+      "evidence": [
+        "docs/HN_CADERNO_OLHAR_EDITORIAL_005.md",
+        "vercel:dpl_AQaL1putVXNN4bPJnhxiVCyMTTJq:READY",
+        "github-actions:36373884641:success",
+        "http:/noir/cadernos/olhar:200"
+      ]
+    },
+    "HN-CADERNO-OLHAR-VISUAL-006": {
+      "work_id": "HN-CADERNO-OLHAR-VISUAL-006",
+      "events": [
+        "evt-hn-caderno-olhar-visual-help-20260928"
+      ],
+      "updated_at": "2026-09-28T03:46:00Z",
+      "status": "superseded",
+      "owner": null,
+      "target_role": "visual-curator",
+      "payload": {
+        "request_id": "HN-CADERNO-OLHAR-VISUAL-006-help",
+        "question": "PRECISO: revisar cobertura visual do Caderno Olhar e sugerir uma composição Noir complementar sem editar as rotas/código.",
+        "context": "Editorial owner está construindo a página. Trabalhar somente em proposta visual/evidência, sem mutação sobre o write_scope do owner.",
+        "intent_key": "hn-caderno-olhar-visual-support"
+      },
+      "result": {
+        "summary": "PASSO encerrado: suporte tornou-se não-bloqueante após publicação canônica do Caderno Olhar; reabrir somente como QA separado."
+      },
+      "evidence": [
+        "docs/HN_CADERNO_OLHAR_EDITORIAL_005.md",
+        "evt-hn-olhar-projection-reconciled-20260928"
+      ]
+    },
+    "HN-CADERNO-OLHAR-RESEARCH-007": {
+      "work_id": "HN-CADERNO-OLHAR-RESEARCH-007",
+      "events": [
+        "evt-hn-caderno-olhar-research-help-20260928"
+      ],
+      "updated_at": "2026-09-28T03:46:00Z",
+      "status": "superseded",
+      "owner": null,
+      "target_role": "research-scout",
+      "payload": {
+        "request_id": "HN-CADERNO-OLHAR-RESEARCH-007-help",
+        "question": "PRECISO: selecionar 3–5 referências públicas já presentes no Atlas que ajudem a estudar olhos, expressão e construção sem expor estratégia privada.",
+        "context": "Retornar somente nomes/URLs/princípio observável. Não editar página nem notas estratégicas.",
+        "intent_key": "hn-caderno-olhar-public-reference-support"
+      },
+      "result": {
+        "summary": "PASSO encerrado: suporte tornou-se não-bloqueante após publicação canônica do Caderno Olhar; reabrir somente como QA separado."
+      },
+      "evidence": [
+        "docs/HN_CADERNO_OLHAR_EDITORIAL_005.md",
+        "evt-hn-olhar-projection-reconciled-20260928"
+      ]
+    },
+    "HN-ATLAS-101-VISUAL-SOURCES-001": {
+      "work_id": "HN-ATLAS-101-VISUAL-SOURCES-001",
+      "events": [
+        "evt-hn-atlas-101-visual-sources-001-claim-20260928",
+        "evt-hn-atlas-101-visual-sources-001-complete-20260928"
+      ],
+      "updated_at": "2026-09-28T03:46:00Z",
+      "status": "succeeded",
+      "owner": "chatgpt-sol-research-atlas101-20260928",
+      "target_role": "research-scout",
+      "payload": {
+        "summary": "FAZENDO: verificar pequeno lote de fontes visuais públicas para referências 51–101 ainda em fallback.",
+        "intent_key": "hn-atlas-101-visual-source-batch-1",
+        "scope": "read-only public verification, then synchronized catalog patch on both public mirrors",
+        "constraints": [
+          "official-or-public-source-only",
+          "never-guess-video-id",
+          "preserve-local-fallback",
+          "do-not-touch-private-strategy"
+        ]
+      },
+      "completed_at": "2026-09-28T03:46:00Z",
+      "result": {
+        "summary": "PRONTO: verified public visual sources added for Peter Han, James Gurney, Ahmed Aldoori, Bobby Chiu and Feng Zhu/FZD.",
+        "coverage": {
+          "artists": 101,
+          "public_specific": 60,
+          "public_fallback": 41,
+          "expansion_51_101_specific": 10
+        },
+        "next": "Continue only in small verified batches; never guess video IDs."
+      },
+      "evidence": [
+        "astro:3a4357bc5d7b33753dbbbf7ecc2e7683a45dd150",
+        "github-actions:36374739968:success",
+        "github-actions:36374739990:success",
+        "chatbot:03c5ade74747bea954232beafc33be0d3c3c6b99",
+        "vercel:dpl_8DfzAmUFyPC9jgQF8raGJ6ebbCSX:READY",
+        "http:vercel-preview:/noir/referencias/james-gurney:200"
+      ]
+    },
+    "HN-ATLAS-101-VISUAL-SOURCES-002": {
+      "work_id": "HN-ATLAS-101-VISUAL-SOURCES-002",
+      "events": [
+        "evt-hn-atlas-101-visual-sources-002-claim-20260928",
+        "evt-hn-atlas-101-visual-sources-002-complete-recovery-20260928"
+      ],
+      "updated_at": "2026-09-28T13:34:00Z",
+      "status": "succeeded",
+      "owner": "chatgpt-sol-atlas-recovery-20260928",
+      "target_role": "research-scout",
+      "payload": {
+        "summary": "FAZENDO: segundo pequeno lote de fontes visuais verificadas para Atlas 101.",
+        "intent_key": "hn-atlas-101-visual-source-batch-2",
+        "write_scope": [
+          "astro:src/data/references.ts",
+          "chatbot:app/noir/_references.ts"
+        ],
+        "constraints": [
+          "official-or-public-source-only",
+          "never-guess-video-id",
+          "preserve-local-fallback",
+          "max-five-artists"
+        ]
+      },
+      "result": {
+        "summary": "PRONTO: Atlas 101 visual batch 2 closed with verified provenance and mirror parity.",
+        "result_refs": [
+          "chatbot:d5e18527d9b3c0a2cd2c0d85255e794bfee85337",
+          "astro:53f9c035ea4e9049a52025169a7d47834220c07e"
+        ],
+        "coverage": {
+          "artists": 101,
+          "public_specific": 64,
+          "public_fallback": 37,
+          "expansion_51_101_specific": 14
+        },
+        "provenance_resolution": {
+          "glenn_vilppu": "DomkADJ4We0 verified and kept",
+          "michael_hampton": "replaced with verified HEavseCLG6c"
+        }
+      },
+      "evidence": [
+        "docs/HN_ATLAS_101_VISUAL_SOURCES_002_SUPPORT.md",
+        "docs/HN_ATLAS_101_VISUAL_SOURCES_002_POSTDEPLOY.md",
+        "docs/HN_ATLAS_101_VISUAL_SOURCES_002_PROVENANCE_SUPPORT_002.md",
+        "chatbot:5393de3a9b42d336874b245b46d30468bab43f1e",
+        "astro:bcfba4625f349d324deba6529e74d4a252812e63",
+        "chatbot:d5e18527d9b3c0a2cd2c0d85255e794bfee85337",
+        "astro:53f9c035ea4e9049a52025169a7d47834220c07e",
+        "vercel:dpl_9NJuJFcijhPeJGZvgmfgtGct3Yg7:READY",
+        "github-actions:36428548032:success",
+        "github-actions:36428547816:success",
+        "http:/noir/referencias/michael-hampton:200",
+        "coverage:101-total:64-specific:37-fallback"
+      ]
+    },
+    "MEAW-COORD-HARDEN-CAUSAL-001": {
+      "work_id": "MEAW-COORD-HARDEN-CAUSAL-001",
+      "status": "succeeded",
+      "owner": "chatgpt-sol-coding-validation-20260928",
+      "target_role": "coding-instance",
+      "updated_at": "2026-09-28T13:40:00Z",
+      "events": [
+        "evt-meaw-coord-hardening-validation-request-20260928",
+        "evt-meaw-coord-hardening-watermark-evidence-20260928",
+        "evt-meaw-coord-hardening-claim-after-validation-20260928",
+        "evt-meaw-coord-hardening-complete-20260928"
+      ],
+      "payload": {
+        "summary": "FAZENDO: MEAW-COORD-HARDEN-CAUSAL-001",
+        "lease_id": "lease-meaw-coord-hardening-sol-20260928T1339Z",
+        "expires_at": "2026-09-28T13:54:00Z",
+        "intent_key": "meaw-causal-coordination-hardening"
+      },
+      "evidence": [
+        "commit:6ec897be964b41dbebc04d59deaad5cabf72072a",
+        "commit:33b6125306b8f88e288900cf4a388bbb4b4366d7",
+        "commit:dff572d6cf8bacdf9c2d3dcf40efe831a9c154f7",
+        "docs/MEAW_COORD_HARDEN_CAUSAL_001_VALIDATION.md",
+        "commit:48c6e0b115795b8f7ccdb602174469e8f16f7e57",
+        "portable-selftest:7/7-pass",
+        "watermark-tests:2/2-pass",
+        "projection-sync:dispatch:42d9a1acb06ac1a9717de5d38b53d6f9901036dd",
+        "projection-sync:health:92e2c913387d5e5d9a81c16d384d491ef292e670",
+        "projection-sync:meta:a9a7245a336ca049a26585d6a5995ab361ac33c0",
+        "projection-sync:capability-board:bde6f78a64e7b6db8959a6aae11830dc5302d5ca",
+        "projection-sync:capsule:a9a5e26bff5d2857009c8a1e24db96ec66da521c",
+        "projection-watermark:evt-meaw-coding-validator-hello-20260928"
+      ],
+      "result": {
+        "summary": "PRONTO: causal coordination hardening independently validated and live projection watermark synchronized.",
+        "result_refs": [
+          "docs/MEAW_COORD_HARDEN_CAUSAL_001_VALIDATION.md",
+          "state/coordination/context_capsule.json"
+        ],
+        "validation": {
+          "selftest": "7/7 PASS",
+          "watermark_tests": "2/2 PASS",
+          "live_projection_sync": "PASS"
+        }
+      }
+    },
+    "HN-PERCURSO-SKETCHBOOK-DEEPEN-012": {
+      "work_id": "HN-PERCURSO-SKETCHBOOK-DEEPEN-012",
+      "events": [
+        "evt-hn-percurso-sketchbook-deepen-created-20260928",
+        "evt-hn-percurso-sketchbook-deepen-claim-20260928",
+        "evt-hn-percurso-sketchbook-deepen-recovery-claim-20260928",
+        "evt-hn-percurso-sketchbook-deepen-progress-20260928"
+      ],
+      "updated_at": "2026-09-28T18:12:00Z",
+      "status": "executing",
+      "target_role": "narrative-editor",
+      "owner": "chatgpt-sol-editorial-recovery-20260928",
+      "payload": {
+        "summary": "FAZENDO: Percurso 05 aprofundado nos dois espelhos; aguardando validação externa de deploy/build antes de fechar.",
+        "lease_id": "lease-hn-sketchbook-deepen-012-20260928T1805Z",
+        "expires_at": "2026-09-28T18:32:00Z",
+        "intent_key": "hn-percurso-05-sketchbook-universe-deepen",
+        "fencing_token": 2
+      }
+    }
+  },
+  "help_requests": {
+    "HN-WEB-VISUAL-002-help": {
+      "status": "answered",
+      "event_id": "evt-hn-visual-help-20260927",
+      "source_role": "editorial-director",
+      "target_role": "visual-curator",
+      "work_id": "HN-WEB-VISUAL-002",
+      "question": "Audit mobile Netflix density, typography rhythm, fallbacks and artist-specific visual coverage without reopening stable infrastructure.",
+      "context": "Public shell is stable on GitHub Pages and Vercel. Return a bounded patch/evidence handoff, not a redesign from zero.",
+      "created_at": "2026-09-27T19:50:00Z",
+      "answer_event_id": "evt-HN-WEB-VISUAL-002-help-answered-20260927",
+      "answered_by": "parallel-visual-curator",
+      "answer": "PRONTO / pass 1: mobile density reduced and 4 verified artist visuals applied; coverage 23/50. Physical-device screenshot review remains a separate next task.",
+      "evidence": [
+        "docs/HN_WEB_VISUAL_002.md",
+        "docs/HN_REF_VISUAL_SOURCES_001.md",
+        "495fd181750ac07fc996bf2cfaed0347cf822380",
+        "4806b3c1534487ccea8eb1062b884bfea6df1a5f"
+      ],
+      "updated_at": "2026-09-27T23:00:00Z"
+    },
+    "HN-REF-VISUAL-SOURCES-001-help": {
+      "status": "answered",
+      "event_id": "evt-hn-research-help-20260927",
+      "source_role": "editorial-director",
+      "target_role": "research-scout",
+      "work_id": "HN-REF-VISUAL-SOURCES-001",
+      "question": "Verify stronger public visual/video sources for artists still using generic fallback covers.",
+      "context": "Use official/public sources where possible; record source URL and do not expose private reverse-engineering notes.",
+      "created_at": "2026-09-27T19:50:01Z",
+      "answer_event_id": "evt-HN-REF-VISUAL-SOURCES-001-help-answered-20260927",
+      "answered_by": "parallel-research-scout",
+      "answer": "PRONTO / lote 1: verified artist-specific public video sources for Love Life Drawing, Chommang, Aaron Blaise and Marco Bucci. 27/50 remain on local fallback.",
+      "evidence": [
+        "docs/HN_REF_VISUAL_SOURCES_001.md",
+        "systems/harum_noir_reference_intelligence.json",
+        "d3db3bc941f096e74605e53dd683b9efb9899235"
+      ],
+      "updated_at": "2026-09-27T23:00:01Z"
+    },
+    "HN-WEB-FASCINATION-003-help": {
+      "status": "answered",
+      "event_id": "evt-hn-fascination-help-20260927",
+      "source_role": "editorial-director",
+      "target_role": "fascination-curator",
+      "work_id": "HN-WEB-FASCINATION-003",
+      "question": "Audit the current streaming home, Atlas and Percursos against the Fascination Curator contract: one primary function per section, continuity, useful residue, CTA discipline and route-creation gate.",
+      "context": "Do not redesign the stable infrastructure. Return a concise prioritized recommendation or bounded patch that increases fascination without duplicating routes.",
+      "created_at": "2026-09-27T20:04:31Z",
+      "answer_event_id": "evt-HN-WEB-FASCINATION-003-help-answered-20260927",
+      "answered_by": "parallel-fascination-curator",
+      "answer": "PRONTO / verificado: CTA hierarchy corrected across Home, Atlas and Percursos without new routes or infrastructure changes.",
+      "evidence": [
+        "docs/HN_WEB_FASCINATION_003.md",
+        "bdb3fb53757887696487f402febc4a761a480499",
+        "74c73f3dee157844e59a7cee1ebb0f058f8c6d16"
+      ],
+      "updated_at": "2026-09-27T23:00:02Z"
+    },
+    "HN-WEB-VISUAL-SCREENSHOT-004-help": {
+      "status": "answered",
+      "event_id": "evt-HN-WEB-VISUAL-SCREENSHOT-004-help-20260927",
+      "source_role": "editorial-director",
+      "target_role": "visual-curator",
+      "work_id": "HN-WEB-VISUAL-SCREENSHOT-004",
+      "question": "Inspect real mobile screenshots of the deployed Noir home, Atlas, artist detail and Percursos. Only propose spacing/typography changes backed by screenshot evidence.",
+      "context": "Code-level mobile pass 1 is already complete. Do not repeat it and do not reopen routes/infrastructure.",
+      "created_at": "2026-09-27T23:01:00Z",
+      "updated_at": "2026-09-28T03:42:00Z",
+      "answer": "PRONTO: matriz mobile real 15/15 PASS.",
+      "evidence": [
+        "docs/HN_WEB_VISUAL_SCREENSHOT_004.md"
+      ]
+    },
+    "HN-REF-VISUAL-SOURCES-002-help": {
+      "status": "answered",
+      "event_id": "evt-HN-REF-VISUAL-SOURCES-002-help-20260927",
+      "source_role": "editorial-director",
+      "target_role": "research-scout",
+      "work_id": "HN-REF-VISUAL-SOURCES-002",
+      "question": "Verify the next small batch of 4-6 fallback-heavy artists using official/public visual or video sources. Update canonical intelligence first; never guess video IDs.",
+      "context": "Batch 1 verified 4 artists; current coverage is 23/50 and local fallback remains mandatory.",
+      "created_at": "2026-09-27T23:01:01Z",
+      "updated_at": "2026-09-28T03:42:01Z",
+      "answer": "PRONTO: lote visual 2 publicado; cobertura avançou para 28/50 naquela etapa.",
+      "evidence": [
+        "docs/HN_REF_VISUAL_SOURCES_002.md"
+      ]
+    },
+    "HN-CADERNO-GESTO-SOURCE-AUDIT-001-help": {
+      "status": "answered",
+      "event_id": "evt-hn-caderno-gesto-source-audit-help-20260927",
+      "source_role": "editorial-director",
+      "target_role": "work-instance",
+      "work_id": "HN-CADERNO-GESTO-SOURCE-AUDIT-001",
+      "question": "Audit existing HIVE/Drive/acervo for real user-owned gesture/model-live studies suitable for Caderno Gesto. Return file/document references, short relevance notes and provenance. Do not generate new art and do not invent works.",
+      "context": "Cadernos structure is ready. Next step is real material: estudo real -> registro -> conteúdo curto -> conteúdo profundo.",
+      "created_at": "2026-09-27T23:03:02Z",
+      "answer_event_id": "evt-hn-caderno-gesto-source-audit-help-answer-20260927a",
+      "answered_by": "chatgpt-sol-work-audit-20260927",
+      "answer": "Relevant project sources found; provenance insufficient to claim physical/user-original status.",
+      "evidence": [
+        "docs/HN_CADERNO_GESTO_SOURCE_AUDIT_001.md",
+        "drive:12b2dY-JwZ4s2-VNojUFyAu4JhOaDvQgOHLW-11RtwQk",
+        "drive:1yKiXZVl9cuc2dx_Cj1JII28N5RYu5iyoqjyS_HkL-6Q",
+        "drive:1tNPn4Ziv4v2D1mfzi1sBtcGUmggU_Jq0trd1fZmU7ac",
+        "drive:1Rz9DXo-1GWaHzzWFbZjZ8r7nb1gU3ZFd"
+      ],
+      "updated_at": "2026-09-28T00:03:22.735Z"
+    },
+    "MEAW-SCHEDULER-VALIDATE-001-help": {
+      "status": "answered",
+      "event_id": "evt-meaw-scheduler-validation-help-20260927",
+      "source_role": "coordination-auditor",
+      "target_role": "coding-instance",
+      "work_id": "MEAW-SCHEDULER-VALIDATE-001",
+      "question": "Run the portable scheduler self-test independently and return execution evidence. Do not modify production unless a test actually fails.",
+      "context": "GitHub Actions run 36358192768 failed before any step executed, so executor health is unknown but code failure is not established.",
+      "created_at": "2026-09-27T23:53:51Z",
+      "updated_at": "2026-09-28T03:42:02Z",
+      "answer": "PASS: scheduler v2 validado independentemente 4/4.",
+      "evidence": [
+        "docs/MEAW_SCHEDULER_VALIDATE_001.md"
+      ]
+    },
+    "HN-CADERNO-GESTO-PROVENANCE-002-help": {
+      "status": "answered",
+      "event_id": "evt-hn-caderno-gesto-provenance-help-20260927a",
+      "source_role": "work-instance",
+      "target_role": "rights-guard",
+      "work_id": "HN-CADERNO-GESTO-PROVENANCE-002",
+      "question": "Trace provenance of priority Caderno Gesto sources and classify each as VERIFIED_USER_ORIGINAL, PROJECT_GENERATED, DERIVED_COPY, THIRD_PARTY_REFERENCE or UNKNOWN.",
+      "context": "Source relevance is already audited. Do not redo curation and do not assert physical authorship without evidence.",
+      "created_at": "2026-09-28T00:03:22.735Z",
+      "answer_event_id": "evt-hn-caderno-gesto-provenance-help-answer-20260928",
+      "answered_by": "chatgpt-sol-rights-guard-20260927",
+      "answer": "5 PROJECT_GENERATED; 3 DERIVED_COPY with upstream origin still unknown; 0 VERIFIED_USER_ORIGINAL among priority 8.",
+      "evidence": [
+        "docs/HN_CADERNO_GESTO_PROVENANCE_002.md"
+      ],
+      "updated_at": "2026-09-28T00:30:00Z"
+    },
+    "HN-CADERNO-GESTO-ORIGINALS-003-help": {
+      "status": "answered",
+      "event_id": "evt-hn-caderno-gesto-originals-help-20260928",
+      "source_role": "rights-guard",
+      "target_role": "work-instance",
+      "work_id": "HN-CADERNO-GESTO-ORIGINALS-003",
+      "question": "Locate genuinely verifiable user-original physical/atelier sources for Caderno Gesto. Use chronology, revision/original filename, scan/photo evidence or other independent provenance. Do not revisit the 8 classified assets unless tracing upstream lineage.",
+      "context": "Provenance 002 closed: 5 project-generated and 3 derived copies; none verified user-original.",
+      "created_at": "2026-09-28T00:30:01Z",
+      "answer_event_id": "evt-hn-caderno-gesto-originals-help-answer-20260928",
+      "answered_by": "chatgpt-sol-originals-20260927",
+      "answer": "No independently verifiable user-original physical/atelier source was found in accessible Drive/history/project records. Do not make documentary live/original claims until new evidence appears.",
+      "evidence": [
+        "docs/HN_CADERNO_GESTO_ORIGINALS_003.md"
+      ],
+      "updated_at": "2026-09-28T00:48:00Z"
+    },
+    "HN-CADERNO-OLHAR-VISUAL-006-help": {
+      "status": "superseded",
+      "event_id": "evt-hn-caderno-olhar-visual-help-20260928",
+      "source_role": "editorial-director",
+      "target_role": "visual-curator",
+      "work_id": "HN-CADERNO-OLHAR-VISUAL-006",
+      "question": "PRECISO: revisar cobertura visual do Caderno Olhar e sugerir uma composição Noir complementar sem editar as rotas/código.",
+      "context": "Editorial owner está construindo a página. Trabalhar somente em proposta visual/evidência, sem mutação sobre o write_scope do owner.",
+      "created_at": "2026-09-28T03:40:01Z",
+      "updated_at": "2026-09-28T03:46:00Z",
+      "answer": "Canonical Caderno Olhar is already deployed; optional QA can be reopened as a fresh bounded work item."
+    },
+    "HN-CADERNO-OLHAR-RESEARCH-007-help": {
+      "status": "superseded",
+      "event_id": "evt-hn-caderno-olhar-research-help-20260928",
+      "source_role": "editorial-director",
+      "target_role": "research-scout",
+      "work_id": "HN-CADERNO-OLHAR-RESEARCH-007",
+      "question": "PRECISO: selecionar 3–5 referências públicas já presentes no Atlas que ajudem a estudar olhos, expressão e construção sem expor estratégia privada.",
+      "context": "Retornar somente nomes/URLs/princípio observável. Não editar página nem notas estratégicas.",
+      "created_at": "2026-09-28T03:40:02Z",
+      "updated_at": "2026-09-28T03:46:00Z",
+      "answer": "Canonical Caderno Olhar is already deployed; optional QA can be reopened as a fresh bounded work item."
+    },
+    "MEAW-COORD-HARDEN-CAUSAL-001-validation": {
+      "status": "answered",
+      "event_id": "evt-meaw-coord-hardening-validation-request-20260928",
+      "source_role": "coordination-auditor",
+      "target_role": "coding-instance",
+      "work_id": "MEAW-COORD-HARDEN-CAUSAL-001",
+      "question": "Run the portable coordination self-test on current main and return evidence only. Do not touch Atlas/product files.",
+      "context": "Hardening commits 6ec897be964b41dbebc04d59deaad5cabf72072a and 33b6125306b8f88e288900cf4a388bbb4b4366d7 add lease fencing, causal event sequencing, wait-for deadlock detection and portable self-tests. Additional watermark commit dff572d6cf8bacdf9c2d3dcf40efe831a9c154f7 must be validated; run harum_coord sync after tests so derived projections converge to current JEV last_event.",
+      "created_at": "2026-09-28T05:29:30Z",
+      "answer_event_id": "evt-meaw-coord-hardening-validation-answered-runtime-20260928",
+      "answered_by": "chatgpt-sol-coding-validation-20260928",
+      "answer": "PASS: portable coordination self-test 7/7 and watermark projection tests 2/2.",
+      "evidence": [
+        "docs/MEAW_COORD_HARDEN_CAUSAL_001_VALIDATION.md",
+        "commit:48c6e0b115795b8f7ccdb602174469e8f16f7e57"
+      ],
+      "updated_at": "2026-09-28T13:33:00Z"
+    }
+  },
+  "decisions": {},
+  "conflicts": [],
+  "inboxes": {
+    "visual-curator": [],
+    "research-scout": [],
+    "fascination-curator": [],
+    "work-instance": [
+      "evt-hn-caderno-gesto-source-audit-help-20260927"
+    ],
+    "coding-instance": [
+      "evt-meaw-coord-hardening-validation-request-20260928"
+    ],
+    "rights-guard": []
+  },
+  "idempotency": {
+    "HN-STREAMING-STABLE-20260927-v1": "evt-hn-streaming-checkpoint-20260927",
+    "HN-WEB-VISUAL-002-help-v1": "evt-hn-visual-help-20260927",
+    "HN-REF-VISUAL-SOURCES-001-help-v1": "evt-hn-research-help-20260927",
+    "HN-COORD-JEV-001-complete-v1": "evt-jev-bridge-completed-20260927",
+    "HN-PARALLEL-FASCINATION-20260927-observed-v1": "evt-parallel-fascination-observed-20260927",
+    "HN-WEB-FASCINATION-003-help-v1": "evt-hn-fascination-help-20260927",
+    "HN-COORD-FABRIC-002-evidence-v1": "evt-coordination-fabric-v2-20260927",
+    "HN-COORD-ANTI-ENTROPY-004-claim-v1": "evt-anti-entropy-claim-20260927",
+    "HN-COORD-ANTI-ENTROPY-004-complete-v1": "evt-anti-entropy-complete-20260927",
+    "HN-WEB-VISUAL-002-help-answered-v1": "evt-HN-WEB-VISUAL-002-help-answered-20260927",
+    "HN-WEB-VISUAL-002-completed-v1": "evt-HN-WEB-VISUAL-002-completed-20260927",
+    "HN-REF-VISUAL-SOURCES-001-help-answered-v1": "evt-HN-REF-VISUAL-SOURCES-001-help-answered-20260927",
+    "HN-REF-VISUAL-SOURCES-001-completed-v1": "evt-HN-REF-VISUAL-SOURCES-001-completed-20260927",
+    "HN-WEB-FASCINATION-003-help-answered-v1": "evt-HN-WEB-FASCINATION-003-help-answered-20260927",
+    "HN-WEB-FASCINATION-003-completed-v1": "evt-HN-WEB-FASCINATION-003-completed-20260927",
+    "HN-WEB-VISUAL-SCREENSHOT-004-help-v1": "evt-HN-WEB-VISUAL-SCREENSHOT-004-help-20260927",
+    "HN-REF-VISUAL-SOURCES-002-help-v1": "evt-HN-REF-VISUAL-SOURCES-002-help-20260927",
+    "HN-CADERNOS-LIVING-001-observed-v1": "evt-hn-cadernos-living-observed-20260927",
+    "HN-CADERNOS-LIVING-001-completed-v1": "evt-hn-cadernos-living-completed-20260927",
+    "HN-CADERNO-GESTO-SOURCE-AUDIT-001-help-v1": "evt-hn-caderno-gesto-source-audit-help-20260927",
+    "HN-COORD-DISPATCHER-005-claim-v1": "evt-hn-dispatcher-claim-20260927",
+    "HN-COORD-DISPATCHER-005-complete-v1": "evt-hn-dispatcher-completed-20260927",
+    "HN-COORD-DOCTOR-006-claim-v1": "evt-hn-doctor-v2-claim-20260927",
+    "HN-COORD-DOCTOR-006-complete-v1": "evt-hn-doctor-v2-completed-20260927",
+    "MEAW-SCHEDULER-claim-v1": "evt-meaw-scheduler-claim-20260927",
+    "MEAW-SCHEDULER-implementation-complete-v1": "evt-meaw-scheduler-implementation-complete-20260927",
+    "MEAW-SCHEDULER-VALIDATE-001-help-v1": "evt-meaw-scheduler-validation-help-20260927",
+    "HN-CADERNO-GESTO-SOURCE-AUDIT-001:claim:lease-hn-caderno-gesto-source-audit-001-20260927a": "evt-hn-caderno-gesto-source-audit-claim-20260927a",
+    "HN-CADERNO-GESTO-SOURCE-AUDIT-001:complete:lease-hn-caderno-gesto-source-audit-001-20260927a": "evt-hn-caderno-gesto-source-audit-complete-20260927a",
+    "HN-CADERNO-GESTO-PROVENANCE-002:help:rights-guard:v1": "evt-hn-caderno-gesto-provenance-help-20260927a",
+    "MEAW-META-COORDINATOR-claim-v1": "evt-meaw-meta-coord-claim-20260928",
+    "MEAW-META-COORDINATOR-complete-v1": "evt-meaw-meta-coord-complete-20260928",
+    "HN-CADERNO-GESTO-PROVENANCE-002:claim:provenance-v1": "evt-hn-caderno-gesto-provenance-claim-20260928",
+    "HN-CADERNO-GESTO-PROVENANCE-002:help-answer:v1": "evt-hn-caderno-gesto-provenance-help-answer-20260928",
+    "HN-CADERNO-GESTO-PROVENANCE-002:complete:provenance-v1": "evt-hn-caderno-gesto-provenance-complete-20260928",
+    "HN-CADERNO-GESTO-ORIGINALS-003:help:work-instance:v1": "evt-hn-caderno-gesto-originals-help-20260928",
+    "HN-CADERNO-GESTO-ORIGINALS-003:claim:lease-hn-caderno-gesto-originals-003-20260928a": "evt-hn-caderno-gesto-originals-claim-20260928",
+    "HN-CADERNO-GESTO-ORIGINALS-003:help-answer:v1": "evt-hn-caderno-gesto-originals-help-answer-20260928",
+    "HN-CADERNO-GESTO-ORIGINALS-003:complete:v1": "evt-hn-caderno-gesto-originals-complete-20260928",
+    "HN-CADERNO-OLHAR-EDITORIAL-005-claim-v1": "evt-hn-caderno-olhar-claim-20260928",
+    "HN-CADERNO-OLHAR-VISUAL-006-help-v1": "evt-hn-caderno-olhar-visual-help-20260928",
+    "HN-CADERNO-OLHAR-RESEARCH-007-help-v1": "evt-hn-caderno-olhar-research-help-20260928",
+    "projection-repair-HN-WEB-VISUAL-SCREENSHOT-004-v1": "evt-projection-repair-hn-web-visual-screenshot-004-20260928",
+    "projection-repair-HN-REF-VISUAL-SOURCES-002-v1": "evt-projection-repair-hn-ref-visual-sources-002-20260928",
+    "projection-repair-MEAW-SCHEDULER-VALIDATE-001-v1": "evt-projection-repair-meaw-scheduler-validate-001-20260928",
+    "HN-ATLAS-101-VISUAL-SOURCES-001-claim-v1": "evt-hn-atlas-101-visual-sources-001-claim-20260928",
+    "HN-ATLAS-101-VISUAL-SOURCES-001-complete-v1": "evt-hn-atlas-101-visual-sources-001-complete-20260928",
+    "HN-CADERNO-OLHAR-EDITORIAL-005-projection-reconcile-v2": "evt-hn-olhar-projection-reconciled-20260928",
+    "HN-ATLAS-101-VISUAL-SOURCES-002-claim-v1": "evt-hn-atlas-101-visual-sources-002-claim-20260928",
+    "MEAW-COORD-HARDEN-CAUSAL-001-validation-v1": "evt-meaw-coord-hardening-validation-request-20260928",
+    "MEAW-COORD-HARDEN-CAUSAL-001-watermark-v1": "evt-meaw-coord-hardening-watermark-evidence-20260928"
+  },
+  "current_checkpoint": {
+    "event_id": "evt-hn-streaming-checkpoint-20260927",
+    "occurred_at": "2026-09-27T19:49:31Z",
+    "payload": {
+      "project": "HARUM NOIR public ecosystem",
+      "state": "stable",
+      "github_pages": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/",
+      "vercel": "https://chatbot-seven-phi-94.vercel.app/noir",
+      "catalog": {
+        "artists": 50,
+        "collections": 7,
+        "journeys": 5,
+        "links_checked": 208,
+        "broken_links": 0
+      },
+      "current_rule": "Do not reopen infrastructure first; continue visual/editorial layer.",
+      "next": [
+        "increase verified artist-specific visual coverage",
+        "refine mobile density from screenshots",
+        "deepen Caderno pages with original Noir studies"
+      ]
+    },
+    "evidence": [
+      "docs/HARUMVERSO_CHECKPOINT.md",
+      "systems/harum_noir_public_surface_manifest.json"
+    ]
+  },
+  "actor_clocks": {
+    "chatgpt-sol-coordination-hardening-20260928": 2,
+    "chatgpt-sol-coding-validation-20260928": 4,
+    "chatgpt-sol-atlas-recovery-20260928": 1,
+    "chatgpt-sol-coordination-validation-20260928": 1,
+    "chatgpt-sol-editorial-sketchbook-20260928": 2
+  }
+}
