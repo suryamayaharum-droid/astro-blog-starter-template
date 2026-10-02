@@ -16,6 +16,8 @@ const periodIds=["grecia-roma","renascimento","barroco","ukiyoe","impressionismo
 const bankIds=["bndigital","met","rijks","getty","aic","paris-musees","walters"];
 const periods=periodIds.map(id=>artHistoryPeriods.find(p=>p.id===id)).filter(Boolean);
 const banks=bankIds.map(id=>imageBanks.find(b=>b.id===id)).filter(Boolean);
+const sessionCovers=["open-sketchbook","charcoal-marks","tools-paper","drapery-still-life","graphite-texture","moonlit-landscape"];
+const seasonCovers=["open-sketchbook","iris-study","drapery-still-life","tools-paper","atelier-desk","graphite-texture","moonlit-landscape"];
 const studySessions=[
   {time:"12 min",title:"Gesto sem contorno",text:"Linha de ação, peso e três tempos de pose.",href:base+"cadernos#gesto"},
   {time:"18 min",title:"Carvão & noite",text:"Massa escura, borda perdida e uma zona de luz.",href:base+"bancos#leques"},
@@ -26,15 +28,16 @@ const studySessions=[
 ];
 ---
 <!doctype html><html lang="pt-BR"><head><BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION}/></head>
-<body><Header/><main>
+<body><Header/><main class="home-composition">
 <section class="browse-hero">
-  <div class="browse-hero-art"><img src={base+'noir/visual-atlas/atelier-desk.webp'} alt="Mesa de ateliê em natureza-morta editorial HARUM NOIR"/></div>
+  <div class="browse-hero-art"><img src={base+'noir/visual-atlas/atelier-desk.webp'} alt="Mesa de ateliê em natureza-morta editorial HARUM NOIR" width="640" height="640" fetchpriority="high"/></div>
   <div class="browse-hero-shade"></div>
+  <span class="home-art-credit">Cenário editorial criado com assistência de IA</span>
   <div class="browse-hero-copy">
     <div class="browse-badge">ATELIÊ EDITORIAL · SALVADOR</div>
     <h1>Estude como quem entra num mundo.</h1>
-    <p>História da arte, desenho, carvão, figura, museus e cadernos organizados como uma biblioteca de streaming: escolha uma trilha, atravesse referências e volte para o papel.</p>
-    <div class="actions"><a class="btn primary" href={base+'percursos'}>Começar um percurso</a><a class="btn gold" href={base+'bancos'}>Abrir bancos de imagens</a><a class="btn" href={base+'historia-da-arte'}>História da arte</a><button class="btn surprise-btn" id="surprise-door" type="button">✦ Surpreenda-me</button></div>
+    <p>Escolha uma trilha entre desenho, carvão e história da arte. Atravesse referências, descubra acervos e volte para o papel.</p>
+    <div class="actions"><a class="btn primary" href={base+'percursos'}>Começar um percurso</a><a class="btn" href={base+'bancos'}>Abrir bancos de imagens</a><a class="btn" href={base+'historia-da-arte'}>História da arte</a><button class="btn surprise-btn" id="surprise-door" type="button">✦ Surpreenda-me</button></div>
   </div>
 </section>
 
@@ -54,10 +57,17 @@ const studySessions=[
 </section>
 
 <section class="stream-section">
-  <div class="stream-head"><div><span class="eyebrow">SESSÕES CURTAS</span><h2>Escolha pelo tempo que você tem.</h2></div><p>Uma sessão não tenta ensinar tudo. Ela entrega uma pergunta, uma porta e um retorno para o papel.</p></div>
+  <div class="stream-head"><div><span class="eyebrow">SESSÕES CURTAS</span><h2>Escolha pelo tempo que você tem.</h2></div><p>Uma pergunta, uma referência e um retorno para o papel. Capas temáticas criadas com assistência de IA.</p></div>
   <div class="feature-rail">{studySessions.map((s,i)=><a class="feature-card session-card" href={s.href}>
+    <img class="session-cover" src={base+'noir/visual-atlas/'+sessionCovers[i]+'.webp'} alt="" width="640" height="640" loading="lazy"/>
     <span class="tag">{s.time} · SESSÃO {String(i+1).padStart(2,'0')}</span><h3>{s.title}</h3><p>{s.text}</p><div class="session-play">▶ começar</div>
   </a>)}</div>
+</section>
+
+<section class="stream-section">
+  <div class="stream-head"><div><span class="eyebrow">JARDIM DE REFERÊNCIAS</span><h2>Presenças para observar.</h2></div><p>Carvão, gesto, processo, figura, memória visual e sketchbook.</p></div>
+  <div class="stream-rail">{startRefs.map(a=><a class="stream-card" href={base+'referencias/'+a!.slug}><div class="stream-card-media"><img class="stream-fallback" src={base+'noir/visual-atlas/charcoal-marks.webp'} alt=""/>{a!.videoId&&a!.slug!=="zin-lim"&&<img class="stream-thumb" src={'https://i.ytimg.com/vi/'+a!.videoId+'/hqdefault.jpg'} alt={'Referência visual de '+a!.name} loading="lazy" onerror="this.remove()"/>}<span class="stream-rank">{String(a!.rank).padStart(2,'0')}</span></div><div class="stream-card-body"><span>{a!.focus}</span><h3>{a!.name}</h3></div></a>)}</div>
+  <div class="actions"><a class="btn" href={base+'referencias'}>Ver atlas completo →</a></div>
 </section>
 
 <section class="stream-section">
@@ -65,12 +75,6 @@ const studySessions=[
   <div class="feature-rail">{studyFans.map((fan,i)=><article class="feature-card">
     <span class="tag">LEQUE {String(i+1).padStart(2,'0')}</span><h3>{fan.title}</h3><p>{fan.thought}</p><div class="actions"><a class="btn" href={base+'bancos#leques'}>Abrir portas →</a></div>
   </article>)}</div>
-</section>
-
-<section class="stream-section">
-  <div class="stream-head"><div><span class="eyebrow">JARDIM DE REFERÊNCIAS</span><h2>Presenças para observar.</h2></div><p>Carvão, gesto, processo, figura, memória visual e sketchbook.</p></div>
-  <div class="stream-rail">{startRefs.map(a=><a class="stream-card" href={base+'referencias/'+a!.slug}><div class="stream-card-media"><img class="stream-fallback" src={base+'noir/reference-fallback.svg'} alt=""/>{a!.videoId&&a!.slug!=="zin-lim"&&<img class="stream-thumb" src={'https://i.ytimg.com/vi/'+a!.videoId+'/hqdefault.jpg'} alt={'Referência visual de '+a!.name} loading="lazy" onerror="this.remove()"/>}<span class="stream-rank">{String(a!.rank).padStart(2,'0')}</span></div><div class="stream-card-body"><span>{a!.focus}</span><h3>{a!.name}</h3></div></a>)}</div>
-  <div class="actions"><a class="btn" href={base+'referencias'}>Ver atlas completo →</a></div>
 </section>
 
 <section class="stream-section">
@@ -100,9 +104,9 @@ const studySessions=[
 </section>
 
 <section class="stream-section">
-  <div class="stream-head"><div><span class="eyebrow">TEMPORADAS</span><h2>Sete universos.</h2></div><p>Corpo, expressão, anatomia, personagem, relação, matéria e síntese.</p></div>
-  <div class="browse-rail">{temporadas.map(t=><a class="browse-tile" href={base+'temporadas#t'+t.n}>
-    <div class="browse-visual"><span class="num">{t.n}</span><div class="big">{t.title}</div></div>
+  <div class="stream-head"><div><span class="eyebrow">TEMPORADAS</span><h2>Sete universos.</h2></div><p>Corpo, expressão, anatomia, personagem, relação, matéria e síntese. Capas temáticas, sem representação de obras dos artistas.</p></div>
+  <div class="browse-rail">{temporadas.map((t,i)=><a class="browse-tile" href={base+'temporadas#t'+t.n}>
+    <div class="browse-visual season-cover"><img src={base+'noir/visual-atlas/'+seasonCovers[i]+'.webp'} alt="" width="640" height="640" loading="lazy"/><span class="num">{t.n}</span><div class="big">{t.title}</div></div>
     <div class="browse-body"><span>TEMPORADA {t.n}</span><p>{t.text}</p></div>
   </a>)}</div>
 </section>

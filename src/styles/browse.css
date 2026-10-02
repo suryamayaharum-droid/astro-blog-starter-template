@@ -13,3 +13,32 @@
   .browse-hero-copy .actions::-webkit-scrollbar{display:none}
   .browse-hero-copy .actions .btn{white-space:nowrap;flex:0 0 auto}
 }
+
+/* Composition pass: alternating visual sessions, quiet rails and paper. */
+.home-composition .stream-section{padding:clamp(30px,4vw,58px) 0 16px}
+.home-composition .stream-head{margin-bottom:20px;align-items:center}
+.home-composition .stream-head h2{font-size:clamp(1.9rem,3.5vw,3.2rem);line-height:1.06;letter-spacing:-.025em}
+.home-composition .stream-head p{max-width:350px;line-height:1.6}
+.home-composition .browse-quick{padding-bottom:16px;border-bottom:1px solid var(--line)}
+.home-composition .session-card{min-height:340px;overflow:hidden;isolation:isolate;padding:26px}
+.session-cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;filter:saturate(.55)}
+.home-composition .session-card:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(7,7,7,.98) 0%,rgba(7,7,7,.82) 40%,rgba(7,7,7,.12) 100%)}
+.home-composition .session-card h3{font-size:clamp(1.7rem,3vw,2.4rem);max-width:12ch}
+.home-composition .session-card p{color:var(--paper-2);max-width:32ch}
+.home-composition .session-card .tag{color:#d8c496}
+.home-composition .session-play{margin-top:20px}
+.home-art-credit{position:absolute;right:24px;top:24px;z-index:2;color:#bcb5ac;font-size:.62rem;max-width:190px;text-align:right}
+.season-cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.4)}
+.season-cover:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(7,7,7,.92),rgba(7,7,7,.16))}
+.season-cover .num{z-index:2;color:#d8c496;font-size:24px}
+.home-composition .season-cover .big{font-size:clamp(28px,3vw,40px);line-height:1.02}
+.home-composition .paper-card{border-radius:4px;min-height:240px;background:#ded5c6}
+.home-composition .editorial-split{margin-top:38px}
+@media(max-width:760px){
+ .home-composition .stream-head{align-items:flex-start;gap:9px}
+ .home-composition .stream-head p{max-width:38ch}
+ .home-composition .session-card{min-height:300px;padding:22px}
+ .home-art-credit{top:16px;right:16px;max-width:140px;font-size:.55rem}
+ .home-composition .paper-card{min-height:0}
+}
+@media(prefers-reduced-motion:reduce){.home-composition .browse-tile,.home-composition .continue-card{transition:none}.home-composition .browse-tile:hover,.home-composition .continue-card:hover{transform:none}}

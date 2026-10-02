@@ -1,6 +1,7 @@
 ---
 import { STUDIO_SITE } from '../consts';
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
+const primaryPaths = new Set(["busca","referencias","percursos","cadernos","museus"]);
 const links = [
   ["Buscar","busca"],
   ["Atlas","atlas"],
@@ -28,9 +29,17 @@ const links = [
       </span>
     </a>
     <div class="nav-links">
-      {links.map(([label,path]) => <a href={`${base}${path}`}>{label}</a>)}
+      {links.filter(([,path])=>primaryPaths.has(path)).map(([label,path]) => <a href={`${base}${path}`}>{label}</a>)}
       <a href={STUDIO_SITE} target="_blank" rel="noreferrer">Studio 23 ↗</a>
     </div>
+    <details class="explore-menu">
+      <summary>Explorar <span aria-hidden="true">＋</span></summary>
+      <nav class="explore-panel" aria-label="Explorar o ecossistema">
+        <span class="explore-title">O ateliê inteiro</span>
+        {links.map(([label,path])=><a href={`${base}${path}`}>{label}</a>)}
+        <a href={STUDIO_SITE} target="_blank" rel="noreferrer">Studio 23 ↗</a>
+      </nav>
+    </details>
     <button class="save-current" id="save-current" type="button">＋ Estante</button>
   </nav>
 </header>
@@ -54,7 +63,7 @@ try{
     xs=[item,...(Array.isArray(xs)?xs:[]).filter(x=>x&&x.path!==item.path)].slice(0,12);
     try{localStorage.setItem(k,JSON.stringify(xs))}catch{}
   }
-  document.querySelectorAll('.nav-links a,.mobile-dock a').forEach((a)=>{
+  document.querySelectorAll('.nav-links a,.mobile-dock a,.explore-panel a').forEach((a)=>{
     if(!(a instanceof HTMLAnchorElement)) return;
     const target=new URL(a.href,location.href);
     const sameOrigin=target.origin===location.origin;
@@ -80,3 +89,15 @@ try{
   }
 }catch{}
 </script>
+<style>
+.explore-menu{position:relative;flex:0 0 auto}
+.explore-menu summary{list-style:none;cursor:pointer;padding:8px 12px;border:1px solid var(--line);border-radius:999px;font-size:.78rem;color:var(--paper)}
+.explore-menu summary::-webkit-details-marker{display:none}
+.explore-menu summary span{color:var(--gold);margin-left:8px}
+.explore-menu[open] summary{border-color:var(--gold-dim)}
+.explore-panel{position:absolute;right:0;top:calc(100% + 14px);width:min(440px,calc(100vw - 32px));display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:20px;background:#111214;border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);max-height:calc(100dvh - 150px);overflow:auto}
+.explore-title{grid-column:1/-1;color:var(--gold);font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;padding:0 10px 12px}
+.explore-panel a{padding:10px;border-radius:8px;text-decoration:none;font-size:.85rem;color:var(--paper-2)}
+.explore-panel a:hover,.explore-panel a[aria-current]{background:rgba(179,154,105,.1);color:var(--paper)}
+@media(max-width:760px){.explore-menu{margin-left:auto}.explore-menu summary{font-size:.72rem;padding:7px 10px}.explore-panel{position:fixed;left:16px;right:16px;top:64px;width:auto}.explore-panel a{font-size:.9rem}}
+</style>
