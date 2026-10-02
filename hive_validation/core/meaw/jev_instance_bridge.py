@@ -36,10 +36,26 @@ def synthesize_decision(decision_id: str, decision: dict[str, Any]) -> dict[str,
     }
 
 def build_view(state: dict[str, Any]) -> dict[str, Any]:
+    terminal_states={"succeeded","superseded","stable","stable-private"}
+    work_items=list(state.get("work_items", {}).values())
     open_work = [
-        item for item in state.get("work_items", {}).values()
-        if item.get("status") not in {"succeeded", "superseded"}
+        item for item in work_items
+        if item.get("status") not in terminal_states
     ]
+    completed_work=[]
+    for item in work_items:
+        if item.get("status") not in terminal_states:
+            continue
+        row=dict(item)
+        if not row.get("completed_at") and row.get("updated_at"):
+            row["completed_at"]=row.get("updated_at")
+        completed_work.append(row)
+    completed_work.sort(
+        key=lambda row: (
+            str(row.get("completed_at") or row.get("updated_at") or ""),
+            str(row.get("work_id") or ""),
+        )
+    )
     open_help = [
         {"request_id": rid, **req}
         for rid, req in state.get("help_requests", {}).items()
@@ -56,6 +72,7 @@ def build_view(state: dict[str, Any]) -> dict[str, Any]:
         "last_event": state.get("last_event"),
         "checkpoint": state.get("current_checkpoint"),
         "open_work": open_work,
+        "completed_work": completed_work,
         "open_help_requests": open_help,
         "open_decisions": decisions,
         "conflicts": state.get("conflicts", []),
