@@ -65,7 +65,7 @@ const modeLabel={live:'conectado agora',advanced:'API avançada',dataset:'datase
         <div class="museum-mode">{modeLabel[m.mode]}</div>
         <h3>{m.name}</h3><div class="place">{m.city} · {m.country}</div>
         <p><strong>{m.access}</strong></p><p>{m.rights}</p><p>{m.note}</p>
-        <div class="museum-links"><a href={m.docsUrl} target="_blank" rel="noreferrer">documentação ↗</a><a href={m.apiUrl} target="_blank" rel="noreferrer">dados/API ↗</a></div>
+        <div class="museum-links"><a class="museum-collection-link" href={m.collectionUrl} target="_blank" rel="noreferrer">Abrir coleção oficial ↗</a><a href={m.docsUrl} target="_blank" rel="noreferrer">documentação ↗</a><a href={m.apiUrl} target="_blank" rel="noreferrer">dados/API ↗</a></div>
       </article>)}
     </div>
   </section>
@@ -89,7 +89,8 @@ const out=document.querySelector('#museum-results');
 const msg=document.querySelector('#museum-message');
 const badges={met:document.querySelector('[data-provider="met"]'),aic:document.querySelector('[data-provider="aic"]'),cma:document.querySelector('[data-provider="cma"]')};
 const setBadge=(id,state)=>{const b=badges[id]; if(!b)return; b.className='provider '+(state==='ok'?'ok':'down'); b.textContent=id.toUpperCase()+' · '+(state==='ok'?'ok':'indisponível');};
-const card=(w)=>'<a class="museum-work" href="'+esc(w.url)+'" target="_blank" rel="noreferrer"><div class="museum-work-body"><span>'+esc(w.museum)+'</span><h3>'+esc(w.title)+'</h3><p>'+esc(w.artist)+(w.date?' · '+esc(w.date):'')+'</p><small>'+esc(w.rights)+'</small></div></a>';
+const safeHttpUrl=(value)=>{try{const u=new URL(String(value||""));return u.protocol==="https:"||u.protocol==="http:"?u.href:"#"}catch{return "#"}};
+const card=(w)=>{const image=safeHttpUrl(w.image);const url=safeHttpUrl(w.url);const title=esc(w.title);return '<a class="museum-work" href="'+url+'" target="_blank" rel="noreferrer"><div class="museum-work-media"><img src="'+image+'" alt="'+title+' — '+esc(w.museum)+'" loading="lazy" decoding="async" onerror="this.closest(\'.museum-work-media\').classList.add(\'image-missing\');this.remove()"></div><div class="museum-work-body"><span>'+esc(w.museum)+'</span><h3>'+title+'</h3><p>'+esc(w.artist)+(w.date?' · '+esc(w.date):'')+'</p><small>'+esc(w.rights)+'</small></div></a>'};
 async function met(q){
   const s=await fetch('https://collectionapi.metmuseum.org/public/collection/v1.1/search?q='+encodeURIComponent(q)+'&hasImages=true&isPublicDomain=true&offset=0&limit=8');
   if(!s.ok)throw 0; const j=await s.json(); const ids=(j.objectIDs||[]).slice(0,5);

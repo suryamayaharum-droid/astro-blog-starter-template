@@ -1,6 +1,7 @@
 export type MuseumCatalogEntry = {
   id: string;
   name: string;
+  collectionUrl: string;
   city: string;
   country: string;
   mode: "live" | "advanced" | "dataset" | "key";
@@ -15,6 +16,7 @@ export const museumCatalog: MuseumCatalogEntry[] = [
   {
     id: "met",
     name: "The Metropolitan Museum of Art",
+    collectionUrl: "https://www.metmuseum.org/art/collection",
     city: "New York",
     country: "EUA",
     mode: "live",
@@ -27,6 +29,7 @@ export const museumCatalog: MuseumCatalogEntry[] = [
   {
     id: "aic",
     name: "Art Institute of Chicago",
+    collectionUrl: "https://www.artic.edu/collection",
     city: "Chicago",
     country: "EUA",
     mode: "live",
@@ -39,6 +42,7 @@ export const museumCatalog: MuseumCatalogEntry[] = [
   {
     id: "cma",
     name: "Cleveland Museum of Art",
+    collectionUrl: "https://www.clevelandart.org/art/collection",
     city: "Cleveland",
     country: "EUA",
     mode: "live",
@@ -51,6 +55,7 @@ export const museumCatalog: MuseumCatalogEntry[] = [
   {
     id: "getty",
     name: "J. Paul Getty Museum",
+    collectionUrl: "https://www.getty.edu/art/collection/",
     city: "Los Angeles",
     country: "EUA",
     mode: "advanced",
@@ -63,6 +68,7 @@ export const museumCatalog: MuseumCatalogEntry[] = [
   {
     id: "rijks",
     name: "Rijksmuseum",
+    collectionUrl: "https://www.rijksmuseum.nl/en/collection",
     city: "Amsterdam",
     country: "Países Baixos",
     mode: "advanced",
@@ -75,6 +81,7 @@ export const museumCatalog: MuseumCatalogEntry[] = [
   {
     id: "smithsonian",
     name: "Smithsonian Open Access",
+    collectionUrl: "https://www.si.edu/collections",
     city: "Washington, D.C.",
     country: "EUA",
     mode: "key",
@@ -87,6 +94,7 @@ export const museumCatalog: MuseumCatalogEntry[] = [
   {
     id: "nga",
     name: "National Gallery of Art",
+    collectionUrl: "https://www.nga.gov/artworks",
     city: "Washington, D.C.",
     country: "EUA",
     mode: "dataset",
@@ -99,6 +107,7 @@ export const museumCatalog: MuseumCatalogEntry[] = [
   {
     id: "smithsonian-github",
     name: "Smithsonian Open Access Dataset",
+    collectionUrl: "https://www.si.edu/collections",
     city: "Washington, D.C.",
     country: "EUA",
     mode: "dataset",
