@@ -2490,10 +2490,17 @@ export const referenceArtists:PublicReference[]=[
     "special": "Reúne profissionais de alto nível em cursos de character, visual development, storytelling e pintura digital.",
     "site": "https://schoolism.com/",
     "lane": "Escola / digital",
-    "videoId": "",
+    "videoId": "VJHD37nIqvs",
     "youtube": "",
     "instagram": "",
     "refs": [
+      {
+        "type": "Vídeo / aula",
+        "title": "How To Draw Any Character Consistently From Every Angle | Schoolism Lecture",
+        "url": "https://www.youtube.com/watch?v=VJHD37nIqvs",
+        "observe": "Referência de aula publicada pelo ecossistema Schoolism, útil para observar construção e consistência de personagem em múltiplos ângulos.",
+        "tags": "schoolism; character; construção; aula"
+      },
       {
         "type": "Fonte oficial / pesquisa",
         "title": "Schoolism",
