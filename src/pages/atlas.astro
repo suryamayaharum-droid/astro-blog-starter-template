@@ -3,6 +3,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 const base=import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
+const covers=["tools-paper","charcoal-marks","museum-gallery","drapery-still-life","open-sketchbook","moonlit-landscape","iris-study","graphite-texture","atelier-desk"];
 const doors=[
 ["Busca geral","Pesquisar artistas, técnicas, materiais, períodos, Cadernos, coleções e Temporadas.","buscar"],
 ["Atlas de Referências","Artistas, professores, processos e vídeos organizados por decisão visual.","referencias"],
@@ -15,8 +16,33 @@ const doors=[
 ["Arquivo Aberto","Textos, cartas, materiais públicos e portas permanentes do ecossistema.","arquivo"],
 ];
 ---
-<!doctype html><html lang="pt-BR"><head><BaseHead title="Atlas · Harum Noir" description="Mapa de entrada para referências, museus, história da arte, biblioteca, percursos, outliers, identidade e arquivo do Harum Noir."/></head><body><Header/><main>
-<section class="page-hero"><div class="eyebrow">ATLAS HARUM NOIR</div><h1>Um mapa, várias entradas.</h1><p>O Atlas não é uma página de conteúdo única. É a mesa de orientação do ecossistema: escolha a porta conforme a pergunta que você trouxe para o desenho.</p></section>
-<section class="section"><div class="archive-grid">{doors.map(d=><a class="archive-item" href={base+d[2]}><span class="card-kicker">ABRIR ROTA</span><h3>{d[0]}</h3><p>{d[1]}</p></a>)}</div></section>
+<!doctype html><html lang="pt-BR"><head><BaseHead title="Atlas · Harum Noir" description="Mapa de entrada para referências, museus, história da arte, biblioteca, percursos, outliers, identidade e arquivo do Harum Noir."/></head><body><Header/><main class="atlas-composition">
+<section class="page-hero"><div class="eyebrow">ATLAS HARUM NOIR</div><h1>Um mapa, várias entradas.</h1><p>Escolha a porta pela pergunta que trouxe para o desenho. Artistas, acervos, história e prática fazem parte do mesmo percurso.</p></section>
+<section class="section" aria-label="Entradas do Atlas"><div class="atlas-doors">{doors.map((d,i)=><a class="atlas-door" href={base+d[2]}>
+<div class="atlas-door-art"><img src={base+'noir/visual-atlas/'+covers[i]+'.webp'} alt="" width="640" height="640" loading={i<3?'eager':'lazy'}/><span class="atlas-door-number">{String(i+1).padStart(2,'0')}</span></div>
+<div class="atlas-door-copy"><h2>{d[0]}</h2><p>{d[1]}</p><span class="atlas-door-action">Explorar <span aria-hidden="true">↗</span></span></div>
+</a>)}</div><p class="atlas-cover-credit">Capas temáticas criadas com assistência de IA; não representam obras dos artistas ou acervos.</p></section>
 <section class="section"><div class="journal"><div class="paper"><div class="eyebrow" style="color:#8a734b">REGRA DO ATLAS</div><h2>Navegar não substitui desenhar.</h2><p class="lead">Entre por uma pergunta. Saia com um estudo.</p><p>Use as páginas como corredores entre repertório e prática. Quando uma referência não gerar observação, comparação ou exercício, ela ainda não virou conhecimento.</p><p><a href={base+'atelier'}>Levar a pergunta para o Ateliê →</a></p></div></div></section>
 </main><Footer/></body></html>
+<style>
+.atlas-composition .page-hero{max-width:1100px;border-bottom:0;margin-bottom:0;padding-bottom:12px}
+.atlas-composition .page-hero h1{max-width:13ch;font-size:clamp(3.6rem,8vw,7.8rem)}
+.atlas-composition .page-hero p{max-width:55ch}
+.atlas-doors{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.atlas-door{display:flex;flex-direction:column;text-decoration:none;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#111214;transition:border-color .2s}
+.atlas-door:hover{border-color:var(--gold)}
+.atlas-door-art{position:relative;aspect-ratio:16/10;overflow:hidden}
+.atlas-door-art img{width:100%;height:100%;object-fit:cover;filter:saturate(.55);transition:transform .3s}
+.atlas-door:hover img{transform:scale(1.025)}
+.atlas-door-number{position:absolute;top:16px;left:16px;color:var(--paper);font-size:.75rem;background:rgba(8,8,8,.7);padding:6px 9px;border:1px solid var(--line);border-radius:999px}
+.atlas-door-copy{padding:24px;display:flex;flex-direction:column;flex:1}
+.atlas-door h2{font-size:clamp(1.8rem,3vw,2.5rem);line-height:1.05;margin:0 0 12px;letter-spacing:-.025em}
+.atlas-door p{font-size:.9rem;line-height:1.6;color:var(--paper-2);margin:0 0 24px;max-width:36ch}
+.atlas-door-action{margin-top:auto;display:flex;justify-content:space-between;padding-top:14px;border-top:1px solid var(--line);font-size:.75rem;color:var(--gold)}
+.atlas-cover-credit{font-size:.72rem;color:var(--muted);margin-top:20px}
+.atlas-composition .journal{max-width:100%;margin-top:20px}
+.atlas-composition .journal .paper{border-radius:4px}
+@media(max-width:1000px){.atlas-doors{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}}
+@media(max-width:600px){.atlas-doors{grid-template-columns:1fr;gap:22px}.atlas-door-art{aspect-ratio:16/9}.atlas-door-copy{padding:20px}.atlas-composition .page-hero{padding-top:52px}}
+@media(prefers-reduced-motion:reduce){.atlas-door,.atlas-door img{transition:none}.atlas-door:hover img{transform:none}}
+</style>
