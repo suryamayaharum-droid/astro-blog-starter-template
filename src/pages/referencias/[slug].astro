@@ -36,7 +36,7 @@ const videoUrl=videoId?"https://www.youtube-nocookie.com/embed/"+videoId+"?rel=0
  <div class="panel"><div class="eyebrow">O QUE OBSERVAR</div><h2>{artist.focus}</h2><p>{artist.special}</p></div>
  <div class="panel"><div class="eyebrow">LEITURA</div><div class="quote">{artist.archetype}</div><p>Use esta ficha como ponto de partida. O aprofundamento deve acontecer sempre nas fontes originais.</p></div>
 </section>
-{videoUrl&&<section class="section artist-player" data-artist-player><div class="stream-head"><div><span class="eyebrow">VÍDEO DA FONTE ORIGINAL</span><h2>Assistir a {artist.name}</h2></div><a class="btn" data-player-fallback href={"https://www.youtube.com/watch?v="+videoId} target="_blank" rel="noreferrer">Abrir no YouTube ↗</a></div>{videoChoices.length>1&&<label class="player-selection">Escolha uma referência<select data-player-select aria-label={"Vídeos selecionados de "+artist.name}>{videoChoices.map(video=><option value={video.id}>{video.title}</option>)}</select></label>}<div class="player-frame"><iframe src={videoUrl} title={"Vídeo de referência de "+artist.name} loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div><p class="player-note">Vídeo da fonte original, sem reprodução automática. Alguns canais podem desativar a reprodução incorporada; nesse caso, use “Abrir no YouTube”.</p></section>}
+{videoUrl&&<section class="section artist-player" data-artist-player><div class="stream-head"><div><span class="eyebrow">VÍDEO DA FONTE ORIGINAL</span><h2>Assistir a {artist.name}</h2></div><a class="btn" data-player-fallback href={"https://www.youtube.com/watch?v="+videoId} target="_blank" rel="noreferrer">Abrir no YouTube ↗</a></div><div class="player-frame"><iframe src={videoUrl} title={"Vídeo de referência de "+artist.name} loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>{videoChoices.length>1&&<div class="player-queue-shell"><div class="player-queue-label">Continuar assistindo</div><div class="player-queue" role="list" aria-label={"Vídeos selecionados de "+artist.name}>{videoChoices.map((video,index)=><button type="button" class="player-choice" data-player-choice data-video-id={video.id} data-video-title={video.title} aria-pressed={index===0?"true":"false"}><span class="player-choice-media"><img src={"https://i.ytimg.com/vi/"+video.id+"/mqdefault.jpg"} alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"/></span><span class="player-choice-copy"><small>{index===0?"EM REPRODUÇÃO":"VÍDEO"}</small><strong>{video.title}</strong></span></button>)}</div></div>}<p class="player-note">Vídeo da fonte original, sem reprodução automática. Alguns canais podem desativar a reprodução incorporada; nesse caso, use “Abrir no YouTube”.</p></section>}
 {artist.refs.length>0&&<section class="stream-section"><div class="stream-head"><div><span class="eyebrow">REFERÊNCIAS SELECIONADAS</span><h2>Comece por estas</h2></div></div><div class="reference-grid">
  {artist.refs.map(ref=><a class="archive-item ref-source" href={ref.url} target="_blank" rel="noreferrer"><span class="card-kicker">{ref.type}</span><h3>{ref.title}</h3><p>{ref.observe}</p><span class="source-arrow">Abrir fonte ↗</span></a>)}
 </div></section>}
@@ -45,24 +45,32 @@ const videoUrl=videoId?"https://www.youtube-nocookie.com/embed/"+videoId+"?rel=0
 </div></section>}
 <script>
 document.querySelectorAll<HTMLElement>("[data-artist-player]").forEach(section=>{
- const select=section.querySelector<HTMLSelectElement>("[data-player-select]");
  const frame=section.querySelector<HTMLIFrameElement>("iframe");
  const fallback=section.querySelector<HTMLAnchorElement>("[data-player-fallback]");
- if(!select||!frame||!fallback)return;
+ const choices=[...section.querySelectorAll<HTMLButtonElement>("[data-player-choice]")];
+ if(!frame||!fallback)return;
  const artistTitle=frame.title;
- select.addEventListener("change",()=>{
-  const id=select.value;
+ const activate=(button:HTMLButtonElement)=>{
+  const id=button.dataset.videoId||"";
   if(!/^[A-Za-z0-9_-]{11}$/.test(id))return;
+  const title=button.dataset.videoTitle||button.textContent?.trim()||"Vídeo";
   const url=new URL(frame.src);
   url.pathname="/embed/"+id;
   frame.src=url.toString();
-  frame.title=artistTitle+" — "+select.selectedOptions[0].textContent;
+  frame.title=artistTitle+" — "+title;
   fallback.href="https://www.youtube.com/watch?v="+id;
- });
+  choices.forEach(choice=>{
+   const active=choice===button;
+   choice.setAttribute("aria-pressed",active?"true":"false");
+   const label=choice.querySelector("small");
+   if(label)label.textContent=active?"EM REPRODUÇÃO":"VÍDEO";
+  });
+ };
+ choices.forEach(choice=>choice.addEventListener("click",()=>activate(choice)));
 });
 </script>
 <script is:inline define:vars={{slug:artist.slug}}>
 (()=>{try{const k='noir_recent_refs';let raw;try{raw=JSON.parse(localStorage.getItem(k)||'[]')}catch{raw=[]}const a=(Array.isArray(raw)?raw:[]).filter(x=>typeof x==='string'&&x!==slug);a.unshift(slug);localStorage.setItem(k,JSON.stringify(a.slice(0,12)))}catch{}})();
 </script>
-</main><Footer/><style>.player-selection{display:grid;gap:8px;max-width:620px;margin:0 0 18px;font-size:.85rem;color:#aaa49b}.player-selection select{width:100%;padding:12px;background:#151413;border:1px solid #71654f;border-radius:8px;color:#eee7dc;font:inherit}.player-selection select:focus-visible{outline:2px solid #b39a69;outline-offset:3px}.cover-credit{display:block;max-width:580px;color:#aaa49b;font-size:.7rem;line-height:1.5;margin-bottom:12px}.artist-player{max-width:1160px;margin-inline:auto}.player-frame{aspect-ratio:16/9;min-height:220px;background:radial-gradient(circle at 70% 18%,rgba(179,154,105,.12),transparent 28%),#090909;border:1px solid rgba(179,154,105,.28);border-radius:16px;overflow:hidden;box-shadow:0 28px 80px rgba(0,0,0,.28)}.player-frame iframe{display:block;width:100%;height:100%;border:0}.player-note{color:#aaa49b;font-size:.82rem;margin-top:10px}</style></body></html>
+</main><Footer/><style>.cover-credit{display:block;max-width:580px;color:#aaa49b;font-size:.7rem;line-height:1.5;margin-bottom:12px}.artist-player{max-width:1160px;margin-inline:auto}.player-frame{aspect-ratio:16/9;min-height:220px;background:radial-gradient(circle at 70% 18%,rgba(179,154,105,.12),transparent 28%),#090909;border:1px solid rgba(179,154,105,.28);border-radius:16px;overflow:hidden;box-shadow:0 28px 80px rgba(0,0,0,.28)}.player-frame iframe{display:block;width:100%;height:100%;border:0}.player-queue-shell{margin-top:18px}.player-queue-label{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:#aaa49b;margin-bottom:10px}.player-queue{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(220px,30%);gap:12px;overflow-x:auto;overscroll-behavior-inline:contain;scroll-snap-type:x proximity;padding:0 2px 12px;scrollbar-width:thin}.player-choice{appearance:none;display:grid;grid-template-columns:112px minmax(0,1fr);gap:12px;align-items:center;min-height:78px;padding:0;border:1px solid rgba(179,154,105,.22);border-radius:12px;overflow:hidden;background:#11100f;color:#eee7dc;text-align:left;cursor:pointer;scroll-snap-align:start;transition:border-color .18s,transform .18s,background .18s}.player-choice:hover{border-color:rgba(179,154,105,.62);transform:translateY(-1px)}.player-choice[aria-pressed="true"]{border-color:#b39a69;background:#181510}.player-choice:focus-visible{outline:2px solid #b39a69;outline-offset:3px}.player-choice-media{display:block;height:100%;min-height:78px;background:radial-gradient(circle at 72% 22%,rgba(179,154,105,.18),transparent 32%),#090909}.player-choice-media img{display:block;width:100%;height:100%;min-height:78px;object-fit:cover}.player-choice-copy{display:grid;gap:6px;padding:10px 12px 10px 0;min-width:0}.player-choice-copy small{font-size:.6rem;letter-spacing:.09em;color:#b39a69}.player-choice-copy strong{font-size:.82rem;line-height:1.35;font-weight:600;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}.player-note{color:#aaa49b;font-size:.82rem;margin-top:10px}@media(max-width:760px){.player-queue{grid-auto-columns:minmax(260px,82%)}.player-choice{grid-template-columns:104px minmax(0,1fr)}}@media(prefers-reduced-motion:reduce){.player-choice{transition:none}.player-choice:hover{transform:none}}</style></body></html>
 
