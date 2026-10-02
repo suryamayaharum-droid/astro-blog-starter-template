@@ -10,7 +10,7 @@ const relatedRanks=referenceCollections.find(c=>c.ranks.includes(artist.rank))?.
 const related=relatedRanks.map(r=>referenceArtists.find(a=>a.rank===r)).filter(Boolean);
 const visualFor=(focus:string)=>{const f=focus.toLowerCase();return f.includes("carv")?"charcoal-marks.webp":f.includes("jap")||f.includes("ukiyo")?"moonlit-landscape.webp":f.includes("museu")||f.includes("arquivo")?"museum-gallery.webp":f.includes("botan")||f.includes("flor")?"iris-study.webp":f.includes("gesto")||f.includes("mão")?"tools-paper.webp":f.includes("sketch")||f.includes("caderno")?"open-sketchbook.webp":"graphite-texture.webp";};
 const hero=base+"noir/visual-atlas/"+visualFor(artist.focus);
-const videoId=/^[\\w-]{11}$/.test(artist.videoId||"")?artist.videoId:"";
+const videoId=/^[A-Za-z0-9_-]{11}$/.test(artist.videoId||"")?artist.videoId:"";
 const videoUrl=videoId?"https://www.youtube-nocookie.com/embed/"+videoId+"?rel=0&playsinline=1":"";
 ---
 <!doctype html><html lang="pt-BR"><head><BaseHead title={artist.name+' · Referências · Harum Noir'} description={artist.special}/></head><body><Header/><main class="stream-main">
