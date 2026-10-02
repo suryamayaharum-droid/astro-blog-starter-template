@@ -1,0 +1,25 @@
+name: Validate Empty Open Intent Collisions
+
+on:
+  push:
+    branches:
+      - ci/validate-empty-open-intents
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout validation bundle
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run coordination doctor regression tests
+        working-directory: hive_validation
+        run: |
+          python -m unittest tests.test_harum_coordination_doctor -v
