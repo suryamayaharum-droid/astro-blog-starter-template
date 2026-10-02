@@ -1,0 +1,154 @@
+name: Recover HIVE Sketchbook Work 012
+
+on:
+  push:
+    branches:
+      - ci/recover-hive-sketchbook-012
+  workflow_dispatch:
+
+jobs:
+  recover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout recovery bundle
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Execute HARUM recovery transaction
+        working-directory: hive_validation
+        run: |
+          set -euo pipefail
+          ACTOR="chatgpt-sol-recovery-20261002"
+          WORK="HN-PERCURSO-SKETCHBOOK-DEEPEN-012"
+
+          python -m core.meaw.harum_coord sync
+
+          python -m core.meaw.harum_coord hello \
+            --actor "$ACTOR" \
+            --role narrative-editor \
+            --capability story-structure \
+            --capability editorial-bridges \
+            --reachability active \
+            --dispatch-mode remote-recovery \
+            --ttl-minutes 60
+
+          python -m core.meaw.harum_coord claim "$WORK" \
+            --actor "$ACTOR" \
+            --role narrative-editor \
+            --ttl 1800
+
+          python -m core.meaw.harum_coord complete "$WORK" \
+            --actor "$ACTOR" \
+            --role narrative-editor \
+            --summary "Percurso 05 / Caderno como universo já publicado e validado externamente nos dois espelhos; recuperação encerra execução órfã sem refazer produto." \
+            --evidence "docs/HN_PERCURSO_SKETCHBOOK_DEEPEN_012_VALIDATION.md" \
+            --evidence "chatbot:3cbde86c460603bd9aa09239a24c8b86734b820f" \
+            --evidence "astro:dda349e17e3334fc83e687e6144548671deba8f4" \
+            --evidence "vercel:dpl_99bJz5RkZQXy3bbv5fSyZrkM7aos:READY" \
+            --evidence "github-actions:36463058289:success" \
+            --result-ref "http:/noir/percursos:200"
+
+          python -m core.meaw.harum_coord sync
+
+      - name: Verify terminal recovery state
+        working-directory: hive_validation
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          root=Path(".")
+          work_id="HN-PERCURSO-SKETCHBOOK-DEEPEN-012"
+          source_commit="20f5178596745ea0af6d71356a1982030aa54c10"
+
+          def load(path):
+              return json.loads((root/path).read_text(encoding="utf-8"))
+
+          jev=load(".harum-assembly/jev_view.json")
+          tree=load("systems/harum_project_tree.json")
+          leases=load("state/coordination/work_leases.json")
+          dispatch=load("state/coordination/dispatch_plan.json")
+          health=load("state/coordination/health.json")
+          meta=load("state/coordination/meta_plan.json")
+          capsule=load("state/coordination/context_capsule.json")
+          board=load("state/coordination/capability_board.json")
+
+          open_ids={row.get("work_id") for row in jev.get("open_work",[])}
+          completed={row.get("work_id"):row for row in jev.get("completed_work",[])}
+
+          def walk(node):
+              yield node
+              for child in node.get("children",[]) or []:
+                  yield from walk(child)
+
+          node=next(x for x in walk(tree["root"]) if x.get("id")==work_id)
+          last_event=jev.get("last_event")
+          projections={
+              "dispatch":dispatch,
+              "health":health,
+              "meta":meta,
+              "capsule":capsule,
+              "capability_board":board,
+          }
+          watermarks={name:value.get("source_last_event") for name,value in projections.items()}
+
+          assert work_id not in open_ids, open_ids
+          assert completed.get(work_id,{}).get("status")=="succeeded", completed.get(work_id)
+          assert node.get("state")=="succeeded", node
+          assert work_id not in (leases.get("leases") or {}), leases
+          assert all(value==last_event for value in watermarks.values()), (last_event,watermarks)
+
+          manifest={
+              "schema":"harum.remote-recovery-artifact/v1",
+              "source_hive_commit":source_commit,
+              "work_id":work_id,
+              "recovery_actor":"chatgpt-sol-recovery-20261002",
+              "status":"verified-terminal",
+              "jev_last_event":last_event,
+              "tree_state":node.get("state"),
+              "completed_status":completed[work_id].get("status"),
+              "lease_released":True,
+              "projection_watermarks":watermarks,
+              "health":health.get("status"),
+              "source_shas":{
+                  "events":"d76622c664e3a927a7fbfab4fa0413c975eb5c36",
+                  "state":"1dfb2f6152ca9a676aa48a7ec346aa156bee4723",
+                  "jev":"9a72da4ac5cdf5ccc8920af040333458a02cba72",
+                  "tree":"dcc20bb1817499f34d518f578cdcee45e07a9b58",
+                  "leases":"b47473f4bbdfa561e77baff6f2b1b2a34a6f27d1"
+              }
+          }
+          Path("recovery_manifest.json").write_text(json.dumps(manifest,indent=2)+"\n",encoding="utf-8")
+          print(json.dumps(manifest,indent=2))
+          PY
+
+      - name: Stage recovery artifact
+        run: |
+          mkdir -p recovery_artifact/.harum-assembly
+          mkdir -p recovery_artifact/systems
+          mkdir -p recovery_artifact/state/coordination
+          cp hive_validation/.harum-assembly/events.jsonl recovery_artifact/.harum-assembly/
+          cp hive_validation/.harum-assembly/state.json recovery_artifact/.harum-assembly/
+          cp hive_validation/.harum-assembly/jev_view.json recovery_artifact/.harum-assembly/
+          cp hive_validation/systems/harum_project_tree.json recovery_artifact/systems/
+          cp hive_validation/state/coordination/work_leases.json recovery_artifact/state/coordination/
+          cp hive_validation/state/coordination/dispatch_plan.json recovery_artifact/state/coordination/
+          cp hive_validation/state/coordination/health.json recovery_artifact/state/coordination/
+          cp hive_validation/state/coordination/meta_plan.json recovery_artifact/state/coordination/
+          cp hive_validation/state/coordination/context_capsule.json recovery_artifact/state/coordination/
+          cp hive_validation/state/coordination/capability_board.json recovery_artifact/state/coordination/
+          cp hive_validation/state/coordination/remote_receipt_index.json recovery_artifact/state/coordination/
+          cp hive_validation/recovery_manifest.json recovery_artifact/
+
+      - name: Upload verified recovery artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: hive-sketchbook-012-recovery
+          path: recovery_artifact
+          if-no-files-found: error
+          retention-days: 7
