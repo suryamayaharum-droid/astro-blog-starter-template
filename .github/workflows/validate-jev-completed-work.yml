@@ -1,0 +1,25 @@
+name: Validate JEV Completed Work Derivation
+
+on:
+  push:
+    branches:
+      - ci/validate-jev-completed-work
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout validation bundle
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run HARUM coordination regression tests
+        working-directory: hive_validation
+        run: |
+          python -m unittest tests.test_harum_coord -v
