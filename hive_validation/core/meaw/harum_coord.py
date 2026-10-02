@@ -140,8 +140,21 @@ class HarumCoord:
         rules.update(current.get("rules",{}) or {})
         rules.update(fresh.get("rules",{}) or {})
         fresh["rules"]=rules
+
+        current_completed={
+            str(row.get("work_id")):row
+            for row in (current.get("completed_work",[]) or [])
+            if row.get("work_id")
+        }
+        merged_completed=[]
+        for row in (fresh.get("completed_work",[]) or []):
+            work_id=str(row.get("work_id") or "")
+            merged={**(current_completed.get(work_id,{}) or {}),**row}
+            merged_completed.append(merged)
+        fresh["completed_work"]=merged_completed
+
         for key,value in current.items():
-            if key not in fresh and key not in {"open_work","open_help_requests","open_decisions","conflicts","role_inboxes"}:
+            if key not in fresh and key not in {"open_work","completed_work","open_help_requests","open_decisions","conflicts","role_inboxes"}:
                 fresh[key]=value
         return fresh
 

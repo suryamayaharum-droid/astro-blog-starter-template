@@ -66,6 +66,10 @@ class HarumCoordTests(unittest.TestCase):
         jev=json.loads((self.root/".harum-assembly/jev_view.json").read_text())
         self.assertEqual(jev["rules"]["custom"],"keep-me")
         self.assertFalse(any(x.get("work_id")=="W1" for x in jev["open_work"]))
+        completed={x.get("work_id"):x for x in jev.get("completed_work",[])}
+        self.assertEqual(completed["W1"]["status"],"succeeded")
+        self.assertEqual(completed["W1"]["result"]["summary"],"PRONTO: done")
+        self.assertIn("evidence.md",completed["W1"]["evidence"])
 
     def test_second_actor_cannot_take_active_lease(self):
         self.coord.sync()
