@@ -1,0 +1,29 @@
+
+/* Shared editorial rhythm for historical study and institutional research. */
+.history-composition .page-hero,.bank-composition .page-hero{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(28px,5vw,72px);align-items:center;padding:60px 0 40px;border-bottom:0}
+.editorial-opening-copy{min-width:0}
+.history-composition .page-hero h1,.bank-composition .page-hero h1{font-size:clamp(3.5rem,7vw,7.3rem);line-height:.95;max-width:12ch}
+.history-composition .page-hero p,.bank-composition .page-hero p{max-width:43ch}
+.history-composition .section,.bank-composition .section{padding:44px 0}
+.history-composition .historyIndex{gap:14px}
+.history-composition .historyIndex a{padding:20px;border-radius:4px}
+.history-composition .historyIndex b{font-size:22px;line-height:1.15;margin-top:7px}
+.history-composition .historyPeriod{padding:64px 0}
+.history-composition .studyCell p,.history-composition .master p{font-size:14px;line-height:1.65}
+.history-composition .masters{gap:16px}
+.history-composition .master{padding:20px}
+.history-composition .sourcesGrid{gap:16px}
+.bank-composition .bank-grid{grid-template-columns:none;gap:18px}
+.bank-composition .bank-card{padding:24px;border-radius:8px}
+.bank-composition .bank-card h3{font-size:30px;line-height:1.08}
+.bank-composition .bank-card p{font-size:14px;line-height:1.65}
+.bank-composition .bank-fan{gap:20px}
+.bank-composition .fan-card{transform:none;border-radius:8px;padding:24px}
+.bank-composition .fan-card p{font-size:14px;line-height:1.65}
+.history-composition .journal .paper,.bank-composition .journal .paper{border-radius:4px}
+@media(max-width:760px){
+ .history-composition .page-hero,.bank-composition .page-hero{grid-template-columns:1fr;gap:26px;padding-top:46px}
+ .history-composition .page-hero h1,.bank-composition .page-hero h1{font-size:clamp(3rem,13vw,5rem);max-width:14ch}
+ .history-composition .section,.bank-composition .section{padding:30px 0}
+ .history-composition .historyPeriod{padding:44px 0}
+}

@@ -1,4 +1,6 @@
 ---
+import EditorialScene from '../components/EditorialScene.astro';
+import '../styles/composition.css';
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -8,8 +10,8 @@ const base=import.meta.env.BASE_URL.endsWith('/')?import.meta.env.BASE_URL:impor
 const live=imageBanks.filter(x=>x.liveFederated).length;
 ---
 <!doctype html><html lang="pt-BR"><head><BaseHead title="Bancos de Imagens · Harum Noir" description="Portas de estudo para acervos públicos, Open Access e domínio público, sem importar bibliotecas inteiras para o site." /></head>
-<body><Header/><main>
-<section class="page-hero"><div class="eyebrow">HARUM NOIR · BANCOS DE IMAGENS</div><h1>Portas, não depósitos.</h1><p>Em vez de copiar acervos inteiros, o HARUM NOIR organiza caminhos para as próprias instituições — com direitos, contexto, termos de busca e leques de estudo.</p></section>
+<body><Header/><main class="bank-composition">
+<section class="page-hero"><div class="editorial-opening-copy"><div class="eyebrow">HARUM NOIR · BANCOS DE IMAGENS</div><h1>Portas, não depósitos.</h1><p>Em vez de copiar acervos inteiros, o HARUM NOIR organiza caminhos para as próprias instituições — com direitos, contexto, termos de busca e leques de estudo.</p></div><EditorialScene image="museum-gallery" alt="Galeria temática para orientar a exploração de acervos"/></section>
 <section class="section bank-hero-grid">
   <div class="panel"><div class="eyebrow">CONCEITO</div><h2>O acervo continua onde nasceu.</h2><p>Nosso site vira um mapa inteligente: indica onde estudar, o que procurar e como atravessar um banco de imagens sem perder autoria, proveniência ou contexto.</p>
     <div class="bank-stats"><div class="bank-stat"><b>{imageBanks.length}</b><span>bancos catalogados</span></div><div class="bank-stat"><b>{live}</b><span>com busca federada ativa</span></div><div class="bank-stat"><b>0</b><span>acervos inteiros importados</span></div></div>

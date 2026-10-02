@@ -1,5 +1,7 @@
 ---
 import EcosystemRail from '../components/EcosystemRail.astro';
+import EditorialScene from '../components/EditorialScene.astro';
+import '../styles/composition.css';
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -17,12 +19,12 @@ const museumSearch=(name)=>base+"museus?q="+encodeURIComponent(name);
 </head>
 <body>
 <Header/>
-<main>
-  <section class="page-hero">
+<main class="history-composition">
+  <section class="page-hero"><div class="editorial-opening-copy">
     <div class="eyebrow">HARUM NOIR · ATLAS HISTÓRICO</div>
     <h1>História da arte.</h1>
     <p>Uma página viva para estudar períodos, mestres, construção, pensamento e fontes abertas — sempre voltando da referência para a mão.</p>
-  </section>
+  </div><EditorialScene image="drapery-still-life" alt="Natureza-morta de volumes, tecido e luz para orientar o estudo histórico"/></section>
 
   <section class="section historyIntro">
     <div class="panel">
