@@ -6,7 +6,7 @@ import Footer from '../components/Footer.astro';
 import {referenceArtists,referenceCollections,byRank} from '../data/references';
 const base=import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 const featured=byRank(17)!;
-const catalog=JSON.stringify(referenceArtists.map(a=>({rank:a.rank,slug:a.slug,name:a.name,focus:a.focus,videoId:a.slug==="zin-lim"?"":a.videoId,lane:a.lane})));
+const catalog=JSON.stringify(referenceArtists.map(a=>({rank:a.rank,slug:a.slug,name:a.name,focus:a.focus,videoId:a.videoId,lane:a.lane})));
 ---
 <!doctype html><html lang="pt-BR"><head><BaseHead title="Atlas de Referências · Harum Noir" description="Um atlas visual de artistas, desenho, carvão, grafite, figura, processo e repertório."/></head>
 <body><Header/><main class="stream-main">
@@ -42,7 +42,7 @@ const catalog=JSON.stringify(referenceArtists.map(a=>({rank:a.rank,slug:a.slug,n
    {items.map(a=><a class="stream-card" href={base+'referencias/'+a!.slug}>
     <div class="stream-card-media">
       <img class="stream-fallback" src={base+'noir/visual-atlas/'+(a!.focus.toLowerCase().includes('carv')?'charcoal-marks':a!.focus.toLowerCase().includes('jap')?'moonlit-landscape':a!.focus.toLowerCase().includes('museu')?'museum-gallery':'graphite-texture')+'.webp'} alt="" />
-      {a!.videoId&&a!.slug!=="zin-lim"&&<img class="stream-thumb" src={'https://i.ytimg.com/vi/'+a!.videoId+'/hqdefault.jpg'} alt={'Referência visual de '+a!.name} loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"/>}
+      {a!.videoId&&<img class="stream-thumb" src={'https://i.ytimg.com/vi/'+a!.videoId+'/hqdefault.jpg'} alt={'Referência visual de '+a!.name} loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"/>}
       <span class="stream-rank">{String(a!.rank).padStart(2,'0')}</span>
     </div>
     <div class="stream-card-body"><span>{a!.focus}</span><h3>{a!.name}</h3></div>
