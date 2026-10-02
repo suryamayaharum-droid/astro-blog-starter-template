@@ -15,7 +15,7 @@ from runtime import harum_assembly_bus as bus
 from core.meaw.capability_federation import sanitize_passport
 from core.meaw.remote_receipts import load_pending_receipts, evaluate_remote_result, mark_processed
 from core.meaw.harum_prewrite_guard import evaluate_prewrite
-from core.meaw.harum_projection_freshness import assess_projection_freshness, projection_generator_fingerprint
+from core.meaw.harum_projection_freshness import assess_projection_freshness
 
 FINAL_STATES={"succeeded","superseded","stable","stable-private"}
 
@@ -238,7 +238,6 @@ class HarumCoord:
                 "capsule":_load(self.paths["capsule"],{}),
                 "capability_board":_load(self.paths["capability_board"],{}),
             },
-            expected_generator_fingerprint=projection_generator_fingerprint(),
         )
 
     def status(self, role: str|None=None) -> dict[str,Any]:
@@ -288,8 +287,6 @@ class HarumCoord:
                     "current_jev_event":freshness.get("current_jev_event"),
                     "stale":freshness.get("stale",[]),
                     "missing_watermark":freshness.get("missing_watermark",[]),
-                    "stale_generator":freshness.get("stale_generator",[]),
-                    "missing_generator_fingerprint":freshness.get("missing_generator_fingerprint",[]),
                 }],
                 "projection_freshness":freshness,
                 "rule":"Derived coordination state must match JEV.last_event before connector mutation; run HARUM Coord sync first.",
@@ -532,13 +529,10 @@ def _print_lite(status: dict[str,Any]) -> None:
     print(f"TENHO: foco={focus} · saúde={health}")
     freshness=status.get("projection_freshness",{}) or {}
     if freshness and not freshness.get("fresh",True):
-        stale_parts=(
-            (freshness.get("stale",[]) or [])
-            +(freshness.get("missing_watermark",[]) or [])
-            +(freshness.get("stale_generator",[]) or [])
-            +(freshness.get("missing_generator_fingerprint",[]) or [])
+        print(
+            "PRECISO: SYNC REQUIRED · projeções antigas="
+            + ",".join(freshness.get("stale",[]) or freshness.get("missing_watermark",[]))
         )
-        print("PRECISO: SYNC REQUIRED · projeções antigas="+",".join(sorted(set(stale_parts))))
         print("PASSO: python -m core.meaw.harum_coord sync")
         return
     advice=status.get("advice",{}) or {}
@@ -592,15 +586,6 @@ def main() -> None:
             else: _print_lite(result)
             return
         if args.command=="advice":
-            freshness=coord.projection_freshness()
-            if not freshness.get("fresh"):
-                result={
-                    "stale":True,
-                    "action":"run-harum-coord-sync",
-                    "projection_freshness":freshness,
-                }
-                print(json.dumps(result,ensure_ascii=False,indent=2) if args.json else "SYNC REQUIRED · run harum_coord sync")
-                raise SystemExit(2)
             result=_load(coord.paths["meta"],{})
             print(json.dumps(result,ensure_ascii=False,indent=2) if args.json else json.dumps(result,ensure_ascii=False))
             return

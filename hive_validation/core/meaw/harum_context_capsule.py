@@ -35,13 +35,12 @@ def _open_help(jev: dict[str,Any]) -> list[dict[str,Any]]:
         })
     return rows[:6]
 
-def build_capsule(*,panel:dict[str,Any],jev:dict[str,Any],dispatch:dict[str,Any],health:dict[str,Any],validation:dict[str,Any],meta:dict[str,Any]|None=None,generator_fingerprint:str|None=None) -> dict[str,Any]:
+def build_capsule(*,panel:dict[str,Any],jev:dict[str,Any],dispatch:dict[str,Any],health:dict[str,Any],validation:dict[str,Any],meta:dict[str,Any]|None=None) -> dict[str,Any]:
     focus=panel.get("current_focus",{}) or {}
     public=panel.get("public_web",{}) or {}
     body={
       "schema":"harum.context-capsule/v1",
       "source_last_event":jev.get("last_event"),
-      "source_generator_fingerprint":generator_fingerprint,
       "focus":{
         "project":focus.get("project"),
         "internal_name":focus.get("internal_name"),
