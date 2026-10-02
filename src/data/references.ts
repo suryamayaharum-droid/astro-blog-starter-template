@@ -2894,7 +2894,7 @@ export const referenceArtists:PublicReference[]=[
     "site": "https://www.gnomon.edu/",
     "lane": "Escola / indústria",
     "videoId": "",
-    "youtube": "",
+    "youtube": "https://www.youtube.com/user/gnomonschool",
     "instagram": "",
     "refs": [
       {
