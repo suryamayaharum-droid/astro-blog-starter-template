@@ -36,3 +36,6 @@ jobs:
 
       - name: Cloudflare dry run
         run: npm run check:cloudflare
+
+      - name: Internal route and asset links
+        run: node scripts/check_internal_links.mjs
