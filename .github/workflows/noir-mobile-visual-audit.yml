@@ -78,7 +78,13 @@ jobs:
               let consoleErrors = [];
               let failedResources = [];
               page.on('console', msg => {
-                if (msg.type() === 'error') consoleErrors.push(msg.text());
+                if (msg.type() !== 'error') return;
+                const text = msg.text();
+                // YouTube embeds may request the experimental Compute Pressure API.
+                // Chromium reports the browser-level Permissions Policy denial as an
+                // error even when the Harumverso page and player render normally.
+                if (text === 'Permissions policy violation: compute-pressure is not allowed in this document.') return;
+                consoleErrors.push(text);
               });
               page.on('response', response => {
                 if (response.status() >= 400) {
