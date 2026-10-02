@@ -1,0 +1,26 @@
+{
+  "schema": "harum.remote-result-receipt/v1",
+  "receipt_id": "rr-hn-ref-visual-sources-002-20260928a",
+  "work_id": "HN-REF-VISUAL-SOURCES-002",
+  "actor_id": "chatgpt-sol-session-20260927-2151",
+  "role": "research-scout",
+  "submitted_at": "2026-09-28T01:00:00+00:00",
+  "summary": "reference batch 2 verified and applied; GitHub Pages success and Vercel READY; coverage now 28/50",
+  "result_refs": [
+    "docs/HN_REF_VISUAL_SOURCES_002.md",
+    "749b3092772c627256558f6a9d46620f8e0feae5",
+    "6ab0d8100b7963cb52a3d35f5483f07f63dd6481"
+  ],
+  "evidence": [
+    "docs/HN_REF_VISUAL_SOURCES_002.md",
+    "GitHub Pages deploy 36364138098 success",
+    "Harum Noir Link Health 36364138035 success",
+    "Vercel deployment dpl_71Ypkd3bDWbVnFZV3rM522Cz8256 READY",
+    "capability board commit 2c776f41c347436506f2ac8479cd8b38cfb90a69"
+  ],
+  "external_actions_already_completed": true,
+  "routing_evidence": {
+    "board_commit": "2c776f41c347436506f2ac8479cd8b38cfb90a69",
+    "actor_was_candidate": true
+  }
+}

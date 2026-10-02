@@ -1,0 +1,919 @@
+{
+  "schema": "harum.capability-board/v1",
+  "generated_at": "2026-09-30T20:54:33.067448+00:00",
+  "summary": {
+    "instances_total": 4,
+    "instances_fresh_dispatchable": 0,
+    "connectors_known": 18,
+    "skills_known": 163,
+    "open_routable_work": 0,
+    "open_work_without_instance": 1,
+    "role_gaps": [
+      "narrative-editor"
+    ]
+  },
+  "instances": [
+    {
+      "actor_id": "chatgpt-sol-coding-validation-20260928",
+      "roles": [
+        "coding-instance",
+        "coordination-auditor"
+      ],
+      "reachability": "active",
+      "dispatch_modes": [
+        "local-runtime"
+      ],
+      "fresh": false,
+      "dispatchable": true,
+      "expires_at": "2026-09-28T14:36:00Z",
+      "connectors": [
+        {
+          "id": "github",
+          "provider": "GitHub",
+          "status": "verified"
+        },
+        {
+          "id": "vercel",
+          "provider": "Vercel",
+          "status": "verified"
+        }
+      ],
+      "skill_count": 0,
+      "surfaces": [],
+      "capability_count": 5
+    },
+    {
+      "actor_id": "chatgpt-sol-editorial-recovery-20260928",
+      "roles": [
+        "narrative-editor"
+      ],
+      "reachability": "active",
+      "dispatch_modes": [
+        "connector-api"
+      ],
+      "fresh": false,
+      "dispatchable": true,
+      "expires_at": "2026-09-28T18:32:00Z",
+      "connectors": [
+        {
+          "id": "github",
+          "provider": "GitHub",
+          "status": "verified"
+        }
+      ],
+      "skill_count": 0,
+      "surfaces": [],
+      "capability_count": 4
+    },
+    {
+      "actor_id": "chatgpt-sol-editorial-sketchbook-20260928",
+      "roles": [
+        "narrative-editor"
+      ],
+      "reachability": "active",
+      "dispatch_modes": [
+        "local-runtime"
+      ],
+      "fresh": false,
+      "dispatchable": true,
+      "expires_at": "2026-09-28T14:44:30Z",
+      "connectors": [
+        {
+          "id": "github",
+          "provider": "GitHub",
+          "status": "verified"
+        }
+      ],
+      "skill_count": 0,
+      "surfaces": [],
+      "capability_count": 3
+    },
+    {
+      "actor_id": "chatgpt-sol-session-20260927-2151",
+      "roles": [
+        "coding-instance",
+        "research-scout",
+        "work-instance",
+        "coordination-auditor"
+      ],
+      "reachability": "active",
+      "dispatch_modes": [
+        "local-runtime"
+      ],
+      "fresh": false,
+      "dispatchable": true,
+      "expires_at": "2026-09-28T02:51:00+00:00",
+      "connectors": [
+        {
+          "id": "github",
+          "provider": "GitHub",
+          "status": "verified"
+        },
+        {
+          "id": "vercel",
+          "provider": "Vercel",
+          "status": "verified"
+        },
+        {
+          "id": "adobe",
+          "provider": "Adobe",
+          "status": "declared"
+        },
+        {
+          "id": "airtable",
+          "provider": "Airtable",
+          "status": "declared"
+        },
+        {
+          "id": "canva",
+          "provider": "Canva",
+          "status": "declared"
+        },
+        {
+          "id": "descript",
+          "provider": "Descript",
+          "status": "declared"
+        },
+        {
+          "id": "dropbox",
+          "provider": "Dropbox",
+          "status": "declared"
+        },
+        {
+          "id": "elevenlabs",
+          "provider": "ElevenLabs",
+          "status": "declared"
+        },
+        {
+          "id": "gamma",
+          "provider": "Gamma",
+          "status": "declared"
+        },
+        {
+          "id": "gmail",
+          "provider": "Gmail",
+          "status": "declared"
+        },
+        {
+          "id": "google-calendar",
+          "provider": "Google Calendar",
+          "status": "declared"
+        },
+        {
+          "id": "google-contacts",
+          "provider": "Google Contacts",
+          "status": "declared"
+        },
+        {
+          "id": "google-drive",
+          "provider": "Google Drive",
+          "status": "declared"
+        },
+        {
+          "id": "heygen",
+          "provider": "HeyGen",
+          "status": "declared"
+        },
+        {
+          "id": "neon",
+          "provider": "Neon",
+          "status": "declared"
+        },
+        {
+          "id": "openai-platform",
+          "provider": "OpenAI Platform",
+          "status": "declared"
+        },
+        {
+          "id": "supabase",
+          "provider": "Supabase",
+          "status": "declared"
+        },
+        {
+          "id": "windsor-ai",
+          "provider": "Windsor ai",
+          "status": "declared"
+        }
+      ],
+      "skill_count": 163,
+      "surfaces": [
+        "connector-api",
+        "github-api",
+        "vercel-api",
+        "web-research"
+      ],
+      "capability_count": 9
+    }
+  ],
+  "connectors": [
+    {
+      "id": "adobe",
+      "verified": [],
+      "declared": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "degraded": [],
+      "unavailable": []
+    },
+    {
+      "id": "airtable",
+      "verified": [],
+      "declared": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "degraded": [],
+      "unavailable": []
+    },
+    {
+      "id": "canva",
+      "verified": [],
+      "declared": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "degraded": [],
+      "unavailable": []
+    },
+    {
+      "id": "descript",
+      "verified": [],
+      "declared": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "degraded": [],
+      "unavailable": []
+    },
+    {
+      "id": "dropbox",
+      "verified": [],
+      "declared": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "degraded": [],
+      "unavailable": []
+    },
+    {
+      "id": "elevenlabs",
+      "verified": [],
+      "declared": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "degraded": [],
+      "unavailable": []
+    },
+    {
+      "id": "gamma",
+      "verified": [],
+      "declared": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "degraded": [],
+      "unavailable": []
+    },
+    {
+      "id": "github",
+      "verified": [
+        "chatgpt-sol-coding-validation-20260928",
+        "chatgpt-sol-editorial-recovery-20260928",
+        "chatgpt-sol-editorial-sketchbook-20260928",
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "declared": [],
+      "degraded": [],
+      "unavailable": []
+    },
+    {
+      "id": "gmail",
+      "verified": [],
+      "declared": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "degraded": [],
+      "unavailable": []
+    },
+    {
+      "id": "google-calendar",
+      "verified": [],
+      "declared": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "degraded": [],
+      "unavailable": []
+    },
+    {
+      "id": "google-contacts",
+      "verified": [],
+      "declared": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "degraded": [],
+      "unavailable": []
+    },
+    {
+      "id": "google-drive",
+      "verified": [],
+      "declared": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "degraded": [],
+      "unavailable": []
+    },
+    {
+      "id": "heygen",
+      "verified": [],
+      "declared": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "degraded": [],
+      "unavailable": []
+    },
+    {
+      "id": "neon",
+      "verified": [],
+      "declared": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "degraded": [],
+      "unavailable": []
+    },
+    {
+      "id": "openai-platform",
+      "verified": [],
+      "declared": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "degraded": [],
+      "unavailable": []
+    },
+    {
+      "id": "supabase",
+      "verified": [],
+      "declared": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "degraded": [],
+      "unavailable": []
+    },
+    {
+      "id": "vercel",
+      "verified": [
+        "chatgpt-sol-coding-validation-20260928",
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "declared": [],
+      "degraded": [],
+      "unavailable": []
+    },
+    {
+      "id": "windsor-ai",
+      "verified": [],
+      "declared": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "degraded": [],
+      "unavailable": []
+    }
+  ],
+  "skills": {
+    "count": 163,
+    "actors_by_skill": {
+      "skills://plugins/airtable/airtable-cli": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/airtable/airtable-filters": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/airtable/airtable-overview": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/app-69312da8e4dc81919370cb86fd172b6c/adobe-batch-edit-photos": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/app-69312da8e4dc81919370cb86fd172b6c/adobe-create-mockups": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/app-69312da8e4dc81919370cb86fd172b6c/adobe-create-social-variations": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/app-69312da8e4dc81919370cb86fd172b6c/adobe-design-from-template": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/app-69312da8e4dc81919370cb86fd172b6c/adobe-edit-quick-cut": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/app-69312da8e4dc81919370cb86fd172b6c/adobe-fonts": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/app-69312da8e4dc81919370cb86fd172b6c/adobe-retouch-portraits": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/app-69b31dc2110c8191b8b47dc98fe5a052/clean-up-dropbox-content": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/app-69b31dc2110c8191b8b47dc98fe5a052/collect-files-with-request": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/app-69b31dc2110c8191b8b47dc98fe5a052/find-dropbox-content": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/app-69b31dc2110c8191b8b47dc98fe5a052/inspect-dropbox-file": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/app-69b31dc2110c8191b8b47dc98fe5a052/organize-dropbox-folder": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/app-69b31dc2110c8191b8b47dc98fe5a052/share-dropbox-content": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/agent-simplification": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/agents": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/agents-platform": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/architect-agent-memory": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/architect-branches-versions-merge": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/architect-create-client-tool": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/architect-create-llm-test": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/architect-create-simulation-test": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/architect-create-tool-test": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/architect-create-webhook-tool": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/architect-edit-existing-tool": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/architect-edit-string-fields": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/architect-edit-workflows": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/architect-explain-test-runs": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/architect-explore-agent": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/architect-generate-agent": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/architect-get-agent-ci-green": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/architect-llm-selection": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/architect-manage-procedures": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/architect-migrate-from-competitor": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/architect-migrate-to-procedures": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/architect-mock-all-tools": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/architect-post-call-data": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/architect-review-live-calls": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/architect-schedule-launch": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/architect-secure-for-production": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/architect-structured-procedures": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/architect-troubleshoot-tool-errors": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/architect-turn-taking-latency": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/architect-update-config-safely": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/code-tools": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/creative-studio": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/dubbing": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/fix-agent-qa-ticket": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/music": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/setup-api-key": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/sound-effects": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/speech-engine": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/speech-to-text": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/text-to-speech": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/voice-changer": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/app-6a8d784b60cc81919aeafbfaeda5fbcf/voice-isolator": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/canva/canva-brand-check": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/canva/canva-branded-presentation": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/canva/canva-bulk-create": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/canva/canva-design-feedback": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/canva/canva-edit-design": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/canva/canva-implement-feedback": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/canva/canva-resize-for-social-media": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/canva/canva-translate-design": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/documents-router/document": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/google-drive/google-docs": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/google-drive/google-drive": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/google-drive/google-drive-comments": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/google-drive/google-sheets": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/google-drive/google-slides": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/neon-postgres/neon": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/neon-postgres/neon-ai-gateway": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/neon-postgres/neon-functions": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/neon-postgres/neon-object-storage": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/neon-postgres/neon-postgres": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/openai-templates/artifact-template-analytics-dashboard": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/openai-templates/artifact-template-business-review": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/openai-templates/artifact-template-design-report": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/openai-templates/artifact-template-experiment-analysis": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/openai-templates/artifact-template-financial-budget": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/openai-templates/artifact-template-investment-committee-memo": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/openai-templates/artifact-template-legal-memorandum": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/openai-templates/artifact-template-market-trends-report": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/openai-templates/artifact-template-minimal-letterhead": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/openai-templates/artifact-template-operating-calendar": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/openai-templates/artifact-template-operating-review": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/openai-templates/artifact-template-project-kickoff": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/openai-templates/artifact-template-project-tracker": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/openai-templates/artifact-template-sales-pipeline": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/openai-templates/artifact-template-simple-dark-mode": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/openai-templates/artifact-template-simple-light-mode": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/openai-templates/artifact-template-strategy-memorandum": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/openai-templates/artifact-template-system-design": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/openai-templates/artifact-template-team-alignment": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/openai-templates/artifact-template-three-statement-forecast": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/pdf-router/pdf": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/plugin-management/plugin-management": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/presentations-router/presentation": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/spreadsheets-router/spreadsheet": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/stark-ai-developer/animated-readme-logo": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/stark-ai-developer/architecture-compass": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/stark-ai-developer/codex-spec-interviewer": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/stark-ai-developer/drawio-diagrams": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/supabase/supabase": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/supabase/supabase-postgres-best-practices": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/template-creator/template-creator": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/vercel/agent-browser": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/vercel/agent-browser-verify": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/vercel/ai-elements": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/vercel/ai-gateway": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/vercel/ai-generation-persistence": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/vercel/ai-sdk": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/vercel/auth": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/vercel/bootstrap": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/vercel/cdn-caching": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/vercel/chat-sdk": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/vercel/cms": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/vercel/cron-jobs": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/vercel/deployments-cicd": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/vercel/email": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/vercel/env-vars": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/vercel/eve": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/vercel/geist": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/vercel/geistdocs": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/vercel/investigation-mode": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/vercel/json-render": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/vercel/knowledge-update": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/vercel/marketplace": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/vercel/micro": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/vercel/microfrontends": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/vercel/ncc": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/vercel/next-cache-components": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/vercel/next-forge": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/vercel/next-upgrade": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/vercel/nextjs": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/vercel/observability": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/vercel/payments": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/vercel/react-best-practices": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/vercel/routing-middleware": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/vercel/runtime-cache": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/vercel/satori": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/vercel/shadcn": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/vercel/sign-in-with-vercel": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/vercel/swr": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/vercel/turbopack": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/vercel/turborepo": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/vercel/v0-dev": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/vercel/vercel-agent": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/vercel/vercel-api": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/vercel/vercel-cli": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/vercel/vercel-connect": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/vercel/vercel-firewall": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/vercel/vercel-flags": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/vercel/vercel-functions": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/vercel/vercel-queues": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/vercel/vercel-sandbox": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/vercel/vercel-services": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/vercel/vercel-storage": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/vercel/verification": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/vercel/workflow": [
+        "chatgpt-sol-session-20260927-2151"
+      ],
+      "skills://plugins/windsor-ai/windsor": [
+        "chatgpt-sol-session-20260927-2151"
+      ]
+    }
+  },
+  "work": [
+    {
+      "work_id": "HN-PERCURSO-SKETCHBOOK-DEEPEN-012",
+      "state": "unroutable",
+      "priority": 106,
+      "candidate_instances": [],
+      "requirements": {
+        "roles": [
+          "narrative-editor"
+        ],
+        "capabilities": [
+          "editorial-bridges",
+          "story-structure"
+        ],
+        "connectors": [],
+        "skills": [],
+        "surfaces": [],
+        "verified_connectors": false
+      },
+      "reason": "expired-lease-recovery"
+    }
+  ],
+  "gaps": [
+    {
+      "work_id": "HN-PERCURSO-SKETCHBOOK-DEEPEN-012",
+      "reason": "no-announced-reachable-instance",
+      "requirements": {
+        "roles": [
+          "narrative-editor"
+        ],
+        "capabilities": [
+          "editorial-bridges",
+          "story-structure"
+        ],
+        "connectors": [],
+        "skills": [],
+        "surfaces": [],
+        "verified_connectors": false
+      }
+    }
+  ],
+  "rules": {
+    "metadata_only": true,
+    "credentials_forbidden": true,
+    "verified_is_stronger_than_declared": true,
+    "expired_or_offline_not_routable": true,
+    "claim_and_lease_still_required": true
+  },
+  "source_last_event": "evt-hn-percurso-sketchbook-deepen-progress-20260928"
+}
