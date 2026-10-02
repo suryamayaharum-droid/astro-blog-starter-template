@@ -1,0 +1,190 @@
+---
+const rawBase = import.meta.env.BASE_URL;
+const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
+---
+
+<aside class="lume-host" data-lume data-base={base} aria-label="Lume, guia local do Harum Noir">
+  <button class="lume-toggle" type="button" data-lume-toggle aria-controls="lume-panel" aria-expanded="false">
+    <span class="lume-sigil" aria-hidden="true">
+      <svg viewBox="0 0 48 48" focusable="false">
+        <circle class="lume-orbit" cx="24" cy="24" r="19"></circle>
+        <path class="lume-lantern" d="M24 8.5c-6.2 4.2-10 9.2-10 15.2 0 7 4.6 12.6 10 16.4 5.4-3.8 10-9.4 10-16.4 0-6-3.8-11-10-15.2Z"></path>
+        <path class="lume-ray" d="M18.5 28.2c1.7 2.1 3.6 3.1 5.5 3.1s3.8-1 5.5-3.1"></path>
+        <circle class="lume-light" cx="24" cy="21" r="3"></circle>
+      </svg>
+    </span>
+    <span class="lume-toggle-copy"><strong>Lume</strong><small>Guia do ateliê</small></span>
+    <span class="lume-toggle-mark" aria-hidden="true">✦</span>
+  </button>
+
+  <section class="lume-panel" id="lume-panel" data-lume-panel role="dialog" aria-modal="false" aria-labelledby="lume-title" hidden>
+    <header class="lume-panel-head">
+      <span class="lume-panel-sigil" aria-hidden="true">✦</span>
+      <div>
+        <p class="lume-kicker">ANFITRIÃ DO ATELIÊ</p>
+        <h2 id="lume-title">Por onde começamos?</h2>
+      </div>
+      <button class="lume-close" type="button" data-lume-close aria-label="Fechar guia">×</button>
+    </header>
+
+    <p class="lume-intro">Sou Lume. Posso indicar caminhos por acervos, referências, cadernos e percursos.</p>
+    <p class="lume-privacy"><span aria-hidden="true">●</span> Guia local · as perguntas não saem deste navegador</p>
+
+    <form class="lume-form" data-lume-form>
+      <label for="lume-question">O que você quer explorar?</label>
+      <div class="lume-input-row">
+        <input id="lume-question" name="question" type="text" maxlength="160" autocomplete="off" placeholder="Ex.: museus, gesto, artistas…" required />
+        <button type="submit" aria-label="Enviar pergunta">→</button>
+      </div>
+    </form>
+
+    <div class="lume-prompts" role="group" aria-label="Sugestões de perguntas">
+      <button type="button" data-lume-prompt="Como encontro obras nos museus?">Museus</button>
+      <button type="button" data-lume-prompt="Quero estudar gesto e mãos">Gesto & mãos</button>
+      <button type="button" data-lume-prompt="Onde vejo artistas de referência?">Referências</button>
+    </div>
+
+    <div class="lume-answer">
+      <p data-lume-response aria-live="polite">Escolha uma sugestão ou escreva sobre o que procura.</p>
+      <nav class="lume-answer-links" data-lume-links aria-label="Caminhos sugeridos"></nav>
+    </div>
+    <p class="lume-note">Esta primeira versão usa orientações determinísticas; ainda não conecta a um modelo de IA.</p>
+  </section>
+</aside>
+
+<script>
+const root = document.querySelector('[data-lume]');
+if (root) {
+  const toggle = root.querySelector('[data-lume-toggle]');
+  const panel = root.querySelector('[data-lume-panel]');
+  const closeButton = root.querySelector('[data-lume-close]');
+  const form = root.querySelector('[data-lume-form]');
+  const question = root.querySelector('#lume-question');
+  const response = root.querySelector('[data-lume-response]');
+  const links = root.querySelector('[data-lume-links]');
+  const baseValue = root.dataset.base || '/';
+  const base = baseValue.endsWith('/') ? baseValue : baseValue + '/';
+  const destinations = Object.freeze({
+    museums: { href: base + 'museus/', label: 'Abrir Museus →' },
+    gesture: { href: base + 'busca/?q=gesto', label: 'Buscar “gesto” →' },
+    notebooks: { href: base + 'cadernos/', label: 'Abrir Cadernos →' },
+    references: { href: base + 'referencias/', label: 'Abrir Referências →' },
+    journeys: { href: base + 'percursos/', label: 'Abrir Percursos →' },
+    search: { href: base + 'busca/', label: 'Abrir Busca →' }
+  });
+
+  const answerFor = (raw) => {
+    const text = String(raw || '').trim().toLocaleLowerCase('pt-BR').normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    if (!text) return { message: 'Escreva uma palavra ou escolha uma sugestão para eu indicar um caminho.', actions: [] };
+    if (/\b(museu|museus|acervo|acervos|obra|obras|colecao|colecoes|met|aic|cleveland)\b/.test(text)) {
+      return { message: 'Na página Museus, pesquise por artista, obra ou tema. Abra a ficha do acervo para consultar os dados na instituição de origem.', actions: ['museums'] };
+    }
+    if (/\b(gesto|mao|maos|figura|exercicio|exercicios|pratica|caderno|cadernos|estudo|estudar)\b/.test(text)) {
+      return { message: 'Para estudar gesto e prática, comece pelo Caderno Gesto ou atravesse a busca do site com esse termo.', actions: ['notebooks', 'gesture'] };
+    }
+    if (/\b(referencia|referencias|artista|artistas|proko|youtube|video|videos|desenho)\b/.test(text)) {
+      return { message: 'O Atlas de Referências reúne artistas, materiais de estudo e caminhos para as fontes originais.', actions: ['references'] };
+    }
+    if (/\b(percurso|percursos|trilha|trilhas|roteiro|comecar|inicio)\b/.test(text)) {
+      return { message: 'Os Percursos organizam o estudo em sequências curtas. Escolha uma trilha e siga os links entre páginas.', actions: ['journeys'] };
+    }
+    if (/\b(busca|buscar|pesquisar|pesquisa|procurar|site|pagina|paginas)\b/.test(text)) {
+      return { message: 'A Busca atravessa referências, cadernos, história, bancos, temporadas e percursos.', actions: ['search'] };
+    }
+    return { message: 'Ainda não reconheço esse tema. Posso levar você aos acervos, ao Atlas de Referências ou aos Percursos.', actions: ['museums', 'references', 'journeys'] };
+  };
+
+  const showAnswer = (raw) => {
+    const answer = answerFor(raw);
+    response.textContent = answer.message;
+    links.replaceChildren();
+    answer.actions.forEach((key) => {
+      const destination = destinations[key];
+      if (!destination) return;
+      const link = document.createElement('a');
+      link.href = destination.href;
+      link.textContent = destination.label;
+      links.append(link);
+    });
+  };
+
+  const setOpen = (open, returnFocus = false) => {
+    panel.hidden = !open;
+    toggle.setAttribute('aria-expanded', String(open));
+    if (open) question.focus();
+    else if (returnFocus) toggle.focus();
+  };
+
+  toggle.addEventListener('click', () => setOpen(panel.hidden));
+  closeButton.addEventListener('click', () => setOpen(false, true));
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    showAnswer(question.value);
+  });
+  root.querySelectorAll('[data-lume-prompt]').forEach((button) => {
+    button.addEventListener('click', () => {
+      question.value = button.dataset.lumePrompt || '';
+      showAnswer(question.value);
+    });
+  });
+  panel.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') setOpen(false, true);
+  });
+}
+</script>
+
+<style>
+.lume-host{position:fixed;z-index:110;right:clamp(14px,2.5vw,30px);bottom:22px;max-width:calc(100vw - 24px);color:var(--paper);font-family:inherit}
+.lume-toggle{display:flex;align-items:center;gap:10px;min-height:54px;padding:6px 13px 6px 7px;border:1px solid rgba(179,154,105,.55);border-radius:999px;background:rgba(13,14,15,.94);color:var(--paper);box-shadow:0 12px 36px rgba(0,0,0,.42);backdrop-filter:blur(16px);cursor:pointer;text-align:left}
+.lume-toggle:hover{border-color:var(--gold);background:#171718}
+.lume-sigil{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:radial-gradient(circle,rgba(179,154,105,.2),rgba(179,154,105,.035) 68%);flex:0 0 auto}
+.lume-sigil svg{width:34px;height:34px;overflow:visible}
+.lume-orbit{fill:none;stroke:rgba(179,154,105,.38);stroke-width:1;stroke-dasharray:2 3;transform-origin:24px 24px;animation:lume-orbit 18s linear infinite}
+.lume-lantern{fill:rgba(179,154,105,.12);stroke:var(--gold);stroke-width:1.25;stroke-linejoin:round}
+.lume-ray{fill:none;stroke:var(--paper-2);stroke-width:1.2;stroke-linecap:round}
+.lume-light{fill:var(--gold);filter:drop-shadow(0 0 5px rgba(220,191,126,.85))}
+.lume-toggle-copy{display:grid;gap:1px}
+.lume-toggle-copy strong{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase}
+.lume-toggle-copy small{color:var(--muted);font-size:.66rem}
+.lume-toggle-mark{color:var(--gold);font-size:15px;margin-left:3px}
+.lume-panel{position:absolute;right:0;bottom:calc(100% + 12px);display:grid;gap:13px;width:min(376px,calc(100vw - 24px));max-height:min(590px,calc(100dvh - 112px));overflow:auto;overscroll-behavior:contain;padding:20px;border:1px solid rgba(179,154,105,.42);border-radius:22px;background:radial-gradient(circle at 95% 0,rgba(179,154,105,.11),transparent 11rem),rgba(15,16,17,.97);box-shadow:0 28px 88px rgba(0,0,0,.62);backdrop-filter:blur(20px)}
+.lume-panel-head{display:grid;grid-template-columns:38px minmax(0,1fr) 30px;align-items:center;gap:10px}
+.lume-panel-sigil{display:grid;place-items:center;width:36px;height:36px;border:1px solid rgba(179,154,105,.38);border-radius:50%;color:var(--gold);background:rgba(179,154,105,.08)}
+.lume-kicker{margin:0;color:var(--gold);font-size:.58rem;font-weight:800;letter-spacing:.18em}
+.lume-panel h2{margin:3px 0 0;font:400 1.55rem/1.05 Georgia,serif;letter-spacing:-.025em}
+.lume-close{width:30px;height:30px;border:1px solid var(--line);border-radius:50%;background:rgba(255,255,255,.03);color:var(--paper);font-size:20px;line-height:1;cursor:pointer}
+.lume-intro{margin:0;color:var(--paper-2);font-size:.82rem;line-height:1.55}
+.lume-privacy{margin:-5px 0 0;color:#a9b9a1;font-size:.65rem}
+.lume-privacy span{margin-right:5px;font-size:.55rem;color:#9fb28f}
+.lume-form{display:grid;gap:7px}
+.lume-form label{font-size:.67rem;color:var(--muted)}
+.lume-input-row{display:grid;grid-template-columns:minmax(0,1fr) 42px;gap:7px}
+.lume-input-row input{min-width:0;height:42px;padding:0 12px;border:1px solid var(--line);border-radius:11px;background:rgba(4,5,6,.62);color:var(--paper);font:inherit;font-size:.76rem}
+.lume-input-row input::placeholder{color:#77736d}
+.lume-input-row input:focus{border-color:var(--gold);outline:2px solid rgba(179,154,105,.2);outline-offset:1px}
+.lume-input-row button{border:1px solid rgba(179,154,105,.55);border-radius:11px;background:var(--gold);color:var(--ink);font-size:21px;cursor:pointer}
+.lume-prompts{display:flex;flex-wrap:wrap;gap:6px}
+.lume-prompts button{min-height:34px;padding:6px 10px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.025);color:var(--paper-2);font:inherit;font-size:.65rem;cursor:pointer}
+.lume-prompts button:hover{border-color:var(--gold-dim);color:var(--paper)}
+.lume-answer{min-height:78px;padding:12px;border-left:2px solid var(--gold-dim);border-radius:0 12px 12px 0;background:rgba(255,255,255,.025)}
+.lume-answer p{margin:0;color:var(--paper-2);font-size:.76rem;line-height:1.55}
+.lume-answer-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.lume-answer-links:empty{display:none}
+.lume-answer-links a{color:var(--gold);font-size:.68rem;font-weight:700;text-decoration:none;border-bottom:1px solid rgba(179,154,105,.38)}
+.lume-answer-links a:hover{color:var(--paper)}
+.lume-note{margin:-5px 0 0;color:#77736d;font-size:.61rem;line-height:1.4}
+.lume-host :focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+@keyframes lume-orbit{to{transform:rotate(360deg)}}
+@media(max-width:760px){
+  .lume-host{right:12px;bottom:calc(88px + env(safe-area-inset-bottom))}
+  .lume-toggle{min-height:48px;padding:4px 10px 4px 5px;gap:7px}
+  .lume-sigil{width:36px;height:36px}
+  .lume-sigil svg{width:31px;height:31px}
+  .lume-panel{max-height:calc(100dvh - 184px - env(safe-area-inset-bottom));padding:16px;border-radius:18px}
+}
+@media(max-height:560px){
+  .lume-host{bottom:calc(78px + env(safe-area-inset-bottom))}
+  .lume-panel{max-height:calc(100dvh - 166px - env(safe-area-inset-bottom));gap:10px;padding:14px}
+}
+@media(prefers-reduced-motion:reduce){.lume-orbit{animation:none}}
+</style>
