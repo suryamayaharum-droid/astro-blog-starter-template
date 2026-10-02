@@ -1,5 +1,6 @@
 ---
 import EcosystemRail from '../components/EcosystemRail.astro';
+import { STUDIO_SITE } from '../consts';
 import BaseHead from '../components/BaseHead.astro';import Header from '../components/Header.astro';import Footer from '../components/Footer.astro';const base=import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 const itens=[
 ["Atlas Harum Noir","Mapa das rotas editoriais do ecossistema.",`${base}atlas`],
@@ -14,7 +15,7 @@ const itens=[
 ["Carta do Ateliê","Edições públicas e gratuitas.",`${base}carta`],
 ["Modelo Vivo e Gesto · texto aberto","Documento público da primeira temporada.",`${base}vault/E01_MODELO_VIVO_GESTO.md`],
 ["RSS da Carta","Feed aberto para acompanhar novas edições.",`${base}rss.xml`],
-["Site principal Studio 23","Atendimento, portfólio documental e canais oficiais do estúdio.","https://tattoostudio23.suryamaya-harum.chatgpt.site/"],
+["Site principal Studio 23","Atendimento, portfólio documental e canais oficiais do estúdio.",STUDIO_SITE],
 ];
 ---
 <!doctype html><html lang="pt-BR"><head><BaseHead title="Arquivo · Harum Noir" description="Acesso público ao Atlas, museus, cadernos, temporadas, cartas, métodos e materiais abertos do Harum Noir."/></head><body><Header/><main>
