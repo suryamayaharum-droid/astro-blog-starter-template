@@ -1,0 +1,43 @@
+{
+  "schema": "harum.coordination-health/v3",
+  "source_last_event": "deef54e6-be66-48f5-bbd0-82ea26896700",
+  "checked_at": "2026-10-02T15:02:02.345173+00:00",
+  "status": "healthy",
+  "counts": {
+    "issues": 0,
+    "warnings": 0,
+    "open_work": 0,
+    "open_help": 0,
+    "active_leases": 0,
+    "known_instances": 4,
+    "dormant_instances": 3
+  },
+  "issues": [],
+  "warnings": [],
+  "suggested_repairs": [],
+  "recovery_candidates": [],
+  "dormant_instances": [
+    {
+      "instance": "chatgpt-sol-coding-validation-20260928",
+      "role": "coding-instance",
+      "reachability": "active",
+      "reason": "ttl-expired",
+      "expired_at": "2026-09-28T14:36:00+00:00"
+    },
+    {
+      "instance": "chatgpt-sol-editorial-sketchbook-20260928",
+      "role": "narrative-editor",
+      "reachability": "active",
+      "reason": "ttl-expired",
+      "expired_at": "2026-09-28T14:44:30+00:00"
+    },
+    {
+      "instance": "chatgpt-sol-editorial-recovery-20260928",
+      "role": "narrative-editor",
+      "reachability": "active",
+      "reason": "ttl-expired",
+      "expired_at": "2026-09-28T18:32:00+00:00"
+    }
+  ],
+  "next_safe_action": "claim one bounded highest-priority dependency-ready compatible work item"
+}

@@ -1,0 +1,26 @@
+{
+  "schema": "harum.remote-recovery-artifact/v1",
+  "source_hive_commit": "ead9e23e4309e592611469030135ddb90981f9d8",
+  "work_id": "HN-PERCURSO-SKETCHBOOK-DEEPEN-012",
+  "recovery_actor": "chatgpt-sol-recovery-20261002",
+  "status": "verified-terminal",
+  "jev_last_event": "deef54e6-be66-48f5-bbd0-82ea26896700",
+  "tree_state": "succeeded",
+  "completed_status": "succeeded",
+  "lease_released": true,
+  "projection_watermarks": {
+    "dispatch": "deef54e6-be66-48f5-bbd0-82ea26896700",
+    "health": "deef54e6-be66-48f5-bbd0-82ea26896700",
+    "meta": "deef54e6-be66-48f5-bbd0-82ea26896700",
+    "capsule": "deef54e6-be66-48f5-bbd0-82ea26896700",
+    "capability_board": "deef54e6-be66-48f5-bbd0-82ea26896700"
+  },
+  "health": "healthy",
+  "source_shas": {
+    "events": "d76622c664e3a927a7fbfab4fa0413c975eb5c36",
+    "state": "1dfb2f6152ca9a676aa48a7ec346aa156bee4723",
+    "jev": "9a72da4ac5cdf5ccc8920af040333458a02cba72",
+    "tree": "dcc20bb1817499f34d518f578cdcee45e07a9b58",
+    "leases": "b47473f4bbdfa561e77baff6f2b1b2a34a6f27d1"
+  }
+}

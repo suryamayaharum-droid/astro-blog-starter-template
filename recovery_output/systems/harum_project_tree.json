@@ -1,0 +1,1176 @@
+{
+  "schema": "harum.project-tree/v1",
+  "updated_at": "2026-10-02T15:02:02.271327+00:00",
+  "root": {
+    "id": "HARUM",
+    "title": "HARUM ecosystem",
+    "state": "active",
+    "children": [
+      {
+        "id": "HARUM-NOIR",
+        "title": "HARUM NOIR public editorial ecosystem",
+        "state": "active",
+        "canonical_refs": [
+          "docs/HARUMVERSO_CHECKPOINT.md",
+          "systems/harum_noir_public_surface_manifest.json"
+        ],
+        "children": [
+          {
+            "id": "HN-WEB",
+            "title": "Public web surfaces",
+            "state": "stable",
+            "children": [
+              {
+                "id": "HN-WEB-HOME",
+                "title": "Streaming home",
+                "state": "stable"
+              },
+              {
+                "id": "HN-WEB-ATLAS",
+                "title": "Atlas / 50 artists",
+                "state": "stable"
+              },
+              {
+                "id": "HN-WEB-PERCURSOS",
+                "title": "5 editorial journeys",
+                "state": "stable",
+                "children": [
+                  {
+                    "id": "HN-PERCURSO-SKETCHBOOK-DEEPEN-012",
+                    "title": "Deepen Percurso 05 · Sketchbook & mundo autoral",
+                    "state": "succeeded",
+                    "owner": "chatgpt-sol-recovery-20261002",
+                    "owner_role": "narrative-editor",
+                    "target_role": "narrative-editor",
+                    "required_capabilities": [
+                      "story-structure",
+                      "editorial-bridges"
+                    ],
+                    "priority": 91,
+                    "intent_key": "hn-percurso-05-sketchbook-universe-deepen",
+                    "write_scope": [
+                      "chatbot:app/noir/percursos/page.tsx",
+                      "astro:src/pages/percursos.astro"
+                    ],
+                    "max_helpers": 0,
+                    "constraints": [
+                      "no-new-route",
+                      "preserve-existing-five-percursos",
+                      "use-existing-public-source-pack",
+                      "external-institutional-sources-link-only-unless-rights-explicit",
+                      "do-not-rebuild-cadernos-or-atlas"
+                    ],
+                    "evidence_context": [
+                      "docs/HARUMVERSO_PUBLIC_SOURCE_PACK_2026-09-28.md",
+                      "systems/harumverso_public_source_pack_2026-09-28.json",
+                      "docs/HARUMVERSO_BLUEPRINT.md"
+                    ],
+                    "created_at": "2026-09-28T13:44:00Z",
+                    "updated_at": "2026-10-02T15:02:02.189371+00:00",
+                    "lease_id": "bf2f91e224b048f7ba7080828314e69d",
+                    "fencing_token": 2,
+                    "evidence": [
+                      "astro:dda349e17e3334fc83e687e6144548671deba8f4",
+                      "chatbot:3cbde86c460603bd9aa09239a24c8b86734b820f",
+                      "docs/HN_PERCURSO_SKETCHBOOK_DEEPEN_012_VALIDATION.md",
+                      "github-actions:36463058289:success",
+                      "vercel:dpl_99bJz5RkZQXy3bbv5fSyZrkM7aos:READY"
+                    ],
+                    "completed_at": "2026-10-02T15:02:02.270954+00:00",
+                    "result_refs": [
+                      "http:/noir/percursos:200"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "HN-WEB-CADERNOS",
+                "title": "Cadernos",
+                "state": "active-content",
+                "structure": "living-study-cycles-v1",
+                "canonical_ref": "docs/HN_CADERNOS_LIVING_001.md",
+                "children": [
+                  {
+                    "id": "HN-CADERNO-GESTO-SOURCE-AUDIT-001",
+                    "title": "Audit real existing gesture/model-live studies for Caderno Gesto",
+                    "state": "succeeded",
+                    "owner": "chatgpt-sol-work-audit-20260927",
+                    "target_role": "work-instance",
+                    "required_capabilities": [
+                      "cross-file-research",
+                      "artifact-production"
+                    ],
+                    "priority": 100,
+                    "intent_key": "hn-caderno-gesto-real-source-audit",
+                    "owner_role": "work-instance",
+                    "updated_at": "2026-09-27T23:59:43.451Z",
+                    "completed_at": "2026-09-28T00:03:22.735Z",
+                    "evidence": [
+                      "docs/HN_CADERNO_GESTO_SOURCE_AUDIT_001.md",
+                      "drive:12b2dY-JwZ4s2-VNojUFyAu4JhOaDvQgOHLW-11RtwQk",
+                      "drive:1yKiXZVl9cuc2dx_Cj1JII28N5RYu5iyoqjyS_HkL-6Q",
+                      "drive:1tNPn4Ziv4v2D1mfzi1sBtcGUmggU_Jq0trd1fZmU7ac",
+                      "drive:1Rz9DXo-1GWaHzzWFbZjZ8r7nb1gU3ZFd"
+                    ]
+                  },
+                  {
+                    "id": "HN-CADERNO-GESTO-PROVENANCE-002",
+                    "title": "Verify provenance of priority Caderno Gesto sources",
+                    "state": "succeeded",
+                    "owner": "chatgpt-sol-rights-guard-20260927",
+                    "target_role": "rights-guard",
+                    "required_capabilities": [
+                      "provenance-review"
+                    ],
+                    "priority": 95,
+                    "intent_key": "hn-caderno-gesto-provenance-audit",
+                    "depends_on": [
+                      "HN-CADERNO-GESTO-SOURCE-AUDIT-001"
+                    ],
+                    "max_helpers": 1,
+                    "owner_role": "rights-guard",
+                    "completed_at": "2026-09-28T00:30:00Z",
+                    "updated_at": "2026-09-28T00:30:00Z",
+                    "evidence": [
+                      "docs/HN_CADERNO_GESTO_PROVENANCE_002.md",
+                      "drive-revision-metadata:priority-8"
+                    ]
+                  },
+                  {
+                    "id": "HN-CADERNO-GESTO-ORIGINALS-003",
+                    "title": "Locate verified user-original physical/atelier sources for Caderno Gesto",
+                    "state": "succeeded",
+                    "owner": "chatgpt-sol-originals-20260927",
+                    "target_role": "work-instance",
+                    "required_capabilities": [
+                      "cross-file-research",
+                      "provenance-review"
+                    ],
+                    "priority": 94,
+                    "intent_key": "hn-caderno-gesto-verified-original-source",
+                    "depends_on": [
+                      "HN-CADERNO-GESTO-PROVENANCE-002"
+                    ],
+                    "max_helpers": 1,
+                    "owner_role": "work-instance",
+                    "lease_id": "lease-hn-caderno-gesto-originals-003-20260928a",
+                    "updated_at": "2026-09-28T00:48:00Z",
+                    "completed_at": "2026-09-28T00:48:00Z",
+                    "result": "NO_VERIFIED_USER_ORIGINAL_FOUND_IN_ACCESSIBLE_SOURCES",
+                    "evidence": [
+                      "docs/HN_CADERNO_GESTO_ORIGINALS_003.md",
+                      "docs/HN_CADERNO_GESTO_PROVENANCE_002.md",
+                      "drive-historical-image-search:pre-2026-09-18"
+                    ]
+                  },
+                  {
+                    "id": "HN-CADERNO-GESTO-EDITORIAL-004",
+                    "title": "Deep editorial Caderno Gesto page",
+                    "state": "succeeded",
+                    "owner": "chatgpt-sol-editorial-20260928",
+                    "owner_role": "narrative-editor",
+                    "target_role": "narrative-editor",
+                    "required_capabilities": [
+                      "caderno-language",
+                      "story-structure",
+                      "editorial-bridges"
+                    ],
+                    "priority": 92,
+                    "intent_key": "hn-caderno-gesto-deep-editorial-page",
+                    "depends_on": [
+                      "HN-CADERNO-GESTO-ORIGINALS-003"
+                    ],
+                    "write_scope": [
+                      "HN-WEB/CADERNOS/GESTO"
+                    ],
+                    "max_helpers": 1,
+                    "constraints": [
+                      "do-not-claim-unverified-visuals-as-user-original",
+                      "do-not-fabricate-live-session-provenance",
+                      "do-not-turn-caderno-into-generic-course-page"
+                    ],
+                    "evidence_context": [
+                      "docs/HN_CADERNOS_LIVING_001.md",
+                      "docs/HN_CADERNO_GESTO_SOURCE_AUDIT_001.md",
+                      "docs/HN_CADERNO_GESTO_PROVENANCE_002.md",
+                      "docs/HN_CADERNO_GESTO_ORIGINALS_003.md"
+                    ],
+                    "created_at": "2026-09-28T03:15:00Z",
+                    "updated_at": "2026-09-28T03:25:00Z",
+                    "completed_at": "2026-09-28T03:25:00Z",
+                    "result": "Deep Caderno Gesto deployed on Next/Vercel and Astro/GitHub Pages; provenance-safe editorial route linked from Cadernos.",
+                    "evidence": [
+                      "docs/HN_CADERNO_GESTO_EDITORIAL_004.md",
+                      "chatbot:bf08df3bcec3efad914e53f570f8fc07db808a9c",
+                      "chatbot:c6aebc3f6b027e847e99ec1f348cd54180203022",
+                      "astro:5224b07067d5713fa717535fc3206add760ffacc",
+                      "astro:ff911c7c8e9af2f162e0e3d41e46bbf33aaefc6a",
+                      "vercel:dpl_Vh9ziX9XKtDv1FUyXX1C4vmTrbF1:READY",
+                      "vercel:dpl_6eeD8a9TkbQM6tW26kC9fJLMnrxY:READY",
+                      "github-actions:36373114020:success",
+                      "github-actions-job:108773339840:build-success",
+                      "github-actions-job:108773446938:deploy-success"
+                    ]
+                  },
+                  {
+                    "id": "HN-CADERNO-OLHAR-EDITORIAL-005",
+                    "title": "Deep editorial Caderno Olhar page",
+                    "state": "succeeded",
+                    "owner": "chatgpt-sol-editorial-olhar-20260928",
+                    "owner_role": "narrative-editor",
+                    "target_role": "narrative-editor",
+                    "required_capabilities": [
+                      "caderno-language",
+                      "story-structure",
+                      "editorial-bridges"
+                    ],
+                    "priority": 90,
+                    "intent_key": "hn-caderno-olhar-deep-editorial-page",
+                    "write_scope": [
+                      "HN-WEB/CADERNOS/OLHAR"
+                    ],
+                    "max_helpers": 1,
+                    "constraints": [
+                      "do-not-present-neutral-svg-as-user-original-art",
+                      "do-not-fabricate-live-model-or-client-provenance",
+                      "do-not-copy-Caderno-Gesto-structure-mechanically",
+                      "keep-editorial-not-generic-course"
+                    ],
+                    "evidence_context": [
+                      "docs/HN_CADERNOS_LIVING_001.md",
+                      "docs/HN_CADERNO_GESTO_EDITORIAL_004.md"
+                    ],
+                    "created_at": "2026-09-28T03:36:00Z",
+                    "updated_at": "2026-09-28T03:46:00Z",
+                    "completed_at": "2026-09-28T03:45:00Z",
+                    "result": "Deep Caderno Olhar published on both mirrors.",
+                    "evidence": [
+                      "docs/HN_CADERNO_OLHAR_EDITORIAL_005.md",
+                      "chatbot:ef30479d1ffc5ebb011f7689328477ce14c1522b",
+                      "chatbot:f316adedb87d6bc4581bafae9f5c0ee1b63f61d3",
+                      "astro:9b2608dee04cade023c679703ccd8f195752d012",
+                      "astro:40917e8224bf8af423744dec60e76e46295661fb",
+                      "github-actions:36373884641:success",
+                      "vercel:dpl_AQaL1putVXNN4bPJnhxiVCyMTTJq:READY",
+                      "parallel-fix:73c675186e474e031edceaf3aececee229932cab",
+                      "http:/noir/cadernos/olhar:200",
+                      "http:/noir/cadernos:200"
+                    ],
+                    "children": [
+                      {
+                        "id": "HN-CADERNO-OLHAR-VISUAL-006",
+                        "title": "Visual review support for Caderno Olhar",
+                        "state": "superseded",
+                        "owner": null,
+                        "target_role": "visual-curator",
+                        "required_capabilities": [
+                          "visual-continuity",
+                          "editorial-visual-review"
+                        ],
+                        "priority": 70,
+                        "intent_key": "hn-caderno-olhar-visual-support",
+                        "depends_on": [
+                          "HN-CADERNO-OLHAR-EDITORIAL-005"
+                        ],
+                        "write_scope": [],
+                        "mutation_rule": "Evidence/proposal only. Do not edit routes or code.",
+                        "question": "Review visual coverage of Caderno Olhar and propose one complementary Noir composition without mutating editorial routes.",
+                        "created_at": "2026-09-28T03:40:01Z",
+                        "updated_at": "2026-09-28T03:46:00Z",
+                        "result": "Closed as non-blocking support after canonical Caderno Olhar publication."
+                      },
+                      {
+                        "id": "HN-CADERNO-OLHAR-RESEARCH-007",
+                        "title": "Public reference support for Caderno Olhar",
+                        "state": "superseded",
+                        "owner": null,
+                        "target_role": "research-scout",
+                        "required_capabilities": [
+                          "source-verification",
+                          "reference-enrichment"
+                        ],
+                        "priority": 72,
+                        "intent_key": "hn-caderno-olhar-public-reference-support",
+                        "depends_on": [
+                          "HN-CADERNO-OLHAR-EDITORIAL-005"
+                        ],
+                        "write_scope": [],
+                        "mutation_rule": "Evidence-only. Return names, public URLs and observable principle; do not edit page or private strategy.",
+                        "question": "Select 3–5 public Atlas references useful for eyes, expression and construction.",
+                        "created_at": "2026-09-28T03:40:02Z",
+                        "updated_at": "2026-09-28T03:46:00Z",
+                        "result": "Closed as non-blocking support after canonical Caderno Olhar publication."
+                      }
+                    ]
+                  },
+                  {
+                    "id": "HN-CADERNO-PRESENCA-EDITORIAL-008",
+                    "title": "Deep editorial Caderno Presença page",
+                    "state": "succeeded",
+                    "owner": "chatgpt-sol-editorial-presenca-20260928",
+                    "owner_role": "narrative-editor",
+                    "target_role": "narrative-editor",
+                    "required_capabilities": [
+                      "caderno-language",
+                      "story-structure",
+                      "editorial-bridges"
+                    ],
+                    "priority": 91,
+                    "intent_key": "hn-caderno-presenca-deep-editorial-page",
+                    "write_scope": [
+                      "chatbot:app/noir/cadernos/presenca/page.tsx",
+                      "chatbot:app/noir/cadernos/page.tsx",
+                      "astro:src/pages/cadernos/presenca.astro",
+                      "astro:src/pages/cadernos.astro"
+                    ],
+                    "max_helpers": 1,
+                    "constraints": [
+                      "do-not-claim-neutral-svg-as-user-original",
+                      "do-not-fabricate-live-session-provenance",
+                      "do-not-copy-Gesto-or-Olhar-structure-mechanically",
+                      "preserve-living-study-cycle",
+                      "keep-editorial-not-generic-course"
+                    ],
+                    "evidence_context": [
+                      "docs/HN_CADERNOS_LIVING_001.md",
+                      "docs/HN_CADERNO_GESTO_EDITORIAL_004.md",
+                      "docs/HN_CADERNO_OLHAR_EDITORIAL_005.md"
+                    ],
+                    "created_at": "2026-09-28T04:02:00Z",
+                    "updated_at": "2026-09-28T04:01:00Z",
+                    "completed_at": "2026-09-28T04:01:00Z",
+                    "result": "Deep Caderno Presença published on both mirrors; canonical sequence now has Presença, Gesto and Olhar as deep editorial pages.",
+                    "evidence": [
+                      "docs/HN_CADERNO_PRESENCA_EDITORIAL_008.md",
+                      "chatbot:4864d2ba0c8fbd4034a26b0accab4e95385ed9dd",
+                      "chatbot:22a31d098db0b11d430ab0f9edc20b42cf813e9b",
+                      "astro:6283548bf86773cd65d25e943e0f130d79c02391",
+                      "astro:ad007d965f0f828fc08c3fc2a08722bca9d0f99c",
+                      "github-actions:36375802998:success",
+                      "vercel:dpl_9ChGso4W7dJU9K9JdkyYMfcsG13h:READY",
+                      "http:/noir/cadernos/presenca:200",
+                      "http:/noir/cadernos:200"
+                    ]
+                  },
+                  {
+                    "id": "HN-CADERNO-MEMORIA-EDITORIAL-009",
+                    "title": "Deep editorial Caderno Memória route",
+                    "state": "succeeded",
+                    "owner": "chatgpt-sol-editorial-memoria-20260928",
+                    "owner_role": "narrative-editor",
+                    "target_role": "narrative-editor",
+                    "required_capabilities": [
+                      "caderno-language",
+                      "story-structure",
+                      "editorial-bridges"
+                    ],
+                    "priority": 88,
+                    "intent_key": "hn-caderno-memoria-deep-route",
+                    "write_scope": [
+                      "chatbot:app/noir/cadernos/memoria/page.tsx",
+                      "astro:src/pages/cadernos/memoria.astro",
+                      "chatbot:app/noir/cadernos/page.tsx",
+                      "astro:src/pages/cadernos.astro"
+                    ],
+                    "max_helpers": 1,
+                    "constraints": [
+                      "do-not-present-neutral-svg-as-user-original-art",
+                      "do-not-fabricate-cognitive-or-scientific-validation",
+                      "do-not-copy-Gesto-or-Olhar-structure-mechanically",
+                      "index-edit-allowed-only-after-presenca-succeeded"
+                    ],
+                    "created_at": "2026-09-28T04:05:00Z",
+                    "updated_at": "2026-09-28T04:24:00Z",
+                    "result": "Deep Caderno Memória route and library CTA verified in production after shared Next build incident was safely quarantined.",
+                    "evidence": [
+                      "docs/HN_CADERNO_MEMORIA_EDITORIAL_009.md",
+                      "chatbot:2b57b814d4520d4bad48ef332324058d6c2124e6",
+                      "vercel:dpl_4zdUsfFbrG1ATKJWRTALXfjuYfu8:READY",
+                      "chatbot:d9d30fa680877f098121ff55f6c3273b47828e9a",
+                      "astro:7801756665d493b5bee271b325608e38ce1c2eae",
+                      "github-actions:36376002824:success",
+                      "astro:8ec9b0870cd411e72a17b2d8ef8e1dc05b82f868",
+                      "github-actions:36376104646:success",
+                      "http:/noir/cadernos/memoria:content-present",
+                      "vercel:dpl_GiEJKgpNRX7aRyZen8Thna85tjgi:ERROR-inherited-ingest",
+                      "chatbot:6faefc1ab1053cdaa31481626f19c48cbcffac30",
+                      "vercel:dpl_Bx425GdsrvCKsLabm59Dg1vopFYK:READY",
+                      "http:/noir/cadernos/memoria:200",
+                      "http:/noir/cadernos:200",
+                      "http:/noir/cadernos:memoria-cta-present"
+                    ],
+                    "completed_at": "2026-09-28T04:24:00Z"
+                  },
+                  {
+                    "id": "HN-CADERNO-VESTIGIO-EDITORIAL-010",
+                    "title": "Deep editorial Caderno Vestígio route",
+                    "state": "succeeded",
+                    "owner": "chatgpt-sol-editorial-vestigio-20260928",
+                    "owner_role": "narrative-editor",
+                    "target_role": "narrative-editor",
+                    "required_capabilities": [
+                      "caderno-language",
+                      "story-structure",
+                      "editorial-bridges"
+                    ],
+                    "priority": 87,
+                    "intent_key": "hn-caderno-vestigio-deep-editorial-page",
+                    "write_scope": [
+                      "chatbot:app/noir/cadernos/vestigio/page.tsx",
+                      "astro:src/pages/cadernos/vestigio.astro",
+                      "chatbot:app/noir/cadernos/page.tsx",
+                      "astro:src/pages/cadernos.astro"
+                    ],
+                    "max_helpers": 1,
+                    "constraints": [
+                      "do-not-claim-neutral-svg-as-user-original",
+                      "do-not-fabricate-atelier-provenance",
+                      "do-not-copy-other-caderno-structure-mechanically",
+                      "keep-subtraction-as-core-language",
+                      "keep-editorial-not-generic-course"
+                    ],
+                    "evidence_context": [
+                      "docs/HN_CADERNOS_LIVING_001.md",
+                      "docs/HN_CADERNO_PRESENCA_EDITORIAL_008.md",
+                      "docs/HN_CADERNO_GESTO_EDITORIAL_004.md",
+                      "docs/HN_CADERNO_OLHAR_EDITORIAL_005.md"
+                    ],
+                    "created_at": "2026-09-28T04:03:00Z",
+                    "updated_at": "2026-09-28T04:25:00Z",
+                    "deferred_index_integration": {
+                      "state": "completed",
+                      "checked_at": "2026-09-28T04:25:00Z",
+                      "evidence": "Memória lease absent; fresh HEAD preserved Memória CTA and added only Vestígio CTA."
+                    },
+                    "blocked_by": [],
+                    "result": "Caderno Vestígio deep route and CTA verified on both mirrors; canonical Cadernos are now 5/5 deep and publicly navigable.",
+                    "evidence": [
+                      "docs/HN_CADERNO_VESTIGIO_EDITORIAL_010.md",
+                      "chatbot:0888eb28ee25e559e7ee3fa7bc2b3f9dd1aebb26",
+                      "chatbot:ab7cee79d9a38aa574f871ebf69d8400d07ee470",
+                      "vercel:dpl_HVDso5ip1DxvJkr5rRaWVgfCvc7D:READY",
+                      "astro:15dc8d33c399aa624c62d0f27cb94ba76bc0c1d8",
+                      "astro:755f28b6eebc8f1e5256cb43fca7f52a34e1db46",
+                      "github-actions:36376204700:success",
+                      "github-actions:36377397051:success",
+                      "http:/noir/cadernos:200",
+                      "http:/noir/cadernos:memoria-cta-present",
+                      "http:/noir/cadernos:vestigio-cta-present",
+                      "http:/noir/cadernos/memoria:200",
+                      "http:/noir/cadernos/vestigio:200"
+                    ],
+                    "completed_at": "2026-09-28T04:25:00Z"
+                  }
+                ]
+              },
+              {
+                "id": "HN-WEB-VISUAL-002",
+                "title": "Mobile density + artist visual coverage",
+                "state": "succeeded",
+                "owner": "parallel-visual-curator",
+                "evidence": [
+                  "docs/HN_WEB_VISUAL_002.md",
+                  "docs/HN_REF_VISUAL_SOURCES_001.md",
+                  "495fd181750ac07fc996bf2cfaed0347cf822380",
+                  "4806b3c1534487ccea8eb1062b884bfea6df1a5f"
+                ]
+              },
+              {
+                "id": "HN-WEB-VISUAL-SCREENSHOT-004",
+                "title": "Real mobile screenshot verification",
+                "state": "succeeded",
+                "owner": "chatgpt-sol-visual-audit-20260928",
+                "target_role": "visual-curator",
+                "required_capabilities": [
+                  "mobile-visual-audit",
+                  "visual-continuity"
+                ],
+                "priority": 80,
+                "intent_key": "hn-mobile-screenshot-visual-audit",
+                "required_surfaces": [
+                  "browser-screenshot",
+                  "mobile-viewport"
+                ],
+                "remote_result_policy": "auto-accept-evidence",
+                "execution_brief": "docs/HN_WEB_VISUAL_SCREENSHOT_004_BRIEF.md",
+                "evidence_context": [
+                  "docs/HN_WEB_VISUAL_002.md",
+                  "docs/HN_WEB_FASCINATION_003.md",
+                  "docs/HN_REF_VISUAL_SOURCES_004.md",
+                  "docs/HN_WEB_VISUAL_SCREENSHOT_004_BRIEF.md",
+                  "docs/HN_WEB_VISUAL_SCREENSHOT_004_PARTIAL.md"
+                ],
+                "progress": {
+                  "state": "complete",
+                  "observed_viewport": "390x844",
+                  "captured_routes": [
+                    "home",
+                    "atlas",
+                    "artist-cesar-santos",
+                    "percursos"
+                  ],
+                  "screenshot_run": 36370082259,
+                  "artifact_id": 10949101364,
+                  "artifact_digest": "sha256:66fd503de46a95e41cfa79686d7cf63326003a976b550a234857fe189318f0a8",
+                  "evidence_doc": "docs/HN_WEB_VISUAL_SCREENSHOT_004_PARTIAL.md",
+                  "patch_commits": {
+                    "astro": "7beb793faeb833dde7721d6fbfceede44e501715",
+                    "chatbot": "4be93c72de05255506811300300c488512b7f251"
+                  },
+                  "remaining": [],
+                  "actor": "chatgpt-sol-visual-20260928",
+                  "final_matrix": {
+                    "viewports": [
+                      "360x800",
+                      "390x844",
+                      "412x915"
+                    ],
+                    "routes": [
+                      "home",
+                      "atlas",
+                      "artist-cesar-santos",
+                      "artist-silvie-mahdal",
+                      "percursos"
+                    ],
+                    "combinations": 15,
+                    "http_200": 15,
+                    "horizontal_overflow": 0,
+                    "artifact_id": 10949172929,
+                    "artifact_digest": "sha256:6332c5335141178d7a7c9a12e03f5a2ac1f722f1d0dfe985ec0048c42f7d8695"
+                  },
+                  "reconciled_by": "chatgpt-sol-visual-20260928",
+                  "reconciled_at": "2026-09-28T02:52:00Z"
+                },
+                "owner_role": "visual-curator",
+                "updated_at": "2026-09-28T02:52:00Z",
+                "completed_at": "2026-09-28T02:45:00Z",
+                "result": "4 mobile production surfaces verified at 390x844; no document horizontal overflow after patch",
+                "evidence": [
+                  "docs/HN_WEB_VISUAL_SCREENSHOT_004.md",
+                  "github-actions:36370082259:attempt-2:success",
+                  "github-artifact:10949101364:before",
+                  "github-artifact:10948689886:after",
+                  "vercel:dpl_4CrKXC3N1fjBs7azo8T2qa4uoJUv:READY",
+                  "commit:4be93c72de05255506811300300c488512b7f251",
+                  "github-actions:36370882565:success",
+                  "github-actions-job:108767859157:success",
+                  "github-artifact:10949172929:final-matrix",
+                  "sha256:6332c5335141178d7a7c9a12e03f5a2ac1f722f1d0dfe985ec0048c42f7d8695",
+                  "chatbot:54010e32dfd46163385f42b2e88f3af755f199bf",
+                  "astro:c674681461421ed0f6ab18f16ac155bc334b5766",
+                  "vercel:dpl_f9SkuZdLy9mXsHsHJxwmmyu1YTLz:READY"
+                ],
+                "verification_extension": "PASS · post-patch matrix completed at 360x800, 390x844 and 412x915 with Cesar Santos + Silvie Mahdal; 15/15 HTTP 200; 0 horizontal overflow."
+              },
+              {
+                "id": "HN-NEXT-BUILD-UNBLOCK-011",
+                "title": "Unblock Next/Vercel build after Noir ingest integration",
+                "state": "succeeded",
+                "owner": "chatgpt-sol-next-build-20260928",
+                "target_role": "coding-instance",
+                "required_capabilities": [
+                  "nextjs-build",
+                  "typescript",
+                  "ci",
+                  "vercel-diagnostics"
+                ],
+                "required_surfaces": [
+                  "repo-workspace",
+                  "node-shell"
+                ],
+                "priority": 99,
+                "intent_key": "hn-next-ingest-build-unblock",
+                "write_scope": [
+                  "chatbot:lib/art-harum/noir-ingest.ts",
+                  "chatbot:app/api/art-harum/ingest/noir/route.ts",
+                  "chatbot:app/noir/composicoes-autorais/page.tsx",
+                  "chatbot:.github/workflows/typecheck.yml"
+                ],
+                "mutation_rule": "Reproduce first. Minimal fix only after exact build/typecheck evidence. Never edit Cadernos or Atlas from this work item.",
+                "remote_result_policy": "auto-accept-evidence",
+                "blocks": [],
+                "evidence": [
+                  "docs/HN_NEXT_BUILD_UNBLOCK_011.md",
+                  "vercel:dpl_4zdUsfFbrG1ATKJWRTALXfjuYfu8:READY",
+                  "vercel:dpl_7HjgogQ5eeVEj5QxbHdAe9s9QTNn:ERROR",
+                  "vercel:dpl_M8isdZHSgFLuQqLhRAkbwFoAyzzg:ERROR",
+                  "github-actions:36376408642:failure-no-usable-step-log",
+                  "vercel:dpl_GAfmzaQZobcGykrqPM7tW4GX5y8g:READY",
+                  "vercel:dpl_Gr2YZG6XP6bWXcpLnqphdS97FwTQ:ERROR",
+                  "chatbot:6faefc1ab1053cdaa31481626f19c48cbcffac30",
+                  "vercel:dpl_Bx425GdsrvCKsLabm59Dg1vopFYK:READY",
+                  "diagnostic-preview:088923ee:ERROR-nondiagnostic",
+                  "diagnostic-preview:087ee8b7:ERROR-nondiagnostic",
+                  "diagnostic-preview:4da3866d:ERROR-nondiagnostic"
+                ],
+                "created_at": "2026-09-28T04:13:00Z",
+                "updated_at": "2026-09-28T04:24:00Z",
+                "owner_role": "coding-instance",
+                "completed_at": "2026-09-28T04:24:00Z",
+                "result": "Production unblocked by quarantining unverified live-ingest from main. Main/Vercel READY; experimental gateway remains isolated and is not claimed validated.",
+                "released_blocks": [
+                  "HN-CADERNO-MEMORIA-EDITORIAL-009",
+                  "HN-CADERNO-VESTIGIO-EDITORIAL-010"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "HN-RADAR",
+            "title": "Reference intelligence",
+            "state": "stable",
+            "children": [
+              {
+                "id": "HN-REF-VISUAL-SOURCES-001",
+                "title": "Verify stronger public visual sources",
+                "state": "succeeded",
+                "owner": "parallel-research-scout",
+                "evidence": [
+                  "docs/HN_REF_VISUAL_SOURCES_001.md",
+                  "systems/harum_noir_reference_intelligence.json",
+                  "d3db3bc941f096e74605e53dd683b9efb9899235"
+                ]
+              },
+              {
+                "id": "HN-RADAR-PRIVATE",
+                "title": "Private strategy room",
+                "state": "stable-private"
+              },
+              {
+                "id": "HN-REF-VISUAL-SOURCES-002",
+                "title": "Verified public visual sources · batch 2",
+                "state": "succeeded",
+                "owner": null,
+                "target_role": "research-scout",
+                "required_capabilities": [
+                  "source-verification",
+                  "reference-enrichment"
+                ],
+                "priority": 90,
+                "intent_key": "hn-atlas-artist-visual-source-batch-2",
+                "remote_result_policy": "auto-accept-evidence",
+                "updated_at": "2026-09-28T00:55:00Z",
+                "completed_at": "2026-09-28T00:55:00Z",
+                "evidence": [
+                  "docs/HN_REF_VISUAL_SOURCES_002.md",
+                  "systems/harum_noir_reference_intelligence.json",
+                  "749b3092772c627256558f6a9d46620f8e0feae5",
+                  "6ab0d8100b7963cb52a3d35f5483f07f63dd6481"
+                ]
+              },
+              {
+                "id": "HN-REF-VISUAL-SOURCES-003",
+                "title": "Verified public visual sources · supplemental batch",
+                "state": "succeeded",
+                "owner": "chatgpt-sol-research-scout-20260927",
+                "target_role": "research-scout",
+                "required_capabilities": [
+                  "source-verification",
+                  "reference-enrichment"
+                ],
+                "priority": 85,
+                "intent_key": "hn-atlas-artist-visual-source-batch-3",
+                "updated_at": "2026-09-28T00:55:00Z",
+                "completed_at": "2026-09-28T00:55:00Z",
+                "evidence": [
+                  "docs/HN_REF_VISUAL_SOURCES_003.md",
+                  "systems/harum_noir_reference_intelligence.json",
+                  "8653c04b5d70f3649f783c4b830ed871b839389f",
+                  "c67509fc41196086e3d950be022be6a0c0be1983"
+                ]
+              },
+              {
+                "id": "HN-REF-VISUAL-SOURCES-004",
+                "title": "Verified public visual sources · batch 4",
+                "state": "succeeded",
+                "target_role": "research-scout",
+                "required_capabilities": [
+                  "source-verification",
+                  "reference-enrichment"
+                ],
+                "priority": 85,
+                "intent_key": "hn-atlas-artist-visual-source-batch-4",
+                "completed_at": "2026-09-28T02:22:36Z",
+                "result": "40/50 public specific · 10/50 fallback · 24/50 privately audited",
+                "evidence": [
+                  "docs/HN_REF_VISUAL_SOURCES_004.md",
+                  "systems/harum_noir_reference_intelligence.json",
+                  "7e4ba0b21906db0ef633d761fc5a1f2d162219cd",
+                  "4468fad3edd0d2516693a9b809ce33f23abaf46c",
+                  "github-actions:36367670509:success",
+                  "github-actions:36367670530:success",
+                  "vercel:dpl_HEf65awPpCZPp98bdhMNYaCscoTd:READY"
+                ]
+              },
+              {
+                "id": "HN-REF-VISUAL-SOURCES-005",
+                "title": "Verified public visual sources · batch 5",
+                "state": "succeeded",
+                "owner": "chatgpt-sol-research-scout-20260928",
+                "target_role": "research-scout",
+                "required_capabilities": [
+                  "source-verification",
+                  "reference-enrichment"
+                ],
+                "priority": 82,
+                "intent_key": "hn-atlas-artist-visual-source-batch-5",
+                "updated_at": "2026-09-28T02:34:00Z",
+                "result": "46/50 public specific · 4/50 fallback · 30/50 privately audited",
+                "evidence": [
+                  "docs/HN_REF_VISUAL_SOURCES_005.md",
+                  "systems/harum_noir_reference_intelligence.json",
+                  "1bc90bfd07117ad88f96248e21becd5dca651002",
+                  "601e980c50226846c6ed741cc3ff65c1d599d69b",
+                  "github-actions:36370030122:success",
+                  "github-actions:36370030303:success",
+                  "vercel:dpl_GuUtSCioYMRUzWgR1RW1ipJLr7pp:READY",
+                  "http:/noir/referencias:200"
+                ],
+                "completed_at": "2026-09-28T02:34:00Z"
+              },
+              {
+                "id": "HN-REF-VISUAL-SOURCES-006",
+                "title": "Verified public visual sources · batch 6",
+                "state": "succeeded",
+                "owner": "chatgpt-sol-research-scout-20260928",
+                "target_role": "research-scout",
+                "required_capabilities": [
+                  "source-verification",
+                  "reference-enrichment"
+                ],
+                "priority": 80,
+                "intent_key": "hn-atlas-artist-visual-source-batch-6",
+                "updated_at": "2026-09-28T02:41:00Z",
+                "result": "49/50 public specific · 1/50 fallback · 33/50 privately audited",
+                "evidence": [
+                  "docs/HN_REF_VISUAL_SOURCES_006.md",
+                  "systems/harum_noir_reference_intelligence.json",
+                  "9d329fd57abda76ed43266a6f6034262e9ad0b69",
+                  "d43192177942b319ab219e6cf8b13f9b82742314",
+                  "7beb793faeb833dde7721d6fbfceede44e501715",
+                  "4be93c72de05255506811300300c488512b7f251",
+                  "github-actions:36370408272:success",
+                  "github-actions:36370442773:success",
+                  "vercel:dpl_27jEYfmvuBsrxAy8LDjTem2nMSQZ:READY",
+                  "vercel:dpl_4CrKXC3N1fjBs7azo8T2qa4uoJUv:READY",
+                  "http:/noir/referencias:200"
+                ],
+                "completed_at": "2026-09-28T02:41:00Z"
+              },
+              {
+                "id": "HN-REF-VISUAL-SOURCES-007",
+                "title": "Verified public visual sources · final fallback",
+                "state": "succeeded",
+                "owner": "chatgpt-sol-research-scout-20260928",
+                "target_role": "research-scout",
+                "required_capabilities": [
+                  "source-verification",
+                  "reference-enrichment"
+                ],
+                "priority": 78,
+                "intent_key": "hn-atlas-artist-visual-source-batch-7",
+                "updated_at": "2026-09-28T02:45:30Z",
+                "result": "50/50 public specific · 0/50 active fallback · 34/50 privately audited",
+                "evidence": [
+                  "docs/HN_REF_VISUAL_SOURCES_007.md",
+                  "systems/harum_noir_reference_intelligence.json",
+                  "59155fabbe9321ab0c15f50fdd86c00c356b8e86",
+                  "e361ba44865e75ac5d3bdee59b9c8eff7bd4dd42",
+                  "github-actions:36370794999:success",
+                  "github-actions:36370794988:success",
+                  "vercel:dpl_AKKvDdBatFh28Bu3XRA3RuN8FWrZ:READY",
+                  "http:/noir/referencias:200"
+                ],
+                "completed_at": "2026-09-28T02:45:30Z"
+              },
+              {
+                "id": "HN-ATLAS-101-VISUAL-SOURCES-002",
+                "title": "Verified visual sources · Atlas 101 expansion batch 2",
+                "state": "succeeded",
+                "owner": "chatgpt-sol-atlas-recovery-20260928",
+                "owner_role": "research-scout",
+                "target_role": "research-scout",
+                "required_capabilities": [
+                  "source-verification",
+                  "reference-enrichment"
+                ],
+                "priority": 86,
+                "intent_key": "hn-atlas-101-visual-source-batch-2",
+                "write_scope": [
+                  "astro:src/data/references.ts",
+                  "chatbot:app/noir/_references.ts"
+                ],
+                "constraints": [
+                  "official-or-public-source-only",
+                  "never-guess-video-id",
+                  "preserve-local-fallback",
+                  "max-five-artists"
+                ],
+                "evidence_context": [
+                  "docs/HN_ATLAS_101_VISUAL_SOURCES_002_SUPPORT.md",
+                  "docs/HN_ATLAS_101_VISUAL_SOURCES_002_POSTDEPLOY.md",
+                  "docs/HN_ATLAS_101_VISUAL_SOURCES_002_PROVENANCE_SUPPORT_002.md"
+                ],
+                "support_note": "Read-only support packet now has 5/5 independently reverified candidate sources: Glenn Vilppu, David Finch, Mike Mattesi, Trent Kaniuga and Jake Parker. Owner retains all selection and mutation decisions. Provenance support 002 confirms current Glenn Vilppu ID DomkADJ4We0; current Michael Hampton ID hYnwHx3dZj8 still needs exact-source reverify or owner may use verified Proko alternative HEavseCLG6c.",
+                "validation_note": "Post-deploy integration PASS: both mirrors 64/101 specific, 37 fallback; four routes 200 and render their YouTube thumbnails. Owner provenance review recommended for current Glenn Vilppu and Michael Hampton IDs before closing.",
+                "previous_owner": "chatgpt-sol-research-atlas101-b2-20260928",
+                "recovery_reason": "Previous claimed owner had no active lease or heartbeat; work reclaimed under fencing semantics.",
+                "updated_at": "2026-09-28T13:34:00Z",
+                "completed_at": "2026-09-28T13:34:00Z",
+                "result": "PRONTO: Atlas 101 visual batch 2 closed with verified provenance and mirror parity.",
+                "evidence": [
+                  "docs/HN_ATLAS_101_VISUAL_SOURCES_002_SUPPORT.md",
+                  "docs/HN_ATLAS_101_VISUAL_SOURCES_002_POSTDEPLOY.md",
+                  "docs/HN_ATLAS_101_VISUAL_SOURCES_002_PROVENANCE_SUPPORT_002.md",
+                  "chatbot:5393de3a9b42d336874b245b46d30468bab43f1e",
+                  "astro:bcfba4625f349d324deba6529e74d4a252812e63",
+                  "chatbot:d5e18527d9b3c0a2cd2c0d85255e794bfee85337",
+                  "astro:53f9c035ea4e9049a52025169a7d47834220c07e",
+                  "vercel:dpl_9NJuJFcijhPeJGZvgmfgtGct3Yg7:READY",
+                  "github-actions:36428548032:success",
+                  "github-actions:36428547816:success",
+                  "http:/noir/referencias/michael-hampton:200",
+                  "coverage:101-total:64-specific:37-fallback"
+                ],
+                "result_refs": [
+                  "chatbot:d5e18527d9b3c0a2cd2c0d85255e794bfee85337",
+                  "astro:53f9c035ea4e9049a52025169a7d47834220c07e"
+                ],
+                "recovery_history": {
+                  "previous_owner": "chatgpt-sol-research-atlas101-b2-20260928",
+                  "recovery_owner": "chatgpt-sol-atlas-recovery-20260928",
+                  "fencing_token": 1,
+                  "reason": "Previous claimed owner had no active lease or heartbeat; work reclaimed under fencing semantics."
+                }
+              }
+            ]
+          },
+          {
+            "id": "HN-CURATION",
+            "title": "Editorial curation",
+            "state": "active",
+            "children": [
+              {
+                "id": "HN-CURATION-FASCINATION-001",
+                "title": "Fascination Curator operating layer",
+                "state": "succeeded"
+              },
+              {
+                "id": "HN-WEB-FASCINATION-003",
+                "title": "Audit home/Atlas/Percursos for fascination continuity",
+                "state": "succeeded",
+                "owner": "parallel-fascination-curator",
+                "evidence": [
+                  "docs/HN_WEB_FASCINATION_003.md",
+                  "bdb3fb53757887696487f402febc4a761a480499",
+                  "74c73f3dee157844e59a7cee1ebb0f058f8c6d16"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "HN-REF",
+            "title": "Reference atlas",
+            "state": "active",
+            "children": [
+              {
+                "id": "HN-ATLAS-EXPAND-101-001",
+                "title": "Expand Harum Noir global reference atlas from 50 to 101",
+                "state": "succeeded",
+                "owner": "chatgpt-sol-research-scout-20260928",
+                "target_role": "research-scout",
+                "required_capabilities": [
+                  "source-verification",
+                  "reference-enrichment",
+                  "editorial-curation"
+                ],
+                "intent_key": "hn-atlas-expand-50-to-101",
+                "completed_at": "2026-09-28T03:32:00Z",
+                "evidence": [
+                  "docs/HN_ATLAS_101_EXPANSION_001.md",
+                  "49453e7557edb5e6e7a47af6e977bc717b493386",
+                  "73c675186e474e031edceaf3aececee229932cab",
+                  "Harum Noir Link Health 36374096099 success"
+                ]
+              },
+              {
+                "id": "HN-ATLAS-101-VISUAL-SOURCES-001",
+                "title": "Verify artist-specific visual sources for ranks 51–101",
+                "state": "succeeded",
+                "owner": "chatgpt-sol-research-atlas101-20260928",
+                "target_role": "research-scout",
+                "required_capabilities": [
+                  "source-verification",
+                  "reference-enrichment"
+                ],
+                "priority": 92,
+                "intent_key": "hn-atlas-101-expansion-visual-sources",
+                "depends_on": [
+                  "HN-ATLAS-EXPAND-101-001"
+                ],
+                "batch_rule": "4-8 references per bounded batch; never guess video IDs; preserve fallback",
+                "objective": "raise expansion-specific coverage from 5/51 while keeping source evidence explicit",
+                "updated_at": "2026-09-28T03:46:00Z",
+                "completed_at": "2026-09-28T03:46:00Z",
+                "result": "PRONTO: verified public visual sources added for Peter Han, James Gurney, Ahmed Aldoori, Bobby Chiu and Feng Zhu/FZD.",
+                "evidence": [
+                  "astro:3a4357bc5d7b33753dbbbf7ecc2e7683a45dd150",
+                  "github-actions:36374739968:success",
+                  "github-actions:36374739990:success",
+                  "chatbot:03c5ade74747bea954232beafc33be0d3c3c6b99",
+                  "vercel:dpl_8DfzAmUFyPC9jgQF8raGJ6ebbCSX:READY",
+                  "http:vercel-preview:/noir/referencias/james-gurney:200"
+                ]
+              },
+              {
+                "id": "HN-ATLAS-1001-ROADMAP-001",
+                "title": "Scale Harum Noir global reference atlas toward 1001",
+                "state": "succeeded",
+                "target_role": "editorial-director",
+                "priority": 60,
+                "intent_key": "hn-atlas-101-to-1001-roadmap",
+                "depends_on": [
+                  "HN-ATLAS-EXPAND-101-001"
+                ],
+                "gates": [
+                  151,
+                  251,
+                  501,
+                  751,
+                  1001
+                ],
+                "rule": "No bulk import. Every entry needs identity/source verification, distinct editorial contribution and a lane.",
+                "owner": "chatgpt-sol-editorial-atlas1001-20260928",
+                "owner_role": "editorial-director",
+                "completed_at": "2026-09-28T05:26:00Z",
+                "updated_at": "2026-09-28T05:26:00Z",
+                "result": "Roadmap to 1001 formalized with candidate schema, private source-verified queue, anti-duplication pipeline and publication gates. No public reference files mutated.",
+                "evidence": [
+                  "docs/HN_ATLAS_1001_ROADMAP_001.md",
+                  "systems/harum_noir_atlas_candidate.schema.json",
+                  "state/coordination/harum_noir_atlas_candidate_queue.json"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ARTE-HARUM",
+        "title": "Arte Harum learning/formation",
+        "state": "linked-not-current-focus"
+      },
+      {
+        "id": "STUDIO23",
+        "title": "Studio 23 tattoo proof/service",
+        "state": "linked-not-current-focus"
+      },
+      {
+        "id": "MEAW",
+        "title": "MEAW coordination/runtime substrate",
+        "state": "active-support",
+        "children": [
+          {
+            "id": "MEAW-JEV",
+            "title": "JEV cross-instance bridge",
+            "state": "active"
+          },
+          {
+            "id": "MEAW-CRDT",
+            "title": "Portable CRDT",
+            "state": "active"
+          },
+          {
+            "id": "MEAW-TRANSPORT",
+            "title": "Transport mesh",
+            "state": "active"
+          },
+          {
+            "id": "MEAW-CONTINUITY",
+            "title": "Continuity mesh",
+            "state": "active"
+          },
+          {
+            "id": "MEAW-ANTI-ENTROPY",
+            "title": "Cross-peer state digest / anti-entropy",
+            "state": "stable",
+            "canonical_refs": [
+              "core/meaw/harum_anti_entropy.py",
+              "systems/harum_anti_entropy.json"
+            ]
+          },
+          {
+            "id": "MEAW-DISPATCHER",
+            "title": "Advisory capability/lease dispatcher",
+            "state": "stable",
+            "canonical_refs": [
+              "core/meaw/harum_dispatcher.py",
+              "systems/harum_dispatcher.json"
+            ]
+          },
+          {
+            "id": "MEAW-DOCTOR",
+            "title": "Coordination doctor v2",
+            "state": "stable",
+            "canonical_refs": [
+              "core/meaw/harum_coordination_doctor.py",
+              "state/coordination/health.json"
+            ]
+          },
+          {
+            "id": "MEAW-SCHEDULER",
+            "title": "Dependency-aware coordination scheduler",
+            "state": "stable",
+            "owner": "chatgpt-sol-current",
+            "target_role": "coordination-auditor",
+            "required_capabilities": [
+              "dispatch-planning",
+              "coordination-health"
+            ],
+            "priority": 95,
+            "write_scope": [
+              "core/meaw/harum_dispatcher.py",
+              "core/meaw/harum_coordination_fabric.py",
+              "core/meaw/harum_coordination_doctor.py",
+              "systems/harum_dispatch_policy.json",
+              "tests/test_harum_dispatcher.py"
+            ],
+            "evidence": [
+              "2377dea11f03c83efd4592c85985c4e5811b1ae6",
+              "core/meaw/harum_dispatcher.py",
+              "core/meaw/harum_coordination_fabric.py",
+              "core/meaw/harum_coordination_doctor.py",
+              "systems/harum_dispatch_policy.json",
+              "docs/MEAW_SCHEDULER_VALIDATE_001.md",
+              "commit:a32a16899c49a8c50b756c7c0425b934e122aeb8"
+            ],
+            "children": [
+              {
+                "id": "MEAW-SCHEDULER-VALIDATE-001",
+                "title": "Independent portable validation of scheduler v2",
+                "state": "succeeded",
+                "owner": "chatgpt-sol-validation-20260928",
+                "target_role": "coding-instance",
+                "required_capabilities": [
+                  "tests",
+                  "ci"
+                ],
+                "priority": 100,
+                "read_scope": [
+                  "core/meaw/harum_dispatcher.py",
+                  "core/meaw/harum_coordination_fabric.py",
+                  "core/meaw/harum_coordination_doctor.py",
+                  "core/meaw/harum_coordination_selftest.py",
+                  "systems/harum_dispatch_policy.json"
+                ],
+                "mutation_rule": "Validation-only unless self-test actually fails.",
+                "intent_key": "meaw-scheduler-v2-independent-validation",
+                "required_surfaces": [
+                  "repo-workspace",
+                  "python-shell"
+                ],
+                "remote_result_policy": "auto-accept-evidence",
+                "owner_role": "coding-instance",
+                "updated_at": "2026-09-28T03:12:00Z",
+                "completed_at": "2026-09-28T03:12:00Z",
+                "result": "PASS · portable scheduler selftest 4/4 · GitHub Actions retry failed zero-step (executor unavailable), not code failure",
+                "evidence": [
+                  "docs/MEAW_SCHEDULER_VALIDATE_001.md",
+                  "portable-selftest:dependency-gate",
+                  "portable-selftest:write-scope-collision",
+                  "portable-selftest:helper-lease",
+                  "portable-selftest:cycle-detection",
+                  "github-actions:36358192768:attempt-3:zero-step",
+                  "github-actions-job:108771725633:zero-step",
+                  "commit:c06d76d40e08e375a217504479c588d78caadd73"
+                ]
+              }
+            ],
+            "updated_at": "2026-09-28T03:28:00Z",
+            "result": "Scheduler v2 independently validated; portable selftest 4/4 PASS."
+          },
+          {
+            "id": "MEAW-META-COORDINATOR",
+            "title": "Second-order JEV meta-coordinator",
+            "state": "stable",
+            "owner": "chatgpt-sol-meta-20260927",
+            "target_role": "coordination-auditor",
+            "priority": 70,
+            "intent_key": "meaw-second-order-meta-coordination",
+            "canonical_refs": [
+              "core/meaw/harum_meta_coordinator.py",
+              "systems/harum_meta_coordination.json",
+              "state/coordination/meta_plan.json"
+            ],
+            "evidence": [
+              "core/meaw/harum_meta_coordinator.py",
+              "tests/test_harum_meta_coordinator.py"
+            ]
+          },
+          {
+            "id": "MEAW-COORD-HARDEN-CAUSAL-001",
+            "title": "Causal coordination hardening + projection watermark validation",
+            "state": "succeeded",
+            "owner": "chatgpt-sol-coding-validation-20260928",
+            "owner_role": "coding-instance",
+            "target_role": "coding-instance",
+            "required_capabilities": [
+              "tests",
+              "ci"
+            ],
+            "priority": 92,
+            "intent_key": "meaw-causal-coordination-hardening",
+            "write_scope": [
+              "core/meaw/harum_coordination_fabric.py",
+              "runtime/harum_assembly_bus.py",
+              "core/meaw/harum_coordination_doctor.py",
+              "core/meaw/harum_projection_refresh.py",
+              "core/meaw/harum_context_capsule.py",
+              "tests/test_harum_projection_refresh.py",
+              "tests/test_harum_context_capsule.py",
+              "state/coordination"
+            ],
+            "max_helpers": 0,
+            "evidence": [
+              "commit:6ec897be964b41dbebc04d59deaad5cabf72072a",
+              "commit:33b6125306b8f88e288900cf4a388bbb4b4366d7",
+              "commit:dff572d6cf8bacdf9c2d3dcf40efe831a9c154f7",
+              "docs/MEAW_COORD_HARDEN_CAUSAL_001_VALIDATION.md",
+              "commit:48c6e0b115795b8f7ccdb602174469e8f16f7e57",
+              "portable-selftest:7/7-pass",
+              "watermark-tests:2/2-pass",
+              "projection-sync:dispatch:42d9a1acb06ac1a9717de5d38b53d6f9901036dd",
+              "projection-sync:health:92e2c913387d5e5d9a81c16d384d491ef292e670",
+              "projection-sync:meta:a9a7245a336ca049a26585d6a5995ab361ac33c0",
+              "projection-sync:capability-board:bde6f78a64e7b6db8959a6aae11830dc5302d5ca",
+              "projection-sync:capsule:a9a5e26bff5d2857009c8a1e24db96ec66da521c",
+              "projection-watermark:evt-meaw-coding-validator-hello-20260928"
+            ],
+            "validation": {
+              "selftest": "7/7 PASS",
+              "watermark_tests": "2/2 PASS",
+              "remaining_gate": "projection sync at current JEV watermark"
+            },
+            "created_at": "2026-09-28T05:29:30Z",
+            "updated_at": "2026-09-28T13:40:00Z",
+            "previous_owner": "chatgpt-sol-coordination-hardening-20260928",
+            "completed_at": "2026-09-28T13:40:00Z",
+            "result": "PRONTO: causal coordination hardening independently validated and live projection watermark synchronized.",
+            "recovery_history": {
+              "previous_owner": "chatgpt-sol-coordination-hardening-20260928",
+              "recovery_owner": "chatgpt-sol-coding-validation-20260928",
+              "fencing_token": 1,
+              "reason": "original validator gate returned PASS; stale/unleased work reclaimed for terminal closure"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "rules": [
+    "Only current-focus nodes receive proactive work unless they unblock the focus.",
+    "A child can be claimed independently when dependencies are satisfied.",
+    "Stable nodes should not be reopened without incident/evidence.",
+    "Cross-branch help uses help.requested rather than direct mutation."
+  ]
+}

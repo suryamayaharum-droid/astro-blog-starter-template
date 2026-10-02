@@ -1,0 +1,29 @@
+{
+  "schema": "harum.meta-coordination-plan/v1",
+  "source_last_event": "deef54e6-be66-48f5-bbd0-82ea26896700",
+  "generated_at": "2026-10-02T15:02:02.345278+00:00",
+  "mode": "maintenance",
+  "health": "healthy",
+  "primary_move": null,
+  "primary_recovery": null,
+  "recovery_queue": [],
+  "critical_path": [],
+  "parallel_wave": [],
+  "collaboration_suggestions": [],
+  "stagnation": [],
+  "coordination_budget": {
+    "open_product": 0,
+    "open_support": 0,
+    "support_ratio": 0.0,
+    "max_support_ratio_when_healthy": 0.34,
+    "overcoordination": false,
+    "action": "maintain-smallest-useful-system"
+  },
+  "rules": {
+    "advisory_only": true,
+    "never_auto_claim": true,
+    "never_expand_permissions": true,
+    "product_focus_when_healthy": true,
+    "prefer_existing_work_and_help": true
+  }
+}

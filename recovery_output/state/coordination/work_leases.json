@@ -1,0 +1,22 @@
+{
+  "schema": "harum.work-leases/v3",
+  "updated_at": "2026-09-28T18:12:00Z",
+  "default_ttl_seconds": 900,
+  "semantics": {
+    "purpose": "Prevent duplicate active execution, not authorize external side effects.",
+    "acquire": "work.claimed emits owner + lease_id + expires_at",
+    "heartbeat": "work.progressed may extend lease",
+    "release": "work.completed / work.blocked / handoff.created releases or transfers",
+    "expiry": "Expired lease returns work to available; stale lease is never proof of permission.",
+    "collision": "Second claim on non-expired lease emits conflict.detected and must hold.",
+    "helpers": "Helpers require explicit helper leases, never become primary owner, and expire no later than the owner lease.",
+    "write_scope": "Primary leases may declare write_scope; overlapping active scopes require handoff/split or explicit collaboration before mutation.",
+    "fencing_token": "Each successful primary claim increments a monotonic per-work fencing token. Late/stale holders must not mutate guarded state with an older token."
+  },
+  "leases": {},
+  "lease_epochs": {
+    "HN-ATLAS-101-VISUAL-SOURCES-002": 1,
+    "MEAW-COORD-HARDEN-CAUSAL-001": 1,
+    "HN-PERCURSO-SKETCHBOOK-DEEPEN-012": 3
+  }
+}
