@@ -1,0 +1,164 @@
+{
+  "schema": "harum.capability-registry/v1",
+  "updated_at": "2026-09-27T23:06:00Z",
+  "roles": [
+    {
+      "role": "editorial-director",
+      "capabilities": [
+        "merge-handoffs",
+        "prioritize-editorial-work",
+        "resolve-route-purpose",
+        "accept-evidence"
+      ],
+      "limits": [
+        "does-not-bypass-rights-or-write-gates"
+      ]
+    },
+    {
+      "role": "visual-curator",
+      "capabilities": [
+        "mobile-visual-audit",
+        "composition",
+        "thumbnail-selection",
+        "fallback-design",
+        "visual-continuity"
+      ],
+      "limits": [
+        "does-not-invent-source-rights"
+      ]
+    },
+    {
+      "role": "research-scout",
+      "capabilities": [
+        "source-verification",
+        "artist-research",
+        "public-link-audit",
+        "reference-enrichment"
+      ],
+      "limits": [
+        "does-not-publish-private-strategy"
+      ]
+    },
+    {
+      "role": "fascination-curator",
+      "capabilities": [
+        "fascination-audit",
+        "cta-discipline",
+        "continuity-check",
+        "route-creation-gate"
+      ],
+      "limits": [
+        "does-not-redesign-stable-infrastructure-without-evidence"
+      ]
+    },
+    {
+      "role": "narrative-editor",
+      "capabilities": [
+        "story-structure",
+        "newsletter-editing",
+        "caderno-language",
+        "editorial-bridges"
+      ],
+      "limits": [
+        "does-not-fabricate-biographical-facts"
+      ]
+    },
+    {
+      "role": "rights-guard",
+      "capabilities": [
+        "provenance-review",
+        "public-private-boundary",
+        "copyright-risk-review"
+      ],
+      "limits": [
+        "does-not-grant-rights-without-evidence"
+      ]
+    },
+    {
+      "role": "growth-analyst",
+      "capabilities": [
+        "format-analysis",
+        "retention-hypotheses",
+        "content-system-analysis"
+      ],
+      "limits": [
+        "hypotheses-are-not-facts"
+      ]
+    },
+    {
+      "role": "work-instance",
+      "capabilities": [
+        "multi-step-browser-work",
+        "cross-file-research",
+        "artifact-production"
+      ],
+      "limits": [
+        "must-read-jev-before-claiming",
+        "must-not-duplicate-active-work"
+      ]
+    },
+    {
+      "role": "coding-instance",
+      "capabilities": [
+        "repository-patch",
+        "tests",
+        "ci",
+        "deploy-validation"
+      ],
+      "limits": [
+        "one-writer-per-path-or-explicit-collaboration"
+      ]
+    },
+    {
+      "role": "operator",
+      "capabilities": [
+        "human-resolution",
+        "oauth-consent",
+        "irreversible-approval",
+        "account-connection"
+      ],
+      "limits": []
+    },
+    {
+      "role": "coordination-auditor",
+      "capabilities": [
+        "coordination-health",
+        "deadlock-detection",
+        "lease-recovery",
+        "bootstrap-consistency",
+        "federation-integrity",
+        "state-digest",
+        "anti-entropy-reconciliation",
+        "peer-handshake",
+        "dispatch-planning"
+      ],
+      "limits": [
+        "advisory-repair-only-unless-explicit-write-authorized"
+      ]
+    }
+  ],
+  "advertisement": {
+    "event": "instance.hello",
+    "required_fields": [
+      "producer",
+      "source_role",
+      "capabilities",
+      "current_focus"
+    ],
+    "optional_fields": [
+      "capacity",
+      "constraints",
+      "preferred_work_types",
+      "roles",
+      "connectors",
+      "skills",
+      "expires_at",
+      "reachability",
+      "dispatch_modes"
+    ],
+    "proof_rule": "High-risk or remote capabilities require receipts/self-test evidence before routing.",
+    "passport_schema": "systems/instance_capability_passport.schema.json",
+    "routing": "core/meaw/capability_federation.py",
+    "verified_connector_rule": "High-risk/external-write work should set require_verified_connectors=true."
+  }
+}
