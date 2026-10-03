@@ -11,3 +11,4 @@ User-agent: Bingbot
 Allow: /
 
 Sitemap: https://suryamayaharum-droid.github.io/astro-blog-starter-template/sitemap-index.xml
+Sitemap: https://suryamayaharum-droid.github.io/astro-blog-starter-template/image-sitemap.xml
