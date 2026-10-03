@@ -1,5 +1,40 @@
 export const sketchbookGalleries = [
   {
+    id: "kenyon-cox-transversal",
+    artist: "Kenyon Cox",
+    title: "Sketchbook transversal · corpo, atelier e repertório",
+    date: "1874–1883",
+    medium: "Grafite sobre papel",
+    source: "Cooper Hewitt / Smithsonian Institution",
+    rights: "CC0 · domínio público",
+    principle: "O caderno não precisa ter um único assunto: corpo, botânica, cidade, história e imaginação podem alimentar o mesmo repertório autoral.",
+    originalUrl: "https://www.si.edu/object/chndm_1984-86-7-22",
+    commonsUrl: "https://www.si.edu/search?edan_q=Kenyon%20Cox%20Sketchbook%20Page",
+    images: [
+      { url: "https://ids.si.edu/ids/deliveryService?id=CHSDM-1984-86-7-22MattFlynn", href: "https://www.si.edu/object/chndm_1984-86-7-22", label: "Estátua clássica" },
+      { url: "https://ids.si.edu/ids/deliveryService?id=CHSDM-1984-86-7-26MattFlynn", href: "https://www.si.edu/object/sketchbook-page-artist-work%3Achndm_1984-86-7-26", label: "Artista trabalhando" },
+      { url: "https://ids.si.edu/ids/deliveryService?id=CHSDM-1984-86-4-46MattFlynn", href: "https://www.si.edu/object/sketchbook-page%3Achndm_1984-86-4-46", label: "Figura feminina sentada" },
+      { url: "https://ids.si.edu/ids/deliveryService?id=CHSDM-1984-86-6-2MattFlynn", href: "https://www.si.edu/object/sketchbook-page-nude-female-figures-landscape%3Achndm_1984-86-6-2", label: "Figuras no espaço" },
+      { url: "https://ids.si.edu/ids/deliveryService?id=CHSDM-1984-86-3-18MattFlynn", href: "https://www.si.edu/object/sketchbook-page-sketches-flowers-and-leaves%3Achndm_1984-86-3-18", label: "Flores e folhas" },
+      { url: "https://ids.si.edu/ids/deliveryService?id=CHSDM-1984-86-7-70MattFlynn", href: "https://www.si.edu/object/sketchbook-page-isis%3Achndm_1984-86-7-70", label: "Isis · imagem e anotação" }
+    ]
+  },
+  {
+    id: "william-trost-richards-long-sketchbook",
+    artist: "William Trost Richards",
+    title: "Newport, New Jersey e England Views",
+    date: "após 1890",
+    medium: "80 desenhos a pena e tinta preta + 9 em grafite",
+    source: "Cooper Hewitt / Smithsonian Institution",
+    rights: "CC0 · domínio público",
+    principle: "Um caderno longo mostra persistência: observar o mundo repetidamente transforma paisagem em vocabulário visual.",
+    originalUrl: "https://www.si.edu/object/sketchbook-newport-rhode-island-new-jersey-and-england-views%3Achndm_1953-179-89",
+    commonsUrl: "https://www.si.edu/object/sketchbook-newport-rhode-island-new-jersey-and-england-views%3Achndm_1953-179-89",
+    images: [
+      { url: "https://ids.si.edu/ids/deliveryService?id=CHSDM-1953-179-89MattFlynn", href: "https://www.si.edu/object/sketchbook-newport-rhode-island-new-jersey-and-england-views%3Achndm_1953-179-89", label: "Caderno · 89 desenhos / 88 folhas" }
+    ]
+  },
+  {
     id: "eva-gonzales-sketchbook",
     artist: "Eva Gonzalès",
     title: "Sketchbook · 86 páginas / 45 desenhos",
