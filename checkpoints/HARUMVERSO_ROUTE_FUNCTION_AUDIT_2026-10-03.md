@@ -1,64 +1,67 @@
 # Auditoria funcional de rotas — 2026-10-03
 
-## Escopo e evidência
+## Escopo
 
-Inventário gerado do tree Astro de `main`: 33 arquivos de rota, incluindo duas famílias dinâmicas. A página pública `/bancos/bndigital/` foi aberta no navegador antes da correção; seis botões de tema apontavam para a mesma página inicial do acervo. O repositório tem 13 fichas de bancos que compartilham `src/pages/bancos/[id].astro`.
+Inventário do tree Astro no commit `5ccdae2`: 33 arquivos de rota, incluindo duas famílias dinâmicas. A página pública `/bancos/bndigital/` foi aberta antes da correção: seus seis temas mandavam para a mesma página genérica do acervo. As 13 fichas de bancos compartilham `src/pages/bancos/[id].astro`.
 
-## Correção em andamento
+## Resultado da rodada
 
-- Nas fichas não federadas, cada tema passa a oferecer cópia do termo e uma porta oficial para o acervo.
-- BNDigital passa a apontar a pesquisa para o catálogo oficial Sophia; a porta de visão geral do Acervo Digital e a página de direitos continuam disponíveis.
-- A Lume escolhe Qwen quantizado Q4F16/WebGPU quando há `shader-f16`; caso contrário tenta Q8/CPU-WASM. Os pesos ficam no cache do navegador após ativação. Isso não instala um aplicativo no Android.
-- A checagem de build valida as 13 fichas, as seis ações BNDigital e os dois caminhos quantizados; o verificador de links internos já percorre todas as páginas HTML geradas.
+- Naveguei pelas 13 URLs de banco no Pages publicado. Todas carregaram, nenhuma manteve o rótulo antigo “abrir banco e pesquisar”.
+- As 10 fichas não federadas exibem seis termos e seis ações distintas de cópia; as três federadas mantêm seus links de pesquisa interna com a consulta de cada tema (MET 6, AIC 7, CMA 6).
+- Na BNDigital, os seis cliques exibiram a confirmação do termo escolhido. O catálogo oficial Sophia, o Acervo Digital e os direitos aparecem como portas separadas. O navegador de teste não disponibilizou uma leitura independente do clipboard; o retorno visível da página confirmou a ação.
+- CI e Pages passaram no commit `5ccdae2`: Astro/TypeScript, contrato de controles, dry run, links internos e deploy.
+- Qwen 0.5B quantizado Q8/CPU-WASM carregou e gerou texto no navegador de teste. A primeira resposta saiu do assunto; a versão seguinte inclui mapa explícito do site e substitui saída sem relação com a rota pela orientação verificada. A geração ainda precisa ser repetida após o deploy dessa proteção.
+- A alternativa CPU usa mais memória e pode responder mais devagar. O teste em telefone Android real continua aberto.
 
 ## Inventário de rotas
 
-| Rota ou família | Estado do inventário | Estado de navegação manual |
+| Rota ou família | Estado do inventário | Navegação manual |
 |---|---|---|
-| `/about/` | Inventariado no fonte | Não percorrido no navegador nesta rodada |
-| `/arquivo/` | Inventariado no fonte | Não percorrido no navegador nesta rodada |
-| `/artists/` | Inventariado no fonte | Não percorrido no navegador nesta rodada |
-| `/atelier/` | Inventariado no fonte | Não percorrido no navegador nesta rodada |
-| `/atlas/` | Inventariado no fonte | Não percorrido no navegador nesta rodada |
-| `/bancos/` | Inventariado no fonte | Não percorrido no navegador nesta rodada |
-| `/bancos/{id}/ (13 bancos; ficha compartilhada)` | Inventariado no fonte | Não percorrido no navegador nesta rodada |
-| `/biblioteca/` | Inventariado no fonte | Não percorrido no navegador nesta rodada |
-| `/busca/` | Inventariado no fonte | Não percorrido no navegador nesta rodada |
-| `/buscar/` | Inventariado no fonte | Não percorrido no navegador nesta rodada |
-| `/cadernos/` | Inventariado no fonte | Não percorrido no navegador nesta rodada |
-| `/cadernos/gesto/` | Inventariado no fonte | Não percorrido no navegador nesta rodada |
-| `/cadernos/memoria/` | Inventariado no fonte | Não percorrido no navegador nesta rodada |
-| `/cadernos/olhar/` | Inventariado no fonte | Não percorrido no navegador nesta rodada |
-| `/cadernos/presenca/` | Inventariado no fonte | Não percorrido no navegador nesta rodada |
-| `/cadernos/vestigio/` | Inventariado no fonte | Não percorrido no navegador nesta rodada |
-| `/carta/` | Inventariado no fonte | Não percorrido no navegador nesta rodada |
-| `/classics/` | Inventariado no fonte | Não percorrido no navegador nesta rodada |
-| `/composicoes-autorais/` | Inventariado no fonte | Não percorrido no navegador nesta rodada |
-| `/historia-da-arte/` | Inventariado no fonte | Não percorrido no navegador nesta rodada |
-| `/ (home)` | Inventariado no fonte | Não percorrido no navegador nesta rodada |
-| `/museus/` | Inventariado no fonte | Não percorrido no navegador nesta rodada |
-| `/newsletter/` | Inventariado no fonte | Não percorrido no navegador nesta rodada |
-| `/noir/` | Inventariado no fonte | Não percorrido no navegador nesta rodada |
-| `/outliers/` | Inventariado no fonte | Não percorrido no navegador nesta rodada |
-| `/percursos/` | Inventariado no fonte | Não percorrido no navegador nesta rodada |
-| `/referencias/` | Inventariado no fonte | Não percorrido no navegador nesta rodada |
-| `/referencias/{slug}/ (páginas do atlas)` | Inventariado no fonte | Não percorrido no navegador nesta rodada |
-| `/roubar-como-artista/` | Inventariado no fonte | Não percorrido no navegador nesta rodada |
-| `/sketchbooks/` | Inventariado no fonte | Não percorrido no navegador nesta rodada |
-| `/sobre/` | Inventariado no fonte | Não percorrido no navegador nesta rodada |
-| `/temporadas/` | Inventariado no fonte | Não percorrido no navegador nesta rodada |
-| `/vault/` | Inventariado no fonte | Não percorrido no navegador nesta rodada |
+| `/about/` | Mapeada | Pendente |
+| `/arquivo/` | Mapeada | Pendente |
+| `/artists/` | Mapeada | Pendente |
+| `/atelier/` | Mapeada | Pendente |
+| `/atlas/` | Mapeada | Pendente |
+| `/bancos/` | Mapeada | Pendente |
+| `/bancos/{id}/` (13 fichas) | Mapeada e navegada | 13/13 carregaram; 13/13 sem link genérico |
+| `/biblioteca/` | Mapeada | Pendente |
+| `/busca/` | Mapeada | Pendente |
+| `/buscar/` | Mapeada | Pendente |
+| `/cadernos/` | Mapeada | Pendente |
+| `/cadernos/gesto/` | Mapeada | Pendente |
+| `/cadernos/memoria/` | Mapeada | Pendente |
+| `/cadernos/olhar/` | Mapeada | Pendente |
+| `/cadernos/presenca/` | Mapeada | Pendente |
+| `/cadernos/vestigio/` | Mapeada | Pendente |
+| `/carta/` | Mapeada | Pendente |
+| `/classics/` | Mapeada | Pendente |
+| `/composicoes-autorais/` | Mapeada | Pendente |
+| `/historia-da-arte/` | Mapeada | Pendente |
+| `/` (home) | Mapeada | Pendente |
+| `/museus/` | Mapeada | Pendente |
+| `/newsletter/` | Mapeada | Pendente |
+| `/noir/` | Mapeada | Pendente |
+| `/outliers/` | Mapeada | Pendente |
+| `/percursos/` | Mapeada | Pendente |
+| `/referencias/` | Mapeada | Pendente |
+| `/referencias/{slug}/` | Mapeada | Pendente |
+| `/roubar-como-artista/` | Mapeada | Pendente |
+| `/sketchbooks/` | Mapeada | Pendente |
+| `/sobre/` | Mapeada | Pendente |
+| `/temporadas/` | Mapeada | Pendente |
+| `/vault/` | Mapeada | Pendente |
 
-## Itens que continuam abertos
+## Próximas verificações
 
-- Recarregar a página BNDigital publicada e testar os seis controles de cópia, o catálogo Sophia e o botão de direitos.
-- Fazer um teste de geração real do Qwen em GPU e CPU/WASM, incluindo aparelho Android com pouca memória. A checagem de código não substitui esse teste de hardware.
-- Percorrer visualmente as demais páginas, verificar se capas levam a conteúdo completo e registrar botões externos que não respondam.
-- A origem BNDigital pode bloquear acesso automatizado; o destino oficial foi conferido por seu catálogo e pela documentação pública da Fundação Biblioteca Nacional.
+- Repetir a geração da Lume após o deploy e confirmar que a resposta segue o mapa do site.
+- Percorrer os outros 32 templates Astro, abrindo capas, páginas de detalhe e botões externos; registrar os destinos que não respondem ou não combinam com o conteúdo.
+- Fazer teste específico em Android com memória limitada. Build/CI não substitui verificação de hardware.
+- A Fundação Biblioteca Nacional pode restringir automação no portal; os destinos Sophia, Acervo Digital e direitos foram comparados com fontes oficiais indexadas.
 
-## Barra inicial
+## Progresso
 
-- BNDigital ao vivo antes da correção: `6/6` alvos genéricos detectados.
-- Fichas compartilhadas cobertas pelo código: `13`.
-- Templates Astro inventariados: `33`.
-- Navegação de visitante após deploy: `pendente de nova publicação`.
+- Fichas de bancos navegadas: `13/13`.
+- Ações temáticas: `60/60` nas 10 fichas não federadas; `19/19` links federados preservam consulta temática.
+- Templates Astro inventariados: `33/33`.
+- Templates fora da família de bancos com navegação manual: `0/32`.
+- IA local: download/carregamento Q8 e geração observados; qualidade de resposta e aparelho Android ainda em verificação.

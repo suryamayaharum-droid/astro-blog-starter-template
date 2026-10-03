@@ -114,6 +114,20 @@ if (root) {
     return { message: 'Ainda não reconheço esse tema. Posso levar você aos acervos, ao Atlas de Referências ou aos Percursos.', actions: ['museums', 'references', 'journeys'] };
   };
 
+  const routeKeywords = Object.freeze({
+    museums: ['museu', 'acervo'],
+    gesture: ['gesto', 'busca'],
+    notebooks: ['caderno', 'gesto'],
+    references: ['referencia', 'atlas'],
+    journeys: ['percurso', 'trilha'],
+    search: ['busca', 'pesquisa']
+  });
+
+  const answerStaysOnRoute = (raw, actions) => {
+    const answer = String(raw || '').toLocaleLowerCase('pt-BR').normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    return actions.some((key) => (routeKeywords[key] || []).some((word) => answer.includes(word)));
+  };
+
   const showAnswer = (raw) => {
     const answer = answerFor(raw);
     response.textContent = answer.message;
@@ -186,7 +200,13 @@ if (root) {
 
     if (message.type === 'answer' && message.id === activeRequestId) {
       aiBusy = false;
-      response.textContent = message.text || 'Não consegui formular uma resposta. Use os caminhos sugeridos.';
+      const verified = answerFor(activeQuestion);
+      if (!answerStaysOnRoute(message.text, verified.actions)) {
+        response.textContent = verified.message;
+        setAiStatus('Usei a orientação verificada do site porque a resposta gerada saiu do assunto.');
+        return;
+      }
+      response.textContent = message.text;
       return;
     }
 
@@ -224,7 +244,7 @@ if (root) {
     activeQuestion = text;
     activeRequestId = ++requestId;
     response.textContent = 'Lume está preparando uma orientação…';
-    aiWorker.postMessage({ type: 'ask', id: activeRequestId, question: text });
+    aiWorker.postMessage({ type: 'ask', id: activeRequestId, question: text, routeKeys: answerFor(text).actions });
   };
 
   const startAi = async () => {
