@@ -1,5 +1,22 @@
 export const sketchbookGalleries = [
   {
+    id: "eva-gonzales-sketchbook",
+    artist: "Eva Gonzalès",
+    title: "Sketchbook · 86 páginas / 45 desenhos",
+    date: "meados da década de 1860",
+    medium: "Tinta, lápis, aquarela e guache sobre papel",
+    source: "National Gallery of Art",
+    rights: "Domínio público — mídia indicada pela NGA",
+    principle: "O caderno como espaço íntimo de tentativa: materiais diferentes convivem sem obrigação de acabamento ou unidade artificial.",
+    originalUrl: "https://www.nga.gov/artworks/231554-sketchbook",
+    commonsUrl: "https://www.nga.gov/artworks/231554-sketchbook",
+    images: [
+      { url: "https://api.nga.gov/iiif/23718807-32d6-496d-8b7f-b6059cef05b9/full/!800,800/0/default.jpg", href: "https://www.nga.gov/artworks/231554-sketchbook", label: "Capa / abertura" },
+      { url: "https://api.nga.gov/iiif/eea210cd-f248-40f1-9567-1c5bb761833e/full/!800,800/0/default.jpg", href: "https://www.nga.gov/artworks/231554-sketchbook", label: "Folha 01" },
+      { url: "https://api.nga.gov/iiif/794871b0-1ec4-4b1c-b76b-79f529aee1a0/full/!800,800/0/default.jpg", href: "https://www.nga.gov/artworks/231554-sketchbook", label: "Folha 02" }
+    ]
+  },
+  {
     id: "toulouse-lautrec-album-de-marine",
     artist: "Henri de Toulouse-Lautrec",
     title: "Album de Marine",
