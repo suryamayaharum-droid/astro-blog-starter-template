@@ -1,5 +1,61 @@
 export const sketchbookGalleries = [
   {
+    id: "albert-bierstadt-sketchbook-1881",
+    artist: "Albert Bierstadt",
+    title: "Sketchbook · 46 desenhos",
+    date: "1881",
+    medium: "Volume encadernado com 46 desenhos em grafite",
+    source: "National Gallery of Art",
+    rights: "Domínio público — mídia indicada pela NGA",
+    principle: "A continuidade do caderno ensina seleção: paisagem deixa de ser cenário e vira estrutura de massa, direção e memória.",
+    originalUrl: "https://www.nga.gov/artworks/173183-sketchbook",
+    commonsUrl: "https://www.nga.gov/artworks/173183-sketchbook",
+    images: [
+      { url: "https://api.nga.gov/iiif/03b3ad38-cbc5-457f-8c9e-9354df5106b1/full/!800,800/0/default.jpg", href: "https://www.nga.gov/artworks/173183-sketchbook", label: "Sketchbook · abertura" }
+    ]
+  },
+  {
+    id: "cezanne-sketchbook-full",
+    artist: "Paul Cézanne",
+    title: "Cezanne Sketchbook · 71 desenhos / 46 folhas",
+    date: "c. 1877–1900",
+    medium: "Grafite, pena e tinta marrom, aquarela, notas e páginas em branco",
+    source: "National Gallery of Art",
+    rights: "Domínio público — mídia indicada pela NGA",
+    principle: "Pensamento visível: desenho, interrupção, lista, cálculo, carta e página vazia pertencem ao mesmo processo.",
+    originalUrl: "https://www.nga.gov/artworks/76219-cezanne-sketchbook",
+    commonsUrl: "https://www.nga.gov/artworks/76219-cezanne-sketchbook",
+    images: [
+      { url: "https://api.nga.gov/iiif/0cbded62-7e78-4d3c-930d-33c6caed3a12/full/!800,800/0/default.jpg", href: "https://www.nga.gov/artworks/76219-cezanne-sketchbook", label: "Caderno · entrada" }
+    ]
+  },
+  {
+    id: "whistler-sketchbook-1854",
+    artist: "James McNeill Whistler",
+    title: "Sketchbook · 1854–55",
+    date: "1854–55",
+    medium: "Pena e tinta, grafite, guache e giz preto",
+    source: "The Metropolitan Museum of Art",
+    rights: "Domínio público — The Met Open Access",
+    principle: "Alternar linha, mancha e suporte tonal dentro do mesmo caderno amplia o vocabulário sem exigir acabamento uniforme.",
+    originalUrl: "https://www.metmuseum.org/art/collection/search/16007",
+    commonsUrl: "https://www.metmuseum.org/art/collection/search/16007",
+    images: []
+  },
+  {
+    id: "francis-edmonds-sketchbook",
+    artist: "Francis William Edmonds",
+    title: "Sketchbook · estudos de processo",
+    date: "c. 1838 e depois",
+    medium: "Grafite e tinta ferrogálica sobre papel",
+    source: "The Metropolitan Museum of Art",
+    rights: "Domínio público — The Met Open Access",
+    principle: "Estudo independente e preparação para pintura convivem: o caderno registra decisões antes de sabermos quais serão levadas adiante.",
+    originalUrl: "https://www.metmuseum.org/art/collection/search/14878",
+    commonsUrl: "https://www.metmuseum.org/art/collection/search/14878",
+    images: []
+  },
+  {
     id: "kenyon-cox-transversal",
     artist: "Kenyon Cox",
     title: "Sketchbook transversal · corpo, atelier e repertório",
