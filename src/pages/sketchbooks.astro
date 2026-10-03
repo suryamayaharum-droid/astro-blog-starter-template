@@ -1,0 +1,50 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { sketchbookGalleries, commonsImage } from '../data/sketchbookGalleries';
+import '../styles/browse.css';
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
+---
+<!doctype html>
+<html lang="pt-BR">
+<head><BaseHead title="Sketchbooks · Biblioteca Visual · Harum Noir" description="Sketchbooks históricos em domínio público para leitura visual dentro do Harumverso, sempre ligados aos acervos institucionais de origem." /></head>
+<body>
+<Header/>
+<main>
+  <section class="page-hero">
+    <div class="eyebrow">BIBLIOTECA VISUAL · ARQUIVO VIVO</div>
+    <h1>Folhear antes de concluir.</h1>
+    <p>Sketchbooks históricos em domínio público apresentados como galerias de estudo. O Harumverso mantém a navegação visual aqui dentro e, ao mesmo tempo, preserva a porta para o museu e o arquivo original.</p>
+    <div class="actions"><a class="btn primary" href="#galerias">Abrir galerias</a><a class="btn" href={base+'biblioteca#arquivo-vivo-sketchbooks'}>Voltar à Biblioteca</a></div>
+  </section>
+
+  <section class="section" id="galerias">
+    <div class="section-head"><div><div class="eyebrow">UM CADERNO, UM OLHAR</div><h2>Sequências para estudar, não para colecionar.</h2></div><p>Arraste horizontalmente no celular. Cada imagem abre o arquivo correspondente no Wikimedia Commons; os botões levam ao registro institucional e à coleção aberta.</p></div>
+  </section>
+
+  {sketchbookGalleries.map((book)=><section class="section" id={book.id}>
+    <div class="panel">
+      <div class="eyebrow">{book.date} · {book.rights}</div>
+      <h2>{book.artist} · {book.title}</h2>
+      <p>{book.medium}. <strong>Princípio Noir:</strong> {book.principle}</p>
+      <div class="actions">
+        <a class="btn gold" href={book.originalUrl} target="_blank" rel="noreferrer">Abrir no museu →</a>
+        <a class="btn" href={book.commonsUrl} target="_blank" rel="noreferrer">Ver arquivos no Commons →</a>
+      </div>
+    </div>
+    <div class="stream-head" style="margin-top:26px"><div><span class="eyebrow">{book.source}</span><h3>Folhas do caderno</h3></div><p>{book.images.length} imagens abertas nesta seleção inicial.</p></div>
+    <div class="browse-rail" aria-label={`Galeria de ${book.title}`}>
+      {book.images.map((img,i)=><a class="browse-tile" href={`https://commons.wikimedia.org/wiki/File:${img.file}`} target="_blank" rel="noreferrer">
+        <div class="card-media" style="aspect-ratio:4/5;background:#171614">
+          <img src={commonsImage(img.file, 760)} loading="lazy" decoding="async" alt={`${img.label}, ${book.title}, ${book.artist}`} style="width:100%;height:100%;object-fit:contain" />
+        </div>
+        <div class="browse-body"><span>{String(i+1).padStart(2,'0')} · {book.date}</span><h3>{img.label}</h3><p>{book.artist}</p><small style="color:#b39a69">{book.rights} · abrir arquivo e metadados →</small></div>
+      </a>)}
+    </div>
+  </section>)}
+
+  <section class="section"><div class="journal"><div class="paper"><div class="eyebrow" style="color:#8a734b">REGRA DE ACERVO</div><h2>A imagem nunca perde a origem.</h2><p class="lead">Galeria interna para leitura; museu e Commons para contexto, metadados, licença e resolução original. Novos cadernos só entram depois da verificação de direitos por objeto.</p></div></div></section>
+</main>
+<Footer/>
+</body></html>

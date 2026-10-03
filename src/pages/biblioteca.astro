@@ -20,12 +20,12 @@ const collectionCount = openLibraryCollections.length;
     <div class="eyebrow">BIBLIOTECA ABERTA</div>
     <h1>Fonte antes de fórmula.</h1>
     <p>{sourceCount} entradas selecionadas em {collectionCount} temas deste núcleo público do Harumverso. Cada link leva à instituição de origem; a curadoria explica o que observar e como isso conversa com o Harum Noir.</p>
-    <div class="actions"><a class="btn primary" href="#colecoes">Abrir coleções</a><a class="btn" href={base+'percursos'}>Voltar aos percursos</a></div>
+    <div class="actions"><a class="btn primary" href="#colecoes">Abrir coleções</a><a class="btn gold" href={base+'sketchbooks'}>Folhear sketchbooks →</a><a class="btn" href={base+'percursos'}>Voltar aos percursos</a></div>
   </section>
 
   <section class="section" id="colecoes">
     <div class="section-head">
-      <div><div class="eyebrow">ÍNDICE TEMÁTICO</div><h2>Cinco maneiras de entrar.</h2></div>
+      <div><div class="eyebrow">ÍNDICE TEMÁTICO</div><h2>{collectionCount} maneiras de entrar.</h2></div>
       <p><strong class="map-total">{sourceCount} fontes · {collectionCount} temas</strong><br/>A biblioteca não classifica artistas do melhor ao pior. Ela organiza problemas de desenho e fontes que ajudam a investigá-los.</p>
     </div>
     <nav class="path-index" aria-label="Índice temático da biblioteca">
