@@ -31,6 +31,7 @@ const links = [
     <div class="nav-links">
       {links.filter(([,path])=>primaryPaths.has(path)).map(([label,path]) => <a href={`${base}${path}`}>{label}</a>)}
       <a href={STUDIO_SITE} target="_blank" rel="noreferrer">Studio 23 ↗</a>
+      <span class="locale-inline" aria-label="Idiomas"><a href={base}>PT</a><a href={base+'en/'}>EN</a><a href={base+'es/'}>ES</a></span>
     </div>
     <details class="explore-menu">
       <summary>Explorar <span aria-hidden="true">＋</span></summary>
@@ -99,5 +100,6 @@ try{
 .explore-title{grid-column:1/-1;color:var(--gold);font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;padding:0 10px 12px}
 .explore-panel a{padding:10px;border-radius:8px;text-decoration:none;font-size:.85rem;color:var(--paper-2)}
 .explore-panel a:hover,.explore-panel a[aria-current]{background:rgba(179,154,105,.1);color:var(--paper)}
-@media(max-width:760px){.explore-menu{margin-left:auto}.explore-menu summary{font-size:.72rem;padding:7px 10px}.explore-panel{position:fixed;left:16px;right:16px;top:64px;width:auto}.explore-panel a{font-size:.9rem}}
+.locale-inline{display:inline-flex;gap:4px;margin-left:4px}.locale-inline a{font-size:.66rem;padding:4px 6px;border:1px solid var(--line);border-radius:999px}.locale-inline a:hover{border-color:var(--gold);color:var(--gold)}
+@media(max-width:760px){.locale-inline{display:none}.explore-menu{margin-left:auto}.explore-menu summary{font-size:.72rem;padding:7px 10px}.explore-panel{position:fixed;left:16px;right:16px;top:64px;width:auto}.explore-panel a{font-size:.9rem}}
 </style>
