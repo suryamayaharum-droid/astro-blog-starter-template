@@ -80,6 +80,7 @@ if (root) {
   let aiBusy = false;
   let requestId = 0;
   let activeRequestId = 0;
+  let activeQuestion = '';
   const baseValue = root.dataset.base || '/';
   const base = baseValue.endsWith('/') ? baseValue : baseValue + '/';
   const destinations = Object.freeze({
@@ -153,6 +154,7 @@ if (root) {
     }
 
     if (message.type === 'unsupported') {
+      resetAiWorker();
       aiState = 'unsupported';
       aiEnable.disabled = true;
       aiEnable.textContent = 'IA indisponível neste navegador';
@@ -182,7 +184,7 @@ if (root) {
       if (message.stage === 'answer') {
         if (message.id === activeRequestId) {
           aiBusy = false;
-          const localAnswer = answerFor(question.value);
+          const localAnswer = answerFor(activeQuestion);
           response.textContent = localAnswer.message + ' A resposta local continua disponível.';
         }
         setAiStatus('A geração local falhou. As sugestões verificadas continuam disponíveis.');
@@ -208,6 +210,7 @@ if (root) {
       return;
     }
     aiBusy = true;
+    activeQuestion = text;
     activeRequestId = ++requestId;
     response.textContent = 'Lume está preparando uma orientação…';
     aiWorker.postMessage({ type: 'ask', id: activeRequestId, question: text });
@@ -317,6 +320,18 @@ if (root) {
 .lume-answer-links:empty{display:none}
 .lume-answer-links a{color:var(--gold);font-size:.68rem;font-weight:700;text-decoration:none;border-bottom:1px solid rgba(179,154,105,.38)}
 .lume-answer-links a:hover{color:var(--paper)}
+.lume-ai{display:grid;gap:8px;padding:11px;border:1px solid rgba(179,154,105,.26);border-radius:14px;background:rgba(179,154,105,.035)}
+.lume-ai-heading{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.lume-ai-heading strong{color:var(--paper-2);font-size:.69rem;letter-spacing:.04em}
+.lume-ai-heading span{color:var(--gold);font-size:.59rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.lume-ai-copy,.lume-ai-status{margin:0;color:var(--muted);font-size:.64rem;line-height:1.45}
+.lume-ai-enable{min-height:36px;padding:8px 11px;border:1px solid rgba(179,154,105,.5);border-radius:10px;background:rgba(179,154,105,.12);color:var(--paper);font:inherit;font-size:.68rem;font-weight:700;cursor:pointer}
+.lume-ai-enable:hover:not(:disabled){border-color:var(--gold);background:rgba(179,154,105,.2)}
+.lume-ai-enable:disabled{opacity:.62;cursor:not-allowed}
+.lume-ai-cancel{justify-self:start;padding:2px 0;border:0;background:none;color:var(--paper-2);font:inherit;font-size:.64rem;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.lume-ai-progress{width:100%;height:5px;accent-color:var(--gold)}
+.lume-ai-model-link{justify-self:start;color:var(--gold);font-size:.62rem;text-decoration:none;border-bottom:1px solid rgba(179,154,105,.35)}
+.lume-ai-model-link:hover{color:var(--paper)}
 .lume-note{margin:-5px 0 0;color:#77736d;font-size:.61rem;line-height:1.4}
 .lume-host :focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 @keyframes lume-orbit{to{transform:rotate(360deg)}}
