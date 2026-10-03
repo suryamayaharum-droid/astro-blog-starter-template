@@ -1,6 +1,63 @@
 export const sketchbookGalleries = [
   {
+    id: "thomas-sully-figure-studies",
+    shelf: "Figura & composição",
+    artist: "Thomas Sully",
+    title: "Sketchbook of Figure Studies · 166 páginas",
+    date: "1810–20",
+    medium: "Tinta, aguada e grafite em 83 folhas",
+    source: "The Metropolitan Museum of Art",
+    rights: "Domínio público — The Met Open Access",
+    principle: "Estudar mestres sem copiar literalmente: rearranjar relações compositivas e registrar caminhos que talvez nunca virem obra.",
+    originalUrl: "https://www.metmuseum.org/art/collection/search/12688",
+    commonsUrl: "https://www.metmuseum.org/art/collection/search/12688",
+    images: []
+  },
+  {
+    id: "joshua-reynolds-italy",
+    shelf: "Escultura & viagem",
+    artist: "Sir Joshua Reynolds",
+    title: "Sketchbook, Italy · 182 folhas",
+    date: "1750–52",
+    medium: "Grafite, giz preto, pena e tinta marrom",
+    source: "The Metropolitan Museum of Art",
+    rights: "Domínio público — The Met Open Access",
+    principle: "Viajar desenhando transforma museu, igreja, escultura e arquitetura em repertório portátil.",
+    originalUrl: "https://www.metmuseum.org/art/collection/search/355616",
+    commonsUrl: "https://www.metmuseum.org/art/collection/search/355616",
+    images: []
+  },
+  {
+    id: "joseph-wright-smaller-italian",
+    shelf: "Escultura & viagem",
+    artist: "Joseph Wright of Derby",
+    title: "Smaller Italian sketchbook · 43 desenhos / 44 folhas",
+    date: "1774–75",
+    medium: "Grafite, pena e tinta, aguada cinza e amarela / aquarela",
+    source: "The Metropolitan Museum of Art",
+    rights: "Domínio público — The Met Open Access",
+    principle: "Ruína, figura clássica e atmosfera podem coexistir numa mesma sequência de observação.",
+    originalUrl: "https://www.metmuseum.org/art/collection/search/362089",
+    commonsUrl: "https://www.metmuseum.org/art/collection/search/362089",
+    images: []
+  },
+  {
+    id: "oscar-bluemner-sketchbook",
+    shelf: "Memória & anotação",
+    artist: "Oscar F. Bluemner",
+    title: "Bluemner Sketchbook · 156 desenhos + notas",
+    date: "1912",
+    medium: "Várias mídias e notas do artista em papel",
+    source: "National Gallery of Art",
+    rights: "Domínio público — mídia indicada pela NGA",
+    principle: "Imagem e escrita compartilham a página: repertório visual também é pensamento verbal, medida, dúvida e retorno.",
+    originalUrl: "https://www.nga.gov/artworks/107156-bluemner-sketchbook",
+    commonsUrl: "https://www.nga.gov/artworks/107156-bluemner-sketchbook",
+    images: []
+  },
+  {
     id: "albert-bierstadt-sketchbook-1881",
+    shelf: "Paisagem & atmosfera",
     artist: "Albert Bierstadt",
     title: "Sketchbook · 46 desenhos",
     date: "1881",
@@ -16,6 +73,7 @@ export const sketchbookGalleries = [
   },
   {
     id: "cezanne-sketchbook-full",
+    shelf: "Memória & anotação",
     artist: "Paul Cézanne",
     title: "Cezanne Sketchbook · 71 desenhos / 46 folhas",
     date: "c. 1877–1900",
@@ -31,6 +89,7 @@ export const sketchbookGalleries = [
   },
   {
     id: "whistler-sketchbook-1854",
+    shelf: "Matéria & linguagem",
     artist: "James McNeill Whistler",
     title: "Sketchbook · 1854–55",
     date: "1854–55",
@@ -44,6 +103,7 @@ export const sketchbookGalleries = [
   },
   {
     id: "francis-edmonds-sketchbook",
+    shelf: "Figura & composição",
     artist: "Francis William Edmonds",
     title: "Sketchbook · estudos de processo",
     date: "c. 1838 e depois",
@@ -57,6 +117,7 @@ export const sketchbookGalleries = [
   },
   {
     id: "kenyon-cox-transversal",
+    shelf: "Figura & repertório",
     artist: "Kenyon Cox",
     title: "Sketchbook transversal · corpo, atelier e repertório",
     date: "1874–1883",
@@ -77,6 +138,7 @@ export const sketchbookGalleries = [
   },
   {
     id: "william-trost-richards-long-sketchbook",
+    shelf: "Paisagem & atmosfera",
     artist: "William Trost Richards",
     title: "Newport, New Jersey e England Views",
     date: "após 1890",
@@ -92,6 +154,7 @@ export const sketchbookGalleries = [
   },
   {
     id: "eva-gonzales-sketchbook",
+    shelf: "Memória & anotação",
     artist: "Eva Gonzalès",
     title: "Sketchbook · 86 páginas / 45 desenhos",
     date: "meados da década de 1860",
@@ -109,6 +172,7 @@ export const sketchbookGalleries = [
   },
   {
     id: "toulouse-lautrec-album-de-marine",
+    shelf: "Observação & gesto",
     artist: "Henri de Toulouse-Lautrec",
     title: "Album de Marine",
     date: "1879–80",
@@ -126,6 +190,7 @@ export const sketchbookGalleries = [
   },
   {
     id: "william-trost-richards-sketchbook-vii",
+    shelf: "Paisagem & atmosfera",
     artist: "William Trost Richards",
     title: "Sketchbook VII · paisagem e mar",
     date: "1886",
