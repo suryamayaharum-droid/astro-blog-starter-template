@@ -33,15 +33,15 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
         <a class="btn" href={book.commonsUrl} target="_blank" rel="noreferrer">{book.commonsUrl.includes("commons.wikimedia.org") ? "Ver arquivos no Commons →" : "Abrir acervo completo →"}</a>
       </div>
     </div>
-    <div class="stream-head" style="margin-top:26px"><div><span class="eyebrow">{book.source}</span><h3>Folhas do caderno</h3></div><p>{book.images.length} imagens abertas nesta seleção inicial.</p></div>
-    <div class="browse-rail" aria-label={`Galeria de ${book.title}`}>
+    <div class="stream-head" style="margin-top:26px"><div><span class="eyebrow">{book.source}</span><h3>Folhas do caderno</h3></div><p>{book.images.length > 0 ? `${book.images.length} imagens abertas nesta seleção inicial.` : "Acervo institucional conectado · imagens internas entram após validação individual do arquivo."}</p></div>
+    {book.images.length > 0 ? <div class="browse-rail" aria-label={`Galeria de ${book.title}`}>
       {book.images.map((img,i)=><a class="browse-tile" href={"href" in img ? img.href : `https://commons.wikimedia.org/wiki/File:${img.file}`} target="_blank" rel="noreferrer">
         <div class="card-media" style="aspect-ratio:4/5;background:#171614">
           <img src={"url" in img ? img.url : commonsImage(img.file, 760)} loading="lazy" decoding="async" alt={`${img.label}, ${book.title}, ${book.artist}`} style="width:100%;height:100%;object-fit:contain" />
         </div>
         <div class="browse-body"><span>{String(i+1).padStart(2,'0')} · {book.date}</span><h3>{img.label}</h3><p>{book.artist}</p><small style="color:#b39a69">{book.rights} · abrir arquivo e metadados →</small></div>
       </a>)}
-    </div>
+    </div> : <div class="panel" style="margin-top:18px"><p>Este caderno já faz parte do índice navegável. Use <strong>Abrir no museu</strong> para folheá-lo na fonte enquanto a seleção visual interna é validada página por página.</p></div>}
   </section>)}
 
   <section class="section"><div class="journal"><div class="paper"><div class="eyebrow" style="color:#8a734b">REGRA DE ACERVO</div><h2>A imagem nunca perde a origem.</h2><p class="lead">Galeria interna para leitura; museu e Commons para contexto, metadados, licença e resolução original. Novos cadernos só entram depois da verificação de direitos por objeto.</p></div></div></section>
