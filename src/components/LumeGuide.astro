@@ -28,7 +28,7 @@ const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
     </header>
 
     <p class="lume-intro">Sou Lume. Posso indicar caminhos por acervos, referências, cadernos e percursos.</p>
-    <p class="lume-privacy"><span aria-hidden="true">●</span> Guia local · as perguntas não saem deste navegador</p>
+    <p class="lume-privacy"><span aria-hidden="true">●</span> As perguntas são processadas aqui. Só ao ativar, a biblioteca vem do jsDelivr e os pesos da Hugging Face; as perguntas não são enviadas a eles.</p>
 
     <form class="lume-form" data-lume-form>
       <label for="lume-question">O que você quer explorar?</label>
@@ -48,7 +48,16 @@ const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
       <p data-lume-response aria-live="polite">Escolha uma sugestão ou escreva sobre o que procura.</p>
       <nav class="lume-answer-links" data-lume-links aria-label="Caminhos sugeridos"></nav>
     </div>
-    <p class="lume-note">Esta primeira versão usa orientações determinísticas; ainda não conecta a um modelo de IA.</p>
+    <section class="lume-ai" aria-label="Modelo de inteligência artificial local">
+      <div class="lume-ai-heading"><strong>IA local opcional</strong><span>Qwen · 4 bits</span></div>
+      <p class="lume-ai-copy">O primeiro download usa cerca de 483 MB e exige WebGPU com shader-f16. Sem esse suporte, o guia local continua funcionando.</p>
+      <button class="lume-ai-enable" type="button" data-lume-ai-enable>Ativar IA local · ~483 MB</button>
+      <button class="lume-ai-cancel" type="button" data-lume-ai-cancel hidden>Cancelar carregamento</button>
+      <progress class="lume-ai-progress" data-lume-ai-progress max="100" value="0" hidden aria-label="Progresso de carregamento do modelo"></progress>
+      <p class="lume-ai-status" data-lume-ai-status role="status">O modelo só é baixado se você escolher ativá-lo.</p>
+      <a class="lume-ai-model-link" href="https://huggingface.co/onnx-community/Qwen2.5-0.5B-Instruct" target="_blank" rel="noopener noreferrer">Ver modelo e arquivos ↗</a>
+    </section>
+    <p class="lume-note">Modelo experimental: confira os caminhos verificados antes de seguir uma orientação.</p>
   </section>
 </aside>
 
@@ -62,6 +71,15 @@ if (root) {
   const question = root.querySelector('#lume-question');
   const response = root.querySelector('[data-lume-response]');
   const links = root.querySelector('[data-lume-links]');
+  const aiEnable = root.querySelector('[data-lume-ai-enable]');
+  const aiCancel = root.querySelector('[data-lume-ai-cancel]');
+  const aiStatus = root.querySelector('[data-lume-ai-status]');
+  const aiProgress = root.querySelector('[data-lume-ai-progress]');
+  let aiWorker = null;
+  let aiState = 'idle';
+  let aiBusy = false;
+  let requestId = 0;
+  let activeRequestId = 0;
   const baseValue = root.dataset.base || '/';
   const base = baseValue.endsWith('/') ? baseValue : baseValue + '/';
   const destinations = Object.freeze({
@@ -108,6 +126,131 @@ if (root) {
     });
   };
 
+  const setAiStatus = (message) => {
+    aiStatus.textContent = message;
+  };
+
+  const resetAiWorker = () => {
+    if (aiWorker) aiWorker.terminate();
+    aiWorker = null;
+    aiBusy = false;
+    requestId += 1;
+  };
+
+  const handleAiMessage = (event) => {
+    const message = event.data || {};
+    if (message.type === 'progress') {
+      aiProgress.hidden = false;
+      const progress = Number(message.progress);
+      if (Number.isFinite(progress)) {
+        const percent = Math.max(0, Math.min(100, progress <= 1 ? progress * 100 : progress));
+        aiProgress.value = percent;
+        setAiStatus((message.status === 'runtime' ? 'Carregando o runtime local…' : 'Preparando o modelo local…') + (percent > 0 ? ' ' + Math.round(percent) + '%.' : ''));
+      } else {
+        setAiStatus(message.status === 'runtime' ? 'Carregando o runtime local…' : 'Baixando e preparando o modelo local…');
+      }
+      return;
+    }
+
+    if (message.type === 'unsupported') {
+      aiState = 'unsupported';
+      aiEnable.disabled = true;
+      aiEnable.textContent = 'IA indisponível neste navegador';
+      aiCancel.hidden = true;
+      aiProgress.hidden = true;
+      setAiStatus(message.reason || 'WebGPU com shader-f16 não está disponível. O guia local continua funcionando.');
+      return;
+    }
+
+    if (message.type === 'ready') {
+      aiState = 'ready';
+      aiEnable.disabled = true;
+      aiEnable.textContent = 'IA local pronta';
+      aiCancel.hidden = true;
+      aiProgress.hidden = true;
+      setAiStatus('Modelo carregado neste navegador. As perguntas são processadas localmente.');
+      return;
+    }
+
+    if (message.type === 'answer' && message.id === activeRequestId) {
+      aiBusy = false;
+      response.textContent = message.text || 'Não consegui formular uma resposta. Use os caminhos sugeridos.';
+      return;
+    }
+
+    if (message.type === 'error') {
+      if (message.stage === 'answer') {
+        if (message.id === activeRequestId) {
+          aiBusy = false;
+          const localAnswer = answerFor(question.value);
+          response.textContent = localAnswer.message + ' A resposta local continua disponível.';
+        }
+        setAiStatus('A geração local falhou. As sugestões verificadas continuam disponíveis.');
+        return;
+      }
+
+      aiState = 'failed';
+      resetAiWorker();
+      aiEnable.disabled = false;
+      aiEnable.textContent = 'Tentar carregar IA · ~483 MB';
+      aiCancel.hidden = true;
+      aiProgress.hidden = true;
+      setAiStatus('Não foi possível carregar o modelo. O guia local continua disponível; você pode tentar novamente.');
+    }
+  };
+
+  const askWithAi = (raw) => {
+    const text = String(raw || '').slice(0, 160);
+    showAnswer(text);
+    if (aiState !== 'ready' || !aiWorker) return;
+    if (aiBusy) {
+      response.textContent = 'Ainda estou preparando esta resposta. Aguarde um instante.';
+      return;
+    }
+    aiBusy = true;
+    activeRequestId = ++requestId;
+    response.textContent = 'Lume está preparando uma orientação…';
+    aiWorker.postMessage({ type: 'ask', id: activeRequestId, question: text });
+  };
+
+  const startAi = () => {
+    if (aiState === 'loading' || aiState === 'ready' || aiState === 'unsupported') return;
+    if (typeof Worker === 'undefined') {
+      aiState = 'failed';
+      setAiStatus('Este navegador não permite executar o modelo em segundo plano. O guia local continua disponível.');
+      return;
+    }
+    aiState = 'loading';
+    aiEnable.disabled = true;
+    aiEnable.textContent = 'Preparando IA local…';
+    aiCancel.hidden = false;
+    aiProgress.hidden = false;
+    aiProgress.value = 0;
+    setAiStatus('Verificando WebGPU e iniciando o download escolhido…');
+    aiWorker = new Worker(new URL('../scripts/lume-ai.worker.js', import.meta.url), { type: 'module' });
+    aiWorker.addEventListener('message', handleAiMessage);
+    aiWorker.addEventListener('error', () => {
+      aiState = 'failed';
+      resetAiWorker();
+      aiEnable.disabled = false;
+      aiEnable.textContent = 'Tentar carregar IA · ~483 MB';
+      aiCancel.hidden = true;
+      aiProgress.hidden = true;
+      setAiStatus('O runtime local não iniciou. O guia continua disponível; você pode tentar novamente.');
+    });
+    aiWorker.postMessage({ type: 'load' });
+  };
+
+  const cancelAi = () => {
+    resetAiWorker();
+    aiState = 'idle';
+    aiEnable.disabled = false;
+    aiEnable.textContent = 'Ativar IA local · ~483 MB';
+    aiCancel.hidden = true;
+    aiProgress.hidden = true;
+    setAiStatus('Carregamento interrompido. O guia local continua disponível.');
+  };
+
   const setOpen = (open, returnFocus = false) => {
     panel.hidden = !open;
     toggle.setAttribute('aria-expanded', String(open));
@@ -119,14 +262,16 @@ if (root) {
   closeButton.addEventListener('click', () => setOpen(false, true));
   form.addEventListener('submit', (event) => {
     event.preventDefault();
-    showAnswer(question.value);
+    askWithAi(question.value);
   });
   root.querySelectorAll('[data-lume-prompt]').forEach((button) => {
     button.addEventListener('click', () => {
       question.value = button.dataset.lumePrompt || '';
-      showAnswer(question.value);
+      askWithAi(question.value);
     });
   });
+  aiEnable.addEventListener('click', startAi);
+  aiCancel.addEventListener('click', cancelAi);
   panel.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') setOpen(false, true);
   });
