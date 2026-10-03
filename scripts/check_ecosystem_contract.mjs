@@ -13,8 +13,9 @@ const ecosystemPath = path.resolve("src/data/ecosystem.ts");
 const atlasPath = path.resolve("src/pages/atlas.astro");
 const lumePath = path.resolve("src/components/LumeGuide.astro");
 const galleriesPath = path.resolve("src/data/sketchbookGalleries.ts");
+const galleriesPagePath = path.resolve("src/pages/sketchbooks.astro");
 
-const [consts, header, footer, ecosystem, atlas, lume, galleries] = await Promise.all([
+const [consts, header, footer, ecosystem, atlas, lume, galleries, galleriesPage] = await Promise.all([
   fs.readFile(constsPath, "utf8"),
   fs.readFile(headerPath, "utf8"),
   fs.readFile(footerPath, "utf8"),
@@ -22,6 +23,7 @@ const [consts, header, footer, ecosystem, atlas, lume, galleries] = await Promis
   fs.readFile(atlasPath, "utf8"),
   fs.readFile(lumePath, "utf8"),
   fs.readFile(galleriesPath, "utf8"),
+  fs.readFile(galleriesPagePath, "utf8"),
 ]);
 
 const failures = [];
@@ -64,6 +66,7 @@ for (const slug of requiredHubs) {
 if (!lume.includes("bndigital: { href: base +") || !lume.includes("bancos/bndigital/")) failures.push("Lume must link directly to the BNDigital detail page");
 if (!lume.includes("banks: { href: base +") || !lume.includes("'bancos/'")) failures.push("Lume must expose the image banks catalog");
 if (galleries.includes("images: []")) failures.push("Every indexed sketchbook must have at least one reviewed gallery image");
+if (!galleriesPage.includes("gallery-image-fallback")) failures.push("Sketchbook image tiles must degrade to a source-linked fallback");
 
 const directUrlFiles = [];
 async function walk(dir) {
@@ -97,6 +100,7 @@ const summary = {
   duplicatedCanonicalUrlFiles: directUrlFiles,
   requiredHubs,
   emptySketchbookGallery: galleries.includes("images: []"),
+  galleryImageFallback: galleriesPage.includes("gallery-image-fallback"),
   failures,
 };
 
