@@ -48,12 +48,12 @@ for (const id of ids) {
 }
 
 const worker = await fs.readFile(path.resolve("src/scripts/lume-ai.worker.js"), "utf8");
-for (const token of ["dtype: 'q4f16'", "dtype: 'q8'", "env.useBrowserCache = true", "shader-f16", "SITE_MAP", "routeContext"]) {
+for (const token of ["dtype: 'q4f16'", "dtype: 'q8'", "env.useBrowserCache = true", "shader-f16", "SITE_MAP", "routeContext", "verifiedAnswer"]) {
   if (!worker.includes(token)) throw new Error(`Quantized local AI fallback contract is missing: ${token}.`);
 }
 
 const guide = await fs.readFile(path.resolve("src/components/LumeGuide.astro"), "utf8");
-for (const token of ["CPU/WASM", "até 512 MB", "data-lume-ai-enable", "answerStaysOnRoute", "routeKeys"]) {
+for (const token of ["CPU/WASM", "até 512 MB", "data-lume-ai-enable", "answerStaysOnRoute", "routeKeys", "verifiedAnswer"]){
   if (!guide.includes(token)) throw new Error(`Lume UI is missing its local-model guidance: ${token}.`);
 }
 

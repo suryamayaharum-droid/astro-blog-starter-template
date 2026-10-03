@@ -10,7 +10,7 @@ Inventário do tree Astro no commit `5ccdae2`: 33 arquivos de rota, incluindo du
 - As 10 fichas não federadas exibem seis termos e seis ações distintas de cópia; as três federadas mantêm seus links de pesquisa interna com a consulta de cada tema (MET 6, AIC 7, CMA 6).
 - Na BNDigital, os seis cliques exibiram a confirmação do termo escolhido. O catálogo oficial Sophia, o Acervo Digital e os direitos aparecem como portas separadas. O navegador de teste não disponibilizou uma leitura independente do clipboard; o retorno visível da página confirmou a ação.
 - CI e Pages passaram no commit `5ccdae2`: Astro/TypeScript, contrato de controles, dry run, links internos e deploy.
-- Qwen 0.5B quantizado Q8/CPU-WASM carregou e gerou texto no navegador de teste. A primeira resposta saiu do assunto; a versão seguinte inclui mapa explícito do site e substitui saída sem relação com a rota pela orientação verificada. A geração ainda precisa ser repetida após o deploy dessa proteção.
+- Qwen 0.5B quantizado Q8/CPU-WASM carregou e gerou texto no navegador de teste. A primeira resposta saiu do assunto; a proteção atual inclui o mapa do site, passa ao modelo a resposta verificada e substitui saída sem relação com a rota pela orientação correta. A geração ainda precisa ser repetida após o deploy desse contexto adicional.
 - A alternativa CPU usa mais memória e pode responder mais devagar. O teste em telefone Android real continua aberto.
 
 ## Inventário de rotas

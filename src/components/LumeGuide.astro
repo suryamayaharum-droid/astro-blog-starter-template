@@ -244,7 +244,8 @@ if (root) {
     activeQuestion = text;
     activeRequestId = ++requestId;
     response.textContent = 'Lume está preparando uma orientação…';
-    aiWorker.postMessage({ type: 'ask', id: activeRequestId, question: text, routeKeys: answerFor(text).actions });
+    const verified = answerFor(text);
+    aiWorker.postMessage({ type: 'ask', id: activeRequestId, question: text, routeKeys: verified.actions, verifiedAnswer: verified.message });
   };
 
   const startAi = async () => {
