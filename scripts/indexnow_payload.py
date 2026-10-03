@@ -4,7 +4,7 @@ from pathlib import Path
 
 BASE="https://suryamayaharum-droid.github.io/astro-blog-starter-template"
 KEY="6973d74100b91d6ead3adf388b629848"
-KEY_LOCATION=f"{BASE}/{key}.txt"
+KEY_LOCATION=f"{BASE}/{KEY}.txt"
 
 try:
     changed=subprocess.check_output(["git","diff","HEAD^","HEAD","--name-only"],text=True).splitlines()
