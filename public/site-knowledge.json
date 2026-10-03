@@ -1,0 +1,50 @@
+{
+  "name": "HARUM NOIR · Arte Harum",
+  "url": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/",
+  "languages": [
+    "pt-BR",
+    "en",
+    "es"
+  ],
+  "origin": "Salvador, Bahia, Brazil",
+  "description": "Editorial atelier and visual research ecosystem focused on drawing, charcoal, anatomy, gesture, art history and tattoo composition.",
+  "entities": [
+    {
+      "name": "HARUM NOIR",
+      "type": "CreativeWorkSeries",
+      "role": "editorial research, charcoal, figure, anatomy and process"
+    },
+    {
+      "name": "Arte Harum",
+      "type": "Organization",
+      "role": "artistic research and authorial visual language"
+    },
+    {
+      "name": "Tattoo Studio 23",
+      "type": "TattooParlor",
+      "url": "https://tattoostudio23.suryamaya-harum.chatgpt.site/",
+      "role": "documented tattoo work and booking"
+    }
+  ],
+  "topics": [
+    "charcoal drawing",
+    "figure drawing",
+    "artistic anatomy",
+    "gesture drawing",
+    "art history",
+    "visual repertoire",
+    "tattoo composition",
+    "museum collections",
+    "open access archives",
+    "Brazilian visual culture"
+  ],
+  "routes": {
+    "references": "/referencias/",
+    "artHistory": "/historia-da-arte/",
+    "imageBanks": "/bancos/",
+    "museums": "/museus/",
+    "notebooks": "/cadernos/",
+    "library": "/biblioteca/",
+    "pathways": "/percursos/"
+  }
+}
