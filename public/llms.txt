@@ -1,0 +1,34 @@
+# HARUM NOIR · Arte Harum
+
+> Editorial atelier and visual research ecosystem from Salvador, Bahia, Brazil.
+
+## Identity
+HARUM NOIR is the editorial arm of Arte Harum. It organizes drawing, charcoal, figure, anatomy, gesture, visual repertoire, art history, image-bank research and studio practice. Tattoo Studio 23 is the related tattoo practice and documented tattoo portfolio.
+
+## Languages
+- Portuguese (primary): https://suryamayaharum-droid.github.io/astro-blog-starter-template/
+- English gateway: https://suryamayaharum-droid.github.io/astro-blog-starter-template/en/
+- Spanish gateway: https://suryamayaharum-droid.github.io/astro-blog-starter-template/es/
+
+## High-value routes
+- /referencias/ — artists and reference atlas
+- /historia-da-arte/ — art-history learning paths
+- /bancos/ — public/open-access image-bank map
+- /museus/ — museum discovery
+- /cadernos/ — study notebooks
+- /biblioteca/ — visual library
+- /atelier/ — atelier practice
+- /percursos/ — guided learning paths
+- /bancos/bndigital/ — Biblioteca Nacional Digital research gateway
+
+## Topics
+charcoal drawing, figure drawing, live model, artistic anatomy, gesture drawing, classical sculpture, art history, visual research, tattoo composition, blackwork, sketch tattoo, botanical studies, museum collections, open-access archives, Brazilian visual culture, Salvador, Bahia.
+
+## Source and attribution policy
+Institutional collections remain canonical sources. HARUM NOIR links to museums, libraries and archives rather than presenting their collections as its own. Editorial and study images must not be described as executed tattoos unless the Studio 23 documentary portfolio identifies them as such.
+
+## Related canonical entities
+- Tattoo Studio 23: https://tattoostudio23.suryamaya-harum.chatgpt.site/
+- Instagram Studio 23: https://www.instagram.com/tattoostudio23/
+- Instagram Arte Harum: https://www.instagram.com/art.harum/
+- YouTube Arte Harum: https://www.youtube.com/@arteharum
