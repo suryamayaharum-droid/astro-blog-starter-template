@@ -49,12 +49,12 @@ const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
       <nav class="lume-answer-links" data-lume-links aria-label="Caminhos sugeridos"></nav>
     </div>
     <section class="lume-ai" aria-label="Modelo de inteligência artificial local">
-      <div class="lume-ai-heading"><strong>IA local opcional</strong><span>Qwen · 4 bits</span></div>
-      <p class="lume-ai-copy">O primeiro download usa cerca de 483 MB e exige WebGPU com shader-f16. Sem esse suporte, o guia local continua funcionando.</p>
-      <button class="lume-ai-enable" type="button" data-lume-ai-enable>Ativar IA local · ~483 MB</button>
+      <div class="lume-ai-heading"><strong>IA local opcional</strong><span>Qwen · quantizado</span></div>
+      <p class="lume-ai-copy">Com GPU compatível, baixa cerca de 483 MB (4 bits). Sem ela, usa CPU/WASM com cerca de 512 MB (8 bits), em velocidade menor. O modelo só baixa após sua escolha e fica no cache deste navegador; não é uma instalação no Android.</p>
+      <button class="lume-ai-enable" type="button" data-lume-ai-enable>Ativar IA local · até 512 MB</button>
       <button class="lume-ai-cancel" type="button" data-lume-ai-cancel hidden>Cancelar carregamento</button>
       <progress class="lume-ai-progress" data-lume-ai-progress max="100" value="0" hidden aria-label="Progresso de carregamento do modelo"></progress>
-      <p class="lume-ai-status" data-lume-ai-status role="status">O modelo só é baixado se você escolher ativá-lo.</p>
+      <p class="lume-ai-status" data-lume-ai-status role="status">O download começa após sua escolha. Precisa de internet e espaço livre.</p>
       <a class="lume-ai-model-link" href="https://huggingface.co/onnx-community/Qwen2.5-0.5B-Instruct" target="_blank" rel="noopener noreferrer">Ver modelo e arquivos ↗</a>
     </section>
     <p class="lume-note">Modelo experimental: confira os caminhos verificados antes de seguir uma orientação.</p>
@@ -78,6 +78,7 @@ if (root) {
   let aiWorker = null;
   let aiState = 'idle';
   let aiBusy = false;
+  let aiDevice = '';
   let requestId = 0;
   let activeRequestId = 0;
   let activeQuestion = '';
@@ -135,32 +136,41 @@ if (root) {
     if (aiWorker) aiWorker.terminate();
     aiWorker = null;
     aiBusy = false;
+    aiDevice = '';
     requestId += 1;
   };
 
   const handleAiMessage = (event) => {
     const message = event.data || {};
+    if (message.type === 'backend') {
+      aiDevice = message.device || '';
+      const route = aiDevice === 'webgpu' ? 'GPU · 4 bits · ~483 MB' : 'CPU/WASM · 8 bits · ~512 MB';
+      setAiStatus(`Motor escolhido: ${route}. Preparando modelo no cache do navegador…`);
+      return;
+    }
+
     if (message.type === 'progress') {
       aiProgress.hidden = false;
       const progress = Number(message.progress);
+      const engine = aiDevice === 'webgpu' ? 'GPU' : aiDevice === 'wasm' ? 'CPU/WASM' : 'local';
       if (Number.isFinite(progress)) {
         const percent = Math.max(0, Math.min(100, progress <= 1 ? progress * 100 : progress));
         aiProgress.value = percent;
-        setAiStatus((message.status === 'runtime' ? 'Carregando o runtime local…' : 'Preparando o modelo local…') + (percent > 0 ? ' ' + Math.round(percent) + '%.' : ''));
+        setAiStatus((message.status === 'runtime' ? 'Carregando o runtime local…' : `Baixando/preparando no motor ${engine}…`) + (percent > 0 ? ' ' + Math.round(percent) + '%.' : ''));
       } else {
-        setAiStatus(message.status === 'runtime' ? 'Carregando o runtime local…' : 'Baixando e preparando o modelo local…');
+        setAiStatus(message.status === 'runtime' ? 'Carregando o runtime local…' : `Baixando e preparando o modelo no motor ${engine}…`);
       }
       return;
     }
 
     if (message.type === 'unsupported') {
       resetAiWorker();
-      aiState = 'unsupported';
-      aiEnable.disabled = true;
-      aiEnable.textContent = 'IA indisponível neste navegador';
+      aiState = 'failed';
+      aiEnable.disabled = false;
+      aiEnable.textContent = 'Tentar carregar IA · até 512 MB';
       aiCancel.hidden = true;
       aiProgress.hidden = true;
-      setAiStatus(message.reason || 'WebGPU com shader-f16 não está disponível. O guia local continua funcionando.');
+      setAiStatus(message.reason || 'Este navegador não conseguiu abrir o modelo local. O guia de caminhos continua disponível.');
       return;
     }
 
@@ -170,7 +180,7 @@ if (root) {
       aiEnable.textContent = 'IA local pronta';
       aiCancel.hidden = true;
       aiProgress.hidden = true;
-      setAiStatus('Modelo carregado neste navegador. As perguntas são processadas localmente.');
+      setAiStatus(`Modelo ${aiDevice === 'webgpu' ? '4 bits na GPU' : '8 bits em CPU/WASM'} pronto e guardado no cache deste navegador. As perguntas são processadas localmente.`);
       return;
     }
 
@@ -194,10 +204,11 @@ if (root) {
       aiState = 'failed';
       resetAiWorker();
       aiEnable.disabled = false;
-      aiEnable.textContent = 'Tentar carregar IA · ~483 MB';
+      aiEnable.textContent = 'Tentar carregar IA · até 512 MB';
       aiCancel.hidden = true;
       aiProgress.hidden = true;
-      setAiStatus('Não foi possível carregar o modelo. O guia local continua disponível; você pode tentar novamente.');
+      const reason = String(message.reason || '').slice(0, 150);
+      setAiStatus((reason ? `Falha ao abrir o modelo: ${reason}. ` : 'Não foi possível abrir o modelo. ') + 'O guia de caminhos continua disponível; você pode tentar novamente.');
     }
   };
 
@@ -216,30 +227,48 @@ if (root) {
     aiWorker.postMessage({ type: 'ask', id: activeRequestId, question: text });
   };
 
-  const startAi = () => {
-    if (aiState === 'loading' || aiState === 'ready' || aiState === 'unsupported') return;
+  const startAi = async () => {
+    if (aiState === 'loading' || aiState === 'ready') return;
     if (typeof Worker === 'undefined') {
       aiState = 'failed';
       setAiStatus('Este navegador não permite executar o modelo em segundo plano. O guia local continua disponível.');
       return;
     }
+    try {
+      const estimate = await navigator.storage?.estimate?.();
+      const available = Number(estimate?.quota) - Number(estimate?.usage || 0);
+      if (Number.isFinite(available) && available > 0 && available < 550 * 1024 * 1024) {
+        setAiStatus('O espaço livre informado pelo navegador parece baixo para guardar o modelo. Vou tentar carregar; se falhar, libere espaço e tente de novo.');
+      }
+    } catch {}
     aiState = 'loading';
     aiEnable.disabled = true;
     aiEnable.textContent = 'Preparando IA local…';
     aiCancel.hidden = false;
     aiProgress.hidden = false;
     aiProgress.value = 0;
-    setAiStatus('Verificando WebGPU e iniciando o download escolhido…');
-    aiWorker = new Worker(new URL('../scripts/lume-ai.worker.js', import.meta.url), { type: 'module' });
+    setAiStatus('Verificando GPU e preparando a alternativa CPU/WASM…');
+    try {
+      aiWorker = new Worker(new URL('../scripts/lume-ai.worker.js', import.meta.url), { type: 'module' });
+    } catch (error) {
+      aiState = 'failed';
+      aiEnable.disabled = false;
+      aiEnable.textContent = 'Tentar carregar IA · até 512 MB';
+      aiCancel.hidden = true;
+      aiProgress.hidden = true;
+      setAiStatus(`O runtime local não iniciou: ${String(error?.message || error).slice(0, 140)}. Você pode tentar novamente.`);
+      return;
+    }
     aiWorker.addEventListener('message', handleAiMessage);
-    aiWorker.addEventListener('error', () => {
+    aiWorker.addEventListener('error', (event) => {
       aiState = 'failed';
       resetAiWorker();
       aiEnable.disabled = false;
-      aiEnable.textContent = 'Tentar carregar IA · ~483 MB';
+      aiEnable.textContent = 'Tentar carregar IA · até 512 MB';
       aiCancel.hidden = true;
       aiProgress.hidden = true;
-      setAiStatus('O runtime local não iniciou. O guia continua disponível; você pode tentar novamente.');
+      setAiStatus('O navegador interrompeu o motor local. Feche outras abas, confira o espaço livre e tente novamente.');
+      event.preventDefault();
     });
     aiWorker.postMessage({ type: 'load' });
   };
@@ -248,7 +277,7 @@ if (root) {
     resetAiWorker();
     aiState = 'idle';
     aiEnable.disabled = false;
-    aiEnable.textContent = 'Ativar IA local · ~483 MB';
+    aiEnable.textContent = 'Ativar IA local · até 512 MB';
     aiCancel.hidden = true;
     aiProgress.hidden = true;
     setAiStatus('Carregamento interrompido. O guia local continua disponível.');
@@ -273,7 +302,7 @@ if (root) {
       askWithAi(question.value);
     });
   });
-  aiEnable.addEventListener('click', startAi);
+  aiEnable.addEventListener('click', () => { void startAi(); });
   aiCancel.addEventListener('click', cancelAi);
   panel.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') setOpen(false, true);

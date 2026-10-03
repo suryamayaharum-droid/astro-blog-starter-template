@@ -8,16 +8,52 @@ export function getStaticPaths(){ return imageBanks.map(bank=>({params:{id:bank.
 const {bank}=Astro.props;
 const base=import.meta.env.BASE_URL.endsWith('/')?import.meta.env.BASE_URL:import.meta.env.BASE_URL+'/';
 const liveBase=bank.liveFederated?base+'museus?q=':null;
+const bankSearchUrl=bank.id==='bndigital'?'https://acervobndigital.bn.gov.br/sophia/index.asp':bank.collectionUrl;
 ---
 <!doctype html><html lang="pt-BR"><head><BaseHead title={bank.name+' · Bancos de Imagens · Harum Noir'} description={'Leques de estudo, direitos e portas para '+bank.name+'.'} /></head>
 <body><Header/><main>
 <section class="section bank-top">
   <div class="bank-title"><div class="meta">{bank.kind} · {bank.place}</div><h1>{bank.name}</h1><p>{bank.rights}</p><div class="bank-strengths">{bank.strengths.map(x=><span>{x}</span>)}</div></div>
-  <div class="bank-door"><div class="door-mark">↗</div><div class="eyebrow">PORTA ORIGINAL</div><h2>Abra o acervo na fonte.</h2><p>{bank.access}. O HARUM NOIR não espelha esta biblioteca; ele organiza caminhos de estudo para ela.</p><div class="actions"><a class="btn gold" href={bank.collectionUrl} target="_blank" rel="noreferrer">Abrir coleção ↗</a><a class="btn" href={bank.rightsUrl} target="_blank" rel="noreferrer">Direitos / Open Access ↗</a></div></div>
+  <div class="bank-door"><div class="door-mark">↗</div><div class="eyebrow">PORTA ORIGINAL</div><h2>Abra o acervo na fonte.</h2><p>{bank.access}. O HARUM NOIR não espelha esta biblioteca; ele organiza caminhos de estudo para ela.</p><div class="actions"><a class="btn gold" href={bankSearchUrl} target="_blank" rel="noreferrer">{bank.id==='bndigital'?'Abrir catálogo Sophia ↗':'Abrir coleção ↗'}</a>{bank.id==='bndigital'&&<a class="btn" href={bank.collectionUrl} target="_blank" rel="noreferrer">Ver Acervo Digital ↗</a>}<a class="btn" href={bank.rightsUrl} target="_blank" rel="noreferrer">Direitos / Open Access ↗</a></div></div>
 </section>
-<section class="section"><div class="fan-head"><div><div class="eyebrow">LEQUES DE ESTUDO</div><h2>Entre por uma pergunta.</h2></div><p>Os termos abaixo funcionam como portas. Nas integrações vivas, o clique já abre a busca federada; nos demais bancos, abra a coleção e use o termo indicado.</p></div>
-<div class="bank-fan">{bank.lenses.map((lens,i)=><article class="fan-card"><div class="n">{String(i+1).padStart(2,'0')}</div><div class="eyebrow">LEQUE</div><h3>{lens.label}</h3><p>{lens.note}</p><span class="fan-query">{lens.query}</span>{liveBase?<a href={liveBase+encodeURIComponent(lens.query)}>pesquisar nos museus conectados →</a>:<a href={bank.collectionUrl} target="_blank" rel="noreferrer">abrir banco e pesquisar ↗</a>}</article>)}</div></section>
+<section class="section"><div class="fan-head"><div><div class="eyebrow">LEQUES DE ESTUDO</div><h2>Entre por uma pergunta.</h2></div><p>{bank.id==='bndigital'?'Copie um termo e abra o catálogo Sophia. Cole em Busca rápida; use Busca combinada para restringir por título, autoria ou assunto.':'Copie um termo para levar à busca do acervo original. Nas integrações vivas, o botão já abre a busca com o tema preenchido.'}</p></div>
+<div class="bank-fan">{bank.lenses.map((lens,i)=><article class="fan-card"><div class="n">{String(i+1).padStart(2,'0')}</div><div class="eyebrow">LEQUE</div><h3>{lens.label}</h3><p>{lens.note}</p><span class="fan-query">{lens.query}</span>{liveBase?<a href={liveBase+encodeURIComponent(lens.query)}>pesquisar nos museus conectados →</a>:<div class="fan-actions"><a href={bankSearchUrl} target="_blank" rel="noreferrer">{bank.id==='bndigital'?'abrir catálogo Sophia ↗':'abrir acervo oficial ↗'}</a><button type="button" data-copy-query={lens.query}>copiar termo</button></div>}<span class="fan-copy-status" data-copy-status role="status" aria-live="polite"></span></article>)}</div></section>
 <section class="section"><div class="section-head"><div><div class="eyebrow">PERÍODOS FORTES</div><h2>Onde este banco ajuda mais.</h2></div></div><div class="bank-strengths">{bank.periods.map(x=><span>{x}</span>)}</div><div class="bank-caution"><b>Cuidado de proveniência:</b> {bank.caution}</div></section>
 <section class="section"><div class="section-head"><div><div class="eyebrow">MÉTODO</div><h2>Quatro movimentos.</h2></div></div><div class="bank-protocol"><div class="protocol-step"><b>01 · Abrir</b><p>Entre pelo acervo institucional, não por uma cópia perdida na web.</p></div><div class="protocol-step"><b>02 · Ler</b><p>Veja autoria, data, técnica, coleção e aviso de direitos.</p></div><div class="protocol-step"><b>03 · Observar</b><p>Escolha uma decisão visual: peso, linha, luz, recorte, padrão ou espaço.</p></div><div class="protocol-step"><b>04 · Refazer</b><p>Feche a referência e reconstrua a ideia com outra solução e outra mão.</p></div></div></section>
 <section class="section"><div class="journal"><div class="paper"><div class="eyebrow" style="color:#8a734b">CONEXÃO HARUM NOIR</div><h2>Use esta porta junto com o Atlas.</h2><p class="lead">A história aponta o problema. O banco oferece material. O desenho transforma a pesquisa.</p><p><a href={base+'historia-da-arte'}>Voltar para História da Arte →</a></p></div></div></section>
-</main><Footer/></body></html>
+</main><Footer/>
+<script>
+  document.addEventListener('click', async (event) => {
+    const target = event.target;
+    const button = target instanceof Element ? target.closest('[data-copy-query]') : null;
+    if (!button) return;
+    const query = button.getAttribute('data-copy-query') || '';
+    const status = button.closest('.fan-card')?.querySelector('[data-copy-status]');
+    if (!query || !status) return;
+
+    let copied = false;
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(query);
+        copied = true;
+      }
+    } catch {}
+
+    if (!copied) {
+      const field = document.createElement('textarea');
+      field.value = query;
+      field.setAttribute('aria-hidden', 'true');
+      field.style.position = 'fixed';
+      field.style.opacity = '0';
+      document.body.append(field);
+      field.select();
+      try { copied = document.execCommand('copy'); } catch {}
+      field.remove();
+    }
+
+    status.textContent = copied
+      ? `Termo “${query}” copiado. Cole na busca do acervo.`
+      : `Copie este termo para pesquisar: ${query}`;
+  });
+</script>
+</body></html>

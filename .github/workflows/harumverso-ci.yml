@@ -34,6 +34,9 @@ jobs:
       - name: Astro + TypeScript
         run: npm run check
 
+      - name: Bank actions and local model fallback contract
+        run: node scripts/check_bank_controls.mjs
+
       - name: Cloudflare dry run
         run: npm run check:cloudflare
 

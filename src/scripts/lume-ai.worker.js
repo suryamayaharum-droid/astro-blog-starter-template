@@ -4,51 +4,64 @@ const TRANSFORMERS_CDN = 'https://cdn.jsdelivr.net/npm/@huggingface/transformers
 
 let generator = null;
 let loadingPromise = null;
+let activeBackend = null;
 
 const send = (payload) => self.postMessage(payload);
 const messageOf = (error) => String(error && error.message ? error.message : error || 'Erro desconhecido').slice(0, 240);
+
+async function selectBackend() {
+  const gpu = self.navigator && self.navigator.gpu;
+  if (gpu) {
+    try {
+      const adapter = await gpu.requestAdapter();
+      if (adapter && adapter.features && adapter.features.has('shader-f16')) {
+        return { device: 'webgpu', dtype: 'q4f16', label: 'GPU · 4 bits', size: '483 MB' };
+      }
+    } catch {}
+  }
+
+  return { device: 'wasm', dtype: 'q8', label: 'CPU/WASM · 8 bits', size: '512 MB' };
+}
 
 async function loadModel() {
   if (generator) return generator;
   if (loadingPromise) return loadingPromise;
 
   loadingPromise = (async () => {
-    const gpu = self.navigator && self.navigator.gpu;
-    if (!gpu) {
-      send({ type: 'unsupported', reason: 'Este navegador não oferece WebGPU. O guia local continua disponível.' });
-      return null;
-    }
-
-    const adapter = await gpu.requestAdapter();
-    if (!adapter || !adapter.features || !adapter.features.has('shader-f16')) {
-      send({ type: 'unsupported', reason: 'Esta GPU não oferece WebGPU com shader-f16. O guia local continua disponível.' });
-      return null;
-    }
+    activeBackend = await selectBackend();
+    send({
+      type: 'backend',
+      device: activeBackend.device,
+      dtype: activeBackend.dtype,
+      size: activeBackend.size,
+      label: activeBackend.label
+    });
 
     send({ type: 'progress', status: 'runtime' });
     const { pipeline, env } = await import(TRANSFORMERS_CDN);
     env.allowLocalModels = false;
     env.allowRemoteModels = true;
+    env.useBrowserCache = true;
+    if (env.backends && env.backends.onnx && env.backends.onnx.wasm) {
+      env.backends.onnx.wasm.numThreads = 1;
+    }
 
-    generator = await pipeline(
-      'text-generation',
-      MODEL_ID,
-      {
-        dtype: 'q4f16',
-        device: 'webgpu',
-        revision: MODEL_REVISION,
-        progress_callback: (info) => {
-          const progress = info && Number(info.progress);
-          send({
-            type: 'progress',
-            status: String(info && info.status || 'download'),
-            progress: Number.isFinite(progress) ? progress : null,
-            file: String(info && info.file || '')
-          });
-        }
+    const options = {
+      dtype: activeBackend.dtype,
+      revision: MODEL_REVISION,
+      progress_callback: (info) => {
+        const progress = info && Number(info.progress);
+        send({
+          type: 'progress',
+          status: String(info && info.status || 'download'),
+          progress: Number.isFinite(progress) ? progress : null,
+          file: String(info && info.file || '')
+        });
       }
-    );
+    };
+    if (activeBackend.device === 'webgpu') options.device = 'webgpu';
 
+    generator = await pipeline('text-generation', MODEL_ID, options);
     return generator;
   })();
 
@@ -64,7 +77,7 @@ self.addEventListener('message', async (event) => {
   if (data.type === 'load') {
     try {
       const model = await loadModel();
-      if (model) send({ type: 'ready' });
+      if (model) send({ type: 'ready', device: activeBackend && activeBackend.device, dtype: activeBackend && activeBackend.dtype });
     } catch (error) {
       send({ type: 'error', stage: 'load', reason: messageOf(error) });
     }
@@ -90,7 +103,7 @@ self.addEventListener('message', async (event) => {
           }
         ],
         {
-          max_new_tokens: 96,
+          max_new_tokens: 80,
           do_sample: true,
           temperature: 0.3,
           top_p: 0.85,
