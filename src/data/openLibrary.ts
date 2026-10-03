@@ -351,6 +351,30 @@ export const openLibraryCollections: OpenLibraryCollection[] = [
         url: "https://www.nga.gov/artworks/173183-sketchbook",
         observe: "Um volume inteiro preserva continuidade de observação em 46 desenhos, permitindo estudar como motivos diferentes convivem dentro da mesma sequência.",
         rights: "Public domain — mídia indicada pela NGA"
+      },
+      {
+        creator: "Henri de Toulouse-Lautrec",
+        title: "Album de Marine — 48 fólios",
+        source: "The Metropolitan Museum of Art",
+        url: "https://www.metmuseum.org/art/collection/search/334729",
+        observe: "Dezessete aquarelas e vinte e sete estudos em giz preto e grafite deixam acompanhar observação e variação dentro de um único caderno.",
+        rights: "Public domain — The Met"
+      },
+      {
+        creator: "William Trost Richards",
+        title: "Sketchbook VII — paisagem e mar, 1886",
+        source: "The Metropolitan Museum of Art",
+        url: "https://www.metmuseum.org/art/collection/search/15382",
+        observe: "Folhas rápidas e estudos mais resolvidos mostram o sketchbook como ensaio contínuo de nuvem, mar, rocha, árvore e ritmo.",
+        rights: "Public domain — The Met / arquivos Commons CC0"
+      },
+      {
+        creator: "George Elbert Burr",
+        title: "(Sketchbook) St. Legier, 1899",
+        source: "Smithsonian American Art Museum",
+        url: "https://americanart.si.edu/artwork/sketchbook-st-legier-3333",
+        observe: "Figura, cidade, arquitetura e anotação coexistem como banco de repertório observado.",
+        rights: "CC0 — Smithsonian Open Access"
       }
     ]
   },
