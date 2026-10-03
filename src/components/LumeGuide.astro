@@ -86,6 +86,8 @@ if (root) {
   const base = baseValue.endsWith('/') ? baseValue : baseValue + '/';
   const destinations = Object.freeze({
     museums: { href: base + 'museus/', label: 'Abrir Museus →' },
+    banks: { href: base + 'bancos/', label: 'Abrir Bancos de Imagens →' },
+    bndigital: { href: base + 'bancos/bndigital/', label: 'Abrir BNDigital →' },
     gesture: { href: base + 'busca/?q=gesto', label: 'Buscar “gesto” →' },
     notebooks: { href: base + 'cadernos/', label: 'Abrir Cadernos →' },
     references: { href: base + 'referencias/', label: 'Abrir Referências →' },
@@ -96,6 +98,12 @@ if (root) {
   const answerFor = (raw) => {
     const text = String(raw || '').trim().toLocaleLowerCase('pt-BR').normalize('NFD').replace(/[\u0300-\u036f]/g, '');
     if (!text) return { message: 'Escreva uma palavra ou escolha uma sugestão para eu indicar um caminho.', actions: [] };
+    if (/\b(bndigital|bn\s+digital|biblioteca nacional|fundacao biblioteca nacional)\b/.test(text)) {
+      return { message: 'A ficha BNDigital reúne os leques de estudo e abre o catálogo da Biblioteca Nacional. Confira os direitos de cada item no registro de origem.', actions: ['bndigital'] };
+    }
+    if (/\bbancos?\s+(?:de\s+)?imagens?\b|\bacervos?\s+digitais?\b/.test(text)) {
+      return { message: 'Os Bancos de Imagens organizam instituições, direitos e termos de pesquisa. Abra cada ficha para seguir até a fonte original.', actions: ['banks'] };
+    }
     if (/\b(museu|museus|acervo|acervos|obra|obras|colecao|colecoes|met|aic|cleveland)\b/.test(text)) {
       return { message: 'Na página Museus, pesquise por artista, obra ou tema. Abra a ficha do acervo para consultar os dados na instituição de origem.', actions: ['museums'] };
     }
@@ -116,6 +124,8 @@ if (root) {
 
   const routeKeywords = Object.freeze({
     museums: ['museu', 'acervo'],
+    banks: ['banco', 'imagem'],
+    bndigital: ['bndigital', 'biblioteca nacional'],
     gesture: ['gesto', 'busca'],
     notebooks: ['caderno', 'gesto'],
     references: ['referencia', 'atlas'],
