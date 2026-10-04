@@ -8,7 +8,7 @@ Escopo: inventário de rotas e imagens do repositório público; integração da
 |---|---|---|
 | Portas do site | `/`, `/en/`, `/es/` | PT/EN/ES. Capas locais específicas; EN/ES usam `atelier-desk.webp`. |
 | Escola aberta | `/escola/`, `/en/school/`, `/es/escuela/` | Componente compartilhado `School.astro`; hero e quatro etapas já tinham imagens próprias. A primeira prática agora tem prancha didática em quatro decisões, com legenda e texto alternativo nos três idiomas. |
-| Prática e aprendizagem | `/desenho/`, `/en/drawing/`, `/es/dibujo/`, `/maos/`, `/temporadas/`, `/percursos/`, `/sketchbooks/`, `/roubar-como-artista/`, `/colecoes/` | `/maos/` ganhou prancha com seis ações para o exercício sem imagem. Percursos usam SVG temáticos; temporadas e desenho foram inventariados para revisão de conteúdo. |
+| Prática e aprendizagem | `/desenho/`, `/en/drawing/`, `/es/dibujo/`, `/en/collections/`, `/es/colecciones/`, `/maos/`, `/temporadas/`, `/percursos/`, `/sketchbooks/`, `/roubar-como-artista/`, `/colecoes/` | `/maos/` ganhou prancha com seis ações para o exercício sem imagem. Percursos usam SVG temáticos; temporadas e desenho foram inventariados para revisão de conteúdo. |
 | Cadernos | `/cadernos/` e `/cadernos/{presenca,gesto,olhar,memoria,vestigio}/` | Cinco entradas têm imagens SVG temáticas (`figure`, `gesture`, `eye`, `memory`, `trace`). |
 | História, cultura e acervos | `/historia-da-arte/`, `/cultura-visual-brasileira/`, `/museus/`, `/arquivo/`, `/biblioteca/`, `/atlas/`, `/referencias/` | Imagens de museus/atlas locais ou registros ligados à fonte institucional; evitar substituir por imagens que imitem artistas reais. |
 | Referências individuais | `/referencias/{slug}/` | 101 perfis no catálogo; capas editoriais temáticas locais e fontes originais. Capa gerada não é obra do artista nem tatuagem executada. |
@@ -28,7 +28,20 @@ Escopo: inventário de rotas e imagens do repositório público; integração da
 
 ## Critério visual e proveniência
 
-As três pranchas didáticas seguem papel marfim, carvão/grafite e pequenos acentos ocres do atlas HARUM NOIR. Todas são arquivos locais WebP (`public/noir/visual-atlas/`), sem dependência de Drive ou hotlink. As legendas identificam assistência de IA. Não foram usadas referências de estilo de franquias ou de artistas vivos. Assets de portfólio Studio 23, imagens institucionais e coleções de museus permanecem intactos.
+As pranchas didáticas existentes seguem papel marfim, carvão/grafite e pequenos acentos ocres do atlas HARUM NOIR. Todas são arquivos locais WebP (`public/noir/visual-atlas/`), sem dependência de Drive ou hotlink. As legendas identificam assistência de IA. Não foram usadas referências de estilo de franquias ou de artistas vivos. Assets de portfólio Studio 23, imagens institucionais e coleções de museus permanecem intactos.
+
+
+## Continuação multilíngue e coleções — em revisão
+
+**Progresso:** [████████░░] 80% — visualização integrada; CI, verificação móvel e publicação pendentes.
+
+A revisão atual amplia as Coleções Visuais para os caminhos em inglês e espanhol, com as novas rotas `/en/collections/` e `/es/colecciones/`. Os hubs compartilhados apresentam imagens locais em primeiro plano, links localizados e descrições didáticas em notas expansíveis. As duas home pages internacionais também passam a oferecer as coleções na navegação. O conteúdo português usa o mesmo padrão nos hubs de Desenho, Cultura Visual Brasileira e Tatuagem em Salvador.
+
+A rota `/historia-da-arte/` recebe quatro lentes visuais (corpo/gesto, forma/luz, botânica/ornamento, matéria/superfície), conectadas aos períodos relevantes. Cada imagem é identificada como estudo editorial, não como obra histórica. `/referencias/` já tem capas por artista e permanece source-first; suas imagens e créditos foram preservados.
+
+A nova imagem `brasil-acervo-editorial.webp` é uma composição conceitual assistida por IA, marcada como ilustração e não como mapa ou documento histórico. A coleção de Tatuagem usa fotografias já publicadas no portfólio oficial do Studio 23, sem banners promocionais.
+
+**Pontos ainda em validação:** links internos localizados, acessibilidade/alt text, rotas novas, build e matriz móvel.
 
 ## Validação
 

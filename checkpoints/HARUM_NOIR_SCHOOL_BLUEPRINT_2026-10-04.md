@@ -73,7 +73,7 @@ A primeira prática leva 12 minutos e divide o tempo entre pergunta, estrutura, 
 |---|---|
 | 1 | Revisar `/historia-da-arte/`, `/desenho/` e `/referencias/` para trocar explicações extensas por imagem quando isso tornar a decisão visual mais clara; manter fonte e contexto em texto curto. |
 | 2 | Ampliar Coleções Visuais com novas lições guiadas além desta primeira versão, sempre ligadas a uma prática. |
-| 3 | Localizar Coleções Visuais e aprofundar conteúdo de desenho em EN/ES; algumas rotas ainda abrem portais amplos. |
+| 3 | Localizar Coleções Visuais e aprofundar conteúdo de desenho em EN/ES; trabalho em revisão no PR #42. |
 | 4 | Rever alt text, contraste e correspondência entre cartões e aulas nas rotas antigas. |
 
 ### Critério de conclusão desta entrega
@@ -84,9 +84,9 @@ A primeira prática leva 12 minutos e divide o tempo entre pergunta, estrutura, 
 
 - **TENHO:** página `/colecoes/` publicada com quatro portas e arte local; `/maos/` aponta diretamente ao exercício de seis gestos. 
 - **PRECISO:** nenhuma dependência para esta entrega.
-- **FAZENDO:** próxima unidade recomendada: revisar as rotas `/historia-da-arte/`, `/desenho/` e `/referencias/` para priorizar exemplos visuais onde explicações longas não ajudam a prática.
-- **PRONTO:** [PR #38](https://github.com/suryamayaharum-droid/astro-blog-starter-template/pull/38), [PR #39](https://github.com/suryamayaharum-droid/astro-blog-starter-template/pull/39), [CI e Pages](https://github.com/suryamayaharum-droid/astro-blog-starter-template/actions/runs/37243373048), [auditoria móvel](https://github.com/suryamayaharum-droid/astro-blog-starter-template/actions/runs/37243440463).
+- **FAZENDO:** PR #42 localiza as Coleções Visuais, transforma hubs de texto em coleções com imagem e acrescenta apoio visual em `/desenho/` e `/historia-da-arte/`.
+- **PRONTO:** [PR #38](https://github.com/suryamayaharum-droid/astro-blog-starter-template/pull/38), [PR #39](https://github.com/suryamayaharum-droid/astro-blog-starter-template/pull/39), [PR #42 (em revisão)](https://github.com/suryamayaharum-droid/astro-blog-starter-template/pull/42), [CI e Pages](https://github.com/suryamayaharum-droid/astro-blog-starter-template/actions/runs/37243373048), [auditoria móvel](https://github.com/suryamayaharum-droid/astro-blog-starter-template/actions/runs/37243440463).
 - **BLOQUEIO:** nenhum.
 - **PASSO:** abrir a próxima unidade de revisão visual somente após comparar com as coleções existentes.
 - **CONFLITO:** nenhum; a trilha Caderno como universo aponta ao `/cadernos/` existente.
-- **ADIADO:** localização completa EN/ES e expansão de novas aulas; ambas seguem na fila acima.
+- **ADIADO:** auditoria visual, responsiva e de fontes em cada item dos 613 assets do Studio 23; expandir novas aulas depois que a versão multilíngue passar.

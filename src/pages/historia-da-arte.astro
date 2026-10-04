@@ -10,6 +10,13 @@ import { artHistoryBankMap, imageBankById } from '../data/imageBanks';
 import '../styles/artHistory.css';
 const base=import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 const masterCount=artHistoryPeriods.reduce((sum,p)=>sum+p.artists.length,0);
+const historyVisuals=[
+  {number:'01',title:'Corpo · gesto · peso',image:'harum-noir-hands-study',alt:'Estudos editoriais de mãos em carvão para observar gesto, peso e construção.',href:'#grecia-roma',source:'Estudo editorial · não é obra histórica'},
+  {number:'02',title:'Forma · luz · dobra',image:'drapery-still-life',alt:'Estudo editorial de tecido sobre volume e luz.',href:'#barroco',source:'Estudo editorial · não é obra histórica'},
+  {number:'03',title:'Botânica · ritmo · ornamento',image:'iris-study',alt:'Estudo botânico editorial de uma íris em grafite e carvão.',href:'#rococo',source:'Estudo editorial · não é obra histórica'},
+  {number:'04',title:'Matéria · marca · superfície',image:'charcoal-marks',alt:'Estudo editorial de marcas de carvão em diferentes pressões.',href:'#pos-guerra',source:'Estudo editorial · não é obra histórica'}
+];
+
 const museumSearch=(name)=>base+"museus?q="+encodeURIComponent(name);
 const historySchema={
   '@context':'https://schema.org',
@@ -84,6 +91,11 @@ const historySchema={
     </div>
   </section>
 
+  <section class="section history-visual-section" aria-labelledby="history-visual-title">
+    <div class="section-head"><div><div class="eyebrow">COLEÇÃO VISUAL · PROBLEMAS QUE ATRAVESSAM ÉPOCAS</div><h2 id="history-visual-title">Quatro lentes para olhar a história.</h2></div><p>As imagens são estudos editoriais para observar forma e construção. Para ver obras históricas, abra as fontes institucionais de cada período.</p></div>
+    <div class="history-visual-grid">{historyVisuals.map(item=><a href={item.href}><figure><img src={base+'noir/visual-atlas/'+item.image+'.webp'} alt={item.alt} width="900" height="675" loading="lazy"/><figcaption><span>{item.number} · {item.source}</span></figcaption></figure><div><small>{item.title}</small><b>Ir ao período relacionado ↗</b></div></a>)}</div>
+  </section>
+
   {artHistoryPeriods.map((p,i)=><section class="historyPeriod" id={p.id}>
     <div class="periodHead">
       <div class={'historyDiagram d-'+p.diagram} aria-label={'Diagrama de estudo: '+p.diagramLabel}>
@@ -148,3 +160,6 @@ const historySchema={
 <Footer/>
 </body>
 </html>
+<style>
+.history-visual-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.history-visual-grid>a{min-width:0;border:1px solid rgba(240,236,227,.17);background:#0c0c0d;color:#f4efe6;text-decoration:none}.history-visual-grid figure{position:relative;margin:0;aspect-ratio:1.15;overflow:hidden;background:#111}.history-visual-grid img{display:block;width:100%;height:100%;object-fit:contain}.history-visual-grid figcaption{position:absolute;inset:auto 0 0;padding:22px 10px 8px;background:linear-gradient(transparent,rgba(0,0,0,.9));color:#e6dfd4;font-size:.62rem}.history-visual-grid>a>div{display:flex;flex-direction:column;gap:10px;padding:14px}.history-visual-grid small{font:400 clamp(18px,2vw,26px)/1.05 "Cormorant Garamond",serif}.history-visual-grid b{color:#b39a69;font-size:.68rem;font-weight:500}@media(max-width:900px){.history-visual-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:540px){.history-visual-grid{grid-template-columns:1fr 1fr}.history-visual-grid>a>div{padding:11px}}
+</style>
