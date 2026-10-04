@@ -32,4 +32,23 @@ As três pranchas didáticas seguem papel marfim, carvão/grafite e pequenos ace
 
 ## Validação
 
-PR #38 integrado. CI e GitHub Pages passaram; a rota `/colecoes/` foi aberta ao vivo e a prancha e os quatro cartões apareceram. PR #39 acrescenta a nova rota à matriz móvel para testar larguras 320, 360, 390 e 412 px. Esta alteração não muda o portão separado de publicação integral/cutover do site.
+PRs #38 e #39 integrados. CI e GitHub Pages passaram; a rota `/colecoes/` foi aberta ao vivo e a prancha e os quatro cartões apareceram. A auditoria [37243440463](https://github.com/suryamayaharum-droid/astro-blog-starter-template/actions/runs/37243440463) aprovou 27 rotas × 4 larguras (108 capturas), 16 rotas EN/ES e 9 limites em 760/761/1024 px, sem falhas de rota, overflow, imagem ou recurso interno. Esta alteração não muda o portão separado de publicação integral/cutover do site.
+
+
+## Expansão multilíngue — 2026-10-04
+
+A continuação da varredura encontrou cartões de texto sem imagem em 14 hubs (7 EN + 7 ES) e nas duas portas internacionais. O componente compartilhado agora apresenta quatro cartões como uma coleção visual em cada hub: imagem local, título, legenda de proveniência, acesso à rota relacionada e nota didática expansível. A página inicial em português já tinha quatro imagens temáticas e foi preservada.
+
+| Família de hubs | Cobertura visual aplicada em EN/ES |
+|---|---|
+| História del arte / Art history | Drapeado, galeria editorial, estudo de mãos e caderno de desenho. |
+| Cultura visual brasileira | Galeria editorial, prancha conceitual de arquivo brasileiro, botânica e estudo de impressão. A nova prancha tem aviso explícito de que não é documento histórico. |
+| Dibujo / Drawing | Carvão, mãos, exercício de quatro decisões e fotografia de tatuagem botânica publicada pelo Studio 23. |
+| Museus / Museums | Ambiente editorial de galeria, caderno de pesquisa, prancha conceitual Brasil e ferramentas de desenho. Os links continuam levando ao registro institucional. |
+| Referencias / References | Estudos de gesto, matéria, drapeado e caderno. |
+| Acerca / About | Atelier editorial, carvão, fotografia publicada do Studio 23 e caderno. |
+| Tatuaje Salvador / Tattoo Salvador | Três fotografias de tatuagens publicadas pelo Studio 23 e uma imagem do ambiente do estúdio; endereços e atendimento continuam sujeitos às informações oficiais de agendamento. |
+
+A imagem nova `brasil-acervo-editorial.webp` foi criada para a coleção de pesquisa visual brasileira, otimizada em WebP (~193 KB) e armazenada localmente no atlas. Os hubs mantêm as descrições e perguntas essenciais em notas expansíveis; a navegação inicial passa a ser visual, sem remover contexto didático, direitos ou proveniência. A galeria internacional do Studio 23 usa imagens já publicadas no repositório, sem banners promocionais.
+
+**Validação desta etapa:** pendente até conclusão do CI e da auditoria móvel do PR de continuação.
