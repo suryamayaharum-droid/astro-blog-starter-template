@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { STUDIO_INSTAGRAM, ARTE_HARUM_INSTAGRAM, HARUM_YOUTUBE, STUDIO_SITE } from '../consts';
 interface Alternate { hreflang:string; href:string; }
 interface Props { title:string; description:string; image?:string; locale?:string; alternates?:Alternate[]; }
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -18,11 +19,41 @@ const bingVerification=String(import.meta.env.PUBLIC_BING_SITE_VERIFICATION||'')
 const graph = {
   '@context':'https://schema.org',
   '@graph':[
-    {'@type':'WebSite','@id':siteRoot.href+'#website','url':siteRoot.href,'name':'HARUM NOIR','alternateName':'Arte Harum','description':'Ateliê editorial sobre desenho, carvão, anatomia, observação e história da arte.','inLanguage':['pt-BR','en','es']},
-    {'@type':'Organization','@id':siteRoot.href+'#organization','name':'Arte Harum · HARUM NOIR','url':siteRoot.href,'areaServed':{'@type':'Place','name':'Salvador, Bahia, Brazil'},'sameAs':['https://www.instagram.com/tattoostudio23/','https://www.instagram.com/art.harum/','https://www.youtube.com/@arteharum']},
-    {'@type':'WebPage','@id':canonicalURL.href+'#webpage','url':canonicalURL.href,'name':title,'description':description,'inLanguage':locale,'isPartOf':{'@id':siteRoot.href+'#website'},'about':{'@id':siteRoot.href+'#organization'},'primaryImageOfPage':{'@type':'ImageObject','url':imageURL.href}}
+    {
+      '@type':'Organization','@id':siteRoot.href+'#arte-harum','name':'Arte Harum','url':siteRoot.href,
+      'description':'Pesquisa artística autoral em desenho, carvão, figura, anatomia, repertório visual e composição.',
+      'areaServed':{'@type':'Place','name':'Salvador, Bahia, Brazil'},
+      'sameAs':[ARTE_HARUM_INSTAGRAM,HARUM_YOUTUBE],
+      'knowsAbout':['charcoal drawing','figure drawing','artistic anatomy','gesture drawing','art history','visual research','tattoo composition']
+    },
+    {
+      '@type':'CreativeWorkSeries','@id':siteRoot.href+'#harum-noir','name':'HARUM NOIR','url':siteRoot.href,
+      'description':'Selo editorial de Arte Harum para carvão, figura, anatomia, gesto, processo e pesquisa visual.',
+      'creator':{'@id':siteRoot.href+'#arte-harum'},
+      'inLanguage':['pt-BR','en','es'],
+      'keywords':['charcoal drawing','figure drawing','artistic anatomy','gesture','art history','visual archive']
+    },
+    {
+      '@type':['TattooParlor','LocalBusiness'],'@id':siteRoot.href+'#studio-23','name':'Tattoo Studio 23','url':STUDIO_SITE,
+      'description':'Prática de tatuagem autoral relacionada a Arte Harum, com portfólio documentado e atendimento por agendamento em Salvador.',
+      'sameAs':[STUDIO_INSTAGRAM],
+      'areaServed':{'@type':'City','name':'Salvador','containedInPlace':{'@type':'State','name':'Bahia'}},
+      'knowsAbout':['authorial tattoo','fine line tattoo','blackwork tattoo','sketch tattoo','botanical tattoo','figure tattoo']
+    },
+    {
+      '@type':'WebSite','@id':siteRoot.href+'#website','url':siteRoot.href,'name':'HARUM NOIR','alternateName':'Arte Harum',
+      'description':'Ateliê editorial sobre desenho, carvão, anatomia, observação e história da arte.',
+      'inLanguage':['pt-BR','en','es'],'publisher':{'@id':siteRoot.href+'#arte-harum'},
+      'about':{'@id':siteRoot.href+'#harum-noir'},'relatedLink':STUDIO_SITE
+    },
+    {
+      '@type':'WebPage','@id':canonicalURL.href+'#webpage','url':canonicalURL.href,'name':title,'description':description,'inLanguage':locale,
+      'isPartOf':{'@id':siteRoot.href+'#website'},'about':{'@id':siteRoot.href+'#harum-noir'},
+      'publisher':{'@id':siteRoot.href+'#arte-harum'},
+      'primaryImageOfPage':{'@type':'ImageObject','url':imageURL.href}
+    }
   ]
-};
+}
 ---
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
