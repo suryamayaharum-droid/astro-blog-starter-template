@@ -1,6 +1,7 @@
 import { referenceArtists } from '../data/references';
 import { imageBanks } from '../data/imageBanks';
 import { museumCatalog } from '../data/museums';
+import { STUDIO_SITE } from '../consts';
 
 const SITE='https://suryamayaharum-droid.github.io/astro-blog-starter-template/';
 
@@ -13,11 +14,11 @@ export async function GET(){
     origin:'Salvador, Bahia, Brazil',
     languages:['pt-BR','en','es'],
     interactiveLanguages:['pt','en','es','fr','it','de','ja','ko','zh','ar'],
-    relatedSite:'https://tattoostudio23.suryamaya-harum.chatgpt.site/',
+    relatedSite:STUDIO_SITE,
     entities:[
       {name:'HARUM NOIR',type:'CreativeWorkSeries',role:'editorial atelier for charcoal, figure, anatomy, gesture, art history and visual research'},
       {name:'Arte Harum',type:'Organization',role:'authorial visual research and artistic language'},
-      {name:'Tattoo Studio 23',type:'TattooParlor',role:'documented tattoo work and booking',url:'https://tattoostudio23.suryamaya-harum.chatgpt.site/'}
+      {name:'Tattoo Studio 23',type:'TattooParlor',role:'documented tattoo work and booking',url:STUDIO_SITE}
     ],
     routes:{
       home:SITE,
