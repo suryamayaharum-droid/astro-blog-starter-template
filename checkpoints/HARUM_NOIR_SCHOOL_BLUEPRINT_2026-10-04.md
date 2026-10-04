@@ -55,14 +55,16 @@ A primeira prática leva 12 minutos e divide o tempo entre pergunta, estrutura, 
 
 ## Entrega atual — Coleções Visuais
 
-**Estado:** PR #38 aberto no branch `codex/harum-noir-visual-collections-20261004`; primeira rodada de CI passou, aguardando nova validação após incluir a coleção de Cadernos.
+**Estado:** PR #38 integrado; build Astro/TypeScript, links/âncoras e deploy do GitHub Pages passaram. `/colecoes/` e a prancha foram conferidos no site ao vivo. PR #39 acrescenta a nova rota à auditoria móvel.
+
+**Progresso desta rodada:** [████████░░] 80% — falta concluir a auditoria móvel da rota Coleções.
 
 | Área | Mudança desta rodada | Estado |
 |---|---|---|
-| `/colecoes/` | Nova entrada com quatro coleções de estudo: gesto e corpo, forma e luz, matéria e borda, Caderno como universo. A quarta entrada reaproveita a rota `/cadernos/` já existente; não duplica a coleção editorial em construção. | Em construção |
-| `/atlas/` e menu Explorar | Adicionar caminho visual com imagem própria para as coleções. | Em construção |
-| `/maos/` | Retirar dez explicações em cartões redundantes, encurtar a entrada visual e criar ligação direta ao exercício de seis gestos. | Em construção |
-| Imagem de abertura | Prancha editorial tripla gerada para forma/luz, gesto e carvão; exportada como WebP local otimizado, sem texto embutido. | Pronta; aguarda validação no build |
+| `/colecoes/` | Nova entrada com quatro coleções de estudo: gesto e corpo, forma e luz, matéria e borda, Caderno como universo. A quarta entrada reaproveita a rota `/cadernos/` já existente; não duplica a coleção editorial em construção. | Publicada; visual confirmada |
+| `/atlas/` e menu Explorar | Adicionar caminho visual com imagem própria para as coleções. | Publicada e validada no CI |
+| `/maos/` | Retirar dez explicações em cartões redundantes, encurtar a entrada visual e criar ligação direta ao exercício de seis gestos. | Publicada e validada no CI |
+| Imagem de abertura | Prancha editorial tripla gerada para forma/luz, gesto e carvão; exportada como WebP local otimizado, sem texto embutido. | Publicada e exibida no Pages |
 | Blueprint | Atualizar registro de rota, conteúdo, progresso, próximos reparos e critérios de aceite após CI e publicação. | Em construção |
 
 ## Próximas revisões — fila seguinte

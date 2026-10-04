@@ -42,6 +42,7 @@ jobs:
               ['home', `${base}/`],
               ['school', `${base}/escola/`],
               ['hands', `${base}/maos/`],
+              ['colecoes', `${base}/colecoes/`],
               ['english-school', `${base}/en/school/`],
               ['spanish-school', `${base}/es/escuela/`],
               ['atlas', `${base}/atlas/`],
