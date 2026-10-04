@@ -55,11 +55,11 @@ A primeira prática leva 12 minutos e divide o tempo entre pergunta, estrutura, 
 
 ## Entrega atual — Coleções Visuais
 
-**Estado:** implementação em andamento no branch `codex/harum-noir-visual-collections-20261004`; imagem criada e otimizada localmente; PR ainda não aberto.
+**Estado:** PR #38 aberto no branch `codex/harum-noir-visual-collections-20261004`; primeira rodada de CI passou, aguardando nova validação após incluir a coleção de Cadernos.
 
 | Área | Mudança desta rodada | Estado |
 |---|---|---|
-| `/colecoes/` | Nova entrada com três coleções de estudo: gesto e corpo, forma e luz, matéria e borda. Cada cartão usa imagem didática e leva a uma prática existente. | Em construção |
+| `/colecoes/` | Nova entrada com quatro coleções de estudo: gesto e corpo, forma e luz, matéria e borda, Caderno como universo. A quarta entrada reaproveita a rota `/cadernos/` já existente; não duplica a coleção editorial em construção. | Em construção |
 | `/atlas/` e menu Explorar | Adicionar caminho visual com imagem própria para as coleções. | Em construção |
 | `/maos/` | Retirar dez explicações em cartões redundantes, encurtar a entrada visual e criar ligação direta ao exercício de seis gestos. | Em construção |
 | Imagem de abertura | Prancha editorial tripla gerada para forma/luz, gesto e carvão; exportada como WebP local otimizado, sem texto embutido. | Pronta; aguarda validação no build |
