@@ -15,15 +15,14 @@ async function walk(dir) {
 await walk(DIST);
 
 const missing = [];
+const brokenFragments = [];
 const baseEscapes = [];
+const idsByFile = new Map();
 let checked = 0;
+let fragmentsChecked = 0;
 
 async function exists(file) {
   try { await fs.access(file); return true; } catch { return false; }
-}
-
-function stripQueryHash(value) {
-  return value.split("#", 1)[0].split("?", 1)[0];
 }
 
 function sourceWebPath(file) {
@@ -31,51 +30,83 @@ function sourceWebPath(file) {
   return rel === "index.html" ? "/" : "/" + rel.replace(/\/index\.html$/, "/");
 }
 
+function fragmentOf(value) {
+  const index = value.indexOf("#");
+  if (index < 0) return "";
+  try { return decodeURIComponent(value.slice(index + 1)); } catch { return value.slice(index + 1); }
+}
+
+function idsFor(htmlFile, html) {
+  if (idsByFile.has(htmlFile)) return idsByFile.get(htmlFile);
+  const ids = new Set();
+  const pattern = /\bid\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'=<>]+))/gi;
+  for (const match of html.matchAll(pattern)) ids.add(match[1] ?? match[2] ?? match[3]);
+  idsByFile.set(htmlFile, ids);
+  return ids;
+}
+
 async function resolveTarget(raw, fromFile) {
   const trimmed = raw.trim();
-  if (!trimmed || trimmed.startsWith("#") || trimmed.startsWith("?")) return { skip: true };
-  if (/^(?:https?:|mailto:|tel:|data:|blob:|javascript:)/i.test(trimmed) || trimmed.startsWith("//")) return { skip: true };
+  if (!trimmed || /^(?:https?:|mailto:|tel:|data:|blob:|javascript:)/i.test(trimmed) || trimmed.startsWith("//")) return { skip: true };
 
-  let pathname = stripQueryHash(trimmed);
+  const fragment = fragmentOf(trimmed);
+  const hashIndex = trimmed.indexOf("#");
+  const withoutHash = hashIndex >= 0 ? trimmed.slice(0, hashIndex) : trimmed;
+  const queryIndex = withoutHash.indexOf("?");
+  let pathname = queryIndex >= 0 ? withoutHash.slice(0, queryIndex) : withoutHash;
+  if (!pathname && !fragment) return { skip: true };
   try { pathname = decodeURI(pathname); } catch {}
 
   const fromPath = sourceWebPath(fromFile);
-  if (pathname.startsWith("/")) {
-    if (pathname === BASE || pathname.startsWith(BASE + "/")) {
-      pathname = pathname.slice(BASE.length) || "/";
-    } else {
-      baseEscapes.push({ from: fromPath, value: raw });
-      pathname = pathname || "/";
-    }
+  let candidates = [];
+  if (!pathname) {
+    candidates = [fromFile];
   } else {
-    const baseDir = fromPath.endsWith("/") ? fromPath : path.posix.dirname(fromPath) + "/";
-    pathname = path.posix.resolve(baseDir, pathname);
-  }
+    if (pathname.startsWith("/")) {
+      if (pathname === BASE || pathname.startsWith(BASE + "/")) {
+        pathname = pathname.slice(BASE.length) || "/";
+      } else {
+        baseEscapes.push({ from: fromPath, value: raw });
+        pathname = pathname || "/";
+      }
+    } else {
+      const baseDir = fromPath.endsWith("/") ? fromPath : path.posix.dirname(fromPath) + "/";
+      pathname = path.posix.resolve(baseDir, pathname);
+    }
 
-  pathname = pathname.replace(/^\/+/, "");
-  const candidates = [];
-
-  if (!pathname) candidates.push(path.join(DIST, "index.html"));
-  else if (path.posix.extname(pathname)) candidates.push(path.join(DIST, pathname));
-  else {
-    candidates.push(path.join(DIST, pathname, "index.html"));
-    candidates.push(path.join(DIST, pathname + ".html"));
+    pathname = pathname.replace(/^\/+/, "");
+    if (!pathname) candidates.push(path.join(DIST, "index.html"));
+    else if (path.posix.extname(pathname)) candidates.push(path.join(DIST, pathname));
+    else {
+      candidates.push(path.join(DIST, pathname, "index.html"));
+      candidates.push(path.join(DIST, pathname + ".html"));
+    }
   }
 
   for (const candidate of candidates) {
-    if (await exists(candidate)) return { ok: true };
+    if (await exists(candidate)) {
+      const checkFragment = Boolean(fragment && candidate.endsWith(".html"));
+      if (checkFragment) {
+        const html = await fs.readFile(candidate, "utf8");
+        if (!idsFor(candidate, html).has(fragment)) {
+          return { ok: true, from: fromPath, value: raw, fragment, target: sourceWebPath(candidate), fragmentMissing: true, isFragment: true };
+        }
+      }
+      return { ok: true, isFragment: checkFragment };
+    }
   }
   return { ok: false, from: fromPath, value: raw, candidates: candidates.map(c => path.relative(DIST, c)) };
 }
 
 const attributePattern = /\b(?:href|src)\s*=\s*["']([^"'<>]+)["']/gi;
-
 for (const file of htmlFiles) {
   const html = await fs.readFile(file, "utf8");
   for (const match of html.matchAll(attributePattern)) {
     checked += 1;
     const result = await resolveTarget(match[1], file);
     if (!result.skip && result.ok === false) missing.push(result);
+    if (result.isFragment) fragmentsChecked += 1;
+    if (result.fragmentMissing) brokenFragments.push(result);
   }
 }
 
@@ -83,19 +114,17 @@ const summary = {
   checkedAt: new Date().toISOString(),
   htmlFiles: htmlFiles.length,
   localAttributesChecked: checked,
+  fragmentReferencesChecked: fragmentsChecked,
   missingCount: missing.length,
+  brokenFragmentCount: brokenFragments.length,
   baseEscapeCount: baseEscapes.length,
   missing,
+  brokenFragments,
   baseEscapes
 };
-
 await fs.writeFile("internal-link-health.json", JSON.stringify(summary, null, 2));
-
-console.log(
-  `Internal link health: ${summary.htmlFiles} HTML files | ${summary.localAttributesChecked} href/src checked | ${summary.missingCount} missing | ${summary.baseEscapeCount} base escapes`
-);
-
+console.log("Internal link health: " + summary.htmlFiles + " HTML files | " + summary.localAttributesChecked + " href/src checked | " + summary.fragmentReferencesChecked + " fragments checked | " + summary.missingCount + " missing | " + summary.brokenFragmentCount + " broken fragments | " + summary.baseEscapeCount + " base escapes");
 for (const item of missing) console.error("MISSING", item.from, "->", item.value);
+for (const item of brokenFragments) console.error("BROKEN_FRAGMENT", item.from, "->", item.value, "target", item.target);
 for (const item of baseEscapes) console.warn("BASE_ESCAPE", item.from, "->", item.value);
-
-if (missing.length > 0) process.exitCode = 1;
+if (missing.length > 0 || brokenFragments.length > 0) process.exitCode = 1;

@@ -7,7 +7,7 @@
     "es"
   ],
   "origin": "Salvador, Bahia, Brazil",
-  "description": "Editorial atelier and visual research ecosystem focused on drawing, charcoal, anatomy, gesture, art history and tattoo composition.",
+  "description": "Escola aberta de desenho e ecossistema editorial para observar, estruturar, organizar referências e traduzir ideias em prática.",
   "entities": [
     {
       "name": "HARUM NOIR",
@@ -27,6 +27,9 @@
     }
   ],
   "topics": [
+    "open drawing school",
+    "drawing education",
+    "visual observation",
     "charcoal drawing",
     "figure drawing",
     "artistic anatomy",
@@ -48,7 +51,10 @@
     "notebooks": "/cadernos/",
     "library": "/biblioteca/",
     "pathways": "/percursos/",
-    "about": "/sobre/"
+    "about": "/sobre/",
+    "school": "/escola/",
+    "englishSchool": "/en/school/",
+    "spanishSchool": "/es/escuela/"
   },
   "interactiveLanguages": [
     "pt",
@@ -70,7 +76,8 @@
       "tattooSalvador": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/en/tattoo-salvador/",
       "artHistory": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/en/art-history/",
       "brazilianVisualCulture": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/en/brazilian-visual-culture/",
-      "about": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/en/about/"
+      "about": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/en/about/",
+      "school": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/en/school/"
     },
     "es": {
       "references": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/es/referencias/",
@@ -79,7 +86,8 @@
       "tattooSalvador": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/es/tatuaje-salvador/",
       "artHistory": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/es/historia-del-arte/",
       "brazilianVisualCulture": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/es/cultura-visual-brasilena/",
-      "about": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/es/acerca/"
+      "about": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/es/acerca/",
+      "school": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/es/escuela/"
     }
   },
   "tattooService": {

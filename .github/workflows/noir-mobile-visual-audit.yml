@@ -3,7 +3,7 @@ name: Harum Noir Mobile Visual Audit · GitHub Pages
 on:
   workflow_dispatch:
   workflow_run:
-    workflows: ["Deploy Harumverso to GitHub Pages"]
+    workflows: ["Deploy HARUM NOIR to GitHub Pages"]
     types: [completed]
 
 permissions:
@@ -40,6 +40,10 @@ jobs:
             const base = 'https://suryamayaharum-droid.github.io/astro-blog-starter-template';
             const targets = [
               ['home', `${base}/`],
+              ['school', `${base}/escola/`],
+              ['hands', `${base}/maos/`],
+              ['english-school', `${base}/en/school/`],
+              ['spanish-school', `${base}/es/escuela/`],
               ['atlas', `${base}/atlas/`],
               ['buscar', `${base}/buscar/`],
               ['busca', `${base}/busca/`],
@@ -82,7 +86,7 @@ jobs:
                 const text = msg.text();
                 // YouTube embeds may request the experimental Compute Pressure API.
                 // Chromium reports the browser-level Permissions Policy denial as an
-                // error even when the Harumverso page and player render normally.
+                // error even when the HARUM NOIR page and player render normally.
                 if (text === 'Permissions policy violation: compute-pressure is not allowed in this document.') return;
                 consoleErrors.push(text);
               });

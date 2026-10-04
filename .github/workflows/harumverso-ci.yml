@@ -1,4 +1,4 @@
-name: Harumverso CI
+name: HARUM NOIR CI
 
 on:
   pull_request:
@@ -11,7 +11,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: harumverso-ci-${{ github.ref }}
+  group: harum-noir-ci-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:

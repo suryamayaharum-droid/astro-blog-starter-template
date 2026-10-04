@@ -1,4 +1,4 @@
-name: Deploy Harumverso to GitHub Pages
+name: Deploy HARUM NOIR to GitHub Pages
 
 on:
   push:
