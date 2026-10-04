@@ -7,5 +7,23 @@ const cards=[
 {kicker:'HISTORY',title:'Place references in time.',text:'Move from individual artists into periods, movements and visual problems across art history.',href:base+'historia-da-arte/',label:'Open art history →'},
 {kicker:'PRACTICE',title:'Return to drawing.',text:'Turn observation into short exercises, notebooks and guided study pathways.',href:base+'cadernos/',label:'Open notebooks →'}
 ];
+const answers=[
+  {
+    "question": "How should an artist reference be used?",
+    "answer": "Study decisions such as structure, rhythm, contrast, edge control, atmosphere and process. The goal is to understand why an image works, then return to your own drawing instead of copying the surface."
+  },
+  {
+    "question": "Does HARUM NOIR reproduce artists’ work?",
+    "answer": "No. The atlas points back to original channels and sources. Its role is to organize study paths, not replace the artist’s own publication or present another artist’s work as ours."
+  },
+  {
+    "question": "What can I study here?",
+    "answer": "Charcoal, figure drawing, gesture, anatomy, sketchbooks, composition, visual storytelling and different approaches to observation and mark-making."
+  },
+  {
+    "question": "How does this connect to tattooing?",
+    "answer": "Reference study expands visual repertoire. Studio 23 then translates selected principles into original compositions designed for anatomy, scale, negative space and the client’s intention."
+  }
+];
 ---
-<InternationalHub lang="en" title="Artist References for Drawing · HARUM NOIR" description="Explore a curated artist reference atlas for charcoal, figure drawing, anatomy, gesture, sketchbooks and visual research." kicker="HARUM NOIR · INTERNATIONAL REFERENCE HUB" heading="Artists to study, not copy." lead="A source-first atlas for artists, methods and visual languages. Each path returns to original channels and feeds back into drawing practice." cards={cards} alternateHref={base+'es/referencias/'} alternateLang="es" alternateLabel="Ver esta página en español →" ptHref={base+'referencias/'} topics={['artist references','charcoal drawing','figure drawing','gesture drawing','artistic anatomy','visual research']}/>
+<InternationalHub lang="en" title="Artist References for Drawing · HARUM NOIR" description="Explore a curated artist reference atlas for charcoal, figure drawing, anatomy, gesture, sketchbooks and visual research." kicker="HARUM NOIR · INTERNATIONAL REFERENCE HUB" heading="Artists to study, not copy." lead="A source-first atlas for artists, methods and visual languages. Each path returns to original channels and feeds back into drawing practice." cards={cards} answers={answers} alternateHref={base+'es/referencias/'} alternateLang="es" alternateLabel="Ver esta página en español →" ptHref={base+'referencias/'} topics={['artist references','charcoal drawing','figure drawing','gesture drawing','artistic anatomy','visual research']}/>
