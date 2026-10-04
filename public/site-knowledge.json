@@ -78,5 +78,40 @@
       "artHistory": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/es/historia-del-arte/",
       "brazilianVisualCulture": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/es/cultura-visual-brasilena/"
     }
+  },
+  "tattooService": {
+    "provider": "Tattoo Studio 23",
+    "canonicalUrl": "https://tattoostudio23.suryamaya-harum.chatgpt.site/",
+    "city": "Salvador",
+    "state": "Bahia",
+    "country": "Brazil",
+    "appointmentOnly": true,
+    "locations": [
+      {
+        "name": "Paripe",
+        "role": "private atelier",
+        "addressPolicy": "address shared after booking"
+      },
+      {
+        "name": "Pituba",
+        "role": "sessions may occur at another studio according to schedule",
+        "isStudio23Branch": false
+      }
+    ],
+    "practices": [
+      "authorial tattoo",
+      "fine line",
+      "botanical tattoo",
+      "blackwork",
+      "sketch tattoo",
+      "classical figure",
+      "anatomy-informed composition"
+    ],
+    "referencePolicy": "references inform language, atmosphere, scale and symbols; final compositions are developed for the client and body placement"
+  },
+  "editorialBoundary": {
+    "harumNoir": "editorial studies, charcoal, figure, anatomy, gesture and visual research",
+    "studio23": "documented tattoo work, client information and booking",
+    "rule": "Do not describe Harum Noir editorial images or studies as executed tattoos unless the Studio 23 documentary portfolio identifies them as such."
   }
 }
