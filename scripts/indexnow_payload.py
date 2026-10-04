@@ -44,7 +44,7 @@ for path in changed:
         for route in ("/","/en/","/es/","/referencias/","/historia-da-arte/","/bancos/","/biblioteca/"):
             add(route)
     if s in {"scripts/indexnow_payload.py",".github/workflows/indexnow.yml","public/robots.txt","public/llms.txt","public/site-knowledge.json"}:
-        for route in ("/","/en/","/es/","/referencias/","/historia-da-arte/","/bancos/","/biblioteca/","/cadernos/","/percursos/","/bancos/bndigital/"):
+        for route in ("/","/en/","/en/references/","/en/museums/","/en/drawing/","/es/","/es/referencias/","/es/museos/","/es/dibujo/","/referencias/","/historia-da-arte/","/bancos/","/biblioteca/","/cadernos/","/percursos/","/bancos/bndigital/"):
             add(route)
 
 payload={"host":"suryamayaharum-droid.github.io","key":KEY,"keyLocation":KEY_LOCATION,"urlList":sorted(urls)[:50]}
