@@ -1,0 +1,11 @@
+---
+import InternationalHub from '../../components/InternationalHub.astro';
+const base=import.meta.env.BASE_URL.endsWith('/')?import.meta.env.BASE_URL:import.meta.env.BASE_URL+'/';
+const cards=[
+{kicker:'MUSEUM APIS',title:'Search open collections.',text:'Explore institutions with open APIs, public-domain records and source-first metadata.',href:base+'museus/',label:'Open museum search →'},
+{kicker:'IMAGE BANKS',title:'Use archives as research maps.',text:'Compare museums, libraries and archives by access, rights, strengths and periods.',href:base+'bancos/',label:'Explore image banks →'},
+{kicker:'BRAZIL',title:'Research Brazilian visual memory.',text:'Follow the Biblioteca Nacional Digital path for Bahia, Salvador, nineteenth-century prints and graphic memory.',href:base+'bancos/bndigital/',label:'Open BNDigital guide →'},
+{kicker:'RIGHTS',title:'Keep provenance visible.',text:'HARUM NOIR treats the institution as the canonical source and does not mirror entire collections.',href:base+'bancos/',label:'Review source routes →'}
+];
+---
+<InternationalHub lang="en" title="Open Museums and Image Archives · HARUM NOIR" description="Explore museums, public-domain collections, image archives and open-access research routes for drawing and art history." kicker="HARUM NOIR · OPEN COLLECTIONS" heading="Museums are sources, not wallpaper." lead="Search collections, preserve provenance and return to the institution that holds the record. HARUM NOIR adds research routes, not copied libraries." cards={cards} alternateHref={base+'es/museos/'} alternateLang="es" alternateLabel="Ver esta página en español →"/>
