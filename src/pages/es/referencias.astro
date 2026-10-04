@@ -2,10 +2,10 @@
 import InternationalHub from '../../components/InternationalHub.astro';
 const base=import.meta.env.BASE_URL.endsWith('/')?import.meta.env.BASE_URL:import.meta.env.BASE_URL+'/';
 const cards=[
-{kicker:'ARTISTAS',title:'Estudiar decisiones, no superficies.',text:'Explora artistas por proceso de dibujo, carbón, gesto, anatomía, cuadernos y lenguaje visual.',href:base+'referencias/',label:'Abrir atlas de artistas →'},
-{kicker:'MÉTODO',title:'Referencia sin imitación.',text:'Usa referencias para comprender estructura, ritmo, contraste, atmósfera y proceso sin perder lenguaje propio.',href:base+'roubar-como-artista/',label:'Leer el método →'},
-{kicker:'HISTORIA',title:'Sitúa las referencias en el tiempo.',text:'Pasa de artistas individuales a períodos, movimientos y problemas visuales de la historia del arte.',href:base+'historia-da-arte/',label:'Abrir historia del arte →'},
-{kicker:'PRÁCTICA',title:'Volver al dibujo.',text:'Convierte la observación en ejercicios breves, cuadernos y recorridos guiados.',href:base+'cadernos/',label:'Abrir cuadernos →'}
+{kicker:'ARTISTAS',title:'Estudiar decisiones, no superficies.',text:'Explora artistas por proceso de dibujo, carbón, gesto, anatomía, cuadernos y lenguaje visual.',href:base+'es/referencias/',label:'Abrir atlas de artistas →'},
+{kicker:'MÉTODO',title:'Referencia sin imitación.',text:'Usa referencias para comprender estructura, ritmo, contraste, atmósfera y proceso sin perder lenguaje propio.',href:base+'es/dibujo/',label:'Leer el método →'},
+{kicker:'HISTORIA',title:'Sitúa las referencias en el tiempo.',text:'Pasa de artistas individuales a períodos, movimientos y problemas visuales de la historia del arte.',href:base+'es/historia-del-arte/',label:'Abrir historia del arte →'},
+{kicker:'PRÁCTICA',title:'Volver al dibujo.',text:'Convierte la observación en ejercicios breves, cuadernos y recorridos guiados.',href:base+'es/colecciones/',label:'Abrir cuadernos →'}
 ];
 const answers=[
   {
@@ -26,4 +26,4 @@ const answers=[
   }
 ];
 ---
-<InternationalHub lang="es" title="Referencias de Artistas para Dibujo · HARUM NOIR" description="Explora un atlas curado de artistas para carbón, figura, anatomía, gesto, cuadernos e investigación visual." kicker="HARUM NOIR · HUB INTERNACIONAL DE REFERENCIAS" heading="Artistas para estudiar, no copiar." lead="Un atlas centrado en fuentes, métodos y lenguajes visuales. Cada recorrido vuelve a los canales originales y a la práctica de dibujo." cards={cards} answers={answers} alternateHref={base+'en/references/'} alternateLang="en" alternateLabel="View this page in English →" ptHref={base+'referencias/'} topics={['referencias de artistas','dibujo al carbón','figura','gesto','anatomía artística','investigación visual']}/>
+<InternationalHub lang="es" title="Referencias de Artistas para Dibujo · HARUM NOIR" description="Explora un atlas curado de artistas para carbón, figura, anatomía, gesto, cuadernos e investigación visual." kicker="HARUM NOIR · HUB INTERNACIONAL DE REFERENCIAS" heading="Artistas para estudiar, no copiar." lead="Un atlas centrado en fuentes, métodos y lenguajes visuales. Cada recorrido vuelve a los canales originales y a la práctica de dibujo." cards={cards} answers={answers} alternateHref={base+'en/references/'} alternateLang="en" alternateLabel="View this page in English →" ptHref={base+'es/referencias/'} topics={['referencias de artistas','dibujo al carbón','figura','gesto','anatomía artística','investigación visual']}/>

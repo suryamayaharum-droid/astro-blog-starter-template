@@ -1,0 +1,11 @@
+---
+import InternationalHub from '../../components/InternationalHub.astro';
+const base=import.meta.env.BASE_URL.endsWith('/')?import.meta.env.BASE_URL:import.meta.env.BASE_URL+'/';
+const cards=[
+{kicker:'GESTO · CUERPO',title:'La mano en acción.',text:'Reposar, tocar, sostener y presionar. Lee dirección y presión antes de separar los dedos.',href:base+'es/dibujo/',label:'Estudiar gesto y figura →'},
+{kicker:'FORMA · LUZ',title:'Del volumen al borde.',text:'Reduce un objeto a masas grandes. Compara luz, sombra y bordes antes de buscar acabado.',href:base+'es/escuela/#primeira-pratica',label:'Probar la primera práctica →'},
+{kicker:'MATERIA · CARBÓN',title:'Marcar, borrar, revelar.',text:'Experimenta con presión, textura y borrado para hacer surgir la luz del papel.',href:base+'es/dibujo/',label:'Explorar la práctica del carbón →'},
+{kicker:'CUADERNO · MEMORIA',title:'El cuaderno como universo.',text:'Una pregunta, una práctica y un vestigio organizan el pensamiento entre una página y la siguiente.',href:base+'es/referencias/',label:'Continuar la investigación visual →'}
+];
+---
+<InternationalHub lang="es" title="Colecciones Visuales · HARUM NOIR" description="Cuatro colecciones visuales para estudiar dibujo: gesto y cuerpo, forma y luz, carbón y materia, cuaderno y memoria." kicker="HARUM NOIR · ATLAS DE ESTUDIO" heading="Aprender por la mirada." lead="Cuatro puertas visuales para salir de la explicación y llegar a la práctica. Elige una imagen, observa una decisión y pruébala en el papel." cards={cards} alternateHref={base+'en/collections/'} alternateLang="en" alternateLabel="Visual collections" ptHref={base+'colecoes/'} topics={['gesto','dibujo','carbón','investigación visual']}/>
