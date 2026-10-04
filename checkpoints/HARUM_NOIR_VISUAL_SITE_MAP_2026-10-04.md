@@ -32,4 +32,4 @@ As três pranchas didáticas seguem papel marfim, carvão/grafite e pequenos ace
 
 ## Validação
 
-PR #38 integrado. CI e GitHub Pages passaram; a rota `/colecoes/` foi aberta ao vivo e a prancha e os quatro cartões apareceram. PR #39 acrescenta a nova rota à matriz móvel para testar larguras 320, 360, 390 e 412 px. Esta alteração não muda o portão separado de publicação integral/cutover do site.
+PRs #38 e #39 integrados. CI e GitHub Pages passaram; a rota `/colecoes/` foi aberta ao vivo e a prancha e os quatro cartões apareceram. A auditoria [37243440463](https://github.com/suryamayaharum-droid/astro-blog-starter-template/actions/runs/37243440463) aprovou 27 rotas × 4 larguras (108 capturas), 16 rotas EN/ES e 9 limites em 760/761/1024 px, sem falhas de rota, overflow, imagem ou recurso interno. Esta alteração não muda o portão separado de publicação integral/cutover do site.
