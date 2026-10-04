@@ -1,0 +1,12 @@
+---
+import InternationalHub from '../../components/InternationalHub.astro';
+import { STUDIO_SITE } from '../../consts';
+const base=import.meta.env.BASE_URL.endsWith('/')?import.meta.env.BASE_URL:import.meta.env.BASE_URL+'/';
+const cards=[
+{kicker:'AUTHORIAL TATTOO',title:'Projects built for the body.',text:'Studio 23 develops custom tattoo compositions from intention, anatomy, scale, negative space and visual repertoire rather than copying reference tattoos.',href:STUDIO_SITE,label:'Visit Studio 23 →'},
+{kicker:'SALVADOR · BAHIA',title:'Paripe and Pituba by appointment.',text:'Paripe is a private atelier and the address is shared after booking. Pituba sessions may happen at another studio according to schedule; it is not presented as a Studio 23 branch.',href:STUDIO_SITE,label:'Check booking information →'},
+{kicker:'STYLE',title:'Fine line, blackwork and sketch language.',text:'The practice includes delicate botanical work, blackwork, sketch tattoo, classical figure, anatomy, sculpture and authorial compositions.',href:base+'en/drawing/',label:'See the drawing research behind the work →'},
+{kicker:'PORTFOLIO',title:'Separate research from executed tattoos.',text:'HARUM NOIR is an editorial research space. For documented tattoo work and booking, use the Studio 23 portfolio and official contact path.',href:STUDIO_SITE,label:'Open the official tattoo portfolio →'}
+];
+---
+<InternationalHub lang="en" title="Authorial Tattoo in Salvador, Brazil · Studio 23 × Arte Harum" description="Authorial tattoo practice in Salvador, Bahia, Brazil. Custom fine line, blackwork, sketch and figure-based projects with sessions in Paripe and Pituba by appointment." kicker="STUDIO 23 × ARTE HARUM · SALVADOR, BRAZIL" heading="Authorial tattoo in Salvador." lead="Custom projects shaped by anatomy, gesture and visual research. Studio 23 works by appointment in Salvador, with a private atelier in Paripe and sessions in Pituba according to schedule." cards={cards} alternateHref={base+'es/tatuaje-salvador/'} alternateLang="es" alternateLabel="Ver esta página en español →"/>
