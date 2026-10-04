@@ -36,7 +36,9 @@
     "tattoo composition",
     "museum collections",
     "open access archives",
-    "Brazilian visual culture"
+    "Brazilian visual culture",
+    "Salvador",
+    "Bahia"
   ],
   "routes": {
     "references": "/referencias/",
@@ -46,5 +48,29 @@
     "notebooks": "/cadernos/",
     "library": "/biblioteca/",
     "pathways": "/percursos/"
+  },
+  "interactiveLanguages": [
+    "pt",
+    "en",
+    "es",
+    "fr",
+    "it",
+    "de",
+    "ja",
+    "ko",
+    "zh",
+    "ar"
+  ],
+  "internationalHubs": {
+    "en": {
+      "references": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/en/references/",
+      "museums": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/en/museums/",
+      "drawing": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/en/drawing/"
+    },
+    "es": {
+      "references": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/es/referencias/",
+      "museums": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/es/museos/",
+      "drawing": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/es/dibujo/"
+    }
   }
 }
