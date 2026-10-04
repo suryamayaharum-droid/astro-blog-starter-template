@@ -31,6 +31,9 @@ const referenceSchema={
   educationalUse:'Study',
   learningResourceType:'Artist reference profile',
   url:new URL(base+'referencias/'+artist.slug+'/',Astro.site).href,
+  keywords:[artist.focus,artist.lane,artist.archetype].filter(Boolean),
+  publisher:{'@type':'Organization','name':'Arte Harum · HARUM NOIR','url':new URL(base,Astro.site).href},
+  isPartOf:{'@type':'CollectionPage','name':'Atlas de Referências · Harum Noir','url':new URL(base+'referencias/',Astro.site).href},
   about:{
     '@type':'Thing',
     name:artist.name,
@@ -45,8 +48,17 @@ const referenceSchema={
     keywords:ref.tags
   }))
 };
+const breadcrumbSchema={
+  '@context':'https://schema.org',
+  '@type':'BreadcrumbList',
+  itemListElement:[
+    {'@type':'ListItem','position':1,'name':'HARUM NOIR','item':new URL(base,Astro.site).href},
+    {'@type':'ListItem','position':2,'name':'Atlas de Referências','item':new URL(base+'referencias/',Astro.site).href},
+    {'@type':'ListItem','position':3,'name':artist.name,'item':new URL(base+'referencias/'+artist.slug+'/',Astro.site).href}
+  ]
+};
 ---
-<!doctype html><html lang="pt-BR"><head><BaseHead title={artist.name+' · Referências · Harum Noir'} description={artist.special}/><script type="application/ld+json" set:html={JSON.stringify(referenceSchema)} /></head><body><Header/><main class="stream-main">
+<!doctype html><html lang="pt-BR"><head><BaseHead title={artist.name+' · Referências · Harum Noir'} description={artist.special}/><script type="application/ld+json" set:html={JSON.stringify(referenceSchema)} /><script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} /></head><body><Header/><main class="stream-main">
 <section class="profile-hero">
  <div class="profile-media"><img src={hero} alt={"Capa temática HARUM NOIR; não representa obra de "+artist.name}/></div>
  <div class="profile-shade"></div>
