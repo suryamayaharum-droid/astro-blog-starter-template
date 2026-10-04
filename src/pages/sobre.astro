@@ -1,9 +1,17 @@
 ---
 import EcosystemRail from '../components/EcosystemRail.astro';
-import BaseHead from '../components/BaseHead.astro';import Header from '../components/Header.astro';import Footer from '../components/Footer.astro';const base=import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
+import BaseHead from '../components/BaseHead.astro';import Header from '../components/Header.astro';import Footer from '../components/Footer.astro';import { STUDIO_SITE } from '../consts';const base=import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 ---
-<!doctype html><html lang="pt-BR"><head><BaseHead title="Sobre · Harum Noir" description="Harum Noir é um ateliê editorial de desenho, corpo, presença e processo."/></head><body><Header/><main>
+<!doctype html><html lang="pt-BR"><head><BaseHead title="Sobre · Harum Noir" description="Harum Noir é um ateliê editorial de desenho, corpo, presença e processo." alternates={[{hreflang:'en',href:base+'en/about/'},{hreflang:'es',href:base+'es/acerca/'}]}/></head><body><Header/><main>
 <section class="page-hero"><div class="eyebrow">SOBRE</div><h1>Um ateliê que também publica.</h1><p>Harum Noir nasce da prática de desenho e da vontade de tornar visível aquilo que normalmente desaparece entre uma referência e uma obra pronta: observação, tentativa, correção, dúvida, repertório e escolha.</p></section>
+<section class="section">
+  <div class="section-head"><div><div class="eyebrow">QUEM É QUEM</div><h2>Três nomes, funções diferentes.</h2></div><p>As frentes se conectam, mas não são apresentadas como a mesma coisa.</p></div>
+  <div class="path-list">
+    <a class="path-row" href={base}><strong>Arte Harum</strong><span>base criativa: pesquisa autoral, desenho, repertório e linguagem visual</span><b>01</b></a>
+    <a class="path-row" href={base+'sobre/'}><strong>HARUM NOIR</strong><span>selo editorial: carvão, figura, anatomia, gesto, processo e arquivo</span><b>02</b></a>
+    <a class="path-row" href={STUDIO_SITE} target="_blank" rel="noreferrer"><strong>Studio 23</strong><span>prática de tatuagem: portfólio documentado, atendimento e agendamento em Salvador</span><b>03 ↗</b></a>
+  </div>
+</section>
 <section class="section editorial-split"><div class="panel"><div class="eyebrow">LINGUAGEM</div><h2>Carvão, grafite, corpo, pausa.</h2><p>Preto profundo, papel quente, dourado envelhecido, textura real e espaço negativo. A estética serve ao conteúdo: menos ornamento, mais presença.</p></div><div class="card"><div class="card-media" style="aspect-ratio:4/5"><img src={`${base}noir/trace-01.svg`} alt="Vestígio gráfico autoral em carvão"/></div></div></section>
 <section class="section"><div class="journal"><div class="paper"><h2>O que este espaço não é</h2><p>Não é um catálogo de referências alheias, nem uma vitrine de tendências. Referências existem para ampliar o olhar e alimentar decisões próprias.</p><h2>O que queremos construir</h2><p>Um jardim editorial onde cada caminho leva a uma prática: ver, estudar, desenhar, corrigir, guardar e retornar.</p></div></div></section>
 <section class="section">

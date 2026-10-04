@@ -9,8 +9,34 @@ const {bank}=Astro.props;
 const base=import.meta.env.BASE_URL.endsWith('/')?import.meta.env.BASE_URL:import.meta.env.BASE_URL+'/';
 const liveBase=bank.liveFederated?base+'museus?q=':null;
 const bankSearchUrl=bank.id==='bndigital'?'https://acervobndigital.bn.gov.br/sophia/index.asp':bank.collectionUrl;
+const sourceType=bank.kind==='museum'?'Museum':bank.kind==='archive'?'ArchiveOrganization':'Organization';
+const bankSchema={
+  '@context':'https://schema.org',
+  '@type':'LearningResource',
+  name:bank.name+' · guia de pesquisa visual',
+  description:'Guia de estudo, direitos e caminhos de pesquisa para '+bank.name+'.',
+  inLanguage:'pt-BR',
+  educationalUse:'Research',
+  learningResourceType:'Institutional collection research guide',
+  url:new URL(base+'bancos/'+bank.id+'/',Astro.site).href,
+  keywords:bank.strengths,
+  about:{
+    '@type':sourceType,
+    name:bank.name,
+    url:bank.collectionUrl,
+    location:bank.place,
+    sameAs:[bank.collectionUrl,bank.rightsUrl,bank.docsUrl].filter(Boolean)
+  },
+  hasPart:bank.lenses.map((lens,index)=>({
+    '@type':'CreativeWork',
+    position:index+1,
+    name:lens.label,
+    description:lens.note,
+    keywords:lens.query
+  }))
+};
 ---
-<!doctype html><html lang="pt-BR"><head><BaseHead title={bank.name+' · Bancos de Imagens · Harum Noir'} description={'Leques de estudo, direitos e portas para '+bank.name+'.'} /></head>
+<!doctype html><html lang="pt-BR"><head><BaseHead title={bank.name+' · Bancos de Imagens · Harum Noir'} description={'Leques de estudo, direitos e portas para '+bank.name+'.'} /><script type="application/ld+json" set:html={JSON.stringify(bankSchema)} /></head>
 <body><Header/><main>
 <section class="section bank-top">
   <div class="bank-title"><div class="meta">{bank.kind} · {bank.place}</div><h1>{bank.name}</h1><p>{bank.rights}</p><div class="bank-strengths">{bank.strengths.map(x=><span>{x}</span>)}</div></div>

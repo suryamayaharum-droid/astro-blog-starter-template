@@ -44,6 +44,8 @@ jobs:
         run: node scripts/check_internal_links.mjs
       - name: Reciprocal hreflang
         run: node scripts/check_hreflang.mjs
+      - name: SEO metadata and JSON-LD surface
+        run: node scripts/check_seo_surface.mjs
 
       - name: Studio 23 ↔ Harum Noir ecosystem contract
         run: node scripts/check_ecosystem_contract.mjs

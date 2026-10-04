@@ -118,7 +118,7 @@ if (root) {
     if(/[\u4e00-\u9fff]/.test(value))return'zh';
     if(/\b(bndigital|bn\s+digital|banco de imagens|bancos de imagens|acervo digital|acervos digitais)\b/.test(value))return'pt';
     if(/\b(image banks?|national library|digital image archive)\b/.test(value))return'en';
-    if(/\b(bancos? de imagenes|biblioteca nacional)\b/.test(value))return'es';
+    if(/\b(bancos? de im[aá]genes)\b/.test(value))return'es';
     if(/\b(musée|musées|référence|références|artiste|artistes|dessin|mains|recherche|chercher|où|comment|étudier|parcours)\b/.test(value))return'fr';
     if(/\b(museo|musei|riferimento|riferimenti|artista|artisti|disegno|mani|ricerca|cercare|dove|come|studiare|percorso)\b/.test(value))return'it';
     if(/\b(museum|museen|referenz|referenzen|künstler|kunstler|zeichnung|hände|hande|suche|suchen|wo|wie|lernen|lernpfad)\b/.test(value))return'de';
