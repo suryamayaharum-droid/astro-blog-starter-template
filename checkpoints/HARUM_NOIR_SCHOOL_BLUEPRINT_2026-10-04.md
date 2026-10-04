@@ -55,9 +55,9 @@ A primeira prática leva 12 minutos e divide o tempo entre pergunta, estrutura, 
 
 ## Entrega atual — Coleções Visuais
 
-**Estado:** PR #38 integrado; build Astro/TypeScript, links/âncoras e deploy do GitHub Pages passaram. `/colecoes/` e a prancha foram conferidos no site ao vivo. PR #39 acrescenta a nova rota à auditoria móvel.
+**Estado:** PRs #38 e #39 integrados. Build Astro/TypeScript, links, âncoras, imagens locais, Pages e auditoria visual móvel passaram.
 
-**Progresso desta rodada:** [████████░░] 80% — falta concluir a auditoria móvel da rota Coleções.
+**Progresso desta rodada:** [██████████] 100% — a página foi confirmada ao vivo e `/colecoes/` entrou na matriz móvel. Run [37243440463](https://github.com/suryamayaharum-droid/astro-blog-starter-template/actions/runs/37243440463): 27 rotas × 4 larguras (108 capturas), 16 rotas EN/ES e 9 verificações em 760, 761 e 1024 px; zero falhas, overflow, imagem quebrada ou recurso interno falho.
 
 | Área | Mudança desta rodada | Estado |
 |---|---|---|
@@ -65,17 +65,28 @@ A primeira prática leva 12 minutos e divide o tempo entre pergunta, estrutura, 
 | `/atlas/` e menu Explorar | Adicionar caminho visual com imagem própria para as coleções. | Publicada e validada no CI |
 | `/maos/` | Retirar dez explicações em cartões redundantes, encurtar a entrada visual e criar ligação direta ao exercício de seis gestos. | Publicada e validada no CI |
 | Imagem de abertura | Prancha editorial tripla gerada para forma/luz, gesto e carvão; exportada como WebP local otimizado, sem texto embutido. | Publicada e exibida no Pages |
-| Blueprint | Atualizar registro de rota, conteúdo, progresso, próximos reparos e critérios de aceite após CI e publicação. | Em construção |
+| Auditoria móvel | Incluir `/colecoes/` na matriz e verificar os pontos de quebra. | Concluída; run 37243440463 verde |
 
 ## Próximas revisões — fila seguinte
 
 | Prioridade | Próxima revisão |
 |---|---|
-| 1 | Ampliar Coleções Visuais com novas lições guiadas além da primeira coleção, mantendo cada estudo ligado a uma prática. |
-| 2 | Localizar Coleções Visuais e aprofundar conteúdo de desenho em EN/ES; algumas rotas ainda abrem portais amplos. |
-| 3 | Rever alt text, contraste e correspondência entre cartões e aulas nas rotas antigas, incluindo História da Arte e Referências. |
-| 4 | Repetir CI, links, âncoras e matriz móvel ao publicar novos módulos. |
+| 1 | Revisar `/historia-da-arte/`, `/desenho/` e `/referencias/` para trocar explicações extensas por imagem quando isso tornar a decisão visual mais clara; manter fonte e contexto em texto curto. |
+| 2 | Ampliar Coleções Visuais com novas lições guiadas além desta primeira versão, sempre ligadas a uma prática. |
+| 3 | Localizar Coleções Visuais e aprofundar conteúdo de desenho em EN/ES; algumas rotas ainda abrem portais amplos. |
+| 4 | Rever alt text, contraste e correspondência entre cartões e aulas nas rotas antigas. |
 
 ### Critério de conclusão desta entrega
 
-**Concluído:** build e CI verdes; verificador sem links, âncoras ou imagens inválidas; rotas da escola sem overflow em 320–412 px; deploy e conferência visual do GitHub Pages; auditoria móvel e internacional aprovadas.
+**Concluído:** PRs #38 e #39 integrados; build e CI verdes; verificador sem links, âncoras ou imagens inválidas; deploy verificado; 108 capturas de 27 rotas em 320–412 px; 16 rotas internacionais e 9 testes de limite aprovados.
+
+## Recibo de continuidade
+
+- **TENHO:** página `/colecoes/` publicada com quatro portas e arte local; `/maos/` aponta diretamente ao exercício de seis gestos. 
+- **PRECISO:** nenhuma dependência para esta entrega.
+- **FAZENDO:** próxima unidade recomendada: revisar as rotas `/historia-da-arte/`, `/desenho/` e `/referencias/` para priorizar exemplos visuais onde explicações longas não ajudam a prática.
+- **PRONTO:** [PR #38](https://github.com/suryamayaharum-droid/astro-blog-starter-template/pull/38), [PR #39](https://github.com/suryamayaharum-droid/astro-blog-starter-template/pull/39), [CI e Pages](https://github.com/suryamayaharum-droid/astro-blog-starter-template/actions/runs/37243373048), [auditoria móvel](https://github.com/suryamayaharum-droid/astro-blog-starter-template/actions/runs/37243440463).
+- **BLOQUEIO:** nenhum.
+- **PASSO:** abrir a próxima unidade de revisão visual somente após comparar com as coleções existentes.
+- **CONFLITO:** nenhum; a trilha Caderno como universo aponta ao `/cadernos/` existente.
+- **ADIADO:** localização completa EN/ES e expansão de novas aulas; ambas seguem na fila acima.
