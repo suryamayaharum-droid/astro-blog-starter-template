@@ -1,11 +1,12 @@
 ---
 import InternationalHub from '../../components/InternationalHub.astro';
+import { STUDIO_SITE } from '../../consts';
 const base=import.meta.env.BASE_URL.endsWith('/')?import.meta.env.BASE_URL:import.meta.env.BASE_URL+'/';
 const cards=[
 {kicker:'CHARCOAL',title:'Mass before contour.',text:'Study pressure, lost edges, tonal blocks and the material behavior of charcoal.',href:base+'biblioteca/',label:'Open visual library →'},
 {kicker:'FIGURE',title:'Gesture, weight and anatomy.',text:'Move from line of action into torso, pelvis, hands, expression and structural observation.',href:base+'cadernos/',label:'Open study notebooks →'},
 {kicker:'PATHWAYS',title:'Study in short sequences.',text:'Use guided pathways to turn references into drawing decisions instead of passive browsing.',href:base+'percursos/',label:'Open pathways →'},
-{kicker:'TATTOO',title:'Translate repertoire to the body.',text:'The related Studio 23 practice turns drawing research into authorial tattoo composition in Salvador, Brazil.',href:'https://tattoostudio23.suryamaya-harum.chatgpt.site/',label:'Visit Studio 23 ↗'}
+{kicker:'TATTOO',title:'Translate repertoire to the body.',text:'The related Studio 23 practice turns drawing research into authorial tattoo composition in Salvador, Brazil.',href:STUDIO_SITE,label:'Visit Studio 23 ↗'}
 ];
 ---
 <InternationalHub lang="en" title="Charcoal and Figure Drawing · HARUM NOIR" description="Charcoal drawing, figure study, artistic anatomy, gesture and authorial visual research from HARUM NOIR in Salvador, Brazil." kicker="HARUM NOIR · DRAWING PRACTICE" heading="Charcoal, figure and presence." lead="A drawing practice built around observation, gesture, anatomy, contrast and material. Research becomes useful only when it returns to the hand." cards={cards} alternateHref={base+'es/dibujo/'} alternateLang="es" alternateLabel="Ver esta página en español →"/>
