@@ -66,13 +66,17 @@
       "references": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/en/references/",
       "museums": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/en/museums/",
       "drawing": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/en/drawing/",
-      "tattooSalvador": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/en/tattoo-salvador/"
+      "tattooSalvador": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/en/tattoo-salvador/",
+      "artHistory": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/en/art-history/",
+      "brazilianVisualCulture": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/en/brazilian-visual-culture/"
     },
     "es": {
       "references": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/es/referencias/",
       "museums": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/es/museos/",
       "drawing": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/es/dibujo/",
-      "tattooSalvador": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/es/tatuaje-salvador/"
+      "tattooSalvador": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/es/tatuaje-salvador/",
+      "artHistory": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/es/historia-del-arte/",
+      "brazilianVisualCulture": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/es/cultura-visual-brasilena/"
     }
   }
 }
