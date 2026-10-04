@@ -2,6 +2,12 @@
 import InternationalHub from '../../components/InternationalHub.astro';
 import { STUDIO_SITE } from '../../consts';
 const base=import.meta.env.BASE_URL.endsWith('/')?import.meta.env.BASE_URL:import.meta.env.BASE_URL+'/';
+const topics=['tatuaje autoral','tatuaje en Salvador Brasil','fine line','blackwork','sketch tattoo','tatuaje personalizado','Paripe','Pituba'];
+const answers=[
+  {question:'¿Dónde atiende Studio 23 en Salvador?',answer:'Studio 23 trabaja con cita previa en Salvador. Paripe es un atelier privado cuya dirección se comparte después de agendar; en Pituba la sesión puede ocurrir en otro estudio según la agenda.'},
+  {question:'¿Studio 23 copia tatuajes de referencia?',answer:'No. Las referencias ayudan a comprender lenguaje, atmósfera, escala y símbolos; la composición final se desarrolla para la persona, la zona del cuerpo y la intención.'},
+  {question:'¿Qué lenguajes de tatuaje trabaja?',answer:'La práctica autoral incluye fine line, botánica, blackwork, sketch tattoo, figura clásica, anatomía y repertorio de escultura.'}
+];
 const cards=[
 {kicker:'TATUAJE AUTORAL',title:'Proyectos construidos para el cuerpo.',text:'Studio 23 desarrolla composiciones personalizadas desde la intención, anatomía, escala, espacio negativo y repertorio visual, sin copiar tatuajes de referencia.',href:STUDIO_SITE,label:'Visitar Studio 23 →'},
 {kicker:'SALVADOR · BAHIA',title:'Paripe y Pituba con cita previa.',text:'Paripe es un atelier privado y la dirección se comparte después de agendar. En Pituba las sesiones pueden ocurrir en otro estudio según la agenda; no se presenta como una sucursal de Studio 23.',href:STUDIO_SITE,label:'Ver información de reservas →'},
@@ -9,4 +15,4 @@ const cards=[
 {kicker:'PORTAFOLIO',title:'Distinguir investigación de tatuajes realizados.',text:'HARUM NOIR es un espacio editorial de investigación. Para trabajos documentados y reservas, utiliza el portafolio y el contacto oficial de Studio 23.',href:STUDIO_SITE,label:'Abrir portafolio oficial de tatuajes →'}
 ];
 ---
-<InternationalHub lang="es" title="Tatuaje Autoral en Salvador, Brasil · Studio 23 × Arte Harum" description="Tatuaje autoral en Salvador, Bahia, Brasil. Proyectos personalizados de fine line, blackwork, sketch y figura, con atención en Paripe y Pituba mediante cita." kicker="STUDIO 23 × ARTE HARUM · SALVADOR, BRASIL" heading="Tatuaje autoral en Salvador." lead="Proyectos personalizados guiados por anatomía, gesto e investigación visual. Studio 23 trabaja con cita previa en Salvador, con atelier privado en Paripe y atención en Pituba según agenda." cards={cards} alternateHref={base+'en/tattoo-salvador/'} alternateLang="en" alternateLabel="View this page in English →"/>
+<InternationalHub lang="es" title="Tatuaje Autoral en Salvador, Brasil · Studio 23 × Arte Harum" description="Tatuaje autoral en Salvador, Bahia, Brasil. Proyectos personalizados de fine line, blackwork, sketch y figura, con atención en Paripe y Pituba mediante cita." kicker="STUDIO 23 × ARTE HARUM · SALVADOR, BRASIL" heading="Tatuaje autoral en Salvador." lead="Proyectos personalizados guiados por anatomía, gesto e investigación visual. Studio 23 trabaja con cita previa en Salvador, con atelier privado en Paripe y atención en Pituba según agenda." cards={cards} alternateHref={base+'en/tattoo-salvador/'} alternateLang="en" alternateLabel="View this page in English →" ptHref={STUDIO_SITE} topics={topics} answers={answers}/>
