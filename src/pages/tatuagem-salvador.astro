@@ -1,0 +1,18 @@
+---
+import PortugueseTopicHub from '../components/PortugueseTopicHub.astro';
+import { STUDIO_SITE } from '../consts';
+const base=import.meta.env.BASE_URL.endsWith('/')?import.meta.env.BASE_URL:import.meta.env.BASE_URL+'/';
+const cards=[
+{kicker:'TATUAGEM AUTORAL',title:'Projetos construídos para o corpo.',text:'Studio 23 desenvolve composições personalizadas a partir de intenção, anatomia, escala, espaço negativo e repertório visual, sem copiar tatuagens de referência.',href:STUDIO_SITE,label:'Abrir Studio 23 →'},
+{kicker:'SALVADOR · BAHIA',title:'Paripe e Pituba com agendamento.',text:'Paripe é um ateliê privado e o endereço é compartilhado após o agendamento. Na Pituba, sessões podem acontecer em outro estúdio conforme agenda; não é apresentada como filial.',href:STUDIO_SITE,label:'Ver informações de atendimento →'},
+{kicker:'LINGUAGEM',title:'Fine line, blackwork e sketch.',text:'A prática autoral inclui botânica delicada, blackwork, sketch tattoo, figura clássica, anatomia, escultura e composições pensadas para o corpo.',href:base+'desenho/',label:'Ver pesquisa de desenho →'},
+{kicker:'PORTFÓLIO',title:'Pesquisa não é tatuagem executada.',text:'HARUM NOIR é o núcleo editorial e de pesquisa. Para trabalhos documentados, atendimento e agendamento, a referência oficial é o Studio 23.',href:STUDIO_SITE,label:'Abrir portfólio oficial →'}
+];
+const answers=[
+{question:'Onde o Studio 23 atende em Salvador?',answer:'O atendimento é por agendamento. Paripe é um ateliê privado e o endereço é enviado após a confirmação; na Pituba a sessão pode ocorrer em outro estúdio conforme agenda.'},
+{question:'O Studio 23 copia tatuagens de referência?',answer:'Não. Referências ajudam a entender linguagem, atmosfera, escala e símbolos; a composição final é desenvolvida para a pessoa, a região do corpo e a intenção do projeto.'},
+{question:'Quais linguagens fazem parte do trabalho?',answer:'Fine line, botânica, blackwork, sketch tattoo, figura clássica, anatomia, repertório de escultura e composições autorais fazem parte da pesquisa e da prática.'},
+{question:'Qual é a diferença entre HARUM NOIR e Studio 23?',answer:'HARUM NOIR organiza pesquisa, desenho e repertório editorial. Studio 23 é a frente de tatuagem documentada, atendimento e agendamento.'}
+];
+---
+<PortugueseTopicHub title="Tatuagem Autoral em Salvador · Studio 23 × Arte Harum" description="Tatuagem autoral em Salvador, Bahia. Projetos personalizados de fine line, blackwork, sketch, botânica e figura, com atendimento em Paripe e Pituba por agendamento." kicker="STUDIO 23 × ARTE HARUM · SALVADOR" heading="Tatuagem autoral em Salvador." lead="Projetos personalizados guiados por anatomia, gesto e pesquisa visual. Atendimento por agendamento em Salvador, com ateliê privado em Paripe e sessões na Pituba conforme agenda." cards={cards} answers={answers} enHref={base+'en/tattoo-salvador/'} esHref={base+'es/tatuaje-salvador/'} topics={['tatuagem autoral','tatuagem em Salvador','fine line','blackwork','sketch tattoo','Paripe','Pituba']}/>
