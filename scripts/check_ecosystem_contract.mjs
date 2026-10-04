@@ -1,4 +1,5 @@
 import fs from "node:fs/promises";
+import vm from "node:vm";
 import path from "node:path";
 
 const EXPECTED = {
@@ -65,6 +66,29 @@ for (const slug of requiredHubs) {
 }
 if (!/bndigital\s*:\s*\{\s*href\s*:\s*base\s*\+\s*['"]bancos\/bndigital\/['"]/.test(lume)) failures.push("Lume must link directly to the BNDigital detail page");
 if (!/banks\s*:\s*\{\s*href\s*:\s*base\s*\+\s*['"]bancos\/['"]/.test(lume)) failures.push("Lume must expose the image banks catalog");
+const localeRuntime = lume.match(/const supportedLocales=new Set\(\[[^\]]+\]\);\s*const browserLocale=\(\)=>\{[\s\S]*?\n\s*};\s*const detectLocale=\(raw\)=>\{[\s\S]*?\n\s*};/);
+if (!localeRuntime) {
+  failures.push("Lume locale detector could not be extracted for runtime checks");
+} else {
+  const localeCases = [
+    { query: "Biblioteca Nacional", browser: "pt-BR", expected: "pt" },
+    { query: "biblioteca nacional", browser: "es-MX", expected: "es" },
+    { query: "bancos de imágenes", browser: "pt-BR", expected: "es" },
+    { query: "bancos de imagenes", browser: "pt-BR", expected: "es" },
+    { query: "BNDigital", browser: "en-US", expected: "pt" },
+  ];
+  for (const test of localeCases) {
+    const context = {
+      navigator: { languages: [test.browser], language: test.browser },
+      document: { documentElement: { lang: test.browser } },
+    };
+    vm.runInNewContext(localeRuntime[0] + "\nglobalThis.__detectLocale = detectLocale;", context);
+    const actual = context.__detectLocale(test.query);
+    if (actual !== test.expected) {
+      failures.push("Lume locale mismatch for \"" + test.query + "\": expected " + test.expected + ", received " + actual);
+    }
+  }
+}
 if (galleries.includes("images: []")) failures.push("Every indexed sketchbook must have at least one reviewed gallery image");
 if (!galleriesPage.includes("gallery-image-fallback")) failures.push("Sketchbook image tiles must degrade to a source-linked fallback");
 
