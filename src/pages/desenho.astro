@@ -1,0 +1,17 @@
+---
+import PortugueseTopicHub from '../components/PortugueseTopicHub.astro';
+const base=import.meta.env.BASE_URL.endsWith('/')?import.meta.env.BASE_URL:import.meta.env.BASE_URL+'/';
+const cards=[
+{kicker:'CARVÃO',title:'Massa antes do contorno.',text:'Estude pressão, borda perdida, blocos tonais, atmosfera e comportamento material do carvão antes de perseguir detalhe.',href:base+'biblioteca/',label:'Abrir biblioteca visual →'},
+{kicker:'FIGURA',title:'Gesto, peso e anatomia.',text:'Passe da linha de ação para torso, pelve, mãos, expressão e pontos anatômicos que ajudam a sustentar a observação.',href:base+'cadernos/',label:'Abrir cadernos de estudo →'},
+{kicker:'PERCURSOS',title:'Estude em sequências curtas.',text:'Use percursos guiados para transformar referência em decisão de desenho, evitando navegação passiva e repetição mecânica.',href:base+'percursos/',label:'Abrir percursos →'},
+{kicker:'REFERÊNCIAS',title:'Volte às fontes originais.',text:'Cruze artistas, museus e arquivos para ampliar repertório sem depender de copiar uma única linguagem visual.',href:base+'referencias/',label:'Abrir Atlas de Referências →'}
+];
+const answers=[
+{question:'O que HARUM NOIR entende por desenho a carvão?',answer:'Carvão é tratado como massa, pressão, borda, ritmo e atmosfera, não apenas como uma linha preta. O estudo prioriza estrutura tonal e presença antes do acabamento.'},
+{question:'Como a figura humana é estudada?',answer:'Por gesto, equilíbrio, peso, relação entre caixa torácica e pelve, mãos, expressão e marcos anatômicos. A observação conduz; a anatomia ajuda a compreender.'},
+{question:'Preciso copiar uma fotografia exatamente?',answer:'Não. A referência serve para entender estrutura e decisões visuais. O objetivo é construir uma resposta autoral, não reproduzir fotograficamente a superfície.'},
+{question:'Como isso conversa com tatuagem?',answer:'Desenho e tatuagem dependem de proporção, hierarquia, espaço negativo, legibilidade e relação com o corpo. A pesquisa fortalece a composição antes de ela chegar à pele.'}
+];
+---
+<PortugueseTopicHub title="Desenho a Carvão, Figura e Anatomia · HARUM NOIR" description="Desenho a carvão, figura humana, gesto, anatomia artística e pesquisa visual autoral no HARUM NOIR." kicker="HARUM NOIR · PRÁTICA DE DESENHO" heading="Carvão, figura e presença." lead="Uma prática construída sobre observação, gesto, anatomia, contraste e matéria. A pesquisa só se torna útil quando volta para a mão." cards={cards} answers={answers} enHref={base+'en/drawing/'} esHref={base+'es/dibujo/'} topics={['desenho a carvão','figura humana','anatomia artística','gesto','composição visual']}/>
