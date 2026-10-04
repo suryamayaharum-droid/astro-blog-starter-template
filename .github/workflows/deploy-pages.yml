@@ -35,6 +35,8 @@ jobs:
         run: npm run build
       - name: Internal route and asset links
         run: node scripts/check_internal_links.mjs
+      - name: Reciprocal hreflang
+        run: node scripts/check_hreflang.mjs
       - name: Studio 23 ↔ Harum Noir ecosystem contract
         run: node scripts/check_ecosystem_contract.mjs
       - name: Configure Pages
