@@ -63,8 +63,8 @@ for (const slug of requiredHubs) {
   if (!hubLine || !hubLine.includes('href:"' + slug + '"')) failures.push("ecosystem hub missing or misrouted: " + slug);
   if (!atlas.includes('"' + slug + '"')) failures.push("Atlas door missing: " + slug);
 }
-if (!lume.includes("bndigital: { href: base +") || !lume.includes("bancos/bndigital/")) failures.push("Lume must link directly to the BNDigital detail page");
-if (!lume.includes("banks: { href: base +") || !lume.includes("'bancos/'")) failures.push("Lume must expose the image banks catalog");
+if (!/bndigital\s*:\s*\{\s*href\s*:\s*base\s*\+\s*['"]bancos\/bndigital\/['"]/.test(lume)) failures.push("Lume must link directly to the BNDigital detail page");
+if (!/banks\s*:\s*\{\s*href\s*:\s*base\s*\+\s*['"]bancos\/['"]/.test(lume)) failures.push("Lume must expose the image banks catalog");
 if (galleries.includes("images: []")) failures.push("Every indexed sketchbook must have at least one reviewed gallery image");
 if (!galleriesPage.includes("gallery-image-fallback")) failures.push("Sketchbook image tiles must degrade to a source-linked fallback");
 
