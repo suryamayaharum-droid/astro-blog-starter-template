@@ -24,12 +24,14 @@ const topicNav=lang==='en'
  ? [
    {href:base+'en/references/',label:'References'},
    {href:base+'en/museums/',label:'Museums'},
-   {href:base+'en/drawing/',label:'Drawing'}
+   {href:base+'en/drawing/',label:'Drawing'},
+   {href:base+'en/tattoo-salvador/',label:'Tattoo Salvador'}
  ]
  : [
    {href:base+'es/referencias/',label:'Referencias'},
    {href:base+'es/museos/',label:'Museos'},
-   {href:base+'es/dibujo/',label:'Dibujo'}
+   {href:base+'es/dibujo/',label:'Dibujo'},
+   {href:base+'es/tatuaje-salvador/',label:'Tatuaje Salvador'}
  ];
 const hubSchema={
   '@context':'https://schema.org',
@@ -51,7 +53,7 @@ const hubSchema={
 ---
 <!doctype html><html lang={lang}><head><BaseHead title={title} description={description} locale={lang} alternates={[{hreflang:alternateLang,href:alternateHref},{hreflang:'pt-BR',href:ptHref}]}/><script type="application/ld+json" set:html={JSON.stringify({'@context':'https://schema.org','@type':'CollectionPage','name':title,'description':description,'inLanguage':lang,'about':topics.map((name:string)=>({'@type':'Thing','name'}))})} /></head>
 <body>
-<header class="ih-header"><a href={homeHref}>HARUM NOIR</a><div class="ih-cluster" aria-label={lang==='en'?'Topics':'Temas'}>{lang==='en'?<><a href={base+'en/references/'}>References</a><a href={base+'en/museums/'}>Museums</a><a href={base+'en/drawing/'}>Drawing</a></>:<><a href={base+'es/referencias/'}>Referencias</a><a href={base+'es/museos/'}>Museos</a><a href={base+'es/dibujo/'}>Dibujo</a></>}</div><nav aria-label={lang==='en'?'Languages':'Idiomas'}><a href={base}>PT</a><a href={base+'en/'} aria-current={lang==='en'?'page':undefined}>EN</a><a href={base+'es/'} aria-current={lang==='es'?'page':undefined}>ES</a></nav></header>
+<header class="ih-header"><a href={homeHref}>HARUM NOIR</a><div class="ih-cluster" aria-label={lang==='en'?'Topics':'Temas'}>{lang==='en'?<><a href={base+'en/references/'}>References</a><a href={base+'en/museums/'}>Museums</a><a href={base+'en/drawing/'}>Drawing</a><a href={base+'en/tattoo-salvador/'}>Tattoo Salvador</a></>:<><a href={base+'es/referencias/'}>Referencias</a><a href={base+'es/museos/'}>Museos</a><a href={base+'es/dibujo/'}>Dibujo</a><a href={base+'es/tatuaje-salvador/'}>Tatuaje Salvador</a></>}</div><nav aria-label={lang==='en'?'Languages':'Idiomas'}><a href={base}>PT</a><a href={base+'en/'} aria-current={lang==='en'?'page':undefined}>EN</a><a href={base+'es/'} aria-current={lang==='es'?'page':undefined}>ES</a></nav></header>
 <main>
 <section class="ih-hero"><div><span>{kicker}</span><h1>{heading}</h1><p>{lead}</p></div></section>
 <nav class="ih-topics" aria-label={lang==='en'?'International topics':'Temas internacionales'}>{topicNav.map(item=><a href={item.href}>{item.label}</a>)}</nav>
