@@ -31,9 +31,9 @@ Escopo: inventário de rotas e imagens do repositório público; integração da
 As pranchas didáticas existentes seguem papel marfim, carvão/grafite e pequenos acentos ocres do atlas HARUM NOIR. Todas são arquivos locais WebP (`public/noir/visual-atlas/`), sem dependência de Drive ou hotlink. As legendas identificam assistência de IA. Não foram usadas referências de estilo de franquias ou de artistas vivos. Assets de portfólio Studio 23, imagens institucionais e coleções de museus permanecem intactos.
 
 
-## Continuação multilíngue e coleções — em revisão
+## Continuação multilíngue e coleções — publicada
 
-**Progresso:** [████████░░] 80% — visualização integrada; CI, verificação móvel e publicação pendentes.
+**Progresso:** [█████████░] 95% — PR #42 integrado; CI e GitHub Pages passaram; auditoria móvel específica desta revisão pendente.
 
 A revisão atual amplia as Coleções Visuais para os caminhos em inglês e espanhol, com as novas rotas `/en/collections/` e `/es/colecciones/`. Os hubs compartilhados apresentam imagens locais em primeiro plano, links localizados e descrições didáticas em notas expansíveis. As duas home pages internacionais também passam a oferecer as coleções na navegação. O conteúdo português usa o mesmo padrão nos hubs de Desenho, Cultura Visual Brasileira e Tatuagem em Salvador.
 
@@ -41,7 +41,7 @@ A rota `/historia-da-arte/` recebe quatro lentes visuais (corpo/gesto, forma/luz
 
 A nova imagem `brasil-acervo-editorial.webp` é uma composição conceitual assistida por IA, marcada como ilustração e não como mapa ou documento histórico. A coleção de Tatuagem usa fotografias já publicadas no portfólio oficial do Studio 23, sem banners promocionais.
 
-**Pontos ainda em validação:** links internos localizados, acessibilidade/alt text, rotas novas, build e matriz móvel.
+**Validação concluída:** build, rotas, imagens, links internos, hreflang e publicação passaram. A auditoria móvel específica desta revisão ainda não foi executada; a última auditoria publicada continua aprovada.
 
 ## Validação
 
