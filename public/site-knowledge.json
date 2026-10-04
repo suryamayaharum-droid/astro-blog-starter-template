@@ -65,12 +65,14 @@
     "en": {
       "references": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/en/references/",
       "museums": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/en/museums/",
-      "drawing": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/en/drawing/"
+      "drawing": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/en/drawing/",
+      "tattooSalvador": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/en/tattoo-salvador/"
     },
     "es": {
       "references": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/es/referencias/",
       "museums": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/es/museos/",
-      "drawing": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/es/dibujo/"
+      "drawing": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/es/dibujo/",
+      "tattooSalvador": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/es/tatuaje-salvador/"
     }
   }
 }
