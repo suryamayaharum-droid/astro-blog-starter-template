@@ -2,6 +2,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const root=path.resolve('dist');
+const SITE_ORIGIN='https://suryamayaharum-droid.github.io';
+const SITE_BASE='/astro-blog-starter-template/';
 const htmlFiles=[];
 const walk=(dir)=>{
   for(const entry of fs.readdirSync(dir,{withFileTypes:true})){
@@ -31,6 +33,25 @@ for(const file of htmlFiles){
   const ogTitle=meta(html,'og:title');
   const ogDescription=meta(html,'og:description');
   const ogImage=meta(html,'og:image');
+  const isRedirect=/<meta[^>]*http-equiv="refresh"[^>]*>/i.test(html);
+
+  if(isRedirect){
+    if(!title)errors.push(rel+': redirect missing title');
+    if(!canonical)errors.push(rel+': redirect missing canonical');
+    else{
+      try{
+        const u=new URL(canonical,SITE_ORIGIN);
+        if(u.origin!==SITE_ORIGIN||!u.pathname.startsWith(SITE_BASE))errors.push(rel+': redirect canonical leaves site '+u.href);
+        else{
+          const sub=u.pathname.slice(SITE_BASE.length).replace(/^\/+|\/+$/g,'');
+          const target=sub?path.join(root,...sub.split('/'),'index.html'):path.join(root,'index.html');
+          if(!fs.existsSync(target))errors.push(rel+': redirect target missing '+u.pathname);
+        }
+      }catch{errors.push(rel+': invalid redirect canonical '+canonical);}
+    }
+    if(!robots||!/noindex/i.test(robots)||!/follow/i.test(robots))errors.push(rel+': redirect must declare noindex,follow');
+    continue;
+  }
 
   if(!title)errors.push(rel+': missing title');
   if(!desc)errors.push(rel+': missing meta description');
