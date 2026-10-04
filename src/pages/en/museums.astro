@@ -7,5 +7,23 @@ const cards=[
 {kicker:'BRAZIL',title:'Research Brazilian visual memory.',text:'Follow the Biblioteca Nacional Digital path for Bahia, Salvador, nineteenth-century prints and graphic memory.',href:base+'bancos/bndigital/',label:'Open BNDigital guide →'},
 {kicker:'RIGHTS',title:'Keep provenance visible.',text:'HARUM NOIR treats the institution as the canonical source and does not mirror entire collections.',href:base+'bancos/',label:'Review source routes →'}
 ];
+const answers=[
+  {
+    "question": "Why use museum collections for drawing research?",
+    "answer": "Museum records add authorship, date, material, provenance and rights context. That makes visual study more precise than saving isolated images without a source."
+  },
+  {
+    "question": "Are all museum images free to reuse?",
+    "answer": "No. Open Access, public domain, CC0 and restricted records can coexist in the same institution. Always verify the rights statement on the individual object page before reuse."
+  },
+  {
+    "question": "Does HARUM NOIR copy museum collections?",
+    "answer": "No. The site acts as a map. It organizes institutions, search lenses and study routes, while the museum or library remains the canonical source for each record."
+  },
+  {
+    "question": "Which collections are especially useful?",
+    "answer": "The map includes institutions such as The Met, Art Institute of Chicago, Cleveland Museum of Art, Rijksmuseum, Getty, Biblioteca Nacional Digital and other museum or archive sources."
+  }
+];
 ---
-<InternationalHub lang="en" title="Open Museums and Image Archives · HARUM NOIR" description="Explore museums, public-domain collections, image archives and open-access research routes for drawing and art history." kicker="HARUM NOIR · OPEN COLLECTIONS" heading="Museums are sources, not wallpaper." lead="Search collections, preserve provenance and return to the institution that holds the record. HARUM NOIR adds research routes, not copied libraries." cards={cards} alternateHref={base+'es/museos/'} alternateLang="es" alternateLabel="Ver esta página en español →" ptHref={base+'museus/'} topics={['open museums','public domain art','open access collections','image archives','art history research']}/>
+<InternationalHub lang="en" title="Open Museums and Image Archives · HARUM NOIR" description="Explore museums, public-domain collections, image archives and open-access research routes for drawing and art history." kicker="HARUM NOIR · OPEN COLLECTIONS" heading="Museums are sources, not wallpaper." lead="Search collections, preserve provenance and return to the institution that holds the record. HARUM NOIR adds research routes, not copied libraries." cards={cards} answers={answers} alternateHref={base+'es/museos/'} alternateLang="es" alternateLabel="Ver esta página en español →" ptHref={base+'museus/'} topics={['open museums','public domain art','open access collections','image archives','art history research']}/>
