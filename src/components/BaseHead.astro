@@ -8,6 +8,8 @@ const siteRoot = new URL(base, Astro.site);
 const { title, description, image = `${base}noir/visual-atlas/atelier-desk.webp`, locale = 'pt-BR', alternates = [] } = Astro.props;
 const imageURL = new URL(image, Astro.site);
 const ogLocale = locale.replace('-', '_');
+const googleVerification=String(import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION||'').trim();
+const bingVerification=String(import.meta.env.PUBLIC_BING_SITE_VERIFICATION||'').trim();
 const graph = {
   '@context':'https://schema.org',
   '@graph':[
@@ -24,6 +26,8 @@ const graph = {
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
 <meta name="googlebot" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
 <meta name="author" content="Arte Harum · HARUM NOIR" />
+{googleVerification && <meta name="google-site-verification" content={googleVerification} />}
+{bingVerification && <meta name="msvalidate.01" content={bingVerification} />}
 <link rel="canonical" href={canonicalURL} />
 <link rel="alternate" hreflang={locale} href={canonicalURL} />
 {alternates.map(item => <link rel="alternate" hreflang={item.hreflang} href={new URL(item.href, siteRoot)} />)}
