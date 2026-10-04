@@ -1,0 +1,12 @@
+---
+import InternationalHub from '../../components/InternationalHub.astro';
+import { STUDIO_SITE } from '../../consts';
+const base=import.meta.env.BASE_URL.endsWith('/')?import.meta.env.BASE_URL:import.meta.env.BASE_URL+'/';
+const cards=[
+{kicker:'TATUAJE AUTORAL',title:'Proyectos construidos para el cuerpo.',text:'Studio 23 desarrolla composiciones personalizadas desde la intención, anatomía, escala, espacio negativo y repertorio visual, sin copiar tatuajes de referencia.',href:STUDIO_SITE,label:'Visitar Studio 23 →'},
+{kicker:'SALVADOR · BAHIA',title:'Paripe y Pituba con cita previa.',text:'Paripe es un atelier privado y la dirección se comparte después de agendar. En Pituba las sesiones pueden ocurrir en otro estudio según la agenda; no se presenta como una sucursal de Studio 23.',href:STUDIO_SITE,label:'Ver información de reservas →'},
+{kicker:'LENGUAJE',title:'Fine line, blackwork y sketch.',text:'La práctica incluye botánica delicada, blackwork, sketch tattoo, figura clásica, anatomía, escultura y composiciones autorales.',href:base+'es/dibujo/',label:'Ver la investigación de dibujo →'},
+{kicker:'PORTAFOLIO',title:'Distinguir investigación de tatuajes realizados.',text:'HARUM NOIR es un espacio editorial de investigación. Para trabajos documentados y reservas, utiliza el portafolio y el contacto oficial de Studio 23.',href:STUDIO_SITE,label:'Abrir portafolio oficial de tatuajes →'}
+];
+---
+<InternationalHub lang="es" title="Tatuaje Autoral en Salvador, Brasil · Studio 23 × Arte Harum" description="Tatuaje autoral en Salvador, Bahia, Brasil. Proyectos personalizados de fine line, blackwork, sketch y figura, con atención en Paripe y Pituba mediante cita." kicker="STUDIO 23 × ARTE HARUM · SALVADOR, BRASIL" heading="Tatuaje autoral en Salvador." lead="Proyectos personalizados guiados por anatomía, gesto e investigación visual. Studio 23 trabaja con cita previa en Salvador, con atelier privado en Paripe y atención en Pituba según agenda." cards={cards} alternateHref={base+'en/tattoo-salvador/'} alternateLang="en" alternateLabel="View this page in English →"/>
