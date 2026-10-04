@@ -1,0 +1,17 @@
+---
+import InternationalHub from '../../components/InternationalHub.astro';
+const base=import.meta.env.BASE_URL.endsWith('/')?import.meta.env.BASE_URL:import.meta.env.BASE_URL+'/';
+const cards=[
+{kicker:'BNDIGITAL',title:'Empieza por la Biblioteca Nacional de Brasil.',text:'Usa la Biblioteca Nacional Digital para investigar grabados, libros, mapas, periódicos y registros visuales con contexto institucional.',href:base+'bancos/bndigital/',label:'Abrir guía BNDigital →'},
+{kicker:'BAHIA Y SALVADOR',title:'Sigue el lugar como archivo visual.',text:'Busca Bahia y Salvador a través de grabados del siglo XIX, vistas portuarias, arquitectura, cartografía y publicaciones históricas.',href:base+'bancos/bndigital/',label:'Investigar Bahia y Salvador →'},
+{kicker:'BOTÁNICA',title:'Estudia la flora brasileña como forma.',text:'La ilustración botánica conecta observación científica, línea, ritmo, estructura de ramas y vocabulario ornamental.',href:base+'bancos/',label:'Explorar archivos visuales →'},
+{kicker:'CULTURA IMPRESA',title:'Observa cómo circulaban las imágenes.',text:'Periódicos ilustrados, grabados, mapas y libros muestran cómo cambia el lenguaje visual al pasar por la impresión.',href:base+'historia-da-arte/',label:'Abrir rutas de historia del arte →'}
+];
+const answers=[
+{question:'¿Qué significa cultura visual brasileña aquí?',answer:'Significa estudiar cómo Brasil fue representado, impreso, cartografiado y narrado visualmente en distintos períodos, siempre regresando a fuentes institucionales y contexto histórico.'},
+{question:'¿Por qué Bahia es importante para esta investigación?',answer:'Salvador y Bahia conectan historia colonial, cultura portuaria, arquitectura, imágenes religiosas, registros botánicos, cartografía y cultura impresa del siglo XIX.'},
+{question:'¿Las imágenes históricas se pueden reutilizar libremente?',answer:'No automáticamente. Acceso público y dominio público no son lo mismo. Deben revisarse los derechos indicados en cada registro institucional.'},
+{question:'¿Cómo ayuda esto al dibujo contemporáneo?',answer:'Las imágenes históricas amplían el repertorio de composición, gesto, ornamento, vestuario, arquitectura, paisaje y botánica sin obligar a imitar un único estilo contemporáneo.'}
+];
+---
+<InternationalHub lang="es" title="Cultura Visual Brasileña · Bahia, Salvador y Archivos Históricos | HARUM NOIR" description="Explora la cultura visual brasileña a través de Bahia, Salvador, Biblioteca Nacional Digital, grabados, mapas, ilustración botánica y archivos históricos." kicker="HARUM NOIR · CULTURA VISUAL BRASILEÑA" heading="Brasil como archivo visual." lead="Investiga Bahia, Salvador y la memoria gráfica brasileña mediante colecciones institucionales, grabados históricos, mapas, periódicos y registros botánicos." cards={cards} answers={answers} alternateHref={base+'en/brazilian-visual-culture/'} alternateLang="en" alternateLabel="View this page in English →" ptHref={base+'bancos/bndigital/'} topics={['cultura visual brasileña','Bahia','Salvador','Biblioteca Nacional Digital','historia gráfica brasileña','cartografía histórica','ilustración botánica']}/>
