@@ -21,10 +21,6 @@ for path in changed:
     s=path.replace("\\","/")
     if s=="src/pages/index.astro":
         add("/")
-    elif s.startswith("src/pages/en/"):
-        add("/en/")
-    elif s.startswith("src/pages/es/"):
-        add("/es/")
     elif s.startswith("src/pages/") and s.endswith(".astro"):
         rel=s[len("src/pages/"):]
         if "[" in rel:
@@ -41,10 +37,10 @@ for path in changed:
     if "src/data/imageBanks" in s:
         add("/bancos/"); add("/museus/"); add("/historia-da-arte/")
     if s.startswith(("src/components/","src/styles/")):
-        for route in ("/","/en/","/es/","/referencias/","/historia-da-arte/","/bancos/","/biblioteca/"):
+        for route in ("/","/en/","/es/","/en/references/","/en/museums/","/en/drawing/","/es/referencias/","/es/museos/","/es/dibujo/","/referencias/","/historia-da-arte/","/bancos/","/museus/","/biblioteca/"):
             add(route)
     if s in {"scripts/indexnow_payload.py",".github/workflows/indexnow.yml","public/robots.txt","public/llms.txt","public/site-knowledge.json"}:
-        for route in ("/","/en/","/en/references/","/en/museums/","/en/drawing/","/es/","/es/referencias/","/es/museos/","/es/dibujo/","/referencias/","/historia-da-arte/","/bancos/","/biblioteca/","/cadernos/","/percursos/","/bancos/bndigital/"):
+        for route in ("/","/en/","/en/references/","/en/museums/","/en/drawing/","/es/","/es/referencias/","/es/museos/","/es/dibujo/","/referencias/","/historia-da-arte/","/bancos/","/biblioteca/","/cadernos/","/percursos/","/bancos/bndigital/","/catalog.json"):
             add(route)
 
 payload={"host":"suryamayaharum-droid.github.io","key":KEY,"keyLocation":KEY_LOCATION,"urlList":sorted(urls)[:50]}
