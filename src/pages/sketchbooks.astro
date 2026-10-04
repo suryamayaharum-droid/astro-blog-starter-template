@@ -41,8 +41,9 @@ const shelves = [...new Set(sketchbookGalleries.map((book) => book.shelf))];
     <div class="stream-head" style="margin-top:26px"><div><span class="eyebrow">{book.source}</span><h3>Folhas do caderno</h3></div><p>{book.images.length > 0 ? `${book.images.length} imagens abertas nesta seleção inicial.` : "Acervo institucional conectado · imagens internas entram após validação individual do arquivo."}</p></div>
     {book.images.length > 0 ? <div class="browse-rail" aria-label={`Galeria de ${book.title}`}>
       {book.images.map((img,i)=><a class="browse-tile" href={"href" in img ? img.href : `https://commons.wikimedia.org/wiki/File:${img.file}`} target="_blank" rel="noreferrer">
-        <div class="card-media" style="aspect-ratio:4/5;background:#171614">
-          <img src={"url" in img ? img.url : commonsImage(img.file, 760)} loading="lazy" decoding="async" alt={`${img.label}, ${book.title}, ${book.artist}`} style="width:100%;height:100%;object-fit:contain" />
+        <div class="card-media gallery-media" style="aspect-ratio:4/5;background:#171614">
+          <img src={"url" in img ? img.url : commonsImage(img.file, 760)} loading="lazy" decoding="async" alt={`${img.label}, ${book.title}, ${book.artist}`} style="width:100%;height:100%;object-fit:contain" onerror="this.parentElement.classList.add('image-unavailable');this.remove()" />
+          <span class="gallery-image-fallback" aria-hidden="true">Imagem indisponível agora · abra o registro institucional ↗</span>
         </div>
         <div class="browse-body"><span>{String(i+1).padStart(2,'0')} · {book.date}</span><h3>{img.label}</h3><p>{book.artist}</p><small style="color:#b39a69">{book.rights} · abrir arquivo e metadados →</small></div>
       </a>)}
@@ -54,3 +55,6 @@ const shelves = [...new Set(sketchbookGalleries.map((book) => book.shelf))];
 </main>
 <Footer/>
 </body></html>
+<style>
+.gallery-media{position:relative}.gallery-image-fallback{display:none;max-width:22ch;padding:24px;color:#d7cec1;text-align:center;font-size:.82rem;line-height:1.6}.gallery-media.image-unavailable{display:grid;place-items:center;background:radial-gradient(circle at 50% 20%,rgba(179,154,105,.14),transparent 42%),#111214!important}.gallery-media.image-unavailable .gallery-image-fallback{display:block}
+</style>
