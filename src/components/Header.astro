@@ -39,6 +39,8 @@ const links = [
         <span class="explore-title">O ateliê inteiro</span>
         {links.map(([label,path])=><a href={`${base}${path}`}>{label}</a>)}
         <a href={STUDIO_SITE} target="_blank" rel="noreferrer">Studio 23 ↗</a>
+        <span class="explore-title locale-title">Idiomas · Languages</span>
+        <a href={base}>Português</a><a href={base+'en/'}>English</a><a href={base+'es/'}>Español</a>
       </nav>
     </details>
     <button class="save-current" id="save-current" type="button">＋ Estante</button>
