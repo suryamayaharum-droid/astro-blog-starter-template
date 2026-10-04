@@ -4,7 +4,7 @@ const TRANSFORMERS_CDN = 'https://cdn.jsdelivr.net/npm/@huggingface/transformers
 const SITE_MAP = Object.freeze({
   museums: 'Museus: busca de obras nos acervos conectados e fichas que levam à instituição de origem.',
   school: 'Escola Aberta: plano de estudo em quatro movimentos, primeira prática guiada e progresso local.',
-  gesture: 'Atlas das Mãos: estudos para gesto, forma, contato e ação.'
+  gesture: 'Atlas das Mãos: estudos para gesto, forma, contato e ação.',
   notebooks: 'Cadernos: estudos, exercícios e prática de desenho.',
   references: 'Referências: Atlas com artistas, repertórios visuais e fontes originais.',
   journeys: 'Percursos: trilhas curtas e sequências de estudo.',
