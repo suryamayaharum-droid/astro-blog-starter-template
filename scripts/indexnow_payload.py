@@ -37,10 +37,10 @@ for path in changed:
     if "src/data/imageBanks" in s:
         add("/bancos/"); add("/museus/"); add("/historia-da-arte/")
     if s.startswith(("src/components/","src/styles/")):
-        for route in ("/","/en/","/es/","/en/references/","/en/museums/","/en/drawing/","/en/art-history/","/en/brazilian-visual-culture/","/en/tattoo-salvador/","/es/referencias/","/es/museos/","/es/dibujo/","/es/historia-del-arte/","/es/cultura-visual-brasilena/","/es/tatuaje-salvador/","/referencias/","/historia-da-arte/","/bancos/","/museus/","/biblioteca/"):
+        for route in ("/","/en/","/en/about/","/es/","/es/acerca/","/en/references/","/en/museums/","/en/drawing/","/en/art-history/","/en/brazilian-visual-culture/","/en/tattoo-salvador/","/es/referencias/","/es/museos/","/es/dibujo/","/es/historia-del-arte/","/es/cultura-visual-brasilena/","/es/tatuaje-salvador/","/sobre/","/referencias/","/historia-da-arte/","/bancos/","/museus/","/biblioteca/"):
             add(route)
     if s in {"scripts/indexnow_payload.py",".github/workflows/indexnow.yml","public/robots.txt","public/llms.txt","public/site-knowledge.json"}:
-        for route in ("/","/en/","/en/references/","/en/museums/","/en/drawing/","/en/tattoo-salvador/","/es/","/es/referencias/","/es/museos/","/es/dibujo/","/es/tatuaje-salvador/","/referencias/","/historia-da-arte/","/bancos/","/biblioteca/","/cadernos/","/percursos/","/bancos/bndigital/","/catalog.json"):
+        for route in ("/","/en/","/en/about/","/en/references/","/en/museums/","/en/drawing/","/en/tattoo-salvador/","/es/","/es/acerca/","/es/referencias/","/es/museos/","/es/dibujo/","/es/tatuaje-salvador/","/referencias/","/historia-da-arte/","/bancos/","/biblioteca/","/cadernos/","/percursos/","/bancos/bndigital/","/catalog.json"):
             add(route)
 
 payload={"host":"suryamayaharum-droid.github.io","key":KEY,"keyLocation":KEY_LOCATION,"urlList":sorted(urls)[:50]}
