@@ -27,8 +27,16 @@ jobs:
           cache: npm
       - name: Install
         run: npm ci
+      - name: Astro + TypeScript
+        run: npm run check
+      - name: Bank controls and local AI contract
+        run: node scripts/check_bank_controls.mjs
       - name: Build
         run: npm run build
+      - name: Internal route and asset links
+        run: node scripts/check_internal_links.mjs
+      - name: Studio 23 ↔ Harum Noir ecosystem contract
+        run: node scripts/check_ecosystem_contract.mjs
       - name: Configure Pages
         uses: actions/configure-pages@v5
         with:
