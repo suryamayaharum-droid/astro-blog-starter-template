@@ -10,6 +10,10 @@ HARUM NOIR is the editorial arm of Arte Harum. It organizes drawing, charcoal, f
 - English gateway: https://suryamayaharum-droid.github.io/astro-blog-starter-template/en/
 - Spanish gateway: https://suryamayaharum-droid.github.io/astro-blog-starter-template/es/
 
+## Machine-readable discovery
+- Canonical structured catalog: https://suryamayaharum-droid.github.io/astro-blog-starter-template/catalog.json
+- Site knowledge map: https://suryamayaharum-droid.github.io/astro-blog-starter-template/site-knowledge.json
+
 ## High-value routes
 - /referencias/ — artists and reference atlas
 - /historia-da-arte/ — art-history learning paths
