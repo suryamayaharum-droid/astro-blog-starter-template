@@ -23,7 +23,9 @@ export async function GET(){
     routes:{
       home:SITE,
       english:SITE+'en/',
+      englishAbout:SITE+'en/about/',
       spanish:SITE+'es/',
+      spanishAbout:SITE+'es/acerca/',
       englishReferences:SITE+'en/references/',
       englishMuseums:SITE+'en/museums/',
       englishDrawing:SITE+'en/drawing/',
@@ -36,6 +38,7 @@ export async function GET(){
       spanishArtHistory:SITE+'es/historia-del-arte/',
       spanishBrazilianVisualCulture:SITE+'es/cultura-visual-brasilena/',
       spanishTattooSalvador:SITE+'es/tatuaje-salvador/',
+      about:SITE+'sobre/',
       references:SITE+'referencias/',
       museums:SITE+'museus/',
       imageBanks:SITE+'bancos/',
