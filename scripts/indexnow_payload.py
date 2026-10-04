@@ -43,6 +43,9 @@ for path in changed:
     if s.startswith(("src/components/","src/styles/")):
         for route in ("/","/en/","/es/","/referencias/","/historia-da-arte/","/bancos/","/biblioteca/"):
             add(route)
+    if s in {"scripts/indexnow_payload.py",".github/workflows/indexnow.yml","public/robots.txt","public/llms.txt","public/site-knowledge.json"}:
+        for route in ("/","/en/","/es/","/referencias/","/historia-da-arte/","/bancos/","/biblioteca/","/cadernos/","/percursos/","/bancos/bndigital/"):
+            add(route)
 
 payload={"host":"suryamayaharum-droid.github.io","key":KEY,"keyLocation":KEY_LOCATION,"urlList":sorted(urls)[:50]}
 print(json.dumps(payload,ensure_ascii=False))
