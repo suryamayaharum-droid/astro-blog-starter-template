@@ -11,11 +11,41 @@ import '../styles/artHistory.css';
 const base=import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 const masterCount=artHistoryPeriods.reduce((sum,p)=>sum+p.artists.length,0);
 const museumSearch=(name)=>base+"museus?q="+encodeURIComponent(name);
+const historySchema={
+  '@context':'https://schema.org',
+  '@type':'LearningResource',
+  name:'Atlas Histórico · Harum Noir',
+  description:'Guia vivo de história da arte por período, mestres, construção visual, exercícios e fontes institucionais abertas.',
+  inLanguage:'pt-BR',
+  educationalUse:'Study',
+  learningResourceType:'Art history visual study atlas',
+  url:new URL(base+'historia-da-arte/',Astro.site).href,
+  keywords:['história da arte','desenho','anatomia artística','gesto','composição','museus','fontes abertas'],
+  hasPart:artHistoryPeriods.map((p,index)=>({
+    '@type':'CreativeWork',
+    position:index+1,
+    name:p.title,
+    temporalCoverage:p.dates,
+    spatialCoverage:p.region,
+    description:p.thesis,
+    keywords:p.construction,
+    educationalUse:'Study',
+    learningResourceType:'Historical period study',
+    about:p.artists.map(a=>({'@type':'Thing',name:a.name,description:a.focus}))
+  })),
+  citation:artHistorySources.map(source=>({
+    '@type':'CreativeWork',
+    name:source.name,
+    url:source.url,
+    description:source.note
+  }))
+};
 ---
 <!doctype html>
 <html lang="pt-BR">
 <head>
   <BaseHead title="Atlas Histórico · Harum Noir" description="Guia vivo de história da arte por período, mestres, construção visual, exercícios e fontes institucionais abertas." alternates={[{hreflang:'en',href:base+'en/art-history/'},{hreflang:'es',href:base+'es/historia-del-arte/'}]} />
+  <script type="application/ld+json" set:html={JSON.stringify(historySchema)} />
 </head>
 <body>
 <Header/>
