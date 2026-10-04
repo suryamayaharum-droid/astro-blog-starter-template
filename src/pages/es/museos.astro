@@ -7,5 +7,23 @@ const cards=[
 {kicker:'BRASIL',title:'Investiga la memoria visual brasileña.',text:'Sigue la ruta de la Biblioteca Nacional Digital para Bahia, Salvador, grabados del siglo XIX y memoria gráfica.',href:base+'bancos/bndigital/',label:'Abrir guía BNDigital →'},
 {kicker:'DERECHOS',title:'Mantén visible la procedencia.',text:'HARUM NOIR trata a la institución como fuente canónica y no copia colecciones enteras.',href:base+'bancos/',label:'Revisar rutas de fuentes →'}
 ];
+const answers=[
+  {
+    "question": "¿Por qué usar colecciones de museos para investigar dibujo?",
+    "answer": "Los registros museísticos aportan autoría, fecha, material, procedencia y contexto de derechos. Eso hace el estudio más preciso que guardar imágenes aisladas sin fuente."
+  },
+  {
+    "question": "¿Todas las imágenes de museos se pueden reutilizar libremente?",
+    "answer": "No. Open Access, dominio público, CC0 y registros restringidos pueden coexistir dentro de una misma institución. Hay que verificar los derechos del objeto concreto antes de reutilizarlo."
+  },
+  {
+    "question": "¿HARUM NOIR copia colecciones de museos?",
+    "answer": "No. El sitio funciona como mapa: organiza instituciones, términos de búsqueda y recorridos, mientras el museo o la biblioteca siguen siendo la fuente canónica."
+  },
+  {
+    "question": "¿Qué colecciones son especialmente útiles?",
+    "answer": "El mapa incluye instituciones como The Met, Art Institute of Chicago, Cleveland Museum of Art, Rijksmuseum, Getty, Biblioteca Nacional Digital y otros museos y archivos."
+  }
+];
 ---
-<InternationalHub lang="es" title="Museos Abiertos y Archivos Visuales · HARUM NOIR" description="Explora museos, colecciones de dominio público, archivos visuales y rutas Open Access para dibujo e historia del arte." kicker="HARUM NOIR · COLECCIONES ABIERTAS" heading="Los museos son fuentes, no decoración." lead="Busca colecciones, preserva la procedencia y vuelve a la institución que conserva el registro. HARUM NOIR añade rutas de estudio, no bibliotecas copiadas." cards={cards} alternateHref={base+'en/museums/'} alternateLang="en" alternateLabel="View this page in English →" ptHref={base+'museus/'} topics={['museos abiertos','arte de dominio público','colecciones open access','archivos visuales','historia del arte']}/>
+<InternationalHub lang="es" title="Museos Abiertos y Archivos Visuales · HARUM NOIR" description="Explora museos, colecciones de dominio público, archivos visuales y rutas Open Access para dibujo e historia del arte." kicker="HARUM NOIR · COLECCIONES ABIERTAS" heading="Los museos son fuentes, no decoración." lead="Busca colecciones, preserva la procedencia y vuelve a la institución que conserva el registro. HARUM NOIR añade rutas de estudio, no bibliotecas copiadas." cards={cards} answers={answers} alternateHref={base+'en/museums/'} alternateLang="en" alternateLabel="View this page in English →" ptHref={base+'museus/'} topics={['museos abiertos','arte de dominio público','colecciones open access','archivos visuales','historia del arte']}/>
