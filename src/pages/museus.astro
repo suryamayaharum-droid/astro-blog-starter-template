@@ -7,10 +7,27 @@ import '../styles/museums.css';
 const base=import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 const liveCount=museumCatalog.filter(x=>x.mode==='live').length;
 const modeLabel={live:'conectado agora',advanced:'API avançada',dataset:'dataset aberto',key:'requer chave'};
+const museumsSchema={
+  '@context':'https://schema.org',
+  '@type':'CollectionPage',
+  name:'Museus Abertos · Harum Noir',
+  description:'Catálogo de museus e fontes abertas para pesquisa visual, com retorno às instituições de origem.',
+  inLanguage:'pt-BR',
+  mainEntity:{
+    '@type':'ItemList',
+    numberOfItems:museumCatalog.length,
+    itemListElement:museumCatalog.map((m,i)=>({
+      '@type':'ListItem',
+      position:i+1,
+      url:new URL(base+'museus/#museum-'+m.id,Astro.site).href,
+      item:{'@type':'Museum','name':m.name,'location':{'@type':'Place','name':m.city+' · '+m.country},'url':m.collectionUrl}
+    }))
+  }
+};
 ---
 <!doctype html>
 <html lang="pt-BR">
-<head><BaseHead title="Museus Abertos · Harum Noir" description="Catálogo de museus e busca integrada em APIs Open Access, Public Domain e CC0 para estudo visual no Harum Noir." /></head>
+<head><BaseHead title="Museus Abertos · Harum Noir" description="Catálogo de museus e busca integrada em APIs Open Access, Public Domain e CC0 para estudo visual no Harum Noir." /><script type="application/ld+json" set:html={JSON.stringify(museumsSchema)} /></head>
 <body>
 <Header/>
 <main>
