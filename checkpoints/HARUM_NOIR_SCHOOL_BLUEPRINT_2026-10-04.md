@@ -6,7 +6,7 @@ Decisão de marca: **HARUM NOIR** é o nome público. **Harumverso** continua ap
 
 ## Barra de progresso
 
-**Entrega desta versão:** [█████████░] 90% — CI, imagens e a matriz móvel passaram para 26 rotas nas larguras 320, 360, 390 e 412 px. A home e a escola foram conferidas ao vivo. Esta revisão separa destinos duplicados nas etapas EN/ES; faltam CI, novo deploy e repetir a matriz.
+**Entrega desta versão:** [██████████] 100% — CI e publicação concluídos. A auditoria móvel passou em 26 rotas nas larguras 320, 360, 390 e 412 px; 16 rotas EN/ES em 390 px; e 9 testes responsivos em 760, 761 e 1024 px. Nenhum overflow, imagem quebrada, erro de console ou recurso interno falho. Home, Escola, barra móvel e destinos das etapas foram conferidos ao vivo. [Ver auditoria final](https://github.com/suryamayaharum-droid/astro-blog-starter-template/actions/runs/37227696748).
 
 A barra mede esta entrega do site, não o avanço de quem estuda. A barra de aprendizagem da escola é pessoal, salva no navegador e pode ser apagada pela pessoa.
 
@@ -15,13 +15,13 @@ A barra mede esta entrega do site, não o avanço de quem estuda. A barra de apr
 | Área | Problema observado | Tratamento nesta entrega |
 |---|---|---|
 | Página inicial | Muitas seções e trilhos competiam entre si; havia cartões repetidos e a escola não aparecia como caminho principal. | Entrada simplificada, quatro etapas com imagens e três portas de início. |
-| Links de estudo | Sessões levavam a busca genérica; oito leques repetiam o mesmo destino. | A home liga cada etapa a uma rota adequada; gesto vai ao Atlas das Mãos. Na escola EN/ES, organizar abre referências e traduzir volta à prática, sem destinos repetidos entre etapas. |
-| Imagens | A primeira dobra de Mãos era quase toda tipográfica; cartões de arquivo e continuidade eram apenas texto. | Capas locais na página Mãos, no Arquivo e nos cartões de continuidade. |
+| Links de estudo | Sessões levavam a busca genérica; oito leques repetiam o mesmo destino. | Home liga cada etapa a uma rota adequada; gesto vai ao Atlas das Mãos. Na escola EN/ES, Organizar abre Referências e Traduzir volta à prática de 12 minutos. |
+| Imagens | A primeira dobra de Mãos era quase toda tipográfica; cartões de arquivo e continuidade eram apenas texto. As duas novas capas também haviam sido enviadas com bytes inválidos. | Capas editoriais locais na home, Escola, Mãos, Arquivo e trilhos; WebP reconstruídos; CI valida assinaturas de imagem antes do deploy. |
 | Identidade pública | Algumas páginas ainda chamavam a navegação de Harumverso. | Páginas de busca, Biblioteca, sketchbooks e README usam HARUM NOIR. |
 | Entrada internacional | As home pages em inglês e espanhol não ofereciam um curso como primeiro passo. | Rotas de escola localizadas em inglês e espanhol, com entrada nas páginas correspondentes. |
 | Integridade das rotas | O verificador conferia arquivos, mas não âncoras dentro das páginas. | CI passa a verificar destinos e fragmentos, incluindo links na própria página. |
 | Integridade das imagens | A auditoria móvel encontrou duas capas WebP salvas com bytes inválidos; a página reservava o espaço, mas não as exibia. | Capas reconstruídas a partir das artes geradas; CI valida assinaturas WebP, PNG, JPEG, GIF e AVIF. |
-| Navegação internacional móvel | As escolas EN/ES tinham cabeçalho localizado, mas não ofereciam a barra fixa do restante do site em telas pequenas; a primeira barra repetia destinos. | Dock com Início, Escola, Prática de desenho, Referências e Museus em destinos únicos; a matriz anterior passou e esta revisão revalida os links. |
+| Navegação internacional móvel | As escolas EN/ES não tinham dock fixo e a primeira barra repetia destinos. | Dock com cinco destinos localizados e distintos; matriz final passou em 320–412 px. |
 
 Não apareceram marcadores genéricos de rascunho como Lorem ou TODO nas páginas inspecionadas. O ruído vinha principalmente da hierarquia, de destinos repetidos e de nomes inconsistentes.
 
@@ -34,27 +34,34 @@ Não apareceram marcadores genéricos de rascunho como Lorem ou TODO nas página
 
 A primeira prática leva 12 minutos e divide o tempo entre pergunta, estrutura, borda e síntese. O painel guarda quatro marcos no aparelho, sem conta ou alegação de certificação.
 
-## Arquivos em trabalho
+## Entregas concluídas no GitHub
 
-- **public/noir/visual-atlas/harum-noir-escola-hero.webp** (1200×485) e **harum-noir-hands-study.webp** (900×600) — capas reconstruídas a partir das artes geradas.
-- **src/pages/index.astro** — nova porta de entrada da escola.
-- **src/components/School.astro** e **src/pages/escola.astro** — plano, primeira prática, progresso local e dock localizado para as rotas EN/ES.
-- **src/pages/en/school.astro** e **src/pages/es/escuela.astro** — rotas localizadas.
-- **src/data/ecosystem.ts** e **src/components/EcosystemRail.astro** — rotas pesquisáveis e cartões com capa.
-- **src/pages/maos.astro**, **src/pages/atlas.astro**, **src/pages/arquivo.astro** — imagem e orientação nas entradas principais.
-- **src/components/Header.astro**, **src/components/LumeGuide.astro**, **src/pages/busca.astro** — atalhos para a escola e destino correto para gesto.
-- **scripts/check_internal_links.mjs** — teste de links, âncoras e assinaturas de imagens.
-- **.github/workflows/noir-mobile-visual-audit.yml** — matriz móvel inclui as três páginas de escola e Mãos.
-
-## Próximas revisões
-
-| Prioridade | Trabalho que segue |
+| PR integrado | Resultado |
 |---|---|
-| 1 | Ler no celular as páginas longas de cada rota e confirmar que a promessa do cartão corresponde à aula aberta. |
-| 2 | Verificar capas, alt text, contraste e âncoras das páginas antigas à medida que forem revisadas. |
-| 3 | Ampliar traduções das lições além da porta inicial; as páginas profundas continuam majoritariamente em português. |
-| 4 | Repetir a conferência visual e de links quando novas rotas ou módulos forem publicados. |
+| [#31 · Escola Aberta](https://github.com/suryamayaharum-droid/astro-blog-starter-template/pull/31) | Nova home com quatro movimentos, rotas de Escola em PT/EN/ES, exercício de 12 minutos, progresso local, capas e destinos de navegação revistos. |
+| [#32 · Imagens e CI](https://github.com/suryamayaharum-droid/astro-blog-starter-template/pull/32) | Duas capas WebP reconstruídas; CI agora detecta assinaturas inválidas de imagens locais, além de links e âncoras quebrados. |
+| [#33 · Navegação móvel EN/ES](https://github.com/suryamayaharum-droid/astro-blog-starter-template/pull/33) | Dock móvel traduzido nas rotas da Escola em inglês e espanhol. |
+| [#34 · Destinos distintos](https://github.com/suryamayaharum-droid/astro-blog-starter-template/pull/34) | “Organizar” leva a Referências; “Traduzir” retorna ao exercício. Os atalhos móveis não repetem destinos. |
+
+## Arquivos principais
+
+- `src/pages/index.astro` — nova entrada do site.
+- `src/components/School.astro`, `src/pages/escola.astro`, `src/pages/en/school.astro`, `src/pages/es/escuela.astro` — plano de estudo, prática, barra local e navegação localizada.
+- `public/noir/visual-atlas/harum-noir-escola-hero.webp` e `harum-noir-hands-study.webp` — capas geradas para o projeto, otimizadas e versionadas no repositório.
+- `src/data/ecosystem.ts`, `src/components/EcosystemRail.astro`, `src/components/Header.astro` e `src/components/LumeGuide.astro` — caminhos encontrados na navegação e busca.
+- `src/pages/maos.astro`, `src/pages/atlas.astro`, `src/pages/arquivo.astro` e `src/pages/busca.astro` — capas, orientação e destinos.
+- `scripts/check_internal_links.mjs` — valida links locais, âncoras e assinaturas WebP, PNG, JPEG, GIF e AVIF.
+- `.github/workflows/noir-mobile-visual-audit.yml` — matriz móvel inclui home, Escola PT/EN/ES, Mãos e rotas principais.
+
+## Próximas revisões — fila seguinte
+
+| Prioridade | Próxima revisão |
+|---|---|
+| 1 | Acrescentar novas lições guiadas à Escola além da prática inicial de 12 minutos. |
+| 2 | Traduzir conteúdo mais profundo de desenho para EN/ES; algumas rotas localizadas ainda abrem portais amplos. |
+| 3 | Rever alt text, contraste e correspondência entre cartões e aulas nas rotas antigas à medida que forem ampliadas. |
+| 4 | Repetir CI, links, âncoras e matriz móvel ao publicar novos módulos. |
 
 ### Critério de conclusão desta entrega
 
-Build verde; verificador sem destinos ou âncoras quebradas; rotas de escola legíveis em 320–412 px; GitHub Pages publicado e conferido.
+**Concluído:** build e CI verdes; verificador sem links, âncoras ou imagens inválidas; rotas da escola sem overflow em 320–412 px; deploy e conferência visual do GitHub Pages; auditoria móvel e internacional aprovadas.
