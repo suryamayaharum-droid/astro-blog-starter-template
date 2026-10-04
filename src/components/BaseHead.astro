@@ -5,6 +5,11 @@ interface Props { title:string; description:string; image?:string; locale?:strin
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 const siteRoot = new URL(base, Astro.site);
+const canonicalRoot = siteRoot.href.endsWith('/') ? siteRoot.href.slice(0,-1) : siteRoot.href;
+const alternateHref = (href:string) => {
+  const resolved = new URL(href, siteRoot).href;
+  return resolved === siteRoot.href ? canonicalRoot : resolved;
+};
 const { title, description, image = `${base}noir/visual-atlas/atelier-desk.webp`, locale = 'pt-BR', alternates = [] } = Astro.props;
 const imageURL = new URL(image, Astro.site);
 const ogLocale = locale.replace('-', '_');
@@ -30,8 +35,8 @@ const graph = {
 {bingVerification && <meta name="msvalidate.01" content={bingVerification} />}
 <link rel="canonical" href={canonicalURL} />
 <link rel="alternate" hreflang={locale} href={canonicalURL} />
-{alternates.map(item => <link rel="alternate" hreflang={item.hreflang} href={new URL(item.href, siteRoot)} />)}
-<link rel="alternate" hreflang="x-default" href={siteRoot} />
+{alternates.map(item => <link rel="alternate" hreflang={item.hreflang} href={alternateHref(item.href)} />)}
+<link rel="alternate" hreflang="x-default" href={canonicalRoot} />
 <link rel="alternate" type="text/plain" title="LLM site guide" href={new URL('llms.txt',siteRoot)} />
 <link rel="alternate" type="application/ld+json" title="HARUM NOIR machine-readable catalog" href={new URL('catalog.json',siteRoot)} />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
