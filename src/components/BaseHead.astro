@@ -12,6 +12,8 @@ const alternateHref = (href:string) => {
   return resolved === siteRoot.href ? canonicalRoot : resolved;
 };
 const { title, description, image = `${base}noir/visual-atlas/atelier-desk.webp`, locale = 'pt-BR', alternates = [] } = Astro.props;
+const ptAlternate=alternates.find(item=>item.hreflang.toLowerCase()==='pt-br');
+const xDefaultHref=ptAlternate ? alternateHref(ptAlternate.href) : (locale.toLowerCase()==='pt-br' ? canonicalURL.href : canonicalRoot);
 const imageURL = new URL(image, Astro.site);
 const ogLocale = locale.replace('-', '_');
 const googleVerification=String(import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION||'').trim();
@@ -67,7 +69,7 @@ const graph = {
 <link rel="canonical" href={canonicalURL} />
 <link rel="alternate" hreflang={locale} href={canonicalURL} />
 {alternates.map(item => <link rel="alternate" hreflang={item.hreflang} href={alternateHref(item.href)} />)}
-<link rel="alternate" hreflang="x-default" href={canonicalRoot} />
+<link rel="alternate" hreflang="x-default" href={xDefaultHref} />
 <link rel="alternate" type="text/plain" title="LLM site guide" href={new URL('llms.txt',siteRoot)} />
 <link rel="alternate" type="application/ld+json" title="HARUM NOIR machine-readable catalog" href={new URL('catalog.json',siteRoot)} />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
