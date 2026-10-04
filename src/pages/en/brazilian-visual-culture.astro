@@ -1,0 +1,17 @@
+---
+import InternationalHub from '../../components/InternationalHub.astro';
+const base=import.meta.env.BASE_URL.endsWith('/')?import.meta.env.BASE_URL:import.meta.env.BASE_URL+'/';
+const cards=[
+{kicker:'BNDIGITAL',title:'Start with Brazil’s National Library.',text:'Use the Biblioteca Nacional Digital to research prints, books, maps, periodicals and visual records with institutional context.',href:base+'bancos/bndigital/',label:'Open BNDigital guide →'},
+{kicker:'BAHIA & SALVADOR',title:'Follow place as a visual archive.',text:'Search Bahia and Salvador through nineteenth-century prints, port views, architecture, cartography and historical publications.',href:base+'bancos/bndigital/',label:'Research Bahia & Salvador →'},
+{kicker:'BOTANICAL',title:'Study Brazilian flora as form.',text:'Botanical illustration connects scientific observation, line, rhythm, branch structure and ornamental vocabulary.',href:base+'bancos/',label:'Explore visual archives →'},
+{kicker:'PRINT CULTURE',title:'Look at how images circulated.',text:'Illustrated newspapers, engravings, maps and books reveal how visual language changes when it moves through print.',href:base+'historia-da-arte/',label:'Open art-history routes →'}
+];
+const answers=[
+{question:'What does Brazilian visual culture mean here?',answer:'It means studying how Brazil has been pictured, printed, mapped and visually narrated across different periods, always returning to institutional sources and historical context.'},
+{question:'Why is Bahia important to this research?',answer:'Salvador and Bahia connect colonial history, port culture, architecture, religious imagery, botanical records, cartography and nineteenth-century print culture in a visually dense archive.'},
+{question:'Are the historical images free to reuse?',answer:'Not automatically. Public access and public domain are different questions. The rights statement on each institutional record should be checked before reuse.'},
+{question:'How does this help contemporary drawing?',answer:'Historical images expand repertoire of composition, gesture, ornament, clothing, architecture, landscape and botanical form without requiring imitation of a single contemporary style.'}
+];
+---
+<InternationalHub lang="en" title="Brazilian Visual Culture · Bahia, Salvador and Historical Archives | HARUM NOIR" description="Explore Brazilian visual culture through Bahia, Salvador, Biblioteca Nacional Digital, prints, maps, botanical illustration and historical image archives." kicker="HARUM NOIR · BRAZILIAN VISUAL CULTURE" heading="Brazil as a visual archive." lead="Research Bahia, Salvador and Brazilian graphic memory through institutional collections, historical prints, maps, periodicals and botanical records." cards={cards} answers={answers} alternateHref={base+'es/cultura-visual-brasilena/'} alternateLang="es" alternateLabel="Ver esta página en español →" ptHref={base+'bancos/bndigital/'} topics={['Brazilian visual culture','Bahia','Salvador','Biblioteca Nacional Digital','Brazilian print history','historical cartography','botanical illustration']}/>
