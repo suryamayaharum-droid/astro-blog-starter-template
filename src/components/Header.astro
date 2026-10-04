@@ -1,8 +1,9 @@
 ---
 import { STUDIO_SITE } from '../consts';
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
-const primaryPaths = new Set(["busca","referencias","percursos","cadernos","museus"]);
+const primaryPaths = new Set(["escola","percursos","cadernos","atelier"]);
 const links = [
+  ["Escola","escola"],
   ["Buscar","busca"],
   ["Atlas","atlas"],
   ["Referências","referencias"],
@@ -49,10 +50,10 @@ const links = [
 </header>
 <nav class="mobile-dock" aria-label="Navegação móvel">
   <a href={base}><b>⌂</b>Início</a>
-  <a href={base+'busca'}><b>⌕</b>Buscar</a>
+  <a href={base+'escola'}><b>✎</b>Escola</a>
+  <a href={base+'percursos'}><b>↗</b>Percursos</a>
   <a href={base+'cadernos'}><b>Ⅲ</b>Cadernos</a>
-  <a href={base+'historia-da-arte'}><b>◯</b>História</a>
-  <a href={base+'bancos'}><b>↗</b>Bancos</a>
+  <a href={base+'busca'}><b>⌕</b>Buscar</a>
 </nav>
 
 <script>

@@ -3,7 +3,8 @@ const MODEL_REVISION = '516c8d04add8a80c5228f32102b57953b8d421a9';
 const TRANSFORMERS_CDN = 'https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.8.1';
 const SITE_MAP = Object.freeze({
   museums: 'Museus: busca de obras nos acervos conectados e fichas que levam à instituição de origem.',
-  gesture: 'Busca: pesquisa interna por gesto e temas do site.',
+  school: 'Escola Aberta: plano de estudo em quatro movimentos, primeira prática guiada e progresso local.',
+  gesture: 'Atlas das Mãos: estudos para gesto, forma, contato e ação.'
   notebooks: 'Cadernos: estudos, exercícios e prática de desenho.',
   references: 'Referências: Atlas com artistas, repertórios visuais e fontes originais.',
   journeys: 'Percursos: trilhas curtas e sequências de estudo.',

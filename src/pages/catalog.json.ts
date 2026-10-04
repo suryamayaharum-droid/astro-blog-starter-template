@@ -22,6 +22,9 @@ export async function GET(){
     ],
     routes:{
       home:SITE,
+      school:SITE+'escola/',
+      englishSchool:SITE+'en/school/',
+      spanishSchool:SITE+'es/escuela/',
       english:SITE+'en/',
       englishAbout:SITE+'en/about/',
       spanish:SITE+'es/',

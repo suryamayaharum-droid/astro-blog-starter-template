@@ -17,6 +17,7 @@ const percursos=[
   {title:"Sketchbook & mundo autoral",subtitle:"caderno, arquivo, narrativa e memória",href:base+"percursos#mundo"}
 ];
 const items=[
+  {kind:"Escola",title:"Escola Aberta de Desenho",subtitle:"Quatro movimentos para transformar observação em prática.",href:base+"escola/",meta:"Plano de estudo · primeira aula"},
   ...referenceArtists.map(a=>({kind:"Referência",title:a.name,subtitle:a.focus,href:base+"referencias/"+a.slug,meta:"Atlas de referências · "+String(a.rank).padStart(2,"0")})),
   ...cadernos.map(c=>({kind:"Caderno",title:c.title,subtitle:c.question,href:base+"cadernos#"+c.slug,meta:c.kicker})),
   ...artHistoryPeriods.map(p=>({kind:"História",title:p.title,subtitle:p.thesis,href:base+"historia-da-arte#"+p.id,meta:p.dates+" · "+p.region})),
@@ -26,12 +27,12 @@ const items=[
 ];
 ---
 <!doctype html><html lang="pt-BR">
-<head><BaseHead title="Buscar · Harum Noir" description="Busca unificada por referências, cadernos, história da arte, bancos de imagens, temporadas e percursos."/></head>
+<head><BaseHead title="Buscar · Harum Noir" description="Busca unificada por escola, referências, cadernos, história da arte, bancos de imagens, temporadas e percursos."/></head>
 <body><Header/><main>
 <section class="page-hero"><div class="eyebrow">HARUM NOIR · BUSCA</div><h1>Encontre uma porta.</h1><p>Uma busca única atravessa o Atlas, Cadernos, História, Bancos, Temporadas e Percursos.</p></section>
 <div class="global-search-bar"><span>⌕</span><input id="global-q" autofocus placeholder="Artista, período, técnica, museu, tema…" aria-label="Buscar no Harum Noir"/><button id="clear-q" type="button">limpar</button></div>
 <div class="search-kinds" id="search-kinds">
-  {["Todos","Referência","Caderno","História","Banco","Temporada","Percurso"].map((k,i)=><button class={i===0?"active":""} data-kind={k}>{k}</button>)}
+  {["Todos","Escola","Referência","Caderno","História","Banco","Temporada","Percurso"].map((k,i)=><button class={i===0?"active":""} data-kind={k}>{k}</button>)}
 </div>
 <div class="search-count" id="search-count"></div>
 <div class="search-grid" id="search-grid"></div>
