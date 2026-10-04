@@ -21,8 +21,32 @@ for(const ref of artist.refs){
  }catch{}
 }
 const videoUrl=videoId?"https://www.youtube-nocookie.com/embed/"+videoId+"?rel=0&playsinline=1&hl=pt-BR":"";
+const officialSources=[artist.site,artist.youtube,artist.instagram].filter(Boolean);
+const referenceSchema={
+  '@context':'https://schema.org',
+  '@type':'LearningResource',
+  name:'Guia de estudo · '+artist.name,
+  description:artist.special,
+  inLanguage:'pt-BR',
+  educationalUse:'Study',
+  learningResourceType:'Artist reference profile',
+  url:new URL(base+'referencias/'+artist.slug+'/',Astro.site).href,
+  about:{
+    '@type':'Thing',
+    name:artist.name,
+    description:artist.focus,
+    sameAs:officialSources
+  },
+  hasPart:artist.refs.map((ref:any)=>({
+    '@type':'CreativeWork',
+    name:ref.title,
+    description:ref.observe,
+    url:ref.url,
+    keywords:ref.tags
+  }))
+};
 ---
-<!doctype html><html lang="pt-BR"><head><BaseHead title={artist.name+' · Referências · Harum Noir'} description={artist.special}/></head><body><Header/><main class="stream-main">
+<!doctype html><html lang="pt-BR"><head><BaseHead title={artist.name+' · Referências · Harum Noir'} description={artist.special}/><script type="application/ld+json" set:html={JSON.stringify(referenceSchema)} /></head><body><Header/><main class="stream-main">
 <section class="profile-hero">
  <div class="profile-media"><img src={hero} alt={"Capa temática HARUM NOIR; não representa obra de "+artist.name}/></div>
  <div class="profile-shade"></div>
