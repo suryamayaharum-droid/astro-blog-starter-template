@@ -53,7 +53,7 @@ charcoal drawing, figure drawing, live model, artistic anatomy, gesture drawing,
 Institutional collections remain canonical sources. HARUM NOIR links to museums, libraries and archives rather than presenting their collections as its own. Editorial and study images must not be described as executed tattoos unless the Studio 23 documentary portfolio identifies them as such.
 
 ## Related canonical entities
-- Tattoo Studio 23: https://tattoostudio23.suryamaya-harum.chatgpt.site/
+- Tattoo Studio 23: https://suryamayaharum-droid.github.io/astro-blog-starter-template/studio23/
 - Instagram Studio 23: https://www.instagram.com/tattoostudio23/
 - Instagram Arte Harum: https://www.instagram.com/art.harum/
 - YouTube Arte Harum: https://www.youtube.com/@arteharum

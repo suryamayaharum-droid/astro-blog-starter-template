@@ -2,8 +2,8 @@ import fs from "node:fs/promises";
 import path from "node:path";
 
 const EXPECTED = {
-  STUDIO_SITE: "https://tattoostudio23.suryamaya-harum.chatgpt.site/",
-  STUDIO_NOIR: "https://tattoostudio23.suryamaya-harum.chatgpt.site/harum-noir/",
+  STUDIO_SITE: "/astro-blog-starter-template/studio23/",
+  STUDIO_NOIR: "/astro-blog-starter-template/studio23/harum-noir/",
 };
 
 const constsPath = path.resolve("src/consts.ts");
@@ -70,6 +70,52 @@ if (directUrlFiles.length) {
   );
 }
 
+
+const STUDIO_BUNDLE_FILES = 637;
+const STUDIO_IMAGE_FILES = 613;
+const STUDIO_ROUTE_FILES = [
+  "index.html", "agendar/index.html", "biblioteca/index.html", "contato/index.html",
+  "cuidados/index.html", "faq/index.html", "harum-noir/index.html", "localizacao/index.html",
+  "portfolio/index.html", "privacidade/index.html", "servicos/index.html", "sobre/index.html",
+];
+const GPT_HOST = "tattoostudio23.suryamaya-harum.chatgpt.site";
+
+async function inspectStudioBundle(root) {
+  const files = [];
+  async function walkBundle(dir) {
+    for (const entry of await fs.readdir(dir, { withFileTypes: true })) {
+      const full = path.join(dir, entry.name);
+      if (entry.isDirectory()) await walkBundle(full);
+      else if (entry.isFile()) files.push(path.relative(root, full).split(path.sep).join("/"));
+    }
+  }
+  try {
+    await fs.access(root);
+    await walkBundle(root);
+  } catch {
+    return { exists: false, files: [], missingRoutes: STUDIO_ROUTE_FILES, imageFiles: 0, staleHostFiles: [] };
+  }
+  const fileSet = new Set(files);
+  const missingRoutes = STUDIO_ROUTE_FILES.filter((route) => !fileSet.has(route));
+  const imageFiles = files.filter((file) => /\.(?:avif|gif|jpe?g|png|svg|webp)$/i.test(file));
+  const staleHostFiles = [];
+  for (const file of files.filter((value) => /\.(?:html|css|js|json|xml|txt|webmanifest)$/i.test(value))) {
+    const text = await fs.readFile(path.join(root, file), "utf8");
+    if (text.includes(GPT_HOST)) staleHostFiles.push(file);
+  }
+  return { exists: true, files, missingRoutes, imageFiles: imageFiles.length, staleHostFiles };
+}
+
+const sourceBundle = await inspectStudioBundle(path.resolve("public/studio23"));
+const builtBundle = await inspectStudioBundle(path.resolve("dist/studio23"));
+for (const [label, bundle] of [["public/studio23", sourceBundle], ["dist/studio23", builtBundle]]) {
+  if (!bundle.exists) failures.push(`${label} is missing`);
+  if (bundle.files.length !== STUDIO_BUNDLE_FILES) failures.push(`${label} must contain ${STUDIO_BUNDLE_FILES} files, found ${bundle.files.length}`);
+  if (bundle.imageFiles !== STUDIO_IMAGE_FILES) failures.push(`${label} must contain ${STUDIO_IMAGE_FILES} images, found ${bundle.imageFiles}`);
+  if (bundle.missingRoutes.length) failures.push(`${label} is missing routes: ${bundle.missingRoutes.join(", ")}`);
+  if (bundle.staleHostFiles.length) failures.push(`${label} still references the GPT host in: ${bundle.staleHostFiles.join(", ")}`);
+}
+
 const summary = {
   studioSite: EXPECTED.STUDIO_SITE,
   studioNoir: EXPECTED.STUDIO_NOIR,
@@ -77,6 +123,9 @@ const summary = {
   footerSiteBridge: footer.includes("href={STUDIO_SITE}"),
   footerNoirBridge: footer.includes("href={STUDIO_NOIR}"),
   duplicatedCanonicalUrlFiles: directUrlFiles,
+  studioBundleFiles: sourceBundle.files.length,
+  studioImageFiles: sourceBundle.imageFiles,
+  studioBundleRoutes: STUDIO_ROUTE_FILES.length,
   failures,
 };
 
