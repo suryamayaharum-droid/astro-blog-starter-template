@@ -13,7 +13,7 @@ const copy = {
     exercise:['1 min · Escolha uma pergunta: onde está o maior peso?','3 min · Marque linha de ação, silhueta e três massas grandes.','5 min · Compare uma borda nítida com outra que pode desaparecer.','3 min · Escreva o que mudou quando simplificou e faça um último desenho.'],
     exerciseLink:'Escolher uma referência no acervo →', exerciseHref:'museums', fundamentals:'FUNDAMENTOS', progressTitle:'Seu progresso de estudo', progressLead:'Marque as práticas que você concluiu. O avanço fica salvo apenas neste aparelho.', progressA11y:'Progresso das práticas de desenho', progressDone:'práticas marcadas', clear:'Limpar progresso',
     tasks:['Escolhi uma imagem e escrevi uma pergunta visual.','Fiz um estudo de gesto sem contornar os detalhes.','Comparei duas referências pelo peso ou pela luz.','Voltei ao papel e fiz uma decisão própria.'],
-    footer:'HARUM NOIR · Salvador, Bahia', home:'Início', routes:'Percursos', drawing:'Desenho', museums:'Museus'
+    footer:'HARUM NOIR · Salvador, Bahia', home:'Início', routes:'Percursos', references:'Referências', museums:'Museus'
   },
   en: {
     locale:'en', pageTitle:'Open Drawing School · HARUM NOIR', description:'An open drawing school built around four steps: observe, structure, organize and translate.',
@@ -23,7 +23,7 @@ const copy = {
     exercise:['1 min · Choose a question: where is the greatest weight?','3 min · Mark the action line, silhouette and three large masses.','5 min · Compare one sharp edge with another that can disappear.','3 min · Note what changed when you simplified, then draw once more.'],
     exerciseLink:'Choose a museum reference →', exerciseHref:'museums', fundamentals:'FOUNDATIONS', progressTitle:'Your study progress', progressLead:'Mark the practices you have completed. Progress is saved only on this device.', progressA11y:'Drawing practice progress', progressDone:'practices marked', clear:'Clear progress',
     tasks:['Choose an image and write one visual question.','Make a gesture study without outlining details.','Compare two references by weight or light.','Return to the page and make one choice of your own.'],
-    footer:'HARUM NOIR · Salvador, Bahia', home:'Home', routes:'Pathways', drawing:'Drawing', museums:'Museums'
+    footer:'HARUM NOIR · Salvador, Bahia', home:'Home', routes:'Drawing practice', references:'References', museums:'Museums'
   },
   es: {
     locale:'es', pageTitle:'Escuela Abierta de Dibujo · HARUM NOIR', description:'Una escuela abierta de dibujo organizada en cuatro pasos: observar, estructurar, organizar y traducir.',
@@ -33,21 +33,21 @@ const copy = {
     exercise:['1 min · Elige una pregunta: ¿dónde está el mayor peso?','3 min · Marca línea de acción, silueta y tres masas grandes.','5 min · Compara un borde nítido con otro que puede desaparecer.','3 min · Anota qué cambió al simplificar y dibuja una vez más.'],
     exerciseLink:'Elegir una referencia de museo →', exerciseHref:'museums', fundamentals:'FUNDAMENTOS', progressTitle:'Tu progreso de estudio', progressLead:'Marca las prácticas que completaste. El avance se guarda solo en este dispositivo.', progressA11y:'Progreso de las prácticas de dibujo', progressDone:'prácticas marcadas', clear:'Borrar progreso',
     tasks:['Elige una imagen y escribe una pregunta visual.','Haz un estudio del gesto sin contornear los detalles.','Compara dos referencias por el peso o la luz.','Vuelve al papel y toma una decisión propia.'],
-    footer:'HARUM NOIR · Salvador, Bahía', home:'Inicio', routes:'Recorridos', drawing:'Dibujo', museums:'Museos'
+    footer:'HARUM NOIR · Salvador, Bahía', home:'Inicio', routes:'Práctica de dibujo', references:'Referencias', museums:'Museos'
   }
 };
 const c = copy[lang];
 const routes = {
-  pt:{home:'',school:'escola/',museums:'museus/',hands:'maos/',notebooks:'cadernos/',sketchbooks:'sketchbooks/',pathways:'percursos/'},
-  en:{home:'en/',school:'en/school/',museums:'en/museums/',hands:'en/drawing/',notebooks:'en/drawing/',sketchbooks:'en/drawing/',pathways:'en/drawing/'},
-  es:{home:'es/',school:'es/escuela/',museums:'es/museos/',hands:'es/dibujo/',notebooks:'es/dibujo/',sketchbooks:'es/dibujo/',pathways:'es/dibujo/'}
+  pt:{home:'',school:'escola/',museums:'museus/',hands:'maos/',notebooks:'cadernos/',sketchbooks:'sketchbooks/',pathways:'percursos/',references:'referencias/',practice:'escola/#primeira-pratica'},
+  en:{home:'en/',school:'en/school/',museums:'en/museums/',hands:'en/drawing/',notebooks:'en/references/',sketchbooks:'en/drawing/',pathways:'en/drawing/',references:'en/references/',practice:'en/school/#primeira-pratica'},
+  es:{home:'es/',school:'es/escuela/',museums:'es/museos/',hands:'es/dibujo/',notebooks:'es/referencias/',sketchbooks:'es/dibujo/',pathways:'es/dibujo/',references:'es/referencias/',practice:'es/escuela/#primeira-pratica'}
 };
 const to = (key:string) => base + routes[lang][key as keyof typeof routes.pt];
 const steps = [
   {n:'01',title:lang==='pt'?'Observar':lang==='en'?'Observe':'Observar',tag:lang==='pt'?'ESCOLHER':lang==='en'?'CHOOSE':'ELEGIR',text:lang==='pt'?'Escolha uma referência e descubra o que pede atenção.':lang==='en'?'Choose a reference and notice what deserves attention.':'Elige una referencia y descubre qué merece atención.',image:'museum-gallery',alt:lang==='pt'?'Galeria de museu para observar imagens.':lang==='en'?'Museum gallery for looking closely at images.':'Galería de museo para observar imágenes.',link:lang==='pt'?'Abrir Museus':lang==='en'?'Open Museums':'Abrir Museos',href:'museums'},
   {n:'02',title:lang==='pt'?'Estruturar':lang==='en'?'Structure':'Estructurar',tag:lang==='pt'?'CONSTRUIR':lang==='en'?'BUILD':'CONSTRUIR',text:lang==='pt'?'Leia gesto, silhueta, peso e as massas principais.':lang==='en'?'Read the gesture, silhouette, weight and main shapes.':'Lee el gesto, la silueta, el peso y las masas principales.',image:'harum-noir-hands-study',alt:lang==='pt'?'Estudos de mãos em quatro gestos, desenhados a carvão.':lang==='en'?'Four charcoal studies of hands in different gestures.':'Cuatro estudios de manos en distintos gestos, dibujados al carbón.',link:lang==='pt'?'Estudar desenho':lang==='en'?'Study drawing':'Estudiar dibujo',href:'hands'},
-  {n:'03',title:lang==='pt'?'Organizar':lang==='en'?'Organize':'Organizar',tag:lang==='pt'?'COMPARAR':lang==='en'?'COMPARE':'COMPARAR',text:lang==='pt'?'Compare fontes no caderno e guarde uma descoberta.':lang==='en'?'Compare sources in a notebook and keep one discovery.':'Compara fuentes en un cuaderno y conserva un hallazgo.',image:'open-sketchbook',alt:lang==='pt'?'Caderno aberto para organizar observações visuais.':lang==='en'?'An open sketchbook for organizing visual observations.':'Cuaderno abierto para organizar observaciones visuales.',link:lang==='pt'?'Abrir cadernos':lang==='en'?'Open notebooks':'Abrir cuadernos',href:'notebooks'},
-  {n:'04',title:lang==='pt'?'Traduzir':lang==='en'?'Translate':'Traducir',tag:lang==='pt'?'DECIDIR':lang==='en'?'DECIDE':'DECIDIR',text:lang==='pt'?'Volte ao papel e tome uma decisão visual sua.':lang==='en'?'Return to the page and make a visual decision of your own.':'Vuelve al papel y toma una decisión visual propia.',image:'charcoal-marks',alt:lang==='pt'?'Marcas de carvão em papel de estudo.':lang==='en'?'Charcoal marks on drawing study paper.':'Marcas de carbón sobre papel de estudio.',link:lang==='pt'?'Seguir um percurso':lang==='en'?'Open pathways':'Seguir un recorrido',href:'pathways'}
+  {n:'03',title:lang==='pt'?'Organizar':lang==='en'?'Organize':'Organizar',tag:lang==='pt'?'COMPARAR':lang==='en'?'COMPARE':'COMPARAR',text:lang==='pt'?'Compare fontes no caderno e guarde uma descoberta.':lang==='en'?'Compare sources in a notebook and keep one discovery.':'Compara fuentes en un cuaderno y conserva un hallazgo.',image:'open-sketchbook',alt:lang==='pt'?'Caderno aberto para organizar observações visuais.':lang==='en'?'An open sketchbook for organizing visual observations.':'Cuaderno abierto para organizar observaciones visuales.',link:lang==='pt'?'Abrir cadernos':lang==='en'?'Compare references':'Comparar referencias',href:'notebooks'},
+  {n:'04',title:lang==='pt'?'Traduzir':lang==='en'?'Translate':'Traducir',tag:lang==='pt'?'DECIDIR':lang==='en'?'DECIDE':'DECIDIR',text:lang==='pt'?'Volte ao papel e tome uma decisão visual sua.':lang==='en'?'Return to the page and make a visual decision of your own.':'Vuelve al papel y toma una decisión visual propia.',image:'charcoal-marks',alt:lang==='pt'?'Marcas de carvão em papel de estudo.':lang==='en'?'Charcoal marks on drawing study paper.':'Marcas de carbón sobre papel de estudio.',link:lang==='pt'?'Seguir um percurso':lang==='en'?'Return to the practice':'Volver a la práctica',href:lang==='pt'?'pathways':'practice'}
 ];
 const alternates=[{hreflang:'pt-BR',href:'escola/'},{hreflang:'en',href:'en/school/'},{hreflang:'es',href:'es/escuela/'}];
 ---
@@ -60,7 +60,7 @@ const alternates=[{hreflang:'pt-BR',href:'escola/'},{hreflang:'en',href:'en/scho
   <a href={to('home')}><b>⌂</b>{c.home}</a>
   <a href={to('school')} aria-current="page"><b>✎</b>{lang==='en'?'School':'Escuela'}</a>
   <a href={to('pathways')}><b>↗</b>{c.routes}</a>
-  <a href={to('hands')}><b>✋</b>{c.drawing}</a>
+  <a href={to('references')}><b>▤</b>{c.references}</a>
   <a href={to('museums')}><b>◉</b>{c.museums}</a>
 </nav>}
 <main class="school-page">
