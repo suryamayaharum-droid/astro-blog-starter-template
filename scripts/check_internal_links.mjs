@@ -16,6 +16,7 @@ await walk(DIST);
 
 const missing = [];
 const brokenFragments = [];
+const invalidImages = [];
 const baseEscapes = [];
 const idsByFile = new Map();
 let checked = 0;
@@ -43,6 +44,16 @@ function idsFor(htmlFile, html) {
   for (const match of html.matchAll(pattern)) ids.add(match[1] ?? match[2] ?? match[3]);
   idsByFile.set(htmlFile, ids);
   return ids;
+}
+
+function imageSignatureValid(file, bytes) {
+  const ext = path.extname(file).toLowerCase();
+  if (ext === ".webp") return bytes.length >= 12 && bytes.toString("ascii", 0, 4) === "RIFF" && bytes.toString("ascii", 8, 12) === "WEBP";
+  if (ext === ".png") return bytes.length >= 8 && bytes.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]));
+  if (ext === ".jpg" || ext === ".jpeg") return bytes.length >= 3 && bytes[0] === 255 && bytes[1] === 216 && bytes[2] === 255;
+  if (ext === ".gif") return bytes.length >= 6 && ["GIF87a", "GIF89a"].includes(bytes.toString("ascii", 0, 6));
+  if (ext === ".avif") return bytes.length >= 12 && bytes.toString("ascii", 4, 8) === "ftyp" && /^(?:avif|avis)$/.test(bytes.toString("ascii", 8, 12));
+  return true;
 }
 
 async function resolveTarget(raw, fromFile) {
@@ -92,7 +103,7 @@ async function resolveTarget(raw, fromFile) {
           return { ok: true, from: fromPath, value: raw, fragment, target: sourceWebPath(candidate), fragmentMissing: true, isFragment: true };
         }
       }
-      return { ok: true, isFragment: checkFragment };
+      return { ok: true, file: candidate, isFragment: checkFragment };
     }
   }
   return { ok: false, from: fromPath, value: raw, candidates: candidates.map(c => path.relative(DIST, c)) };
@@ -105,6 +116,12 @@ for (const file of htmlFiles) {
     checked += 1;
     const result = await resolveTarget(match[1], file);
     if (!result.skip && result.ok === false) missing.push(result);
+    if (result.ok && result.file && /\.(?:webp|png|jpe?g|gif|avif)$/i.test(result.file)) {
+      const bytes = await fs.readFile(result.file);
+      if (!imageSignatureValid(result.file, bytes)) {
+        invalidImages.push({ from: sourceWebPath(file), value: match[1], file: path.relative(DIST, result.file), bytes: bytes.length });
+      }
+    }
     if (result.isFragment) fragmentsChecked += 1;
     if (result.fragmentMissing) brokenFragments.push(result);
   }
@@ -117,14 +134,17 @@ const summary = {
   fragmentReferencesChecked: fragmentsChecked,
   missingCount: missing.length,
   brokenFragmentCount: brokenFragments.length,
+  invalidImageCount: invalidImages.length,
   baseEscapeCount: baseEscapes.length,
   missing,
   brokenFragments,
+  invalidImages,
   baseEscapes
 };
 await fs.writeFile("internal-link-health.json", JSON.stringify(summary, null, 2));
-console.log("Internal link health: " + summary.htmlFiles + " HTML files | " + summary.localAttributesChecked + " href/src checked | " + summary.fragmentReferencesChecked + " fragments checked | " + summary.missingCount + " missing | " + summary.brokenFragmentCount + " broken fragments | " + summary.baseEscapeCount + " base escapes");
+console.log("Internal link health: " + summary.htmlFiles + " HTML files | " + summary.localAttributesChecked + " href/src checked | " + summary.fragmentReferencesChecked + " fragments checked | " + summary.missingCount + " missing | " + summary.brokenFragmentCount + " broken fragments | " + summary.invalidImageCount + " invalid images | " + summary.baseEscapeCount + " base escapes");
 for (const item of missing) console.error("MISSING", item.from, "->", item.value);
 for (const item of brokenFragments) console.error("BROKEN_FRAGMENT", item.from, "->", item.value, "target", item.target);
+for (const item of invalidImages) console.error("INVALID_IMAGE", item.from, "->", item.value, "file", item.file, "bytes", item.bytes);
 for (const item of baseEscapes) console.warn("BASE_ESCAPE", item.from, "->", item.value);
-if (missing.length > 0 || brokenFragments.length > 0) process.exitCode = 1;
+if (missing.length > 0 || brokenFragments.length > 0 || invalidImages.length > 0) process.exitCode = 1;
