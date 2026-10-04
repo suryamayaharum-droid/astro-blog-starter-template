@@ -19,6 +19,7 @@ const norm=(value)=>{
   try{
     const u=new URL(value,SITE_ORIGIN);
     u.hash='';
+    if(u.pathname.length>1)u.pathname=u.pathname.replace(/\/+$/,'');
     return u.href;
   }catch{return value;}
 };
