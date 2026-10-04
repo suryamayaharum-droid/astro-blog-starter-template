@@ -53,13 +53,25 @@ A primeira prática leva 12 minutos e divide o tempo entre pergunta, estrutura, 
 - `scripts/check_internal_links.mjs` — valida links locais, âncoras e assinaturas WebP, PNG, JPEG, GIF e AVIF.
 - `.github/workflows/noir-mobile-visual-audit.yml` — matriz móvel inclui home, Escola PT/EN/ES, Mãos e rotas principais.
 
+## Entrega atual — Coleções Visuais
+
+**Estado:** PR #38 aberto no branch `codex/harum-noir-visual-collections-20261004`; primeira rodada de CI passou, aguardando nova validação após incluir a coleção de Cadernos.
+
+| Área | Mudança desta rodada | Estado |
+|---|---|---|
+| `/colecoes/` | Nova entrada com quatro coleções de estudo: gesto e corpo, forma e luz, matéria e borda, Caderno como universo. A quarta entrada reaproveita a rota `/cadernos/` já existente; não duplica a coleção editorial em construção. | Em construção |
+| `/atlas/` e menu Explorar | Adicionar caminho visual com imagem própria para as coleções. | Em construção |
+| `/maos/` | Retirar dez explicações em cartões redundantes, encurtar a entrada visual e criar ligação direta ao exercício de seis gestos. | Em construção |
+| Imagem de abertura | Prancha editorial tripla gerada para forma/luz, gesto e carvão; exportada como WebP local otimizado, sem texto embutido. | Pronta; aguarda validação no build |
+| Blueprint | Atualizar registro de rota, conteúdo, progresso, próximos reparos e critérios de aceite após CI e publicação. | Em construção |
+
 ## Próximas revisões — fila seguinte
 
 | Prioridade | Próxima revisão |
 |---|---|
-| 1 | Acrescentar novas lições guiadas à Escola além da prática inicial de 12 minutos. |
-| 2 | Traduzir conteúdo mais profundo de desenho para EN/ES; algumas rotas localizadas ainda abrem portais amplos. |
-| 3 | Rever alt text, contraste e correspondência entre cartões e aulas nas rotas antigas à medida que forem ampliadas. |
+| 1 | Ampliar Coleções Visuais com novas lições guiadas além da primeira coleção, mantendo cada estudo ligado a uma prática. |
+| 2 | Localizar Coleções Visuais e aprofundar conteúdo de desenho em EN/ES; algumas rotas ainda abrem portais amplos. |
+| 3 | Rever alt text, contraste e correspondência entre cartões e aulas nas rotas antigas, incluindo História da Arte e Referências. |
 | 4 | Repetir CI, links, âncoras e matriz móvel ao publicar novos módulos. |
 
 ### Critério de conclusão desta entrega
