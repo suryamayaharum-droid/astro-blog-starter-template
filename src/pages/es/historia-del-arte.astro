@@ -1,0 +1,17 @@
+---
+import InternationalHub from '../../components/InternationalHub.astro';
+const base=import.meta.env.BASE_URL.endsWith('/')?import.meta.env.BASE_URL:import.meta.env.BASE_URL+'/';
+const cards=[
+{kicker:'PERÍODOS',title:'Recorre períodos, no imágenes aisladas.',text:'Usa el atlas histórico para conectar antigüedad, arte medieval, Renacimiento, Barroco, ukiyo-e, movimientos del siglo XIX y modernismos.',href:base+'historia-da-arte/',label:'Abrir atlas histórico →'},
+{kicker:'FUENTES DE MUSEOS',title:'Devuelve cada imagen a una colección.',text:'Comprueba artistas, fechas, materiales y derechos en registros de museos y archivos, en lugar de tratar referencias como archivos sin contexto.',href:base+'museus/',label:'Buscar fuentes de museos →'},
+{kicker:'FORMA',title:'Estudia problemas visuales recurrentes.',text:'Gesto, drapeado, retrato, botánica, línea, masa, perspectiva y ornamento reaparecen a lo largo de la historia con soluciones diferentes.',href:base+'bancos/',label:'Explorar lentes de estudio →'},
+{kicker:'PRÁCTICA',title:'Convierte historia en decisiones de dibujo.',text:'Usa ejemplos históricos para afinar observación y composición, y después vuelve a tus cuadernos y trabajo autoral.',href:base+'cadernos/',label:'Abrir cuadernos →'}
+];
+const answers=[
+{question:'¿Cómo aborda HARUM NOIR la historia del arte?',answer:'Como un repertorio visual conectado, no como una lista de fechas. Períodos, instituciones, técnicas y problemas visuales se relacionan con las fuentes originales de museos y archivos.'},
+{question:'¿Tengo que memorizar movimientos y fechas?',answer:'No. Las fechas aportan contexto, pero el objetivo práctico es reconocer cómo los artistas resolvieron figura, luz, línea, masa, narrativa, superficie y composición.'},
+{question:'¿Por qué conectar historia del arte y dibujo?',answer:'Las obras históricas ofrecen soluciones probadas para proporción, gesto, drapeado, retrato, perspectiva, ritmo botánico y jerarquía espacial. Pueden informar la observación sin convertirse en plantillas para copiar.'},
+{question:'¿Dónde debo verificar una obra?',answer:'En el museo, biblioteca o archivo que conserva el registro. HARUM NOIR organiza rutas y preguntas de estudio, mientras la institución sigue siendo la fuente canónica.'}
+];
+---
+<InternationalHub lang="es" title="Historia del Arte para Dibujo e Investigación Visual · HARUM NOIR" description="Estudia historia del arte mediante dibujo, gesto, anatomía, composición, fuentes museísticas y problemas visuales a través de distintos períodos." kicker="HARUM NOIR · HISTORIA DEL ARTE" heading="La historia como repertorio visual." lead="Recorre períodos a través de los problemas que los artistas resolvieron: figura, línea, masa, gesto, luz, ornamento, espacio y narrativa." cards={cards} answers={answers} alternateHref={base+'en/art-history/'} alternateLang="en" alternateLabel="View this page in English →" ptHref={base+'historia-da-arte/'} topics={['historia del arte','historia del dibujo','Renacimiento','Barroco','ukiyo-e','investigación museística','análisis visual']}/>
