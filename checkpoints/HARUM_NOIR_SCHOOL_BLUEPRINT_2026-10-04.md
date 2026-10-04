@@ -6,7 +6,7 @@ Decisão de marca: **HARUM NOIR** é o nome público. **Harumverso** continua ap
 
 ## Barra de progresso
 
-**Entrega desta versão:** [████████░░] 80% — implementação preparada; build, links, revisão visual móvel e publicação ainda precisam passar.
+**Entrega desta versão:** [█████████░] 90% — build, links e âncoras, hreflang e SEO passaram no CI; falta a captura móvel e conferir a versão publicada.
 
 A barra mede esta entrega do site, não o avanço de quem estuda. A barra de aprendizagem da escola é pessoal, salva no navegador e pode ser apagada pela pessoa.
 
