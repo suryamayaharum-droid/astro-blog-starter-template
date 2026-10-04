@@ -101,7 +101,19 @@ self.addEventListener('message', async (event) => {
     try {
       const routeKeys = Array.isArray(data.routeKeys) ? data.routeKeys.filter((key) => Object.prototype.hasOwnProperty.call(SITE_MAP, key)) : [];
       const routeContext = routeKeys.map((key) => SITE_MAP[key]).join('\n');
-      const replyLanguage = data.locale === 'en' ? 'Reply in English.' : data.locale === 'es' ? 'Responde en español.' : 'Responda em português brasileiro.';
+      const languageInstructions={
+        pt:'Responda em português brasileiro.',
+        en:'Reply in English.',
+        es:'Responde en español.',
+        fr:'Répondez en français.',
+        it:'Rispondi in italiano.',
+        de:'Antworte auf Deutsch.',
+        ja:'日本語で回答してください。',
+        ko:'한국어로 답변하세요.',
+        zh:'请用中文回答。',
+        ar:'أجب باللغة العربية.'
+      };
+      const replyLanguage=languageInstructions[data.locale]||'Reply in the same language as the visitor. If uncertain, reply in English.';
       const result = await generator(
         [
           {
