@@ -6,7 +6,7 @@ Decisão de marca: **HARUM NOIR** é o nome público. **Harumverso** continua ap
 
 ## Barra de progresso
 
-**Entrega desta versão:** [█████████░] 90% — build, links e âncoras, hreflang e SEO passaram no CI; falta a captura móvel e conferir a versão publicada.
+**Entrega desta versão:** [█████████░] 90% — build, links e âncoras, hreflang e SEO passaram no CI. A auditoria móvel confirmou o layout em 320–412 px, mas revelou dois WebP inválidos; esta correção os reconstrói e adiciona validação de assinatura. Faltam CI, novo deploy e conferência visual ao vivo.
 
 A barra mede esta entrega do site, não o avanço de quem estuda. A barra de aprendizagem da escola é pessoal, salva no navegador e pode ser apagada pela pessoa.
 
@@ -20,6 +20,7 @@ A barra mede esta entrega do site, não o avanço de quem estuda. A barra de apr
 | Identidade pública | Algumas páginas ainda chamavam a navegação de Harumverso. | Páginas de busca, Biblioteca, sketchbooks e README usam HARUM NOIR. |
 | Entrada internacional | As home pages em inglês e espanhol não ofereciam um curso como primeiro passo. | Rotas de escola localizadas em inglês e espanhol, com entrada nas páginas correspondentes. |
 | Integridade das rotas | O verificador conferia arquivos, mas não âncoras dentro das páginas. | CI passa a verificar destinos e fragmentos, incluindo links na própria página. |
+| Integridade das imagens | A auditoria móvel encontrou duas capas WebP salvas com bytes inválidos; a página reservava o espaço, mas não as exibia. | Capas reconstruídas a partir das artes geradas; CI valida assinaturas WebP, PNG, JPEG, GIF e AVIF. |
 
 Não apareceram marcadores genéricos de rascunho como Lorem ou TODO nas páginas inspecionadas. O ruído vinha principalmente da hierarquia, de destinos repetidos e de nomes inconsistentes.
 
@@ -34,13 +35,14 @@ A primeira prática leva 12 minutos e divide o tempo entre pergunta, estrutura, 
 
 ## Arquivos em trabalho
 
+- **public/noir/visual-atlas/harum-noir-escola-hero.webp** (1200×485) e **harum-noir-hands-study.webp** (900×600) — capas reconstruídas a partir das artes geradas.
 - **src/pages/index.astro** — nova porta de entrada da escola.
 - **src/components/School.astro** e **src/pages/escola.astro** — plano, primeira prática e progresso local.
 - **src/pages/en/school.astro** e **src/pages/es/escuela.astro** — rotas localizadas.
 - **src/data/ecosystem.ts** e **src/components/EcosystemRail.astro** — rotas pesquisáveis e cartões com capa.
 - **src/pages/maos.astro**, **src/pages/atlas.astro**, **src/pages/arquivo.astro** — imagem e orientação nas entradas principais.
 - **src/components/Header.astro**, **src/components/LumeGuide.astro**, **src/pages/busca.astro** — atalhos para a escola e destino correto para gesto.
-- **scripts/check_internal_links.mjs** — teste de links e âncoras.
+- **scripts/check_internal_links.mjs** — teste de links, âncoras e assinaturas de imagens.
 - **.github/workflows/noir-mobile-visual-audit.yml** — matriz móvel inclui as três páginas de escola e Mãos.
 
 ## Próximas revisões
