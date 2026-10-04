@@ -194,6 +194,83 @@ jobs:
           })().catch(err => { console.error(err); process.exit(1); });
           NODE
 
+      - name: International mobile smoke
+        run: |
+          node <<'NODE'
+          const { chromium } = require('playwright');
+
+          (async () => {
+            const browser = await chromium.launch({ headless: true });
+            const base = 'https://suryamayaharum-droid.github.io/astro-blog-starter-template';
+            const routes = [
+              { path:'/en/', lang:'en' },
+              { path:'/en/about/', lang:'en' },
+              { path:'/en/references/', lang:'en' },
+              { path:'/en/museums/', lang:'en' },
+              { path:'/en/drawing/', lang:'en' },
+              { path:'/en/art-history/', lang:'en' },
+              { path:'/en/brazilian-visual-culture/', lang:'en' },
+              { path:'/en/tattoo-salvador/', lang:'en' },
+              { path:'/es/', lang:'es' },
+              { path:'/es/acerca/', lang:'es' },
+              { path:'/es/referencias/', lang:'es' },
+              { path:'/es/museos/', lang:'es' },
+              { path:'/es/dibujo/', lang:'es' },
+              { path:'/es/historia-del-arte/', lang:'es' },
+              { path:'/es/cultura-visual-brasilena/', lang:'es' },
+              { path:'/es/tatuaje-salvador/', lang:'es' }
+            ];
+            const failures = [];
+            const context = await browser.newContext({
+              viewport: { width: 390, height: 844 },
+              deviceScaleFactor: 1,
+              isMobile: true,
+              hasTouch: true,
+              locale: 'en-US',
+              reducedMotion: 'reduce'
+            });
+            const page = await context.newPage();
+
+            for (const route of routes) {
+              const failedResources = [];
+              page.removeAllListeners('response');
+              page.on('response', response => {
+                if (response.status() >= 400) {
+                  try {
+                    if (new URL(response.url()).origin === new URL(base).origin) {
+                      failedResources.push({status:response.status(),url:response.url()});
+                    }
+                  } catch {}
+                }
+              });
+              const response = await page.goto(base + route.path, { waitUntil:'networkidle', timeout:45000 });
+              await page.waitForTimeout(250);
+              const result = await page.evaluate(() => ({
+                lang: document.documentElement.lang,
+                overflow: document.documentElement.scrollWidth > window.innerWidth + 1,
+                textLength: document.body?.innerText.trim().length || 0,
+                title: document.title,
+                viewport: [window.innerWidth, window.innerHeight]
+              }));
+              if (!response || response.status() >= 400) failures.push({route,reason:'http',status:response?.status()});
+              if (result.lang !== route.lang) failures.push({route,reason:'lang',result});
+              if (result.overflow) failures.push({route,reason:'overflow',result});
+              if (result.textLength < 200) failures.push({route,reason:'thin-content',result});
+              if (!result.title) failures.push({route,reason:'missing-title'});
+              if (failedResources.length) failures.push({route,reason:'same-origin-resource',failedResources});
+            }
+
+            await context.close();
+            await browser.close();
+            console.log('International mobile smoke:', routes.length, 'routes checked');
+            if (failures.length) {
+              console.error('INTERNATIONAL_MOBILE_FAILURES');
+              console.error(JSON.stringify(failures,null,2));
+              process.exit(1);
+            }
+          })().catch(err => { console.error(err); process.exit(1); });
+          NODE
+
       - name: Responsive boundary smoke
         run: |
           node <<'NODE'
