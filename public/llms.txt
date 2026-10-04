@@ -10,6 +10,11 @@ HARUM NOIR is the editorial arm of Arte Harum. It organizes drawing, charcoal, f
 - English gateway: https://suryamayaharum-droid.github.io/astro-blog-starter-template/en/
 - Spanish gateway: https://suryamayaharum-droid.github.io/astro-blog-starter-template/es/
 
+## Entity pages
+- /sobre/ — relationship between Arte Harum, HARUM NOIR and Studio 23
+- /en/about/ — English entity/about page
+- /es/acerca/ — Spanish entity/about page
+
 ## English topic hubs
 - /en/references/ — artist references, methods and source-first study
 - /en/museums/ — museums, open collections and image archives
