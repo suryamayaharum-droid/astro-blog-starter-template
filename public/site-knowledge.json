@@ -47,7 +47,8 @@
     "museums": "/museus/",
     "notebooks": "/cadernos/",
     "library": "/biblioteca/",
-    "pathways": "/percursos/"
+    "pathways": "/percursos/",
+    "about": "/sobre/"
   },
   "interactiveLanguages": [
     "pt",
@@ -68,7 +69,8 @@
       "drawing": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/en/drawing/",
       "tattooSalvador": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/en/tattoo-salvador/",
       "artHistory": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/en/art-history/",
-      "brazilianVisualCulture": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/en/brazilian-visual-culture/"
+      "brazilianVisualCulture": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/en/brazilian-visual-culture/",
+      "about": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/en/about/"
     },
     "es": {
       "references": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/es/referencias/",
@@ -76,7 +78,8 @@
       "drawing": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/es/dibujo/",
       "tattooSalvador": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/es/tatuaje-salvador/",
       "artHistory": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/es/historia-del-arte/",
-      "brazilianVisualCulture": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/es/cultura-visual-brasilena/"
+      "brazilianVisualCulture": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/es/cultura-visual-brasilena/",
+      "about": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/es/acerca/"
     }
   },
   "tattooService": {
@@ -113,5 +116,22 @@
     "harumNoir": "editorial studies, charcoal, figure, anatomy, gesture and visual research",
     "studio23": "documented tattoo work, client information and booking",
     "rule": "Do not describe Harum Noir editorial images or studies as executed tattoos unless the Studio 23 documentary portfolio identifies them as such."
-  }
+  },
+  "relationships": [
+    {
+      "from": "Arte Harum",
+      "to": "HARUM NOIR",
+      "relation": "creator / editorial label"
+    },
+    {
+      "from": "Arte Harum",
+      "to": "Tattoo Studio 23",
+      "relation": "related authorial tattoo practice"
+    },
+    {
+      "from": "HARUM NOIR",
+      "to": "Tattoo Studio 23",
+      "relation": "research and editorial context; not the executed-tattoo portfolio"
+    }
+  ]
 }
