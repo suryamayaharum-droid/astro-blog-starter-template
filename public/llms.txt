@@ -14,12 +14,16 @@ HARUM NOIR is the editorial arm of Arte Harum. It organizes drawing, charcoal, f
 - /en/references/ — artist references, methods and source-first study
 - /en/museums/ — museums, open collections and image archives
 - /en/drawing/ — charcoal, figure drawing, gesture and anatomy
+- /en/art-history/ — art history through drawing, museums and visual problems
+- /en/brazilian-visual-culture/ — Bahia, Salvador and Brazilian visual archives
 - /en/tattoo-salvador/ — authorial tattoo in Salvador, Brazil
 
 ## Spanish topic hubs
 - /es/referencias/ — referencias de artistas y métodos
 - /es/museos/ — museos, colecciones abiertas y archivos
 - /es/dibujo/ — carbón, figura, gesto y anatomía
+- /es/historia-del-arte/ — historia del arte, dibujo y fuentes museísticas
+- /es/cultura-visual-brasilena/ — Bahia, Salvador y archivos visuales de Brasil
 - /es/tatuaje-salvador/ — tatuaje autoral en Salvador, Brasil
 
 ## Machine-readable discovery
