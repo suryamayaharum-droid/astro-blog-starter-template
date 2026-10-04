@@ -13,7 +13,7 @@ const copy = {
     exercise:['1 min · Escolha uma pergunta: onde está o maior peso?','3 min · Marque linha de ação, silhueta e três massas grandes.','5 min · Compare uma borda nítida com outra que pode desaparecer.','3 min · Escreva o que mudou quando simplificou e faça um último desenho.'],
     exerciseLink:'Escolher uma referência no acervo →', exerciseHref:'museums', fundamentals:'FUNDAMENTOS', progressTitle:'Seu progresso de estudo', progressLead:'Marque as práticas que você concluiu. O avanço fica salvo apenas neste aparelho.', progressA11y:'Progresso das práticas de desenho', progressDone:'práticas marcadas', clear:'Limpar progresso',
     tasks:['Escolhi uma imagem e escrevi uma pergunta visual.','Fiz um estudo de gesto sem contornar os detalhes.','Comparei duas referências pelo peso ou pela luz.','Voltei ao papel e fiz uma decisão própria.'],
-    footer:'HARUM NOIR · Salvador, Bahia', home:'Início', routes:'Percursos'
+    footer:'HARUM NOIR · Salvador, Bahia', home:'Início', routes:'Percursos', drawing:'Desenho', museums:'Museus'
   },
   en: {
     locale:'en', pageTitle:'Open Drawing School · HARUM NOIR', description:'An open drawing school built around four steps: observe, structure, organize and translate.',
@@ -23,7 +23,7 @@ const copy = {
     exercise:['1 min · Choose a question: where is the greatest weight?','3 min · Mark the action line, silhouette and three large masses.','5 min · Compare one sharp edge with another that can disappear.','3 min · Note what changed when you simplified, then draw once more.'],
     exerciseLink:'Choose a museum reference →', exerciseHref:'museums', fundamentals:'FOUNDATIONS', progressTitle:'Your study progress', progressLead:'Mark the practices you have completed. Progress is saved only on this device.', progressA11y:'Drawing practice progress', progressDone:'practices marked', clear:'Clear progress',
     tasks:['Choose an image and write one visual question.','Make a gesture study without outlining details.','Compare two references by weight or light.','Return to the page and make one choice of your own.'],
-    footer:'HARUM NOIR · Salvador, Bahia', home:'Home', routes:'Pathways'
+    footer:'HARUM NOIR · Salvador, Bahia', home:'Home', routes:'Pathways', drawing:'Drawing', museums:'Museums'
   },
   es: {
     locale:'es', pageTitle:'Escuela Abierta de Dibujo · HARUM NOIR', description:'Una escuela abierta de dibujo organizada en cuatro pasos: observar, estructurar, organizar y traducir.',
@@ -33,7 +33,7 @@ const copy = {
     exercise:['1 min · Elige una pregunta: ¿dónde está el mayor peso?','3 min · Marca línea de acción, silueta y tres masas grandes.','5 min · Compara un borde nítido con otro que puede desaparecer.','3 min · Anota qué cambió al simplificar y dibuja una vez más.'],
     exerciseLink:'Elegir una referencia de museo →', exerciseHref:'museums', fundamentals:'FUNDAMENTOS', progressTitle:'Tu progreso de estudio', progressLead:'Marca las prácticas que completaste. El avance se guarda solo en este dispositivo.', progressA11y:'Progreso de las prácticas de dibujo', progressDone:'prácticas marcadas', clear:'Borrar progreso',
     tasks:['Elige una imagen y escribe una pregunta visual.','Haz un estudio del gesto sin contornear los detalles.','Compara dos referencias por el peso o la luz.','Vuelve al papel y toma una decisión propia.'],
-    footer:'HARUM NOIR · Salvador, Bahía', home:'Inicio', routes:'Recorridos'
+    footer:'HARUM NOIR · Salvador, Bahía', home:'Inicio', routes:'Recorridos', drawing:'Dibujo', museums:'Museos'
   }
 };
 const c = copy[lang];
@@ -56,6 +56,13 @@ const alternates=[{hreflang:'pt-BR',href:'escola/'},{hreflang:'en',href:'en/scho
 <head><BaseHead title={c.pageTitle} description={c.description} locale={lang==='pt'?undefined:lang} alternates={alternates}/></head>
 <body>
 {lang==='pt' ? <Header/> : <header class="school-intl-header"><a href={to('home')}>HARUM NOIR</a><nav aria-label={c.language}><a href={base}>PT</a><a href={base+'en/school/'} aria-current={lang==='en'?'page':undefined}>EN</a><a href={base+'es/escuela/'} aria-current={lang==='es'?'page':undefined}>ES</a></nav></header>}
+{lang!=='pt' && <nav class="mobile-dock school-intl-dock" aria-label={c.language}>
+  <a href={to('home')}><b>⌂</b>{c.home}</a>
+  <a href={to('school')} aria-current="page"><b>✎</b>{lang==='en'?'School':'Escuela'}</a>
+  <a href={to('pathways')}><b>↗</b>{c.routes}</a>
+  <a href={to('hands')}><b>✋</b>{c.drawing}</a>
+  <a href={to('museums')}><b>◉</b>{c.museums}</a>
+</nav>}
 <main class="school-page">
   <section class="school-hero">
     <figure class="school-hero-art"><img src={base+'noir/visual-atlas/harum-noir-escola-hero.webp'} alt={c.heroAlt} width="1200" height="485" fetchpriority="high"/><figcaption>{lang==='pt'?'Cenário editorial criado com assistência de IA':lang==='en'?'Editorial scene created with AI assistance':'Escena editorial creada con asistencia de IA'}</figcaption></figure>
