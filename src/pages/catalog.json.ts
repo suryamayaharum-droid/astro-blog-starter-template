@@ -72,6 +72,17 @@ export async function GET(){
       access:m.access,
       canonicalSource:m.collectionUrl
     })),
+    tattooService:{
+      provider:'Tattoo Studio 23',
+      canonicalUrl:STUDIO_SITE,
+      areaServed:'Salvador, Bahia, Brazil',
+      appointmentOnly:true,
+      locations:[
+        {name:'Paripe',role:'private atelier',addressPolicy:'address shared after booking'},
+        {name:'Pituba',role:'sessions may occur at another studio according to schedule',isStudio23Branch:false}
+      ],
+      practices:['authorial tattoo','fine line','botanical tattoo','blackwork','sketch tattoo','classical figure','anatomy-informed composition']
+    },
     interpretation:{
       editorialStudiesAreExecutedTattoos:false,
       institutionalCollectionsRemainCanonicalSources:true,
