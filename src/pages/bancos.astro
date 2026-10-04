@@ -8,8 +8,25 @@ import { imageBanks, imageBankById, studyFans } from '../data/imageBanks';
 import '../styles/imageBanks.css';
 const base=import.meta.env.BASE_URL.endsWith('/')?import.meta.env.BASE_URL:import.meta.env.BASE_URL+'/';
 const live=imageBanks.filter(x=>x.liveFederated).length;
+const banksSchema={
+  '@context':'https://schema.org',
+  '@type':'CollectionPage',
+  name:'Bancos de Imagens · Harum Noir',
+  description:'Mapa editorial de museus, bibliotecas, arquivos e coleções abertas para pesquisa visual.',
+  inLanguage:'pt-BR',
+  mainEntity:{
+    '@type':'ItemList',
+    numberOfItems:imageBanks.length,
+    itemListElement:imageBanks.map((b,i)=>({
+      '@type':'ListItem',
+      position:i+1,
+      url:new URL(base+'bancos/'+b.id+'/',Astro.site).href,
+      item:{'@type':'ArchiveOrganization','name':b.name,'description':b.access+' · '+b.rights,'location':b.place}
+    }))
+  }
+};
 ---
-<!doctype html><html lang="pt-BR"><head><BaseHead title="Bancos de Imagens · Harum Noir" description="Portas de estudo para acervos públicos, Open Access e domínio público, sem importar bibliotecas inteiras para o site." /></head>
+<!doctype html><html lang="pt-BR"><head><BaseHead title="Bancos de Imagens · Harum Noir" description="Portas de estudo para acervos públicos, Open Access e domínio público, sem importar bibliotecas inteiras para o site." /><script type="application/ld+json" set:html={JSON.stringify(banksSchema)} /></head>
 <body><Header/><main class="bank-composition">
 <section class="page-hero"><div class="editorial-opening-copy"><div class="eyebrow">HARUM NOIR · BANCOS DE IMAGENS</div><h1>Portas, não depósitos.</h1><p>Em vez de copiar acervos inteiros, o HARUM NOIR organiza caminhos para as próprias instituições — com direitos, contexto, termos de busca e leques de estudo.</p></div><EditorialScene image="museum-gallery" alt="Galeria temática para orientar a exploração de acervos"/></section>
 <section class="section bank-hero-grid">
