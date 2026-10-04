@@ -1,0 +1,17 @@
+---
+import InternationalHub from '../../components/InternationalHub.astro';
+const base=import.meta.env.BASE_URL.endsWith('/')?import.meta.env.BASE_URL:import.meta.env.BASE_URL+'/';
+const cards=[
+{kicker:'PERIODS',title:'Move through periods, not isolated images.',text:'Use the historical atlas to connect antiquity, medieval art, Renaissance, Baroque, ukiyo-e, nineteenth-century movements and modernisms.',href:base+'historia-da-arte/',label:'Open the historical atlas →'},
+{kicker:'MUSEUM SOURCES',title:'Return every image to a collection.',text:'Cross-check artists, dates, materials and rights in museum and archive records instead of treating visual references as detached files.',href:base+'museus/',label:'Search museum sources →'},
+{kicker:'FORM',title:'Study recurring visual problems.',text:'Gesture, drapery, portrait, botanical form, line, mass, perspective and ornament reappear across periods in different solutions.',href:base+'bancos/',label:'Explore study lenses →'},
+{kicker:'PRACTICE',title:'Turn history into drawing decisions.',text:'Use historical examples to sharpen observation and composition, then return to notebooks and your own authorial work.',href:base+'cadernos/',label:'Open study notebooks →'}
+];
+const answers=[
+{question:'How does HARUM NOIR approach art history?',answer:'As a connected visual repertoire rather than a list of dates. Periods, institutions, techniques and recurring visual problems are linked back to original museum and archive sources.'},
+{question:'Do I need to memorize movements and dates?',answer:'No. Dates provide context, but the practical goal is to recognize how artists solved problems of figure, light, line, mass, narrative, surface and composition.'},
+{question:'Why connect art history to drawing?',answer:'Historical works provide tested solutions to proportion, gesture, drapery, portrait, perspective, botanical rhythm and spatial hierarchy. They can inform observation without becoming templates to copy.'},
+{question:'Where should I verify an artwork?',answer:'Use the museum, library or archive that holds the record. HARUM NOIR organizes routes and study questions, while the institution remains the canonical source.'}
+];
+---
+<InternationalHub lang="en" title="Art History for Drawing and Visual Research · HARUM NOIR" description="Study art history through drawing, gesture, anatomy, composition, museum sources and visual problems across historical periods." kicker="HARUM NOIR · ART HISTORY" heading="History as visual repertoire." lead="Move across periods through the problems artists solved: figure, line, mass, gesture, light, ornament, space and narrative." cards={cards} answers={answers} alternateHref={base+'es/historia-del-arte/'} alternateLang="es" alternateLabel="Ver esta página en español →" ptHref={base+'historia-da-arte/'} topics={['art history','drawing history','Renaissance','Baroque','ukiyo-e','museum research','visual analysis']}/>
