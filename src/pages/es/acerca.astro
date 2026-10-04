@@ -1,0 +1,18 @@
+---
+import InternationalHub from '../../components/InternationalHub.astro';
+import { STUDIO_SITE } from '../../consts';
+const base=import.meta.env.BASE_URL.endsWith('/')?import.meta.env.BASE_URL:import.meta.env.BASE_URL+'/';
+const cards=[
+{kicker:'ARTE HARUM',title:'La base de investigación creativa.',text:'Arte Harum organiza investigación autoral de dibujo, repertorio visual, composición y el lenguaje que conecta estudio con obra terminada.',href:base,label:'Explorar Arte Harum →'},
+{kicker:'HARUM NOIR',title:'El sello editorial.',text:'HARUM NOIR publica carbón, figura, anatomía, gesto, proceso, historia del arte e investigación visual centrada en fuentes.',href:base+'biblioteca/',label:'Abrir archivo editorial →'},
+{kicker:'STUDIO 23',title:'La práctica documentada de tatuaje.',text:'Studio 23 es la frente de tatuaje: trabajos realizados, información para clientes, reservas y atención en Salvador mediante cita.',href:STUDIO_SITE,label:'Visitar Studio 23 ↗'},
+{kicker:'MÉTODO',title:'La investigación vuelve a la mano.',text:'Referencias, museos y archivos sirven para estudiar decisiones y contexto. No sustituyen dibujo autoral ni se convierten en diseños copiados.',href:base+'es/referencias/',label:'Ver método de investigación →'}
+];
+const answers=[
+{question:'¿HARUM NOIR y Studio 23 son lo mismo?',answer:'No. HARUM NOIR es el sello editorial y de investigación; Studio 23 es la práctica documentada de tatuaje y reservas. Se relacionan mediante Arte Harum, pero cumplen funciones distintas.'},
+{question:'¿Qué es Arte Harum?',answer:'Arte Harum es la identidad creativa más amplia y la base de investigación que conecta dibujo, repertorio, lenguaje visual y composición autoral.'},
+{question:'¿Dónde se encuentra el proyecto?',answer:'El ecosistema está basado en Salvador, Bahia, Brasil. Studio 23 atiende mediante cita en Salvador, mientras HARUM NOIR funciona como archivo editorial público y accesible internacionalmente.'},
+{question:'¿Los estudios de HARUM NOIR son tatuajes ya realizados?',answer:'No. Estudios editoriales, propuestas e imágenes de investigación no se presentan como tatuajes ejecutados salvo cuando el portafolio documental de Studio 23 lo identifica expresamente.'}
+];
+---
+<InternationalHub lang="es" title="Acerca de HARUM NOIR, Arte Harum y Studio 23" description="Conoce la relación entre Arte Harum, HARUM NOIR y Studio 23: investigación artística, publicación editorial y tatuaje autoral en Salvador, Brasil." kicker="ACERCA DEL ECOSISTEMA" heading="Investigación, edición y tatuaje — conectados, no confundidos." lead="Arte Harum es la base creativa. HARUM NOIR es su sello editorial. Studio 23 es la práctica documentada de tatuaje en Salvador." cards={cards} answers={answers} alternateHref={base+'en/about/'} alternateLang="en" alternateLabel="View this page in English →" ptHref={base+'sobre/'} topics={['Arte Harum','HARUM NOIR','Studio 23','investigación artística','atelier editorial','tatuaje autoral']}/>
