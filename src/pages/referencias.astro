@@ -13,7 +13,7 @@ const themedCover=(artist:typeof referenceArtists[number])=>{
   f.includes('museu')||f.includes('arquivo')?'museum-gallery':
   f.includes('botan')||f.includes('flor')?'iris-study':
   f.includes('gesto')||f.includes('mão')?'tools-paper':
-  f.includes('sketch')||f.includes('caderno')?'open-sketchbook':'graphite-texture';
+  f.includes('sketch')||f.includes('caderno')?'open-sketchbook':'harum-noir-caderno-estudo';
 };
 const catalog=JSON.stringify(referenceArtists.map(a=>({rank:a.rank,slug:a.slug,name:a.name,focus:a.focus,videoId:a.slug==='zin-lim'?'':a.videoId,lane:a.lane,cover:themedCover(a)})));
 const referenceSchema={

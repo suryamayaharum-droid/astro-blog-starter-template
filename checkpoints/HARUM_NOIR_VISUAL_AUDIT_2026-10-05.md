@@ -6,7 +6,7 @@ Alvo público: GitHub Pages · HARUM NOIR
 
 ## Levantamento
 
-A varredura percorreu **65 rotas Astro** e **85 arquivos de código** em páginas, componentes e dados. Foram rastreadas as capas esquemáticas em SVG, as texturas genéricas `charcoal-marks` e `graphite-texture`, os caminhos de imagem e os textos alternativos.
+A varredura percorreu **65 rotas Astro** e **88 arquivos de código** em páginas, componentes e dados. Foram rastreadas as capas esquemáticas em SVG, as texturas genéricas `charcoal-marks` e `graphite-texture`, os caminhos de imagem e os textos alternativos.
 
 | Área | Lacuna encontrada | Implementação nesta revisão |
 |---|---|---|
@@ -47,7 +47,7 @@ As imagens são estudos editoriais criados com assistência de IA, hospedados de
 
 ## QA
 
-- Varredura estática: 65 rotas Astro, 85 arquivos de código.
+- Varredura estática: 65 rotas Astro, 88 arquivos de código.
 - Substituições aplicadas nos hubs de português, inglês e espanhol.
 - Ativos novos convertidos para WebP e apontados por caminhos locais do site.
 - Assets genéricos sem referência removidos.
