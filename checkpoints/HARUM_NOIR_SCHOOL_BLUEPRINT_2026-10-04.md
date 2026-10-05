@@ -94,13 +94,15 @@ A primeira prática leva 12 minutos e divide o tempo entre pergunta, estrutura, 
 
 ## Continuidade — coleção Do gesto ao valor · 5 de outubro de 2026
 
-**Estado desta rodada:** [████████░░] 80% — imagem original criada, modelo visual HARUM NOIR empacotado, aula e cartão conectados no código; aguardando CI, auditoria móvel e publicação.
+**Estado desta rodada:** [██████████] 100% — CI, GitHub Pages e auditoria móvel passaram; aula conferida visualmente no site publicado.
 
 | Item | Mudança | Estado |
 |---|---|---|
-| Template visual | Modelo reutilizável de prancha didática em carvão, papel quente e acento ocre. | Criado nesta conversa; pacote disponível |
-| Nova aula | `/colecoes/estudo-tonal/` ensina gesto, silhueta, massas tonais e síntese em 12 minutos, com pergunta de ateliê. | Em revisão no GitHub |
-| Cartão Forma · Luz | Leva diretamente à nova aula visual em vez de retornar ao início genérico da Escola. | Em revisão no GitHub |
-| Auditoria responsiva | Adiciona a rota à matriz móvel de quatro larguras. | Em revisão no GitHub |
+| Template visual | Modelo reutilizável de prancha didática em carvão, papel quente e acento ocre. | Criado com imagem de referência e pacote reutilizável disponível |
+| Nova aula | `/colecoes/estudo-tonal/` ensina gesto, silhueta, massas tonais e síntese em 12 minutos, com pergunta de ateliê. | Publicada; conferida no Pages |
+| Cartão Forma · Luz | Leva diretamente à nova aula visual em vez de retornar ao início genérico da Escola. | Publicado; destino verificado |
+| Auditoria responsiva | Adiciona a rota à matriz móvel de quatro larguras. | Concluída; matriz, smoke internacional e limites responsivos passaram; 197 arquivos de auditoria | 
 | Próxima fila | Fazer leitura visual de `/historia-da-arte/`, `/desenho/` e `/referencias/`; reduzir texto onde uma imagem didática ensinar melhor e preservar texto para contexto e fontes. | Próxima rodada |
+
+**Verificação:** CI [37251187049](https://github.com/suryamayaharum-droid/astro-blog-starter-template/actions/runs/37251187049), deploy Pages [37251271721](https://github.com/suryamayaharum-droid/astro-blog-starter-template/actions/runs/37251271721), auditoria móvel [37251335202](https://github.com/suryamayaharum-droid/astro-blog-starter-template/actions/runs/37251335202). A nova aula foi aberta no Pages e a prancha carregou corretamente.
 
