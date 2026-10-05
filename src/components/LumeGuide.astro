@@ -191,6 +191,26 @@ if (root) {
     });
   };
 
+  const hasPromptEcho = (candidate, question) => {
+    const normalize = (value) => String(value || '').toLocaleLowerCase('pt-BR')
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/\s+/g, ' ')
+      .trim();
+    const answer = normalize(candidate);
+    const asked = normalize(question);
+    const promptLabels = [
+      'mapa verificado', 'resposta verificada', 'pergunta do visitante',
+      'verified map', 'verified answer', 'visitor question',
+      'respuesta verificada', 'pregunta del visitante',
+      'carte verifiee', 'question du visiteur',
+      'verifizierte antwort', 'frage des besuchers'
+    ];
+    return promptLabels.some((label) => answer.includes(label))
+      || answer === asked
+      || (asked.length >= 12 && answer.endsWith(asked));
+  };
+
   const setAiStatus = (message) => {
     aiStatus.textContent = message;
   };
@@ -250,9 +270,9 @@ if (root) {
     if (message.type === 'answer' && message.id === activeRequestId) {
       aiBusy = false;
       const verified = answerFor(activeQuestion);
-      if (!answerStaysOnRoute(message.text, verified.actions)) {
+      if (hasPromptEcho(message.text, activeQuestion) || !answerStaysOnRoute(message.text, verified.actions)) {
         response.textContent = verified.message;
-        setAiStatus('Usei a orientação verificada do site porque a resposta gerada saiu do assunto.');
+        setAiStatus('A resposta local não foi útil; mostrei a orientação verificada do site.');
         return;
       }
       response.textContent = message.text;
