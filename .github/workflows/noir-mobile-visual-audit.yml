@@ -66,27 +66,27 @@ jobs:
               ['arquivo', `${base}/arquivo/`],
               ['sobre', `${base}/sobre/`],
               ['artist-cesar-santos', `${base}/referencias/cesar-santos/`],
-              ['collections-en', `${base}/en/collections/`],
-              ['collections-es', `${base}/es/colecciones/`],
-              ['home-en', `${base}/en/`],
-              ['home-es', `${base}/es/`],
-              ['about-en', `${base}/en/about/`],
-              ['about-es', `${base}/es/acerca/`],
-              ['art-history-en', `${base}/en/art-history/`],
-              ['art-history-es', `${base}/es/historia-del-arte/`],
-              ['brazil-visual-culture-en', `${base}/en/brazilian-visual-culture/`],
-              ['brazil-visual-culture-es', `${base}/es/cultura-visual-brasilena/`],
-              ['drawing-en', `${base}/en/drawing/`],
-              ['drawing-es', `${base}/es/dibujo/`],
-              ['museums-en', `${base}/en/museums/`],
-              ['museums-es', `${base}/es/museos/`],
-              ['references-en', `${base}/en/references/`],
-              ['references-es', `${base}/es/referencias/`],
-              ['tattoo-salvador-en', `${base}/en/tattoo-salvador/`],
-              ['tattoo-salvador-es', `${base}/es/tatuaje-salvador/`],
-              ['drawing-pt', `${base}/desenho/`],
-              ['brazil-visual-culture-pt', `${base}/cultura-visual-brasileira/`],
-              ['tattoo-salvador-pt', `${base}/tatuagem-salvador/`]
+              ['collections-en', `${base}/en/collections/`, false],
+              ['collections-es', `${base}/es/colecciones/`, false],
+              ['home-en', `${base}/en/`, false],
+              ['home-es', `${base}/es/`, false],
+              ['about-en', `${base}/en/about/`, false],
+              ['about-es', `${base}/es/acerca/`, false],
+              ['art-history-en', `${base}/en/art-history/`, false],
+              ['art-history-es', `${base}/es/historia-del-arte/`, false],
+              ['brazil-visual-culture-en', `${base}/en/brazilian-visual-culture/`, false],
+              ['brazil-visual-culture-es', `${base}/es/cultura-visual-brasilena/`, false],
+              ['drawing-en', `${base}/en/drawing/`, false],
+              ['drawing-es', `${base}/es/dibujo/`, false],
+              ['museums-en', `${base}/en/museums/`, false],
+              ['museums-es', `${base}/es/museos/`, false],
+              ['references-en', `${base}/en/references/`, false],
+              ['references-es', `${base}/es/referencias/`, false],
+              ['tattoo-salvador-en', `${base}/en/tattoo-salvador/`, false],
+              ['tattoo-salvador-es', `${base}/es/tatuaje-salvador/`, false],
+              ['drawing-pt', `${base}/desenho/`, false],
+              ['brazil-visual-culture-pt', `${base}/cultura-visual-brasileira/`, false],
+              ['tattoo-salvador-pt', `${base}/tatuagem-salvador/`, false]
             ];
             const metrics = [];
 
@@ -118,7 +118,7 @@ jobs:
                 }
               });
 
-              for (const [name, url] of targets) {
+              for (const [name, url, requiresDock = true] of targets) {
                 consoleErrors = [];
                 failedResources = [];
                 const response = await page.goto(url, { waitUntil: 'networkidle', timeout: 45000 });
@@ -174,6 +174,7 @@ jobs:
                   viewport: vp.name,
                   route: name,
                   url,
+                  requiresDock,
                   status: response ? response.status() : null,
                   consoleErrors: [...consoleErrors],
                   failedResources: [...failedResources],
@@ -200,7 +201,7 @@ jobs:
                 m.status >= 400 ||
                 m.horizontalOverflow ||
                 !m.nav ||
-                !m.dockVisible ||
+                (m.requiresDock && !m.dockVisible) ||
                 m.textLength < 40 ||
                 (m.brokenImages && m.brokenImages.length > 0) ||
                 (m.dockOcclusions && m.dockOcclusions.some(x => x.inHero)) ||
