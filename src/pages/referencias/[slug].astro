@@ -76,6 +76,20 @@ const breadcrumbSchema={
 {artist.refs.length>0&&<section class="stream-section"><div class="stream-head"><div><span class="eyebrow">REFERÊNCIAS SELECIONADAS</span><h2>Comece por estas</h2></div></div><div class="reference-grid">
  {artist.refs.map(ref=><a class="archive-item ref-source" href={ref.url} target="_blank" rel="noreferrer"><span class="card-kicker">{ref.type}</span><h3>{ref.title}</h3><p>{ref.observe}</p><span class="source-arrow">Abrir fonte ↗</span></a>)}
 </div></section>}
+<section class="section reference-practice" aria-labelledby="reference-practice-title">
+ <div class="journal"><div class="paper">
+  <div class="eyebrow">ESTUDO DE REFERÊNCIA · 10 MINUTOS</div>
+  <h2 id="reference-practice-title">Leve uma decisão para o papel.</h2>
+  <p class="lead">Use uma fonte original de ${artist.name} como ponto de partida. Escolha uma decisão visual: gesto, valor, borda, ritmo ou composição.</p>
+  <ol>
+   <li><b>2 minutos · Observar.</b> Reduza o que viu a três linhas ou massas. Deixe os detalhes para depois.</li>
+   <li><b>5 minutos · Estudar.</b> Faça um desenho pequeno concentrado naquela decisão, sem copiar a imagem inteira.</li>
+   <li><b>3 minutos · Transformar.</b> Mude o corte, a direção ou o espaço e crie uma segunda versão com uma escolha sua.</li>
+  </ol>
+  <div class="rule"><b>Vestígio:</b> anote qual decisão mudou mais o desenho e registre a fonte que observou.</div>
+  <div class="actions"><a class="btn gold" href={base+'cadernos/#presenca'}>Levar ao Caderno de Presença →</a></div>
+ </div></div>
+</section>
 {related.length>0&&<section class="stream-section"><div class="stream-head"><div><span class="eyebrow">CONTINUE</span><h2>Na mesma vizinhança</h2></div></div><div class="stream-rail">
  {related.map(a=><a class="stream-card" href={base+'referencias/'+a!.slug}><div class="stream-card-media"><img class="stream-fallback" src={base+'noir/visual-atlas/'+visualFor(a!.focus)} alt=""/>{a!.videoId&&a!.slug!=='zin-lim'&&<img class="stream-thumb" src={'https://i.ytimg.com/vi/'+a!.videoId+'/hqdefault.jpg'} alt="" loading="lazy" onerror="this.remove()"/>}</div><div class="stream-card-body"><span>{a!.focus}</span><h3>{a!.name}</h3></div></a>)}
 </div></section>}
