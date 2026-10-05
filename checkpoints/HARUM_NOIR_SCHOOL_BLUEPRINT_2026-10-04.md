@@ -110,12 +110,14 @@ A primeira prática leva 12 minutos e divide o tempo entre pergunta, estrutura, 
 
 ## Continuidade — coleção Gesto, peso e presença · 4 de outubro de 2026
 
-**Estado desta rodada:** [████████░░] 80% — imagem e seis aulas PT/EN/ES integradas; CI, links e idiomas verdes; cobertura responsiva das rotas específicas em revisão.
+**Estado desta rodada:** [██████████] 100% — imagem publicada, seis aulas PT/EN/ES integradas, links corrigidos e matriz responsiva ampliada aprovada.
 
 | Verificação | Tratamento | Estado |
 |---|---|---|
-| Hubs de desenho PT/EN/ES | Substituir atalhos amplos e os dois links em loop por aulas específicas de valor e figura; o cartão de coleções continua para a coleção visual real. | Integrado no PR #50; rota responsiva em revisão |
-| Coleção visual | Adicionar figura vestida, gesto, equilíbrio, massas e síntese à área /colecoes/. | Integrado no PR #50; rota responsiva em revisão |
-| Lições localizadas | Ligar as aulas de valor e figura em PT/EN/ES com alternates recíprocos e voltar a Coleções/Desenho. | Integrado no PR #50; rota responsiva em revisão |
-| Próxima revisão | Conferir os destinos de Referências e História da Arte e trocar descrições longas por coleções quando uma imagem ensinar melhor. | Fila seguinte |
+| Hubs de desenho PT/EN/ES | Atalhos amplos e dois links em loop substituídos por aulas específicas; coleções continuam para a coleção visual. | Concluído; destinos conferidos |
+| Coleção visual | Figura vestida, gesto, equilíbrio, massas e síntese adicionados à área /colecoes/. | Publicada no Pages; imagem conferida |
+| Lições localizadas | Aulas de valor e figura ligadas em PT/EN/ES com alternates recíprocos e retorno para Coleções/Desenho. | Concluído; hreflang aprovado |
+| Auditoria móvel | Cobrir as cinco rotas EN/ES/PT recém-criadas na matriz. | Concluída; matriz, smoke internacional e limites responsivos aprovados |
 
+
+**Verificação desta rodada:** PR #50 integrado; PR #52 integrou as rotas da matriz móvel. CI [37253289295](https://github.com/suryamayaharum-droid/astro-blog-starter-template/actions/runs/37253289295), deploy Pages [37253289291](https://github.com/suryamayaharum-droid/astro-blog-starter-template/actions/runs/37253289291), auditoria móvel completa [37253358896](https://github.com/suryamayaharum-droid/astro-blog-starter-template/actions/runs/37253358896). As aulas PT/EN/ES foram abertas no Pages e as imagens carregaram.
