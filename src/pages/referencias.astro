@@ -8,7 +8,7 @@ const base=import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : i
 const featured=byRank(17)!;
 const themedCover=(artist:typeof referenceArtists[number])=>{
  const f=artist.focus.toLowerCase();
- return f.includes('carv')?'charcoal-marks':
+ return f.includes('carv')?'harum-noir-caderno-estudo':
   f.includes('jap')||f.includes('ukiyo')?'moonlit-landscape':
   f.includes('museu')||f.includes('arquivo')?'museum-gallery':
   f.includes('botan')||f.includes('flor')?'iris-study':
@@ -38,7 +38,7 @@ const referenceSchema={
 <body><Header/><main class="stream-main reference-composition">
 <section class="stream-hero">
  <div class="stream-hero-media">
-  <img src={base+'noir/visual-atlas/charcoal-marks.webp'} alt="" onerror={"this.src='"+base+"noir/reference-fallback.svg'"}/>
+  <img src={base+'noir/visual-atlas/harum-noir-caderno-estudo.webp'} alt="" onerror={"this.src='"+base+"noir/visual-atlas/harum-noir-caderno-estudo.webp'"}/>
  </div>
  <div class="stream-hero-shade"></div>
  <div class="stream-hero-copy">

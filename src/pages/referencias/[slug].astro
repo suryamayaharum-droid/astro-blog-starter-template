@@ -8,7 +8,7 @@ const {artist}=Astro.props;
 const base=import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 const relatedRanks=referenceCollections.find(c=>c.ranks.includes(artist.rank))?.ranks.filter(r=>r!==artist.rank).slice(0,6)||[];
 const related=relatedRanks.map(r=>referenceArtists.find(a=>a.rank===r)).filter(Boolean);
-const visualFor=(focus:string)=>{const f=focus.toLowerCase();return f.includes("carv")?"charcoal-marks.webp":f.includes("jap")||f.includes("ukiyo")?"moonlit-landscape.webp":f.includes("museu")||f.includes("arquivo")?"museum-gallery.webp":f.includes("botan")||f.includes("flor")?"iris-study.webp":f.includes("gesto")||f.includes("mão")?"tools-paper.webp":f.includes("sketch")||f.includes("caderno")?"open-sketchbook.webp":"graphite-texture.webp";};
+const visualFor=(focus:string)=>{const f=focus.toLowerCase();return f.includes("carv")?"harum-noir-caderno-estudo.webp":f.includes("jap")||f.includes("ukiyo")?"moonlit-landscape.webp":f.includes("museu")||f.includes("arquivo")?"museum-gallery.webp":f.includes("botan")||f.includes("flor")?"iris-study.webp":f.includes("gesto")||f.includes("mão")?"tools-paper.webp":f.includes("sketch")||f.includes("caderno")?"open-sketchbook.webp":"harum-noir-caderno-estudo.webp";};
 const hero=base+"noir/visual-atlas/"+visualFor(artist.focus);
 const videoId=/^[A-Za-z0-9_-]{11}$/.test(artist.videoId||"")?artist.videoId:"";
 const videoChoices:{id:string;title:string}[]=[];
