@@ -90,3 +90,17 @@ A primeira prática leva 12 minutos e divide o tempo entre pergunta, estrutura, 
 - **PASSO:** abrir a próxima unidade de revisão visual somente após comparar com as coleções existentes.
 - **CONFLITO:** nenhum; a trilha Caderno como universo aponta ao `/cadernos/` existente.
 - **ADIADO:** auditoria visual, responsiva e de fontes em cada item dos 613 assets do Studio 23; expandir novas aulas depois que a versão multilíngue passar.
+
+
+## Continuidade — coleção Do gesto ao valor · 5 de outubro de 2026
+
+**Estado desta rodada:** [████████░░] 80% — imagem original criada, modelo visual HARUM NOIR empacotado, aula e cartão conectados no código; aguardando CI, auditoria móvel e publicação.
+
+| Item | Mudança | Estado |
+|---|---|---|
+| Template visual | Modelo reutilizável de prancha didática em carvão, papel quente e acento ocre. | Criado nesta conversa; pacote disponível |
+| Nova aula | `/colecoes/estudo-tonal/` ensina gesto, silhueta, massas tonais e síntese em 12 minutos, com pergunta de ateliê. | Em revisão no GitHub |
+| Cartão Forma · Luz | Leva diretamente à nova aula visual em vez de retornar ao início genérico da Escola. | Em revisão no GitHub |
+| Auditoria responsiva | Adiciona a rota à matriz móvel de quatro larguras. | Em revisão no GitHub |
+| Próxima fila | Fazer leitura visual de `/historia-da-arte/`, `/desenho/` e `/referencias/`; reduzir texto onde uma imagem didática ensinar melhor e preservar texto para contexto e fontes. | Próxima rodada |
+
