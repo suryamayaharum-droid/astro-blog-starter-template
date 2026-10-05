@@ -65,7 +65,28 @@ jobs:
               ['metodo', `${base}/roubar-como-artista/`],
               ['arquivo', `${base}/arquivo/`],
               ['sobre', `${base}/sobre/`],
-              ['artist-cesar-santos', `${base}/referencias/cesar-santos/`]
+              ['artist-cesar-santos', `${base}/referencias/cesar-santos/`],
+              ['collections-en', `${base}/en/collections/`],
+              ['collections-es', `${base}/es/colecciones/`],
+              ['home-en', `${base}/en/`],
+              ['home-es', `${base}/es/`],
+              ['about-en', `${base}/en/about/`],
+              ['about-es', `${base}/es/acerca/`],
+              ['art-history-en', `${base}/en/art-history/`],
+              ['art-history-es', `${base}/es/historia-del-arte/`],
+              ['brazil-visual-culture-en', `${base}/en/brazilian-visual-culture/`],
+              ['brazil-visual-culture-es', `${base}/es/cultura-visual-brasilena/`],
+              ['drawing-en', `${base}/en/drawing/`],
+              ['drawing-es', `${base}/es/dibujo/`],
+              ['museums-en', `${base}/en/museums/`],
+              ['museums-es', `${base}/es/museos/`],
+              ['references-en', `${base}/en/references/`],
+              ['references-es', `${base}/es/referencias/`],
+              ['tattoo-salvador-en', `${base}/en/tattoo-salvador/`],
+              ['tattoo-salvador-es', `${base}/es/tatuaje-salvador/`],
+              ['drawing-pt', `${base}/desenho/`],
+              ['brazil-visual-culture-pt', `${base}/cultura-visual-brasileira/`],
+              ['tattoo-salvador-pt', `${base}/tatuagem-salvador/`]
             ];
             const metrics = [];
 
