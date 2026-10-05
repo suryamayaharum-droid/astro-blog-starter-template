@@ -106,3 +106,16 @@ A primeira prática leva 12 minutos e divide o tempo entre pergunta, estrutura, 
 
 **Verificação:** CI [37251187049](https://github.com/suryamayaharum-droid/astro-blog-starter-template/actions/runs/37251187049), deploy Pages [37251271721](https://github.com/suryamayaharum-droid/astro-blog-starter-template/actions/runs/37251271721), auditoria móvel [37251335202](https://github.com/suryamayaharum-droid/astro-blog-starter-template/actions/runs/37251335202). A nova aula foi aberta no Pages e a prancha carregou corretamente.
 
+
+
+## Continuidade — coleção Gesto, peso e presença · 4 de outubro de 2026
+
+**Estado desta rodada:** [███████░░░] 70% — prancha de figura original criada; seis rotas de estudo e destinos PT/EN/ES preparados; aguardando CI e auditoria móvel.
+
+| Verificação | Tratamento | Estado |
+|---|---|---|
+| Hubs de desenho PT/EN/ES | Substituir atalhos amplos e os dois links em loop por aulas específicas de valor e figura; o cartão de coleções continua para a coleção visual real. | Em revisão no GitHub |
+| Coleção visual | Adicionar figura vestida, gesto, equilíbrio, massas e síntese à área /colecoes/. | Em revisão no GitHub |
+| Lições localizadas | Ligar as aulas de valor e figura em PT/EN/ES com alternates recíprocos e voltar a Coleções/Desenho. | Em revisão no GitHub |
+| Próxima revisão | Conferir os destinos de Referências e História da Arte e trocar descrições longas por coleções quando uma imagem ensinar melhor. | Fila seguinte |
+
