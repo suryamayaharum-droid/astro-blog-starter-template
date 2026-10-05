@@ -19,6 +19,14 @@ interface Props {
 }
 const {lang,title,description,kicker,heading,lead,cards,alternateHref,alternateLang,alternateLabel,ptHref,topics=[],answers=[]}=Astro.props;
 const base=import.meta.env.BASE_URL.endsWith('/')?import.meta.env.BASE_URL:import.meta.env.BASE_URL+'/';
+const portugueseSource=new URL(ptHref,Astro.site).href;
+const translateHref=(target:'en'|'es')=>{
+  const url=new URL('https://translate.google.com/translate');
+  url.searchParams.set('sl','pt');
+  url.searchParams.set('tl',target);
+  url.searchParams.set('u',portugueseSource);
+  return url.href;
+};
 const homeHref=lang==='en'?base+'en/':base+'es/';
 const aboutHref=lang==='en'?base+'en/about/':base+'es/acerca/';
 const topicNav=lang==='en'
@@ -95,7 +103,7 @@ const hubSchema={
 ---
 <!doctype html><html lang={lang}><head><BaseHead title={title} description={description} locale={lang} alternates={[{hreflang:alternateLang,href:alternateHref},{hreflang:'pt-BR',href:ptHref}]}/><script type="application/ld+json" set:html={JSON.stringify(hubSchema)} /></head>
 <body>
-<header class="ih-header"><a href={homeHref}>HARUM NOIR</a><div class="ih-cluster" aria-label={lang==='en'?'Topics':'Temas'}>{lang==='en'?<><a href={base+'en/collections/'}>Collections</a><a href={base+'en/references/'}>References</a><a href={base+'en/museums/'}>Museums</a><a href={base+'en/drawing/'}>Drawing</a><a href={base+'en/art-history/'}>Art history</a><a href={base+'en/brazilian-visual-culture/'}>Brazil</a><a href={base+'en/tattoo-salvador/'}>Tattoo Salvador</a></>:<><a href={base+'es/colecciones/'}>Colecciones</a><a href={base+'es/referencias/'}>Referencias</a><a href={base+'es/museos/'}>Museos</a><a href={base+'es/dibujo/'}>Dibujo</a><a href={base+'es/historia-del-arte/'}>Historia</a><a href={base+'es/cultura-visual-brasilena/'}>Brasil</a><a href={base+'es/tatuaje-salvador/'}>Tatuaje Salvador</a></>}</div><nav aria-label={lang==='en'?'Languages':'Idiomas'}><a href={base}>PT</a><a href={base+'en/'} aria-current={lang==='en'?'page':undefined}>EN</a><a href={base+'es/'} aria-current={lang==='es'?'page':undefined}>ES</a></nav></header>
+<header class="ih-header"><a href={homeHref}>HARUM NOIR</a><div class="ih-cluster" aria-label={lang==='en'?'Topics':'Temas'}>{lang==='en'?<><a href={base+'en/collections/'}>Collections</a><a href={base+'en/references/'}>References</a><a href={base+'en/museums/'}>Museums</a><a href={base+'en/drawing/'}>Drawing</a><a href={base+'en/art-history/'}>Art history</a><a href={base+'en/brazilian-visual-culture/'}>Brazil</a><a href={base+'en/tattoo-salvador/'}>Tattoo Salvador</a></>:<><a href={base+'es/colecciones/'}>Colecciones</a><a href={base+'es/referencias/'}>Referencias</a><a href={base+'es/museos/'}>Museos</a><a href={base+'es/dibujo/'}>Dibujo</a><a href={base+'es/historia-del-arte/'}>Historia</a><a href={base+'es/cultura-visual-brasilena/'}>Brasil</a><a href={base+'es/tatuaje-salvador/'}>Tatuaje Salvador</a></>}</div><nav aria-label={lang==='en'?'Languages':'Idiomas'}><a href={ptHref} aria-label={lang==='en'?'Open original Portuguese page':'Abrir la página original en portugués'}>PT</a><a href={translateHref('en')} aria-label="Open this Portuguese page in English with Google Translate">EN · Google ↗</a><a href={translateHref('es')} aria-label="Abrir esta página portuguesa en español con Google Traductor">ES · Google ↗</a></nav></header>
 <main>
 <section class="ih-hero"><div><span>{kicker}</span><h1>{heading}</h1><p>{lead}</p></div></section>
 <nav class="ih-topics" aria-label={lang==='en'?'International topics':'Temas internacionales'}>{topicNav.map(item=><a href={item.href}>{item.label}</a>)}</nav>
