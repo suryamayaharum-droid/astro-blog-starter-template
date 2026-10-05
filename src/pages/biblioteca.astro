@@ -7,6 +7,14 @@ import '../styles/browse.css';
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 const sourceCount = openLibraryCollections.reduce((sum, collection) => sum + collection.sources.length, 0);
 const collectionCount = openLibraryCollections.length;
+const libraryVisuals=[
+ {file:"open-sketchbook.webp",alt:"Caderno aberto em uma composição editorial de ateliê.",caption:"Sketchbook como processo"},
+ {file:"maos-seis-gestos.webp",alt:"Seis estudos de mãos em diferentes ações.",caption:"Gesto e anatomia da mão"},
+ {file:"harum-noir-caderno-estudo.webp",alt:"Modelo articulado, mão com carvão, estudo botânico e tecido no caderno.",caption:"Matéria e decisão de desenho"},
+ {file:"iris-study.webp",alt:"Estudo botânico de íris em grafite e carvão.",caption:"Forma botânica e observação"},
+ {file:"drapery-still-life.webp",alt:"Estudo de tecido, luz e sombra em carvão.",caption:"Luz, tecido e volume"},
+ {file:"harum-noir-caderno-olhar.webp",alt:"Estudo de olho construído sobre uma esfera, com variações de direção.",caption:"Estrutura do olhar"}
+];
 ---
 <!doctype html>
 <html lang="pt-BR">
@@ -68,7 +76,7 @@ const collectionCount = openLibraryCollections.length;
       </div>
       <div class="card">
         <div class="card-media" style="aspect-ratio:4/5">
-          <img src={base+'noir/'+['memory-01.svg','figure-01.svg','trace-01.svg','gesture-01.svg','eye-01.svg'][index % 5]} alt="" />
+          <img src={base+'noir/visual-atlas/'+libraryVisuals[index % libraryVisuals.length].file} alt={libraryVisuals[index % libraryVisuals.length].alt} loading="lazy" decoding="async"/><span class="media-credit">{libraryVisuals[index % libraryVisuals.length].caption} · prancha editorial HARUM NOIR</span>
         </div>
       </div>
     </div>

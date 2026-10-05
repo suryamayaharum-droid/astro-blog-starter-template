@@ -1,9 +1,9 @@
 const SITE='https://suryamayaharum-droid.github.io/astro-blog-starter-template';
 const rows=[
   ['/', 'noir/visual-atlas/atelier-desk.webp', 'HARUM NOIR editorial atelier', 'Editorial atelier and visual research environment in Salvador, Brazil.'],
-  ['/biblioteca/', 'noir/visual-atlas/charcoal-marks.webp', 'Charcoal marks study', 'Charcoal texture, pressure and mark-making study.'],
+  ['/biblioteca/', 'noir/visual-atlas/harum-noir-caderno-estudo.webp', 'Studio drawing study', 'Editorial study of charcoal, a model, an artist hand, and the sketchbook.'],
   ['/atelier/', 'noir/visual-atlas/drapery-still-life.webp', 'Drapery still life study', 'Drapery, light and material observation for drawing practice.'],
-  ['/biblioteca/', 'noir/visual-atlas/graphite-texture.webp', 'Graphite texture study', 'Graphite surface and tonal texture for visual research.'],
+  ['/biblioteca/', 'noir/visual-atlas/drapery-still-life.webp', 'Drapery charcoal study', 'Study of cloth volume, light, and lost edges in charcoal.'],
   ['/biblioteca/', 'noir/visual-atlas/iris-study.webp', 'Iris and eye study', 'Eye observation, anatomy and drawing study.'],
   ['/historia-da-arte/', 'noir/visual-atlas/moonlit-landscape.webp', 'Moonlit landscape study', 'Atmosphere, value and nocturnal landscape study.'],
   ['/bancos/', 'noir/visual-atlas/museum-gallery.webp', 'Museum gallery research', 'Museum and archive discovery for art-history research.'],
