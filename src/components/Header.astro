@@ -34,7 +34,7 @@ const links = [
     <div class="nav-links">
       {links.filter(([,path])=>primaryPaths.has(path)).map(([label,path]) => <a href={`${base}${path}`}>{label}</a>)}
       <a href={STUDIO_SITE} target="_blank" rel="noreferrer">Studio 23 ↗</a>
-      <span class="locale-inline" aria-label="Idiomas"><a href={base}>PT</a><a href={base+'en/'}>EN</a><a href={base+'es/'}>ES</a></span>
+      <span class="locale-inline" aria-label="Idiomas"><a href={base}>PT</a><a href="https://translate.google.com/translate?sl=pt&amp;tl=en" data-google-translate="en" aria-label="Abrir esta página em inglês com o Google Tradutor">EN ↗</a><a href="https://translate.google.com/translate?sl=pt&amp;tl=es" data-google-translate="es" aria-label="Abrir esta página em espanhol com o Google Tradutor">ES ↗</a></span>
     </div>
     <details class="explore-menu">
       <summary>Explorar <span aria-hidden="true">＋</span></summary>
@@ -43,7 +43,7 @@ const links = [
         {links.map(([label,path])=><a href={`${base}${path}`}>{label}</a>)}
         <a href={STUDIO_SITE} target="_blank" rel="noreferrer">Studio 23 ↗</a>
         <span class="explore-title locale-title">Idiomas · Languages</span>
-        <a href={base}>Português</a><a href={base+'en/'}>English</a><a href={base+'es/'}>Español</a>
+        <a href={base}>Português</a><a href="https://translate.google.com/translate?sl=pt&amp;tl=en" data-google-translate="en" aria-label="Traduzir esta página para inglês">English · Google ↗</a><a href="https://translate.google.com/translate?sl=pt&amp;tl=es" data-google-translate="es" aria-label="Traduzir esta página para espanhol">Español · Google ↗</a>
       </nav>
     </details>
     <button class="save-current" id="save-current" type="button">＋ Estante</button>
@@ -69,6 +69,15 @@ try{
     xs=[item,...(Array.isArray(xs)?xs:[]).filter(x=>x&&x.path!==item.path)].slice(0,12);
     try{localStorage.setItem(k,JSON.stringify(xs))}catch{}
   }
+  document.querySelectorAll<HTMLAnchorElement>('[data-google-translate]').forEach((a)=>{
+    const translate=new URL('https://translate.google.com/translate');
+    translate.searchParams.set('sl','pt');
+    translate.searchParams.set('tl',a.dataset.googleTranslate||'en');
+    translate.searchParams.set('u',window.location.href);
+    a.href=translate.href;
+    a.target='_blank';
+    a.rel='noopener noreferrer';
+  });
   document.querySelectorAll('.nav-links a,.mobile-dock a,.explore-panel a').forEach((a)=>{
     if(!(a instanceof HTMLAnchorElement)) return;
     const target=new URL(a.href,location.href);
