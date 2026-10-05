@@ -104,22 +104,26 @@ if (root) {
   });
 
   const supportedLocales=new Set(['pt','en','es','fr','it','de','ja','ko','zh','ar']);
+  const pageLocale=()=>{
+    const value=String(document.documentElement.lang||'').toLowerCase().split('-')[0];
+    return supportedLocales.has(value)?value:null;
+  };
   const browserLocale=()=>{
-    const value=String(navigator.languages?.[0]||navigator.language||document.documentElement.lang||'en').toLowerCase().split('-')[0];
+    const value=String(pageLocale()||navigator.languages?.[0]||navigator.language||'en').toLowerCase().split('-')[0];
     return supportedLocales.has(value)?value:'en';
   };
   const detectLocale=(raw)=>{
     const value=String(raw||'').toLocaleLowerCase();
-    if(/[\u3040-\u30ff]/.test(value))return'ja';
-    if(/[\uac00-\ud7af]/.test(value))return'ko';
-    if(/[\u0600-\u06ff]/.test(value))return'ar';
-    if(/[\u4e00-\u9fff]/.test(value))return'zh';
-    if(/\b(musée|musées|référence|références|artiste|artistes|dessin|mains|recherche|chercher|où|comment|étudier|parcours)\b/.test(value))return'fr';
-    if(/\b(museo|musei|riferimento|riferimenti|artista|artisti|disegno|mani|ricerca|cercare|dove|come|studiare|percorso)\b/.test(value))return'it';
-    if(/\b(museum|museen|referenz|referenzen|künstler|kunstler|zeichnung|hände|hande|suche|suchen|wo|wie|lernen|lernpfad)\b/.test(value))return'de';
-    if(/\b(museum|museums|references|artist|artists|drawing|gesture|hands|search|where|how|study|notebook|pathway|start|want)\b/.test(value))return'en';
-    if(/\b(museo|museos|referencias|artista|artistas|dibujo|gesto|manos|buscar|donde|cómo|como|estudiar|cuaderno|recorrido|empezar|quiero)\b/.test(value))return'es';
-    if(/\b(museu|museus|referência|referencias|artista|artistas|desenho|gesto|mãos|maos|buscar|onde|como|estudar|caderno|percurso|começar|quero)\b/.test(value))return'pt';
+    if(/[\\u3040-\\u30ff]/.test(value))return'ja';
+    if(/[\\uac00-\\ud7af]/.test(value))return'ko';
+    if(/[\\u0600-\\u06ff]/.test(value))return'ar';
+    if(/[\\u4e00-\\u9fff]/.test(value))return'zh';
+    if(/\\b(museu|museus|referência|referências|desenho|mãos|maos|onde|quero|estudar|caderno|cadernos|percurso|percursos|começar|comecar)\\b/.test(value))return'pt';
+    if(/\\b(musée|musées|référence|références|artiste|artistes|dessin|mains|recherche|chercher|où|comment|étudier|parcours)\\b/.test(value))return'fr';
+    if(/\\b(museo|musei|riferimento|riferimenti|disegno|mani|ricerca|cercare|dove|come|studiare|percorso)\\b/.test(value))return'it';
+    if(/\\b(museum|museen|referenz|referenzen|künstler|kunstler|zeichnung|hände|hande|suche|suchen|wo|wie|lernen|lernpfad)\\b/.test(value))return'de';
+    if(/\\b(museum|museums|references|artist|artists|drawing|gesture|hands|search|where|how|study|notebook|pathway|start|want)\\b/.test(value))return'en';
+    if(/\\b(museo|museos|referencias|dibujo|manos|donde|cómo|estudiar|cuaderno|recorrido|empezar|quiero)\\b/.test(value))return'es';
     return browserLocale();
   };
 
