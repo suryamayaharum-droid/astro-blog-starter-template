@@ -10,7 +10,10 @@ const items=[
     source:"National Gallery of Art",
     url:"https://www.nga.gov/artworks/41378-book-light",
     focus:"Carvão como atmosfera, silêncio e imagem mental.",
-    route:"Matéria negra → sugestão → imaginação"
+    route:"Matéria negra → sugestão → imaginação",
+    image:"outlier-redon.webp",
+    alt:"Estudo autoral de jardim noturno em carvão, com massa escura, luz apagada e formas apenas sugeridas.",
+    exercise:"Cubra o papel com uma massa escura e retire luz com borracha. Deixe pelo menos três formas apenas sugeridas."
   },
   {
     name:"Adolphe Appian",
@@ -18,7 +21,10 @@ const items=[
     source:"The Metropolitan Museum of Art",
     url:"https://www.metmuseum.org/art/collection/search/336807",
     focus:"Esfregar e raspar o carvão para construir casca, reflexo e luz.",
-    route:"Subtração → superfície → atmosfera"
+    route:"Subtração → superfície → atmosfera",
+    image:"outlier-appian.webp",
+    alt:"Estudo autoral de margem de lago em carvão, com juncos, rochas, reflexos e áreas raspadas de luz.",
+    exercise:"Desenhe água sem contornar cada onda: agrupe reflexos em faixas e deixe partes do papel responderem pela luz."
   },
   {
     name:"Jean-Auguste-Dominique Ingres",
@@ -26,7 +32,10 @@ const items=[
     source:"The Metropolitan Museum of Art",
     url:"https://www.metmuseum.org/art/collection/search/337442",
     focus:"Estudo, transferência e estrutura antes da obra final.",
-    route:"Construção → transferência → imagem"
+    route:"Construção → transferência → imagem",
+    image:"outlier-ingres.webp",
+    alt:"Prancha didática original com figura vestida, construção geométrica e estudos de mão e volume.",
+    exercise:"Separe estrutura e acabamento em duas passagens. Compare proporção, eixo e sobreposição antes de reforçar o contorno."
   },
   {
     name:"Annibale Carracci",
@@ -34,13 +43,18 @@ const items=[
     source:"The Metropolitan Museum of Art",
     url:"https://www.metmuseum.org/art/collection/search/338414",
     focus:"Peso comprimido, apoio, tensão e escorço sobre papel tonal.",
-    route:"Apoio → tensão → presença"
+    route:"Apoio → tensão → presença",
+    image:"outlier-carracci.webp",
+    alt:"Estudo didático autoral de figura adulta vestida em pose compacta, com apoio no chão e variação gestual.",
+    exercise:"Marque o ponto de apoio, a direção do tronco e o encurtamento antes de desenhar mãos, roupa ou detalhes."
   }
 ];
 ---
 <!doctype html><html lang="pt-BR"><head><BaseHead title="Outliers · Harum Noir" description="Referências que ampliam o repertório por caminhos menos óbvios: matéria, silêncio, processo, transferência e imaginação."/></head><body><Header/><main>
 <section class="page-hero"><div class="eyebrow">OUTLIERS</div><h1>Referências que deslocam o olhar.</h1><p>Nem toda referência entra para ensinar uma técnica. Algumas entram porque abrem um problema novo: sugerir em vez de descrever, retirar em vez de acrescentar, transferir em vez de terminar.</p></section>
 <section class="section"><div class="section-head"><div><div class="eyebrow">QUATRO DESVIOS ÚTEIS</div><h2>Use o estranho para voltar à própria mão.</h2></div><p>Estas referências são pontos de partida para estudo. O objetivo é extrair um princípio, não reproduzir uma assinatura.</p></div>
-<div class="archive-grid">{items.map(item=><a class="archive-item" href={item.url} target="_blank" rel="noreferrer"><span class="card-kicker">{item.source}</span><h3>{item.name}</h3><p><b>{item.work}</b></p><p>{item.focus}</p><p>{item.route} ↗</p></a>)}</div></section>
+<div class="archive-grid outlier-grid">{items.map(item=><article class="archive-item outlier-card"><figure><img src={base+'noir/outliers/'+item.image} alt={item.alt} loading="lazy" decoding="async"/><figcaption>Estudo editorial HARUM NOIR · imagem original, não é a obra citada</figcaption></figure><div class="outlier-copy"><span class="card-kicker">{item.source} · fonte original</span><h3>{item.name}</h3><p><b>{item.work}</b></p><p>{item.focus}</p><div class="outlier-practice"><b>Prática visual</b><span>{item.exercise}</span></div><p class="outlier-route">{item.route}</p><a class="btn gold" href={item.url} target="_blank" rel="noreferrer">Conferir a obra na instituição ↗</a></div></article>)}</div></section>
 <section class="section editorial-split"><div class="panel"><div class="eyebrow">VOLTAR AO ECOSSISTEMA</div><h2>Um outlier só vale quando gera prática.</h2><p>Leve a ideia para um caderno, teste no ateliê e compare com fontes institucionais antes de incorporá-la ao repertório.</p><div class="actions"><a class="btn gold" href={base+'atelier'}>Ir para o Ateliê →</a><a class="btn" href={base+'biblioteca'}>Abrir Biblioteca →</a></div></div><div class="panel"><div class="quote">Desviar não é abandonar o caminho. É descobrir outro modo de voltar.</div></div></section>
-</main><Footer/></body></html>
+</main><Footer/><style>
+.outlier-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.outlier-card{padding:0;overflow:hidden}.outlier-card figure{position:relative;margin:0;aspect-ratio:4/3;background:#141311;overflow:hidden}.outlier-card figure img{width:100%;height:100%;display:block;object-fit:cover}.outlier-card figcaption{position:absolute;inset:auto 0 0;padding:28px 12px 10px;color:#eee4d4;font-size:.65rem;line-height:1.45;background:linear-gradient(transparent,#090909e8)}.outlier-copy{padding:20px}.outlier-copy h3{margin:8px 0}.outlier-practice{display:grid;gap:6px;margin:16px 0;padding:13px 14px;border-left:2px solid #b39a69;background:#151412;color:#e0d8cb;font-size:.82rem;line-height:1.6}.outlier-practice b{font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:#c9ad78}.outlier-route{color:#c9ad78;font-size:.78rem}@media(max-width:700px){.outlier-grid{grid-template-columns:1fr}}
+</style></body></html>
