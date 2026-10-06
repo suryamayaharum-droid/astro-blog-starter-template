@@ -5,7 +5,7 @@ Data da inspeção: 2026-10-06
 - Página inicial e assistente Lume: respostas determinísticas de navegação funcionam; carregamento do modelo de IA é opcional.
 - Temporadas: 7 percursos com capas, perguntas, exercícios e resultados esperados.
 - Bancos: 13 instituições e 8 guias temáticos.
-- Banco Nacional Digital: seis botões “copiar termo”, abertura do menu Explorar e ação Estante testados; os três controles responderam na interface. A página oferece links oficiais para o acervo, catálogo Sophia, orientações de pesquisa e direitos de uso.
+- Banco Nacional Digital: seis botões “copiar termo”, abertura do menu Explorar e ação Estante testados; os três controles responderam na interface. Integrei seis recortes editoriais originais, um por tema, com texto alternativo e aviso de que não são imagens do acervo. A página oferece links oficiais para o acervo, catálogo Sophia, orientações de pesquisa e direitos de uso.
 - Guia de mãos e gesto: navegação entre fontes e conteúdo do tema.
 - Outliers: imagens didáticas e links de acervos institucionais.
 - Escola: exercício guiado de 12 minutos, etapas e progresso persistido localmente.
@@ -16,6 +16,7 @@ Data da inspeção: 2026-10-06
 1. Guia temático de mãos e gesto: retirado o bloco vazio “Períodos fortes”; o botão da fonte agora leva ao conjunto de acervos usados pelo tema.
 2. Portada EN: nota de idioma corrigida para distinguir esta portada e suas rotas traduzidas do arquivo mais amplo em português.
 3. Portada ES: mesma correção de idioma aplicada e publicada no GitHub Pages.
+4. BNDigital: criada e publicada uma prancha visual em seis recortes temáticos nos cartões de estudo; procedência separada claramente de documentos originais.
 
 ## Estado dos testes
 - Inspeção manual: nove áreas/categorias do site, incluindo EN, ES e Banco Nacional Digital.
