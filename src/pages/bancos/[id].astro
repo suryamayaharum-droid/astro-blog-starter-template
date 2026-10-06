@@ -4,11 +4,31 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import { imageBanks, studyFans } from '../../data/imageBanks';
 import '../../styles/imageBanks.css';
-export function getStaticPaths(){ return imageBanks.map(bank=>({params:{id:bank.id},props:{bank}})); }
-const {bank}=Astro.props;
+export function getStaticPaths(){
+  const institutional=imageBanks.map(bank=>({params:{id:bank.id},props:{bank,themedGuide:null}}));
+  const themed=studyFans.map(fan=>{
+    const sources=fan.bankIds.map(id=>imageBanks.find(bank=>bank.id===id)).filter(Boolean);
+    const source=sources[0]||imageBanks[0];
+    const bank={
+      ...source,
+      id:fan.id,
+      name:fan.title,
+      place:'Leque temático · HARUM NOIR',
+      kind:'archive',
+      access:'Guia visual com caminhos para fontes institucionais',
+      rights:'As obras e os direitos permanecem nas instituições de origem; confira a licença de cada ficha.',
+      strengths:[fan.title],
+      periods:[],
+      lenses:[{label:'Pergunta visual',query:fan.query,note:fan.thought}],
+      caution:'As pranchas HARUM NOIR são estudos editoriais originais. Não representam documentos ou obras de acervo.'
+    };
+    return {params:{id:fan.id},props:{bank,themedGuide:fan}};
+  });
+  return [...institutional,...themed];
+}
+const {bank,themedGuide=null}=Astro.props;
 const base=import.meta.env.BASE_URL.endsWith('/')?import.meta.env.BASE_URL:import.meta.env.BASE_URL+'/';
 const liveBase=bank.liveFederated?base+'museus?q=':null;
-const themedGuide=studyFans.find(fan=>fan.id===bank.id);
 const bankSearchUrl=bank.id==='bndigital'?'https://acervobndigital.bn.gov.br/sophia/index.asp':bank.collectionUrl;
 const sourceType=bank.kind==='museum'?'Museum':bank.kind==='archive'?'ArchiveOrganization':'Organization';
 const bankSchema={
