@@ -2,12 +2,13 @@
 import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import { imageBanks } from '../../data/imageBanks';
+import { imageBanks, studyFans } from '../../data/imageBanks';
 import '../../styles/imageBanks.css';
 export function getStaticPaths(){ return imageBanks.map(bank=>({params:{id:bank.id},props:{bank}})); }
 const {bank}=Astro.props;
 const base=import.meta.env.BASE_URL.endsWith('/')?import.meta.env.BASE_URL:import.meta.env.BASE_URL+'/';
 const liveBase=bank.liveFederated?base+'museus?q=':null;
+const themedGuide=studyFans.find(fan=>fan.id===bank.id);
 const bankSearchUrl=bank.id==='bndigital'?'https://acervobndigital.bn.gov.br/sophia/index.asp':bank.collectionUrl;
 const sourceType=bank.kind==='museum'?'Museum':bank.kind==='archive'?'ArchiveOrganization':'Organization';
 const bankSchema={
@@ -42,6 +43,10 @@ const bankSchema={
   <div class="bank-title"><div class="meta">{bank.kind} · {bank.place}</div><h1>{bank.name}</h1><p>{bank.rights}</p><div class="bank-strengths">{bank.strengths.map(x=><span>{x}</span>)}</div></div>
   <div class="bank-door"><div class="door-mark">↗</div><div class="eyebrow">PORTA ORIGINAL</div><h2>Abra o acervo na fonte.</h2><p>{bank.access}. O HARUM NOIR não espelha esta biblioteca; ele organiza caminhos de estudo para ela.</p><div class="actions"><a class="btn gold" href={bankSearchUrl} target="_blank" rel="noreferrer">{bank.id==='bndigital'?'Abrir catálogo Sophia ↗':'Abrir coleção ↗'}</a>{bank.id==='bndigital'&&<a class="btn" href={bank.collectionUrl} target="_blank" rel="noreferrer">Ver Acervo Digital ↗</a>}<a class="btn" href={bank.rightsUrl} target="_blank" rel="noreferrer">Direitos / Open Access ↗</a></div></div>
 </section>
+{themedGuide&&<section class="section theme-guide">
+  <div class="theme-guide-visual"><img src={base+'noir/visual-atlas/'+themedGuide.image} alt={themedGuide.alt} loading="lazy" decoding="async"/><small>Estudo editorial original · não é imagem de acervo</small></div>
+  <div class="theme-guide-copy"><div class="eyebrow">GUIA VISUAL · {themedGuide.title}</div><h2>Observe este problema antes de abrir as fontes.</h2><p>{themedGuide.thought}</p><h3>Experimento visual</h3><p>{themedGuide.practice}</p><div class="actions">{themedGuide.bankIds.map(id=>imageBanks.find(source=>source.id===id)).filter(Boolean).map(source=><a class="btn" href={base+'bancos/'+source!.id+'/'}>{source!.name}</a>)}</div></div>
+</section>}
 {bank.id==='bndigital'&&<section class="section">
   <div class="section-head"><div><div class="eyebrow">ATALHOS OFICIAIS</div><h2>Quatro portas que realmente levam ao acervo.</h2></div><p>Use estes caminhos diretos da Fundação Biblioteca Nacional para pesquisar, entender o sistema e confirmar as condições de reutilização.</p></div>
   <div class="bank-protocol bank-official-grid">
@@ -56,7 +61,9 @@ const bankSchema={
 <section class="section"><div class="section-head"><div><div class="eyebrow">PERÍODOS FORTES</div><h2>Onde este banco ajuda mais.</h2></div></div><div class="bank-strengths">{bank.periods.map(x=><span>{x}</span>)}</div><div class="bank-caution"><b>Cuidado de proveniência:</b> {bank.caution}</div></section>
 <section class="section"><div class="section-head"><div><div class="eyebrow">MÉTODO</div><h2>Quatro movimentos.</h2></div></div><div class="bank-protocol"><div class="protocol-step"><b>01 · Abrir</b><p>Entre pelo acervo institucional, não por uma cópia perdida na web.</p></div><div class="protocol-step"><b>02 · Ler</b><p>Veja autoria, data, técnica, coleção e aviso de direitos.</p></div><div class="protocol-step"><b>03 · Observar</b><p>Escolha uma decisão visual: peso, linha, luz, recorte, padrão ou espaço.</p></div><div class="protocol-step"><b>04 · Refazer</b><p>Feche a referência e reconstrua a ideia com outra solução e outra mão.</p></div></div></section>
 <section class="section"><div class="journal"><div class="paper"><div class="eyebrow" style="color:#8a734b">CONEXÃO HARUM NOIR</div><h2>Use esta porta junto com o Atlas.</h2><p class="lead">A história aponta o problema. O banco oferece material. O desenho transforma a pesquisa.</p><p><a href={base+'historia-da-arte'}>Voltar para História da Arte →</a></p></div></div></section>
-</main><Footer/>
+</main><Footer/><style>
+.theme-guide{display:grid;grid-template-columns:minmax(240px,.8fr) minmax(0,1.2fr);gap:24px;align-items:center}.theme-guide-visual{margin:0;background:#141311;border:1px solid rgba(238,231,220,.14)}.theme-guide-visual img{display:block;width:100%;max-height:420px;object-fit:cover}.theme-guide-visual small{display:block;padding:9px 12px;color:#c9c0b2;font-size:.68rem;line-height:1.5}.theme-guide-copy h2{font:400 clamp(1.8rem,4vw,3.2rem)/1.05 Georgia,serif;margin:12px 0}.theme-guide-copy h3{margin-top:24px;color:#c9ad78;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase}.theme-guide-copy>p{max-width:62ch;color:#d2c9bb;line-height:1.7}.theme-guide-copy .actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}@media(max-width:760px){.theme-guide{grid-template-columns:1fr}.theme-guide-visual img{max-height:300px}}
+</style>
 <script>
   document.addEventListener('click', async (event) => {
     const target = event.target;
