@@ -2,7 +2,7 @@
 import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import { imageBanks, studyFans } from '../../data/imageBanks';
+import { imageBanks, studyFans, themedStudyLenses } from '../../data/imageBanks';
 import '../../styles/imageBanks.css';
 export function getStaticPaths(){
   const institutional=imageBanks.map(bank=>({params:{id:bank.id},props:{bank,themedGuide:null}}));
@@ -19,7 +19,7 @@ export function getStaticPaths(){
       rights:'As obras e os direitos permanecem nas instituições de origem; confira a licença de cada ficha.',
       strengths:[fan.title],
       periods:[],
-      lenses:[{label:'Pergunta visual',query:fan.query,note:fan.thought}],
+      lenses:themedStudyLenses[fan.id],
       caution:'As pranchas HARUM NOIR são estudos editoriais originais. Não representam documentos ou obras de acervo.'
     };
     return {params:{id:fan.id},props:{bank,themedGuide:fan}};
