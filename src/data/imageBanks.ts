@@ -339,3 +339,12 @@ export const studyFans = [
   {id:"atelie-luz",title:"Ateliê, luz & silêncio",query:"artist studio interior light drawing",thought:"A luz como estrutura antes do contorno.",image:"atelier-desk.webp",alt:"Mesa de ateliê editorial com ferramentas e papel sob luz lateral.",practice:"Escolha uma única fonte de luz e organize o estudo em massa iluminada, sombra e borda de transição.",bankIds:["rijks","met","nga","getty"]},
   {id:"brasil-memoria",title:"Brasil · memória gráfica",query:"Brasil século XIX gravura desenho",thought:"Paisagem, imprensa, cartografia, costumes e construção visual brasileira.",image:"brasil-acervo-editorial.webp",alt:"Composição editorial assistida por IA inspirada em arquivos visuais brasileiros; não representa documento histórico.",practice:"Cruze mapa, gravura e registro botânico em fontes institucionais. Registre autoria, data e direitos antes de usar qualquer imagem.",bankIds:["bndigital","nypl","paris-musees"]}
 ];
+
+export const themedStudyLenses = Object.fromEntries(studyFans.map(fan=>[fan.id,[
+  {label:"Busca inicial",query:fan.query,note:fan.thought},
+  {label:"Forma & estrutura",query:fan.query+" form structure",note:"Compare eixo, silhueta e massas antes de procurar o detalhe."},
+  {label:"Luz & valor",query:fan.query+" light shadow tonal study",note:"Agrupe luz, sombra e bordas para entender o volume."},
+  {label:"Matéria & processo",query:fan.query+" material process technique",note:"Observe a marca, o suporte e como cada matéria responde."},
+  {label:"Composição & ritmo",query:fan.query+" composition rhythm negative space",note:"Compare escala, repetição, vazio e direção do olhar."},
+  {label:"Contexto & proveniência",query:fan.query+" historical collection source",note:"Registre autoria, título, data, instituição e condição de direitos."}
+]])) as Record<string,ImageBankLens[]>;
