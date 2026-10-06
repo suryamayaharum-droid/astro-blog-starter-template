@@ -5,6 +5,7 @@ Data da inspeção: 2026-10-06
 - Página inicial e assistente Lume: respostas determinísticas de navegação funcionam; carregamento do modelo de IA é opcional.
 - Temporadas: 7 percursos com capas, perguntas, exercícios e resultados esperados.
 - Bancos: 13 instituições e 8 guias temáticos.
+- Banco Nacional Digital: seis botões “copiar termo”, abertura do menu Explorar e ação Estante testados; os três controles responderam na interface. A página oferece links oficiais para o acervo, catálogo Sophia, orientações de pesquisa e direitos de uso.
 - Guia de mãos e gesto: navegação entre fontes e conteúdo do tema.
 - Outliers: imagens didáticas e links de acervos institucionais.
 - Escola: exercício guiado de 12 minutos, etapas e progresso persistido localmente.
@@ -14,14 +15,14 @@ Data da inspeção: 2026-10-06
 ## Correções aplicadas
 1. Guia temático de mãos e gesto: retirado o bloco vazio “Períodos fortes”; o botão da fonte agora leva ao conjunto de acervos usados pelo tema.
 2. Portada EN: nota de idioma corrigida para distinguir esta portada e suas rotas traduzidas do arquivo mais amplo em português.
-3. Portada ES: mesma correção de idioma aplicada. O conteúdo está em `main`; publicação desta última alteração aguarda o workflow do GitHub Pages.
+3. Portada ES: mesma correção de idioma aplicada e publicada no GitHub Pages.
 
-## Estado da inspeção
-- Rotas verificadas manualmente: 8 áreas do site, incluindo EN e ES.
-- Defeitos de conteúdo confirmados nesta rodada: 2 tipos; correções registradas em commits do repositório.
-- Imagens quebradas confirmadas nessas páginas: nenhuma.
-- Erro 503 visto no robô da auditoria móvel: falha transitória do servidor durante uma navegação; não foi reproduzido na inspeção manual.
-- Auditoria automatizada de matriz móvel: ainda em execução no momento deste relatório.
+## Estado dos testes
+- Inspeção manual: nove áreas/categorias do site, incluindo EN, ES e Banco Nacional Digital.
+- Defeitos de conteúdo confirmados nesta rodada: 2 tipos; as correções estão publicadas.
+- Imagens quebradas confirmadas nas páginas inspecionadas: nenhuma.
+- CI e implantação do site: sucesso.
+- Auditoria móvel automatizada: sucesso. A matriz percorreu 52 rotas em 4 larguras de celular; os testes internacionais EN/ES e os limites responsivos também passaram. Uma tentativa anterior encontrou um 503 transitório; a execução completa posterior concluiu com sucesso.
 
 ## Mapa resumido
 ```text
@@ -40,4 +41,4 @@ Início
     └── Espanhol (portada e rotas principais)
 ```
 
-Este registro descreve apenas as páginas e estados que foram efetivamente verificados nesta rodada; não é uma certificação integral de cada página profunda do arquivo.
+Este registro descreve páginas e estados efetivamente verificados; não é uma certificação integral de cada página profunda do arquivo.
