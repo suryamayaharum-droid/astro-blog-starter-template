@@ -93,7 +93,7 @@ const museumsSchema={
       <input id="museum-q" type="search" name="q" value="rembrandt" autocomplete="off" aria-label="Buscar em acervos abertos" aria-describedby="museum-message" placeholder="Ex.: Rembrandt, Hokusai, hands, charcoal…" />
       <button type="submit">Pesquisar</button>
     </form>
-    <div class="museum-suggestions">
+    <div class="museum-suggestions" role="group" aria-label="Sugestões de pesquisa">
       {['rembrandt','hokusai','hands','charcoal','portrait','flowers'].map(x=><button type="button" data-q={x}>{x}</button>)}
     </div>
     <div class="museum-provider-line">

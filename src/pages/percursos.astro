@@ -18,7 +18,7 @@ const paths=[
 <body><Header/><main>
 <section class="page-hero"><div class="eyebrow">PERCURSOS</div><h1>Escolha por onde entrar.</h1><p>O site não precisa ser lido em ordem. Cada percurso aproxima referências, estudo e prática em torno de uma pergunta diferente.</p></section>
 
-<section class="path-index">
+<section class="path-index" aria-label="Índice dos percursos">
  {paths.map(p=><a class="path-index-card" href={'#'+p.id}><span>{p.n}</span><strong>{p.title}</strong><small>{p.text}</small></a>)}
 </section>
 
@@ -37,7 +37,7 @@ const paths=[
      <h2>O mundo autoral aparece antes de virar estilo.</h2>
      <p class="lead">Primeiro vêm as recorrências.</p>
      <p>Uma mão desenhada muitas vezes. Um animal que volta. A mesma janela. Um tipo de sombra. Uma anotação que só faz sentido para quem desenhou. O sketchbook fica interessante quando deixa de ser vitrine e começa a registrar relações.</p>
-     <div class="path-index" style="margin-top:18px">
+     <div class="path-index" style="margin-top:18px" aria-label="Etapas para desenvolver um universo autoral">
        <div class="path-index-card"><span>01</span><strong>Repertório</strong><small>Desenhe coisas diferentes sem exigir que cada página prove alguma coisa.</small></div>
        <div class="path-index-card"><span>02</span><strong>Recorrência</strong><small>Observe o que reaparece espontaneamente: temas, formas, gestos, personagens e lugares.</small></div>
        <div class="path-index-card"><span>03</span><strong>Conexão</strong><small>Comece a aproximar elementos que antes estavam separados. É aí que um universo começa.</small></div>

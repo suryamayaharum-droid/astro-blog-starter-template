@@ -190,11 +190,14 @@ h1,h2,h3{font-family:"Cormorant Garamond",Georgia,"Times New Roman",serif;font-w
 .rail-shell:before{left:0;background:linear-gradient(90deg,rgba(8,8,8,.8),transparent)}
 .rail-shell:after{right:0;background:linear-gradient(-90deg,rgba(8,8,8,.8),transparent)}
 .rail-has-overflow:before,.rail-has-overflow:after{opacity:.75}
-.browse-rail:focus-visible,.feature-rail:focus-visible,.stream-rail:focus-visible,.rail:focus-visible,.bank-grid:focus-visible{outline:1px solid rgba(179,154,105,.48);outline-offset:4px;border-radius:14px}
+.browse-rail:focus-visible,.feature-rail:focus-visible,.stream-rail:focus-visible,.rail:focus-visible,.bank-grid:focus-visible,.atlas-flow-rail:focus-visible,.path-index:focus-visible,.variable-rail:focus-visible,.hands-reference-rail:focus-visible,.player-queue:focus-visible,.collection-index:focus-visible,.ih-topics:focus-visible,.ph-topics:focus-visible,.browse-quick:focus-visible,.search-kinds:focus-visible,.museum-suggestions:focus-visible{outline:1px solid rgba(179,154,105,.48);outline-offset:4px;border-radius:14px}
 @media(max-width:760px){
   .rail-nav{display:none!important}
   .rail-shell:before,.rail-shell:after{display:none}
   .browse-rail,.feature-rail,.stream-rail,.rail,.bank-grid{overscroll-behavior-inline:contain;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+  .atlas-flow-rail,.path-index,.variable-rail,.hands-reference-rail,.collection-index{overscroll-behavior-inline:contain;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scroll-padding-inline:12px}
+  .player-queue,.ih-topics,.ph-topics,.browse-quick,.search-kinds,.museum-suggestions{overscroll-behavior-inline:contain;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;scroll-padding-inline:12px}
+  .atlas-flow-rail>*,.path-index>*,.variable-rail>*,.hands-reference-rail>*,.player-queue>*,.collection-index>*,.ih-topics>*,.ph-topics>*,.browse-quick>*,.search-kinds>*,.museum-suggestions>*{scroll-snap-align:start}
 }
 
 
@@ -210,7 +213,7 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-padding-top:76px
 h1,h2,h3{text-wrap:balance}
 p,li,figcaption{text-wrap:pretty}
 .stream-section,.section,.panel,.feature-card,.browse-tile,.stream-card,.card{container-type:inline-size}
-.browse-rail,.feature-rail,.stream-rail,.rail,.bank-grid{scroll-padding-inline:12px;overscroll-behavior-inline:contain}
+.browse-rail,.feature-rail,.stream-rail,.rail,.bank-grid,.atlas-flow-rail,.path-index,.variable-rail,.hands-reference-rail,.player-queue,.collection-index,.ih-topics,.ph-topics,.browse-quick,.search-kinds,.museum-suggestions{scroll-padding-inline:12px;overscroll-behavior-inline:contain}
 @container (max-width:280px){
   .stream-card-body h3,.browse-body h3{font-size:.96rem;white-space:normal;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2}
   .feature-card h3{font-size:1.55rem}
