@@ -6,11 +6,106 @@ import { sketchbookGalleries } from '../data/sketchbookGalleries';
 import '../styles/browse.css';
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 const shelves = [...new Set(sketchbookGalleries.map((book) => book.shelf))];
+const totalSheets = sketchbookGalleries.reduce((total, book) => total + book.images.length, 0);
 ---
 <!doctype html>
 <html lang="pt-BR">
-<head><BaseHead title="Sketchbooks · Biblioteca Visual · Harum Noir" description="Sketchbooks históricos em domínio público para leitura visual dentro do HARUM NOIR, sempre ligados aos acervos institucionais de origem." /></head>
-<body>
+<head>
+  <BaseHead title="Sketchbooks · Biblioteca Visual · Harum Noir" description="Sketchbooks históricos em domínio público para leitura visual dentro do HARUM NOIR, sempre ligados aos acervos institucionais de origem." />
+  <style is:global>
+    body.sketchbooks-page {
+      background-color: #080808;
+      background-image: linear-gradient(180deg, rgba(8, 8, 8, .40) 0%, rgba(8, 8, 8, .62) 48%, rgba(8, 8, 8, .82) 100%), var(--sketchbooks-wallpaper);
+      background-position: center top;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+    body.sketchbooks-page .archive-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 16px;
+    }
+    body.sketchbooks-page .archive-stats span {
+      padding: 7px 11px;
+      border: 1px solid rgba(238, 231, 220, .12);
+      border-radius: 999px;
+      background: rgba(8, 8, 8, .5);
+      color: #bcb5ac;
+      font-size: .72rem;
+    }
+    body.sketchbooks-page .archive-stats strong { color: #e9dfd0; font-weight: 700; }
+    body.sketchbooks-page .gallery-view-controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 7px;
+      margin: 14px 0 5px;
+    }
+    body.sketchbooks-page .gallery-view-controls button {
+      border: 1px solid rgba(238, 231, 220, .16);
+      border-radius: 999px;
+      background: rgba(8, 8, 8, .62);
+      color: #c9c1b5;
+      padding: 8px 12px;
+      font: inherit;
+      font-size: .73rem;
+      cursor: pointer;
+    }
+    body.sketchbooks-page .gallery-view-controls button[aria-pressed="true"] {
+      background: #eee7dc;
+      border-color: #eee7dc;
+      color: #111;
+    }
+    body.sketchbooks-page .gallery-view-controls button:focus-visible {
+      outline: 2px solid #c6aa73;
+      outline-offset: 3px;
+    }
+    body.sketchbooks-page .sketchbook-gallery.is-vertical-view .browse-rail {
+      grid-auto-flow: row;
+      grid-auto-columns: unset;
+      grid-template-columns: minmax(0, 1fr);
+      max-height: min(74vh, 760px);
+      min-height: 280px;
+      overflow-x: hidden;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      scroll-snap-type: y mandatory;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(179, 154, 105, .55) transparent;
+      padding-right: 58px;
+    }
+    body.sketchbooks-page .sketchbook-gallery.is-vertical-view .browse-tile {
+      display: grid;
+      grid-template-columns: minmax(125px, .45fr) minmax(0, 1fr);
+      align-items: center;
+      scroll-snap-align: start;
+    }
+    body.sketchbooks-page .sketchbook-gallery.is-vertical-view .rail-shell::before,
+    body.sketchbooks-page .sketchbook-gallery.is-vertical-view .rail-shell::after { display: none; }
+    body.sketchbooks-page .sketchbook-gallery.is-vertical-view .rail-nav {
+      left: auto;
+      right: 5px;
+      width: 42px;
+      height: 46px;
+      transform: none;
+    }
+    body.sketchbooks-page .sketchbook-gallery.is-vertical-view .rail-nav-prev { top: 8px; bottom: auto; }
+    body.sketchbooks-page .sketchbook-gallery.is-vertical-view .rail-nav-next { top: auto; bottom: 20px; }
+    @media (max-width: 680px) {
+      body.sketchbooks-page { background-attachment: scroll; }
+      body.sketchbooks-page .sketchbook-gallery.is-vertical-view .browse-rail {
+        max-height: min(70vh, 620px);
+        padding-right: 49px;
+      }
+      body.sketchbooks-page .sketchbook-gallery.is-vertical-view .browse-tile {
+        grid-template-columns: minmax(100px, .42fr) minmax(0, 1fr);
+      }
+    }
+  </style>
+</head>
+<body class="sketchbooks-page" style={"--sketchbooks-wallpaper: url(" + base + "noir/sketchbooks/sketchbooks-background.webp)"}>
 <Header/>
 <main>
   <section class="page-hero">
@@ -21,25 +116,34 @@ const shelves = [...new Set(sketchbookGalleries.map((book) => book.shelf))];
   </section>
 
   <section class="section" id="galerias">
-    <div class="section-head"><div><div class="eyebrow">UM CADERNO, UM OLHAR</div><h2>Sequências para estudar, não para colecionar.</h2></div><p>Arraste horizontalmente no celular. Cada imagem abre uma cópia local deste projeto; os botões levam ao registro institucional e ao Wikimedia Commons quando disponível.</p></div>
+    <div class="section-head"><div><div class="eyebrow">UM CADERNO, UM OLHAR</div><h2>Sequências para estudar, não para colecionar.</h2></div><p>Escolha a orientação da galeria: percorra as folhas na horizontal ou em coluna vertical. No celular, deslize; no computador, use as setas. Continue rolando para visitar as outras estantes.</p></div>
+    <div class="archive-stats" aria-label="Resumo do acervo">
+      <span><strong>{sketchbookGalleries.length}</strong> cadernos históricos</span>
+      <span><strong>{totalSheets}</strong> imagens locais validadas</span>
+      <span><strong>2</strong> modos de navegação</span>
+    </div>
   </section>
 
   <section class="section" aria-labelledby="estantes-title"><div class="panel"><div class="eyebrow">ESTANTES VIVAS</div><h2 id="estantes-title">Entrar pelo problema de desenho.</h2><div class="actions">{shelves.map((shelf)=><a class="btn" href={`#shelf-${shelf.toLowerCase().normalize("NFD").replace(/[\\u0300-\\u036f]/g,"").replace(/[^a-z0-9]+/g,"-")}`}>{shelf}</a>)}</div></div></section>
 
   {sketchbookGalleries.map((book,index)=><Fragment>
     {(index === 0 || sketchbookGalleries[index-1].shelf !== book.shelf) && <div id={`shelf-${book.shelf.toLowerCase().normalize("NFD").replace(/[\\u0300-\\u036f]/g,"").replace(/[^a-z0-9]+/g,"-")}`} class="section" style="padding-bottom:0"><div class="eyebrow">ESTANTE · {book.shelf}</div></div>}
-    <section class="section" id={book.id}>
+    <section class="section sketchbook-gallery" id={book.id} aria-labelledby={"heading-" + book.id}>
     <div class="panel">
       <div class="eyebrow">{book.date} · {book.rights}</div>
-      <h2>{book.artist} · {book.title}</h2>
+      <h2 id={"heading-" + book.id}>{book.artist} · {book.title}</h2>
       <p>{book.medium}. <strong>Princípio Noir:</strong> {book.principle}</p>
       <div class="actions">
         <a class="btn gold" href={book.originalUrl} target="_blank" rel="noreferrer">Abrir no museu →</a>
         <a class="btn" href={book.commonsUrl} target="_blank" rel="noreferrer">{book.commonsUrl.includes("commons.wikimedia.org") ? "Ver arquivos no Commons →" : "Abrir acervo completo →"}</a>
       </div>
     </div>
-    <div class="stream-head" style="margin-top:26px"><div><span class="eyebrow">{book.source}</span><h3>Folhas do caderno</h3></div><p>{book.images.length > 0 ? `${book.images.length} cópias locais nesta seleção.` : "Acervo institucional conectado · imagens internas entram após validação individual do arquivo."}</p></div>
-    {book.images.length > 0 ? <div class="browse-rail" aria-label={`Galeria de ${book.title}`}>
+    <div class="stream-head" style="margin-top:26px"><div><span class="eyebrow">{book.source}</span><h3>Folhas do caderno</h3></div><p>{book.images.length > 0 ? book.images.length + " " + (book.images.length === 1 ? "cópia local" : "cópias locais") + " nesta seleção." : "Acervo institucional conectado · imagens internas entram após validação individual do arquivo."}</p></div>
+    {book.images.length > 1 && <div class="gallery-view-controls" role="group" aria-label={"Modo de navegação da galeria " + book.title} data-gallery-controls>
+      <button type="button" data-gallery-axis="horizontal" aria-pressed="true">↔ Horizontal</button>
+      <button type="button" data-gallery-axis="vertical" aria-pressed="false">↕ Vertical</button>
+    </div>}
+    {book.images.length > 0 ? <div class="browse-rail" role="region" aria-roledescription="carrossel" tabindex="0" aria-label={`Galeria de ${book.title}`}>
       {book.images.map((img,i)=><a class="browse-tile" href={base+img.url}>
         <div class="card-media" style="aspect-ratio:4/5;background:#171614">
           <img src={base+img.url} loading="lazy" decoding="async" alt={`${img.label}, ${book.title}, ${book.artist}`} style="width:100%;height:100%;object-fit:contain" />
@@ -53,4 +157,37 @@ const shelves = [...new Set(sketchbookGalleries.map((book) => book.shelf))];
   <section class="section"><div class="journal"><div class="paper"><div class="eyebrow" style="color:#8a734b">REGRA DE ACERVO</div><h2>A imagem nunca perde a origem.</h2><p class="lead">Galeria interna para leitura; museu e Commons para contexto, metadados, licença e resolução original. Novos cadernos só entram depois da verificação de direitos por objeto.</p></div></div></section>
 </main>
 <Footer/>
+<script>
+  const initSketchbookViews = () => {
+    document.querySelectorAll("[data-gallery-controls]").forEach((controls) => {
+      if (!(controls instanceof HTMLElement) || controls.dataset.initialized === "true") return;
+      const section = controls.closest(".sketchbook-gallery");
+      const track = section?.querySelector(".browse-rail");
+      if (!(section instanceof HTMLElement) || !(track instanceof HTMLElement)) return;
+      controls.dataset.initialized = "true";
+      controls.addEventListener("click", (event) => {
+        if (!(event.target instanceof Element)) return;
+        const button = event.target.closest("[data-gallery-axis]");
+        if (!(button instanceof HTMLButtonElement) || !controls.contains(button)) return;
+        const vertical = button.dataset.galleryAxis === "vertical";
+        section.classList.toggle("is-vertical-view", vertical);
+        track.classList.toggle("is-vertical", vertical);
+        controls.querySelectorAll("[data-gallery-axis]").forEach((option) => {
+          if (option instanceof HTMLButtonElement) {
+            option.setAttribute("aria-pressed", String(option === button));
+          }
+        });
+        track.scrollTop = 0;
+        track.scrollLeft = 0;
+        track.dispatchEvent(new Event("scroll"));
+      });
+    });
+  };
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initSketchbookViews, { once: true });
+  } else {
+    initSketchbookViews();
+  }
+  document.addEventListener("astro:page-load", initSketchbookViews);
+</script>
 </body></html>
