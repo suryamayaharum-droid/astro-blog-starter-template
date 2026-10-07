@@ -6,6 +6,7 @@ import { museumCatalog } from '../data/museums';
 import '../styles/museums.css';
 const base=import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 const liveCount=museumCatalog.filter(x=>x.mode==='live').length;
+const museumCovers=['museum-gallery.webp','open-sketchbook.webp','drapery-still-life.webp','moonlit-landscape.webp','iris-study.webp','atelier-desk.webp','tools-paper.webp'];
 const modeLabel={live:'conectado agora',advanced:'API avançada',dataset:'dataset aberto',key:'requer chave'};
 const museumsSchema={
   '@context':'https://schema.org',
@@ -111,8 +112,8 @@ const museumsSchema={
     </div>
     <div class="museum-catalog">
       {museumCatalog.map(m=><article class="museum-card" id={'museum-' + m.id} tabindex="-1" aria-labelledby={'museum-name-' + m.id}>
-        <div class="museum-mode">{modeLabel[m.mode]}</div>
-        <h3 id={'museum-name-' + m.id}>{m.name}</h3><div class="place">{m.city} · {m.country}</div>
+        <div class="museum-card-visual"><img src={base+'noir/visual-atlas/'+museumCovers[museumCatalog.indexOf(m)%museumCovers.length]} alt="" loading="lazy" decoding="async"/><span class="museum-mode">{modeLabel[m.mode]}</span><span class="museum-card-source">{m.city} · {m.country}</span></div>
+        <h3 id={'museum-name-' + m.id}>{m.name}</h3>
         <p><strong>{m.access}</strong></p><p>{m.rights}</p><p>{m.note}</p>
         <div class="museum-links"><a class="museum-collection-link" href={m.collectionUrl} target="_blank" rel="noreferrer">Abrir coleção oficial ↗</a><a href={m.docsUrl} target="_blank" rel="noreferrer">documentação ↗</a><a href={m.apiUrl} target="_blank" rel="noreferrer">dados/API ↗</a></div>
       </article>)}
@@ -280,4 +281,4 @@ document.querySelectorAll('[data-q]').forEach(button=>button.addEventListener('c
 const incoming=new URLSearchParams(location.search).get('q');
 if(incoming&&incoming.trim().length>=2){input.value=incoming;void run(incoming)}
 </script>
-</body></html>
+<style>.museum-card{overflow:hidden}.museum-card-visual{position:relative;aspect-ratio:16/9;margin:-1px -1px 18px;overflow:hidden;background:#111}.museum-card-visual img{width:100%;height:100%;object-fit:cover;filter:saturate(.38) contrast(1.08);transition:transform .28s ease,filter .28s ease}.museum-card:hover .museum-card-visual img{transform:scale(1.03);filter:saturate(.62) contrast(1.08)}.museum-card-visual .museum-mode{position:absolute;top:11px;left:11px;background:rgba(8,8,8,.78);backdrop-filter:blur(6px)}.museum-card-source{position:absolute;left:11px;bottom:10px;padding:5px 8px;border-radius:4px;background:rgba(8,8,8,.76);font-size:.64rem;color:var(--paper-2)}@media(prefers-reduced-motion:reduce){.museum-card-visual img{transition:none}.museum-card:hover .museum-card-visual img{transform:none}}</style>\n</body></html>
