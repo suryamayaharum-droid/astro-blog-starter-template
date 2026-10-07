@@ -19,29 +19,44 @@ const enhanceRails=()=>{
     prev.className='rail-nav rail-nav-prev';
     next.className='rail-nav rail-nav-next';
     prev.type='button'; next.type='button';
-    prev.setAttribute('aria-label','Voltar neste trilho');
-    next.setAttribute('aria-label','Avançar neste trilho');
+    prev.setAttribute('aria-label','Conteúdo anterior');
+    next.setAttribute('aria-label','Próximo conteúdo');
     prev.textContent='‹'; next.textContent='›';
     shell.append(prev,next);
 
     const update=()=>{
-      const max=Math.max(0,rail.scrollWidth-rail.clientWidth-2);
+      const vertical=rail.classList.contains('is-vertical');
+      const position=vertical?rail.scrollTop:rail.scrollLeft;
+      const max=Math.max(0,(vertical?rail.scrollHeight-rail.clientHeight:rail.scrollWidth-rail.clientWidth)-2);
       const overflow=max>8;
       shell.classList.toggle('rail-has-overflow',overflow);
-      prev.disabled=!overflow||rail.scrollLeft<=4;
-      next.disabled=!overflow||rail.scrollLeft>=max-4;
+      shell.classList.toggle('rail-vertical',vertical);
+      prev.textContent=vertical?'↑':'‹';
+      next.textContent=vertical?'↓':'›';
+      prev.setAttribute('aria-label',vertical?'Subir para o conteúdo anterior':'Voltar ao conteúdo anterior');
+      next.setAttribute('aria-label',vertical?'Descer para o próximo conteúdo':'Avançar para o próximo conteúdo');
+      prev.disabled=!overflow||position<=4;
+      next.disabled=!overflow||position>=max-4;
     };
     const jump=(dir)=>{
-      const amount=Math.max(rail.clientWidth*.82,280);
+      const vertical=rail.classList.contains('is-vertical');
+      const amount=Math.max((vertical?rail.clientHeight:rail.clientWidth)*.82,280);
       const reduce=window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
-      rail.scrollBy({left:dir*amount,behavior:reduce?'auto':'smooth'});
+      const behavior=reduce?'auto':'smooth';
+      if(vertical) rail.scrollBy({top:dir*amount,behavior});
+      else rail.scrollBy({left:dir*amount,behavior});
     };
     prev.addEventListener('click',()=>jump(-1));
     next.addEventListener('click',()=>jump(1));
     rail.addEventListener('scroll',()=>requestAnimationFrame(update),{passive:true});
     rail.addEventListener('keydown',(e)=>{
-      if(e.key==='ArrowRight'){e.preventDefault();jump(1)}
-      if(e.key==='ArrowLeft'){e.preventDefault();jump(-1)}
+      if(rail.classList.contains('is-vertical')){
+        if(e.key==='ArrowDown'){e.preventDefault();jump(1)}
+        if(e.key==='ArrowUp'){e.preventDefault();jump(-1)}
+      }else{
+        if(e.key==='ArrowRight'){e.preventDefault();jump(1)}
+        if(e.key==='ArrowLeft'){e.preventDefault();jump(-1)}
+      }
     });
     if('ResizeObserver' in window) new ResizeObserver(update).observe(rail);
     else window.addEventListener('resize',update,{passive:true});
