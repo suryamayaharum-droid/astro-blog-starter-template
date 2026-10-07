@@ -11,7 +11,7 @@ export const sketchbookGalleries = [
     principle: "Estudar mestres sem copiar literalmente: rearranjar relações compositivas e registrar caminhos que talvez nunca virem obra.",
     originalUrl: "https://www.metmuseum.org/art/collection/search/12688",
     commonsUrl: "https://www.metmuseum.org/art/collection/search/12688",
-    images: []
+    images: [{"url":"https://collectionapi.metmuseum.org/api/collection/v1/iiif/12688/12506/main-image","href":"https://www.metmuseum.org/art/collection/search/12688","label":"Capa do caderno · estudos de figura"}]
   },
   {
     id: "joshua-reynolds-italy",
@@ -25,7 +25,7 @@ export const sketchbookGalleries = [
     principle: "Viajar desenhando transforma museu, igreja, escultura e arquitetura em repertório portátil.",
     originalUrl: "https://www.metmuseum.org/art/collection/search/355616",
     commonsUrl: "https://www.metmuseum.org/art/collection/search/355616",
-    images: []
+    images: [{"url":"https://collectionapi.metmuseum.org/api/collection/v1/iiif/355616/2217603/main-image","href":"https://www.metmuseum.org/art/collection/search/355616","label":"Abertura · caderno de viagem"}]
   },
   {
     id: "joseph-wright-smaller-italian",
@@ -39,7 +39,7 @@ export const sketchbookGalleries = [
     principle: "Ruína, figura clássica e atmosfera podem coexistir numa mesma sequência de observação.",
     originalUrl: "https://www.metmuseum.org/art/collection/search/362089",
     commonsUrl: "https://www.metmuseum.org/art/collection/search/362089",
-    images: []
+    images: [{"url":"https://collectionapi.metmuseum.org/api/collection/v1/iiif/362089/772226/main-image","href":"https://www.metmuseum.org/art/collection/search/362089","label":"Abertura · caderno italiano"}]
   },
   {
     id: "oscar-bluemner-sketchbook",
@@ -53,7 +53,7 @@ export const sketchbookGalleries = [
     principle: "Imagem e escrita compartilham a página: repertório visual também é pensamento verbal, medida, dúvida e retorno.",
     originalUrl: "https://www.nga.gov/artworks/107156-bluemner-sketchbook",
     commonsUrl: "https://www.nga.gov/artworks/107156-bluemner-sketchbook",
-    images: []
+    images: [{"url":"https://api.nga.gov/iiif/3372bd64-b93e-42c7-a798-9dd3925ba41d/full/!800,800/0/default.jpg","href":"https://www.nga.gov/artworks/107156-bluemner-sketchbook","label":"Imagem de abertura · caderno de Bluemner"}]
   },
   {
     id: "albert-bierstadt-sketchbook-1881",
@@ -99,7 +99,7 @@ export const sketchbookGalleries = [
     principle: "Alternar linha, mancha e suporte tonal dentro do mesmo caderno amplia o vocabulário sem exigir acabamento uniforme.",
     originalUrl: "https://www.metmuseum.org/art/collection/search/16007",
     commonsUrl: "https://www.metmuseum.org/art/collection/search/16007",
-    images: []
+    images: [{"url":"https://collectionapi.metmuseum.org/api/collection/v1/iiif/16007/14377/main-image","href":"https://www.metmuseum.org/art/collection/search/16007","label":"Abertura · caderno de Whistler"}]
   },
   {
     id: "francis-edmonds-sketchbook",
@@ -113,7 +113,7 @@ export const sketchbookGalleries = [
     principle: "Estudo independente e preparação para pintura convivem: o caderno registra decisões antes de sabermos quais serão levadas adiante.",
     originalUrl: "https://www.metmuseum.org/art/collection/search/14878",
     commonsUrl: "https://www.metmuseum.org/art/collection/search/14878",
-    images: []
+    images: [{"url":"https://collectionapi.metmuseum.org/api/collection/v1/iiif/14878/16275/main-image","href":"https://www.metmuseum.org/art/collection/search/14878","label":"Dois estudos de figura · Edmonds"}]
   },
   {
     id: "kenyon-cox-transversal",
