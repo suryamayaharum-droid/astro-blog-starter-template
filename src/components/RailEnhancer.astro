@@ -5,6 +5,12 @@
 let railSequence=0;
 const enhanceRails=()=>{
   const selector='.browse-rail,.feature-rail,.stream-rail,.rail,.bank-grid,.atlas-flow-rail,.path-index,.variable-rail,.hands-reference-rail,.player-queue,.collection-index,.ih-topics,.ph-topics,.browse-quick,.search-kinds,.museum-suggestions';
+  const language=(document.documentElement.lang||'pt-BR').toLowerCase();
+  const labels=language.startsWith('en')
+    ? {previous:'Previous content',next:'Next content',back:'Scroll to previous content',advance:'Scroll to next content',up:'Scroll up to previous content',down:'Scroll down to next content'}
+    : language.startsWith('es')
+      ? {previous:'Contenido anterior',next:'Contenido siguiente',back:'Volver al contenido anterior',advance:'Avanzar al contenido siguiente',up:'Subir al contenido anterior',down:'Bajar al siguiente contenido'}
+      : {previous:'Conteúdo anterior',next:'Próximo conteúdo',back:'Voltar ao conteúdo anterior',advance:'Avançar para o próximo conteúdo',up:'Subir para o conteúdo anterior',down:'Descer para o próximo conteúdo'};
   document.querySelectorAll(selector).forEach((rail)=>{
     if(!(rail instanceof HTMLElement) || rail.dataset.enhancedRail==='1') return;
     rail.dataset.enhancedRail='1';
@@ -25,8 +31,8 @@ const enhanceRails=()=>{
     prev.className='rail-nav rail-nav-prev';
     next.className='rail-nav rail-nav-next';
     prev.type='button'; next.type='button';
-    prev.setAttribute('aria-label','Conteúdo anterior');
-    next.setAttribute('aria-label','Próximo conteúdo');
+    prev.setAttribute('aria-label',labels.previous);
+    next.setAttribute('aria-label',labels.next);
     prev.setAttribute('aria-controls',rail.id);
     next.setAttribute('aria-controls',rail.id);
     prev.textContent='‹'; next.textContent='›';
@@ -45,8 +51,8 @@ const enhanceRails=()=>{
       shell.classList.toggle('rail-vertical',vertical);
       prev.textContent=vertical?'↑':'‹';
       next.textContent=vertical?'↓':'›';
-      prev.setAttribute('aria-label',vertical?'Subir para o conteúdo anterior':'Voltar ao conteúdo anterior');
-      next.setAttribute('aria-label',vertical?'Descer para o próximo conteúdo':'Avançar para o próximo conteúdo');
+      prev.setAttribute('aria-label',vertical?labels.up:labels.back);
+      next.setAttribute('aria-label',vertical?labels.down:labels.advance);
       prev.disabled=!overflow||position<=4;
       next.disabled=!overflow||position>=max-4;
     };
