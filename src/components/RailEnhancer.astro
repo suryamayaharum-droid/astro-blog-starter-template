@@ -2,12 +2,18 @@
 ---
 <div class="rail-enhancer-hook" aria-hidden="true"></div>
 <script>
+let railSequence=0;
 const enhanceRails=()=>{
-  const selector='.browse-rail,.feature-rail,.stream-rail,.rail,.bank-grid';
+  const selector='.browse-rail,.feature-rail,.stream-rail,.rail,.bank-grid,.atlas-flow-rail,.path-index,.variable-rail,.hands-reference-rail,.player-queue,.collection-index,.ih-topics,.ph-topics,.browse-quick,.search-kinds,.museum-suggestions';
   document.querySelectorAll(selector).forEach((rail)=>{
     if(!(rail instanceof HTMLElement) || rail.dataset.enhancedRail==='1') return;
     rail.dataset.enhancedRail='1';
-    rail.tabIndex=rail.tabIndex>=0?rail.tabIndex:0;
+    const hadTabIndex=rail.hasAttribute('tabindex');
+    if(!rail.id){
+      let id;
+      do{id=`enhanced-rail-${++railSequence}`}while(document.getElementById(id));
+      rail.id=id;
+    }
 
     const shell=document.createElement('div');
     shell.className='rail-shell';
@@ -21,6 +27,8 @@ const enhanceRails=()=>{
     prev.type='button'; next.type='button';
     prev.setAttribute('aria-label','Conteúdo anterior');
     next.setAttribute('aria-label','Próximo conteúdo');
+    prev.setAttribute('aria-controls',rail.id);
+    next.setAttribute('aria-controls',rail.id);
     prev.textContent='‹'; next.textContent='›';
     shell.append(prev,next);
 
@@ -29,6 +37,10 @@ const enhanceRails=()=>{
       const position=vertical?rail.scrollTop:rail.scrollLeft;
       const max=Math.max(0,(vertical?rail.scrollHeight-rail.clientHeight:rail.scrollWidth-rail.clientWidth)-2);
       const overflow=max>8;
+      if(!hadTabIndex){
+        if(overflow) rail.tabIndex=0;
+        else rail.removeAttribute('tabindex');
+      }
       shell.classList.toggle('rail-has-overflow',overflow);
       shell.classList.toggle('rail-vertical',vertical);
       prev.textContent=vertical?'↑':'‹';
