@@ -31,7 +31,7 @@ const items=[
 <body><Header/><main>
 <section class="page-hero"><div class="eyebrow">HARUM NOIR · BUSCA</div><h1>Encontre uma porta.</h1><p>Uma busca única atravessa o Atlas, Cadernos, História, Bancos, Temporadas e Percursos.</p></section>
 <div class="global-search-bar"><span>⌕</span><input id="global-q" autofocus placeholder="Artista, período, técnica, museu, tema…" aria-label="Buscar no Harum Noir"/><button id="clear-q" type="button">limpar</button></div>
-<div class="search-kinds" id="search-kinds">
+<div class="search-kinds" id="search-kinds" role="group" aria-label="Filtrar resultados por tipo">
   {["Todos","Escola","Referência","Caderno","História","Banco","Temporada","Percurso"].map((k,i)=><button class={i===0?"active":""} data-kind={k}>{k}</button>)}
 </div>
 <div class="search-count" id="search-count"></div>
