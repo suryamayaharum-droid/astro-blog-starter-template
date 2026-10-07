@@ -21,7 +21,8 @@ export type OpenLibraryCollection = {
   sources: OpenLibrarySource[];
 };
 
-export const openLibraryCollections: OpenLibraryCollection[] = [\n  {
+export const openLibraryCollections: OpenLibraryCollection[] = [
+  {
     id: "materia-como-linguagem",
     theme: "MATÉRIA",
     kicker: "MATERIAIS & PROCESSOS",
