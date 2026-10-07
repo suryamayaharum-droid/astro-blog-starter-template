@@ -18,6 +18,7 @@ Data da inspeção: 2026-10-06 · complemento: 2026-10-07
 3. Portada ES: mesma correção de idioma aplicada e publicada no GitHub Pages.
 4. BNDigital: criada e publicada uma prancha visual em seis recortes temáticos nos cartões de estudo; procedência separada claramente de documentos originais.
 5. Cadernos: preenchidas as seis fichas que estavam sem imagem (Sully, Reynolds, Wright, Bluemner, Whistler e Edmonds) com mídia oficial identificada como domínio público nas fontes. Os links de imagem apontam aos servidores do Met/NGA.
+6. Bierstadt: corrigido o identificador de uma mídia NGA preexistente que não carregava; a capa oficial do caderno foi conferida no navegador.
 
 ## Estado dos testes
 - Inspeção manual: nove áreas/categorias do site, incluindo EN, ES e Banco Nacional Digital.

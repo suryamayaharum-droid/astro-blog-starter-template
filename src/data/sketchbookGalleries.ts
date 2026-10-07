@@ -68,7 +68,7 @@ export const sketchbookGalleries = [
     originalUrl: "https://www.nga.gov/artworks/173183-sketchbook",
     commonsUrl: "https://www.nga.gov/artworks/173183-sketchbook",
     images: [
-      { url: "https://api.nga.gov/iiif/03b3ad38-cbc5-457f-8c9e-9354df5106b1/full/!800,800/0/default.jpg", href: "https://www.nga.gov/artworks/173183-sketchbook", label: "Sketchbook · abertura" }
+      { url: "https://api.nga.gov/iiif/f20eaad9-a275-43f7-bfc8-5716d61832e2/full/!800,800/0/default.jpg", href: "https://www.nga.gov/artworks/173183-sketchbook", label: "Sketchbook · abertura" }
     ]
   },
   {
