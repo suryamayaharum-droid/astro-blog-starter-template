@@ -6,9 +6,11 @@ import { referenceArtists } from '../data/references';
 import { cadernos, temporadas } from '../data/public';
 import { artHistoryPeriods } from '../data/artHistory';
 import { imageBanks } from '../data/imageBanks';
+import { visualStudyCollection } from '../data/visualStudyCollection';
 import '../styles/search.css';
 
 const base=import.meta.env.BASE_URL.endsWith('/')?import.meta.env.BASE_URL:import.meta.env.BASE_URL+'/';
+const searchWallpaper=visualStudyCollection[0];
 const percursos=[
   {title:"Carvão & presença",subtitle:"matéria, gesto, borda e apagamento",href:base+"percursos#carvao"},
   {title:"Figura viva",subtitle:"peso, ritmo, centro de massa e anatomia",href:base+"percursos#figura"},
@@ -28,7 +30,7 @@ const items=[
 ---
 <!doctype html><html lang="pt-BR">
 <head><BaseHead title="Buscar · Harum Noir" description="Busca unificada por escola, referências, cadernos, história da arte, bancos de imagens, temporadas e percursos."/></head>
-<body><Header/><main>
+<body class="has-page-wallpaper" style={`--page-wallpaper: url('${base+searchWallpaper.file}')`}><Header/><main>
 <section class="page-hero"><div class="eyebrow">HARUM NOIR · BUSCA</div><h1>Encontre uma porta.</h1><p>Uma busca única atravessa o Atlas, Cadernos, História, Bancos, Temporadas e Percursos.</p></section>
 <div class="global-search-bar"><span>⌕</span><input id="global-q" autofocus placeholder="Artista, período, técnica, museu, tema…" aria-label="Buscar no Harum Noir"/><button id="clear-q" type="button">limpar</button></div>
 <div class="search-kinds" id="search-kinds" role="group" aria-label="Filtrar resultados por tipo">
