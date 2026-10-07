@@ -2,6 +2,7 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import ResearchHighlights from '../components/ResearchHighlights.astro';
 import { openLibraryCollections } from '../data/openLibrary';
 import '../styles/browse.css';
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
@@ -33,6 +34,8 @@ const libraryVisuals=[
     <p>{sourceCount} entradas selecionadas em {collectionCount} temas deste núcleo público do HARUM NOIR. Cada link leva à instituição de origem; a curadoria explica o que observar e como isso conversa com o Harum Noir.</p>
     <div class="actions"><a class="btn primary" href="#colecoes">Abrir coleções</a><a class="btn gold" href={base+'sketchbooks'}>Folhear sketchbooks →</a><a class="btn" href={base+'percursos'}>Voltar aos percursos</a></div>
   </section>
+
+  <ResearchHighlights/>
 
   <section class="section" id="colecoes">
     <div class="section-head">
