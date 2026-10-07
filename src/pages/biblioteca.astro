@@ -7,6 +7,9 @@ import '../styles/browse.css';
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 const sourceCount = openLibraryCollections.reduce((sum, collection) => sum + collection.sources.length, 0);
 const collectionCount = openLibraryCollections.length;
+const sourceVisuals=[
+ "open-sketchbook.webp","maos-seis-gestos.webp","harum-noir-caderno-estudo.webp","iris-study.webp","drapery-still-life.webp","harum-noir-caderno-olhar.webp","museum-gallery.webp","atelier-desk.webp","moonlit-landscape.webp","tools-paper.webp","harum-noir-colecoes-atlas.webp"
+];
 const libraryVisuals=[
  {file:"open-sketchbook.webp",alt:"Caderno aberto em uma composição editorial de ateliê.",caption:"Sketchbook como processo"},
  {file:"maos-seis-gestos.webp",alt:"Seis estudos de mãos em diferentes ações.",caption:"Gesto e anatomia da mão"},
@@ -87,7 +90,7 @@ const libraryVisuals=[
     </div>
     <div class="browse-rail">
       {collection.sources.map((source,i)=><a class="browse-tile" href={source.url} target="_blank" rel="noreferrer" aria-label={`Abrir fonte: ${source.creator}, ${source.title}`}>
-        <div class="browse-visual"><span class="num">{String(i+1).padStart(2,'0')}</span><div class="big">{source.creator}</div></div>
+        <div class="card-media source-cover"><img src={base+'noir/visual-atlas/'+sourceVisuals[(index*5+i)%sourceVisuals.length]} alt="" loading="lazy" decoding="async"/><span class="num">{String(i+1).padStart(2,'0')}</span><span class="media-credit">{source.source}</span></div>
         <div class="browse-body"><span>{source.source}</span><h3>{source.title}</h3><p>{source.observe}</p><small style="color:#b39a69">{source.rights} · abrir fonte original →</small></div>
       </a>)}
     </div>
@@ -110,5 +113,4 @@ const libraryVisuals=[
   </section>
 </main>
 <Footer/>
-</body>
-</html>
+</body>\n</html>\n<style>\n.source-cover{position:relative;aspect-ratio:16/10;overflow:hidden;background:#111}.source-cover img{width:100%;height:100%;object-fit:cover;filter:saturate(.42) contrast(1.05);transition:transform .28s ease,filter .28s ease}.browse-tile:hover .source-cover img{transform:scale(1.035);filter:saturate(.7) contrast(1.05)}.source-cover .num{position:absolute;top:12px;left:12px;background:rgba(8,8,8,.72);border:1px solid var(--line);border-radius:999px;padding:6px 9px;color:var(--paper);font-size:.7rem}.source-cover .media-credit{position:absolute;left:10px;right:10px;bottom:10px;background:rgba(8,8,8,.74);padding:6px 8px;border-radius:6px;color:var(--paper-2);font-size:.64rem}@media(max-width:700px){.source-cover{aspect-ratio:4/3}}@media(prefers-reduced-motion:reduce){.source-cover img{transition:none}.browse-tile:hover .source-cover img{transform:none}}\n</style>
