@@ -2,7 +2,7 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { sketchbookGalleries, commonsImage } from '../data/sketchbookGalleries';
+import { sketchbookGalleries } from '../data/sketchbookGalleries';
 import '../styles/browse.css';
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 const shelves = [...new Set(sketchbookGalleries.map((book) => book.shelf))];
@@ -21,7 +21,7 @@ const shelves = [...new Set(sketchbookGalleries.map((book) => book.shelf))];
   </section>
 
   <section class="section" id="galerias">
-    <div class="section-head"><div><div class="eyebrow">UM CADERNO, UM OLHAR</div><h2>Sequências para estudar, não para colecionar.</h2></div><p>Arraste horizontalmente no celular. Cada imagem abre sua fonte de origem; os botões levam ao registro institucional e, quando houver, à coleção aberta no Wikimedia Commons.</p></div>
+    <div class="section-head"><div><div class="eyebrow">UM CADERNO, UM OLHAR</div><h2>Sequências para estudar, não para colecionar.</h2></div><p>Arraste horizontalmente no celular. Cada imagem abre uma cópia local deste projeto; os botões levam ao registro institucional e ao Wikimedia Commons quando disponível.</p></div>
   </section>
 
   <section class="section" aria-labelledby="estantes-title"><div class="panel"><div class="eyebrow">ESTANTES VIVAS</div><h2 id="estantes-title">Entrar pelo problema de desenho.</h2><div class="actions">{shelves.map((shelf)=><a class="btn" href={`#shelf-${shelf.toLowerCase().normalize("NFD").replace(/[\\u0300-\\u036f]/g,"").replace(/[^a-z0-9]+/g,"-")}`}>{shelf}</a>)}</div></div></section>
@@ -38,13 +38,13 @@ const shelves = [...new Set(sketchbookGalleries.map((book) => book.shelf))];
         <a class="btn" href={book.commonsUrl} target="_blank" rel="noreferrer">{book.commonsUrl.includes("commons.wikimedia.org") ? "Ver arquivos no Commons →" : "Abrir acervo completo →"}</a>
       </div>
     </div>
-    <div class="stream-head" style="margin-top:26px"><div><span class="eyebrow">{book.source}</span><h3>Folhas do caderno</h3></div><p>{book.images.length > 0 ? `${book.images.length} imagens abertas nesta seleção inicial.` : "Acervo institucional conectado · imagens internas entram após validação individual do arquivo."}</p></div>
+    <div class="stream-head" style="margin-top:26px"><div><span class="eyebrow">{book.source}</span><h3>Folhas do caderno</h3></div><p>{book.images.length > 0 ? `${book.images.length} cópias locais nesta seleção.` : "Acervo institucional conectado · imagens internas entram após validação individual do arquivo."}</p></div>
     {book.images.length > 0 ? <div class="browse-rail" aria-label={`Galeria de ${book.title}`}>
-      {book.images.map((img,i)=><a class="browse-tile" href={"href" in img ? img.href : `https://commons.wikimedia.org/wiki/File:${img.file}`} target="_blank" rel="noreferrer">
+      {book.images.map((img,i)=><a class="browse-tile" href={base+img.url}>
         <div class="card-media" style="aspect-ratio:4/5;background:#171614">
-          <img src={"url" in img ? img.url : commonsImage(img.file, 760)} loading="lazy" decoding="async" alt={`${img.label}, ${book.title}, ${book.artist}`} style="width:100%;height:100%;object-fit:contain" />
+          <img src={base+img.url} loading="lazy" decoding="async" alt={`${img.label}, ${book.title}, ${book.artist}`} style="width:100%;height:100%;object-fit:contain" />
         </div>
-        <div class="browse-body"><span>{String(i+1).padStart(2,'0')} · {book.date}</span><h3>{img.label}</h3><p>{book.artist}</p><small style="color:#b39a69">{book.rights} · abrir arquivo e metadados →</small></div>
+        <div class="browse-body"><span>{String(i+1).padStart(2,'0')} · {book.date}</span><h3>{img.label}</h3><p>{book.artist}</p><small style="color:#b39a69">{book.rights} · abrir cópia local em tamanho ampliado →</small></div>
       </a>)}
     </div> : <div class="panel" style="margin-top:18px"><p>Este caderno já faz parte do índice navegável. Use <strong>Abrir no museu</strong> para folheá-lo na fonte enquanto a seleção visual interna é validada página por página.</p></div>}
   </section>

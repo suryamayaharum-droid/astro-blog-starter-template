@@ -11,7 +11,7 @@ export const sketchbookGalleries = [
     principle: "Estudar mestres sem copiar literalmente: rearranjar relações compositivas e registrar caminhos que talvez nunca virem obra.",
     originalUrl: "https://www.metmuseum.org/art/collection/search/12688",
     commonsUrl: "https://www.metmuseum.org/art/collection/search/12688",
-    images: [{"url":"https://collectionapi.metmuseum.org/api/collection/v1/iiif/12688/12506/main-image","href":"https://www.metmuseum.org/art/collection/search/12688","label":"Capa do caderno · estudos de figura"}]
+    images: [{"url":"noir/sketchbooks/thomas-sully-figure-studies-01.webp","href":"https://www.metmuseum.org/art/collection/search/12688","label":"Capa do caderno · estudos de figura"}]
   },
   {
     id: "joshua-reynolds-italy",
@@ -25,7 +25,7 @@ export const sketchbookGalleries = [
     principle: "Viajar desenhando transforma museu, igreja, escultura e arquitetura em repertório portátil.",
     originalUrl: "https://www.metmuseum.org/art/collection/search/355616",
     commonsUrl: "https://www.metmuseum.org/art/collection/search/355616",
-    images: [{"url":"https://collectionapi.metmuseum.org/api/collection/v1/iiif/355616/2217603/main-image","href":"https://www.metmuseum.org/art/collection/search/355616","label":"Abertura · caderno de viagem"}]
+    images: [{"url":"noir/sketchbooks/joshua-reynolds-italy-01.webp","href":"https://www.metmuseum.org/art/collection/search/355616","label":"Abertura · caderno de viagem"}]
   },
   {
     id: "joseph-wright-smaller-italian",
@@ -39,7 +39,7 @@ export const sketchbookGalleries = [
     principle: "Ruína, figura clássica e atmosfera podem coexistir numa mesma sequência de observação.",
     originalUrl: "https://www.metmuseum.org/art/collection/search/362089",
     commonsUrl: "https://www.metmuseum.org/art/collection/search/362089",
-    images: [{"url":"https://collectionapi.metmuseum.org/api/collection/v1/iiif/362089/772226/main-image","href":"https://www.metmuseum.org/art/collection/search/362089","label":"Abertura · caderno italiano"}]
+    images: [{"url":"noir/sketchbooks/joseph-wright-smaller-italian-01.webp","href":"https://www.metmuseum.org/art/collection/search/362089","label":"Abertura · caderno italiano"}]
   },
   {
     id: "oscar-bluemner-sketchbook",
@@ -53,7 +53,7 @@ export const sketchbookGalleries = [
     principle: "Imagem e escrita compartilham a página: repertório visual também é pensamento verbal, medida, dúvida e retorno.",
     originalUrl: "https://www.nga.gov/artworks/107156-bluemner-sketchbook",
     commonsUrl: "https://www.nga.gov/artworks/107156-bluemner-sketchbook",
-    images: [{"url":"https://api.nga.gov/iiif/3372bd64-b93e-42c7-a798-9dd3925ba41d/full/!800,800/0/default.jpg","href":"https://www.nga.gov/artworks/107156-bluemner-sketchbook","label":"Imagem de abertura · caderno de Bluemner"}]
+    images: [{"url":"noir/sketchbooks/oscar-bluemner-sketchbook-01.webp","href":"https://www.nga.gov/artworks/107156-bluemner-sketchbook","label":"Imagem de abertura · caderno de Bluemner"}]
   },
   {
     id: "albert-bierstadt-sketchbook-1881",
@@ -68,7 +68,7 @@ export const sketchbookGalleries = [
     originalUrl: "https://www.nga.gov/artworks/173183-sketchbook",
     commonsUrl: "https://www.nga.gov/artworks/173183-sketchbook",
     images: [
-      { url: "https://api.nga.gov/iiif/f20eaad9-a275-43f7-bfc8-5716d61832e2/full/!800,800/0/default.jpg", href: "https://www.nga.gov/artworks/173183-sketchbook", label: "Sketchbook · abertura" }
+      { url: "noir/sketchbooks/albert-bierstadt-sketchbook-01.webp", href: "https://www.nga.gov/artworks/173183-sketchbook", label: "Sketchbook · abertura" }
     ]
   },
   {
@@ -84,7 +84,7 @@ export const sketchbookGalleries = [
     originalUrl: "https://www.nga.gov/artworks/76219-cezanne-sketchbook",
     commonsUrl: "https://www.nga.gov/artworks/76219-cezanne-sketchbook",
     images: [
-      { url: "https://api.nga.gov/iiif/3f6fe37b-f189-4147-8cca-d3a5de0e6ff4/full/!800,800/0/default.jpg", href: "https://www.nga.gov/artworks/76219-cezanne-sketchbook", label: "Caderno · entrada" }
+      { url: "noir/sketchbooks/paul-cezanne-sketchbook-01.webp", href: "https://www.nga.gov/artworks/76219-cezanne-sketchbook", label: "Caderno · entrada" }
     ]
   },
   {
@@ -99,7 +99,7 @@ export const sketchbookGalleries = [
     principle: "Alternar linha, mancha e suporte tonal dentro do mesmo caderno amplia o vocabulário sem exigir acabamento uniforme.",
     originalUrl: "https://www.metmuseum.org/art/collection/search/16007",
     commonsUrl: "https://www.metmuseum.org/art/collection/search/16007",
-    images: [{"url":"https://collectionapi.metmuseum.org/api/collection/v1/iiif/16007/14377/main-image","href":"https://www.metmuseum.org/art/collection/search/16007","label":"Abertura · caderno de Whistler"}]
+    images: [{"url":"noir/sketchbooks/james-mcneill-whistler-sketchbook-01.webp","href":"https://www.metmuseum.org/art/collection/search/16007","label":"Abertura · caderno de Whistler"}]
   },
   {
     id: "francis-edmonds-sketchbook",
@@ -113,7 +113,7 @@ export const sketchbookGalleries = [
     principle: "Estudo independente e preparação para pintura convivem: o caderno registra decisões antes de sabermos quais serão levadas adiante.",
     originalUrl: "https://www.metmuseum.org/art/collection/search/14878",
     commonsUrl: "https://www.metmuseum.org/art/collection/search/14878",
-    images: [{"url":"https://collectionapi.metmuseum.org/api/collection/v1/iiif/14878/16275/main-image","href":"https://www.metmuseum.org/art/collection/search/14878","label":"Dois estudos de figura · Edmonds"}]
+    images: [{"url":"noir/sketchbooks/francis-william-edmonds-sketchbook-01.webp","href":"https://www.metmuseum.org/art/collection/search/14878","label":"Dois estudos de figura · Edmonds"}]
   },
   {
     id: "kenyon-cox-transversal",
@@ -128,12 +128,12 @@ export const sketchbookGalleries = [
     originalUrl: "https://www.si.edu/object/chndm_1984-86-7-22",
     commonsUrl: "https://www.si.edu/search?edan_q=Kenyon%20Cox%20Sketchbook%20Page",
     images: [
-      { url: "https://ids.si.edu/ids/deliveryService?id=CHSDM-181961_01-000003&max_w=800", href: "https://www.si.edu/object/chndm_1984-86-7-22", label: "Estátua clássica" },
-      { url: "https://ids.si.edu/ids/deliveryService?id=CHSDM-181965_01-000003&max_w=800", href: "https://www.si.edu/object/sketchbook-page-artist-work%3Achndm_1984-86-7-26", label: "Artista trabalhando" },
-      { url: "https://ids.si.edu/ids/deliveryService?id=CHSDM-181780_01-000003&max_w=800", href: "https://www.si.edu/object/sketchbook-page%3Achndm_1984-86-4-46", label: "Figura feminina sentada" },
-      { url: "https://ids.si.edu/ids/deliveryService?id=CHSDM-181918_01-000001&max_w=800", href: "https://www.si.edu/object/sketchbook-page-nude-female-figures-landscape%3Achndm_1984-86-6-2", label: "Figuras no espaço" },
-      { url: "https://ids.si.edu/ids/deliveryService?id=CHSDM-181704_01-000001&max_w=800", href: "https://www.si.edu/object/sketchbook-page-sketches-flowers-and-leaves%3Achndm_1984-86-3-18", label: "Flores e folhas" },
-      { url: "https://ids.si.edu/ids/deliveryService?id=CHSDM-182014_01-000003&max_w=800", href: "https://www.si.edu/object/sketchbook-page-isis%3Achndm_1984-86-7-70", label: "Isis · imagem e anotação" }
+      { url: "noir/sketchbooks/kenyon-cox-transversal-01.webp", href: "https://www.si.edu/object/chndm_1984-86-7-22", label: "Estátua clássica" },
+      { url: "noir/sketchbooks/kenyon-cox-transversal-02.webp", href: "https://www.si.edu/object/sketchbook-page-artist-work%3Achndm_1984-86-7-26", label: "Artista trabalhando" },
+      { url: "noir/sketchbooks/kenyon-cox-transversal-03.webp", href: "https://www.si.edu/object/sketchbook-page%3Achndm_1984-86-4-46", label: "Figura feminina sentada" },
+      { url: "noir/sketchbooks/kenyon-cox-transversal-04.webp", href: "https://www.si.edu/object/sketchbook-page-nude-female-figures-landscape%3Achndm_1984-86-6-2", label: "Figuras no espaço" },
+      { url: "noir/sketchbooks/kenyon-cox-transversal-05.webp", href: "https://www.si.edu/object/sketchbook-page-sketches-flowers-and-leaves%3Achndm_1984-86-3-18", label: "Flores e folhas" },
+      { url: "noir/sketchbooks/kenyon-cox-transversal-06.webp", href: "https://www.si.edu/object/sketchbook-page-isis%3Achndm_1984-86-7-70", label: "Isis · imagem e anotação" }
     ]
   },
   {
@@ -149,7 +149,7 @@ export const sketchbookGalleries = [
     originalUrl: "https://www.si.edu/object/sketchbook-newport-rhode-island-new-jersey-and-england-views%3Achndm_1953-179-89",
     commonsUrl: "https://www.si.edu/object/sketchbook-newport-rhode-island-new-jersey-and-england-views%3Achndm_1953-179-89",
     images: [
-      { url: "https://ids.si.edu/ids/deliveryService?id=CHSDM-CHP8271&max_w=800", href: "https://www.si.edu/object/sketchbook-newport-rhode-island-new-jersey-and-england-views%3Achndm_1953-179-89", label: "Caderno · 89 desenhos / 88 folhas" }
+      { url: "noir/sketchbooks/william-trost-richards-long-sketchbook-01.webp", href: "https://www.si.edu/object/sketchbook-newport-rhode-island-new-jersey-and-england-views%3Achndm_1953-179-89", label: "Caderno · 89 desenhos / 88 folhas" }
     ]
   },
   {
@@ -165,9 +165,9 @@ export const sketchbookGalleries = [
     originalUrl: "https://www.nga.gov/artworks/231554-sketchbook",
     commonsUrl: "https://www.nga.gov/artworks/231554-sketchbook",
     images: [
-      { url: "https://api.nga.gov/iiif/23718807-32d6-496d-8b7f-b6059cef05b9/full/!800,800/0/default.jpg", href: "https://www.nga.gov/artworks/231554-sketchbook", label: "Capa / abertura" },
-      { url: "https://api.nga.gov/iiif/eea210cd-f248-40f1-9567-1c5bb761833e/full/!800,800/0/default.jpg", href: "https://www.nga.gov/artworks/231554-sketchbook", label: "Folha 01" },
-      { url: "https://api.nga.gov/iiif/794871b0-1ec4-4b1c-b76b-79f529aee1a0/full/!800,800/0/default.jpg", href: "https://www.nga.gov/artworks/231554-sketchbook", label: "Folha 02" }
+      { url: "noir/sketchbooks/eva-gonzales-sketchbook-01.webp", href: "https://www.nga.gov/artworks/231554-sketchbook", label: "Capa / abertura" },
+      { url: "noir/sketchbooks/eva-gonzales-sketchbook-02.webp", href: "https://www.nga.gov/artworks/231554-sketchbook", label: "Folha 01" },
+      { url: "noir/sketchbooks/eva-gonzales-sketchbook-03.webp", href: "https://www.nga.gov/artworks/231554-sketchbook", label: "Folha 02" }
     ]
   },
   {
@@ -183,9 +183,9 @@ export const sketchbookGalleries = [
     originalUrl: "https://www.metmuseum.org/art/collection/search/334729",
     commonsUrl: "https://commons.wikimedia.org/wiki/Category:Album_de_Marine_(58.130)_by_Henri_de_Toulouse-Lautrec",
     images: [
-      { file: "Album_de_Marine-_Sketchbook_of_48_folios_containing_17_watercolors_and_27_black_chalk_and_graphite_sketches_MET_260901.jpg", label: "Fólio 01" },
-      { file: "Album_de_Marine-_Sketchbook_of_48_folios_containing_17_watercolors_and_27_black_chalk_and_graphite_sketches_MET_260932.jpg", label: "Fólio 02" },
-      { file: "Album_de_Marine-_Sketchbook_of_48_folios_containing_17_watercolors_and_27_black_chalk_and_graphite_sketches_MET_260897.jpg", label: "Fólio 03" }
+      { url: "noir/sketchbooks/toulouse-lautrec-album-de-marine-01.webp", file: "Album_de_Marine-_Sketchbook_of_48_folios_containing_17_watercolors_and_27_black_chalk_and_graphite_sketches_MET_260901.jpg", label: "Fólio 01" },
+      { url: "noir/sketchbooks/toulouse-lautrec-album-de-marine-02.webp", file: "Album_de_Marine-_Sketchbook_of_48_folios_containing_17_watercolors_and_27_black_chalk_and_graphite_sketches_MET_260932.jpg", label: "Fólio 02" },
+      { url: "noir/sketchbooks/toulouse-lautrec-album-de-marine-03.webp", file: "Album_de_Marine-_Sketchbook_of_48_folios_containing_17_watercolors_and_27_black_chalk_and_graphite_sketches_MET_260897.jpg", label: "Fólio 03" }
     ]
   },
   {
@@ -201,11 +201,11 @@ export const sketchbookGalleries = [
     originalUrl: "https://www.metmuseum.org/art/collection/search/15382",
     commonsUrl: "https://commons.wikimedia.org/wiki/Category:Drawings_by_William_Trost_Richards",
     images: [
-      { file: "Sketch_of_Clouds_and_Sea_(from_Sketchbook_VII)_MET_257794.jpg", label: "Nuvens e mar" },
-      { file: "Sketch_of_a_Breaking_Wave_(from_Sketchbook_VII)_MET_257793.jpg", label: "Onda · estudo I" },
-      { file: "Sketch_of_Breaking_Waves_(from_Sketchbook_VII)_MET_257796.jpg", label: "Ondas · estudo II" },
-      { file: "Seascape_with_Breaking_Waves_(from_Sketchbook_VII)_MET_257791.jpg", label: "Mar em ruptura" },
-      { file: "Sketch_of_Trees_(Clouds%3F)_(from_Sketchbook_VII)_MET_257761.jpg", label: "Árvores / nuvens" }
+      { url: "noir/sketchbooks/william-trost-richards-sketchbook-vii-01.webp", file: "Sketch_of_Clouds_and_Sea_(from_Sketchbook_VII)_MET_257794.jpg", label: "Nuvens e mar" },
+      { url: "noir/sketchbooks/william-trost-richards-sketchbook-vii-02.webp", file: "Sketch_of_a_Breaking_Wave_(from_Sketchbook_VII)_MET_257793.jpg", label: "Onda · estudo I" },
+      { url: "noir/sketchbooks/william-trost-richards-sketchbook-vii-03.webp", file: "Sketch_of_Breaking_Waves_(from_Sketchbook_VII)_MET_257796.jpg", label: "Ondas · estudo II" },
+      { url: "noir/sketchbooks/william-trost-richards-sketchbook-vii-04.webp", file: "Seascape_with_Breaking_Waves_(from_Sketchbook_VII)_MET_257791.jpg", label: "Mar em ruptura" },
+      { url: "noir/sketchbooks/william-trost-richards-sketchbook-vii-05.webp", file: "Sketch_of_Trees_(Clouds%3F)_(from_Sketchbook_VII)_MET_257761.jpg", label: "Árvores / nuvens" }
     ]
   }
 ] as const;

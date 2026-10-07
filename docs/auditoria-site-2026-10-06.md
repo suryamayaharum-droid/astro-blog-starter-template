@@ -17,22 +17,23 @@ Data da inspeção: 2026-10-06 · complemento: 2026-10-07
 2. Portada EN: nota de idioma corrigida para distinguir esta portada e suas rotas traduzidas do arquivo mais amplo em português.
 3. Portada ES: mesma correção de idioma aplicada e publicada no GitHub Pages.
 4. BNDigital: criada e publicada uma prancha visual em seis recortes temáticos nos cartões de estudo; procedência separada claramente de documentos originais.
-5. Cadernos: preenchidas as seis fichas que estavam sem imagem (Sully, Reynolds, Wright, Bluemner, Whistler e Edmonds) com mídia oficial identificada como domínio público nas fontes. Os links de imagem apontam aos servidores do Met/NGA.
+5. Cadernos: preenchidas as seis fichas que estavam sem imagem (Sully, Reynolds, Wright, Bluemner, Whistler e Edmonds) com mídia oficial identificada como domínio público nas fontes. As 26 imagens do catálogo foram copiadas para `public/noir/sketchbooks/`, otimizadas em WebP e ligadas aos cartões por caminho interno ao GitHub Pages; as fichas institucionais e a procedência dos arquivos foram mantidas.
 6. Bierstadt: corrigido o identificador de uma mídia NGA preexistente que não carregava; a capa oficial do caderno foi conferida no navegador.
 7. Smithsonian: corrigidos sete identificadores de imagem que retornavam 404 ou imagem vazia (seis páginas de Kenyon Cox e o caderno de William Trost Richards); as fichas oficiais confirmam CC0.
 8. Cézanne: corrigido o endpoint NGA da capa, verificado na ficha oficial de domínio público e aberto no navegador.
+9. Catálogo de sketchbooks: removida a dependência de carregamento em tempo de navegação dos endpoints de imagem do Met, NGA, Smithsonian e Commons; os cartões agora abrem cópias internas otimizadas.
 
 ## Estado dos testes
 - Inspeção manual: nove áreas/categorias do site, incluindo EN, ES e Banco Nacional Digital.
 - Defeitos de conteúdo confirmados nesta rodada: 2 tipos; as correções estão publicadas.
-- Imagens quebradas confirmadas nas páginas inspecionadas: nenhuma.
-- CI e implantação do site: sucesso.
+- Imagens quebradas confirmadas nas páginas inspecionadas: nenhuma antes da migração; validação das 26 cópias locais após implantação registrada abaixo.
+- CI e implantação do site: sucesso na revisão anterior; esta revisão aguarda o novo build e a checagem visual das 26 cópias locais.
 - Auditoria móvel automatizada: sucesso. A matriz percorreu 52 rotas em 4 larguras de celular; os testes internacionais EN/ES e os limites responsivos também passaram. Uma tentativa anterior encontrou um 503 transitório; a execução completa posterior concluiu com sucesso.
 
 ## Pendências que permanecem
 - A revisão editorial profunda não cobre integralmente todos os conteúdos do arquivo: a inspeção manual desta rodada passou por nove áreas; a matriz automatizada conferiu 52 rotas em responsividade, não a qualidade de cada texto, exercício e CTA.
-- No catálogo de sketchbooks, seis fichas sem imagem foram preenchidas e nove URLs antigas de mídia foram corrigidas; a verificação de todas as mídias pós-publicação segue nesta rodada.
-- As 15 mídias da trilha de sketchbooks corrigidas nesta rodada continuam servidas pelos endpoints oficiais do Met, NGA e Smithsonian (além do Commons em outras entradas). O espelhamento local para `public/` ainda falta; também é necessário inventariar e migrar os demais assets externos antes de afirmar que todas as imagens estão hospedadas no GitHub.
+- No catálogo de sketchbooks, as 26 imagens já foram espelhadas para o repositório; falta confirmar o carregamento no Pages após a nova implantação.
+- Ainda falta inventariar as demais imagens externas do site fora deste catálogo antes de afirmar que todos os assets do HARUM NOIR estão hospedados no GitHub.
 - O Lume funciona como guia determinístico de navegação. Um modelo de IA integrado e operacional não foi confirmado nesta auditoria; a camada opcional não deve ser apresentada como IA nativa funcional.
 - Inglês e espanhol cobrem as portadas e rotas principais. O arquivo mais amplo permanece em português, conforme a preferência registrada.
 
