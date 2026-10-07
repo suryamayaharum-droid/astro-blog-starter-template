@@ -3,10 +3,12 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { sketchbookGalleries } from '../data/sketchbookGalleries';
+import { sketchbookCompanionsByShelf } from '../data/visualStudyCollection';
 import '../styles/browse.css';
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 const shelves = [...new Set(sketchbookGalleries.map((book) => book.shelf))];
 const totalSheets = sketchbookGalleries.reduce((total, book) => total + book.images.length, 0);
+const galleryEntries=sketchbookGalleries.map((book)=>({book,companions:book.images.length<2?sketchbookCompanionsByShelf[book.shelf]??[]:[]}));
 ---
 <!doctype html>
 <html lang="pt-BR">
@@ -62,7 +64,7 @@ const totalSheets = sketchbookGalleries.reduce((total, book) => total + book.ima
       outline: 2px solid #c6aa73;
       outline-offset: 3px;
     }
-    body.sketchbooks-page .sketchbook-gallery.is-vertical-view .browse-rail {
+    body.sketchbooks-page .sketchbook-gallery .browse-rail.is-vertical {
       grid-auto-flow: row;
       grid-auto-columns: unset;
       grid-template-columns: minmax(0, 1fr);
@@ -76,32 +78,37 @@ const totalSheets = sketchbookGalleries.reduce((total, book) => total + book.ima
       scrollbar-color: rgba(179, 154, 105, .55) transparent;
       padding-right: 58px;
     }
-    body.sketchbooks-page .sketchbook-gallery.is-vertical-view .browse-tile {
+    body.sketchbooks-page .sketchbook-gallery .browse-rail.is-vertical .browse-tile {
       display: grid;
       grid-template-columns: minmax(125px, .45fr) minmax(0, 1fr);
       align-items: center;
       scroll-snap-align: start;
     }
-    body.sketchbooks-page .sketchbook-gallery.is-vertical-view .rail-shell::before,
-    body.sketchbooks-page .sketchbook-gallery.is-vertical-view .rail-shell::after { display: none; }
-    body.sketchbooks-page .sketchbook-gallery.is-vertical-view .rail-nav {
+    body.sketchbooks-page .sketchbook-gallery .rail-shell.rail-vertical::before,
+    body.sketchbooks-page .sketchbook-gallery .rail-shell.rail-vertical::after { display: none; }
+    body.sketchbooks-page .sketchbook-gallery .rail-shell.rail-vertical .rail-nav {
       left: auto;
       right: 5px;
       width: 42px;
       height: 46px;
       transform: none;
     }
-    body.sketchbooks-page .sketchbook-gallery.is-vertical-view .rail-nav-prev { top: 8px; bottom: auto; }
-    body.sketchbooks-page .sketchbook-gallery.is-vertical-view .rail-nav-next { top: auto; bottom: 20px; }
+    body.sketchbooks-page .sketchbook-gallery .rail-shell.rail-vertical .rail-nav-prev { top: 8px; bottom: auto; }
+    body.sketchbooks-page .sketchbook-gallery .rail-shell.rail-vertical .rail-nav-next { top: auto; bottom: 20px; }
+    body.sketchbooks-page .companion-tile .browse-body h4{font:400 1.2rem/1.08 "Cormorant Garamond",Georgia,serif;margin:5px 0}
+    body.sketchbooks-page .companion-tile .browse-body p{min-height:3.5em}
+    body.sketchbooks-page .companion-tile .browse-body>a{display:inline-block;margin-top:9px;color:#b39a69;font-size:.67rem;text-decoration:none}
+    body.sketchbooks-page .sketchbook-gallery .companion-rail{grid-auto-columns:minmax(300px,390px)}
     @media (max-width: 680px) {
       body.sketchbooks-page { background-attachment: scroll; }
-      body.sketchbooks-page .sketchbook-gallery.is-vertical-view .browse-rail {
+      body.sketchbooks-page .sketchbook-gallery .browse-rail.is-vertical {
         max-height: min(70vh, 620px);
         padding-right: 49px;
       }
-      body.sketchbooks-page .sketchbook-gallery.is-vertical-view .browse-tile {
+      body.sketchbooks-page .sketchbook-gallery .browse-rail.is-vertical .browse-tile {
         grid-template-columns: minmax(100px, .42fr) minmax(0, 1fr);
       }
+      body.sketchbooks-page .sketchbook-gallery .companion-rail{grid-auto-columns:76vw}
     }
   </style>
 </head>
@@ -126,8 +133,8 @@ const totalSheets = sketchbookGalleries.reduce((total, book) => total + book.ima
 
   <section class="section" aria-labelledby="estantes-title"><div class="panel"><div class="eyebrow">ESTANTES VIVAS</div><h2 id="estantes-title">Entrar pelo problema de desenho.</h2><div class="actions">{shelves.map((shelf)=><a class="btn" href={`#shelf-${shelf.toLowerCase().normalize("NFD").replace(/[\\u0300-\\u036f]/g,"").replace(/[^a-z0-9]+/g,"-")}`}>{shelf}</a>)}</div></div></section>
 
-  {sketchbookGalleries.map((book,index)=><Fragment>
-    {(index === 0 || sketchbookGalleries[index-1].shelf !== book.shelf) && <div id={`shelf-${book.shelf.toLowerCase().normalize("NFD").replace(/[\\u0300-\\u036f]/g,"").replace(/[^a-z0-9]+/g,"-")}`} class="section" style="padding-bottom:0"><div class="eyebrow">ESTANTE · {book.shelf}</div></div>}
+  {galleryEntries.map(({book,companions},index)=><Fragment>
+    {(index === 0 || galleryEntries[index-1].book.shelf !== book.shelf) && <div id={`shelf-${book.shelf.toLowerCase().normalize("NFD").replace(/[\\u0300-\\u036f]/g,"").replace(/[^a-z0-9]+/g,"-")}`} class="section" style="padding-bottom:0"><div class="eyebrow">ESTANTE · {book.shelf}</div></div>}
     <section class="section sketchbook-gallery" id={book.id} aria-labelledby={"heading-" + book.id}>
     <div class="panel">
       <div class="eyebrow">{book.date} · {book.rights}</div>
@@ -139,11 +146,11 @@ const totalSheets = sketchbookGalleries.reduce((total, book) => total + book.ima
       </div>
     </div>
     <div class="stream-head" style="margin-top:26px"><div><span class="eyebrow">{book.source}</span><h3>Folhas do caderno</h3></div><p>{book.images.length > 0 ? book.images.length + " " + (book.images.length === 1 ? "cópia local" : "cópias locais") + " nesta seleção." : "Acervo institucional conectado · imagens internas entram após validação individual do arquivo."}</p></div>
-    {book.images.length > 1 && <div class="gallery-view-controls" role="group" aria-label={"Modo de navegação da galeria " + book.title} data-gallery-controls>
+    {book.images.length > 1 && <div class="gallery-view-controls" role="group" aria-label={"Modo de navegação da galeria " + book.title} data-gallery-controls data-gallery-track="original">
       <button type="button" data-gallery-axis="horizontal" aria-pressed="true">↔ Horizontal</button>
       <button type="button" data-gallery-axis="vertical" aria-pressed="false">↕ Vertical</button>
     </div>}
-    {book.images.length > 0 ? <div class="browse-rail" role="region" aria-roledescription="carrossel" tabindex="0" aria-label={`Galeria de ${book.title}`}>
+    {book.images.length > 0 ? <div class="browse-rail" data-gallery-role="original" role="region" aria-roledescription="carrossel" tabindex="0" aria-label={`Galeria original de ${book.title}`}>
       {book.images.map((img,i)=><a class="browse-tile" href={base+img.url}>
         <div class="card-media" style="aspect-ratio:4/5;background:#171614">
           <img src={base+img.url} loading="lazy" decoding="async" alt={`${img.label}, ${book.title}, ${book.artist}`} style="width:100%;height:100%;object-fit:contain" />
@@ -151,6 +158,7 @@ const totalSheets = sketchbookGalleries.reduce((total, book) => total + book.ima
         <div class="browse-body"><span>{String(i+1).padStart(2,'0')} · {book.date}</span><h3>{img.label}</h3><p>{book.artist}</p><small style="color:#b39a69">{book.rights} · abrir cópia local em tamanho ampliado →</small></div>
       </a>)}
     </div> : <div class="panel" style="margin-top:18px"><p>Este caderno já faz parte do índice navegável. Use <strong>Abrir no museu</strong> para folheá-lo na fonte enquanto a seleção visual interna é validada página por página.</p></div>}
+    {companions.length>0&&<div class="gallery-companion-set"><div class="stream-head" style="margin-top:28px"><div><span class="eyebrow">ESTUDOS COMPLEMENTARES · HARUM NOIR</span><h3>Variações para seguir olhando</h3></div><p>Pranchas temáticas independentes das folhas originais deste caderno.</p></div><div class="gallery-view-controls" role="group" aria-label={`Modo de navegação dos estudos complementares de ${book.title}`} data-gallery-controls data-gallery-track="companion"><button type="button" data-gallery-axis="horizontal" aria-pressed="true">↔ Horizontal</button><button type="button" data-gallery-axis="vertical" aria-pressed="false">↕ Vertical</button></div><div class="browse-rail companion-rail" data-gallery-role="companion" role="region" aria-roledescription="carrossel" tabindex="0" aria-label={`Estudos complementares para ${book.title}`}>{companions.map((item,i)=><article class="browse-tile companion-tile"><div class="card-media"><img src={base+item.file} alt={item.alt} loading="lazy" decoding="async"/></div><div class="browse-body"><span>{item.theme} · {String(i+1).padStart(2,'0')}</span><h4>{item.title}</h4><p>{item.caption}</p><a href={base+item.href}>{item.link} →</a></div></article>)}</div></div>}
   </section>
   </Fragment>)}
 
@@ -162,7 +170,8 @@ const totalSheets = sketchbookGalleries.reduce((total, book) => total + book.ima
     document.querySelectorAll("[data-gallery-controls]").forEach((controls) => {
       if (!(controls instanceof HTMLElement) || controls.dataset.initialized === "true") return;
       const section = controls.closest(".sketchbook-gallery");
-      const track = section?.querySelector(".browse-rail");
+      const trackName=controls.dataset.galleryTrack||"original";
+      const track = section?.querySelector(`.browse-rail[data-gallery-role="${trackName}"]`);
       if (!(section instanceof HTMLElement) || !(track instanceof HTMLElement)) return;
       controls.dataset.initialized = "true";
       controls.addEventListener("click", (event) => {

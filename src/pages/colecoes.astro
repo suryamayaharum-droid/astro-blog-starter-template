@@ -2,6 +2,7 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import VisualStudyCollectionRail from '../components/VisualStudyCollectionRail.astro';
 const base=import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 const collections=[
   {id:'gesto',number:'01',eyebrow:'GESTO · CORPO',title:'A mão em ação.',text:'Repousar, tocar, segurar, pressionar. Leia a direção e a pressão antes de separar os dedos.',image:'maos-seis-gestos',alt:'Seis estudos de mãos em repouso, toque, preensão, pressão, tensão e proteção.',href:'maos/#exercicio',link:'Praticar seis gestos'},
@@ -22,6 +23,7 @@ const collections=[
 <div class="collection-copy"><small>{item.eyebrow}</small><h3>{item.title}</h3><p>{item.text}</p><a href={base+item.href}>{item.link} <span aria-hidden="true">↗</span></a></div>
 </article>)}</div>
 </section>
+<VisualStudyCollectionRail lang="pt"/>
 <section class="section"><div class="journal"><div class="paper"><div class="eyebrow" style="color:#8a734b">COMO USAR</div><h2>Uma imagem, uma pergunta, um estudo.</h2><p class="lead">A imagem ajuda a ver; a prática confirma o que você aprendeu.</p><p>Escolha uma coleção, faça um desenho curto e anote uma decisão que seja sua. Guarde a referência como ponto de partida, não como resultado.</p><p><a href={base+'escola/'}>Voltar à Escola Aberta →</a></p></div></div></section>
 </main><Footer/></body></html>
 <style>

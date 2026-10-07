@@ -1,6 +1,7 @@
 ---
 import BaseHead from './BaseHead.astro';
 import RailEnhancer from './RailEnhancer.astro';
+import VisualStudyCollectionRail from './VisualStudyCollectionRail.astro';
 interface Card { kicker:string; title:string; text:string; href:string; label:string; }
 interface Answer { question:string; answer:string; }
 interface Props {
@@ -19,6 +20,7 @@ interface Props {
   answers?:Answer[];
 }
 const {lang,title,description,kicker,heading,lead,cards,alternateHref,alternateLang,alternateLabel,ptHref,topics=[],answers=[]}=Astro.props;
+const isVisualCollectionsPage=title.startsWith('Visual Collections')||title.startsWith('Colecciones Visuales');
 const base=import.meta.env.BASE_URL.endsWith('/')?import.meta.env.BASE_URL:import.meta.env.BASE_URL+'/';
 const portugueseSource=new URL(ptHref,Astro.site).href;
 const translateHref=(target:'en'|'es')=>{
@@ -112,6 +114,7 @@ const hubSchema={
 <a class="ih-card-link" href={card.href}><figure class="ih-card-visual"><img src={card.visual.src} alt={card.visual.alt} width="1200" height="800" loading="lazy"/><figcaption><b>{card.kicker}</b><span>{card.visual.caption}</span></figcaption></figure><div class="ih-card-copy"><h2>{card.title}</h2><span class="ih-card-action">{card.label}</span></div></a>
 <details class="ih-card-note"><summary>{lang==='en'?'Study note':'Nota de estudio'}</summary><p>{card.text}</p></details>
 </article>)}</section>
+{isVisualCollectionsPage&&<VisualStudyCollectionRail lang={lang}/>}
 {answers.length>0&&<section class="ih-answers" aria-labelledby="ih-answers-title"><div class="ih-answers-head"><span>{lang==='en'?'QUICK ANSWERS':'RESPUESTAS CLARAS'}</span><h2 id="ih-answers-title">{lang==='en'?'What this archive is for.':'Para qué sirve este archivo.'}</h2></div><div class="ih-answer-grid">{answers.map(item=><article><h3>{item.question}</h3><p>{item.answer}</p></article>)}</div></section>}
 <section class="ih-footnote"><p>{lang==='en'?'The deeper archive remains source-first: museum records stay canonical, artist references link back to original channels, and editorial studies are not presented as executed tattoos.':'El archivo profundo mantiene las fuentes originales: los registros de museos siguen siendo canónicos, las referencias enlazan a sus canales originales y los estudios editoriales no se presentan como tatuajes realizados.'}</p><div class="ih-footlinks"><a href={alternateHref}>{alternateLabel}</a><a href={aboutHref}>{lang==='en'?'About the ecosystem →':'Acerca del ecosistema →'}</a></div></section>
 </main>
