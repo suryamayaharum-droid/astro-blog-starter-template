@@ -28,7 +28,7 @@ const companions={
 {temporadas.map(t=><section class="section" id={'t'+t.n} style="scroll-margin-top:84px;border-top:1px solid rgba(238,231,220,.12)">
   <div class="season-detail">
     <figure class="season-detail-art"><img src={base+'noir/season-covers/'+t.image} alt={t.alt} loading="lazy" decoding="async"/><figcaption>Imagem didática criada para esta temporada; não representa uma obra histórica.</figcaption></figure>
-    <div class="panel season-study"><div class="eyebrow">TEMPORADA {t.n}</div><h2>{t.title}</h2><p>{t.text}</p><h3>Pergunta de observação</h3><p>{t.question}</p><h3>Exercício</h3><p>{t.exercise}</p><div class="season-output"><b>O que guardar</b><span>{t.output}</span></div><div class="browse-quick">{(companions[t.n]||[]).map(x=><a href={base+x[1]}>{x[0]}</a>)}</div></div>
+    <div class="panel season-study"><div class="eyebrow">TEMPORADA {t.n}</div><h2>{t.title}</h2><p>{t.text}</p><h3>Pergunta de observação</h3><p>{t.question}</p><h3>Exercício</h3><p>{t.exercise}</p><div class="season-output"><b>O que guardar</b><span>{t.output}</span></div><div class="browse-quick" role="group" aria-label="Atalhos relacionados">{(companions[t.n]||[]).map(x=><a href={base+x[1]}>{x[0]}</a>)}</div></div>
     <div class="panel season-rhythm"><div class="eyebrow">SEQUÊNCIA DE ESTUDO</div><ol><li>Observe a referência e nomeie uma decisão visual.</li><li>Faça o exercício sem buscar acabamento.</li><li>Compare o resultado com a pergunta inicial.</li><li>Refaça de memória e anote o que mudou.</li></ol><div class="quote">Observe → pratique → compare → refaça.</div></div>
   </div>
 </section>)}
