@@ -1,5 +1,5 @@
 # HARUM NOIR — relatório de auditoria visual e didática
-Data da inspeção: 2026-10-06
+Data da inspeção: 2026-10-06 · complemento: 2026-10-07
 
 ## Escopo conferido ao vivo
 - Página inicial e assistente Lume: respostas determinísticas de navegação funcionam; carregamento do modelo de IA é opcional.
@@ -17,6 +17,7 @@ Data da inspeção: 2026-10-06
 2. Portada EN: nota de idioma corrigida para distinguir esta portada e suas rotas traduzidas do arquivo mais amplo em português.
 3. Portada ES: mesma correção de idioma aplicada e publicada no GitHub Pages.
 4. BNDigital: criada e publicada uma prancha visual em seis recortes temáticos nos cartões de estudo; procedência separada claramente de documentos originais.
+5. Cadernos: preenchidas as seis fichas que estavam sem imagem (Sully, Reynolds, Wright, Bluemner, Whistler e Edmonds) com mídia oficial identificada como domínio público nas fontes. Os links de imagem apontam aos servidores do Met/NGA.
 
 ## Estado dos testes
 - Inspeção manual: nove áreas/categorias do site, incluindo EN, ES e Banco Nacional Digital.
@@ -24,6 +25,12 @@ Data da inspeção: 2026-10-06
 - Imagens quebradas confirmadas nas páginas inspecionadas: nenhuma.
 - CI e implantação do site: sucesso.
 - Auditoria móvel automatizada: sucesso. A matriz percorreu 52 rotas em 4 larguras de celular; os testes internacionais EN/ES e os limites responsivos também passaram. Uma tentativa anterior encontrou um 503 transitório; a execução completa posterior concluiu com sucesso.
+
+## Pendências que permanecem
+- A revisão editorial profunda não cobre integralmente todos os conteúdos do arquivo: a inspeção manual desta rodada passou por nove áreas; a matriz automatizada conferiu 52 rotas em responsividade, não a qualidade de cada texto, exercício e CTA.
+- As seis imagens novas dos cadernos são servidas pelos endpoints oficiais do Met/NGA. O espelhamento das imagens para dentro de `public/` ainda falta para eliminar dependência desses servidores; também é necessário inventariar outros assets externos antes de afirmar que todas as imagens estão hospedadas no GitHub.
+- O Lume funciona como guia determinístico de navegação. Um modelo de IA integrado e operacional não foi confirmado nesta auditoria; a camada opcional não deve ser apresentada como IA nativa funcional.
+- Inglês e espanhol cobrem as portadas e rotas principais. O arquivo mais amplo permanece em português, conforme a preferência registrada.
 
 ## Mapa resumido
 ```text
