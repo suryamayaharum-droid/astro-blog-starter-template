@@ -21,7 +21,25 @@ export type OpenLibraryCollection = {
   sources: OpenLibrarySource[];
 };
 
-export const openLibraryCollections: OpenLibraryCollection[] = [
+export const openLibraryCollections: OpenLibraryCollection[] = [\n  {
+    id: "materia-como-linguagem",
+    theme: "MATÉRIA",
+    kicker: "MATERIAIS & PROCESSOS",
+    title: "Matéria como linguagem",
+    thesis: "Carvão, grafite, giz e tinta não são apenas ferramentas: cada matéria muda pressão, borda, ritmo, apagamento e a maneira de construir luz.",
+    rule: "Aprender o comportamento do material antes de tentar impor a ele um acabamento.",
+    destination: "Escola · materiais · processos",
+    practice: "Repita um mesmo motivo em carvão, grafite, giz e tinta. Compare o que cada matéria pede à mão e preserve as diferenças em vez de uniformizá-las.",
+    nextHref: "atelier",
+    nextLabel: "Levar ao Ateliê",
+    sources: [
+      { creator: "The Met", title: "Charcoal · Materials and Techniques", source: "The Metropolitan Museum of Art", url: "https://www.metmuseum.org/fr/perspectives/materials-and-techniques-drawing-charcoal", observe: "Willow/vine charcoal, pó, chamois, stump, pressão, massa e apagamento apresentados por uma fonte museológica.", rights: "Recurso educacional público · imagens conforme direitos do Met" },
+      { creator: "The Met", title: "Graphite · Materials and Techniques", source: "The Metropolitan Museum of Art", url: "https://www.metmuseum.org/pt/perspectives/materials-and-techniques-drawing-graphite", observe: "Dureza 9H–9B, ponta e lateral, hachura, massa tonal, stump e recuperação de luz pelo apagamento.", rights: "Recurso educacional público · imagens conforme direitos do Met" },
+      { creator: "The Met", title: "Chalk · Materials and Techniques", source: "The Metropolitan Museum of Art", url: "https://www.metmuseum.org/pt/perspectives/materials-and-techniques-drawing-chalk", observe: "Giz preto, vermelho e branco, stumping, wash, heightening e papel tonalizado.", rights: "Recurso educacional público · imagens conforme direitos do Met" },
+      { creator: "The Met", title: "Ink · Materials and Techniques", source: "The Metropolitan Museum of Art", url: "https://www.metmuseum.org/pt/perspectives/materials-and-techniques-drawing-ink", observe: "Pena, pincel, reed/quill pen, linha, lavagem, diluição e recuperação de luz por raspagem.", rights: "Recurso educacional público · imagens conforme direitos do Met" }
+    ]
+  },
+
   {
     id: "caderno-como-universo",
     theme: "MEMÓRIA",
