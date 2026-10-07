@@ -8,6 +8,7 @@ import { imageBanks, imageBankById, studyFans } from '../data/imageBanks';
 import '../styles/imageBanks.css';
 const base=import.meta.env.BASE_URL.endsWith('/')?import.meta.env.BASE_URL:import.meta.env.BASE_URL+'/';
 const live=imageBanks.filter(x=>x.liveFederated).length;
+const bankCovers=['museum-gallery.webp','open-sketchbook.webp','harum-noir-caderno-estudo.webp','moonlit-landscape.webp','iris-study.webp','drapery-still-life.webp','tools-paper.webp','atelier-desk.webp'];
 const banksSchema={
   '@context':'https://schema.org',
   '@type':'CollectionPage',
