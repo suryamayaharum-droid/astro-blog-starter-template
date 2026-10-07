@@ -25,15 +25,15 @@ Data da inspeção: 2026-10-06 · complemento: 2026-10-07
 
 ## Estado dos testes
 - Inspeção manual: nove áreas/categorias do site, incluindo EN, ES e Banco Nacional Digital.
-- Defeitos de conteúdo confirmados nesta rodada: 2 tipos; as correções estão publicadas.
-- Imagens quebradas confirmadas nas páginas inspecionadas: nenhuma antes da migração; validação das 26 cópias locais após implantação registrada abaixo.
-- CI e implantação do site: sucesso na revisão anterior; esta revisão aguarda o novo build e a checagem visual das 26 cópias locais.
-- Auditoria móvel automatizada: sucesso. A matriz percorreu 52 rotas em 4 larguras de celular; os testes internacionais EN/ES e os limites responsivos também passaram. Uma tentativa anterior encontrou um 503 transitório; a execução completa posterior concluiu com sucesso.
+- Defeitos confirmados e corrigidos: duas falhas de conteúdo e nove URLs de imagem inválidas; as 26 imagens do catálogo agora carregam de cópias locais.
+- Cadernos: 26/26 imagens locais carregaram na página publicada; nenhum arquivo quebrou e os 26 cartões abrem a cópia interna no mesmo domínio.
+- CI e GitHub Pages: build e publicação concluídos com sucesso no commit `9dcad56981aa52a77e1319673bd84a22ae977db1`.
+- Auditoria móvel automatizada: sucesso no commit publicado. A matriz percorreu 52 rotas em quatro larguras de celular; os testes internacionais EN/ES e os limites responsivos também passaram. Uma tentativa anterior encontrou um 503 transitório; a execução completa posterior concluiu com sucesso.
+- Inventário de mídia: 117 arquivos de código e páginas de `src/` e `public/studio23/` revisados; o repositório contém 681 arquivos de imagem; as 26 cópias locais do catálogo somam 1,65 MB em WebP. A mídia do Studio 23 referencia arquivos do mesmo GitHub Pages.
 
 ## Pendências que permanecem
 - A revisão editorial profunda não cobre integralmente todos os conteúdos do arquivo: a inspeção manual desta rodada passou por nove áreas; a matriz automatizada conferiu 52 rotas em responsividade, não a qualidade de cada texto, exercício e CTA.
-- No catálogo de sketchbooks, as 26 imagens já foram espelhadas para o repositório; falta confirmar o carregamento no Pages após a nova implantação.
-- Ainda falta inventariar as demais imagens externas do site fora deste catálogo antes de afirmar que todos os assets do HARUM NOIR estão hospedados no GitHub.
+- Exceção encontrada: a busca da página Museus consulta Met, Art Institute of Chicago e Cleveland em tempo real e exibe imagens fornecidas pelas APIs oficiais. O GitHub Pages é estático; para essas imagens também ficarem locais, seria necessário limitar as buscas a uma coleção curada e pré-espelhada ou adicionar um backend. As imagens específicas seguem úteis e têm fallback local se a API de mídia falhar.
 - O Lume funciona como guia determinístico de navegação. Um modelo de IA integrado e operacional não foi confirmado nesta auditoria; a camada opcional não deve ser apresentada como IA nativa funcional.
 - Inglês e espanhol cobrem as portadas e rotas principais. O arquivo mais amplo permanece em português, conforme a preferência registrada.
 
