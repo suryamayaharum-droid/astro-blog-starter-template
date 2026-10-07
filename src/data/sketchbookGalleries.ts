@@ -84,7 +84,7 @@ export const sketchbookGalleries = [
     originalUrl: "https://www.nga.gov/artworks/76219-cezanne-sketchbook",
     commonsUrl: "https://www.nga.gov/artworks/76219-cezanne-sketchbook",
     images: [
-      { url: "https://api.nga.gov/iiif/0cbded62-7e78-4d3c-930d-33c6caed3a12/full/!800,800/0/default.jpg", href: "https://www.nga.gov/artworks/76219-cezanne-sketchbook", label: "Caderno · entrada" }
+      { url: "https://api.nga.gov/iiif/3f6fe37b-f189-4147-8cca-d3a5de0e6ff4/full/!800,800/0/default.jpg", href: "https://www.nga.gov/artworks/76219-cezanne-sketchbook", label: "Caderno · entrada" }
     ]
   },
   {
@@ -128,12 +128,12 @@ export const sketchbookGalleries = [
     originalUrl: "https://www.si.edu/object/chndm_1984-86-7-22",
     commonsUrl: "https://www.si.edu/search?edan_q=Kenyon%20Cox%20Sketchbook%20Page",
     images: [
-      { url: "https://ids.si.edu/ids/deliveryService?id=CHSDM-1984-86-7-22MattFlynn", href: "https://www.si.edu/object/chndm_1984-86-7-22", label: "Estátua clássica" },
-      { url: "https://ids.si.edu/ids/deliveryService?id=CHSDM-1984-86-7-26MattFlynn", href: "https://www.si.edu/object/sketchbook-page-artist-work%3Achndm_1984-86-7-26", label: "Artista trabalhando" },
-      { url: "https://ids.si.edu/ids/deliveryService?id=CHSDM-1984-86-4-46MattFlynn", href: "https://www.si.edu/object/sketchbook-page%3Achndm_1984-86-4-46", label: "Figura feminina sentada" },
-      { url: "https://ids.si.edu/ids/deliveryService?id=CHSDM-1984-86-6-2MattFlynn", href: "https://www.si.edu/object/sketchbook-page-nude-female-figures-landscape%3Achndm_1984-86-6-2", label: "Figuras no espaço" },
-      { url: "https://ids.si.edu/ids/deliveryService?id=CHSDM-1984-86-3-18MattFlynn", href: "https://www.si.edu/object/sketchbook-page-sketches-flowers-and-leaves%3Achndm_1984-86-3-18", label: "Flores e folhas" },
-      { url: "https://ids.si.edu/ids/deliveryService?id=CHSDM-1984-86-7-70MattFlynn", href: "https://www.si.edu/object/sketchbook-page-isis%3Achndm_1984-86-7-70", label: "Isis · imagem e anotação" }
+      { url: "https://ids.si.edu/ids/deliveryService?id=CHSDM-181961_01-000003&max_w=800", href: "https://www.si.edu/object/chndm_1984-86-7-22", label: "Estátua clássica" },
+      { url: "https://ids.si.edu/ids/deliveryService?id=CHSDM-181965_01-000003&max_w=800", href: "https://www.si.edu/object/sketchbook-page-artist-work%3Achndm_1984-86-7-26", label: "Artista trabalhando" },
+      { url: "https://ids.si.edu/ids/deliveryService?id=CHSDM-181780_01-000003&max_w=800", href: "https://www.si.edu/object/sketchbook-page%3Achndm_1984-86-4-46", label: "Figura feminina sentada" },
+      { url: "https://ids.si.edu/ids/deliveryService?id=CHSDM-181918_01-000001&max_w=800", href: "https://www.si.edu/object/sketchbook-page-nude-female-figures-landscape%3Achndm_1984-86-6-2", label: "Figuras no espaço" },
+      { url: "https://ids.si.edu/ids/deliveryService?id=CHSDM-181704_01-000001&max_w=800", href: "https://www.si.edu/object/sketchbook-page-sketches-flowers-and-leaves%3Achndm_1984-86-3-18", label: "Flores e folhas" },
+      { url: "https://ids.si.edu/ids/deliveryService?id=CHSDM-182014_01-000003&max_w=800", href: "https://www.si.edu/object/sketchbook-page-isis%3Achndm_1984-86-7-70", label: "Isis · imagem e anotação" }
     ]
   },
   {
@@ -149,7 +149,7 @@ export const sketchbookGalleries = [
     originalUrl: "https://www.si.edu/object/sketchbook-newport-rhode-island-new-jersey-and-england-views%3Achndm_1953-179-89",
     commonsUrl: "https://www.si.edu/object/sketchbook-newport-rhode-island-new-jersey-and-england-views%3Achndm_1953-179-89",
     images: [
-      { url: "https://ids.si.edu/ids/deliveryService?id=CHSDM-1953-179-89MattFlynn", href: "https://www.si.edu/object/sketchbook-newport-rhode-island-new-jersey-and-england-views%3Achndm_1953-179-89", label: "Caderno · 89 desenhos / 88 folhas" }
+      { url: "https://ids.si.edu/ids/deliveryService?id=CHSDM-CHP8271&max_w=800", href: "https://www.si.edu/object/sketchbook-newport-rhode-island-new-jersey-and-england-views%3Achndm_1953-179-89", label: "Caderno · 89 desenhos / 88 folhas" }
     ]
   },
   {
