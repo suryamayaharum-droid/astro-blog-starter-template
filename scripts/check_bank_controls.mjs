@@ -61,8 +61,8 @@ const progressStart = guide.indexOf("if (message.type === 'progress')");
 const progressEnd = guide.indexOf("if (message.type === 'unsupported')", progressStart);
 const progressHandler = guide.slice(progressStart, progressEnd);
 for (const token of [
-  "message.status === 'progress_total'",
-  "message.status === 'progress'",
+  "status === 'progress_total'",
+  "status === 'progress'",
   "aria-valuetext",
   "O valor acompanha este arquivo",
   "aiProgress.removeAttribute('value')",
