@@ -79,6 +79,8 @@ if (root) {
   let aiState = 'idle';
   let aiBusy = false;
   let aiDevice = '';
+  let aiLoadHintTimer = 0;
+  let aiLoadAttempt = 0;
   let requestId = 0;
   let activeRequestId = 0;
   let activeQuestion = '';
@@ -215,7 +217,25 @@ if (root) {
     aiStatus.textContent = message;
   };
 
+  const clearAiLoadHint = () => {
+    if (aiLoadHintTimer) window.clearTimeout(aiLoadHintTimer);
+    aiLoadHintTimer = 0;
+  };
+
+  const scheduleAiLoadHint = () => {
+    clearAiLoadHint();
+    aiLoadHintTimer = window.setTimeout(() => {
+      aiLoadHintTimer = 0;
+      if (aiState !== 'loading') return;
+      aiProgress.removeAttribute('value');
+      aiProgress.setAttribute('aria-valuetext', 'Carregamento em andamento, aguardando atualização.');
+      setAiStatus('O carregamento continua sem novas atualizações. A primeira inicialização pode demorar; mantenha esta aba aberta ou cancele.');
+    }, 20000);
+  };
+
   const resetAiWorker = () => {
+    clearAiLoadHint();
+    aiLoadAttempt += 1;
     if (aiWorker) aiWorker.terminate();
     aiWorker = null;
     aiBusy = false;
@@ -226,22 +246,49 @@ if (root) {
   const handleAiMessage = (event) => {
     const message = event.data || {};
     if (message.type === 'backend') {
+      scheduleAiLoadHint();
       aiDevice = message.device || '';
       const route = aiDevice === 'webgpu' ? 'GPU · 4 bits · ~483 MB' : 'CPU/WASM · 8 bits · ~512 MB';
+      aiProgress.removeAttribute('value');
+      aiProgress.setAttribute('aria-valuetext', 'Preparação do modelo em andamento.');
       setAiStatus(`Motor escolhido: ${route}. Preparando modelo no cache do navegador…`);
       return;
     }
 
     if (message.type === 'progress') {
+      scheduleAiLoadHint();
       aiProgress.hidden = false;
+      const status = String(message.status || '');
       const progress = Number(message.progress);
+      const hasProgress = message.progress !== null
+        && message.progress !== undefined
+        && message.progress !== ''
+        && Number.isFinite(progress);
       const engine = aiDevice === 'webgpu' ? 'GPU' : aiDevice === 'wasm' ? 'CPU/WASM' : 'local';
-      if (Number.isFinite(progress)) {
+      if (hasProgress && status === 'progress_total') {
         const percent = Math.max(0, Math.min(100, progress <= 1 ? progress * 100 : progress));
         aiProgress.value = percent;
-        setAiStatus((message.status === 'runtime' ? 'Carregando o runtime local…' : `Baixando/preparando no motor ${engine}…`) + (percent > 0 ? ' ' + Math.round(percent) + '%.' : ''));
+        aiProgress.setAttribute('aria-valuetext', `Progresso geral do carregamento: ${Math.round(percent)} por cento.`);
+        setAiStatus(`Preparação geral no motor ${engine}: ${Math.round(percent)}%.`);
+      } else if (hasProgress && status === 'progress') {
+        const percent = Math.max(0, Math.min(100, progress <= 1 ? progress * 100 : progress));
+        const file = String(message.file || '').split(/[\\/]/).pop().trim().slice(0, 48);
+        const fileLabel = file ? ` do arquivo ${file}` : ' do arquivo atual';
+        aiProgress.value = percent;
+        aiProgress.setAttribute('aria-valuetext', `Progresso deste arquivo: ${Math.round(percent)} por cento.`);
+        setAiStatus(`Baixando${fileLabel}: ${Math.round(percent)}% no motor ${engine}. O valor acompanha este arquivo.`);
       } else {
-        setAiStatus(message.status === 'runtime' ? 'Carregando o runtime local…' : `Baixando e preparando o modelo no motor ${engine}…`);
+        aiProgress.removeAttribute('value');
+        aiProgress.setAttribute('aria-valuetext', 'Carregamento do modelo em andamento.');
+        const phaseMessages = {
+          runtime: 'Carregando o runtime local…',
+          initiate: 'Iniciando o motor local…',
+          download: `Baixando os arquivos do modelo no motor ${engine}…`,
+          done: 'Arquivos carregados; inicializando o modelo local…',
+          ready: 'Arquivos carregados; finalizando a inicialização do modelo local…',
+          progress_total: 'Preparando o progresso geral do modelo…'
+        };
+        setAiStatus(phaseMessages[status] || `Baixando e preparando o modelo no motor ${engine}…`);
       }
       return;
     }
@@ -258,6 +305,7 @@ if (root) {
     }
 
     if (message.type === 'ready') {
+      clearAiLoadHint();
       aiState = 'ready';
       aiEnable.disabled = true;
       aiEnable.textContent = 'IA local pronta';
@@ -324,6 +372,16 @@ if (root) {
       setAiStatus('Este navegador não permite executar o modelo em segundo plano. O guia local continua disponível.');
       return;
     }
+    aiState = 'loading';
+    const loadAttempt = ++aiLoadAttempt;
+    aiEnable.disabled = true;
+    aiEnable.textContent = 'Preparando IA local…';
+    aiCancel.hidden = false;
+    aiProgress.hidden = false;
+    aiProgress.removeAttribute('value');
+    aiProgress.setAttribute('aria-valuetext', 'Preparação do modelo em andamento.');
+    setAiStatus('Verificando GPU e preparando a alternativa CPU/WASM…');
+    scheduleAiLoadHint();
     try {
       const estimate = await navigator.storage?.estimate?.();
       const available = Number(estimate?.quota) - Number(estimate?.usage || 0);
@@ -331,16 +389,11 @@ if (root) {
         setAiStatus('O espaço livre informado pelo navegador parece baixo para guardar o modelo. Vou tentar carregar; se falhar, libere espaço e tente de novo.');
       }
     } catch {}
-    aiState = 'loading';
-    aiEnable.disabled = true;
-    aiEnable.textContent = 'Preparando IA local…';
-    aiCancel.hidden = false;
-    aiProgress.hidden = false;
-    aiProgress.value = 0;
-    setAiStatus('Verificando GPU e preparando a alternativa CPU/WASM…');
+    if (aiState !== 'loading' || loadAttempt !== aiLoadAttempt) return;
     try {
       aiWorker = new Worker(new URL('../scripts/lume-ai.worker.js', import.meta.url), { type: 'module' });
     } catch (error) {
+      clearAiLoadHint();
       aiState = 'failed';
       aiEnable.disabled = false;
       aiEnable.textContent = 'Tentar carregar IA · até 512 MB';
@@ -360,6 +413,7 @@ if (root) {
       setAiStatus('O navegador interrompeu o motor local. Feche outras abas, confira o espaço livre e tente novamente.');
       event.preventDefault();
     });
+    scheduleAiLoadHint();
     aiWorker.postMessage({ type: 'load' });
   };
 

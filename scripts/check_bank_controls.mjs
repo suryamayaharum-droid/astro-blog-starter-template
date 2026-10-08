@@ -57,4 +57,23 @@ for (const token of ["CPU/WASM", "até 512 MB", "data-lume-ai-enable", "answerSt
   if (!guide.includes(token)) throw new Error(`Lume UI is missing its local-model guidance: ${token}.`);
 }
 
-console.log(`Bank/control contract: ${checked} bank routes checked; BNDigital has six distinct terms and Sophia target; federated routes keep distinct queries; local Qwen GPU/CPU cache and relevance guard present.`);
+const progressStart = guide.indexOf("if (message.type === 'progress')");
+const progressEnd = guide.indexOf("if (message.type === 'unsupported')", progressStart);
+const progressHandler = guide.slice(progressStart, progressEnd);
+for (const token of [
+  "status === 'progress_total'",
+  "status === 'progress'",
+  "aria-valuetext",
+  "O valor acompanha este arquivo",
+  "aiProgress.removeAttribute('value')",
+  "scheduleAiLoadHint()"
+]) {
+  if (!progressHandler.includes(token)) {
+    throw new Error(`Lume loading progress is missing phase-aware feedback: ${token}.`);
+  }
+}
+if (!guide.includes('O carregamento continua sem novas atualizações')) {
+  throw new Error("Lume loading progress is missing its stalled-load hint.");
+}
+
+console.log(`Bank/control contract: ${checked} bank routes checked; BNDigital has six distinct terms and Sophia target; federated routes keep distinct queries; local Qwen GPU/CPU cache, relevance guard and truthful phase-aware loading feedback present.`);
