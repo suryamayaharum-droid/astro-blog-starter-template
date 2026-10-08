@@ -101,25 +101,54 @@ export const institutionalBankCovers: Record<string, VisualStudy> = {
 
 const lensArtwork = [
   {file: visualAtlas + "maos-seis-gestos.webp", alt: "Estudo editorial de mãos em diferentes ações."},
-  {file: visualStudyCollection[0].file, alt: visualStudyCollection[0].alt},
-  {file: visualStudyCollection[3].file, alt: visualStudyCollection[3].alt},
-  {file: visualStudyCollection[1].file, alt: visualStudyCollection[1].alt},
-  {file: visualStudyCollection[2].file, alt: visualStudyCollection[2].alt},
-  {file: visualStudyCollection[4].file, alt: visualStudyCollection[4].alt},
+  {file: visualAtlas + "figure-gesture.webp", alt: "Estudo editorial de uma figura vestida, da linha de ação à forma."},
+  {file: visualAtlas + "harum-cover-study-adam.webp", alt: "Estudo editorial de figura sentada e tecido em carvão."},
+  {file: visualAtlas + "estudo-tonal-pera.webp", alt: "Estudo editorial de pera, tecido e massas de luz e sombra."},
+  {file: visualAtlas + "drapery-still-life.webp", alt: "Estudo editorial de tecido, volumes geométricos e luz lateral."},
+  {file: visualAtlas + "iris-study.webp", alt: "Estudo editorial de íris e folhas em linha e hachura."},
+  {file: visualAtlas + "collections/botanica-iris.webp", alt: "Composição editorial de botânica, desenho e papel de arquivo."},
+  {file: visualAtlas + "theme-japanese-line.webp", alt: "Paisagem editorial em linha, onda e espaço inspirado na gravura japonesa."},
+  {file: visualAtlas + "moonlit-landscape.webp", alt: "Paisagem editorial de ponte, água, montanhas e luz noturna."},
+  {file: visualAtlas + "brasil-acervo-editorial.webp", alt: "Mesa editorial de pesquisa com mapa, papel e vestígio botânico."},
+  {file: visualAtlas + "theme-brazil-memory.webp", alt: "Composição editorial de mapas, folhas e memória visual da Bahia."},
+  {file: visualAtlas + "collections/arquivo-bahia.webp", alt: "Composição editorial de arquivo, cartografia e memória gráfica da Bahia."},
+  {file: visualAtlas + "open-sketchbook.webp", alt: "Caderno editorial aberto com estudos de linha e composição."},
+  {file: visualAtlas + "collections/arquivo-caderno.webp", alt: "Caderno editorial aberto sobre uma mesa de pesquisa."},
+  {file: visualAtlas + "harum-cover-metalpoint.webp", alt: "Estudo editorial de retrato, ponta metálica e ferramentas de desenho."},
+  {file: visualAtlas + "bndigital-study-atlas.webp", alt: "Painel editorial sobre cidade, cartografia, livro, botânica e retrato brasileiros."},
+  {file: visualAtlas + "collections/estudo-tonal.webp", alt: "Natureza-morta editorial de pera, tecido, esfera e tigela."},
+  {file: visualAtlas + "collections/paisagem-maritima.webp", alt: "Estudo editorial de mar, horizonte e atmosfera."},
 ];
 
-export function artworkForLens(label: string, bankId: string, index: number) {
+function candidatesForLens(label: string, bankId: string) {
   const name = label.toLocaleLowerCase("pt-BR");
-  if (/bot[aâ]nic|flor|folha|ornament|flower/.test(name)) return lensArtwork[3];
-  if (/mar|paisag|onda|jap[aã]o|natureza|wave/.test(name)) return lensArtwork[4];
-  if (/map|arquivo|impr|cartaz|livro|manuscrito|caderno|document/.test(name)) {
-    return bankId === "bndigital" ? lensArtwork[5] : lensArtwork[1];
+  if (bankId === "bndigital") {
+    if (/bahia/.test(name)) return [lensArtwork[11], lensArtwork[10], lensArtwork[17], lensArtwork[15]];
+    if (/cartograf|mapa|map/.test(name)) return [lensArtwork[9], lensArtwork[10], lensArtwork[15], lensArtwork[11]];
+    if (/bot[aâ]nic|flora|flower/.test(name)) return [lensArtwork[6], lensArtwork[5], lensArtwork[10]];
+    if (/impr|peri[oó]d|livro|document|arquivo|archiv/.test(name)) return [lensArtwork[13], lensArtwork[12], lensArtwork[14], lensArtwork[15]];
+    if (/retrato|portrait/.test(name)) return [lensArtwork[2], lensArtwork[14], lensArtwork[1], lensArtwork[15]];
+    if (/brasil|oitocent|hist[oó]ric/.test(name)) return [lensArtwork[15], lensArtwork[9], lensArtwork[11], lensArtwork[12]];
   }
-  if (/carv[aã]o|tonal|luz|valor|drape|volume|escultur|pera|cor /.test(name)) return lensArtwork[2];
-  if (/m[aã]o|gesto|press[aã]o/.test(name)) return lensArtwork[0];
-  const cover = institutionalBankCovers[bankId];
-  if (cover) return {file: cover.file, alt: cover.alt};
-  return lensArtwork[index % lensArtwork.length];
+  if (/bot[aâ]nic|flora|flower|folha|plant/.test(name)) return [lensArtwork[6], lensArtwork[5], lensArtwork[10]];
+  if (/m[aã]o|gesto|hand|gesture|press[aã]o|contato/.test(name)) return [lensArtwork[0], lensArtwork[1], lensArtwork[2]];
+  if (/figura|anatom|portrait|retrato|pose|fashion|moda|traje|sculpt|escultur|rembrandt|mestre|master/.test(name)) return [lensArtwork[1], lensArtwork[2], lensArtwork[14], lensArtwork[0]];
+  if (/carv[aã]o|tonal|luz|light|valor|value|color|cor|drape|tecido|textil|mat[eé]ria|still.life|natureza|volume|interior|ateli[eê]|studio/.test(name)) return [lensArtwork[3], lensArtwork[4], lensArtwork[16], lensArtwork[14]];
+  if (/mar|paisag|onda|jap[aã]o|[aã]sia|wave|landscape/.test(name)) return [lensArtwork[7], lensArtwork[8], lensArtwork[17], lensArtwork[10]];
+  if (/map|cartograf|territ|bahia|brazil|brasil|architecture|arquitet|paris|cidade|city/.test(name)) return [lensArtwork[10], lensArtwork[9], lensArtwork[15], lensArtwork[11], lensArtwork[8]];
+  if (/gravura|print|etch|metalpoint|linha|line|ink|reprodu|poster|cartaz|dessin|desenho|drawing/.test(name)) return [lensArtwork[14], lensArtwork[7], lensArtwork[13], lensArtwork[12], lensArtwork[15]];
+  if (/foto|photograph|mem[oó]ria|arquivo|archiv|manuscript|manuscrito|book|livro|press|imprensa|design|caderno|document|free.to.use|dom[ií]nio.p[uú]blico/.test(name)) return [lensArtwork[13], lensArtwork[12], lensArtwork[9], lensArtwork[15], lensArtwork[2]];
+  return [];
+}
+
+export function artworkForLens(label: string, bankId: string, index: number, usedFiles: Set<string> = new Set()) {
+  const start = [...bankId].reduce((sum, char) => sum + char.charCodeAt(0), 0) % lensArtwork.length;
+  const rotatedDeck = [...lensArtwork.slice(start), ...lensArtwork.slice(0, start)];
+  const preferred = candidatesForLens(label, bankId);
+  const ordered = [...preferred, ...rotatedDeck];
+  const artwork = ordered.find((item) => !usedFiles.has(item.file)) || ordered[index % ordered.length] || lensArtwork[index % lensArtwork.length];
+  usedFiles.add(artwork.file);
+  return artwork;
 }
 
 const companionStudy=(id:string,title:string,theme:string,file:string,alt:string,href:string,link:string):VisualStudy=>({

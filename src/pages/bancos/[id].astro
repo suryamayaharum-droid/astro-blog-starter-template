@@ -32,7 +32,8 @@ const base=import.meta.env.BASE_URL.endsWith('/')?import.meta.env.BASE_URL:impor
 const bankCover=themedGuide
   ? {file:'noir/visual-atlas/'+themedGuide.image,alt:themedGuide.alt,caption:'Composição temática HARUM NOIR; não é registro do acervo.'}
   : institutionalBankCovers[bank.id]||visualStudyCollection[0];
-const lensCards=bank.lenses.map((lens,index)=>({lens,artwork:artworkForLens(lens.label,bank.id,index)}));
+const usedLensArtwork=new Set<string>();
+const lensCards=bank.lenses.map((lens,index)=>({lens,artwork:artworkForLens(lens.label,bank.id,index,usedLensArtwork)}));
 const liveBase=bank.liveFederated?base+'museus?q=':null;
 const bankSearchUrl=bank.id==='bndigital'?'https://acervobndigital.bn.gov.br/sophia/index.asp':bank.collectionUrl;
 const sourceType=bank.kind==='museum'?'Museum':bank.kind==='archive'?'ArchiveOrganization':'Organization';
