@@ -4,10 +4,12 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { sketchbookGalleries } from '../data/sketchbookGalleries';
 import { sketchbookCompanionsByShelf } from '../data/visualStudyCollection';
+import { radarByLane } from '../data/radarHarumverso';
 import '../styles/browse.css';
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 const shelves = [...new Set(sketchbookGalleries.map((book) => book.shelf))];
 const totalSheets = sketchbookGalleries.reduce((total, book) => total + book.images.length, 0);
+const radarSketchbooks=radarByLane('sketchbook').slice(0,5);
 const galleryEntries=sketchbookGalleries.map((book)=>({book,companions:book.images.length<2?sketchbookCompanionsByShelf[book.shelf]??[]:[]}));
 ---
 <!doctype html>
@@ -122,6 +124,7 @@ const galleryEntries=sketchbookGalleries.map((book)=>({book,companions:book.imag
     <div class="actions"><a class="btn primary" href="#galerias">Abrir galerias</a><a class="btn" href={base+'biblioteca#arquivo-vivo-sketchbooks'}>Voltar à Biblioteca</a></div>
   </section>
 
+  <section class="section" id="radar-sketchbooks"><div class="section-head"><div><div class="eyebrow">RADAR · CADERNOS & ARQUIVOS</div><h2>O caderno continua fora da página.</h2></div><p>Filmes, exercícios e programas recentes entram aqui como companheiros dos sketchbooks históricos.</p></div><div class="browse-rail companion-rail">{radarSketchbooks.map((item,i)=><a class="browse-tile companion-tile" href={item.url} target="_blank" rel="noreferrer"><div class="browse-visual"><span class="num">{String(i+1).padStart(2,'0')}</span><div class="big">{item.creator}</div></div><div class="browse-body"><span>{item.source} · {item.date}</span><h4>{item.title}</h4><p>{item.note}</p><small style="color:#b39a69">{item.rights} · abrir fonte original →</small></div></a>)}</div><div class="actions" style="margin-top:16px"><a class="btn gold" href={base+'radar'}>Abrir Radar completo →</a></div></section>
   <section class="section" id="galerias">
     <div class="section-head"><div><div class="eyebrow">UM CADERNO, UM OLHAR</div><h2>Sequências para estudar, não para colecionar.</h2></div><p>Escolha a orientação da galeria: percorra as folhas na horizontal ou em coluna vertical. No celular, deslize; no computador, use as setas. Continue rolando para visitar as outras estantes.</p></div>
     <div class="archive-stats" aria-label="Resumo do acervo">
