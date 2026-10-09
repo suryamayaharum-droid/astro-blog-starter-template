@@ -4,7 +4,7 @@
 
 ## Progresso
 
-`███░░░░░░░ 34% · 25/74 arquivos de rota revisados manualmente`
+`███░░░░░░░ 36% · 27/74 arquivos de rota revisados manualmente`
 
 - [x] Varredura estrutural das 74 rotas Astro: títulos, presença de imagens, quantidade e rótulos de ações, marcadores de conteúdo provisório.
 - [x] Conferir o caminho de entrada: home → escola → primeira prática → museus.
@@ -14,7 +14,8 @@
 - [x] Revisar o molde do perfil de artista e conferir 101 fichas / 208 links cadastrados.
 - [ ] Conferir as promessas e a qualidade das fontes em cada ficha, substituindo intermediários por links primários quando possível.
 - [x] Revisar a página Atlas Histórico: períodos paralelos, práticas próprias, fontes institucionais e distinção de direitos; remover cifra volátil do Open Access da NGA.
-- [ ] Revisar páginas de bancos/acervos e as demais rotas de História da Arte.
+- [x] Revisar o hub de Bancos e o guia dinâmico dos acervos: portas, direitos, modos de acesso, leques e destinos coerentes.
+- [ ] Revisar outras rotas de História da Arte e conferir links institucionais individuais.
 - [ ] Conferir paridade editorial EN/ES nas páginas prioritárias.
 - [ ] Fechar a auditoria móvel pós-release em painel próprio.
 
@@ -66,3 +67,8 @@ Esta edição corrige a expectativa do clique sem alegar que cada URL externa fo
 ## Atlas Histórico · revisão de uma rota
 
 A rota `/historia-da-arte/` foi conferida junto com `src/data/artHistory.ts`: os períodos têm perguntas e práticas próprias, datas são qualificadas como aproximações, e a página explica que esta é uma rota inicial com trilhas paralelas. As fichas distinguem orientação de domínio público de direitos variáveis. Retirei a cifra “mais de 60 mil” da nota da NGA, porque é um total que pode envelhecer; a instrução de confirmar o status em cada objeto foi mantida.
+
+
+## Bancos e acervos · revisão de duas rotas
+
+As rotas `/bancos/` e `/bancos/[id]/` foram conferidas com o catálogo de instituições. O hub distingue busca federada de dataset e serviço com chave; os guias dinâmicos mostram caminhos, direitos, leques de observação e retorno à instituição. Os oito leques temáticos apontam para IDs existentes e cada um oferece um experimento visual. Não encontrei chamada que prometa busca ao vivo para um serviço que não está conectado; mantive o conteúdo e não fiz reescrita cosmética.
