@@ -101,7 +101,7 @@ Após cada ataque:
 4. atacar o próximo item de maior impacto;
 5. nunca declarar publicação sem evidência de deploy.
 
-Última evidência: CI HARUM NOIR run #481 concluído com sucesso após a correção de Museus.
+Última evidência verde confirmada: CI HARUM NOIR #498 passou no head `8e9809a`; o head atual contém novas melhorias de produto e está novamente em validação.
 
 
 ## TECNOLOGIA DO PAINEL — V2
@@ -229,26 +229,37 @@ Cada fator usa escala 0–5. Exceções:
 
 `VER TERRENO → ESCOLHER GARGALO → FORMULAR HIPÓTESE → TESTE PEQUENO → MEDIR → ATUALIZAR MODELO → AVANÇAR OU RECUAR`
 
-Isso transforma o painel em um controlador de execução: ele não apenas mostra progresso; ele diz **quando atacar, quando testar, quando recuar e quando uma análise já virou paralisia**.
+Isso transforma o painel em um controlador de execução: ele não apenas mostra progresso; ele diz **quando atacar, quando testar, quando recuar e o que pode avançar em paralelo sem colisão**.
 
 
 ## ONDA EXECUTACIONAL ATUAL
 
 ```text
-LANE A · CRÍTICA
-HN-COHERENCE-15MIN
-Resolver incoerência 12 min × 15 min ........ READY
+LANE A · CRÍTICA — ATTACKING
+HN-LEARNING-LOOP
+✓ Home + Escola: prática inicial unificada em 15 min
+✓ Museus: termina em próximas práticas
+✓ Radar: identidade pública HARUM NOIR
+✓ Percursos: autoavaliação + retorno ao Caderno/Ateliê
+→ próximo: revisar a dupla Cadernos ↔ Ateliê
 
 LANE B · VERIFICAÇÃO
-Responsive QA da PR .......................... DONE
-Run #4 / 320 / 390 / 761 / 1024 ............. PASSOU
+Último CI verde confirmado ................ #498
+QA responsivo histórico verde ............. #4
+Produto mudou depois dessa matriz ......... VERIFYING
+Novo CI / QA do head atual ................ PENDENTE
+Workflow agora detecta se o último commit
+realmente toca interface antes do QA pesado
 
 LANE C · PESQUISA
-Inventário EN/ES e links de entrada .......... READY (somente leitura)
+Rotas EN inventariadas ..................... 12
+Rotas ES inventariadas ..................... 12
+Qualidade / utilidade / redundância ........ READY
 
 LANE D · DIAGNÓSTICO
-Triagem de dependências ...................... READY (sem alterar pacote)
+Dependências npm ........................... QUEUED
+Sem upgrade forçado até reproduzir advisory
 
-BARREIRA
+BARREIRA DE INTEGRAÇÃO
 CI + contratos + QA das superfícies tocadas .. OBRIGATÓRIA
 ```
