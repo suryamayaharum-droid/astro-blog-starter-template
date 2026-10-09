@@ -44,7 +44,7 @@ export const artHistorySources: ArtHistorySource[] = [
     name: "National Gallery of Art · Open Access",
     url: "https://www.nga.gov/artworks/free-images-and-open-access",
     access: "Imagens abertas",
-    note: "Mais de 60 mil imagens disponíveis para download aberto; confirme a indicação de Open Access em cada objeto."
+    note: "Acervo de imagens abertas disponível para download; confirme a indicação Open Access em cada objeto antes de reutilizar."
   },
   {
     name: "Cleveland Museum of Art · Open Access",
