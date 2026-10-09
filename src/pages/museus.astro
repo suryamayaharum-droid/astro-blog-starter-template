@@ -3,9 +3,11 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { museumCatalog } from '../data/museums';
+import { radarByLane } from '../data/radarHarumverso';
 import '../styles/museums.css';
 const base=import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 const liveCount=museumCatalog.filter(x=>x.mode==='live').length;
+const radarAcervo=radarByLane('acervo').slice(0,6);
 const museumCovers=['museum-gallery.webp','open-sketchbook.webp','drapery-still-life.webp','moonlit-landscape.webp','iris-study.webp','atelier-desk.webp','tools-paper.webp'];
 const modeLabel={live:'conectado agora',advanced:'API avançada',dataset:'dataset aberto',key:'requer chave'};
 const museumsSchema={
@@ -64,6 +66,7 @@ const museumsSchema={
     </div>
   </nav>
 
+  <section class="section" id="radar-acervo"><div class="section-head"><div><div class="eyebrow">RADAR · ACERVO ABERTO</div><h2>Obras novas para estudar.</h2></div><p>Entradas recentes com direitos claros e um problema de desenho definido.</p></div><div class="museum-highlights__items">{radarAcervo.map(item=><a class="museum-highlight" href={item.url} target="_blank" rel="noreferrer"><small>{item.rights}</small><strong>{item.creator} · {item.title}</strong><span>{item.principle} →</span></a>)}</div><div class="actions" style="margin-top:18px"><a class="btn gold" href={base+'radar'}>Abrir Radar completo →</a></div></section>
   <section class="section museum-intro">
     <div class="panel">
       <div class="eyebrow">REDE ABERTA</div>
