@@ -314,6 +314,32 @@ jobs:
               await context.close();
             }
 
+            // Guide contract: a charcoal question must reach the free Ritual sample
+            // without activating the optional local AI model.
+            {
+              const context = await browser.newContext({
+                viewport:{width:390,height:844},
+                isMobile:true,
+                hasTouch:true,
+                locale:'pt-BR',
+                reducedMotion:'reduce'
+              });
+              const page = await context.newPage();
+              await page.goto(base + '/',{waitUntil:'domcontentloaded',timeout:45000});
+              await page.locator('[data-lume-toggle]').click();
+              await page.locator('#lume-question').fill('Quero estudar carvão');
+              await page.locator('[data-lume-form]').evaluate(form=>form.requestSubmit());
+              const responseText=(await page.locator('[data-lume-response]').textContent())||'';
+              const ritualLink=page.locator('[data-lume-links] a[href*="ritual-do-carvao"]');
+              const ritualCount=await ritualLink.count();
+              const aiStatus=(await page.locator('[data-lume-ai-status]').textContent())||'';
+              if(!responseText.includes('Ritual do Carvão')) failures.push({route:'lume-charcoal',reason:'ritual-answer-missing',responseText});
+              if(ritualCount!==1) failures.push({route:'lume-charcoal',reason:'ritual-link-missing',ritualCount});
+              if(!aiStatus.includes('O download começa após sua escolha')) failures.push({route:'lume-charcoal',reason:'ai-activated-without-consent',aiStatus});
+              rows.push({viewport:'390',route:'lume-charcoal',responseText,ritualCount,aiStatus});
+              await context.close();
+            }
+
             fs.writeFileSync('responsive-audit/metrics.json',JSON.stringify(rows,null,2));
             fs.writeFileSync('responsive-audit/failures.json',JSON.stringify(failures,null,2));
             console.log('Responsive audit rows:',rows.length);
