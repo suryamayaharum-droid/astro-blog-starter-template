@@ -15,63 +15,37 @@ on:
 permissions:
   contents: read
 
-concurrency:
-  group: harum-noir-responsive-${{ github.event.pull_request.number || github.ref }}
-  # Preserve a product-surface audit already in flight. A later docs-only
-  # synchronization may skip its own heavy steps and must not erase that evidence.
-  cancel-in-progress: false
-
 jobs:
-  responsive-audit:
+  scope:
     runs-on: ubuntu-latest
-    timeout-minutes: 18
+    timeout-minutes: 3
+    outputs:
+      run: ${{ steps.detect.outputs.run }}
     steps:
-      - name: Checkout PR head
+      - name: Checkout latest PR head for scope
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 2
 
-      - name: Detect interface-impacting latest commit
-        id: scope
-        shell: bash
-        run: |
-          files="$(git diff --name-only HEAD^ HEAD || true)"
-          message="$(git log -1 --pretty=%B)"
-          printf '%s\n' "$files"
-          if printf '%s\n' "$message" | grep -Fq '[qa:full]'; then
-            echo "run=true" >> "$GITHUB_OUTPUT"
-            echo "Explicit full QA barrier requested."
-          elif printf '%s\n' "$files" | grep -Eq '^(src/|public/noir/|astro\.config\.mjs$|package(-lock)?\.json$|\.github/workflows/noir-pr-responsive-audit\.yml$)'; then
-            echo "run=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "run=false" >> "$GITHUB_OUTPUT"
-            echo "Latest commit does not touch a visual/runtime surface; heavy responsive audit skipped."
-          fi
-
       - name: Node 22
-        if: steps.scope.outputs.run == 'true'
         uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
 
       - name: Install site
-        if: steps.scope.outputs.run == 'true'
         run: npm ci
 
       - name: Build branch
-        if: steps.scope.outputs.run == 'true'
         run: npm run build
 
       - name: Prepare local GitHub Pages mount
-        if: steps.scope.outputs.run == 'true'
         run: |
           mkdir -p preview-root/astro-blog-starter-template
           cp -a dist/. preview-root/astro-blog-starter-template/
 
       - name: Start local static server
-        if: steps.scope.outputs.run == 'true'
         run: |
           python3 -m http.server 4173 --directory preview-root > /tmp/harum-preview.log 2>&1 &
           echo $! > /tmp/harum-preview.pid
@@ -85,13 +59,11 @@ jobs:
           exit 1
 
       - name: Install Playwright Chromium
-        if: steps.scope.outputs.run == 'true'
         run: |
           npm install playwright@1.50.1 --no-save
           npx playwright install --with-deps chromium
 
       - name: Audit current PR routes
-        if: steps.scope.outputs.run == 'true'
         run: |
           mkdir -p responsive-audit
           node <<'NODE'
@@ -286,7 +258,7 @@ jobs:
           NODE
 
       - name: Upload responsive evidence
-        if: always() && steps.scope.outputs.run == 'true'
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: harum-noir-pr-responsive-audit
