@@ -114,3 +114,8 @@ Comparei tonal, figura/gesto e lugares em inglês e espanhol. A intenção didá
 ## Mobile QA após PR #91 · acompanhamento
 
 O retry #38003813788 passou após a publicação anterior. A auditoria do deploy mais recente (#38005500299, commit `3c91c91`) estava em execução no momento desta edição; conferir antes de fechar o gate.
+
+
+## Atlas de Referências · correção pontual de destino
+
+Na ficha de Mark Crilley, dois cartões levavam à mesma página inicial, embora o segundo prometesse uma demonstração de 30 segundos. Conferi a página oficial de aparições e ela descreve a demonstração ao vivo; substituí o destino repetido por `https://www.markcrilley.com/publicappearancesbio.html` e ajustei o rótulo/observação ao que a página realmente oferece. O vídeo de tutorial permanece como fonte separada. A contagem 37/74 mede arquivos de rota Astro e não muda com esta correção de dado do Atlas.
