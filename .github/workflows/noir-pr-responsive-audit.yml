@@ -180,7 +180,7 @@ jobs:
                   const brokenImages = [...document.images]
                     .filter(img => img.complete && img.naturalWidth === 0)
                     .map(img => img.currentSrc || img.src);
-                  const criticalTouchTargets = [...document.querySelectorAll('.save-current,.search-prompts button,.compare-toggle,.compare-card button,.school-clear,.school-intl-header nav a,.explore-menu summary,.explore-panel a,.intl-header nav a,.ih-header nav a,.ih-topics a,.intl-lesson-header a')]
+                  const criticalTouchTargets = [...document.querySelectorAll('.save-current,.search-prompts button,.museum-suggestions button,.compare-toggle,.compare-card button,.school-clear,.school-intl-header nav a,.explore-menu summary,.explore-panel a,.intl-header nav a,.ih-header nav a,.ih-topics a,.intl-lesson-header a')]
                     .filter(el => {
                       const style=getComputedStyle(el);
                       const r=el.getBoundingClientRect();
