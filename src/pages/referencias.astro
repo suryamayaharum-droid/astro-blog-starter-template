@@ -6,7 +6,7 @@ import Footer from '../components/Footer.astro';
 import {referenceArtists,referenceCollections,byRank} from '../data/references';
 const base=import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 const featured=byRank(17)!;
-const normalizeFocus=(value:string)=>value.normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLowerCase();
+const normalizeFocus=(value:string)=>value.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
 const themedCover=(artist:typeof referenceArtists[number])=>{
  const focus=normalizeFocus(artist.focus);
  const lane=normalizeFocus(artist.lane);
