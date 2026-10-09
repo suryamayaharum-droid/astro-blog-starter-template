@@ -21,6 +21,7 @@ export const ecosystemHubs: EcosystemHub[] = [
   {id:"cadernos",title:"Cadernos de Presença",kicker:"PERGUNTA → PRÁTICA → VESTÍGIO",description:"Gesto, olhar, memória, presença e vestígio como investigações contínuas.",href:"cadernos/",cover:"open-sketchbook"},
   {id:"maos",title:"Atlas das Mãos",kicker:"GESTO · FORMA · AÇÃO",description:"Estudos para ler direção, pressão, contato e intenção antes dos detalhes.",href:"maos/",cover:"harum-noir-hands-study"},
   {id:"corpo-em-relacao",title:"Corpo em Relação",kicker:"DUAS FIGURAS · UMA ESTRUTURA",description:"Apoio, distância, contato, resistência e peso compartilhado como narrativa corporal.",href:"corpo-em-relacao/",cover:"figure-gesture"},
+  {id:"cabeca-expressao",title:"Cabeça & Expressão",kicker:"ESTRUTURA · DIREÇÃO · PRESENÇA",description:"Crânio, perfil, inclinação, olhar e expressão estudados sem fórmulas de rosto.",href:"cabeca-expressao/",cover:"harum-noir-caderno-olhar"},
   {id:"atelier",title:"Ateliê Aberto",kicker:"VOLTAR PARA A MÃO",description:"Fundamentos, exercícios e ciclos de observação, correção e retorno.",href:"atelier/",cover:"atelier-desk"},
   {id:"temporadas",title:"Temporadas",kicker:"APROFUNDAMENTO",description:"Sete percursos editoriais de corpo, expressão, anatomia, personagem, relação, matéria e síntese.",href:"temporadas/",cover:"moonlit-landscape"},
   {id:"noir",title:"HARUM NOIR",kicker:"TRAÇO · CORPO · PRESENÇA",description:"Princípios editoriais e portas de entrada da escola aberta de desenho.",href:"noir/",cover:"atelier-desk"},
