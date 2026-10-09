@@ -167,19 +167,51 @@ Preferir a camada em que a mudança é menor, reversível e fácil de verificar.
 ### Recuo
 Se uma mudança piorar build, navegação ou coerência, voltar ao último estado verificado e reformular a hipótese. Não empilhar remendos sobre hipótese falsificada.
 
-## HORIZONTE ANTI-PARALISIA EXECUCIONAL
+## HORIZONTE DE PARALELISMO EXECUCIONAL
 
-O sistema não pode transformar análise em espera infinita.
+O objetivo não é fazer tudo ao mesmo tempo. É **executar simultaneamente apenas o que é realmente independente**, mantendo uma faixa crítica protegida contra colisões.
+
+### Modelo de faixas
 
 ```text
-0–1 ciclos sem evidência nova .... ANALISAR
-2 ciclos sem evidência nova ...... EXECUTAR MENOR TESTE REVERSÍVEL
-3 tentativas na mesma hipótese ... REFORMULAR HIPÓTESE
-bloqueio externo ................. BUSCAR PROVA LOCAL INDEPENDENTE
-ação irreversível ................ PARAR E EXIGIR APROVAÇÃO/EVIDÊNCIA
+LANE A · CRÍTICA       1 mutação principal por vez
+LANE B · VERIFICAÇÃO   CI / QA / links / testes somente leitura
+LANE C · PESQUISA      diagnóstico e inventário sem write conflitante
+LANE D · ISOLADA       subtarefa com arquivos e dependências disjuntas
+
+                 ↓ BARREIRA DE INTEGRAÇÃO ↓
+
+          BUILD + CONTRATOS + QA AFETADO
 ```
 
-Regra prática: **se não chegou informação nova, a próxima ação precisa produzir informação**.
+### Teste PARALLEL_OK
+
+Uma tarefa pode avançar em paralelo somente se:
+1. toca arquivos/rotas diferentes;
+2. não depende do resultado da outra;
+3. pode ser revertida separadamente;
+4. sua validação não mascara a outra;
+5. existe uma barreira de integração no final.
+
+Se qualquer resposta for **não**, serializar. Se o escopo for desconhecido, serializar até descobrir.
+
+### Frescor por superfície
+
+Evidência não vence apenas por idade; vence por **escopo afetado**.
+
+- alteração só em docs/painel **não invalida** QA visual das páginas;
+- alteração em CSS global **invalida** QA visual relacionado;
+- alteração em config/build/dependências pode invalidar toda a cadeia.
+
+### Anti-overparallelism
+
+- nunca duas escritas no mesmo arquivo;
+- nunca refatoração global em paralelo com QA final;
+- nunca duas frentes tentando provar a mesma hipótese;
+- capacidade disponível não é motivo suficiente para abrir outra lane.
+
+A regra é: **paralelizar independência, serializar conflito, sincronizar na barreira**.
+
 
 ## MOTOR DE PRIORIDADE
 
@@ -198,3 +230,25 @@ Cada fator usa escala 0–5. Exceções:
 `VER TERRENO → ESCOLHER GARGALO → FORMULAR HIPÓTESE → TESTE PEQUENO → MEDIR → ATUALIZAR MODELO → AVANÇAR OU RECUAR`
 
 Isso transforma o painel em um controlador de execução: ele não apenas mostra progresso; ele diz **quando atacar, quando testar, quando recuar e quando uma análise já virou paralisia**.
+
+
+## ONDA EXECUTACIONAL ATUAL
+
+```text
+LANE A · CRÍTICA
+HN-COHERENCE-15MIN
+Resolver incoerência 12 min × 15 min ........ READY
+
+LANE B · VERIFICAÇÃO
+Responsive QA da PR .......................... DONE
+Run #4 / 320 / 390 / 761 / 1024 ............. PASSOU
+
+LANE C · PESQUISA
+Inventário EN/ES e links de entrada .......... READY (somente leitura)
+
+LANE D · DIAGNÓSTICO
+Triagem de dependências ...................... READY (sem alterar pacote)
+
+BARREIRA
+CI + contratos + QA das superfícies tocadas .. OBRIGATÓRIA
+```
