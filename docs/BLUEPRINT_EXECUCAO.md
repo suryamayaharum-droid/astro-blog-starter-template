@@ -14,7 +14,7 @@ Uma frente só recebe **CONCLUÍDO** quando há evidência. Build verde não sig
 
 ```text
 HARUM NOIR · GITHUB PAGES
-Progresso estrutural estimado: 94%
+Progresso estrutural estimado: 97%
 
 [████████████████████] CI / Astro / TypeScript ........ CONCLUÍDO
 [████████████████████] Cloudflare dry-run ............. CONCLUÍDO
@@ -25,10 +25,10 @@ Progresso estrutural estimado: 94%
 [████████████████████] ciclo pedagógico ............... CONCLUÍDO / QA VERDE
 [███████████████████░] coerência entre páginas ........ 96% / CONCLUÍDO
 [████████████████████] responsividade visual .......... QA #72 VERDE
-[██████████████████░░] acessibilidade visual/teclado .. 88% / VERIFYING
-[██████████████████░░] EN/ES / redundâncias .......... 90% / VERIFYING
+[████████████████████] acessibilidade visual/teclado .. QA #88 VERDE
+[███████████████████░] EN/ES / redundâncias .......... 96% / CONCLUÍDO
 [████████████████████] dependências / segurança ...... TRIAGEM CONCLUÍDA
-[███████░░░░░░░░░░░░░] merge/publicação .............. 35% / DRAFT
+[███████████░░░░░░░░░] merge/publicação .............. 55% / DRAFT
 ```
 
 ## ESTADO DA PR #78
@@ -345,3 +345,27 @@ A frente de dependências foi analisada sem `npm audit fix --force`.
 - O check externo **Workers Builds** continua falhando em PRs enquanto o `Cloudflare dry-run` interno passa. Sem log autenticado do painel Cloudflare, a causa externa permanece não provada.
 
 Decisão: não transformar uma PR editorial grande em upgrade de framework. Registrar, isolar e corrigir dependências em uma manutenção compatível e testada.
+
+
+## MARCO DE RELEASE — QA #88
+
+Estado de produto verificado:
+
+```text
+Branch reconciliada com main .............. SIM
+behind_main ............................... 0
+merge commit .............................. ece92f1
+CI atual de produto ....................... #578 VERDE
+Responsive / interação / a11y ............. #88 VERDE
+Touch targets críticos 44px ............... VERIFICADOS
+Ritual do Carvão + wallpaper .............. PRESERVADOS DA MAIN
+Área de alunos ............................ PRESERVADA DA MAIN
+Ateliê 15 min + pré-lançamento ............ PRESERVADOS
+Busca → Ritual / alunos .................... INDEXADO
+PR #78 .................................... DRAFT
+Workers Builds externo .................... FALHA / CAUSA NÃO PROVADA
+```
+
+O QA #88 tornou a acessibilidade mais exigente: a primeira execução do novo gate detectou alvos pequenos no chrome internacional; a correção foi aplicada e a repetição passou. Assim, o verde atual não é apenas herdado de um teste antigo.
+
+Regra de release: manter a PR em rascunho enquanto o check externo Workers Builds continuar sem diagnóstico autenticado. O `Cloudflare dry-run` interno permanece verde e o GitHub Pages é a superfície pública canônica desta frente.
