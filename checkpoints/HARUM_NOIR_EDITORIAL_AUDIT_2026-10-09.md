@@ -4,7 +4,7 @@
 
 ## Progresso
 
-`███░░░░░░░ 36% · 27/74 arquivos de rota revisados manualmente`
+`████░░░░░░ 45% · 33/74 arquivos de rota revisados manualmente`
 
 - [x] Varredura estrutural das 74 rotas Astro: títulos, presença de imagens, quantidade e rótulos de ações, marcadores de conteúdo provisório.
 - [x] Conferir o caminho de entrada: home → escola → primeira prática → museus.
@@ -16,7 +16,8 @@
 - [x] Revisar a página Atlas Histórico: períodos paralelos, práticas próprias, fontes institucionais e distinção de direitos; remover cifra volátil do Open Access da NGA.
 - [x] Revisar o hub de Bancos e o guia dinâmico dos acervos: portas, direitos, modos de acesso, leques e destinos coerentes.
 - [ ] Revisar outras rotas de História da Arte e conferir links institucionais individuais.
-- [ ] Conferir paridade editorial EN/ES nas páginas prioritárias.
+- [x] Conferir paridade dos hubs EN/ES de História, Museus e Referências; destinos em PT estão rotulados.
+- [ ] Continuar a paridade EN/ES nas demais páginas prioritárias.
 - [ ] Fechar a auditoria móvel pós-release em painel próprio.
 
 ## Revisão do primeiro percurso
@@ -72,3 +73,8 @@ A rota `/historia-da-arte/` foi conferida junto com `src/data/artHistory.ts`: os
 ## Bancos e acervos · revisão de duas rotas
 
 As rotas `/bancos/` e `/bancos/[id]/` foram conferidas com o catálogo de instituições. O hub distingue busca federada de dataset e serviço com chave; os guias dinâmicos mostram caminhos, direitos, leques de observação e retorno à instituição. Os oito leques temáticos apontam para IDs existentes e cada um oferece um experimento visual. Não encontrei chamada que prometa busca ao vivo para um serviço que não está conectado; mantive o conteúdo e não fiz reescrita cosmética.
+
+
+## Hubs internacionais · História, Museus e Referências
+
+Comparei as versões EN/ES dos três hubs. A estrutura de cartões e respostas mantém a mesma intenção editorial; caminhos para páginas que só existem em português informam “(PT)” no próprio rótulo. As páginas internacionais funcionam como portas explicativas, sem prometer tradução completa da busca viva ou do Atlas de artistas. Revisão concluída para estas seis rotas; outras páginas localizadas continuam na fila.
