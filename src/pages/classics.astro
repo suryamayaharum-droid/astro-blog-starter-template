@@ -1,6 +1,6 @@
 ---
+import LegacyRedirect from '../components/LegacyRedirect.astro';
 const base=import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
-const target=`${base}historia-da-arte`;
-const canonical=new URL(target,Astro.site).href;
+const target=`${base}historia-da-arte/`;
 ---
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"/><meta name="robots" content="noindex,follow"/><meta http-equiv="refresh" content={`0;url=${target}`}/><link rel="canonical" href={canonical}/><title>Harum Noir</title></head><body><a href={target}>Continuar</a></body></html>
+<LegacyRedirect target={target} title="História da arte" summary="Entre na linha do tempo e conecte períodos, obras e fontes institucionais a perguntas de desenho." cta="Abrir História da arte" />

@@ -1,5 +1,6 @@
 ---
-const base=import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';const target=`${base}referencias`;
-const canonical=new URL(target,Astro.site).href;
+import LegacyRedirect from '../components/LegacyRedirect.astro';
+const base=import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
+const target=`${base}referencias/`;
 ---
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"/><meta name="robots" content="noindex,follow"/><meta http-equiv="refresh" content={`0;url=${target}`}/><link rel="canonical" href={canonical}/><title>Harum Noir</title></head><body><a href={target}>Continuar</a></body></html>
+<LegacyRedirect target={target} title="Referências de desenho" summary="Acesse o atlas de artistas e processos para comparar decisões visuais e voltar ao seu próprio estudo." cta="Abrir Referências" />
