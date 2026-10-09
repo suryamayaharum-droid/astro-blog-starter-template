@@ -13,6 +13,8 @@ import { radarHarumverso, radarSlug } from '../data/radarHarumverso';
 const base=import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 
 const items=[
+  {type:"Percurso",title:"Ritual do Carvão · 7 dias",subtitle:"Percurso em preparação para gesto, matéria, massa, borda e composição.",href:"ritual-do-carvao/",terms:"carvão sete dias gesto matéria massa valor borda composição percurso prática"},
+  {type:"Acesso",title:"Área de alunos · Hotmart",subtitle:"Entrada para quem já possui um produto HARUM NOIR liberado na Hotmart.",href:"alunos/",terms:"alunos hotmart acesso compra material curso produto"},
   ...radarHarumverso.map(x=>({type:"Radar",title:x.title,subtitle:x.creator+" · "+x.source,href:"radar#radar-"+radarSlug(x),terms:[x.kind,x.note,x.principle,x.destination,x.rights].join(" ")})),
   ...ecosystemHubs.map(x=>({
     type:"Rota",
@@ -141,7 +143,7 @@ const catalog=JSON.stringify(items);
 </main>
 <Footer/>
 <style>
-.search-prompts{display:flex;gap:7px;align-items:center;overflow-x:auto;padding:10px 0 2px;scrollbar-width:none}.search-prompts::-webkit-scrollbar{display:none}.search-prompts>span{flex:0 0 auto;color:var(--gold);font-size:.62rem;letter-spacing:.13em}.search-prompts button{flex:0 0 auto;border:1px solid var(--line);border-radius:999px;background:#151517;color:var(--paper-2);padding:7px 10px;font-size:.72rem;cursor:pointer}.search-prompts button:hover,.search-prompts button:focus-visible{border-color:var(--gold);color:var(--paper)}
+.search-prompts{display:flex;gap:7px;align-items:center;overflow-x:auto;padding:10px 0 2px;scrollbar-width:none}.search-prompts::-webkit-scrollbar{display:none}.search-prompts>span{flex:0 0 auto;color:var(--gold);font-size:.62rem;letter-spacing:.13em}.search-prompts button{flex:0 0 auto;display:inline-flex;align-items:center;min-height:44px;border:1px solid var(--line);border-radius:999px;background:#151517;color:var(--paper-2);padding:7px 12px;font-size:.72rem;cursor:pointer}.search-prompts button:hover,.search-prompts button:focus-visible{border-color:var(--gold);color:var(--paper)}
 </style>
 </body>
 </html>
