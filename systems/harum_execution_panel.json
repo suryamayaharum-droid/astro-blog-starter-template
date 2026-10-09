@@ -1,0 +1,205 @@
+{
+  "schema": "harum.execution-panel/v2",
+  "title": "HARUM NOIR · GitHub Pages Execution Control",
+  "branch": "melhoria/escola-primeira-pratica-2026-10-09",
+  "pr": 78,
+  "policy": {
+    "primary_wip_limit": 1,
+    "support_wip_limit": 2,
+    "states": [
+      "queued",
+      "ready",
+      "attacking",
+      "verifying",
+      "done",
+      "blocked",
+      "stale"
+    ],
+    "truth_order": [
+      "live_ci_and_branch",
+      "fresh_test_evidence",
+      "current_code_read",
+      "jev_hive_context",
+      "historical_checkpoint",
+      "estimate"
+    ],
+    "completion_rule": "A track is done only when all required evidence gates for that track are fresh against the current branch head.",
+    "progress_rule": "Progress is evidence-weighted; estimates are displayed separately and never upgrade a state.",
+    "batch_rule": "Prefer small reversible changes; verify each bounded slice before opening another primary attack."
+  },
+  "evidence_gates": {
+    "build": [
+      "astro_typescript",
+      "cloudflare_dry_run"
+    ],
+    "integrity": [
+      "internal_routes_assets",
+      "hreflang",
+      "seo_jsonld",
+      "studio23_noir_contract"
+    ],
+    "experience": [
+      "mobile_320",
+      "mobile_390",
+      "tablet",
+      "desktop",
+      "keyboard_focus",
+      "touch_targets",
+      "intentional_overflow"
+    ],
+    "editorial": [
+      "learning_loop",
+      "clear_output",
+      "self_assessment",
+      "next_step",
+      "terminology_consistency"
+    ],
+    "release": [
+      "all_required_gates_fresh",
+      "pr_reviewable",
+      "no_known_p0",
+      "deployment_evidence_if_published"
+    ]
+  },
+  "current_evidence": {
+    "ci_run": 481,
+    "ci_state": "success",
+    "fixing_commit": "eac8bcd0df6b83787596c3a1871efc20927c1e64",
+    "blueprint_commit": "04b4bd671d7486738feca03366b4a1acfe27022e",
+    "jev_health_context": "healthy_historical_projection",
+    "jev_note": "JEV/HIVE is coordination context; live branch and CI override historical projections."
+  },
+  "primary_attack": {
+    "id": "HN-QA-MOBILE-PR78",
+    "priority": "P1",
+    "state": "ready",
+    "title": "Responsive and interaction QA on the current PR branch",
+    "goal": "Prove the current learning surfaces work at 320/390/tablet/desktop without unintended overflow or interaction regressions.",
+    "required_evidence": [
+      "mobile_320",
+      "mobile_390",
+      "tablet",
+      "desktop",
+      "keyboard_focus",
+      "touch_targets",
+      "intentional_overflow"
+    ],
+    "next_action": "Run visual and interaction QA, record failures by route, then fix the highest-impact reproducible defect."
+  },
+  "queue": [
+    {
+      "id": "HN-COHERENCE-15MIN",
+      "priority": "P2",
+      "state": "queued",
+      "title": "Resolve 12 min × 15 min first-practice inconsistency",
+      "depends_on": [
+        "HN-QA-MOBILE-PR78"
+      ]
+    },
+    {
+      "id": "HN-LEARNING-LOOP",
+      "priority": "P2",
+      "state": "queued",
+      "title": "Close the learning loop across Museus, Referências, Percursos, Ateliê and Cadernos",
+      "depends_on": [
+        "HN-COHERENCE-15MIN"
+      ]
+    },
+    {
+      "id": "HN-I18N-AUDIT",
+      "priority": "P3",
+      "state": "queued",
+      "title": "Audit EN/ES usefulness, completeness and inbound navigation before keeping/removing routes",
+      "depends_on": [
+        "HN-LEARNING-LOOP"
+      ]
+    },
+    {
+      "id": "HN-DEPS-SECURITY",
+      "priority": "P3",
+      "state": "queued",
+      "title": "Triage npm vulnerabilities without blind force upgrades",
+      "depends_on": []
+    },
+    {
+      "id": "HN-RELEASE-PR78",
+      "priority": "P4",
+      "state": "blocked",
+      "title": "Move PR #78 toward review/merge",
+      "blocked_by": [
+        "HN-QA-MOBILE-PR78",
+        "HN-COHERENCE-15MIN",
+        "HN-LEARNING-LOOP",
+        "HN-I18N-AUDIT"
+      ]
+    }
+  ],
+  "progress": {
+    "note": "Percentages are estimates; state and evidence gates are authoritative.",
+    "tracks": [
+      {
+        "name": "CI / build",
+        "estimate_percent": 100,
+        "state": "done"
+      },
+      {
+        "name": "Automated route/SEO contracts",
+        "estimate_percent": 100,
+        "state": "done"
+      },
+      {
+        "name": "Pedagogical architecture",
+        "estimate_percent": 80,
+        "state": "verifying"
+      },
+      {
+        "name": "Cross-page coherence",
+        "estimate_percent": 70,
+        "state": "attacking"
+      },
+      {
+        "name": "Responsive visual QA",
+        "estimate_percent": 50,
+        "state": "ready"
+      },
+      {
+        "name": "Accessibility interaction QA",
+        "estimate_percent": 40,
+        "state": "ready"
+      },
+      {
+        "name": "Language / redundant routes",
+        "estimate_percent": 30,
+        "state": "queued"
+      },
+      {
+        "name": "Dependency security triage",
+        "estimate_percent": 20,
+        "state": "queued"
+      },
+      {
+        "name": "Merge / publication",
+        "estimate_percent": 0,
+        "state": "blocked"
+      }
+    ]
+  },
+  "research_basis": [
+    {
+      "source": "DORA",
+      "principle": "Use several delivery measures, prefer small batch changes, improve the biggest bottleneck, and do not optimize measurement at the expense of improvement."
+    },
+    {
+      "source": "Kanban University",
+      "principle": "Visualize work, limit WIP, manage flow, make policies explicit, and improve evolutionarily."
+    },
+    {
+      "source": "GitHub Projects",
+      "principle": "Use structured fields/status and automations so state changes are explicit rather than buried in prose."
+    },
+    {
+      "source": "MADR/ADR",
+      "principle": "Keep durable decisions explicit and preserve superseded history instead of silently rewriting architectural intent."
+    }
+  ]
+}
