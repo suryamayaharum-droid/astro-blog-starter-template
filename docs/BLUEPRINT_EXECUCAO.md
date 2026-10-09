@@ -235,31 +235,35 @@ Isso transforma o painel em um controlador de execução: ele não apenas mostra
 ## ONDA EXECUTACIONAL ATUAL
 
 ```text
-LANE A · CRÍTICA — ATTACKING
-HN-LEARNING-LOOP
-✓ Home + Escola: prática inicial unificada em 15 min
-✓ Museus: termina em próximas práticas
-✓ Radar: identidade pública HARUM NOIR
-✓ Percursos: autoavaliação + retorno ao Caderno/Ateliê
-→ próximo: revisar a dupla Cadernos ↔ Ateliê
+LANE A · CRÍTICA — I18N / COERÊNCIA
+Inventário internacional ................. 12 EN + 12 ES
+Self-links em Referências ................ CORRIGIDOS
+Self-links em Museus ..................... CORRIGIDOS
+Self-links em História da Arte ........... CORRIGIDOS
+Self-links em Cultura Visual ............. CORRIGIDOS
+Dibujo ES → Colecciones .................. CORRIGIDO
+Seletor global PT/EN/ES nativo ........... APLICADO
+InternationalHub sem Google Translate .... APLICADO
+→ próximo: classificar manter/fundir/remover nas rotas restantes
 
 LANE B · VERIFICAÇÃO
-Último CI verde confirmado ................ #498
-QA responsivo histórico verde ............. #4
-Produto mudou depois dessa matriz ......... VERIFYING
-Novo CI / QA do head atual ................ PENDENTE
-Workflow agora detecta se o último commit
-realmente toca interface antes do QA pesado
+Último CI verde anterior ................. #512
+Head de produto atual .................... 278dc41
+Novo CI / QA integrado ................... EM FILA / EXECUÇÃO
+Mudança em Header/InternationalHub ....... invalida QA visual anterior
 
-LANE C · PESQUISA
-Rotas EN inventariadas ..................... 12
-Rotas ES inventariadas ..................... 12
-Qualidade / utilidade / redundância ........ READY
+LANE C · PEDAGOGIA — VERIFYING
+Home + Escola 15 min ..................... FEITO
+Museus → próxima prática ................. FEITO
+Percursos → autoavaliação ................ FEITO
+Ateliê → entrada vs exercício expandido .. FEITO
+Cadernos → escolher/fazer/registrar ....... FEITO
+Referências → entrega/conferência ......... FEITO
 
 LANE D · DIAGNÓSTICO
-Dependências npm ........................... QUEUED
-Sem upgrade forçado até reproduzir advisory
+Dependências npm ......................... QUEUED
+Sem upgrade forçado
 
 BARREIRA DE INTEGRAÇÃO
-CI + contratos + QA das superfícies tocadas .. OBRIGATÓRIA
+CI + contratos + QA responsivo do head integrado .... OBRIGATÓRIO
 ```
