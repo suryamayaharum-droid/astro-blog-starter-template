@@ -94,3 +94,8 @@ A primeira edição identificava vidIQ como análise externa, mas ainda permitia
 ## Busca transversal · revisão e acessibilidade
 
 A rota `/buscar/` reúne Cadernos, artistas, períodos, Biblioteca, Radar e hubs; os chips alimentam consultas reais, a busca normaliza acentos, mantém `q` na URL e oferece orientação quando não há correspondência. O chip “Quero uma fonte aberta” consulta “open access” e encontra registros do Radar marcados com esses direitos. Ajustei a contagem de resultados como região `role=status` com anúncio educado, para que mudanças na busca sejam percebidas por leitores de tela.
+
+
+## Mobile QA após PR #90 · concluído
+
+A auditoria pós-deploy #38003813788 teve dois 503 transitórios em imagens já existentes na primeira captura. O retry do job passou em matriz móvel, smoke internacional, limites responsivos e envio de screenshots. Não houve falha de rota ou sobreposição de dock; o gate móvel está fechado.
