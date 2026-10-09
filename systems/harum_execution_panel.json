@@ -91,13 +91,14 @@
       "freshness": "stale_after_product_surface_changes",
       "note": "Run #4 passed, but subsequent Home/School/Radar/Museus/navigation changes require a fresh responsive run before release."
     },
-    "product_head_before_panel_update": "85e19e201a742eb7a4f5ebe37ebeb4ce23093dfa",
+    "product_head_before_panel_update": "6597f063a3d86d02e92b6b7729ead4036720879c",
     "latest_product_changes": [
       "Home e Escola padronizadas em prática inicial de 15 minutos",
       "Navegação 'ecossistema' convertida para linguagem de continuidade de estudo",
       "Radar público consolidado sob HARUM NOIR",
       "Museus agora termina com próximas práticas por EcosystemRail",
-      "Auditoria responsiva filtrada para commits com impacto real de interface"
+      "Auditoria responsiva filtrada para commits com impacto real de interface",
+      "Percursos ganhou fechamento com autoavaliação e retorno ao Caderno/Ateliê"
     ],
     "i18n_inventory": {
       "en_routes": 12,
@@ -112,11 +113,13 @@
     "title": "Close the learning loop across the main study surfaces",
     "goal": "Make each major study surface end in a clear next action instead of exposing internal ecosystem jargon or dead-end navigation.",
     "completed_slices": [
-      "Museus ends with a next-study rail",
-      "EcosystemRail default language is learner-facing",
-      "Radar public naming aligned to HARUM NOIR"
+      "Home e Escola usam a mesma prática inicial de 15 minutos",
+      "Museus termina com próximas práticas",
+      "EcosystemRail usa linguagem centrada no aluno",
+      "Radar público usa HARUM NOIR em vez de jargão interno",
+      "Percursos termina com autoavaliação e registro no Caderno"
     ],
-    "next_action": "Audit Referências, Percursos, Cadernos and Ateliê for explicit output, self-check and next-step continuity; change only the weakest surface per slice.",
+    "next_action": "Revisar Cadernos e Ateliê como dupla: garantir que um registre a descoberta e o outro ofereça a próxima microprática sem repetir navegação genérica.",
     "parallelism_horizon": "I18N inventory and dependency diagnostics may proceed read-only while the learning-loop mutation lane remains singular."
   },
   "queue": [
@@ -190,12 +193,12 @@
       },
       {
         "name": "Pedagogical architecture",
-        "estimate_percent": 86,
+        "estimate_percent": 90,
         "state": "attacking"
       },
       {
         "name": "Cross-page coherence",
-        "estimate_percent": 82,
+        "estimate_percent": 87,
         "state": "attacking"
       },
       {
@@ -384,7 +387,7 @@
     "critical_lane": {
       "id": "HN-LEARNING-LOOP",
       "state": "attacking",
-      "reason": "15-minute inconsistency is resolved; the next user-facing bottleneck is continuity between study surfaces."
+      "reason": "Museus e Percursos já fecham o ciclo; próxima fatia é Cadernos ↔ Ateliê."
     },
     "parallel_lanes": [
       {
