@@ -109,6 +109,8 @@ jobs:
             {name:'rituals',route:'/rituais-de-olhar/',dock:true},
             {name:'hands',route:'/maos/',dock:true},
             {name:'atelier',route:'/atelier/',dock:true},
+            {name:'ritual-carbon',route:'/ritual-do-carvao/',dock:true},
+            {name:'students',route:'/alunos/',dock:true},
             {name:'notebooks',route:'/cadernos/',dock:true},
             {name:'museums',route:'/museus/',dock:true},
             {name:'paths',route:'/percursos/',dock:true},
