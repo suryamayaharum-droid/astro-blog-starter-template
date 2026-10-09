@@ -4,7 +4,7 @@
 
 ## Progresso
 
-`█████░░░░░ 46% · 34/74 arquivos de rota revisados manualmente`
+`█████░░░░░ 50% · 37/74 arquivos de rota revisados manualmente`
 
 - [x] Varredura estrutural das 74 rotas Astro: títulos, presença de imagens, quantidade e rótulos de ações, marcadores de conteúdo provisório.
 - [x] Conferir o caminho de entrada: home → escola → primeira prática → museus.
@@ -18,6 +18,7 @@
 - [x] Revisar o hub de Bancos e o guia dinâmico dos acervos: portas, direitos, modos de acesso, leques e destinos coerentes.
 - [ ] Revisar outras rotas de História da Arte e conferir links institucionais individuais.
 - [x] Conferir paridade dos hubs EN/ES de História, Museus e Referências; destinos em PT estão rotulados.
+- [x] Revisar páginas EN/ES de Coleções tonal, figura e lugares; conferir tradução, prática, imagens e retorno entre línguas.
 - [ ] Continuar a paridade EN/ES nas demais páginas prioritárias.
 - [x] Fechar auditoria móvel pós-release: execução #38002723488 passou em 9 out 2026.
 
@@ -83,7 +84,7 @@ Comparei as versões EN/ES dos três hubs. A estrutura de cartões e respostas m
 
 ## Integração e validação · PR #90
 
-PR [#90](https://github.com/suryamayaharum-droid/astro-blog-starter-template/pull/90) integrada em `12eb3c6` após CI e auditoria responsiva verdes. O PR #89 foi encerrado como substituído porque partia de uma base divergente. A revisão editorial continua em 34/74 rotas; a integração deste lote não marca a auditoria página a página como concluída.
+PR [#90](https://github.com/suryamayaharum-droid/astro-blog-starter-template/pull/90) integrada em `12eb3c6` após CI e auditoria responsiva verdes. O PR #89 foi encerrado como substituído porque partia de uma base divergente. A revisão editorial continua em 37/74 rotas; a integração deste lote não marca a auditoria página a página como concluída.
 
 
 ## Correção de fonte externa · PR #91 integrada
@@ -104,3 +105,12 @@ A auditoria pós-deploy #38003813788 teve dois 503 transitórios em imagens já 
 ## Integração e validação · PR #91
 
 PR [#91](https://github.com/suryamayaharum-droid/astro-blog-starter-template/pull/91) integrada em `6912b68`. CI passou e a auditoria responsiva completa passou no commit de interface. O retry do mobile após PR #90 passou; a auditoria móvel do deploy após #91 ainda está em execução.
+
+
+## Coleções internacionais · revisão de três páginas
+
+Comparei tonal, figura/gesto e lugares em inglês e espanhol. A intenção didática, os tempos de prática e os créditos de imagem são equivalentes; a navegação volta ao hub no idioma certo e o seletor aponta às três versões. Encontrei importações duplicadas de `InternationalLessonChrome` em EN Figura, EN Tonal e ES Figura. PR #92 remove as declarações repetidas, sem alterar o conteúdo mostrado.
+
+## Mobile QA após PR #91 · acompanhamento
+
+O retry #38003813788 passou após a publicação anterior. A auditoria do deploy mais recente (#38005500299, commit `3c91c91`) estava em execução no momento desta edição; conferir antes de fechar o gate.
