@@ -60,7 +60,7 @@ Conferir fontes primárias e títulos das fichas de artistas, revisar as rotas r
 
 ## Atlas de Referências · revisão do molde e inventário de fontes
 
-A rota dinâmica `src/pages/referencias/[slug].astro` gera 101 fichas, apoiadas por 208 links. A inspeção estrutural encontrou 15 referências vidIQ em nove perfis: várias tinham título de vídeo, tutorial ou obra, mas o destino era um painel de estatísticas do canal; seis dessas referências repetiam um mesmo destino dentro do perfil. O card agora identifica vidIQ como análise externa, explica que não é a obra citada e elimina destinos duplicados. A ficha mantém o canal/fonte original em ação própria e mantém a prática de 10 minutos.
+A rota dinâmica `src/pages/referencias/[slug].astro` gera 101 fichas, apoiadas por 208 links. A inspeção estrutural encontrou 15 referências vidIQ em nove perfis: várias tinham título de vídeo, tutorial ou obra, mas o destino era um painel de estatísticas do canal; seis dessas referências repetiam um mesmo destino dentro do perfil. O perfil agora exclui todos os 15 destinos vidIQ dos cards de referência e dos dados estruturados; esses links não levam aos vídeos ou obras citados. O botão de canal oficial, vídeos diretos e outras fontes permanecem, destinos repetidos são deduplicados e a prática de 10 minutos continua disponível.
 
 Esta edição corrige a expectativa do clique sem alegar que cada URL externa foi verificada ao vivo. Próximo passo: conferir fontes primárias e títulos em lotes pequenos, começando pelos perfis que dependem de intermediários; depois revisar bancos/acervos e História da Arte.
 
@@ -83,3 +83,8 @@ Comparei as versões EN/ES dos três hubs. A estrutura de cartões e respostas m
 ## Integração e validação · PR #90
 
 PR [#90](https://github.com/suryamayaharum-droid/astro-blog-starter-template/pull/90) integrada em `12eb3c6` após CI e auditoria responsiva verdes. O PR #89 foi encerrado como substituído porque partia de uma base divergente. A revisão editorial continua em 33/74 rotas; a integração deste lote não marca a auditoria página a página como concluída.
+
+
+## Correção de fonte externa · PR #91 em revisão
+
+A primeira edição identificava vidIQ como análise externa, mas ainda permitia o clique para fora do site. Este lote remove os 15 destinos vidIQ das fichas públicas e do schema, mantendo o canal oficial, vídeos diretos e demais fontes. Assim, um painel de métricas não aparece como fonte de aprendizagem.
