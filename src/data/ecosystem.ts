@@ -9,6 +9,7 @@ export type EcosystemHub = {
 
 export const ecosystemHubs: EcosystemHub[] = [
   {id:"escola",title:"Escola Aberta de Desenho",kicker:"APRENDER A OLHAR",description:"Plano de estudo em quatro movimentos: observar, estruturar, organizar e traduzir.",href:"escola/",cover:"harum-noir-escola-hero"},
+  {id:"rituais",title:"Rituais de Olhar",kicker:"OBSERVAR → TESTAR → REGISTRAR",description:"Seis protocolos autorais para desacelerar, comparar, sustentar uma leitura e devolver a pesquisa ao desenho.",href:"rituais-de-olhar/",cover:"harum-noir-caderno-olhar"},
   {id:"radar",title:"Radar HARUM NOIR",kicker:"PESQUISA VIVA",description:"Descobertas verificadas com direitos, princípio Noir e destino editorial.",href:"radar/",cover:"tools-paper"},
   {id:"atlas",title:"Atlas HARUM NOIR",kicker:"MAPA DO ECOSSISTEMA",description:"Uma mesa de orientação entre referências, museus, história, biblioteca, percursos e prática.",href:"atlas/",cover:"tools-paper"},
   {id:"buscar",title:"Busca HARUM NOIR",kicker:"UMA PERGUNTA · VÁRIAS PORTAS",description:"Busca transversal por rotas, artistas, técnicas, períodos, cadernos, coleções e temporadas.",href:"buscar/",cover:"moonlit-landscape"},
