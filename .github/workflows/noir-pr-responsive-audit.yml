@@ -28,6 +28,38 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 2
 
+      - name: Detect interface-impacting latest commit
+        id: detect
+        shell: bash
+        run: |
+          files="$(git diff --name-only HEAD^ HEAD || true)"
+          message="$(git log -1 --pretty=%B)"
+          printf '%s\n' "$files"
+          if printf '%s\n' "$message" | grep -Fq '[qa:full]'; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+            echo "Explicit full QA barrier requested."
+          elif printf '%s\n' "$files" | grep -Eq '^(src/|public/noir/|astro\.config\.mjs$|package(-lock)?\.json$|\.github/workflows/noir-pr-responsive-audit\.yml$)'; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=false" >> "$GITHUB_OUTPUT"
+            echo "Latest commit does not touch a visual/runtime surface; heavy responsive audit skipped."
+          fi
+
+  responsive-audit:
+    needs: scope
+    if: needs.scope.outputs.run == 'true'
+    concurrency:
+      group: harum-noir-responsive-${{ github.event.pull_request.number || github.ref }}
+      cancel-in-progress: true
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - name: Checkout PR head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 2
+
       - name: Node 22
         uses: actions/setup-node@v4
         with:
@@ -171,7 +203,7 @@ jobs:
 
                 if (!response || response.status() >= 400) failures.push({...row,reason:'http'});
                 if (info.overflow) failures.push({...row,reason:'horizontal-overflow'});
-                if (info.dockVisible !== vp.expectDock) failures.push({...row,reason:'mobile-dock-state'});
+                if (info.dockVisible !== expectedDock) failures.push({...row,reason:'mobile-dock-state'});
                 if (vp.mobile && info.dockTargets.some(x => x.h < 44 || x.w < 44)) failures.push({...row,reason:'dock-touch-target'});
                 if (info.brokenImages.length) failures.push({...row,reason:'broken-images'});
                 if (badResources.length) failures.push({...row,reason:'same-origin-resource'});
