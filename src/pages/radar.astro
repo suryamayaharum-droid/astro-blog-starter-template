@@ -8,7 +8,7 @@ const laneLabels={processo:'PROCESSO',acervo:'ACERVO ABERTO',sketchbook:'SKETCHB
 const grouped=['processo','acervo','sketchbook','escola','outlier'] as const;
 const coveredRadar=radarHarumverso.filter(item=>item.cover);
 ---
-<!doctype html><html lang="pt-BR"><head><BaseHead title="Radar · Harumverso" description="Descobertas verificadas para o Harumverso: desenho, carvão, figura, sketchbooks, processos, cursos, acervos e outliers editoriais."/></head><body><Header/><main class="radar-page">
+<!doctype html><html lang="pt-BR"><head><BaseHead title="Radar · Harumverso" description="Descobertas verificadas para o Harumverso: desenho, carvão, figura, sketchbooks, processos, cursos, acervos e outliers editoriais."/></head><body class="has-page-wallpaper" style={"--page-wallpaper: url('" + base + "noir/visual-atlas/harum-cover-metalpoint.webp')"}><Header/><main class="radar-page">
 <section class="page-hero"><div class="eyebrow">RADAR HARUMVERSO · PESQUISA VIVA</div><h1>O que entra no radar precisa voltar para a mão.</h1><p>{radarHarumverso.length} descobertas recentes, verificadas em fontes institucionais e organizadas pelo problema de desenho que ajudam a investigar. Cada cartão preserva fonte, direitos, princípio Noir e destino editorial.</p><div class="actions"><a class="btn gold" href="#ultimas">Ver últimas descobertas ↓</a><a class="btn" href={base+'biblioteca'}>Abrir Biblioteca</a></div></section>
 
 <section class="section" id="ultimas"><div class="section-head"><div><div class="eyebrow">ÚLTIMAS ENTRADAS</div><h2>Pesquisa que já tem destino.</h2></div><p>Capas e estudos do HARUM NOIR são editoriais e não substituem a obra ou o vídeo original. A fonte primária permanece sempre a porta principal.</p></div>
