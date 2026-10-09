@@ -101,20 +101,25 @@ jobs:
 
           const base = 'http://127.0.0.1:4173/astro-blog-starter-template';
           const routes = [
-            ['home','/'],
-            ['school','/escola/'],
-            ['hands','/maos/'],
-            ['atelier','/atelier/'],
-            ['notebooks','/cadernos/'],
-            ['museums','/museus/'],
-            ['paths','/percursos/'],
-            ['references','/referencias/']
+            {name:'home',route:'/',dock:true},
+            {name:'school',route:'/escola/',dock:true},
+            {name:'rituals',route:'/rituais-de-olhar/',dock:true},
+            {name:'hands',route:'/maos/',dock:true},
+            {name:'atelier',route:'/atelier/',dock:true},
+            {name:'notebooks',route:'/cadernos/',dock:true},
+            {name:'museums',route:'/museus/',dock:true},
+            {name:'paths',route:'/percursos/',dock:true},
+            {name:'references',route:'/referencias/',dock:true},
+            {name:'en-home',route:'/en/',dock:false},
+            {name:'es-home',route:'/es/',dock:false},
+            {name:'en-references',route:'/en/references/',dock:false},
+            {name:'es-references',route:'/es/referencias/',dock:false}
           ];
           const viewports = [
-            {name:'320',width:320,height:700,mobile:true,expectDock:true},
-            {name:'390',width:390,height:844,mobile:true,expectDock:true},
-            {name:'761',width:761,height:900,mobile:false,expectDock:false},
-            {name:'1024',width:1024,height:900,mobile:false,expectDock:false}
+            {name:'320',width:320,height:700,mobile:true},
+            {name:'390',width:390,height:844,mobile:true},
+            {name:'761',width:761,height:900,mobile:false},
+            {name:'1024',width:1024,height:900,mobile:false}
           ];
 
           (async () => {
@@ -132,7 +137,7 @@ jobs:
               });
               const page = await context.newPage();
 
-              for (const [name, route] of routes) {
+              for (const {name,route,dock} of routes) {
                 const badResources = [];
                 const consoleErrors = [];
                 page.removeAllListeners('response');
@@ -154,6 +159,7 @@ jobs:
                 const response = await page.goto(url,{waitUntil:'networkidle',timeout:45000});
                 await page.waitForTimeout(150);
 
+                const expectedDock = vp.mobile ? dock : false;
                 const info = await page.evaluate(({expectDock,mobile}) => {
                   const root = document.documentElement;
                   const dock = document.querySelector('.mobile-dock');
@@ -178,7 +184,7 @@ jobs:
                     mobile,
                     expectDock
                   };
-                }, {expectDock:vp.expectDock,mobile:vp.mobile});
+                }, {expectDock:expectedDock,mobile:vp.mobile});
 
                 const row = {
                   viewport:vp.name,route:name,url,
@@ -218,6 +224,46 @@ jobs:
                 if (focusMoves < 4) failures.push({viewport:vp.name,route:'keyboard-focus',reason:'focus-sequence-too-short',focusMoves});
               }
 
+              await context.close();
+            }
+
+            // Interaction contract: Referências → comparison note → Cadernos.
+            {
+              const context = await browser.newContext({
+                viewport:{width:390,height:844},
+                isMobile:true,
+                hasTouch:true,
+                locale:'pt-BR',
+                reducedMotion:'reduce'
+              });
+              const page = await context.newPage();
+              await page.goto(base + '/referencias/',{waitUntil:'domcontentloaded',timeout:45000});
+              const compareButtons=page.locator('[data-compare]');
+              const compareCount=await compareButtons.count();
+              if(compareCount < 2){
+                failures.push({route:'references-to-notebooks',reason:'compare-buttons-missing',compareCount});
+              }else{
+                await compareButtons.nth(0).click();
+                await compareButtons.nth(1).click();
+                const compareWork=page.locator('#compare-work');
+                const compareVisible=await compareWork.isVisible();
+                const compareStatus=(await page.locator('#compare-status').textContent())||'';
+                if(!compareVisible) failures.push({route:'references-to-notebooks',reason:'compare-work-not-visible'});
+                if(!compareStatus.includes('2 referências')) failures.push({route:'references-to-notebooks',reason:'compare-status-incorrect',compareStatus});
+                const note='Bordas e massas se repetem; vou testar a relação sem copiar a superfície.';
+                await page.locator('#compare-note').fill(note);
+                fs.mkdirSync(path.join('responsive-audit','flows'),{recursive:true});
+                await page.screenshot({path:path.join('responsive-audit','flows','comparison-table-390.png'),fullPage:false});
+                await page.locator('#compare-work a').first().click();
+                await page.waitForLoadState('domcontentloaded');
+                const imported=page.locator('#comparacao-importada');
+                const importedVisible=await imported.isVisible();
+                const importedText=(await page.locator('#compare-import-note').textContent())||'';
+                if(!importedVisible) failures.push({route:'references-to-notebooks',reason:'comparison-note-not-imported'});
+                if(importedText.trim()!==note) failures.push({route:'references-to-notebooks',reason:'comparison-note-mismatch',importedText});
+                rows.push({viewport:'390',route:'references-to-notebooks',compareCount,compareVisible,compareStatus,importedVisible,noteMatched:importedText.trim()===note});
+                await page.screenshot({path:path.join('responsive-audit','flows','notebook-handoff-390.png'),fullPage:false});
+              }
               await context.close();
             }
 
