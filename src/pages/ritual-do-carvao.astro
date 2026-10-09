@@ -1,0 +1,55 @@
+---
+import EcosystemRail from '../components/EcosystemRail.astro';
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+const base=import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
+---
+<!doctype html>
+<html lang="pt-BR">
+<head><BaseHead title="Ritual do Carvão · Harum Noir" description="Um percurso de sete dias de desenho com carvão está em preparação. Explore práticas gratuitas enquanto o material é finalizado."/></head>
+<body>
+<Header/>
+<main>
+  <section class="page-hero">
+    <div class="eyebrow">PERCURSO EM PREPARAÇÃO · HARUM NOIR</div>
+    <h1>Ritual do Carvão</h1>
+    <p>Sete dias de prática para observar o gesto, experimentar a matéria e construir uma relação mais atenta com o desenho.</p>
+  </section>
+  <section class="section">
+    <div class="editorial-split">
+      <article class="panel">
+        <div class="eyebrow">STATUS</div>
+        <h2>Estamos finalizando o percurso.</h2>
+        <p>O material ainda está em revisão, incluindo os exercícios e os direitos de uso das imagens. Ele não está disponível para compra ou acesso neste momento.</p>
+        <p>Preço, formato final e checkout serão informados aqui quando a revisão estiver concluída.</p>
+      </article>
+      <article class="panel">
+        <div class="eyebrow">ENQUANTO ISSO</div>
+        <h2>Comece por uma prática aberta.</h2>
+        <p>Você já pode experimentar os estudos gratuitos do Ateliê e seguir para os Cadernos, sem cadastro.</p>
+        <div class="actions">
+          <a class="btn gold" href={base+'atelier#exercicio'}>Fazer o exercício aberto →</a>
+          <a class="btn" href={base+'cadernos'}>Explorar os Cadernos →</a>
+        </div>
+      </article>
+    </div>
+  </section>
+  <section class="section">
+    <div class="journal"><div class="paper">
+      <div class="eyebrow">UM PERCURSO, NÃO UMA PROMESSA VAZIA</div>
+      <h2>O que será confirmado antes da abertura</h2>
+      <ul>
+        <li>Conteúdo e exercícios completos, com uma sequência clara de sete dias.</li>
+        <li>Imagens revisadas e autorizadas para o material.</li>
+        <li>Formato de entrega, preço e condições de acesso explicados antes da compra.</li>
+        <li>Checkout testado para que a compra e a entrega funcionem de ponta a ponta.</li>
+      </ul>
+      <p>Até lá, esta página funciona como um aviso transparente de preparação, sem coletar dados e sem encaminhar para um pagamento inexistente.</p>
+    </div></div>
+  </section>
+  <EcosystemRail current="atelier" limit={5} />
+</main>
+<Footer/>
+</body>
+</html>
