@@ -4,6 +4,7 @@ import { museumCatalog } from '../data/museums';
 import { STUDIO_SITE } from '../consts';
 
 const SITE='https://suryamayaharum-droid.github.io/astro-blog-starter-template/';
+const STUDIO_CANONICAL=new URL(STUDIO_SITE,SITE).href;
 
 export async function GET(){
   const payload={
@@ -14,11 +15,11 @@ export async function GET(){
     origin:'Salvador, Bahia, Brazil',
     languages:['pt-BR','en','es'],
     interactiveLanguages:['pt','en','es','fr','it','de','ja','ko','zh','ar'],
-    relatedSite:STUDIO_SITE,
+    relatedSite:STUDIO_CANONICAL,
     entities:[
       {name:'HARUM NOIR',type:'CreativeWorkSeries',role:'open drawing school and editorial atelier for charcoal, figure, anatomy, gesture, art history and visual research'},
       {name:'Arte Harum',type:'Organization',role:'authorial visual research and artistic language'},
-      {name:'Tattoo Studio 23',type:'TattooParlor',role:'documented tattoo work and booking',url:STUDIO_SITE}
+      {name:'Tattoo Studio 23',type:'TattooParlor',role:'documented tattoo work and booking',url:STUDIO_CANONICAL}
     ],
     routes:{
       home:SITE,
@@ -84,7 +85,7 @@ export async function GET(){
     })),
     tattooService:{
       provider:'Tattoo Studio 23',
-      canonicalUrl:STUDIO_SITE,
+      canonicalUrl:STUDIO_CANONICAL,
       areaServed:'Salvador, Bahia, Brazil',
       appointmentOnly:true,
       locations:[
