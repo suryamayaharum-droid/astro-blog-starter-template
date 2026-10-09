@@ -117,7 +117,8 @@ const referenceSchema={
     <div><span class="eyebrow">MESA DE COMPARAÇÃO · 2–3 REFERÊNCIAS</span><h2 id="compare-title">Monte uma relação, não uma coleção infinita.</h2></div>
     <p>Escolha duas ou três referências do Atlas. Compare decisões, escreva o elo entre elas e saia com uma pergunta de desenho.</p>
   </div>
-  <div id="compare-slots" class="compare-grid" aria-live="polite"></div>
+  <p id="compare-status" class="compare-status" role="status" aria-live="polite">Nenhuma referência selecionada.</p>
+  <div id="compare-slots" class="compare-grid"></div>
   <div id="compare-empty" class="compare-empty">Use <b>＋ Comparar</b> nos cartões acima. A mesa guarda no máximo três referências neste aparelho.</div>
   <div id="compare-work" class="compare-work" hidden>
     <div class="compare-prompts">
@@ -179,6 +180,7 @@ const referenceSchema={
  if(rec.length){const section=document.querySelector('#recent-section');const rail=document.querySelector('#recent-rail');rail.innerHTML=rec.map(slug=>card(data.find(a=>a.slug===slug))).join('');section.hidden=false;}
 
  const compareSlots=document.querySelector('#compare-slots');
+ const compareStatus=document.querySelector('#compare-status');
  const compareEmpty=document.querySelector('#compare-empty');
  const compareWork=document.querySelector('#compare-work');
  const compareNote=document.querySelector('#compare-note');
@@ -204,6 +206,9 @@ const referenceSchema={
    if(compareSlots) compareSlots.innerHTML=refs.map((a,index)=>'<article class="compare-card"><div class="compare-card-art"><img src="'+fallback(a)+'" alt="" loading="lazy"><span>'+String(index+1).padStart(2,'0')+'</span></div><div><small>'+escapeHtml(a.focus)+'</small><h3>'+escapeHtml(a.name)+'</h3><button type="button" data-remove-compare="'+a.slug+'">Remover</button></div></article>').join('');
    if(compareEmpty) compareEmpty.hidden=refs.length>0;
    if(compareWork) compareWork.hidden=refs.length<2;
+   if(compareStatus){
+     compareStatus.textContent=refs.length===0?'Nenhuma referência selecionada.':refs.length===1?'1 referência selecionada. Escolha mais uma para comparar.':refs.length+' referências selecionadas. Compare as decisões antes de continuar.';
+   }
    try{localStorage.setItem(compareKey,JSON.stringify(selected))}catch{}
    syncCompareButtons();
  };
@@ -280,7 +285,7 @@ const referenceSchema={
  .compare-toggle{width:100%;margin-top:7px;padding:8px 10px;border:1px solid var(--line);border-radius:4px;background:#111214;color:var(--gold);font-size:.72rem;cursor:pointer}
  .compare-toggle:hover,.compare-toggle:focus-visible,.compare-toggle[aria-pressed="true"]{border-color:var(--gold);background:rgba(179,154,105,.09);color:var(--paper)}
  .compare-lab{scroll-margin-top:90px}
- .compare-empty{padding:18px;border:1px dashed var(--line);border-radius:6px;color:var(--muted);font-size:.86rem}
+ .compare-status{margin:0 0 10px;color:var(--gold);font-size:.72rem;letter-spacing:.04em}.compare-empty{padding:18px;border:1px dashed var(--line);border-radius:6px;color:var(--muted);font-size:.86rem}
  .compare-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
  .compare-card{display:grid;grid-template-columns:110px 1fr;gap:14px;padding:12px;border:1px solid var(--line);border-radius:6px;background:#101011}
  .compare-card-art{position:relative;aspect-ratio:1;overflow:hidden;background:#161616}.compare-card-art img{width:100%;height:100%;object-fit:cover}.compare-card-art span{position:absolute;left:8px;top:8px;padding:4px 6px;background:#090909cc;border:1px solid var(--line);border-radius:999px;font-size:.62rem}
