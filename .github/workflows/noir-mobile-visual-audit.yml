@@ -46,6 +46,7 @@ jobs:
               ['head-expression', `${base}/cabeca-expressao/`],
               ['radar', `${base}/radar/`],
               ['colecoes', `${base}/colecoes/`],
+              ['colecao-lugares', `${base}/colecoes/lugares/`],
               ['estudo-tonal', `${base}/colecoes/estudo-tonal/`],
               ['figure-gesture-pt', `${base}/colecoes/gesto-figura/`],
               ['figure-gesture-en', `${base}/en/collections/figure-gesture/`],
