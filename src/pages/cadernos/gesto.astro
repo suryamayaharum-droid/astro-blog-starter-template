@@ -1,5 +1,6 @@
 ---
 import EcosystemRail from '../../components/EcosystemRail.astro';
+import CadernoNavigation from '../../components/CadernoNavigation.astro';
 import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
@@ -73,5 +74,6 @@ const encontros=[
   <p>O objetivo deste caderno não é colecionar poses corretas. É reconhecer quais decisões fazem o corpo continuar acontecendo no papel.</p>
   <p><a href={base+'cadernos'}>Voltar aos Cadernos →</a></p>
 </div></div></section>
+<CadernoNavigation current="gesto" />
 <EcosystemRail current="cadernos" limit={4} />
 </main><Footer/></body></html>

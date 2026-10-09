@@ -1,0 +1,38 @@
+---
+const { current } = Astro.props;
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
+const chapters = [
+  { slug: 'presenca', title: 'Presença', n: 'I' },
+  { slug: 'gesto', title: 'Gesto', n: 'II' },
+  { slug: 'olhar', title: 'Olhar', n: 'III' },
+  { slug: 'memoria', title: 'Memória', n: 'IV' },
+  { slug: 'vestigio', title: 'Vestígio', n: 'V' },
+];
+const index = chapters.findIndex((chapter) => chapter.slug === current);
+const chapter = chapters[index] ?? chapters[0];
+const previous = chapters[index - 1];
+const next = chapters[index + 1];
+---
+<nav class="caderno-sequence" aria-label={`Percurso dos Cadernos: ${chapter.title}`}>
+  <div class="caderno-sequence-progress" aria-label={`Caderno ${index + 1} de ${chapters.length}`}>
+    <span>SEQUÊNCIA DE ESTUDO</span>
+    <b>Caderno {chapter.n} de {chapters.length}</b>
+    <span class="caderno-sequence-track" aria-hidden="true"><i style={`--progress:${((index + 1) / chapters.length) * 100}%`}></i></span>
+  </div>
+  <div class="caderno-sequence-links">
+    {previous
+      ? <a href={base+`cadernos/${previous.slug}/`} rel="prev">← {previous.title}</a>
+      : <a href={base+'cadernos/'}>Todos os Cadernos</a>}
+    {next
+      ? <a class="next" href={base+`cadernos/${next.slug}/`} rel="next">Próximo: {next.title} →</a>
+      : <a class="next" href={base+'cadernos/'}>Concluir e rever a sequência →</a>}
+  </div>
+</nav>
+<style>
+.caderno-sequence{max-width:1380px;margin:22px auto 30px;padding:18px clamp(18px,5vw,76px);border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;grid-template-columns:minmax(180px,.7fr) minmax(0,1.3fr);gap:18px;align-items:center}
+.caderno-sequence-progress{display:grid;gap:6px}.caderno-sequence-progress>span:first-child{color:var(--gold);font-size:.6rem;font-weight:800;letter-spacing:.15em}.caderno-sequence-progress>b{font:400 1.25rem/1.1 "Cormorant Garamond",Georgia,serif;color:var(--paper)}
+.caderno-sequence-track{height:3px;background:rgba(255,255,255,.12);overflow:hidden}.caderno-sequence-track i{display:block;width:var(--progress);height:100%;background:var(--gold)}
+.caderno-sequence-links{display:flex;justify-content:space-between;gap:12px}.caderno-sequence-links a{color:var(--paper-2);font-size:.78rem;line-height:1.5;text-decoration:none}.caderno-sequence-links a:hover,.caderno-sequence-links a:focus-visible{color:var(--gold);text-decoration:underline}.caderno-sequence-links .next{text-align:right}
+@media(max-width:600px){.caderno-sequence{grid-template-columns:1fr;gap:12px}.caderno-sequence-links{align-items:flex-start}.caderno-sequence-links a{max-width:48%}}
+@media(prefers-reduced-motion:reduce){.caderno-sequence *{scroll-behavior:auto}}
+</style>
