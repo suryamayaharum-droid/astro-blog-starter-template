@@ -114,7 +114,7 @@ Comparei tonal, figura/gesto e lugares em inglês e espanhol. A intenção didá
 
 ## Mobile QA após PR #91 · acompanhamento
 
-O retry #38003813788 passou após a publicação anterior. A auditoria do deploy mais recente (#38005500299, commit `3c91c91`) estava em execução no momento desta edição; conferir antes de fechar o gate.
+O retry #38003813788 passou. A auditoria pós-deploy #38005500299 do commit `3c91c91` passou; a captura do deploy #92 (#38006094950, commit `e631761`) segue em execução.
 
 
 ## Atlas de Referências · correção pontual de destino
