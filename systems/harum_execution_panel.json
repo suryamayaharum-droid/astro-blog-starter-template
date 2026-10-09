@@ -91,7 +91,7 @@
       "freshness": "stale_after_global_navigation_and_content_changes",
       "note": "A fresh PR responsive audit is required after global Header/InternationalHub and learning-surface changes."
     },
-    "product_head_before_panel_update": "ac276fb52bdd59fa94e267b2da47f3f6e55f82d0",
+    "product_head_before_panel_update": "b3699d9935509cf98c3787eaa0601e80ed1e5391",
     "latest_product_changes": [
       "Primeira prática unificada em 15 minutos em Home e Escola PT/EN/ES",
       "Ateliê separa claramente porta de entrada de 15 min e exercício expandido 2/15/45",
@@ -126,15 +126,19 @@
         "Public Domain Review",
         "Google Arts & Culture",
         "The Met Open Access",
-        "National Gallery of Art Open Access"
+        "National Gallery of Art Open Access",
+        "Royal Drawing School Living Library",
+        "Art Prof Drawing Basics Track",
+        "Proko Drawing Basics"
       ],
       "applied": [
         "new /rituais-de-olhar route with six original HARUM NOIR protocols",
+        "research principles from museum education, digital archives and drawing schools translated into HARUM NOIR language",
         "Home observation step now enters through Rituais de Olhar",
         "Atelier, Museus and Referencias connect to observation rituals",
         "Atlas flow expanded to OBSERVAR → PESQUISAR → ESTRUTURAR → ORGANIZAR → PRATICAR",
         "Global search gained question-based entry prompts",
-        "Radar gained new education-method and public-domain drawing entries",
+        "Radar gained open-access hands, drapery, sketchbook, thumbnailing, gestural life drawing and observation resources",
         "Rituais de Olhar added to public llms discovery map"
       ],
       "principle": "Assimilate principles, preserve source attribution, avoid copying named routines or source text."
@@ -149,11 +153,13 @@
     "completed_slices": [
       "Rituais de Olhar created",
       "site research principles documented with original HARUM NOIR framing",
+      "museum/archive/drawing-school benchmarks assimilated",
       "new public-domain repertoire added to Radar",
       "Atlas flow and Search entry model updated",
-      "Home/Atelier/Museus/Referencias connected to the new method"
+      "Home/Atelier/Museus/Referencias connected to the new method",
+      "QA barrier can now request an explicit full validation"
     ],
-    "next_action": "Verify the integrated head, then deepen one underpowered surface with compare/curate behavior rather than adding another generic route.",
+    "next_action": "After the integrated QA barrier is green, deepen comparison/curation behavior inside an existing surface instead of adding another generic content page.",
     "parallelism_horizon": "CI/responsive verification runs as support lane; no second shared-navigation mutation until barrier is green."
   },
   "queue": [
@@ -269,8 +275,8 @@
       },
       {
         "name": "Research assimilation",
-        "estimate_percent": 78,
-        "state": "attacking"
+        "estimate_percent": 86,
+        "state": "verifying"
       }
     ]
   },
