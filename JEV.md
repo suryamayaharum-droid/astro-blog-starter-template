@@ -48,4 +48,5 @@ This pointer is intentionally small. The canonical HIVE carries the full tree, b
 - **PRONTO:** cinco fallbacks genéricos corrigidos; Olhar e Vestígio agora têm práticas com duração e saída; 15 links vidIQ foram removidos das fichas/JSON-LD; contagem da busca anuncia resultados com `role=status`.
 - **FAZENDO:** revisão manual de 37/74 rotas (50%). O Atlas gera 101 fichas e 208 referências. Os hubs EN/ES de História, Museus e Referências foram comparados; rotas só em PT estão identificadas.
 - **PRONTO — checks:** CI e auditoria responsiva do #91 passaram. A última auditoria móvel pós-deploy concluída (#38003813788 no retry) passou; a auditoria móvel do deploy #91 segue em execução; a limpeza editorial #92 está em revisão via PR.
+- **PRONTO:** no perfil de Mark Crilley, substituí um segundo link genérico à home por sua página oficial de aparições, que descreve a demonstração “Thirty Second Drawing”; o exercício agora aponta a uma evidência específica.
 - **PASSO:** conferir fontes primárias e títulos por artista; continuar em História da Arte e completar paridade EN/ES.
