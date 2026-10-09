@@ -44,6 +44,25 @@ A nova aula ensina escala, luz, estrutura vegetal, composição e leitura respon
 4. Rodar CI, auditoria responsiva e verificação de publicação para cada lote que afete a interface.
 5. Atualizar este painel com o estado observado, não com o estado desejado.
 
+## Auditoria móvel pós-release · 9 out 2026
+
+**Estado: em correção; a experiência móvel ainda não está validada como verde.**
+
+PR [#87](https://github.com/suryamayaharum-droid/astro-blog-starter-template/pull/87) foi integrada no commit `24db848`; CI e publicação do GitHub Pages passaram. A auditoria pós-deploy #368 terminou com falha em 22 combinações de rota/largura por controles e links que intersectam o dock fixo na posição inicial. Foram identificados estes grupos:
+
+| Largura | Rotas afetadas |
+|---|---|
+| 320×568 | Radar, Buscar, Busca, Museus, Referências, Biblioteca, Percursos e Ritual do Carvão |
+| 360×800 | Atlas |
+| 390×844 | Buscar, Busca, Referências, Ateliê e Sobre |
+| 412×915 | Escola, Escola EN, Escola ES, Buscar, Busca, Referências, Ateliê e Sobre |
+
+O relatório registrou `HTTP 200`, sem overflow horizontal, imagens quebradas, recursos same-origin com erro ou erros de console. Os itens são links/controles que podem ser alcançados por rolagem, mas o teste anterior media apenas a posição inicial e não verificava essa possibilidade. A revisão do PR #87 também identificou que `aria-hidden` e `inert` não devem ser tratados como ocultação visual.
+
+**Em andamento:** corrigir o teste para medir bloqueios persistentes após centralizar o controle na área visível. A checagem deve continuar usando estilos de renderização e `hidden`/fechamento de `details`; atributos de acessibilidade não devem mascarar sobreposições visuais.
+
+**Critério de conclusão:** CI verde, nova auditoria pós-deploy concluída sem controles irrecuperavelmente encobertos e atualização deste painel com o resultado real. Se algum controle continuar sob o dock mesmo depois da rolagem, corrigir o layout da rota afetada antes de declarar concluído.
+
 ## Próximo alvo
 
 O inventário estrutural cobriu 74 arquivos .astro; o build publica 194 HTMLs e a auditoria automática não encontrou links ou assets quebrados. Falta a leitura editorial manual rota a rota: identificar promessas genéricas, páginas sem prática e destinos que não correspondem ao rótulo. Para sketchbooks, verificar se as imagens locais representam corretamente os registros antes de adotar as imagens externas propostas.
