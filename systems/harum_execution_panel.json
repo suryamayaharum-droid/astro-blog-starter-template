@@ -91,7 +91,7 @@
       "freshness": "stale_after_global_navigation_and_content_changes",
       "note": "A fresh PR responsive audit is required after global Header/InternationalHub and learning-surface changes."
     },
-    "product_head_before_panel_update": "b3699d9935509cf98c3787eaa0601e80ed1e5391",
+    "product_head_before_panel_update": "74da280404ca355a9c9d0aa64b26b5cae6aca4c2",
     "latest_product_changes": [
       "Primeira prática unificada em 15 minutos em Home e Escola PT/EN/ES",
       "Ateliê separa claramente porta de entrada de 15 min e exercício expandido 2/15/45",
@@ -145,39 +145,41 @@
     },
     "qa_barrier": {
       "requested": true,
-      "reason": "Validate the integrated research-assimilation wave after product commits were followed by panel/docs synchronization.",
-      "product_surface_head": "b3699d9935509cf98c3787eaa0601e80ed1e5391",
+      "reason": "Validate Referencias comparison + Cadernos handoff on the integrated head.",
+      "product_surface_head": "74da280404ca355a9c9d0aa64b26b5cae6aca4c2",
       "includes": [
-        "Rituais de Olhar",
-        "Home",
-        "Atelier",
-        "Museus",
-        "Referencias",
-        "Atlas",
-        "Busca",
-        "Radar",
-        "Header/Ecosystem navigation"
+        "Referencias comparison interaction",
+        "Cadernos comparison-note handoff",
+        "existing responsive routes"
       ],
-      "rule": "Do not mutate product or docs again until this explicit full QA barrier completes."
+      "rule": "No additional product mutation until this explicit barrier completes."
+    },
+    "compare_curation": {
+      "state": "verifying",
+      "applied": [
+        "Referencias can select 2–3 items into a comparison table",
+        "selection is stored locally on the device",
+        "student writes the relationship between references",
+        "comparison closes with prompts: what remains / where they diverge / what becomes yours",
+        "Cadernos receives the saved comparison note and turns it into the next drawing question"
+      ],
+      "principle": "Curate relationships instead of accumulating references."
     }
   },
   "primary_attack": {
-    "id": "HN-RESEARCH-ASSIMILATION",
+    "id": "HN-COMPARE-CURATE",
     "priority": "P2",
-    "state": "attacking",
-    "title": "Assimilate external art-learning and archive patterns into HARUM NOIR",
-    "goal": "Turn benchmark research into original learner-facing methods, routes, prompts and repertoire without copying source language or creating passive link dumps.",
+    "state": "verifying",
+    "title": "Turn reference browsing into comparison and micro-curation",
+    "goal": "Make the reference atlas produce an explicit relation, a learner-authored note and a return to drawing.",
     "completed_slices": [
-      "Rituais de Olhar created",
-      "site research principles documented with original HARUM NOIR framing",
-      "museum/archive/drawing-school benchmarks assimilated",
-      "new public-domain repertoire added to Radar",
-      "Atlas flow and Search entry model updated",
-      "Home/Atelier/Museus/Referencias connected to the new method",
-      "QA barrier can now request an explicit full validation"
+      "2–3 reference comparison selection",
+      "local persistence of selection and note",
+      "three comparison prompts",
+      "Cadernos import of comparison note"
     ],
-    "next_action": "After the integrated QA barrier is green, deepen comparison/curation behavior inside an existing surface instead of adding another generic content page.",
-    "parallelism_horizon": "CI/responsive verification runs as support lane; no second shared-navigation mutation until barrier is green."
+    "next_action": "Wait for integrated QA barrier. If green, promote comparison/curation to DONE and attack the next weakest surface instead of adding another page.",
+    "parallelism_horizon": "Verification only until barrier completes."
   },
   "queue": [
     {
@@ -293,6 +295,11 @@
       {
         "name": "Research assimilation",
         "estimate_percent": 86,
+        "state": "verifying"
+      },
+      {
+        "name": "Comparison / curation",
+        "estimate_percent": 92,
         "state": "verifying"
       }
     ]
@@ -454,24 +461,24 @@
   },
   "next_wave": {
     "critical_lane": {
-      "id": "HN-RESEARCH-ASSIMILATION",
-      "state": "attacking",
-      "reason": "Research has moved from notes into product; next gain is comparative/curatorial interaction, not more pages."
+      "id": "HN-COMPARE-CURATE",
+      "state": "verifying",
+      "reason": "Comparison/curation is implemented and must pass integrated QA before another product mutation."
     },
     "parallel_lanes": [
       {
-        "id": "HN-VERIFY-INTEGRATED",
-        "state": "running_support",
-        "type": "CI_and_responsive",
-        "rule": "Validate the current product head after new route/navigation/search/radar changes."
+        "id": "HN-I18N-AUDIT",
+        "state": "read_only_support",
+        "type": "classification",
+        "rule": "Read-only keep/merge/remove classification may continue without touching shared navigation."
       },
       {
-        "id": "HN-I18N-AUDIT",
-        "state": "ready_support",
-        "type": "read_only_quality_audit",
-        "rule": "Keep international classification read-only while shared navigation is verifying."
+        "id": "HN-DEPS-SECURITY",
+        "state": "queued_support",
+        "type": "diagnostic_only",
+        "rule": "Do not mutate dependencies during the QA barrier."
       }
     ],
-    "barrier": "CI + responsive audit green on integrated research-assimilation head."
+    "barrier": "CI + responsive audit green on the explicit [qa:full] head."
   }
 }
