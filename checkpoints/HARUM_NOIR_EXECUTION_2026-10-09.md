@@ -5,16 +5,16 @@
 
 ## Barra de progresso
 
-`████████░░ 80% · implementação pronta, checks pendentes`
+`██████████ 100% · coleção publicada e auditorias concluídas`
 
 - [x] Confirmar main e verificar sobreposição com PR #78.
 - [x] Criar branch independente `feat/colecao-lugares-20261009`.
 - [x] Criar rota `/colecoes/lugares/` com quatro estudos ilustrados.
 - [x] Ligar a nova rota à oitava coleção em `/colecoes/`.
-- [ ] Abrir PR e aguardar CI/build.
-- [ ] Confirmar páginas, imagens, links internos e layout móvel.
+- [x] Abrir PR #84; CI do PR passou.
+- [x] Confirmar rota publicada, quatro imagens carregadas, links do cartão e layout sem overflow.
 - [x] Incluir a nova rota na matriz de auditoria móvel pós-deploy.
-- [ ] Criar versões localizadas EN/ES sem conflitar com o PR #78.
+- [ ] Criar versões localizadas EN/ES após o PR #78 liberar os hubs.
 
 ## Diagnóstico e decisão
 
@@ -22,14 +22,14 @@ A Coleção Visual em português já possuía imagens e sete caminhos; faltava u
 
 As imagens são artes editoriais locais já versionadas. Elas não são apresentadas como fotografias de museus ou documentos históricos. Cada cartão separa a pergunta visual da pesquisa de fonte e informa que direitos devem ser lidos na ficha institucional.
 
-## Estado dos arquivos
+## Entrega integrada: PR #84 squash-merged em `main` (`d15a5c5`) e publicada no GitHub Pages. Estado dos arquivos
 
 | Arquivo | Mudança | Estado |
 |---|---|---|
 | `src/pages/colecoes/lugares.astro` | Nova aula visual com quatro ambientes, exercícios de 8 minutos, imagens, links aos guias de banco e acervos oficiais. | Implementado; CI pendente |
 | `src/pages/colecoes.astro` | Oitavo cartão de coleção, com imagem pertinente e destino da aula. | Implementado; CI pendente |
 | Hubs EN/ES e `InternationalHub.astro` | Não alterados nesta rodada: estão no escopo do PR #78. | Aguardando integração para localização sem conflito |
-| `.github/workflows/noir-mobile-visual-audit.yml` | Adiciona a rota nova à matriz de auditoria pós-deploy. | Implementado; execução depende da publicação |
+| `.github/workflows/noir-mobile-visual-audit.yml` | Adiciona a rota nova à matriz de auditoria pós-deploy. | Concluído; run 37990935006 verde, incluindo a nova rota |
 
 ## Coordenação e validação
 
