@@ -1,6 +1,7 @@
 ---
 import BaseHead from './BaseHead.astro';
 import Header from './Header.astro';
+import { radarByLane } from '../data/radarHarumverso';
 interface Props { lang?: 'pt'|'en'|'es'; }
 const {lang='pt'} = Astro.props as Props;
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
@@ -37,6 +38,7 @@ const copy = {
   }
 };
 const c = copy[lang];
+const processResources=radarByLane('processo').slice(0,6);
 const routes = {
   pt:{home:'',school:'escola/',museums:'museus/',hands:'maos/',notebooks:'cadernos/',sketchbooks:'sketchbooks/',pathways:'percursos/',references:'referencias/',practice:'escola/#primeira-pratica'},
   en:{home:'en/',school:'en/school/',museums:'en/museums/',hands:'en/drawing/',notebooks:'en/references/',sketchbooks:'en/drawing/',pathways:'en/drawing/',references:'en/references/',practice:'en/school/#primeira-pratica'},
@@ -82,6 +84,14 @@ const alternates=[{hreflang:'pt-BR',href:'escola/'},{hreflang:'en',href:'en/scho
       <div class="school-step-copy"><small>{step.tag}</small><h3>{step.title}</h3><p>{step.text}</p><b>{step.link} <span aria-hidden="true">↗</span></b></div>
     </a>)}</div>
   </section>
+  {lang==='pt' && <section class="school-section" id="processos" aria-labelledby="school-process-title">
+    <div class="school-section-head"><div><span class="school-kicker">BIBLIOTECA DE PROCESSOS · RADAR</span><h2 id="school-process-title">Ver como a matéria muda.</h2></div><p>Vídeos e recursos públicos selecionados para observar carvão, transferência, metalpoint e construção. Abra a fonte original e leve uma decisão para a prática.</p></div>
+    <div class="school-steps">{processResources.map((item,i)=><a class="school-step" href={item.url} target="_blank" rel="noreferrer">
+      <div class="school-step-art"><img src={base+'noir/visual-atlas/'+(['harum-noir-caderno-estudo','tools-paper','drapery-still-life','open-sketchbook','exercicio-quatro-decisoes','harum-noir-escola-hero'][i%6])+'.webp'} alt="" width="900" height="600" loading="lazy"/><span>{String(i+1).padStart(2,'0')}</span></div>
+      <div class="school-step-copy"><small>{item.source}</small><h3>{item.title}</h3><p>{item.note}</p><b>Abrir fonte original <span aria-hidden="true">↗</span></b></div>
+    </a>)}</div>
+    <p class="school-radar-link"><a href={base+'radar'}>Ver todas as descobertas no Radar →</a></p>
+  </section>}
   <section class="school-practice" id="primeira-pratica" aria-labelledby="first-practice-title">
     <div class="school-practice-copy"><span class="school-kicker">{c.firstKicker}</span><h2 id="first-practice-title">{c.firstTitle}</h2><p>{c.firstLead}</p>
       <figure class="school-exercise-visual">
@@ -131,6 +141,6 @@ update();
 @media(max-width:760px){.school-page{padding-top:12px}.school-hero{grid-template-columns:1fr;gap:20px;padding-bottom:36px}.school-hero-art{order:-1}.school-hero-art img{aspect-ratio:1.55}.school-hero h1{font-size:clamp(2.8rem,12vw,4.6rem)}.school-section-head{grid-template-columns:1fr;gap:5px}.school-steps{grid-template-columns:1fr 1fr;gap:9px}.school-step-copy{padding:12px}.school-step-copy h3{font-size:1.16rem}.school-step-copy p{min-height:0;font-size:.72rem}.school-practice{grid-template-columns:1fr;gap:24px;padding-top:42px}.school-progress{padding:18px}.school-intl-header{padding-inline:14px}.school-footer{padding-bottom:84px}}
 @media(max-width:440px){.school-steps{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.school-progress-track span{transition:none}}
-</style>
+.school-radar-link{margin-top:18px}.school-radar-link a{color:var(--gold);text-decoration:none;font-size:.82rem}</style>
 </body>
 </html>
