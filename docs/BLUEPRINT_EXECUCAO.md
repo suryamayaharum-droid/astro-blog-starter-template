@@ -141,3 +141,60 @@ O próximo ataque deve ser o item READY de maior impacto que:
 4. reduza um gargalo real do produto.
 
 Estado estruturado atual: `systems/harum_execution_panel.json`.
+
+
+## CAMADA ESTRATÉGICA — ARTE DA GUERRA + METACOGNIÇÃO
+
+Esta camada usa a **Arte da Guerra como metáfora de estratégia de produto**: o adversário é a incerteza, o retrabalho, o gargalo e a regressão — nunca pessoas.
+
+### Terreno
+Antes de agir, ler o terreno atual: branch, CI, rotas, viewport, dependências e superfície executável. Evidência de um deploy antigo não prova o head atual.
+
+### Concentração
+Um ataque principal por vez. Máximo de duas investigações auxiliares. Se tudo é prioridade, nada é prioridade.
+
+### Inteligência
+Antes de qualquer write relevante:
+- **FATO:** o que sabemos por evidência?
+- **HIPÓTESE:** qual causa provável?
+- **CONFIANÇA:** baixa, média ou alta?
+- **FALSIFICADOR:** o que provaria que a hipótese está errada?
+- **MENOR AÇÃO:** qual mudança reversível gera informação útil?
+
+### Terreno favorável
+Preferir a camada em que a mudança é menor, reversível e fácil de verificar. Corrigir a causa antes de mascarar o sintoma.
+
+### Recuo
+Se uma mudança piorar build, navegação ou coerência, voltar ao último estado verificado e reformular a hipótese. Não empilhar remendos sobre hipótese falsificada.
+
+## HORIZONTE ANTI-PARALISIA EXECUCIONAL
+
+O sistema não pode transformar análise em espera infinita.
+
+```text
+0–1 ciclos sem evidência nova .... ANALISAR
+2 ciclos sem evidência nova ...... EXECUTAR MENOR TESTE REVERSÍVEL
+3 tentativas na mesma hipótese ... REFORMULAR HIPÓTESE
+bloqueio externo ................. BUSCAR PROVA LOCAL INDEPENDENTE
+ação irreversível ................ PARAR E EXIGIR APROVAÇÃO/EVIDÊNCIA
+```
+
+Regra prática: **se não chegou informação nova, a próxima ação precisa produzir informação**.
+
+## MOTOR DE PRIORIDADE
+
+Entre itens READY:
+
+`score = 3×impacto + 2×desbloqueio + 2×redução_de_risco + confiança − esforço`
+
+Cada fator usa escala 0–5. Exceções:
+- P0 verificável vence o score;
+- BLOCKED não compete;
+- STALE precisa ser revalidado;
+- empate favorece menor esforço e maior reversibilidade.
+
+## CICLO ESTRATÉGICO
+
+`VER TERRENO → ESCOLHER GARGALO → FORMULAR HIPÓTESE → TESTE PEQUENO → MEDIR → ATUALIZAR MODELO → AVANÇAR OU RECUAR`
+
+Isso transforma o painel em um controlador de execução: ele não apenas mostra progresso; ele diz **quando atacar, quando testar, quando recuar e quando uma análise já virou paralisia**.
