@@ -4,10 +4,12 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import ResearchHighlights from '../components/ResearchHighlights.astro';
 import { openLibraryCollections } from '../data/openLibrary';
+import { latestRadar } from '../data/radarHarumverso';
 import '../styles/browse.css';
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 const sourceCount = openLibraryCollections.reduce((sum, collection) => sum + collection.sources.length, 0);
 const collectionCount = openLibraryCollections.length;
+const radarLatest=latestRadar(8);
 const sourceVisuals=[
  "open-sketchbook.webp","maos-seis-gestos.webp","harum-noir-caderno-estudo.webp","iris-study.webp","drapery-still-life.webp","harum-noir-caderno-olhar.webp","museum-gallery.webp","atelier-desk.webp","moonlit-landscape.webp","tools-paper.webp","harum-noir-colecoes-atlas.webp"
 ];
@@ -36,6 +38,17 @@ const libraryVisuals=[
   </section>
 
   <ResearchHighlights/>
+
+  <section class="section" id="radar">
+    <div class="section-head"><div><div class="eyebrow">RADAR · ÚLTIMAS DESCOBERTAS</div><h2>Novas fontes, já com destino.</h2></div><p>Pesquisa recente verificada e organizada por princípio, direitos e uso editorial.</p></div>
+    <div class="browse-rail">
+      {radarLatest.map((item,i)=><a class="browse-tile" href={item.url} target="_blank" rel="noreferrer">
+        <div class="browse-visual"><span class="num">{String(i+1).padStart(2,'0')}</span><div class="big">{item.creator}</div></div>
+        <div class="browse-body"><span>{item.source} · {item.date}</span><h3>{item.title}</h3><p>{item.note}</p><small style="color:#b39a69">{item.rights} · abrir fonte original →</small></div>
+      </a>)}
+    </div>
+    <div class="actions" style="margin-top:18px"><a class="btn gold" href={base+'radar'}>Abrir Radar completo →</a></div>
+  </section>
 
   <section class="section" id="colecoes">
     <div class="section-head">
