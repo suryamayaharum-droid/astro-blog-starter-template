@@ -68,6 +68,8 @@ jobs:
               ['cadernos', `${base}/cadernos/`],
               ['caderno-memoria', `${base}/cadernos/memoria/`],
               ['atelier', `${base}/atelier/`],
+              ['ritual-do-carvao', `${base}/ritual-do-carvao/`],
+              ['alunos', `${base}/alunos/`],
               ['temporadas', `${base}/temporadas/`],
               ['noir', `${base}/noir/`],
               ['outliers', `${base}/outliers/`],
@@ -176,7 +178,17 @@ jobs:
                     })(),
                     hero: rect(hero),
                     title: document.title,
-                    brokenImages: [...document.images].filter(img => img.complete && img.naturalWidth === 0).map(img => img.currentSrc || img.src)
+                    brokenImages: [...document.images].filter(img => img.complete && img.naturalWidth === 0).map(img => img.currentSrc || img.src),
+                    criticalTouchTargets: [...document.querySelectorAll('.save-current,.search-prompts button,.compare-toggle,.compare-card button,.school-clear,.school-intl-header nav a,.explore-menu summary,.explore-panel a,.intl-header nav a,.ih-header nav a,.ih-topics a,.intl-lesson-header a,.btn')]
+                      .filter(el => {
+                        const cs = getComputedStyle(el);
+                        const r = el.getBoundingClientRect();
+                        return cs.display !== 'none' && cs.visibility !== 'hidden' && r.width > 0 && r.height > 0;
+                      })
+                      .map(el => {
+                        const r = el.getBoundingClientRect();
+                        return { text:(el.textContent || el.getAttribute('aria-label') || '').trim().slice(0,80), width:r.width, height:r.height };
+                      })
                   };
                 });
 
@@ -214,7 +226,8 @@ jobs:
                 (m.requiresDock && !m.dockVisible) ||
                 m.textLength < 40 ||
                 (m.brokenImages && m.brokenImages.length > 0) ||
-                (m.dockOcclusions && m.dockOcclusions.some(x => x.inHero)) ||
+                (m.dockOcclusions && m.dockOcclusions.length > 0) ||
+                (m.criticalTouchTargets && m.criticalTouchTargets.some(x => x.width < 44 || x.height < 44)) ||
                 sameOriginResourceFailures.length > 0 ||
                 (m.consoleErrors && m.consoleErrors.length > 0)
               );
@@ -316,7 +329,7 @@ jobs:
           (async () => {
             const browser = await chromium.launch({ headless: true });
             const base = 'https://suryamayaharum-droid.github.io/astro-blog-starter-template';
-            const routes = ['/', '/atlas/', '/biblioteca/', '/maos/', '/corpo-em-relacao/', '/cabeca-expressao/', '/radar/', '/buscar/'];
+            const routes = ['/', '/atlas/', '/biblioteca/', '/maos/', '/corpo-em-relacao/', '/cabeca-expressao/', '/radar/', '/buscar/', '/ritual-do-carvao/', '/alunos/'];
             const widths = [
               { name: 'mobile-edge', width: 760, expectDock: true },
               { name: 'desktop-edge', width: 761, expectDock: false },
