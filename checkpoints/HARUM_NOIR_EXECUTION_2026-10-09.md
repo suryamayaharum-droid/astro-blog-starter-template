@@ -30,7 +30,7 @@ A nova aula ensina escala, luz, estrutura vegetal, composição e leitura respon
 
 | Prioridade | Item | Estado atual | Próxima ação |
 |---|---|---|---|
-| Alta | Auditoria editorial rota a rota para achar explicações genéricas, telas sem propósito e destinos com pouco conteúdo | Ainda não concluída integralmente. CI cobre build, links, assets, SEO, hreflang e contratos; isso não julga a qualidade pedagógica de cada página. | Inventariar rotas públicas, agrupar por tema, comparar cada promessa do link com seu destino e editar em lotes pequenos com evidência. |
+| Alta | Auditoria editorial rota a rota para achar explicações genéricas, telas sem propósito e destinos com pouco conteúdo | Varredura estrutural concluída (74 rotas); revisão manual está em 33/74 (45%). PR #90 integrada; páginas coerentes foram mantidas e fragilidades concretas foram corrigidas com CI e auditoria responsiva verdes. | Continuar em lotes pequenos por tema; conferir fonte primária, destino de cada promessa e paridade editorial EN/ES. |
 | Média | Sketchbooks, bancos e navegação do ecossistema | A varredura técnica encontrou 74 arquivos de rota .astro e 194 páginas HTML no build. O acervo atual tem 13 galerias e 26 referências a imagens locais; não estão vazias. PRs #29 e #30 seguem divergentes, sem mergeabilidade, e propõem enriquecer algumas imagens e a navegação. A revisão de #30 também apontou termos de busca FR/IT não reconhecidos. | Comparar as imagens locais com as fontes externas propostas antes de escolher uma só implementação; reconciliar com main e corrigir o classificador FR/IT. Manter as galerias atuais até validação e CI + QA móvel. |
 | Média | Identidade de fonte de Jake Parker no Atlas | PR [#22](https://github.com/suryamayaharum-droid/astro-blog-starter-template/pull/22) permanece draft e não mergeável. | Atualizar a branch; manter canal oficial e deixar `videoId` vazio até validar um vídeo específico. |
 | Média · infra separada | Workers Builds no Cloudflare | Issue [#82](https://github.com/suryamayaharum-droid/astro-blog-starter-template/issues/82) aberta. Várias prévias falham; o detalhe decisivo está no dashboard autenticado. GitHub Pages continua sendo a publicação canônica. | Registrar a primeira mensagem de erro real no dashboard antes de alterar comando ou configuração. |
@@ -46,23 +46,14 @@ A nova aula ensina escala, luz, estrutura vegetal, composição e leitura respon
 
 ## Auditoria móvel pós-release · 9 out 2026
 
-**Estado: em correção; a experiência móvel ainda não está validada como verde.**
+**Estado: concluída com sucesso após a correção e publicação da PR #88.**
 
-PR [#87](https://github.com/suryamayaharum-droid/astro-blog-starter-template/pull/87) foi integrada no commit `24db848`; CI e publicação do GitHub Pages passaram. A auditoria pós-deploy #368 terminou com falha em 22 combinações de rota/largura por controles e links que intersectam o dock fixo na posição inicial. Foram identificados estes grupos:
+A execução #368 identificou 22 combinações de rota/largura com controles sob o dock na posição inicial. A correção ajustou o teste para distinguir sobreposição inicial de bloqueio persistente após rolagem, sem tratar `aria-hidden` ou `inert` como ocultação visual.
 
-| Largura | Rotas afetadas |
-|---|---|
-| 320×568 | Radar, Buscar, Busca, Museus, Referências, Biblioteca, Percursos e Ritual do Carvão |
-| 360×800 | Atlas |
-| 390×844 | Buscar, Busca, Referências, Ateliê e Sobre |
-| 412×915 | Escola, Escola EN, Escola ES, Buscar, Busca, Referências, Ateliê e Sobre |
+PR [#88](https://github.com/suryamayaharum-droid/astro-blog-starter-template/pull/88) foi integrada; CI, GitHub Pages e a auditoria pós-deploy [#38002723488](https://github.com/suryamayaharum-droid/astro-blog-starter-template/actions/runs/38002723488) passaram. A matriz de rotas, o contrato de pré-lançamento, o smoke test internacional, os limites responsivos e o envio de screenshots terminaram com sucesso.
 
-O relatório registrou `HTTP 200`, sem overflow horizontal, imagens quebradas, recursos same-origin com erro ou erros de console. Os itens são links/controles que podem ser alcançados por rolagem, mas o teste anterior media apenas a posição inicial e não verificava essa possibilidade. A revisão do PR #87 também identificou que `aria-hidden` e `inert` não devem ser tratados como ocultação visual.
-
-**Em andamento:** corrigir o teste para medir bloqueios persistentes após centralizar o controle na área visível. A checagem deve continuar usando estilos de renderização e `hidden`/fechamento de `details`; atributos de acessibilidade não devem mascarar sobreposições visuais.
-
-**Critério de conclusão:** CI verde, nova auditoria pós-deploy concluída sem controles irrecuperavelmente encobertos e atualização deste painel com o resultado real. Se algum controle continuar sob o dock mesmo depois da rolagem, corrigir o layout da rota afetada antes de declarar concluído.
+**Gate móvel:** fechado em 9 out 2026. Reabrir apenas se uma alteração de layout ou evidência de produção indicar regressão.
 
 ## Próximo alvo
 
-O inventário estrutural cobriu 74 arquivos .astro; o build publica 194 HTMLs e a auditoria automática não encontrou links ou assets quebrados. Falta a leitura editorial manual rota a rota: identificar promessas genéricas, páginas sem prática e destinos que não correspondem ao rótulo. Para sketchbooks, verificar se as imagens locais representam corretamente os registros antes de adotar as imagens externas propostas.
+O inventário estrutural cobriu 74 arquivos .astro; o build publica 194 HTMLs e a auditoria automática não encontrou links ou assets quebrados. A leitura editorial manual segue em lotes: 33/74 rotas verificadas; priorizar fontes primárias do Atlas, rotas históricas restantes e paridade EN/ES. Para sketchbooks, verificar se as imagens locais representam corretamente os registros antes de adotar as imagens externas propostas.
