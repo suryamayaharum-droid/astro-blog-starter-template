@@ -46,4 +46,4 @@ A nova aula ensina escala, luz, estrutura vegetal, composição e leitura respon
 
 ## Próximo alvo
 
-Começar o inventário editorial completo das rotas públicas e priorizar as páginas genéricas por promessa quebrada, destino vazio, falta de imagem ou falta de próximo passo. Em paralelo, destravar a reconciliação de uma única PR de sketchbooks, depois da auditoria da diferença entre #29 e #30.
+O inventário estrutural cobriu 74 arquivos .astro; o build publica 194 HTMLs e a auditoria automática não encontrou links ou assets quebrados. Falta a leitura editorial manual rota a rota: identificar promessas genéricas, páginas sem prática e destinos que não correspondem ao rótulo. Para sketchbooks, verificar se as imagens locais representam corretamente os registros antes de adotar as imagens externas propostas.
