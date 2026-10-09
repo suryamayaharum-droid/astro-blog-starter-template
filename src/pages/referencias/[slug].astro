@@ -22,10 +22,10 @@ for(const ref of artist.refs){
 }
 const videoUrl=videoId?"https://www.youtube-nocookie.com/embed/"+videoId+"?rel=0&playsinline=1&hl=pt-BR":"";
 const officialSources=[artist.site,artist.youtube,artist.instagram].filter(Boolean);
-const displayedRefs=artist.refs.filter((ref:any,index:number,list:any[])=>list.findIndex(item=>item.url===ref.url)===index).map((ref:any)=>{
-  const externalAnalytics=new URL(ref.url).hostname.endsWith('vidiq.com');
-  return externalAnalytics?{...ref,type:'Análise externa · vidIQ',title:'Painel de análise do canal',observe:'Painel de terceiros com métricas do canal; não é o vídeo ou a obra citada. Use-o apenas como pista e confirme o conteúdo no canal oficial.'}:ref;
-});
+const displayedRefs=artist.refs.filter((ref:any)=>{
+  const host=new URL(ref.url).hostname.toLowerCase();
+  return host!=='vidiq.com'&&!host.endsWith('.vidiq.com');
+}).filter((ref:any,index:number,list:any[])=>list.findIndex(item=>item.url===ref.url)===index);
 const referenceSchema={
   '@context':'https://schema.org',
   '@type':'LearningResource',
