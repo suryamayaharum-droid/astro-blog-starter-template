@@ -16,7 +16,7 @@ export async function GET(){
     interactiveLanguages:['pt','en','es','fr','it','de','ja','ko','zh','ar'],
     relatedSite:STUDIO_SITE,
     entities:[
-      {name:'HARUM NOIR',type:'CreativeWorkSeries',role:'editorial atelier for charcoal, figure, anatomy, gesture, art history and visual research'},
+      {name:'HARUM NOIR',type:'CreativeWorkSeries',role:'open drawing school and editorial atelier for charcoal, figure, anatomy, gesture, art history and visual research'},
       {name:'Arte Harum',type:'Organization',role:'authorial visual research and artistic language'},
       {name:'Tattoo Studio 23',type:'TattooParlor',role:'documented tattoo work and booking',url:STUDIO_SITE}
     ],
@@ -49,7 +49,11 @@ export async function GET(){
       notebooks:SITE+'cadernos/',
       library:SITE+'biblioteca/',
       pathways:SITE+'percursos/',
-      search:SITE+'busca/'
+      search:SITE+'buscar/',
+      searchLegacy:SITE+'busca/',
+      observationRituals:SITE+'rituais-de-olhar/',
+      charcoalRitual:SITE+'ritual-do-carvao/',
+      students:SITE+'alunos/'
     },
     references:referenceArtists.map(a=>({
       name:a.name,
