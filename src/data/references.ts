@@ -721,9 +721,9 @@ export const referenceArtists:PublicReference[]=[
       },
       {
         "type": "Formato / demonstração",
-        "title": "Thirty Second Drawing / live demos",
-        "url": "https://www.markcrilley.com/",
-        "observe": "Uso de demonstrações muito curtas como contraste com aulas longas.",
+        "title": "Public Appearances — Thirty Second Drawing",
+        "url": "https://www.markcrilley.com/publicappearancesbio.html",
+        "observe": "A página oficial descreve a demonstração relâmpago ao vivo e explica como o público acompanha a contagem; compare esse formato presencial com o tutorial narrado em vídeo.",
         "tags": "short; demonstração; gesto"
       }
     ]
