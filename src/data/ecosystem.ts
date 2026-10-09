@@ -9,8 +9,8 @@ export type EcosystemHub = {
 
 export const ecosystemHubs: EcosystemHub[] = [
   {id:"escola",title:"Escola Aberta de Desenho",kicker:"APRENDER A OLHAR",description:"Plano de estudo em quatro movimentos: observar, estruturar, organizar e traduzir.",href:"escola/",cover:"harum-noir-escola-hero"},
-  {id:"radar",title:"Radar Harumverso",kicker:"PESQUISA VIVA",description:"Descobertas verificadas com direitos, princípio Noir e destino editorial.",href:"radar/",cover:"tools-paper"},
-  {id:"atlas",title:"Atlas Harum Noir",kicker:"MAPA DO ECOSSISTEMA",description:"Uma mesa de orientação entre referências, museus, história, biblioteca, percursos e prática.",href:"atlas/",cover:"tools-paper"},
+  {id:"radar",title:"Radar HARUM NOIR",kicker:"PESQUISA VIVA",description:"Descobertas verificadas com direitos, princípio Noir e destino editorial.",href:"radar/",cover:"tools-paper"},
+  {id:"atlas",title:"Atlas HARUM NOIR",kicker:"MAPA DO ECOSSISTEMA",description:"Uma mesa de orientação entre referências, museus, história, biblioteca, percursos e prática.",href:"atlas/",cover:"tools-paper"},
   {id:"buscar",title:"Busca HARUM NOIR",kicker:"UMA PERGUNTA · VÁRIAS PORTAS",description:"Busca transversal por rotas, artistas, técnicas, períodos, cadernos, coleções e temporadas.",href:"buscar/",cover:"moonlit-landscape"},
   {id:"percursos",title:"Percursos",kicker:"ENTRAR POR UMA PERGUNTA",description:"Cinco caminhos curatoriais que ligam referência, caderno, fonte e prática.",href:"percursos/",cover:"drapery-still-life"},
   {id:"referencias",title:"Atlas de Referências",kicker:"OLHAR POR DECISÕES",description:"Artistas, professores e processos organizados por foco, não por imitação.",href:"referencias/",cover:"harum-noir-caderno-estudo"},
