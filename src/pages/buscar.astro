@@ -8,12 +8,12 @@ import { openLibraryCollections } from '../data/openLibrary';
 import { referenceArtists } from '../data/references';
 import { artHistoryPeriods } from '../data/artHistory';
 import { cadernos, temporadas } from '../data/public';
-import { radarHarumverso } from '../data/radarHarumverso';
+import { radarHarumverso, radarSlug } from '../data/radarHarumverso';
 
 const base=import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 
 const items=[
-  ...radarHarumverso.map(x=>({type:"Radar",title:x.title,subtitle:x.creator+" · "+x.source,href:"radar",terms:[x.kind,x.note,x.principle,x.destination,x.rights].join(" ")})),
+  ...radarHarumverso.map(x=>({type:"Radar",title:x.title,subtitle:x.creator+" · "+x.source,href:"radar#radar-"+radarSlug(x),terms:[x.kind,x.note,x.principle,x.destination,x.rights].join(" ")})),
   ...ecosystemHubs.map(x=>({
     type:"Rota",
     title:x.title,
@@ -68,7 +68,7 @@ const catalog=JSON.stringify(items);
   <section class="page-hero">
     <div class="eyebrow">BUSCA TRANSVERSAL</div>
     <h1>Uma pergunta, várias portas.</h1>
-    <p>Pesquise um artista, técnica, material, período, problema de desenho ou palavra que ficou na memória. A busca atravessa o ecossistema sem depender de servidor externo.</p>
+    <p>Pesquise um artista, técnica, material, período, problema de desenho ou palavra que ficou na memória. A busca atravessa o HARUM NOIR sem depender de servidor externo.</p>
   </section>
 
   <section class="stream-search-shell">
@@ -120,7 +120,7 @@ const catalog=JSON.stringify(items);
       grid.innerHTML=found.map(card).join('');
       empty.hidden=found.length!==0;
       count.textContent=found.length+' resultado'+(found.length===1?'':'s');
-      title.textContent=q ? 'Encontrado no ecossistema.' : 'Portas para começar.';
+      title.textContent=q ? 'Encontrado no HARUM NOIR.' : 'Portas para começar.';
       const url=new URL(location.href);
       if(q) url.searchParams.set('q',input.value.trim()); else url.searchParams.delete('q');
       history.replaceState(null,'',url);
