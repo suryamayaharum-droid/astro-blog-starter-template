@@ -1,0 +1,42 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import EcosystemRail from '../components/EcosystemRail.astro';
+import { openLibraryCollections } from '../data/openLibrary';
+import { radarHarumverso } from '../data/radarHarumverso';
+const base=import.meta.env.BASE_URL.endsWith('/')?import.meta.env.BASE_URL:import.meta.env.BASE_URL+'/';
+const sourceCollection=openLibraryCollections.find(c=>c.id==='cabeca-em-variacao');
+const sources=sourceCollection?.sources??[];
+const jockey=radarHarumverso.find(item=>item.title==='Study of a Jockey (M. de Broutelles)');
+const axes=[
+['01','CRÂNIO','estrutura antes de feição','Pense esfera, mandíbula e encaixe do pescoço antes de olhos, nariz e boca.'],
+['02','INCLINAÇÃO','o eixo muda a atitude','A mesma cabeça pode parecer alerta, cansada, distante ou vulnerável apenas pela direção.'],
+['03','PERFIL','silhueta segura identidade','Testa, nariz, boca, queixo e nuca formam uma sequência; não desenhe cada parte isolada.'],
+['04','PESCOÇO','a cabeça pertence ao corpo','Rotação e inclinação só fazem sentido quando o pescoço responde ao torso.'],
+['05','OLHAR','direção antes de detalhe','Marque primeiro a orientação dos olhos no volume do crânio; pupilas vêm depois.'],
+['06','IDADE','tempo altera planos e ritmo','Observe estrutura, pele, cabelo e postura sem transformar diferenças em caricatura automática.'],
+['07','EXPRESSÃO','músculo não é máscara','Compare sobrancelha, olhos, boca e mandíbula como mudanças coordenadas.'],
+['08','CONTATO','mãos mudam o rosto','Apoiar o queixo, tocar a face ou cobrir os olhos altera silhueta, compressão e narrativa.']
+];
+---
+<!doctype html><html lang="pt-BR"><head><BaseHead title="Cabeça & Expressão · Harum Noir" description="Crânio, inclinação, perfil, olhar, idade e expressão: estudar a cabeça como estrutura viva, não como máscara."/></head><body><Header/><main class="head-page">
+<section class="head-hero"><div class="head-copy"><div class="eyebrow">HARUM NOIR · CABEÇA & EXPRESSÃO</div><h1>O rosto muda. A estrutura permanece.</h1><p>Esta sala separa o que é construção do que é expressão. Crânio, mandíbula, pescoço e eixo sustentam o rosto; inclinação, olhar e gesto transformam a presença.</p><div class="actions"><a class="btn gold" href="#eixos">Entrar pelos eixos ↓</a><a class="btn" href={base+'corpo-em-relacao'}>Ir para Corpo em Relação</a></div></div><figure><img src={base+'noir/visual-atlas/harum-noir-caderno-olhar.webp'} alt="Estudo editorial de olho e direção construído sobre estrutura esférica." width="900" height="600" fetchpriority="high"/><figcaption>Prancha didática HARUM NOIR · estrutura do olhar</figcaption></figure></section>
+
+{jockey?.cover && <section class="section"><a class="feature-cover" href={jockey.url} target="_blank" rel="noreferrer"><img src={base+'noir/visual-atlas/'+jockey.cover+'.webp'} alt={'Capa editorial HARUM NOIR para '+jockey.title} width="640" height="360"/><div><span class="eyebrow">ESTUDOS SERIADOS · PERFIL</span><h2>{jockey.title}</h2><p>{jockey.note}</p><small>Capa editorial HARUM NOIR; abrir a obra original na {jockey.source} ↗</small></div></a></section>}
+
+<section class="section" id="eixos"><div class="section-head"><div><div class="eyebrow">OITO EIXOS</div><h2>Desenhar o rosto sem perder a cabeça.</h2></div><p>Comece pela arquitetura. Deixe a expressão entrar depois.</p></div><div class="head-grid">{axes.map(([n,title,tag,text])=><article><span>{n}</span><small>{tag}</small><h3>{title}</h3><p>{text}</p></article>)}</div></section>
+
+<section class="section head-practice"><div class="panel"><div class="eyebrow">EXERCÍCIO · UMA CABEÇA, CINCO DIREÇÕES</div><h2>Repita sem copiar a mesma pose.</h2><p>Use o mesmo modelo ou referência. Faça cinco miniaturas mudando apenas a inclinação: frente, perfil, ¾, olhar para cima e olhar para baixo.</p><ol><li>30 s · esfera + mandíbula.</li><li>30 s · eixo vertical e linha dos olhos.</li><li>1 min · pescoço e encaixe no torso.</li><li>2 min · apenas as bordas que sustentam identidade.</li></ol><p>Na última versão, adicione uma expressão sem alterar a estrutura construída.</p></div><div class="card"><div class="card-media" style="aspect-ratio:4/5"><img src={base+'noir/visual-atlas/harum-noir-caderno-olhar.webp'} alt="" loading="lazy"/></div></div></section>
+
+<section class="section" id="fontes"><div class="section-head"><div><div class="eyebrow">BIBLIOTECA · FONTES ABERTAS</div><h2>Comparar cabeças, não fabricar um rosto-padrão.</h2></div><p>{sources.length} referências institucionais já verificadas na Biblioteca Aberta.</p></div><div class="head-ref-rail">{sources.map(source=><a href={source.url} target="_blank" rel="noreferrer"><small>{source.source} · {source.rights}</small><h3>{source.creator}</h3><b>{source.title}</b><p>{source.observe}</p><span>Abrir fonte original ↗</span></a>)}</div></section>
+
+<section class="section"><div class="journal"><div class="paper"><div class="eyebrow" style="color:#8a734b">REGRA NOIR</div><h2>Expressão não é catálogo de emoções.</h2><p class="lead">Uma sobrancelha não significa uma personalidade. Um formato de rosto não define caráter.</p><p>Use estrutura, direção, contexto e postura para construir presença. Evite fisiognomia determinista e fórmulas de “rosto triste”, “rosto forte” ou “rosto inteligente”.</p><p><a href={base+'maos'}>Ver como mãos alteram a expressão →</a></p></div></div></section>
+
+<EcosystemRail current="cabeca-expressao" limit={5}/></main><Footer/>
+<style>
+.head-hero{max-width:1420px;margin:auto;padding:42px clamp(18px,5vw,76px) 58px;display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,6vw,82px);align-items:center;border-bottom:1px solid var(--line)}.head-copy h1{font-size:clamp(3.5rem,7vw,7rem);line-height:.9;letter-spacing:-.055em;margin:20px 0}.head-copy p{max-width:56ch;color:var(--paper-2);line-height:1.7}.head-hero figure{margin:0;border:1px solid var(--line);background:#111}.head-hero figure img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;filter:saturate(.6)}.head-hero figcaption{padding:9px 11px;color:var(--muted);font-size:.67rem;border-top:1px solid var(--line)}
+.feature-cover{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);border-radius:16px;overflow:hidden;text-decoration:none;color:inherit;background:#101011}.feature-cover img{width:100%;height:100%;object-fit:cover;min-height:320px}.feature-cover>div{padding:clamp(24px,4vw,52px);display:flex;flex-direction:column;justify-content:center}.feature-cover h2{font-size:clamp(2rem,4vw,4rem);line-height:.95;margin:15px 0}.feature-cover p{color:var(--paper-2)}.feature-cover small{color:var(--gold);margin-top:16px}
+.head-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.head-grid article{position:relative;min-height:210px;padding:22px;border:1px solid var(--line);border-radius:14px;background:linear-gradient(145deg,rgba(255,255,255,.025),rgba(179,154,105,.025))}.head-grid article>span{position:absolute;right:18px;top:16px;color:var(--gold);font-size:.65rem}.head-grid small{color:var(--gold);letter-spacing:.1em;font-size:.62rem}.head-grid h3{font-size:1.7rem;margin:22px 0 8px}.head-grid p{color:var(--paper-2);margin:0}.head-practice{display:grid;grid-template-columns:1.15fr .85fr;gap:18px}.head-practice ol{line-height:1.9;padding-left:1.2rem}.head-ref-rail{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(290px,36vw);gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 18px}.head-ref-rail>a{scroll-snap-align:start;display:flex;flex-direction:column;min-height:280px;padding:20px;border:1px solid var(--line);border-radius:14px;background:#101011;text-decoration:none;color:inherit}.head-ref-rail small{color:var(--gold);font-size:.62rem}.head-ref-rail h3{font-size:1.45rem;margin:18px 0 5px}.head-ref-rail b{font-size:.82rem;color:var(--paper-2)}.head-ref-rail p{flex:1;color:var(--paper-2)}.head-ref-rail span{color:var(--gold);font-size:.72rem}
+@media(max-width:760px){.head-hero{grid-template-columns:1fr;padding-top:20px}.head-hero figure{order:-1}.head-copy h1{font-size:clamp(3.2rem,14vw,5rem)}.feature-cover{grid-template-columns:1fr}.feature-cover img{min-height:0;aspect-ratio:16/9}.head-grid{grid-template-columns:1fr}.head-practice{grid-template-columns:1fr}.head-ref-rail{grid-auto-columns:84vw}}
+</style></body></html>
