@@ -1,0 +1,218 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import EcosystemRail from '../components/EcosystemRail.astro';
+
+const base=import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
+
+const rituals=[
+  {
+    n:'01',
+    title:'Olhar sem nomear',
+    time:'5 min',
+    question:'O que muda quando você segura a interpretação e deixa o olho trabalhar primeiro?',
+    steps:[
+      'Percorra a imagem devagar, sem procurar assunto ou símbolo.',
+      'Anote três relações visuais: peso, direção, intervalo, borda, luz ou repetição.',
+      'Mude a distância ou o enquadramento e veja o que passa a dominar.'
+    ],
+    output:'3 observações visuais + 1 mudança percebida.'
+  },
+  {
+    n:'02',
+    title:'Prova no desenho',
+    time:'8 min',
+    question:'Que detalhe sustenta a sua leitura?',
+    steps:[
+      'Escolha uma afirmação simples sobre a obra: “parece pesada”, “o olhar foge”, “a figura está presa”.',
+      'Localize duas evidências visuais que sustentam essa impressão.',
+      'Faça um esboço reduzido registrando somente essas evidências.'
+    ],
+    output:'1 hipótese + 2 evidências + 1 miniatura.'
+  },
+  {
+    n:'03',
+    title:'Forma antes da história',
+    time:'10 min',
+    question:'O que a composição faz antes de você saber o contexto?',
+    steps:[
+      'Separe a obra em massas grandes.',
+      'Observe escala, espaço vazio, direção, contraste, bordas e ritmo.',
+      'Escolha uma dessas decisões e teste em outro assunto.'
+    ],
+    output:'1 mapa formal + 1 variação autoral.'
+  },
+  {
+    n:'04',
+    title:'Original, reprodução, memória',
+    time:'12 min',
+    question:'O que a imagem digital mostra — e o que ela apaga?',
+    steps:[
+      'Observe a reprodução e registre o que você consegue inferir sobre escala, matéria e superfície.',
+      'Abra a ficha institucional e confira dimensões, técnica e contexto.',
+      'Feche a tela e reconstrua de memória apenas a estrutura principal.'
+    ],
+    output:'1 lista de diferenças + 1 reconstrução de memória.'
+  },
+  {
+    n:'05',
+    title:'Coleção com intenção',
+    time:'15 min',
+    question:'O que aparece quando três obras são colocadas em relação?',
+    steps:[
+      'Escolha três obras por um critério visual, não por fama.',
+      'Nomeie o elo entre elas: gesto, vazio, matéria, enquadramento, repetição ou tensão.',
+      'Escreva uma frase que explique por que esse conjunto merece existir.'
+    ],
+    output:'1 microcoleção de 3 obras + 1 frase curatorial.'
+  },
+  {
+    n:'06',
+    title:'Acervo vira prática',
+    time:'20 min',
+    question:'Como uma descoberta deixa de ser referência e vira repertório?',
+    steps:[
+      'Escolha uma obra com fonte e direitos claros.',
+      'Extraia uma única decisão visual.',
+      'Aplique a decisão em tema, escala ou composição diferentes.',
+      'Registre o que permaneceu útil depois que a obra original saiu da tela.'
+    ],
+    output:'1 estudo transformado + 1 nota de assimilação.'
+  }
+];
+
+const sources=[
+  {
+    title:'Project Zero · Harvard',
+    note:'Pesquisa sobre rotinas de pensamento, observação, evidência, pergunta e documentação do raciocínio. O HARUM NOIR assimila o princípio de tornar o olhar visível sem copiar uma rotina específica.',
+    href:'https://pz.harvard.edu/thinking-routines'
+  },
+  {
+    title:'MoMA · Slow Looking',
+    note:'A ideia de desacelerar, variar o ponto de vista e perceber para onde a atenção vai reforça nosso princípio de presença antes de interpretação.',
+    href:'https://www.moma.org/visit/itineraries/slow-looking'
+  },
+  {
+    title:'Smarthistory · análise visual',
+    note:'A separação entre descrição formal e contexto ajuda a treinar escala, composição, espaço, linha, forma e tom antes de chegar à narrativa.',
+    href:'https://smarthistory.org/visual-analysis/'
+  },
+  {
+    title:'Getty · Looking and Learning',
+    note:'O contraste entre obra original, reprodução, observação e produção artística inspira o ciclo ver → conferir → fazer → refletir.',
+    href:'https://www.getty.edu/education/k-12-learning/pre-visit-activity-look-at-art-like-an-expert/'
+  },
+  {
+    title:'Rijksmuseum · coleção digital',
+    note:'Explorar, comparar detalhes e criar conjuntos mostra que um acervo digital fica mais útil quando o visitante organiza relações, não apenas rola uma grade.',
+    href:'https://www.rijksmuseum.nl/en/collection'
+  },
+  {
+    title:'Smithsonian Open Access',
+    note:'Milhões de itens abertos e ferramentas para reutilização reforçam a ideia de acervo como matéria-prima para estudo, criação e novos projetos.',
+    href:'https://www.si.edu/openaccess'
+  },
+  {
+    title:'The Public Domain Review',
+    note:'A navegação por tema, época, estilo e mídia mostra como curadoria editorial pode transformar domínio público em repertório legível e surpreendente.',
+    href:'https://publicdomainreview.org/collections'
+  },
+  {
+    title:'Google Arts & Culture',
+    note:'Explorar por artista, movimento, material, tempo e cor sugere caminhos de entrada múltiplos para quem ainda não sabe exatamente o que procura.',
+    href:'https://artsandculture.google.com/explore?hl=pt-BR'
+  },
+  {
+    title:'Royal Drawing School · Living Library',
+    note:'Filmes, conversas e recursos de ensino convivem no mesmo arquivo. A lição para o HARUM NOIR é misturar repertório, exercício e processo sem transformar tudo em um curso linear.',
+    href:'https://royaldrawingschool.org/living-library/home'
+  },
+  {
+    title:'Art Prof · Drawing Basics Track',
+    note:'Trilhas auto-organizadas, prática recorrente e tarefas com saída concreta reforçam a importância de continuidade sem pressionar o aluno a “terminar o site”.',
+    href:'https://artprof.org/learn/tracks/drawing-basics-track/'
+  },
+  {
+    title:'Proko · Drawing Basics',
+    note:'A alternância entre conceito, demonstração, projeto e crítica mostra como uma aula digital ganha força quando a explicação termina em ação verificável.',
+    href:'https://www.proko.com/course-lesson/intro-to-drawing-basics'
+  }
+];
+---
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <BaseHead title="Rituais de Olhar · HARUM NOIR" description="Protocolos autorais de observação, comparação, memória e prática assimilados de pesquisa em educação artística, museus e acervos digitais." />
+</head>
+<body>
+<Header/>
+<main>
+  <section class="page-hero ritual-hero">
+    <div class="eyebrow">HARUM NOIR · PESQUISA ASSIMILADA</div>
+    <h1>Olhar também é uma prática.</h1>
+    <p>Esta página transforma pesquisa sobre educação artística, museus e acervos digitais em protocolos próprios. Não é uma coleção de métodos copiados: cada proposta foi traduzida para o ciclo HARUM NOIR — observar, testar, registrar e voltar para a mão.</p>
+    <div class="actions"><a class="btn gold" href="#rituais">Escolher um ritual ↓</a><a class="btn" href="#fontes">Ver de onde vieram os princípios</a></div>
+  </section>
+
+  <section class="section" aria-labelledby="assimilation-title">
+    <div class="section-head">
+      <div><div class="eyebrow">O QUE A PESQUISA MUDOU</div><h2 id="assimilation-title">Menos catálogo. Mais transformação.</h2></div>
+      <p>Os melhores ambientes pesquisados não tratam a obra como destino final. Eles criam condições para olhar melhor, comparar, formular hipóteses, organizar conjuntos e produzir uma resposta.</p>
+    </div>
+    <div class="assimilation-grid">
+      <article><span>01</span><h3>Desacelerar</h3><p>Tempo de observação é parte do método, não um intervalo antes do conteúdo.</p></article>
+      <article><span>02</span><h3>Pedir evidência</h3><p>Interpretação fica mais forte quando o aluno consegue apontar o que, na imagem, sustenta sua leitura.</p></article>
+      <article><span>03</span><h3>Comparar</h3><p>Uma obra isolada informa. Duas ou três em relação começam a revelar decisões.</p></article>
+      <article><span>04</span><h3>Voltar para a mão</h3><p>O acervo só vira repertório quando alguma escolha é testada em outro desenho.</p></article>
+      <article><span>05</span><h3>Sequenciar</h3><p>Uma escola digital funciona melhor como caminho de decisões do que como depósito de links e aulas.</p></article>
+      <article><span>06</span><h3>Fechar com entrega</h3><p>Cada etapa precisa terminar em algo observável: desenho, comparação, nota, microcoleção ou próxima pergunta.</p></article>
+    </div>
+  </section>
+
+  <section class="section" id="rituais" aria-labelledby="ritual-title">
+    <div class="section-head">
+      <div><div class="eyebrow">SEIS RITUAIS AUTORAIS</div><h2 id="ritual-title">Escolha pela pergunta, não pela ferramenta.</h2></div>
+      <p>Use um ritual por vez. O objetivo é repetir o mesmo tipo de pensamento até ele virar hábito de observação.</p>
+    </div>
+    <div class="ritual-grid">
+      {rituals.map(r=><article class="ritual-card">
+        <div class="ritual-top"><span>{r.n}</span><small>{r.time}</small></div>
+        <h3>{r.title}</h3>
+        <p class="ritual-question">{r.question}</p>
+        <ol>{r.steps.map(step=><li>{step}</li>)}</ol>
+        <div class="ritual-output"><b>SAÍDA</b><span>{r.output}</span></div>
+      </article>)}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="journal"><div class="paper">
+      <div class="eyebrow" style="color:#8a734b">REGRA DE ASSIMILAÇÃO</div>
+      <h2>Não copie o método. Absorva o princípio.</h2>
+      <p class="lead">Uma boa referência de ensino precisa desaparecer depois que a prática começa.</p>
+      <p>No HARUM NOIR, pesquisa externa passa por quatro filtros: <b>o que ela ensina sobre atenção?</b>, <b>qual ação concreta ela provoca?</b>, <b>como o aluno percebe que aprendeu?</b> e <b>como isso volta para desenho autoral?</b>. Se não houver resposta, a referência fica no arquivo — não vira método.</p>
+      <div class="actions"><a class="btn gold" href={base+'museus'}>Aplicar em Museus →</a><a class="btn" href={base+'referencias'}>Aplicar em Referências →</a><a class="btn" href={base+'cadernos'}>Registrar no Caderno →</a></div>
+    </div></div>
+  </section>
+
+  <section class="section" id="fontes" aria-labelledby="sources-title">
+    <div class="section-head">
+      <div><div class="eyebrow">FONTES DE PESQUISA</div><h2 id="sources-title">Sites estudados como propostas de aprendizagem.</h2></div>
+      <p>As descrições abaixo registram o princípio assimilado. Os links levam às fontes originais.</p>
+    </div>
+    <div class="source-grid">
+      {sources.map((s,i)=><a class="source-card" href={s.href} target="_blank" rel="noreferrer">
+        <span>{String(i+1).padStart(2,'0')}</span><h3>{s.title}</h3><p>{s.note}</p><b>Abrir fonte ↗</b>
+      </a>)}
+    </div>
+  </section>
+
+  <EcosystemRail current="rituais" limit={5} title="Transforme o olhar em estudo" kicker="PRÓXIMO MOVIMENTO" />
+</main>
+<Footer/>
+<style>
+.ritual-hero h1{max-width:13ch}.assimilation-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.assimilation-grid article,.ritual-card,.source-card{border:1px solid var(--line);background:linear-gradient(145deg,rgba(255,255,255,.04),rgba(255,255,255,.015));border-radius:18px}.assimilation-grid article{padding:20px}.assimilation-grid span,.ritual-top span,.source-card>span{color:var(--gold);font:1.6rem Georgia}.assimilation-grid h3{font-size:1.45rem;margin:14px 0 7px}.assimilation-grid p{margin:0;color:var(--muted);font-size:.85rem}.ritual-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.ritual-card{padding:clamp(20px,3vw,32px)}.ritual-top{display:flex;justify-content:space-between;align-items:center}.ritual-top small{color:var(--gold);letter-spacing:.12em}.ritual-card h3{font-size:clamp(2rem,4vw,3.4rem);line-height:1;margin:18px 0 10px}.ritual-question{font-family:Georgia,serif;color:var(--paper);font-size:1.08rem;max-width:44ch}.ritual-card ol{padding-left:20px;color:var(--paper-2);line-height:1.65}.ritual-output{display:flex;gap:12px;align-items:flex-start;border-top:1px solid var(--line);padding-top:15px;margin-top:20px}.ritual-output b{color:var(--gold);font-size:.68rem;letter-spacing:.12em}.ritual-output span{font-size:.83rem;color:var(--paper-2)}.source-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.source-card{display:block;padding:22px;text-decoration:none;color:inherit}.source-card h3{font-size:1.55rem;margin:12px 0 8px}.source-card p{color:var(--muted);font-size:.86rem;line-height:1.6}.source-card b{color:var(--gold);font-size:.72rem}.source-card:hover,.source-card:focus-visible{border-color:rgba(179,154,105,.55)}@media(max-width:900px){.assimilation-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:700px){.ritual-grid,.source-grid,.assimilation-grid{grid-template-columns:1fr}}
+</style>
+</body>
+</html>

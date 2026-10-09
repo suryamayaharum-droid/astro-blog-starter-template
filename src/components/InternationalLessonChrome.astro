@@ -1,0 +1,43 @@
+---
+interface Props {
+  lang:'en'|'es';
+  ptHref:string;
+  enHref:string;
+  esHref:string;
+}
+const {lang,ptHref,enHref,esHref}=Astro.props as Props;
+const base=import.meta.env.BASE_URL.endsWith('/')?import.meta.env.BASE_URL:import.meta.env.BASE_URL+'/';
+const home=lang==='en'?base+'en/':base+'es/';
+const about=lang==='en'?base+'en/about/':base+'es/acerca/';
+const topics=lang==='en'
+  ? [
+      [base+'en/collections/','Collections'],
+      [base+'en/references/','References'],
+      [base+'en/drawing/','Drawing'],
+      [base+'en/museums/','Museums']
+    ]
+  : [
+      [base+'es/colecciones/','Colecciones'],
+      [base+'es/referencias/','Referencias'],
+      [base+'es/dibujo/','Dibujo'],
+      [base+'es/museos/','Museos']
+    ];
+---
+<header class="intl-lesson-header">
+  <a class="brand" href={home}>HARUM NOIR</a>
+  <nav class="topics" aria-label={lang==='en'?'Study topics':'Temas de estudio'}>
+    {topics.map(([href,label])=><a href={href}>{label}</a>)}
+  </nav>
+  <nav class="languages" aria-label={lang==='en'?'Languages':'Idiomas'}>
+    <a href={ptHref} lang="pt-BR">PT</a>
+    {lang==='en'?<><span aria-current="page">EN</span><a href={esHref} lang="es">ES</a></>:<><a href={enHref} lang="en">EN</a><span aria-current="page">ES</span></>}
+  </nav>
+</header>
+<slot/>
+<footer class="intl-lesson-footer">
+  <span>HARUM NOIR · Salvador, Bahia, Brazil</span>
+  <nav><a href={home}>{lang==='en'?'Home':'Inicio'}</a><a href={about}>{lang==='en'?'About':'Acerca'}</a><a href={ptHref}>PT</a></nav>
+</footer>
+<style>
+.intl-lesson-header{position:sticky;top:0;z-index:20;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:18px;padding:14px clamp(14px,4vw,56px);background:rgba(7,7,7,.94);border-bottom:1px solid var(--line);backdrop-filter:blur(14px)}.brand{display:inline-flex;align-items:center;min-height:44px;font:500 1.02rem "Cormorant Garamond",Georgia,serif;letter-spacing:.14em;text-decoration:none}.topics,.languages{display:flex;align-items:center;gap:7px}.topics{min-width:0;justify-content:center}.topics a{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding-inline:4px;font-size:.72rem;text-decoration:none;color:var(--paper-2);box-sizing:border-box}.topics a:hover,.topics a:focus-visible{color:var(--gold)}.languages a,.languages span{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:6px 9px;border:1px solid var(--line);font-size:.7rem;text-decoration:none;box-sizing:border-box}.languages span[aria-current]{border-color:var(--gold);color:var(--gold)}.intl-lesson-footer{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;padding:26px clamp(18px,5vw,64px);border-top:1px solid var(--line);color:var(--paper-2);font-size:.76rem}.intl-lesson-footer nav{display:flex;gap:14px}.intl-lesson-footer a{color:var(--gold)}@media(max-width:760px){.intl-lesson-header{grid-template-columns:1fr auto}.topics{grid-column:1/-1;grid-row:2;justify-content:flex-start;overflow-x:auto;padding-top:4px}.topics a{flex:0 0 auto}.intl-lesson-footer{padding-bottom:84px}}
+</style>

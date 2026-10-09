@@ -36,6 +36,7 @@ HARUM NOIR is the editorial arm of Arte Harum. It organizes drawing, charcoal, f
 - Site knowledge map: https://suryamayaharum-droid.github.io/astro-blog-starter-template/site-knowledge.json
 
 ## High-value routes
+- /rituais-de-olhar/ — original observation rituals assimilated from art-education and museum research
 - /referencias/ — artists and reference atlas
 - /historia-da-arte/ — art-history learning paths
 - /bancos/ — public/open-access image-bank map
@@ -47,7 +48,7 @@ HARUM NOIR is the editorial arm of Arte Harum. It organizes drawing, charcoal, f
 - /bancos/bndigital/ — Biblioteca Nacional Digital research gateway
 
 ## Topics
-charcoal drawing, figure drawing, live model, artistic anatomy, gesture drawing, classical sculpture, art history, visual research, tattoo composition, blackwork, sketch tattoo, botanical studies, museum collections, open-access archives, Brazilian visual culture, Salvador, Bahia.
+slow looking, visual observation, close looking, evidence-based interpretation, charcoal drawing, figure drawing, live model, artistic anatomy, gesture drawing, classical sculpture, art history, visual research, tattoo composition, blackwork, sketch tattoo, botanical studies, museum collections, open-access archives, Brazilian visual culture, Salvador, Bahia.
 
 ## Source and attribution policy
 Institutional collections remain canonical sources. HARUM NOIR links to museums, libraries and archives rather than presenting their collections as its own. Editorial and study images must not be described as executed tattoos unless the Studio 23 documentary portfolio identifies them as such.

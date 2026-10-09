@@ -2,10 +2,10 @@
 import InternationalHub from '../../components/InternationalHub.astro';
 const base=import.meta.env.BASE_URL.endsWith('/')?import.meta.env.BASE_URL:import.meta.env.BASE_URL+'/';
 const cards=[
-{kicker:'APIS DE MUSEOS',title:'Busca en colecciones abiertas.',text:'Explora instituciones con APIs abiertas, registros de dominio público y metadatos de la fuente original.',href:base+'es/museos/',label:'Abrir búsqueda de museos →'},
-{kicker:'BANCOS DE IMÁGENES',title:'Usa archivos como mapas de investigación.',text:'Compara museos, bibliotecas y archivos por acceso, derechos, fortalezas y períodos.',href:base+'es/museos/',label:'Explorar bancos de imágenes →'},
+{kicker:'APIS DE MUSEOS',title:'Busca en colecciones abiertas.',text:'Explora instituciones con APIs abiertas, registros de dominio público y metadatos de la fuente original.',href:base+'museus/',label:'Abrir búsqueda viva de museos (PT) →'},
+{kicker:'BANCOS DE IMÁGENES',title:'Usa archivos como mapas de investigación.',text:'Compara museos, bibliotecas y archivos por acceso, derechos, fortalezas y períodos.',href:base+'museus/#catalogo',label:'Explorar catálogo completo de museos (PT) →'},
 {kicker:'BRASIL',title:'Investiga la memoria visual brasileña.',text:'Sigue la ruta de la Biblioteca Nacional Digital para Bahia, Salvador, grabados del siglo XIX y memoria gráfica.',href:base+'es/cultura-visual-brasilena/',label:'Abrir guía BNDigital →'},
-{kicker:'DERECHOS',title:'Mantén visible la procedencia.',text:'HARUM NOIR trata a la institución como fuente canónica y no copia colecciones enteras.',href:base+'es/museos/',label:'Revisar rutas de fuentes →'}
+{kicker:'DERECHOS',title:'Mantén visible la procedencia.',text:'HARUM NOIR trata a la institución como fuente canónica y no copia colecciones enteras.',href:base+'museus/#catalogo',label:'Revisar rutas de fuentes (PT) →'}
 ];
 const answers=[
   {

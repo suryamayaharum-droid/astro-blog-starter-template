@@ -1,0 +1,566 @@
+{
+  "schema": "harum.execution-panel/v2",
+  "title": "HARUM NOIR · GitHub Pages Execution Control",
+  "branch": "melhoria/escola-primeira-pratica-2026-10-09",
+  "pr": 78,
+  "policy": {
+    "primary_wip_limit": 1,
+    "support_wip_limit": 2,
+    "states": [
+      "queued",
+      "ready",
+      "attacking",
+      "verifying",
+      "done",
+      "blocked",
+      "stale"
+    ],
+    "truth_order": [
+      "live_ci_and_branch",
+      "fresh_test_evidence",
+      "current_code_read",
+      "jev_hive_context",
+      "historical_checkpoint",
+      "estimate"
+    ],
+    "completion_rule": "A track is done only when all required evidence gates for that track are fresh against the current branch head.",
+    "progress_rule": "Progress is evidence-weighted; estimates are displayed separately and never upgrade a state.",
+    "batch_rule": "Prefer small reversible changes; verify each bounded slice before opening another primary attack."
+  },
+  "evidence_gates": {
+    "build": [
+      "astro_typescript",
+      "cloudflare_dry_run"
+    ],
+    "integrity": [
+      "internal_routes_assets",
+      "hreflang",
+      "seo_jsonld",
+      "studio23_noir_contract"
+    ],
+    "experience": [
+      "mobile_320",
+      "mobile_390",
+      "tablet",
+      "desktop",
+      "keyboard_focus",
+      "touch_targets",
+      "intentional_overflow"
+    ],
+    "editorial": [
+      "learning_loop",
+      "clear_output",
+      "self_assessment",
+      "next_step",
+      "terminology_consistency"
+    ],
+    "release": [
+      "all_required_gates_fresh",
+      "pr_reviewable",
+      "no_known_p0",
+      "deployment_evidence_if_published"
+    ]
+  },
+  "current_evidence": {
+    "ci_run": 578,
+    "ci_state": "success",
+    "fixing_commit": "eac8bcd0df6b83787596c3a1871efc20927c1e64",
+    "blueprint_commit": "04b4bd671d7486738feca03366b4a1acfe27022e",
+    "jev_health_context": "healthy_historical_projection",
+    "jev_note": "JEV/HIVE is coordination context; live branch and CI override historical projections.",
+    "current_head": "0b76b4da2862a98c798cc5c7dcc60e776dc947e4",
+    "responsive_workflow": ".github/workflows/noir-pr-responsive-audit.yml",
+    "responsive_audit": {
+      "run_id": 37989239266,
+      "run_number": 88,
+      "tested_head": "0b76b4da2862a98c798cc5c7dcc60e776dc947e4",
+      "conclusion": "success",
+      "scope": [
+        "integrated PR state with current main",
+        "320px",
+        "390px",
+        "761px",
+        "1024px",
+        "overflow",
+        "mobile-dock",
+        "broken-images",
+        "same-origin-resources",
+        "console-errors",
+        "keyboard-focus",
+        "critical 44px touch targets",
+        "Rituais de Olhar",
+        "Ritual do Carvão",
+        "Área de alunos",
+        "EN/ES landing, references, gesture and tonal lessons",
+        "Referencias comparison → Cadernos note handoff"
+      ],
+      "freshness": "fresh_for_current_product_head",
+      "note": "Run #88 went green after the stricter touch-target gate exposed and then verified fixes in the international lesson chrome."
+    },
+    "product_head_before_panel_update": "0b76b4da2862a98c798cc5c7dcc60e776dc947e4",
+    "latest_product_changes": [
+      "Primeira prática unificada em 15 minutos e ciclo pedagógico fechado",
+      "Rituais de Olhar traduz pesquisa externa em seis protocolos autorais",
+      "Referências ganhou mesa de comparação 2–3 itens com nota local enviada ao Caderno",
+      "Busca agora leva resultados do Radar ao item exato",
+      "Radar separa fonte original de aplicação dentro do HARUM NOIR",
+      "24 rotas internacionais inventariadas: 12 EN + 12 ES; Google Translate removido",
+      "Aulas internacionais usam chrome nativo EN/ES",
+      "Alvos de toque de Header, InternationalHub, InternationalLessonChrome, School e homes EN/ES ampliados"
+    ],
+    "i18n_inventory": {
+      "en_routes": 12,
+      "es_routes": 12,
+      "state": "verified_structure_content_review_nearly_complete",
+      "fixed_issues": [
+        "Google Translate removed from global and international navigation",
+        "EN/ES references self-links",
+        "ES drawing self-link",
+        "EN/ES museum hub self-links",
+        "EN/ES art-history self-links",
+        "EN/ES Brazilian visual culture self-links",
+        "native PT/EN/ES selectors",
+        "native chrome for international lessons",
+        "tonal-study surfaced in EN/ES collections",
+        "all 24 international routes classified by shell: InternationalHub, School, native landing, or InternationalLessonChrome"
+      ]
+    },
+    "research_assimilation": {
+      "state": "verified",
+      "sources": [
+        "Project Zero / Harvard",
+        "MoMA Slow Looking",
+        "Smarthistory visual analysis",
+        "Getty Looking and Learning",
+        "Rijksmuseum digital collection",
+        "Smithsonian Open Access",
+        "Public Domain Review",
+        "Google Arts & Culture",
+        "The Met Open Access",
+        "National Gallery of Art Open Access",
+        "Royal Drawing School Living Library",
+        "Art Prof Drawing Basics Track",
+        "Proko Drawing Basics"
+      ],
+      "applied": [
+        "new /rituais-de-olhar route with six original HARUM NOIR protocols",
+        "research principles from museum education, digital archives and drawing schools translated into HARUM NOIR language",
+        "Home observation step now enters through Rituais de Olhar",
+        "Atelier, Museus and Referencias connect to observation rituals",
+        "Atlas flow expanded to OBSERVAR → PESQUISAR → ESTRUTURAR → ORGANIZAR → PRATICAR",
+        "Global search gained question-based entry prompts",
+        "Radar gained open-access hands, drapery, sketchbook, thumbnailing, gestural life drawing and observation resources",
+        "Rituais de Olhar added to public llms discovery map"
+      ],
+      "principle": "Assimilate principles, preserve source attribution, avoid copying named routines or source text."
+    },
+    "qa_barrier": {
+      "requested": false,
+      "reason": "Integrated barrier completed successfully.",
+      "product_surface_head": "a367f2f31b426bdadf04baf90c84e5ee7f957310",
+      "ci_run": 562,
+      "responsive_run": 72,
+      "conclusion": "success"
+    },
+    "compare_curation": {
+      "state": "done",
+      "applied": [
+        "Referencias can select 2–3 items into a comparison table",
+        "selection is stored locally on the device",
+        "student writes the relationship between references",
+        "comparison closes with prompts: what remains / where they diverge / what becomes yours",
+        "Cadernos receives the saved comparison note and turns it into the next drawing question"
+      ],
+      "principle": "Curate relationships instead of accumulating references."
+    },
+    "dependency_security_triage": {
+      "state": "triaged_no_forced_upgrade",
+      "production_mode": "Astro output=static; GitHub Pages is the canonical public surface.",
+      "findings": [
+        {
+          "package": "vite",
+          "observed_version": "6.4.1 in dependency tree",
+          "advisory": "GHSA-p9ff-h696-f583 / GHSA-4w7w-66w2-5vf9",
+          "patched": "6.4.2",
+          "exposure": "Dev-server-only conditions; current production is static. Do not ignore, but do not force a major product-PR upgrade."
+        },
+        {
+          "package": "@astrojs/cloudflare",
+          "observed_version": "12.6.12",
+          "advisory": "GHSA-88gm-j2wx-58h6",
+          "patched": "13.1.10",
+          "exposure": "Adapter is installed but not imported by astro.config.mjs; project output is static. Treat as maintenance dependency / Cloudflare tooling risk."
+        },
+        {
+          "package": "astro",
+          "observed_version": "5.16.9",
+          "advisory": "GHSA-2pvr-wf23-7pc7",
+          "patched": "6.4.6",
+          "exposure": "Advisory targets SSR/custom-server error-page fetch behavior; current site is static, so this is not the GitHub Pages production path."
+        }
+      ],
+      "decision": "Create a bounded dependency-maintenance wave later; no npm audit fix --force and no major upgrade inside PR #78 without compatibility work."
+    },
+    "external_checks": {
+      "cloudflare_workers_build": "failing on PR heads",
+      "github_pages_relevance": "not the canonical deploy gate for this branch; repository CI Cloudflare dry-run is green",
+      "note": "Cloudflare GitHub App build details require the external authenticated dashboard; root cause is not proven from this session."
+    },
+    "branch_reconciliation": {
+      "state": "done",
+      "main_head": "40592075c25b9fe060222f0814b2ffb4aa5155e2",
+      "merge_commit": "ece92f1de5a8e350bac04bbd9dd45b572fbc3280",
+      "behind_main": 0,
+      "preserved": [
+        "Ritual do Carvão page and wallpaper",
+        "Área de alunos page",
+        "Footer student access",
+        "Ateliê 15-minute entry plus Ritual do Carvão prelaunch entry"
+      ]
+    },
+    "accessibility": {
+      "state": "verified_for_scoped_controls",
+      "fixes": [
+        "global .btn minimum 44px",
+        "mobile Estante control 44x44",
+        "search prompt controls 44px",
+        "reference compare/remove controls 44px",
+        "school clear/actions and language controls 44px",
+        "museum suggestion and source controls enlarged",
+        "international lesson brand/topics/languages meet the scoped 44px gate"
+      ],
+      "evidence": "Responsive Audit #88"
+    }
+  },
+  "primary_attack": {
+    "id": "HN-RELEASE-READINESS",
+    "priority": "P4",
+    "state": "verifying",
+    "title": "Release readiness without premature publication",
+    "goal": "Keep GitHub Pages product gates green while separating the external Cloudflare Workers failure from actual site readiness.",
+    "completed_slices": [
+      "branch reconciled with main; behind_main=0",
+      "CI #578 green",
+      "Responsive Audit #88 green on integrated PR state",
+      "strict critical-touch-target gate green",
+      "Ritual do Carvão and Área de alunos inherited from main without losing PR pedagogy",
+      "search indexes Ritual do Carvão and student access",
+      "public navigation jargon reduced"
+    ],
+    "next_action": "Keep PR #78 draft while the external Workers Builds check remains unexplained. Next product mutation must be evidence-backed; otherwise perform only final copy/release hygiene.",
+    "parallelism_horizon": "Docs/metadata and external-check diagnosis only."
+  },
+  "queue": [
+    {
+      "id": "HN-COHERENCE-15MIN",
+      "priority": "P2",
+      "state": "done",
+      "title": "Resolve 12 min × 15 min first-practice inconsistency",
+      "depends_on": [
+        "HN-QA-MOBILE-PR78"
+      ],
+      "evidence": [
+        "3534f5d4d078a2cb215cdeaa8718b46e86bf46b4",
+        "ad727bd4f0f4729aac444459c904a98b49f5834f"
+      ]
+    },
+    {
+      "id": "HN-LEARNING-LOOP",
+      "priority": "P2",
+      "state": "done",
+      "title": "Close the learning loop across Museus, Referências, Percursos, Ateliê and Cadernos",
+      "depends_on": [
+        "HN-COHERENCE-15MIN"
+      ],
+      "evidence": [
+        "85e19e201a742eb7a4f5ebe37ebeb4ce23093dfa",
+        "6597f063a3d86d02e92b6b7729ead4036720879c",
+        "f47f5ea372e7dfd216ed66278f769e9458f81559",
+        "131fa813a3eb8afe202514d39806a964266c3777",
+        "ef738092571a5abad3cfa0aa6e78885027cddb35",
+        "37983959827"
+      ]
+    },
+    {
+      "id": "HN-I18N-AUDIT",
+      "priority": "P3",
+      "state": "done",
+      "title": "Audit EN/ES usefulness, completeness and inbound navigation before keeping/removing routes",
+      "depends_on": [
+        "HN-LEARNING-LOOP"
+      ],
+      "inventory": {
+        "en_routes": 12,
+        "es_routes": 12
+      },
+      "evidence": [
+        "no Google Translate matches",
+        "native shells classified for all 24 routes",
+        "CI #562 reciprocal hreflang green",
+        "QA #72 green on representative international routes",
+        "Responsive Audit #88 critical touch gate green"
+      ]
+    },
+    {
+      "id": "HN-DEPS-SECURITY",
+      "priority": "P3",
+      "state": "done",
+      "title": "Triage npm vulnerabilities without blind force upgrades",
+      "depends_on": [],
+      "decision": "triaged; defer compatible maintenance upgrade, no force"
+    },
+    {
+      "id": "HN-RELEASE-PR78",
+      "priority": "P4",
+      "state": "verifying",
+      "title": "Move PR #78 toward review/merge",
+      "blocked_by": [
+        "PR remains draft by policy",
+        "external Cloudflare Workers Builds check failing/unknown"
+      ]
+    }
+  ],
+  "progress": {
+    "note": "Percentages are estimates; state and evidence gates are authoritative.",
+    "tracks": [
+      {
+        "name": "CI / build",
+        "estimate_percent": 100,
+        "state": "done"
+      },
+      {
+        "name": "Automated route/SEO contracts",
+        "estimate_percent": 100,
+        "state": "done"
+      },
+      {
+        "name": "Pedagogical architecture",
+        "estimate_percent": 98,
+        "state": "done"
+      },
+      {
+        "name": "Cross-page coherence",
+        "estimate_percent": 96,
+        "state": "done"
+      },
+      {
+        "name": "Responsive visual QA",
+        "estimate_percent": 100,
+        "state": "done"
+      },
+      {
+        "name": "Accessibility interaction QA",
+        "estimate_percent": 100,
+        "state": "done"
+      },
+      {
+        "name": "Language / redundant routes",
+        "estimate_percent": 96,
+        "state": "done"
+      },
+      {
+        "name": "Dependency security triage",
+        "estimate_percent": 100,
+        "state": "done"
+      },
+      {
+        "name": "Merge / publication",
+        "estimate_percent": 55,
+        "state": "verifying"
+      },
+      {
+        "name": "Research assimilation",
+        "estimate_percent": 92,
+        "state": "done"
+      },
+      {
+        "name": "Comparison / curation",
+        "estimate_percent": 100,
+        "state": "done"
+      }
+    ]
+  },
+  "research_basis": [
+    {
+      "source": "DORA",
+      "principle": "Use several delivery measures, prefer small batch changes, improve the biggest bottleneck, and do not optimize measurement at the expense of improvement."
+    },
+    {
+      "source": "Kanban University",
+      "principle": "Visualize work, limit WIP, manage flow, make policies explicit, and improve evolutionarily."
+    },
+    {
+      "source": "GitHub Projects",
+      "principle": "Use structured fields/status and automations so state changes are explicit rather than buried in prose."
+    },
+    {
+      "source": "MADR/ADR",
+      "principle": "Keep durable decisions explicit and preserve superseded history instead of silently rewriting architectural intent."
+    }
+  ],
+  "strategy": {
+    "doctrine": "Arte da Guerra aplicada ao produto: vencer incerteza e gargalos com informação, foco, terreno favorável e mudanças pequenas; nunca tratar pessoas como adversários.",
+    "terrain": {
+      "definition": "Código, rotas, CI, viewport, dependências e superfícies realmente executáveis.",
+      "rule": "Não atacar uma frente sem ler o terreno atual e confirmar que a evidência pertence ao head corrente."
+    },
+    "force_concentration": {
+      "rule": "Concentrar a faixa crítica em um gargalo principal, mas permitir até três faixas auxiliares independentes dentro do horizonte de paralelismo.",
+      "critical_wip": 1,
+      "auxiliary_parallel_max": 3,
+      "condition": "Somente PARALLEL_OK pelo teste de elegibilidade."
+    },
+    "intelligence": {
+      "rule": "Conhecer estado próprio e estado do sistema antes de agir.",
+      "questions": [
+        "O que sabemos por evidência?",
+        "O que estamos apenas supondo?",
+        "Qual hipótese explica melhor o defeito?",
+        "Qual teste barato pode derrubar essa hipótese?"
+      ]
+    },
+    "favorable_ground": {
+      "rule": "Preferir a camada em que a mudança é menor, reversível e mais fácil de verificar.",
+      "examples": [
+        "corrigir origem em vez de mascarar sintoma",
+        "validar branch local em vez de confiar em deploy antigo",
+        "reduzir escopo antes de ampliar arquitetura"
+      ]
+    },
+    "retreat_and_recovery": {
+      "rule": "Se uma mudança piora build, navegação ou coerência, recuar para o último estado verificado e reabrir a hipótese.",
+      "prohibition": "Não acumular correções sobre uma hipótese já falsificada."
+    }
+  },
+  "metacognition": {
+    "loop": [
+      "OBSERVAR",
+      "FORMULAR_HIPOTESE",
+      "ESTIMAR_CONFIANCA",
+      "TESTAR",
+      "COMPARAR",
+      "ATUALIZAR_MODELO",
+      "AGIR"
+    ],
+    "required_before_write": {
+      "observation": "fato verificável",
+      "hypothesis": "causa provável",
+      "confidence": "baixa|media|alta",
+      "falsifier": "evidência que provaria que a hipótese está errada",
+      "smallest_action": "menor mudança reversível capaz de produzir evidência"
+    },
+    "bias_guards": [
+      "não confundir atividade com progresso",
+      "não proteger uma solução só porque já recebeu esforço",
+      "não usar porcentagem estimada como prova",
+      "não repetir a mesma tentativa sem nova evidência",
+      "não abrir nova infraestrutura para resolver um problema editorial"
+    ]
+  },
+  "priority_engine": {
+    "formula": "score = 3*impact + 2*unblocks + 2*risk_reduction + confidence - effort",
+    "scale": "cada fator de 0 a 5; maior score ataca primeiro entre itens READY",
+    "guardrails": [
+      "P0 verificável vence score",
+      "BLOCKED não compete",
+      "STALE precisa revalidação antes de DONE",
+      "empate favorece menor esforço e maior reversibilidade"
+    ]
+  },
+  "execution_parallelism_horizon": {
+    "purpose": "Aumentar velocidade sem criar colisão, duplicação ou evidência inválida.",
+    "model": "Uma faixa crítica de mutação + faixas paralelas independentes + barreira de integração.",
+    "limits": {
+      "critical_mutation_lanes": 1,
+      "parallel_support_lanes": 3,
+      "same_scope_writers": 1
+    },
+    "lanes": [
+      {
+        "id": "LANE-A-CRITICAL",
+        "role": "mutação principal",
+        "rule": "Somente uma frente pode escrever no mesmo conjunto de arquivos/rotas compartilhadas por vez.",
+        "examples": [
+          "CSS global",
+          "Header/Footer",
+          "mesma página",
+          "configuração de build"
+        ]
+      },
+      {
+        "id": "LANE-B-VERIFY",
+        "role": "verificação",
+        "rule": "CI, auditoria visual, links e testes podem rodar em paralelo quando apenas leem a mesma revisão."
+      },
+      {
+        "id": "LANE-C-RESEARCH",
+        "role": "pesquisa/diagnóstico",
+        "rule": "Pode avançar em paralelo se não alterar o mesmo escopo e produzir evidência reutilizável."
+      },
+      {
+        "id": "LANE-D-INDEPENDENT",
+        "role": "subtarefa isolada",
+        "rule": "Pode escrever em paralelo somente com escopo explicitamente disjunto e sem dependência de ordem."
+      }
+    ],
+    "eligibility_test": [
+      "Os arquivos/rotas tocados são disjuntos?",
+      "A tarefa não depende do resultado da outra?",
+      "As duas podem ser revertidas separadamente?",
+      "A validação de uma não pode mascarar falha da outra?",
+      "Há uma barreira de integração depois?"
+    ],
+    "decision": {
+      "all_yes": "PARALLEL_OK",
+      "any_no": "SERIALIZE",
+      "unknown": "SERIALIZE_UNTIL_SCOPE_KNOWN"
+    },
+    "integration_barrier": {
+      "rule": "Depois de uma onda paralela, congelar novas mutações e rodar build + contratos + QA relevante no head integrado.",
+      "required_before_done": true
+    },
+    "freshness": {
+      "mode": "surface-aware",
+      "rule": "Uma evidência só fica stale quando o novo commit toca a superfície que aquela evidência validou ou muda uma dependência compartilhada.",
+      "examples": [
+        "editar apenas docs/painel não invalida screenshot de páginas",
+        "editar CSS global invalida QA visual das rotas afetadas",
+        "editar astro.config/package-lock invalida build e pode invalidar toda a matriz"
+      ]
+    },
+    "anti_overparallelism": [
+      "não paralelizar duas escritas no mesmo arquivo",
+      "não paralelizar refatoração global com QA final",
+      "não usar agentes paralelos para a mesma hipótese",
+      "não aumentar lanes só porque há capacidade disponível"
+    ]
+  },
+  "next_wave": {
+    "critical_lane": {
+      "id": "HN-RELEASE-READINESS",
+      "state": "verifying",
+      "reason": "CI #578 and responsive/a11y QA #88 are green; branch is reconciled with main. External Workers Builds remains the only unexplained check."
+    },
+    "parallel_lanes": [
+      {
+        "id": "HN-COPY-FINAL",
+        "state": "ready_support",
+        "type": "small_copy_only",
+        "rule": "Only concrete wording defects; no new architecture."
+      },
+      {
+        "id": "HN-CLOUDFLARE-DIAG",
+        "state": "blocked_external",
+        "type": "diagnostic_only",
+        "rule": "Do not guess dashboard configuration without authenticated build logs."
+      },
+      {
+        "id": "HN-DEPS-MAINTENANCE",
+        "state": "deferred",
+        "type": "separate_maintenance_wave",
+        "rule": "Patch/upgrade with compatibility evidence outside PR #78; no force."
+      }
+    ],
+    "barrier": "Keep PR draft. No merge/publication until the external-check decision is explicit."
+  }
+}

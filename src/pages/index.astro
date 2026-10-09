@@ -6,7 +6,7 @@ import '../styles/browse.css';
 
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 const lessons = [
-  {n:'01', title:'Observar', question:'O que faz o olhar parar?', text:'Aprenda a escolher uma imagem, perceber sua estrutura e formular uma pergunta visual.', image:'museum-gallery', href:'museus/', alt:'Sala de museu usada como ponto de partida para observar obras e imagens.'},
+  {n:'01', title:'Observar', question:'O que faz o olhar parar?', text:'Desacelere, separe observação de interpretação e formule uma pergunta antes de acumular referências.', image:'museum-gallery', href:'rituais-de-olhar/', alt:'Sala de museu usada como ponto de partida para observar obras e imagens.'},
   {n:'02', title:'Estruturar', question:'O que sustenta o gesto?', text:'Leia direção, peso e relação entre as partes antes de separar os detalhes.', image:'harum-noir-hands-study', href:'maos/', alt:'Quatro estudos editoriais de gestos de mãos desenhados a carvão.'},
   {n:'03', title:'Organizar', question:'O que merece permanecer?', text:'Use o caderno para comparar, editar e guardar descobertas que possam voltar ao desenho.', image:'open-sketchbook', href:'sketchbooks/', alt:'Caderno aberto preparado para organizar estudos e observações.'},
   {n:'04', title:'Traduzir', question:'Como a observação vira desenho?', text:'Escolha uma matéria, teste uma decisão e termine com algo feito pela sua mão.', image:'harum-noir-caderno-estudo', href:'percursos/#carvao', alt:'Estudo editorial com carvão: modelo articulado, mão em ação, tecido e caderno.'}
@@ -27,12 +27,22 @@ const lessons = [
         <a class="home-button home-button-primary" href={base+'escola/#primeira-pratica'}>Começar pela primeira aula <span aria-hidden="true">↗</span></a>
         <a class="home-button" href={base+'percursos/'}>Escolher um percurso</a>
       </div>
-      <p class="home-note">Aulas abertas · sem conta · progresso salvo só neste aparelho</p>
+      <p class="home-note">Primeira prática gratuita · 15 minutos · papel e lápis · sem conta · progresso salvo só neste aparelho</p>
     </div>
     <figure class="home-hero-art">
       <img src={base+'noir/visual-atlas/harum-noir-escola-hero.webp'} alt="Natureza-morta editorial para estudo: caderno, lápis e tecido iluminados sobre uma mesa." width="1200" height="485" fetchpriority="high"/>
       <figcaption>Cenário editorial criado com assistência de IA</figcaption>
     </figure>
+  </section>
+  <section class="home-loop" aria-labelledby="home-loop-title">
+    <div><span class="home-kicker">COMO A ESCOLA FUNCIONA</span><h2 id="home-loop-title">Não é uma galeria. É um ciclo de estudo.</h2><p>Você entra por uma pergunta, observa uma referência, faz um estudo curto, registra o que descobriu e volta ao desenho com uma decisão mais consciente.</p></div>
+    <ol>
+      <li><span>01</span><b>Olhar</b><small>Escolha uma pergunta visual.</small></li>
+      <li><span>02</span><b>Fazer</b><small>Teste no papel antes de acumular teoria.</small></li>
+      <li><span>03</span><b>Comparar</b><small>Veja o que mudou e por quê.</small></li>
+      <li><span>04</span><b>Registrar</b><small>Guarde uma descoberta no caderno.</small></li>
+      <li><span>05</span><b>Voltar</b><small>Repita com uma decisão própria.</small></li>
+    </ol>
   </section>
   <section class="home-lessons" aria-labelledby="home-lessons-title">
     <div class="home-section-head">
@@ -69,6 +79,6 @@ const lessons = [
 @media(max-width:1000px){.home-lesson-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.home-choose{grid-template-columns:1fr;gap:16px}}
 @media(max-width:700px){.home-body-path{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:7px;padding:10px 0}.home-body-path-label{flex:0 0 110px}.home-body-path>a{flex:0 0 180px;scroll-snap-align:start}.home-body-path>i{flex:0 0 auto}.school-home{padding-bottom:72px}.home-hero{grid-template-columns:1fr;gap:17px;min-height:0;padding:20px 0 30px}.home-hero-art{order:-1}.home-hero-art img{aspect-ratio:1.55}.home-hero h1{font-size:clamp(3.3rem,14vw,5.1rem);margin:17px 0}.home-hero-copy>p{font-size:.95rem}.home-actions{display:grid;grid-template-columns:1fr}.home-button{justify-content:space-between}.home-section-head{align-items:start;flex-direction:column}.home-section-head h2,.home-choose h2{font-size:2.6rem}.home-lesson-grid{grid-template-columns:1fr 1fr;gap:9px}.home-lesson-copy{padding:12px}.home-lesson h3{font-size:1.08rem}.home-lesson p{min-height:0;font-size:.74rem}.home-choose-links{grid-template-columns:1fr}.home-choose-links a{min-height:0;padding:14px 4px}.home-choose-links b{margin-top:9px}}
 @media(prefers-reduced-motion:reduce){.home-lesson,.home-lesson-art img{transition:none}.home-lesson:hover{transform:none}.home-lesson:hover img{transform:none}}
-</style>
+.home-loop{display:grid;grid-template-columns:.75fr 1.25fr;gap:clamp(24px,5vw,70px);padding:54px 0;border-bottom:1px solid var(--line)}.home-loop h2{font-size:clamp(2rem,4vw,3.8rem);line-height:1;letter-spacing:-.04em;margin:10px 0 14px}.home-loop>div>p{max-width:54ch;color:var(--paper-2);line-height:1.65}.home-loop ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--line)}.home-loop li{min-width:0;padding:15px 10px;border-right:1px solid var(--line)}.home-loop li>span{display:block;color:var(--gold);font-size:.62rem}.home-loop li>b,.home-loop li>small{display:block}.home-loop li>b{margin:18px 0 6px}.home-loop li>small{color:var(--muted);font-size:.7rem;line-height:1.45}@media(max-width:900px){.home-loop{grid-template-columns:1fr}.home-loop ol{overflow-x:auto;scroll-snap-type:x mandatory}.home-loop li{flex:none;min-width:150px;scroll-snap-align:start}}@media(max-width:700px){.home-loop ol{display:flex}.home-loop li{flex:0 0 44vw}.home-lesson-grid{grid-template-columns:1fr}}</style>
 </body>
 </html>

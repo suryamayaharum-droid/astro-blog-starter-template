@@ -1,0 +1,312 @@
+name: HARUM NOIR PR Responsive Audit
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "src/**"
+      - "public/noir/**"
+      - "astro.config.mjs"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/noir-pr-responsive-audit.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  scope:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    outputs:
+      run: ${{ steps.detect.outputs.run }}
+    steps:
+      - name: Checkout latest PR head for scope
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 2
+
+      - name: Detect interface-impacting latest commit
+        id: detect
+        shell: bash
+        run: |
+          files="$(git diff --name-only HEAD^ HEAD || true)"
+          message="$(git log -1 --pretty=%B)"
+          printf '%s\n' "$files"
+          if printf '%s\n' "$message" | grep -Fq '[qa:full]'; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+            echo "Explicit full QA barrier requested."
+          elif printf '%s\n' "$files" | grep -Eq '^(src/|public/noir/|astro\.config\.mjs$|package(-lock)?\.json$|\.github/workflows/noir-pr-responsive-audit\.yml$)'; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=false" >> "$GITHUB_OUTPUT"
+            echo "Latest commit does not touch a visual/runtime surface; heavy responsive audit skipped."
+          fi
+
+  responsive-audit:
+    needs: scope
+    if: needs.scope.outputs.run == 'true'
+    concurrency:
+      group: harum-noir-responsive-${{ github.event.pull_request.number || github.ref }}
+      cancel-in-progress: true
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - name: Checkout integrated PR state
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install site
+        run: npm ci
+
+      - name: Build branch
+        run: npm run build
+
+      - name: Prepare local GitHub Pages mount
+        run: |
+          mkdir -p preview-root/astro-blog-starter-template
+          cp -a dist/. preview-root/astro-blog-starter-template/
+
+      - name: Start local static server
+        run: |
+          python3 -m http.server 4173 --directory preview-root > /tmp/harum-preview.log 2>&1 &
+          echo $! > /tmp/harum-preview.pid
+          for i in {1..30}; do
+            if curl -fsS http://127.0.0.1:4173/astro-blog-starter-template/ >/dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/harum-preview.log
+          exit 1
+
+      - name: Install Playwright Chromium
+        run: |
+          npm install playwright@1.50.1 --no-save
+          npx playwright install --with-deps chromium
+
+      - name: Audit current PR routes
+        run: |
+          mkdir -p responsive-audit
+          node <<'NODE'
+          const fs = require('fs');
+          const path = require('path');
+          const { chromium } = require('playwright');
+
+          const base = 'http://127.0.0.1:4173/astro-blog-starter-template';
+          const routes = [
+            {name:'home',route:'/',dock:true},
+            {name:'school',route:'/escola/',dock:true},
+            {name:'rituals',route:'/rituais-de-olhar/',dock:true},
+            {name:'hands',route:'/maos/',dock:true},
+            {name:'atelier',route:'/atelier/',dock:true},
+            {name:'ritual-carbon',route:'/ritual-do-carvao/',dock:true},
+            {name:'students',route:'/alunos/',dock:true},
+            {name:'notebooks',route:'/cadernos/',dock:true},
+            {name:'museums',route:'/museus/',dock:true},
+            {name:'paths',route:'/percursos/',dock:true},
+            {name:'references',route:'/referencias/',dock:true},
+            {name:'en-home',route:'/en/',dock:false},
+            {name:'es-home',route:'/es/',dock:false},
+            {name:'en-references',route:'/en/references/',dock:false},
+            {name:'es-references',route:'/es/referencias/',dock:false},
+            {name:'en-gesture',route:'/en/collections/figure-gesture/',dock:false},
+            {name:'en-tonal',route:'/en/collections/tonal-study/',dock:false},
+            {name:'es-gesture',route:'/es/colecciones/gesto-figura/',dock:false},
+            {name:'es-tonal',route:'/es/colecciones/estudio-tonal/',dock:false}
+          ];
+          const viewports = [
+            {name:'320',width:320,height:700,mobile:true},
+            {name:'390',width:390,height:844,mobile:true},
+            {name:'761',width:761,height:900,mobile:false},
+            {name:'1024',width:1024,height:900,mobile:false}
+          ];
+
+          (async () => {
+            const browser = await chromium.launch({headless:true});
+            const rows = [];
+            const failures = [];
+
+            for (const vp of viewports) {
+              const context = await browser.newContext({
+                viewport:{width:vp.width,height:vp.height},
+                isMobile:vp.mobile,
+                hasTouch:vp.mobile,
+                locale:'pt-BR',
+                reducedMotion:'reduce'
+              });
+              const page = await context.newPage();
+
+              for (const {name,route,dock} of routes) {
+                const badResources = [];
+                const consoleErrors = [];
+                page.removeAllListeners('response');
+                page.removeAllListeners('console');
+                page.on('response', response => {
+                  if (response.status() >= 400) {
+                    try {
+                      if (new URL(response.url()).origin === new URL(base).origin) {
+                        badResources.push({status:response.status(),url:response.url()});
+                      }
+                    } catch {}
+                  }
+                });
+                page.on('console', msg => {
+                  if (msg.type() === 'error') consoleErrors.push(msg.text());
+                });
+
+                const url = base + route;
+                const response = await page.goto(url,{waitUntil:'networkidle',timeout:45000});
+                await page.waitForTimeout(150);
+
+                const expectedDock = vp.mobile ? dock : false;
+                const info = await page.evaluate(({expectDock,mobile}) => {
+                  const root = document.documentElement;
+                  const dock = document.querySelector('.mobile-dock');
+                  const dockVisible = !!dock && getComputedStyle(dock).display !== 'none';
+                  const dockTargets = dock ? [...dock.querySelectorAll('a,button')].map(el => {
+                    const r = el.getBoundingClientRect();
+                    return {text:(el.textContent||el.getAttribute('aria-label')||'').trim().slice(0,60),w:r.width,h:r.height};
+                  }) : [];
+                  const brokenImages = [...document.images]
+                    .filter(img => img.complete && img.naturalWidth === 0)
+                    .map(img => img.currentSrc || img.src);
+                  const criticalTouchTargets = [...document.querySelectorAll('.save-current,.search-prompts button,.museum-suggestions button,.compare-toggle,.compare-card button,.school-clear,.school-intl-header nav a,.explore-menu summary,.explore-panel a,.intl-header nav a,.ih-header nav a,.ih-topics a,.intl-lesson-header a')]
+                    .filter(el => {
+                      const style=getComputedStyle(el);
+                      const r=el.getBoundingClientRect();
+                      return style.display!=='none' && style.visibility!=='hidden' && r.width>0 && r.height>0;
+                    })
+                    .map(el => {
+                      const r=el.getBoundingClientRect();
+                      return {text:(el.textContent||el.getAttribute('aria-label')||'').trim().slice(0,60),w:r.width,h:r.height};
+                    });
+                  return {
+                    title:document.title,
+                    lang:document.documentElement.lang,
+                    textLength:(document.body?.innerText||'').trim().length,
+                    documentWidth:root.scrollWidth,
+                    viewportWidth:window.innerWidth,
+                    overflow:root.scrollWidth > window.innerWidth + 1,
+                    dockVisible,
+                    dockTargets,
+                    brokenImages,
+                    criticalTouchTargets,
+                    mobile,
+                    expectDock
+                  };
+                }, {expectDock:expectedDock,mobile:vp.mobile});
+
+                const row = {
+                  viewport:vp.name,route:name,url,
+                  status:response?.status() ?? null,
+                  ...info,badResources,consoleErrors
+                };
+                rows.push(row);
+
+                if (!response || response.status() >= 400) failures.push({...row,reason:'http'});
+                if (info.overflow) failures.push({...row,reason:'horizontal-overflow'});
+                if (info.dockVisible !== expectedDock) failures.push({...row,reason:'mobile-dock-state'});
+                if (vp.mobile && info.dockTargets.some(x => x.h < 44 || x.w < 44)) failures.push({...row,reason:'dock-touch-target'});
+                if (vp.mobile && info.criticalTouchTargets.some(x => x.h < 44 || x.w < 44)) failures.push({...row,reason:'critical-touch-target',targets:info.criticalTouchTargets.filter(x => x.h < 44 || x.w < 44)});
+                if (info.brokenImages.length) failures.push({...row,reason:'broken-images'});
+                if (badResources.length) failures.push({...row,reason:'same-origin-resource'});
+                if (!info.title || info.textLength < 80) failures.push({...row,reason:'thin-or-untitled'});
+                if (consoleErrors.length) failures.push({...row,reason:'console-error'});
+
+                const dir = path.join('responsive-audit',vp.name);
+                fs.mkdirSync(dir,{recursive:true});
+                await page.screenshot({path:path.join(dir,name+'.png'),fullPage:false});
+              }
+
+              if (!vp.mobile) {
+                await page.goto(base + '/',{waitUntil:'networkidle',timeout:45000});
+                let focusMoves = 0;
+                for (let i=0;i<8;i++) {
+                  await page.keyboard.press('Tab');
+                  const ok = await page.evaluate(() => {
+                    const el = document.activeElement;
+                    if (!el || el === document.body || el === document.documentElement) return false;
+                    const r = el.getBoundingClientRect();
+                    return r.width > 0 && r.height > 0;
+                  });
+                  if (ok) focusMoves++;
+                }
+                rows.push({viewport:vp.name,route:'keyboard-focus',focusMoves});
+                if (focusMoves < 4) failures.push({viewport:vp.name,route:'keyboard-focus',reason:'focus-sequence-too-short',focusMoves});
+              }
+
+              await context.close();
+            }
+
+            // Interaction contract: Referências → comparison note → Cadernos.
+            {
+              const context = await browser.newContext({
+                viewport:{width:390,height:844},
+                isMobile:true,
+                hasTouch:true,
+                locale:'pt-BR',
+                reducedMotion:'reduce'
+              });
+              const page = await context.newPage();
+              await page.goto(base + '/referencias/',{waitUntil:'domcontentloaded',timeout:45000});
+              const compareButtons=page.locator('[data-compare]');
+              const compareCount=await compareButtons.count();
+              if(compareCount < 2){
+                failures.push({route:'references-to-notebooks',reason:'compare-buttons-missing',compareCount});
+              }else{
+                await compareButtons.nth(0).click();
+                await compareButtons.nth(1).click();
+                const compareWork=page.locator('#compare-work');
+                const compareVisible=await compareWork.isVisible();
+                const compareStatus=(await page.locator('#compare-status').textContent())||'';
+                if(!compareVisible) failures.push({route:'references-to-notebooks',reason:'compare-work-not-visible'});
+                if(!compareStatus.includes('2 referências')) failures.push({route:'references-to-notebooks',reason:'compare-status-incorrect',compareStatus});
+                const note='Bordas e massas se repetem; vou testar a relação sem copiar a superfície.';
+                await page.locator('#compare-note').fill(note);
+                fs.mkdirSync(path.join('responsive-audit','flows'),{recursive:true});
+                await page.screenshot({path:path.join('responsive-audit','flows','comparison-table-390.png'),fullPage:false});
+                await page.locator('#compare-work a').first().click();
+                await page.waitForLoadState('domcontentloaded');
+                const imported=page.locator('#comparacao-importada');
+                const importedVisible=await imported.isVisible();
+                const importedText=(await page.locator('#compare-import-note').textContent())||'';
+                if(!importedVisible) failures.push({route:'references-to-notebooks',reason:'comparison-note-not-imported'});
+                if(importedText.trim()!==note) failures.push({route:'references-to-notebooks',reason:'comparison-note-mismatch',importedText});
+                rows.push({viewport:'390',route:'references-to-notebooks',compareCount,compareVisible,compareStatus,importedVisible,noteMatched:importedText.trim()===note});
+                await page.screenshot({path:path.join('responsive-audit','flows','notebook-handoff-390.png'),fullPage:false});
+              }
+              await context.close();
+            }
+
+            fs.writeFileSync('responsive-audit/metrics.json',JSON.stringify(rows,null,2));
+            fs.writeFileSync('responsive-audit/failures.json',JSON.stringify(failures,null,2));
+            console.log('Responsive audit rows:',rows.length);
+            console.log('Failures:',failures.length);
+            if (failures.length) {
+              console.error('HARUM_RESPONSIVE_FAILURES');
+              console.error(JSON.stringify(failures,null,2));
+              await browser.close();
+              process.exit(1);
+            }
+            await browser.close();
+          })().catch(err => { console.error(err); process.exit(1); });
+          NODE
+
+      - name: Upload responsive evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: harum-noir-pr-responsive-audit
+          path: responsive-audit
+          if-no-files-found: error
+          retention-days: 7

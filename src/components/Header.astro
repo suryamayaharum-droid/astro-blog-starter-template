@@ -4,6 +4,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 const primaryPaths = new Set(["escola","atlas","percursos","cadernos","atelier"]);
 const links = [
   ["Escola","escola"],
+  ["Rituais","rituais-de-olhar"],
   ["Buscar","buscar"],
   ["Atlas","atlas"],
   ["Radar","radar"],
@@ -37,16 +38,16 @@ const links = [
     <div class="nav-links">
       {links.filter(([,path])=>primaryPaths.has(path)).map(([label,path]) => <a href={`${base}${path}`} data-astro-prefetch>{label}</a>)}
       <a href={STUDIO_SITE} target="_blank" rel="noreferrer">Studio 23 ↗</a>
-      <span class="locale-inline" aria-label="Idiomas"><a href={base}>PT</a><a href="https://translate.google.com/translate?sl=pt&amp;tl=en" data-google-translate="en" aria-label="Abrir esta página em inglês com o Google Tradutor">EN ↗</a><a href="https://translate.google.com/translate?sl=pt&amp;tl=es" data-google-translate="es" aria-label="Abrir esta página em espanhol com o Google Tradutor">ES ↗</a></span>
+      <span class="locale-inline" aria-label="Idiomas"><a href={base} lang="pt-BR">PT</a><a href={base+'en/'} lang="en">EN</a><a href={base+'es/'} lang="es">ES</a></span>
     </div>
     <details class="explore-menu">
       <summary>Explorar <span aria-hidden="true">＋</span></summary>
-      <nav class="explore-panel" aria-label="Explorar o ecossistema">
-        <span class="explore-title">O ateliê inteiro</span>
+      <nav class="explore-panel" aria-label="Explorar a escola">
+        <span class="explore-title">Mapa de estudo</span>
         {links.map(([label,path])=><a href={`${base}${path}`} data-astro-prefetch>{label}</a>)}
         <a href={STUDIO_SITE} target="_blank" rel="noreferrer">Studio 23 ↗</a>
         <span class="explore-title locale-title">Idiomas · Languages</span>
-        <a href={base} data-astro-prefetch>Português</a><a href="https://translate.google.com/translate?sl=pt&amp;tl=en" data-google-translate="en" aria-label="Traduzir esta página para inglês">English · Google ↗</a><a href="https://translate.google.com/translate?sl=pt&amp;tl=es" data-google-translate="es" aria-label="Traduzir esta página para espanhol">Español · Google ↗</a>
+        <a href={base} data-astro-prefetch lang="pt-BR">Português</a><a href={base+'en/'} data-astro-prefetch lang="en">English</a><a href={base+'es/'} data-astro-prefetch lang="es">Español</a>
       </nav>
     </details>
     <button class="save-current" id="save-current" type="button">＋ Estante</button>
@@ -72,15 +73,6 @@ try{
     xs=[item,...(Array.isArray(xs)?xs:[]).filter(x=>x&&x.path!==item.path)].slice(0,12);
     try{localStorage.setItem(k,JSON.stringify(xs))}catch{}
   }
-  document.querySelectorAll<HTMLAnchorElement>('[data-google-translate]').forEach((a)=>{
-    const translate=new URL('https://translate.google.com/translate');
-    translate.searchParams.set('sl','pt');
-    translate.searchParams.set('tl',a.dataset.googleTranslate||'en');
-    translate.searchParams.set('u',window.location.href);
-    a.href=translate.href;
-    a.target='_blank';
-    a.rel='noopener noreferrer';
-  });
   document.querySelectorAll('.nav-links a,.mobile-dock a,.explore-panel a').forEach((a)=>{
     if(!(a instanceof HTMLAnchorElement)) return;
     const target=new URL(a.href,location.href);
@@ -109,14 +101,14 @@ try{
 </script>
 <style>
 .explore-menu{position:relative;flex:0 0 auto}
-.explore-menu summary{list-style:none;cursor:pointer;padding:8px 12px;border:1px solid var(--line);border-radius:999px;font-size:.78rem;color:var(--paper)}
+.explore-menu summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;min-height:44px;padding:8px 12px;border:1px solid var(--line);border-radius:999px;font-size:.78rem;color:var(--paper);box-sizing:border-box}
 .explore-menu summary::-webkit-details-marker{display:none}
 .explore-menu summary span{color:var(--gold);margin-left:8px}
 .explore-menu[open] summary{border-color:var(--gold-dim)}
 .explore-panel{position:absolute;right:0;top:calc(100% + 14px);width:min(440px,calc(100vw - 32px));display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:20px;background:#111214;border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);max-height:calc(100dvh - 150px);overflow:auto}
 .explore-title{grid-column:1/-1;color:var(--gold);font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;padding:0 10px 12px}
-.explore-panel a{padding:10px;border-radius:8px;text-decoration:none;font-size:.85rem;color:var(--paper-2)}
+.explore-panel a{display:flex;align-items:center;min-height:44px;padding:10px;border-radius:8px;text-decoration:none;font-size:.85rem;color:var(--paper-2);box-sizing:border-box}
 .explore-panel a:hover,.explore-panel a[aria-current]{background:rgba(179,154,105,.1);color:var(--paper)}
-.locale-inline{display:inline-flex;gap:4px;margin-left:4px}.locale-inline a{font-size:.66rem;padding:4px 6px;border:1px solid var(--line);border-radius:999px}.locale-inline a:hover{border-color:var(--gold);color:var(--gold)}
-@media(max-width:760px){.locale-inline{display:none}.explore-menu{margin-left:auto}.explore-menu summary{font-size:.72rem;padding:7px 10px}.explore-panel{position:fixed;left:16px;right:16px;top:64px;width:auto}.explore-panel a{font-size:.9rem}}
+.locale-inline{display:inline-flex;gap:4px;margin-left:4px}.locale-inline a{display:inline-flex;align-items:center;justify-content:center;min-width:36px;min-height:36px;font-size:.66rem;padding:4px 6px;border:1px solid var(--line);border-radius:999px;box-sizing:border-box}.locale-inline a:hover{border-color:var(--gold);color:var(--gold)}
+@media(max-width:760px){.locale-inline{display:none}.explore-menu{margin-left:auto}.explore-menu summary{font-size:.72rem;min-height:44px;padding:7px 10px}.explore-panel{position:fixed;left:16px;right:16px;top:64px;width:auto}.explore-panel a{font-size:.9rem}}
 </style>
