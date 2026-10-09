@@ -3,7 +3,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 const base=import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
-const covers=["harum-noir-escola-hero","tools-paper","harum-noir-caderno-estudo","museum-gallery","drapery-still-life","open-sketchbook","moonlit-landscape","iris-study","harum-noir-caderno-estudo","atelier-desk","harum-noir-colecoes-atlas" ,"maos-seis-gestos","atelier-desk"];
+const covers=["harum-noir-escola-hero","tools-paper","harum-noir-caderno-estudo","museum-gallery","drapery-still-life","open-sketchbook","moonlit-landscape","iris-study","harum-noir-caderno-estudo","atelier-desk","harum-noir-colecoes-atlas","maos-seis-gestos","figure-gesture","harum-noir-caderno-olhar","atelier-desk"];
 const doors=[
 ["Escola Aberta","Um plano simples para observar, estruturar, organizar referências e desenhar.","escola/"],
 ["Busca geral","Pesquisar artistas, técnicas, materiais, períodos, Cadernos, coleções e Temporadas.","buscar"],
@@ -17,10 +17,12 @@ const doors=[
 ["Arquivo Aberto","Textos, cartas, materiais públicos e portas permanentes do ecossistema.","arquivo"],
 ["Coleções Visuais","Estudos por gesto, forma, luz e matéria; cada coleção termina em uma prática.","colecoes/"],
 ["Mãos · linguagem corporal","Forma, gesto, contato, preensão, tensão e narrativa: anatomia que volta para a ação.","maos/"],
+["Corpo em Relação","Duas figuras, apoio, distância, contato, resistência e peso compartilhado.","corpo-em-relacao/"],
+["Cabeça & Expressão","Crânio, inclinação, perfil, olhar e expressão sem perder a estrutura.","cabeca-expressao/"],
 ["Studio 23","Ateliê de tatuagem autoral em Salvador, com portfólio, serviços e agendamento no próprio ecossistema.","studio23/"],
 ];
 ---
-<!doctype html><html lang="pt-BR"><head><BaseHead title="Atlas · Harum Noir" description="Mapa de entrada para referências, museus, história da arte, biblioteca, percursos, outliers, identidade e arquivo do Harum Noir."/></head><body><Header/><main class="atlas-composition">
+<!doctype html><html lang="pt-BR"><head><BaseHead title="Atlas · Harum Noir" description="Mapa de entrada para referências, museus, história da arte, biblioteca, percursos, outliers, identidade e arquivo do Harum Noir."/></head><body class="has-page-wallpaper" style={"--page-wallpaper: url('" + base + "noir/visual-atlas/tools-paper.webp')"}><Header/><main class="atlas-composition">
 <section class="page-hero"><div class="eyebrow">ATLAS HARUM NOIR</div><h1>Um mapa, várias entradas.</h1><p>Escolha a porta pela pergunta que trouxe para o desenho. Artistas, acervos, história e prática fazem parte do mesmo percurso.</p></section>
 <section class="atlas-flow" aria-labelledby="atlas-flow-title"><div class="atlas-flow-head"><span class="eyebrow">NÃO SABE POR ONDE COMEÇAR?</span><h2 id="atlas-flow-title">Siga o desenho, não o menu.</h2><p>Um caminho curto conecta repertório, observação e prática sem exigir que você conheça a estrutura do site.</p></div><div class="atlas-flow-rail" role="region" aria-label="Percurso do desenho em quatro etapas"><a href={base+'museus/'}><span>01</span><b>OBSERVAR</b><small>Escolha uma obra ou imagem</small></a><a href={base+'maos/'}><span>02</span><b>ESTRUTURAR</b><small>Leia ação, peso e relação</small></a><a href={base+'cadernos/'}><span>03</span><b>ORGANIZAR</b><small>Guarde perguntas e variações</small></a><a href={base+'atelier/'}><span>04</span><b>PRATICAR</b><small>Volte para o papel</small></a></div></section>
 <section class="section" aria-label="Entradas do Atlas"><div class="atlas-doors">{doors.map((d,i)=><a class="atlas-door" href={base+d[2]}>

@@ -8,10 +8,12 @@ import { openLibraryCollections } from '../data/openLibrary';
 import { referenceArtists } from '../data/references';
 import { artHistoryPeriods } from '../data/artHistory';
 import { cadernos, temporadas } from '../data/public';
+import { radarHarumverso } from '../data/radarHarumverso';
 
 const base=import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 
 const items=[
+  ...radarHarumverso.map(x=>({type:"Radar",title:x.title,subtitle:x.creator+" · "+x.source,href:"radar",terms:[x.kind,x.note,x.principle,x.destination,x.rights].join(" ")})),
   ...ecosystemHubs.map(x=>({
     type:"Rota",
     title:x.title,
@@ -60,7 +62,7 @@ const catalog=JSON.stringify(items);
 <!doctype html>
 <html lang="pt-BR">
 <head><BaseHead title="Buscar · Harum Noir" description="Busca transversal no HARUM NOIR: escola, rotas, referências, Biblioteca, História da Arte, Cadernos e Temporadas."/></head>
-<body>
+<body class="has-page-wallpaper" style={"--page-wallpaper: url('" + base + "noir/visual-atlas/bndigital-study-atlas.webp')"}>
 <Header/>
 <main class="stream-main">
   <section class="page-hero">

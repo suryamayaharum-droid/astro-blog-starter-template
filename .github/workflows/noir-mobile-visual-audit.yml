@@ -42,6 +42,9 @@ jobs:
               ['home', `${base}/`],
               ['school', `${base}/escola/`],
               ['hands', `${base}/maos/`],
+              ['body-relation', `${base}/corpo-em-relacao/`],
+              ['head-expression', `${base}/cabeca-expressao/`],
+              ['radar', `${base}/radar/`],
               ['colecoes', `${base}/colecoes/`],
               ['estudo-tonal', `${base}/colecoes/estudo-tonal/`],
               ['figure-gesture-pt', `${base}/colecoes/gesto-figura/`],
@@ -312,7 +315,7 @@ jobs:
           (async () => {
             const browser = await chromium.launch({ headless: true });
             const base = 'https://suryamayaharum-droid.github.io/astro-blog-starter-template';
-            const routes = ['/', '/atlas/', '/biblioteca/'];
+            const routes = ['/', '/atlas/', '/biblioteca/', '/maos/', '/corpo-em-relacao/', '/cabeca-expressao/', '/radar/', '/buscar/'];
             const widths = [
               { name: 'mobile-edge', width: 760, expectDock: true },
               { name: 'desktop-edge', width: 761, expectDock: false },

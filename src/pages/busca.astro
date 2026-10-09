@@ -1,64 +1,19 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { referenceArtists } from '../data/references';
-import { cadernos, temporadas } from '../data/public';
-import { artHistoryPeriods } from '../data/artHistory';
-import { imageBanks } from '../data/imageBanks';
-import { visualStudyCollection } from '../data/visualStudyCollection';
-import '../styles/search.css';
-
 const base=import.meta.env.BASE_URL.endsWith('/')?import.meta.env.BASE_URL:import.meta.env.BASE_URL+'/';
-const searchWallpaper=visualStudyCollection[0];
-const percursos=[
-  {title:"Carvão & presença",subtitle:"matéria, gesto, borda e apagamento",href:base+"percursos#carvao"},
-  {title:"Figura viva",subtitle:"peso, ritmo, centro de massa e anatomia",href:base+"percursos#figura"},
-  {title:"Silêncio & processo",subtitle:"tempo, mão, som e atmosfera",href:base+"percursos#silencio"},
-  {title:"Estrutura & anatomia",subtitle:"proporção, perspectiva, cabeça e mãos",href:base+"percursos#estrutura"},
-  {title:"Sketchbook & mundo autoral",subtitle:"caderno, arquivo, narrativa e memória",href:base+"percursos#mundo"}
-];
-const items=[
-  {kind:"Escola",title:"Escola Aberta de Desenho",subtitle:"Quatro movimentos para transformar observação em prática.",href:base+"escola/",meta:"Plano de estudo · primeira aula"},
-  ...referenceArtists.map(a=>({kind:"Referência",title:a.name,subtitle:a.focus,href:base+"referencias/"+a.slug,meta:"Atlas de referências · "+String(a.rank).padStart(2,"0")})),
-  ...cadernos.map(c=>({kind:"Caderno",title:c.title,subtitle:c.question,href:base+"cadernos#"+c.slug,meta:c.kicker})),
-  ...artHistoryPeriods.map(p=>({kind:"História",title:p.title,subtitle:p.thesis,href:base+"historia-da-arte#"+p.id,meta:p.dates+" · "+p.region})),
-  ...imageBanks.map(b=>({kind:"Banco",title:b.name,subtitle:b.strengths.join(" · "),href:base+"bancos/"+b.id+"/",meta:b.place+" · "+b.access})),
-  ...temporadas.map(t=>({kind:"Temporada",title:t.title,subtitle:t.text,href:base+"temporadas#t"+t.n,meta:"Temporada "+t.n})),
-  ...percursos.map(p=>({kind:"Percurso",...p,meta:"Percurso Harum Noir"}))
-];
+const target=new URL(base+'buscar/',Astro.site).href;
 ---
-<!doctype html><html lang="pt-BR">
-<head><BaseHead title="Buscar · Harum Noir" description="Busca unificada por escola, referências, cadernos, história da arte, bancos de imagens, temporadas e percursos."/></head>
-<body class="has-page-wallpaper" style={`--page-wallpaper: url('${base+searchWallpaper.file}')`}><Header/><main>
-<section class="page-hero"><div class="eyebrow">HARUM NOIR · BUSCA</div><h1>Encontre uma porta.</h1><p>Uma busca única atravessa o Atlas, Cadernos, História, Bancos, Temporadas e Percursos.</p></section>
-<div class="global-search-bar"><span>⌕</span><input id="global-q" autofocus placeholder="Artista, período, técnica, museu, tema…" aria-label="Buscar no Harum Noir"/><button id="clear-q" type="button">limpar</button></div>
-<div class="search-kinds" id="search-kinds" role="group" aria-label="Filtrar resultados por tipo">
-  {["Todos","Escola","Referência","Caderno","História","Banco","Temporada","Percurso"].map((k,i)=><button class={i===0?"active":""} data-kind={k}>{k}</button>)}
-</div>
-<div class="search-count" id="search-count"></div>
-<div class="search-grid" id="search-grid"></div>
-<div class="search-empty" id="search-empty" hidden><h2>Nenhuma porta com esse termo.</h2><p>Tente uma técnica, período, artista ou material mais amplo.</p></div>
-</main><Footer/>
-<script define:vars={{items}}>
-const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
-const norm=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
-const q=document.querySelector('#global-q');
-const grid=document.querySelector('#search-grid');
-const count=document.querySelector('#search-count');
-const empty=document.querySelector('#search-empty');
-let kind='Todos';
-const render=()=>{
-  const n=norm(q.value.trim());
-  const xs=items.filter(x=>(kind==='Todos'||x.kind===kind)&&(!n||norm(x.title+' '+x.subtitle+' '+(x.meta||'')).includes(n))).slice(0,120);
-  grid.innerHTML=xs.map((x,i)=>'<a class="search-result" href="'+esc(x.href)+'"><div class="search-num">'+String(i+1).padStart(2,'0')+'</div><div class="search-kind">'+esc(x.kind)+'</div><h2>'+esc(x.title)+'</h2><p>'+esc(x.subtitle)+'</p><small>'+esc(x.meta||'')+'</small></a>').join('');
-  count.textContent=xs.length+' portas encontradas';
-  empty.hidden=xs.length>0;
-};
-q.addEventListener('input',render);
-document.querySelector('#clear-q')?.addEventListener('click',()=>{q.value='';render();q.focus()});
-document.querySelectorAll('[data-kind]').forEach(b=>b.addEventListener('click',()=>{kind=b.dataset.kind;document.querySelectorAll('[data-kind]').forEach(x=>x.classList.toggle('active',x===b));render()}));
-const incoming=new URLSearchParams(location.search).get('q');if(incoming)q.value=incoming;
-render();
-</script>
-</body></html>
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width"/>
+<meta name="robots" content="noindex,follow"/>
+<meta http-equiv="refresh" content={`0;url=${target}`}/>
+<link rel="canonical" href={target}/>
+<title>Busca mudou · HARUM NOIR</title>
+</head>
+<body>
+<p>A busca do HARUM NOIR mudou para <a href={base+'buscar/'}>Buscar</a>.</p>
+<script is:inline define:vars={{target}}>location.replace(target);</script>
+</body>
+</html>

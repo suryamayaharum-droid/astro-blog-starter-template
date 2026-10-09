@@ -1,0 +1,43 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import EcosystemRail from '../components/EcosystemRail.astro';
+import BodyLanguageNav from '../components/BodyLanguageNav.astro';
+import { radarHarumverso } from '../data/radarHarumverso';
+const base=import.meta.env.BASE_URL.endsWith('/')?import.meta.env.BASE_URL:import.meta.env.BASE_URL+'/';
+const relations=[
+['01','APOIO','uma figura recebe o peso da outra','Observe mãos, ombros, inclinação e o ponto em que o equilíbrio deixa de ser individual.'],
+['02','DISTÂNCIA','o vazio também é gesto','Antes do toque, desenhe o espaço entre corpos como uma forma ativa.'],
+['03','CONTATO','pressão muda anatomia','Pele, roupa e postura respondem ao encontro; contato não é só sobreposição.'],
+['04','CUIDADO','amparar sem apertar','Distribuição de peso e superfície de contato diferenciam acolhimento de contenção.'],
+['05','TENSÃO','forças em direções opostas','Mãos, braços, ombros e centro de massa precisam contar a mesma resistência.'],
+['06','CONDUÇÃO','um corpo altera o caminho do outro','Direção do braço e rotação do torso mostram quem guia e quem responde.'],
+['07','AUSÊNCIA','o gesto pode parar antes do toque','Uma mão suspensa ou um corpo que recua pode carregar mais narrativa do que o contato.'],
+['08','PESO COMPARTILHADO','duas figuras viram uma estrutura','Agrupe primeiro a massa total; separe indivíduos depois.']
+];
+const refs=radarHarumverso.filter(item=>
+ item.destination.includes('Corpo em Relação')||
+ item.title==='Une saisie (A Seizure)'||
+ item.title.includes('Resurrection')||
+ item.title==='Workman on a Ladder'
+);
+---
+<!doctype html><html lang="pt-BR"><head><BaseHead title="Corpo em Relação · Harum Noir" description="Duas figuras, contato, distância, cuidado, tensão e peso compartilhado: corpo como narrativa dentro do Harum Noir."/></head><body class="has-page-wallpaper" style={"--page-wallpaper: url('" + base + "noir/visual-atlas/figure-gesture.webp')"}><Header/><main class="relation-page">
+<BodyLanguageNav current="corpo" />
+<section class="relation-hero"><div class="relation-copy"><div class="eyebrow">HARUM NOIR · FIGURA & NARRATIVA</div><h1>Um corpo muda quando outro corpo entra.</h1><p>Esta sala estuda relação antes de detalhe: apoio, distância, contato, resistência e peso compartilhado. O objetivo não é decorar poses de duas pessoas, mas entender <strong>o que acontece entre elas</strong>.</p><div class="actions"><a class="btn gold" href="#estados">Ler os estados ↓</a><a class="btn" href={base+'maos'}>Voltar às Mãos</a></div></div><figure><img src={base+'noir/visual-atlas/figure-gesture.webp'} alt="Estudo editorial de figura e gesto em carvão." width="900" height="600" fetchpriority="high"/><figcaption>Estudo editorial HARUM NOIR · imagem didática, não obra histórica</figcaption></figure></section>
+
+<section class="section" id="estados"><div class="section-head"><div><div class="eyebrow">OITO RELAÇÕES</div><h2>Leia primeiro o que passa de um corpo ao outro.</h2></div><p>Força, atenção, proteção e recuo podem ser percebidos antes de qualquer rosto detalhado.</p></div><div class="relation-grid">{relations.map(([n,title,tag,text])=><article><span>{n}</span><small>{tag}</small><h3>{title}</h3><p>{text}</p></article>)}</div></section>
+
+<section class="section relation-lab"><div class="panel"><div class="eyebrow">LABORATÓRIO · DUAS FIGURAS</div><h2>Construa uma massa. Depois descubra duas pessoas.</h2><ol><li>Marque os dois centros de massa.</li><li>Desenhe uma única silhueta envolvendo as figuras.</li><li>Localize o ponto de contato ou a menor distância entre elas.</li><li>Trace os vetores de força: aproxima, sustenta, empurra, recua?</li><li>Só então separe braços, mãos, cabeça e roupa.</li></ol></div><div class="card"><div class="card-media" style="aspect-ratio:4/5"><img src={base+'noir/visual-atlas/maos-seis-gestos.webp'} alt="Estudos editoriais de mãos em ações diferentes." loading="lazy"/><span class="media-credit">Mãos são pontos de contato dentro da relação corporal.</span></div></div></section>
+
+<section class="section" id="referencias"><div class="section-head"><div><div class="eyebrow">RADAR · FONTES ORIGINAIS</div><h2>Observar interação em fontes abertas.</h2></div><p>{refs.length} referências recentes ligadas a peso, tensão, ação e narrativa corporal.</p></div><div class="relation-ref-rail">{refs.map(item=><a href={item.url} target="_blank" rel="noreferrer"><small>{item.source} · {item.rights}</small><h3>{item.creator}</h3><b>{item.title}</b><p>{item.note}</p><span>{item.principle} ↗</span></a>)}</div></section>
+
+<section class="section"><div class="journal"><div class="paper"><div class="eyebrow" style="color:#8a734b">PRÁTICA · 20 MINUTOS</div><h2>O mesmo encontro, três narrativas.</h2><p class="lead">Use duas figuras simples. Não mude a anatomia; mude apenas distância, pressão e direção.</p><p>Faça três versões: <strong>aproximação</strong>, <strong>apoio</strong> e <strong>resistência</strong>. Compare em qual momento a história mudou antes de você desenhar qualquer expressão facial.</p><p><a href={base+'maos'}>Estudar os pontos de contato em Mãos →</a></p></div></div></section>
+
+<EcosystemRail current="corpo-em-relacao" limit={5}/></main><Footer/>
+<style>
+.relation-hero{max-width:1420px;margin:auto;padding:42px clamp(18px,5vw,76px) 58px;display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,6vw,82px);align-items:center;border-bottom:1px solid var(--line)}.relation-copy h1{font-size:clamp(3.5rem,7vw,7rem);line-height:.9;letter-spacing:-.055em;margin:20px 0}.relation-copy p{max-width:56ch;color:var(--paper-2);line-height:1.7}.relation-hero figure{margin:0;border:1px solid var(--line);background:#111}.relation-hero figure img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;filter:saturate(.55)}.relation-hero figcaption{padding:9px 11px;color:var(--muted);font-size:.67rem;border-top:1px solid var(--line)}
+.relation-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.relation-grid article{position:relative;min-height:210px;padding:22px;border:1px solid var(--line);border-radius:14px;background:linear-gradient(145deg,rgba(255,255,255,.025),rgba(179,154,105,.025))}.relation-grid article>span{position:absolute;right:18px;top:16px;color:var(--gold);font-size:.65rem}.relation-grid small{color:var(--gold);letter-spacing:.1em;font-size:.62rem}.relation-grid h3{font-size:1.7rem;margin:22px 0 8px}.relation-grid p{color:var(--paper-2);margin:0}.relation-lab{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}.relation-lab ol{padding-left:1.15rem;line-height:1.8}.relation-ref-rail{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(290px,36vw);gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 18px}.relation-ref-rail>a{scroll-snap-align:start;display:flex;flex-direction:column;min-height:280px;padding:20px;border:1px solid var(--line);border-radius:14px;background:#101011;text-decoration:none;color:inherit}.relation-ref-rail small{color:var(--gold);font-size:.62rem}.relation-ref-rail h3{font-size:1.45rem;margin:18px 0 5px}.relation-ref-rail b{font-size:.82rem;color:var(--paper-2)}.relation-ref-rail p{flex:1;color:var(--paper-2)}.relation-ref-rail span{color:var(--gold);font-size:.72rem}
+@media(max-width:760px){.relation-hero{grid-template-columns:1fr;padding-top:20px}.relation-hero figure{order:-1}.relation-copy h1{font-size:clamp(3.2rem,14vw,5rem)}.relation-grid{grid-template-columns:1fr}.relation-lab{grid-template-columns:1fr}.relation-ref-rail{grid-auto-columns:84vw}}
+</style></body></html>
