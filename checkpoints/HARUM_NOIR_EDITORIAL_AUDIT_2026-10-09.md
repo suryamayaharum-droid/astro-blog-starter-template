@@ -86,9 +86,9 @@ Comparei as versões EN/ES dos três hubs. A estrutura de cartões e respostas m
 PR [#90](https://github.com/suryamayaharum-droid/astro-blog-starter-template/pull/90) integrada em `12eb3c6` após CI e auditoria responsiva verdes. O PR #89 foi encerrado como substituído porque partia de uma base divergente. A revisão editorial continua em 34/74 rotas; a integração deste lote não marca a auditoria página a página como concluída.
 
 
-## Correção de fonte externa · PR #91 em revisão
+## Correção de fonte externa · PR #91 integrada
 
-A primeira edição identificava vidIQ como análise externa, mas ainda permitia o clique para fora do site. Este lote remove os 15 destinos vidIQ das fichas públicas e do schema, mantendo o canal oficial, vídeos diretos e demais fontes. Assim, um painel de métricas não aparece como fonte de aprendizagem.
+A primeira edição identificava vidIQ como análise externa, mas ainda permitia o clique para fora do site. A PR #91 remove os 15 destinos vidIQ das fichas públicas e do schema, mantendo o canal oficial, vídeos diretos e demais fontes. Assim, um painel de métricas não aparece como fonte de aprendizagem.
 
 
 ## Busca transversal · revisão e acessibilidade
@@ -99,3 +99,8 @@ A rota `/buscar/` reúne Cadernos, artistas, períodos, Biblioteca, Radar e hubs
 ## Mobile QA após PR #90 · concluído
 
 A auditoria pós-deploy #38003813788 teve dois 503 transitórios em imagens já existentes na primeira captura. O retry do job passou em matriz móvel, smoke internacional, limites responsivos e envio de screenshots. Não houve falha de rota ou sobreposição de dock; o gate móvel está fechado.
+
+
+## Integração e validação · PR #91
+
+PR [#91](https://github.com/suryamayaharum-droid/astro-blog-starter-template/pull/91) integrada em `6912b68`. CI passou e a auditoria responsiva completa passou no commit de interface. O retry do mobile após PR #90 passou; a auditoria móvel do deploy após #91 ainda está em execução.
