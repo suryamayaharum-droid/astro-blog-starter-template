@@ -5,7 +5,7 @@
 
 ## Barra de progresso
 
-`██████░░░░ 60% · implementação aberta, validação pendente`
+`████████░░ 80% · implementação pronta, checks pendentes`
 
 - [x] Confirmar main e verificar sobreposição com PR #78.
 - [x] Criar branch independente `feat/colecao-lugares-20261009`.
@@ -13,7 +13,7 @@
 - [x] Ligar a nova rota à oitava coleção em `/colecoes/`.
 - [ ] Abrir PR e aguardar CI/build.
 - [ ] Confirmar páginas, imagens, links internos e layout móvel.
-- [ ] Atualizar a auditoria móvel após a integração dos trabalhos concorrentes.
+- [x] Incluir a nova rota na matriz de auditoria móvel pós-deploy.
 - [ ] Criar versões localizadas EN/ES sem conflitar com o PR #78.
 
 ## Diagnóstico e decisão
@@ -29,13 +29,13 @@ As imagens são artes editoriais locais já versionadas. Elas não são apresent
 | `src/pages/colecoes/lugares.astro` | Nova aula visual com quatro ambientes, exercícios de 8 minutos, imagens, links aos guias de banco e acervos oficiais. | Implementado; CI pendente |
 | `src/pages/colecoes.astro` | Oitavo cartão de coleção, com imagem pertinente e destino da aula. | Implementado; CI pendente |
 | Hubs EN/ES e `InternationalHub.astro` | Não alterados nesta rodada: estão no escopo do PR #78. | Aguardando integração para localização sem conflito |
-| Auditoria visual móvel | Rota nova ainda não adicionada à matriz publicada. | Pendente |
+| `.github/workflows/noir-mobile-visual-audit.yml` | Adiciona a rota nova à matriz de auditoria pós-deploy. | Implementado; execução depende da publicação |
 
 ## Coordenação e validação
 
 - Base `main`: `40592075c25b9fe060222f0814b2ffb4aa5155e2`.
 - PR #78 segue aberto em rascunho e altera os hubs EN/ES e o componente internacional; checks lidos nesta rodada: CI e auditoria responsiva verdes no head consultado.
-- Esta branch evita esses arquivos. A validação conclusiva depende do PR da coleção e dos checks do GitHub.
+- Esta branch evita esses arquivos. A validação conclusiva depende dos checks do GitHub; a matriz móvel executa após a publicação.
 - Nenhuma imagem foi gerada nesta rodada; os assets locais existentes foram reutilizados.
 
 ## Próximo passo
