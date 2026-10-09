@@ -1,0 +1,19 @@
+---
+const base=import.meta.env.BASE_URL.endsWith('/')?import.meta.env.BASE_URL:import.meta.env.BASE_URL+'/';
+const target=new URL(base+'buscar/',Astro.site).href;
+---
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width"/>
+<meta name="robots" content="noindex,follow"/>
+<meta http-equiv="refresh" content={`0;url=${target}`}/>
+<link rel="canonical" href={target}/>
+<title>Busca mudou · HARUM NOIR</title>
+</head>
+<body>
+<p>A busca do HARUM NOIR mudou para <a href={base+'buscar/'}>Buscar</a>.</p>
+<script is:inline define:vars={{target}}>location.replace(target);</script>
+</body>
+</html>
