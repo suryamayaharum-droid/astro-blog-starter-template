@@ -3,6 +3,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import EcosystemRail from '../components/EcosystemRail.astro';
+import BodyLanguageNav from '../components/BodyLanguageNav.astro';
 import { openLibraryCollections } from '../data/openLibrary';
 import { radarHarumverso } from '../data/radarHarumverso';
 const base=import.meta.env.BASE_URL.endsWith('/')?import.meta.env.BASE_URL:import.meta.env.BASE_URL+'/';
@@ -21,6 +22,7 @@ const axes=[
 ];
 ---
 <!doctype html><html lang="pt-BR"><head><BaseHead title="Cabeça & Expressão · Harum Noir" description="Crânio, inclinação, perfil, olhar, idade e expressão: estudar a cabeça como estrutura viva, não como máscara."/></head><body class="has-page-wallpaper" style={"--page-wallpaper: url('" + base + "noir/visual-atlas/harum-noir-caderno-olhar.webp')"}><Header/><main class="head-page">
+<BodyLanguageNav current="cabeca" />
 <section class="head-hero"><div class="head-copy"><div class="eyebrow">HARUM NOIR · CABEÇA & EXPRESSÃO</div><h1>O rosto muda. A estrutura permanece.</h1><p>Esta sala separa o que é construção do que é expressão. Crânio, mandíbula, pescoço e eixo sustentam o rosto; inclinação, olhar e gesto transformam a presença.</p><div class="actions"><a class="btn gold" href="#eixos">Entrar pelos eixos ↓</a><a class="btn" href={base+'corpo-em-relacao'}>Ir para Corpo em Relação</a></div></div><figure><img src={base+'noir/visual-atlas/harum-noir-caderno-olhar.webp'} alt="Estudo editorial de olho e direção construído sobre estrutura esférica." width="900" height="600" fetchpriority="high"/><figcaption>Prancha didática HARUM NOIR · estrutura do olhar</figcaption></figure></section>
 
 {jockey?.cover && <section class="section"><a class="feature-cover" href={jockey.url} target="_blank" rel="noreferrer"><img src={base+'noir/visual-atlas/'+jockey.cover+'.webp'} alt={'Capa editorial HARUM NOIR para '+jockey.title} width="640" height="360"/><div><span class="eyebrow">ESTUDOS SERIADOS · PERFIL</span><h2>{jockey.title}</h2><p>{jockey.note}</p><small>Capa editorial HARUM NOIR; abrir a obra original na {jockey.source} ↗</small></div></a></section>}
