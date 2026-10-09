@@ -150,7 +150,7 @@ jobs:
                   })() : null;
                   const actuallyVisible = el => {
                     for (let node = el; node && node.nodeType === 1; node = node.parentElement) {
-                      if (node.hasAttribute('hidden') || node.hasAttribute('inert') || node.getAttribute('aria-hidden') === 'true') return false;
+                      if (node.hasAttribute('hidden')) return false;
                       const style = getComputedStyle(node);
                       if (style.display === 'none' || style.visibility === 'hidden' || Number(style.opacity || 1) === 0) return false;
                       if (node.tagName === 'DETAILS' && !node.open && !el.closest('summary')) return false;
@@ -169,23 +169,35 @@ jobs:
                     dockVisible: !!dock && getComputedStyle(dock).display !== 'none',
                     dockOcclusions: (() => {
                       if (!dock) return [];
-                      const dr = dock.getBoundingClientRect();
-                      return [...document.querySelectorAll('a[href],button,input,select,textarea')]
-                        .filter(el => !dock.contains(el))
-                        .map(el => {
-                          const r = el.getBoundingClientRect();
-                          const ih = Math.max(0, Math.min(r.bottom, dr.bottom) - Math.max(r.top, dr.top));
-                          const iw = Math.max(0, Math.min(r.right, dr.right) - Math.max(r.left, dr.left));
-                          const area = Math.max(1, r.width * r.height);
-                          const overlapRatio = (ih * iw) / area;
-                          return {
-                            tag: el.tagName,
-                            text: (el.textContent || el.getAttribute('aria-label') || '').trim().slice(0,80),
-                            overlapRatio,
-                            visible: actuallyVisible(el)
-                          };
-                        })
-                        .filter(x => x.visible && x.overlapRatio > .25);
+                      const ratioFor = el => {
+                        const r = el.getBoundingClientRect();
+                        const dr = dock.getBoundingClientRect();
+                        const ih = Math.max(0, Math.min(r.bottom, dr.bottom) - Math.max(r.top, dr.top));
+                        const iw = Math.max(0, Math.min(r.right, dr.right) - Math.max(r.left, dr.left));
+                        return (ih * iw) / Math.max(1, r.width * r.height);
+                      };
+                      const blockers = [];
+                      for (const el of [...document.querySelectorAll('a[href],button,input,select,textarea')]) {
+                        if (dock.contains(el) || !actuallyVisible(el)) continue;
+                        const initialRatio = ratioFor(el);
+                        if (initialRatio <= .25) continue;
+
+                        // A fixed dock may cover content at the current scroll position.
+                        // Test whether the user can bring that control into a clear area.
+                        const before = { x: window.scrollX, y: window.scrollY };
+                        el.scrollIntoView({ block: 'center', inline: 'nearest', behavior: 'instant' });
+                        const reachableRatio = ratioFor(el);
+                        window.scrollTo({ left: before.x, top: before.y, behavior: 'instant' });
+
+                        if (reachableRatio > .25) blockers.push({
+                          tag: el.tagName,
+                          text: (el.textContent || el.getAttribute('aria-label') || '').trim().slice(0,80),
+                          initialOverlapRatio: initialRatio,
+                          overlapRatio: reachableRatio,
+                          visible: actuallyVisible(el)
+                        });
+                      }
+                      return blockers;
                     })(),
                     hero: rect(hero),
                     title: document.title,
