@@ -306,3 +306,30 @@ llms.txt ...................... nova rota registrada
 `PESQUISAR → EXTRAIR PRINCÍPIO → REESCREVER NA LINGUAGEM HARUM → APLICAR → VALIDAR`
 
 Não copiar texto, identidade, rotina nomeada ou arquitetura alheia. O valor está em **assimilar o mecanismo** e fazê-lo servir ao ciclo pedagógico HARUM NOIR.
+
+
+## MICROCURADORIA — COMPARAR ANTES DE ACUMULAR
+
+A assimilação da pesquisa avançou da navegação para **relação entre referências**.
+
+```text
+REFERÊNCIAS
+selecionar 2–3
+      ↓
+MESA DE COMPARAÇÃO
+o que permanece?
+onde divergem?
+o que vira decisão minha?
+      ↓
+NOTA DO ALUNO
+      ↓
+CADERNOS
+receber a nota
+      ↓
+ATELIÊ
+testar sem a referência aberta
+```
+
+A seleção e a nota ficam somente no navegador do aluno. A intenção é transformar “salvar referência” em uma microcuradoria com saída verificável.
+
+Barreira atual: CI + QA responsivo completo do fluxo Referências → Cadernos.
