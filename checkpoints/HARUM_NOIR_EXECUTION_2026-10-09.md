@@ -22,7 +22,9 @@ A Coleção Visual em português já possuía imagens e sete caminhos; faltava u
 
 As imagens são artes editoriais locais já versionadas. Elas não são apresentadas como fotografias de museus ou documentos históricos. Cada cartão separa a pergunta visual da pesquisa de fonte e informa que direitos devem ser lidos na ficha institucional.
 
-## Entrega integrada: PR #84 squash-merged em `main` (`d15a5c5`) e publicada no GitHub Pages.\n\n## Estado dos arquivos
+## Entrega integrada: PR #84 squash-merged em `main` (`d15a5c5`) e publicada no GitHub Pages.
+
+## Estado dos arquivos
 
 | Arquivo | Mudança | Estado |
 |---|---|---|
