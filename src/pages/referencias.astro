@@ -6,14 +6,26 @@ import Footer from '../components/Footer.astro';
 import {referenceArtists,referenceCollections,byRank} from '../data/references';
 const base=import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 const featured=byRank(17)!;
+const normalizeFocus=(value:string)=>value.normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLowerCase();
 const themedCover=(artist:typeof referenceArtists[number])=>{
- const f=artist.focus.toLowerCase();
- return f.includes('carv')?'harum-noir-caderno-estudo':
-  f.includes('jap')||f.includes('ukiyo')?'moonlit-landscape':
-  f.includes('museu')||f.includes('arquivo')?'museum-gallery':
-  f.includes('botan')||f.includes('flor')?'iris-study':
-  f.includes('gesto')||f.includes('mão')?'tools-paper':
-  f.includes('sketch')||f.includes('caderno')?'open-sketchbook':'harum-noir-caderno-estudo';
+ const focus=normalizeFocus(artist.focus);
+ const lane=normalizeFocus(artist.lane);
+ const subjects=focus+' '+lane;
+ if(/museum|museu|arquivo|archive|biblioteca|database|acervo/.test(subjects))return 'museum-gallery';
+ if(/jap|japan|ukiyo|asia|manga/.test(subjects))return 'moonlit-landscape';
+ if(/botan|flor|planta|iris/.test(subjects))return 'iris-study';
+ if(/carvao|charcoal|grafite|graphite|lapis|pencil/.test(focus))return 'harum-noir-caderno-estudo';
+ if(/maos|hand/.test(subjects))return 'harum-noir-hands-study';
+ if(/sketchbook|caderno|processo/.test(subjects))return 'open-sketchbook';
+ if(/^(escola|school|atelier|ateli|academ|academic|ensino)/.test(lane))return 'atelier-desk';
+ if(/^(retrato|portrait)/.test(lane))return 'harum-noir-caderno-olhar';
+ if(/anatom|figura|gesture|gesto|life drawing/.test(subjects))return 'figure-gesture';
+ if(/retrato|portrait|rosto|face|olho/.test(focus))return 'harum-noir-caderno-olhar';
+ if(/^(ink|quadrinhos|comic)/.test(lane))return 'tools-paper';
+ if(/^(design|perspectiva|concept|visual development)/.test(lane)||/concept|design|perspectiva|visual development|worldbuild|personagem|character|ambiente/.test(focus))return 'harum-noir-colecoes-atlas';
+ if(/pintura|painting|cor|color|luz|light|tonal|pastel/.test(subjects))return 'drapery-still-life';
+ if(/escola|school|ensino|educa|academ|curso|course/.test(subjects))return 'atelier-desk';
+ return 'exercicio-quatro-decisoes';
 };
 const catalog=JSON.stringify(referenceArtists.map(a=>({rank:a.rank,slug:a.slug,name:a.name,focus:a.focus,videoId:a.slug==='zin-lim'?'':a.videoId,lane:a.lane,cover:themedCover(a)})));
 const referenceSchema={
