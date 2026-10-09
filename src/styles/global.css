@@ -38,7 +38,7 @@ h1,h2,h3{font-family:"Cormorant Garamond",Georgia,"Times New Roman",serif;font-w
 .hero-art img{width:min(100%,680px);filter:drop-shadow(0 35px 70px rgba(0,0,0,.5))}
 .hero-note{position:absolute;left:4%;bottom:9%;max-width:230px;padding:13px 14px;background:rgba(12,12,13,.72);border:1px solid var(--line);border-radius:15px;backdrop-filter:blur(12px);font-size:.74rem;color:#9b958d}
 .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 15px;border-radius:999px;border:1px solid var(--line);text-decoration:none;font-size:.84rem;font-weight:700;background:rgba(255,255,255,.03)}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:11px 15px;border-radius:999px;border:1px solid var(--line);text-decoration:none;font-size:.84rem;font-weight:700;background:rgba(255,255,255,.03)}
 .btn.primary{background:var(--paper);color:var(--ink);border-color:var(--paper)}
 .btn.gold{background:var(--gold);color:var(--ink);border-color:var(--gold)}
 .btn:hover{transform:translateY(-1px)}
