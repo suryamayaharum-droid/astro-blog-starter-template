@@ -69,12 +69,33 @@
     "jev_health_context": "healthy_historical_projection",
     "jev_note": "JEV/HIVE is coordination context; live branch and CI override historical projections.",
     "current_head": "a5f08364c35406ace99a8beb98b5e5790dac6b64",
-    "responsive_workflow": ".github/workflows/noir-pr-responsive-audit.yml"
+    "responsive_workflow": ".github/workflows/noir-pr-responsive-audit.yml",
+    "responsive_audit": {
+      "run_id": 37973726702,
+      "run_number": 4,
+      "tested_head": "50a4902715dc9de19ccfb604b4e9f717f45d5f95",
+      "conclusion": "success",
+      "scope": [
+        "320px",
+        "390px",
+        "761px",
+        "1024px",
+        "overflow",
+        "mobile-dock",
+        "touch-targets",
+        "broken-images",
+        "same-origin-resources",
+        "console-errors",
+        "keyboard-focus"
+      ],
+      "freshness": "fresh_for_product_surface",
+      "note": "Subsequent changes to execution-panel/docs do not touch the validated page surface."
+    }
   },
   "primary_attack": {
     "id": "HN-QA-MOBILE-PR78",
     "priority": "P1",
-    "state": "attacking",
+    "state": "done",
     "title": "Responsive and interaction QA on the current PR branch",
     "goal": "Prove the current learning surfaces work at 320/390/tablet/desktop without unintended overflow or interaction regressions.",
     "required_evidence": [
@@ -86,7 +107,7 @@
       "touch_targets",
       "intentional_overflow"
     ],
-    "next_action": "Run the new branch-local responsive audit against the PR build. If it fails, fix the highest-impact reproducible defect and rerun.",
+    "next_action": "Promote the next highest-impact dependency-ready item while keeping verification/research lanes parallel only when scopes are independent.",
     "strategy_note": "Terreno atual: PR branch-local. Concentração: QA responsivo. Inteligência: auditoria antiga não provava a PR. Manobra atual: validar a própria branch antes de qualquer nova frente.",
     "metacognitive_state": {
       "observation": "A auditoria histórica testava o GitHub Pages publicado e não necessariamente o head da PR.",
@@ -95,7 +116,7 @@
       "falsifier": "O workflow branch-local não consegue reproduzir o site ou não detecta falhas conhecidas.",
       "smallest_action": "Executar o workflow branch-local e inspecionar a primeira falha reproduzível."
     },
-    "execution_horizon": "Se o workflow não produzir evidência útil, corrigir o próprio instrumento de QA antes de alterar páginas."
+    "parallelism_horizon": "Responsive QA completed. Next critical mutation is serialized; research/verification may continue in parallel on disjoint scopes."
   },
   "queue": [
     {
@@ -170,13 +191,13 @@
       },
       {
         "name": "Responsive visual QA",
-        "estimate_percent": 50,
-        "state": "attacking"
+        "estimate_percent": 100,
+        "state": "done"
       },
       {
         "name": "Accessibility interaction QA",
-        "estimate_percent": 40,
-        "state": "ready"
+        "estimate_percent": 65,
+        "state": "verifying"
       },
       {
         "name": "Language / redundant routes",
@@ -220,9 +241,10 @@
       "rule": "Não atacar uma frente sem ler o terreno atual e confirmar que a evidência pertence ao head corrente."
     },
     "force_concentration": {
-      "rule": "Concentrar esforço em um único gargalo principal por vez.",
-      "wip_primary": 1,
-      "support_max": 2
+      "rule": "Concentrar a faixa crítica em um gargalo principal, mas permitir até três faixas auxiliares independentes dentro do horizonte de paralelismo.",
+      "critical_wip": 1,
+      "auxiliary_parallel_max": 3,
+      "condition": "Somente PARALLEL_OK pelo teste de elegibilidade."
     },
     "intelligence": {
       "rule": "Conhecer estado próprio e estado do sistema antes de agir.",
@@ -271,22 +293,6 @@
       "não abrir nova infraestrutura para resolver um problema editorial"
     ]
   },
-  "execution_horizon": {
-    "purpose": "Impedir paralisia por análise sem sacrificar verificação.",
-    "rules": [
-      "Após 2 ciclos de leitura/análise sem evidência nova, executar o menor teste ou mudança reversível disponível.",
-      "Após 3 tentativas falhas apoiadas na mesma hipótese, declarar a hipótese enfraquecida e reformulá-la antes de nova tentativa.",
-      "Quando uma validação externa estiver aguardando, usar uma verificação independente local se ela puder produzir evidência útil; não abrir uma segunda frente principal.",
-      "Se o próximo passo for irreversível, destrutivo ou externo, o horizonte de execução não supera a necessidade de aprovação/evidência."
-    ],
-    "state_labels": {
-      "normal": "há evidência nova e fluxo",
-      "analysis_risk": "2 ciclos sem evidência nova",
-      "hypothesis_stale": "3 tentativas na mesma hipótese sem sucesso",
-      "blocked_external": "aguarda condição externa sem alternativa útil",
-      "execute_smallest_probe": "ação reversível obrigatória para recuperar informação"
-    }
-  },
   "priority_engine": {
     "formula": "score = 3*impact + 2*unblocks + 2*risk_reduction + confidence - effort",
     "scale": "cada fator de 0 a 5; maior score ataca primeiro entre itens READY",
@@ -296,5 +302,95 @@
       "STALE precisa revalidação antes de DONE",
       "empate favorece menor esforço e maior reversibilidade"
     ]
+  },
+  "execution_parallelism_horizon": {
+    "purpose": "Aumentar velocidade sem criar colisão, duplicação ou evidência inválida.",
+    "model": "Uma faixa crítica de mutação + faixas paralelas independentes + barreira de integração.",
+    "limits": {
+      "critical_mutation_lanes": 1,
+      "parallel_support_lanes": 3,
+      "same_scope_writers": 1
+    },
+    "lanes": [
+      {
+        "id": "LANE-A-CRITICAL",
+        "role": "mutação principal",
+        "rule": "Somente uma frente pode escrever no mesmo conjunto de arquivos/rotas compartilhadas por vez.",
+        "examples": [
+          "CSS global",
+          "Header/Footer",
+          "mesma página",
+          "configuração de build"
+        ]
+      },
+      {
+        "id": "LANE-B-VERIFY",
+        "role": "verificação",
+        "rule": "CI, auditoria visual, links e testes podem rodar em paralelo quando apenas leem a mesma revisão."
+      },
+      {
+        "id": "LANE-C-RESEARCH",
+        "role": "pesquisa/diagnóstico",
+        "rule": "Pode avançar em paralelo se não alterar o mesmo escopo e produzir evidência reutilizável."
+      },
+      {
+        "id": "LANE-D-INDEPENDENT",
+        "role": "subtarefa isolada",
+        "rule": "Pode escrever em paralelo somente com escopo explicitamente disjunto e sem dependência de ordem."
+      }
+    ],
+    "eligibility_test": [
+      "Os arquivos/rotas tocados são disjuntos?",
+      "A tarefa não depende do resultado da outra?",
+      "As duas podem ser revertidas separadamente?",
+      "A validação de uma não pode mascarar falha da outra?",
+      "Há uma barreira de integração depois?"
+    ],
+    "decision": {
+      "all_yes": "PARALLEL_OK",
+      "any_no": "SERIALIZE",
+      "unknown": "SERIALIZE_UNTIL_SCOPE_KNOWN"
+    },
+    "integration_barrier": {
+      "rule": "Depois de uma onda paralela, congelar novas mutações e rodar build + contratos + QA relevante no head integrado.",
+      "required_before_done": true
+    },
+    "freshness": {
+      "mode": "surface-aware",
+      "rule": "Uma evidência só fica stale quando o novo commit toca a superfície que aquela evidência validou ou muda uma dependência compartilhada.",
+      "examples": [
+        "editar apenas docs/painel não invalida screenshot de páginas",
+        "editar CSS global invalida QA visual das rotas afetadas",
+        "editar astro.config/package-lock invalida build e pode invalidar toda a matriz"
+      ]
+    },
+    "anti_overparallelism": [
+      "não paralelizar duas escritas no mesmo arquivo",
+      "não paralelizar refatoração global com QA final",
+      "não usar agentes paralelos para a mesma hipótese",
+      "não aumentar lanes só porque há capacidade disponível"
+    ]
+  },
+  "next_wave": {
+    "critical_lane": {
+      "id": "HN-COHERENCE-15MIN",
+      "state": "ready",
+      "reason": "High user-facing coherence impact and blocks the learning-loop consolidation."
+    },
+    "parallel_lanes": [
+      {
+        "id": "HN-DEPS-SECURITY",
+        "state": "ready_support",
+        "type": "diagnostic_only",
+        "rule": "Audit dependencies without changing packages while the coherence edit is active."
+      },
+      {
+        "id": "HN-I18N-INVENTORY",
+        "state": "ready_support",
+        "type": "read_only_inventory",
+        "rule": "Inventory EN/ES routes and inbound links; defer deletions/rewrites until critical lane completes."
+      }
+    ],
+    "barrier": "After the critical edit, integrate evidence, then rerun CI and route/mobile checks affected by the edit."
   }
 }
