@@ -62,17 +62,19 @@
     ]
   },
   "current_evidence": {
-    "ci_run": 481,
+    "ci_run": 484,
     "ci_state": "success",
     "fixing_commit": "eac8bcd0df6b83787596c3a1871efc20927c1e64",
     "blueprint_commit": "04b4bd671d7486738feca03366b4a1acfe27022e",
     "jev_health_context": "healthy_historical_projection",
-    "jev_note": "JEV/HIVE is coordination context; live branch and CI override historical projections."
+    "jev_note": "JEV/HIVE is coordination context; live branch and CI override historical projections.",
+    "current_head": "a5f08364c35406ace99a8beb98b5e5790dac6b64",
+    "responsive_workflow": ".github/workflows/noir-pr-responsive-audit.yml"
   },
   "primary_attack": {
     "id": "HN-QA-MOBILE-PR78",
     "priority": "P1",
-    "state": "ready",
+    "state": "attacking",
     "title": "Responsive and interaction QA on the current PR branch",
     "goal": "Prove the current learning surfaces work at 320/390/tablet/desktop without unintended overflow or interaction regressions.",
     "required_evidence": [
@@ -84,7 +86,7 @@
       "touch_targets",
       "intentional_overflow"
     ],
-    "next_action": "Run visual and interaction QA, record failures by route, then fix the highest-impact reproducible defect."
+    "next_action": "Run the new branch-local responsive audit against the PR build. If it fails, fix the highest-impact reproducible defect and rerun."
   },
   "queue": [
     {
@@ -160,7 +162,7 @@
       {
         "name": "Responsive visual QA",
         "estimate_percent": 50,
-        "state": "ready"
+        "state": "attacking"
       },
       {
         "name": "Accessibility interaction QA",
