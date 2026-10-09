@@ -235,6 +235,15 @@ jobs:
               );
             });
 
+            fs.writeFileSync('screenshots/failures.json', JSON.stringify(failures, null, 2));
+            fs.writeFileSync('screenshots/summary.json', JSON.stringify({
+              generatedAt: new Date().toISOString(),
+              routes: targets.length,
+              viewports: viewports.length,
+              checks: metrics.length,
+              failures: failures.length
+            }, null, 2));
+
             if (failures.length) {
               console.error('MOBILE_AUDIT_FAILURES');
               console.error(JSON.stringify(failures, null, 2));
