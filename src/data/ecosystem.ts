@@ -11,7 +11,7 @@ export const ecosystemHubs: EcosystemHub[] = [
   {id:"escola",title:"Escola Aberta de Desenho",kicker:"APRENDER A OLHAR",description:"Plano de estudo em quatro movimentos: observar, estruturar, organizar e traduzir.",href:"escola/",cover:"harum-noir-escola-hero"},
   {id:"rituais",title:"Rituais de Olhar",kicker:"OBSERVAR → TESTAR → REGISTRAR",description:"Seis protocolos autorais para desacelerar, comparar, sustentar uma leitura e devolver a pesquisa ao desenho.",href:"rituais-de-olhar/",cover:"harum-noir-caderno-olhar"},
   {id:"radar",title:"Radar HARUM NOIR",kicker:"PESQUISA VIVA",description:"Descobertas verificadas com direitos, princípio Noir e destino editorial.",href:"radar/",cover:"tools-paper"},
-  {id:"atlas",title:"Atlas HARUM NOIR",kicker:"MAPA DO ECOSSISTEMA",description:"Uma mesa de orientação entre referências, museus, história, biblioteca, percursos e prática.",href:"atlas/",cover:"tools-paper"},
+  {id:"atlas",title:"Atlas HARUM NOIR",kicker:"MAPA DA ESCOLA",description:"Um mapa de estudo entre referências, museus, história, biblioteca, percursos e prática.",href:"atlas/",cover:"tools-paper"},
   {id:"buscar",title:"Busca HARUM NOIR",kicker:"UMA PERGUNTA · VÁRIAS PORTAS",description:"Busca transversal por rotas, artistas, técnicas, períodos, cadernos, coleções e temporadas.",href:"buscar/",cover:"moonlit-landscape"},
   {id:"percursos",title:"Percursos",kicker:"ENTRAR POR UMA PERGUNTA",description:"Cinco caminhos curatoriais que ligam referência, caderno, fonte e prática.",href:"percursos/",cover:"drapery-still-life"},
   {id:"referencias",title:"Atlas de Referências",kicker:"OLHAR POR DECISÕES",description:"Artistas, professores e processos organizados por foco, não por imitação.",href:"referencias/",cover:"harum-noir-caderno-estudo"},
@@ -26,7 +26,7 @@ export const ecosystemHubs: EcosystemHub[] = [
   {id:"atelier",title:"Ateliê Aberto",kicker:"VOLTAR PARA A MÃO",description:"Fundamentos, exercícios e ciclos de observação, correção e retorno.",href:"atelier/",cover:"atelier-desk"},
   {id:"temporadas",title:"Temporadas",kicker:"APROFUNDAMENTO",description:"Sete percursos editoriais de corpo, expressão, anatomia, personagem, relação, matéria e síntese.",href:"temporadas/",cover:"moonlit-landscape"},
   {id:"noir",title:"HARUM NOIR",kicker:"TRAÇO · CORPO · PRESENÇA",description:"Princípios editoriais e portas de entrada da escola aberta de desenho.",href:"noir/",cover:"atelier-desk"},
-  {id:"arquivo",title:"Arquivo Aberto",kicker:"O QUE PODE CIRCULAR, CIRCULA",description:"Materiais públicos prontos, cartas, textos abertos, RSS e portas do ecossistema.",href:"arquivo/",cover:"tools-paper"},
+  {id:"arquivo",title:"Arquivo Aberto",kicker:"O QUE PODE CIRCULAR, CIRCULA",description:"Materiais públicos prontos, cartas, textos abertos, RSS e portas do HARUM NOIR.",href:"arquivo/",cover:"tools-paper"},
   {id:"carta",title:"Carta do Ateliê",kicker:"PUBLICAÇÃO ABERTA",description:"Uma ideia, uma referência e um exercício colocados em relação.",href:"carta/",cover:"drapery-still-life"},
   {id:"metodo",title:"Roubar como artista",kicker:"MÉTODO DE REFERÊNCIA",description:"Um protocolo para extrair princípios de referências sem copiar assinatura.",href:"roubar-como-artista/",cover:"exercicio-quatro-decisoes"},
   {id:"sobre",title:"Sobre HARUM NOIR",kicker:"COMO O SISTEMA PENSA",description:"A linguagem, os limites e o fluxo editorial que conectam pesquisa, prática e arquivo.",href:"sobre/",cover:"atelier-desk"}
