@@ -62,18 +62,18 @@
     ]
   },
   "current_evidence": {
-    "ci_run": 562,
+    "ci_run": 578,
     "ci_state": "success",
     "fixing_commit": "eac8bcd0df6b83787596c3a1871efc20927c1e64",
     "blueprint_commit": "04b4bd671d7486738feca03366b4a1acfe27022e",
     "jev_health_context": "healthy_historical_projection",
     "jev_note": "JEV/HIVE is coordination context; live branch and CI override historical projections.",
-    "current_head": "a367f2f31b426bdadf04baf90c84e5ee7f957310",
+    "current_head": "0b76b4da2862a98c798cc5c7dcc60e776dc947e4",
     "responsive_workflow": ".github/workflows/noir-pr-responsive-audit.yml",
     "responsive_audit": {
-      "run_id": 37983959827,
-      "run_number": 72,
-      "tested_head": "a367f2f31b426bdadf04baf90c84e5ee7f957310",
+      "run_id": 37989239266,
+      "run_number": 88,
+      "tested_head": "0b76b4da2862a98c798cc5c7dcc60e776dc947e4",
       "conclusion": "success",
       "scope": [
         "integrated PR state with current main",
@@ -87,15 +87,17 @@
         "same-origin-resources",
         "console-errors",
         "keyboard-focus",
+        "critical 44px touch targets",
         "Rituais de Olhar",
-        "EN/ES landing and reference routes",
-        "international gesture/tonal lessons",
+        "Ritual do Carvão",
+        "Área de alunos",
+        "EN/ES landing, references, gesture and tonal lessons",
         "Referencias comparison → Cadernos note handoff"
       ],
       "freshness": "fresh_for_current_product_head",
-      "note": "Run #72 is green on the integrated PR state. Header/i18n touch-target sizes were enlarged in source; the automated matrix still treats mobile-dock touch targets as the hard 44px gate."
+      "note": "Run #88 went green after the stricter touch-target gate exposed and then verified fixes in the international lesson chrome."
     },
-    "product_head_before_panel_update": "a367f2f31b426bdadf04baf90c84e5ee7f957310",
+    "product_head_before_panel_update": "0b76b4da2862a98c798cc5c7dcc60e776dc947e4",
     "latest_product_changes": [
       "Primeira prática unificada em 15 minutos e ciclo pedagógico fechado",
       "Rituais de Olhar traduz pesquisa externa em seis protocolos autorais",
@@ -203,24 +205,50 @@
       "cloudflare_workers_build": "failing on PR heads",
       "github_pages_relevance": "not the canonical deploy gate for this branch; repository CI Cloudflare dry-run is green",
       "note": "Cloudflare GitHub App build details require the external authenticated dashboard; root cause is not proven from this session."
+    },
+    "branch_reconciliation": {
+      "state": "done",
+      "main_head": "40592075c25b9fe060222f0814b2ffb4aa5155e2",
+      "merge_commit": "ece92f1de5a8e350bac04bbd9dd45b572fbc3280",
+      "behind_main": 0,
+      "preserved": [
+        "Ritual do Carvão page and wallpaper",
+        "Área de alunos page",
+        "Footer student access",
+        "Ateliê 15-minute entry plus Ritual do Carvão prelaunch entry"
+      ]
+    },
+    "accessibility": {
+      "state": "verified_for_scoped_controls",
+      "fixes": [
+        "global .btn minimum 44px",
+        "mobile Estante control 44x44",
+        "search prompt controls 44px",
+        "reference compare/remove controls 44px",
+        "school clear/actions and language controls 44px",
+        "museum suggestion and source controls enlarged",
+        "international lesson brand/topics/languages meet the scoped 44px gate"
+      ],
+      "evidence": "Responsive Audit #88"
     }
   },
   "primary_attack": {
     "id": "HN-RELEASE-READINESS",
     "priority": "P4",
-    "state": "attacking",
-    "title": "Reduce remaining release uncertainty without merging yet",
-    "goal": "Keep PR #78 draft while turning all product-facing gates green and isolating external/tooling blockers from GitHub Pages readiness.",
+    "state": "verifying",
+    "title": "Release readiness without premature publication",
+    "goal": "Keep GitHub Pages product gates green while separating the external Cloudflare Workers failure from actual site readiness.",
     "completed_slices": [
-      "CI #562 green",
-      "Responsive/interaction QA #72 green on integrated PR state",
-      "Learning loop verified",
-      "Comparison/curation verified",
-      "International shell inventory complete",
-      "Source-level touch targets enlarged"
+      "branch reconciled with main; behind_main=0",
+      "CI #578 green",
+      "Responsive Audit #88 green on integrated PR state",
+      "strict critical-touch-target gate green",
+      "Ritual do Carvão and Área de alunos inherited from main without losing PR pedagogy",
+      "search indexes Ritual do Carvão and student access",
+      "public navigation jargon reduced"
     ],
-    "next_action": "Refresh PR summary, reconcile branch-vs-main status and keep Cloudflare Workers failure explicitly separate from GitHub Pages product gates. Do not merge while PR remains draft.",
-    "parallelism_horizon": "Only docs/metadata/security diagnosis until the next product defect is evidence-backed."
+    "next_action": "Keep PR #78 draft while the external Workers Builds check remains unexplained. Next product mutation must be evidence-backed; otherwise perform only final copy/release hygiene.",
+    "parallelism_horizon": "Docs/metadata and external-check diagnosis only."
   },
   "queue": [
     {
@@ -256,7 +284,7 @@
     {
       "id": "HN-I18N-AUDIT",
       "priority": "P3",
-      "state": "verifying",
+      "state": "done",
       "title": "Audit EN/ES usefulness, completeness and inbound navigation before keeping/removing routes",
       "depends_on": [
         "HN-LEARNING-LOOP"
@@ -269,7 +297,8 @@
         "no Google Translate matches",
         "native shells classified for all 24 routes",
         "CI #562 reciprocal hreflang green",
-        "QA #72 green on representative international routes"
+        "QA #72 green on representative international routes",
+        "Responsive Audit #88 critical touch gate green"
       ]
     },
     {
@@ -283,12 +312,11 @@
     {
       "id": "HN-RELEASE-PR78",
       "priority": "P4",
-      "state": "attacking",
+      "state": "verifying",
       "title": "Move PR #78 toward review/merge",
       "blocked_by": [
-        "PR remains draft",
-        "Cloudflare Workers external check still failing/unknown",
-        "final branch/base reconciliation"
+        "PR remains draft by policy",
+        "external Cloudflare Workers Builds check failing/unknown"
       ]
     }
   ],
@@ -322,13 +350,13 @@
       },
       {
         "name": "Accessibility interaction QA",
-        "estimate_percent": 88,
-        "state": "verifying"
+        "estimate_percent": 100,
+        "state": "done"
       },
       {
         "name": "Language / redundant routes",
-        "estimate_percent": 90,
-        "state": "verifying"
+        "estimate_percent": 96,
+        "state": "done"
       },
       {
         "name": "Dependency security triage",
@@ -337,8 +365,8 @@
       },
       {
         "name": "Merge / publication",
-        "estimate_percent": 35,
-        "state": "attacking"
+        "estimate_percent": 55,
+        "state": "verifying"
       },
       {
         "name": "Research assimilation",
@@ -510,23 +538,29 @@
   "next_wave": {
     "critical_lane": {
       "id": "HN-RELEASE-READINESS",
-      "state": "attacking",
-      "reason": "Core product, research assimilation, microcuration and integrated responsive QA are green; remaining uncertainty is release hygiene and external checks."
+      "state": "verifying",
+      "reason": "CI #578 and responsive/a11y QA #88 are green; branch is reconciled with main. External Workers Builds remains the only unexplained check."
     },
     "parallel_lanes": [
       {
-        "id": "HN-I18N-FINAL-COPY",
+        "id": "HN-COPY-FINAL",
         "state": "ready_support",
-        "type": "read_only_then_small_copy",
-        "rule": "Only fix concrete remaining language defects; do not reopen route architecture."
+        "type": "small_copy_only",
+        "rule": "Only concrete wording defects; no new architecture."
+      },
+      {
+        "id": "HN-CLOUDFLARE-DIAG",
+        "state": "blocked_external",
+        "type": "diagnostic_only",
+        "rule": "Do not guess dashboard configuration without authenticated build logs."
       },
       {
         "id": "HN-DEPS-MAINTENANCE",
         "state": "deferred",
         "type": "separate_maintenance_wave",
-        "rule": "Patch/upgrade with compatibility evidence outside the current product PR; no force."
+        "rule": "Patch/upgrade with compatibility evidence outside PR #78; no force."
       }
     ],
-    "barrier": "Keep PR draft. No merge/publication claim until the final PR/base/external-check decision is explicit."
+    "barrier": "Keep PR draft. No merge/publication until the external-check decision is explicit."
   }
 }
