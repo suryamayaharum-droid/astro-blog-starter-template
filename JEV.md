@@ -44,7 +44,7 @@ This pointer is intentionally small. The canonical HIVE carries the full tree, b
 ## Editorial audit · atualização · 9 out 2026
 
 - **TENHO:** lote editorial refeito sobre o `main` atual; PR #89 tinha divergência/conflicto e será substituída por um PR limpo. O painel detalhado está em `checkpoints/HARUM_NOIR_EDITORIAL_AUDIT_2026-10-09.md`.
-- **FAZENDO:** revisão manual de 27/74 arquivos de rota (36%). O template do Atlas gera 101 fichas; a checagem estrutural percorreu 208 links e encontrou 15 links vidIQ rotulados como conteúdos diretos em nove fichas, com destinos repetidos.
+- **FAZENDO:** revisão manual de 33/74 arquivos de rota (45%). O template do Atlas gera 101 fichas; a checagem estrutural percorreu 208 links e encontrou 15 links vidIQ rotulados como conteúdos diretos em nove fichas, com destinos repetidos.
 - **PRONTO neste lote:** fallbacks legados, práticas de Olhar e Vestígio, distinção vidIQ/análise externa e deduplicação visual por URL no perfil.
 - **BLOQUEIO móvel:** auditoria pós-PR #88 (#38002723488) ainda estava em execução na última leitura; não marcar como verde até conferir o resultado.
-- **PASSO:** revisar fontes primárias e títulos em fichas de artistas; seguir para outras rotas de História da Arte e paridade EN/ES, atualizando a barra após cada lote.
+- **PASSO:** revisar fontes primárias e títulos em fichas de artistas; seguir para outras rotas de História da Arte e completar paridade EN/ES, atualizando a barra após cada lote.
