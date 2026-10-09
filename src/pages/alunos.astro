@@ -1,0 +1,60 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
+---
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <BaseHead title="Área de alunos · HARUM NOIR" description="Acesse suas compras HARUM NOIR pela conta Hotmart e encontre os produtos liberados para você." />
+</head>
+<body>
+  <Header />
+  <main>
+    <section class="page-hero">
+      <div class="eyebrow">ÁREA DE ALUNOS · HOTMART</div>
+      <h1>Seu material fica na sua conta Hotmart.</h1>
+      <p>Esta entrada é para quem já comprou um produto HARUM NOIR pela Hotmart e teve o acesso liberado.</p>
+      <div class="actions">
+        <a class="btn gold" href="https://consumer.hotmart.com/" target="_blank" rel="noopener noreferrer">Entrar na Hotmart ↗</a>
+        <a class="btn" href={base + 'ritual-do-carvao/'}>Conhecer o Ritual do Carvão</a>
+      </div>
+    </section>
+
+    <section class="section editorial-split" aria-label="Como acessar suas compras">
+      <article class="panel">
+        <div class="eyebrow">COMO ENCONTRAR</div>
+        <h2>Da sua conta à aula.</h2>
+        <ol>
+          <li>Entre na Hotmart com o mesmo e-mail usado na compra.</li>
+          <li>Abra <strong>Minhas compras</strong> no menu.</li>
+          <li>Escolha o produto liberado para acessar as aulas ou arquivos.</li>
+        </ol>
+      </article>
+      <article class="panel">
+        <div class="eyebrow">SE O PRODUTO NÃO APARECER</div>
+        <h2>Confira o e-mail da compra.</h2>
+        <p>Veja se o pagamento foi aprovado e tente entrar com o e-mail usado no pedido. Para recuperar o acesso ou consultar uma compra, use a ajuda oficial da Hotmart.</p>
+        <div class="actions">
+          <a class="btn" href="https://help.hotmart.com/pt-br/" target="_blank" rel="noopener noreferrer">Central de ajuda Hotmart ↗</a>
+        </div>
+      </article>
+    </section>
+
+    <section class="section">
+      <div class="panel">
+        <div class="eyebrow">ESCOLA ABERTA · SEM LOGIN</div>
+        <h2>O estudo gratuito e os produtos pagos ficam em lugares diferentes.</h2>
+        <p>As páginas abertas do HARUM NOIR não pedem conta e guardam seu progresso apenas neste aparelho. Produtos comprados pela Hotmart aparecem na conta de comprador, conforme o acesso configurado para cada produto.</p>
+        <p>O Ritual do Carvão ainda está em preparação. A compra só será aberta quando conteúdo, imagens, entrega e checkout estiverem revisados.</p>
+        <div class="actions">
+          <a class="btn gold" href={base + 'ritual-do-carvao/'}>Ver status do Ritual →</a>
+          <a class="btn" href={base + 'atelier#exercicio'}>Começar uma prática gratuita →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</body>
+</html>
