@@ -14,7 +14,7 @@ Uma frente só recebe **CONCLUÍDO** quando há evidência. Build verde não sig
 
 ```text
 HARUM NOIR · GITHUB PAGES
-Progresso estrutural estimado: 80%
+Progresso estrutural estimado: 94%
 
 [████████████████████] CI / Astro / TypeScript ........ CONCLUÍDO
 [████████████████████] Cloudflare dry-run ............. CONCLUÍDO
@@ -22,13 +22,13 @@ Progresso estrutural estimado: 80%
 [████████████████████] hreflang recíproco ............. CONCLUÍDO pelo CI
 [████████████████████] SEO estrutural / JSON-LD ....... CONCLUÍDO pelo CI
 [████████████████████] contrato Studio23 ↔ Noir ....... CONCLUÍDO pelo CI
-[████████████████░░░░] ciclo pedagógico ............... EM CONSOLIDAÇÃO
-[██████████████░░░░░░] coerência entre páginas ........ EM AÇÃO
-[██████████░░░░░░░░░░] responsividade visual .......... PENDENTE QA
-[████████░░░░░░░░░░░░] acessibilidade visual/teclado .. PENDENTE QA
-[██████░░░░░░░░░░░░░░] EN/ES / redundâncias .......... PENDENTE AUDITORIA
-[████░░░░░░░░░░░░░░░░] dependências / segurança ...... PENDENTE TRIAGEM
-[░░░░░░░░░░░░░░░░░░░░] merge/publicação .............. BLOQUEADO ATÉ QA
+[████████████████████] ciclo pedagógico ............... CONCLUÍDO / QA VERDE
+[███████████████████░] coerência entre páginas ........ 96% / CONCLUÍDO
+[████████████████████] responsividade visual .......... QA #72 VERDE
+[██████████████████░░] acessibilidade visual/teclado .. 88% / VERIFYING
+[██████████████████░░] EN/ES / redundâncias .......... 90% / VERIFYING
+[████████████████████] dependências / segurança ...... TRIAGEM CONCLUÍDA
+[███████░░░░░░░░░░░░░] merge/publicação .............. 35% / DRAFT
 ```
 
 ## ESTADO DA PR #78
@@ -101,7 +101,7 @@ Após cada ataque:
 4. atacar o próximo item de maior impacto;
 5. nunca declarar publicação sem evidência de deploy.
 
-Última evidência verde confirmada: CI HARUM NOIR #498 passou no head `8e9809a`; o head atual contém novas melhorias de produto e está novamente em validação.
+Última evidência verde confirmada de produto: **HARUM NOIR CI #562** + **Responsive Audit #72** no head `a367f2f`. A auditoria responsiva usa o estado integrado da PR com a `main`, incluindo o fluxo Referências → Cadernos.
 
 
 ## TECNOLOGIA DO PAINEL — V2
@@ -235,39 +235,39 @@ Isso transforma o painel em um controlador de execução: ele não apenas mostra
 ## ONDA EXECUTACIONAL ATUAL
 
 ```text
-LANE A · CRÍTICA — I18N / COERÊNCIA
-Inventário internacional ................. 12 EN + 12 ES
-Self-links em Referências ................ CORRIGIDOS
-Self-links em Museus ..................... CORRIGIDOS
-Self-links em História da Arte ........... CORRIGIDOS
-Self-links em Cultura Visual ............. CORRIGIDOS
-Dibujo ES → Colecciones .................. CORRIGIDO
-Seletor global PT/EN/ES nativo ........... APLICADO
-InternationalHub sem Google Translate .... APLICADO
-→ próximo: classificar manter/fundir/remover nas rotas restantes
+LANE A · CRÍTICA — PRONTIDÃO DE RELEASE
+CI #562 ................................... VERDE
+Responsive Audit #72 ...................... VERDE
+Estado integrado PR + main ............... TESTADO
+PR #78 .................................... DRAFT
+Merge automático/publicação ............... NÃO AUTORIZADO
 
-LANE B · VERIFICAÇÃO
-Último CI verde anterior ................. #512
-Head de produto atual .................... 278dc41
-Novo CI / QA integrado ................... EM FILA / EXECUÇÃO
-Mudança em Header/InternationalHub ....... invalida QA visual anterior
+LANE B · PRODUTO
+Ciclo pedagógico .......................... DONE
+Mesa Referências → Cadernos ............... DONE
+Rituais / pesquisa assimilada ............. DONE
+Radar → fonte / aplicação ................. DONE
+Busca → item exato do Radar ............... DONE
 
-LANE C · PEDAGOGIA — VERIFYING
-Home + Escola 15 min ..................... FEITO
-Museus → próxima prática ................. FEITO
-Percursos → autoavaliação ................ FEITO
-Ateliê → entrada vs exercício expandido .. FEITO
-Cadernos → escolher/fazer/registrar ....... FEITO
-Referências → entrega/conferência ......... FEITO
+LANE C · I18N / ACESSIBILIDADE
+Rotas internacionais ...................... 12 EN + 12 ES
+Google Translate no código auditado ....... 0
+Chrome nativo de aulas EN/ES .............. APLICADO
+Alvos de toque em headers/seletor idiomas . AMPLIADOS
+Revisão fina de copy ...................... VERIFYING
 
-LANE D · DIAGNÓSTICO
-Dependências npm ......................... QUEUED
-Sem upgrade forçado
+LANE D · SEGURANÇA / INFRA
+npm / dependências ........................ TRIADO
+Vite 6.4.1 ................................ manutenção futura
+@astrojs/cloudflare 12.6.12 ............... manutenção futura
+Astro 5.16.9 .............................. site atual é static
+npm audit fix --force ..................... PROIBIDO
+Workers Build externo ..................... FALHA / CAUSA NÃO PROVADA
+Cloudflare dry-run do CI .................. VERDE
 
-BARREIRA DE INTEGRAÇÃO
-CI + contratos + QA responsivo do head integrado .... OBRIGATÓRIO
+BARREIRA
+PR continua draft. Separar falha externa de Cloudflare da prontidão real do GitHub Pages antes de qualquer merge.
 ```
-
 
 ## PESQUISA DE SITES COMO PROPOSTA — ASSIMILAÇÃO ATUAL
 
@@ -333,3 +333,15 @@ testar sem a referência aberta
 A seleção e a nota ficam somente no navegador do aluno. A intenção é transformar “salvar referência” em uma microcuradoria com saída verificável.
 
 Barreira atual: CI + QA responsivo completo do fluxo Referências → Cadernos.
+
+
+## TRIAGEM DE SEGURANÇA — SEM UPGRADE CEGO
+
+A frente de dependências foi analisada sem `npm audit fix --force`.
+
+- **Vite 6.4.1** aparece na árvore e possui advisories de dev server corrigidos em 6.4.2. A condição relevante exige servidor de desenvolvimento exposto; o produto público atual é estático.
+- **@astrojs/cloudflare 12.6.12** está instalado, mas não é importado pelo `astro.config.mjs`; o site usa `output: "static"`. A atualização para a linha corrigida deve ser uma onda própria de manutenção/compatibilidade.
+- **Astro 5.16.9** tem advisory posterior relacionado a SSR/custom-server. O caminho público do HARUM NOIR é `output: "static"`, então não corresponde ao cenário de produção atual.
+- O check externo **Workers Builds** continua falhando em PRs enquanto o `Cloudflare dry-run` interno passa. Sem log autenticado do painel Cloudflare, a causa externa permanece não provada.
+
+Decisão: não transformar uma PR editorial grande em upgrade de framework. Registrar, isolar e corrigir dependências em uma manutenção compatível e testada.
