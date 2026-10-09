@@ -62,60 +62,69 @@
     ]
   },
   "current_evidence": {
-    "ci_run": 484,
+    "ci_run": 562,
     "ci_state": "success",
     "fixing_commit": "eac8bcd0df6b83787596c3a1871efc20927c1e64",
     "blueprint_commit": "04b4bd671d7486738feca03366b4a1acfe27022e",
     "jev_health_context": "healthy_historical_projection",
     "jev_note": "JEV/HIVE is coordination context; live branch and CI override historical projections.",
-    "current_head": "a5f08364c35406ace99a8beb98b5e5790dac6b64",
+    "current_head": "a367f2f31b426bdadf04baf90c84e5ee7f957310",
     "responsive_workflow": ".github/workflows/noir-pr-responsive-audit.yml",
     "responsive_audit": {
-      "run_id": 37973726702,
-      "run_number": 4,
-      "tested_head": "50a4902715dc9de19ccfb604b4e9f717f45d5f95",
+      "run_id": 37983959827,
+      "run_number": 72,
+      "tested_head": "a367f2f31b426bdadf04baf90c84e5ee7f957310",
       "conclusion": "success",
       "scope": [
+        "integrated PR state with current main",
         "320px",
         "390px",
         "761px",
         "1024px",
         "overflow",
         "mobile-dock",
-        "touch-targets",
         "broken-images",
         "same-origin-resources",
         "console-errors",
-        "keyboard-focus"
+        "keyboard-focus",
+        "Rituais de Olhar",
+        "EN/ES landing and reference routes",
+        "international gesture/tonal lessons",
+        "Referencias comparison → Cadernos note handoff"
       ],
-      "freshness": "stale_after_global_navigation_and_content_changes",
-      "note": "A fresh PR responsive audit is required after global Header/InternationalHub and learning-surface changes."
+      "freshness": "fresh_for_current_product_head",
+      "note": "Run #72 is green on the integrated PR state. Header/i18n touch-target sizes were enlarged in source; the automated matrix still treats mobile-dock touch targets as the hard 44px gate."
     },
-    "product_head_before_panel_update": "74da280404ca355a9c9d0aa64b26b5cae6aca4c2",
+    "product_head_before_panel_update": "a367f2f31b426bdadf04baf90c84e5ee7f957310",
     "latest_product_changes": [
-      "Primeira prática unificada em 15 minutos em Home e Escola PT/EN/ES",
-      "Ateliê separa claramente porta de entrada de 15 min e exercício expandido 2/15/45",
-      "Cadernos ganhou entrada simples: escolher → fazer → registrar",
-      "Referências ganhou entrega, conferência, registro e continuação",
-      "Museus e Percursos agora fecham o ciclo com próxima prática/autoavaliação",
-      "Seletores de idioma usam páginas nativas EN/ES em vez de Google Translate",
-      "Self-links improdutivos removidos em Referências, Museus, História da Arte e Cultura Visual Brasileira EN/ES"
+      "Primeira prática unificada em 15 minutos e ciclo pedagógico fechado",
+      "Rituais de Olhar traduz pesquisa externa em seis protocolos autorais",
+      "Referências ganhou mesa de comparação 2–3 itens com nota local enviada ao Caderno",
+      "Busca agora leva resultados do Radar ao item exato",
+      "Radar separa fonte original de aplicação dentro do HARUM NOIR",
+      "24 rotas internacionais inventariadas: 12 EN + 12 ES; Google Translate removido",
+      "Aulas internacionais usam chrome nativo EN/ES",
+      "Alvos de toque de Header, InternationalHub, InternationalLessonChrome, School e homes EN/ES ampliados"
     ],
     "i18n_inventory": {
       "en_routes": 12,
       "es_routes": 12,
-      "state": "active_quality_audit",
+      "state": "verified_structure_content_review_nearly_complete",
       "fixed_issues": [
+        "Google Translate removed from global and international navigation",
         "EN/ES references self-links",
         "ES drawing self-link",
         "EN/ES museum hub self-links",
         "EN/ES art-history self-links",
         "EN/ES Brazilian visual culture self-links",
-        "native language selectors"
+        "native PT/EN/ES selectors",
+        "native chrome for international lessons",
+        "tonal-study surfaced in EN/ES collections",
+        "all 24 international routes classified by shell: InternationalHub, School, native landing, or InternationalLessonChrome"
       ]
     },
     "research_assimilation": {
-      "state": "attacking",
+      "state": "verified",
       "sources": [
         "Project Zero / Harvard",
         "MoMA Slow Looking",
@@ -144,18 +153,15 @@
       "principle": "Assimilate principles, preserve source attribution, avoid copying named routines or source text."
     },
     "qa_barrier": {
-      "requested": true,
-      "reason": "Validate Referencias comparison + Cadernos handoff on the integrated head.",
-      "product_surface_head": "74da280404ca355a9c9d0aa64b26b5cae6aca4c2",
-      "includes": [
-        "Referencias comparison interaction",
-        "Cadernos comparison-note handoff",
-        "existing responsive routes"
-      ],
-      "rule": "No additional product mutation until this explicit barrier completes."
+      "requested": false,
+      "reason": "Integrated barrier completed successfully.",
+      "product_surface_head": "a367f2f31b426bdadf04baf90c84e5ee7f957310",
+      "ci_run": 562,
+      "responsive_run": 72,
+      "conclusion": "success"
     },
     "compare_curation": {
-      "state": "verifying",
+      "state": "done",
       "applied": [
         "Referencias can select 2–3 items into a comparison table",
         "selection is stored locally on the device",
@@ -164,22 +170,57 @@
         "Cadernos receives the saved comparison note and turns it into the next drawing question"
       ],
       "principle": "Curate relationships instead of accumulating references."
+    },
+    "dependency_security_triage": {
+      "state": "triaged_no_forced_upgrade",
+      "production_mode": "Astro output=static; GitHub Pages is the canonical public surface.",
+      "findings": [
+        {
+          "package": "vite",
+          "observed_version": "6.4.1 in dependency tree",
+          "advisory": "GHSA-p9ff-h696-f583 / GHSA-4w7w-66w2-5vf9",
+          "patched": "6.4.2",
+          "exposure": "Dev-server-only conditions; current production is static. Do not ignore, but do not force a major product-PR upgrade."
+        },
+        {
+          "package": "@astrojs/cloudflare",
+          "observed_version": "12.6.12",
+          "advisory": "GHSA-88gm-j2wx-58h6",
+          "patched": "13.1.10",
+          "exposure": "Adapter is installed but not imported by astro.config.mjs; project output is static. Treat as maintenance dependency / Cloudflare tooling risk."
+        },
+        {
+          "package": "astro",
+          "observed_version": "5.16.9",
+          "advisory": "GHSA-2pvr-wf23-7pc7",
+          "patched": "6.4.6",
+          "exposure": "Advisory targets SSR/custom-server error-page fetch behavior; current site is static, so this is not the GitHub Pages production path."
+        }
+      ],
+      "decision": "Create a bounded dependency-maintenance wave later; no npm audit fix --force and no major upgrade inside PR #78 without compatibility work."
+    },
+    "external_checks": {
+      "cloudflare_workers_build": "failing on PR heads",
+      "github_pages_relevance": "not the canonical deploy gate for this branch; repository CI Cloudflare dry-run is green",
+      "note": "Cloudflare GitHub App build details require the external authenticated dashboard; root cause is not proven from this session."
     }
   },
   "primary_attack": {
-    "id": "HN-COMPARE-CURATE",
-    "priority": "P2",
-    "state": "verifying",
-    "title": "Turn reference browsing into comparison and micro-curation",
-    "goal": "Make the reference atlas produce an explicit relation, a learner-authored note and a return to drawing.",
+    "id": "HN-RELEASE-READINESS",
+    "priority": "P4",
+    "state": "attacking",
+    "title": "Reduce remaining release uncertainty without merging yet",
+    "goal": "Keep PR #78 draft while turning all product-facing gates green and isolating external/tooling blockers from GitHub Pages readiness.",
     "completed_slices": [
-      "2–3 reference comparison selection",
-      "local persistence of selection and note",
-      "three comparison prompts",
-      "Cadernos import of comparison note"
+      "CI #562 green",
+      "Responsive/interaction QA #72 green on integrated PR state",
+      "Learning loop verified",
+      "Comparison/curation verified",
+      "International shell inventory complete",
+      "Source-level touch targets enlarged"
     ],
-    "next_action": "Wait for integrated QA barrier. If green, promote comparison/curation to DONE and attack the next weakest surface instead of adding another page.",
-    "parallelism_horizon": "Verification only until barrier completes."
+    "next_action": "Refresh PR summary, reconcile branch-vs-main status and keep Cloudflare Workers failure explicitly separate from GitHub Pages product gates. Do not merge while PR remains draft.",
+    "parallelism_horizon": "Only docs/metadata/security diagnosis until the next product defect is evidence-backed."
   },
   "queue": [
     {
@@ -198,7 +239,7 @@
     {
       "id": "HN-LEARNING-LOOP",
       "priority": "P2",
-      "state": "verifying",
+      "state": "done",
       "title": "Close the learning loop across Museus, Referências, Percursos, Ateliê and Cadernos",
       "depends_on": [
         "HN-COHERENCE-15MIN"
@@ -208,13 +249,14 @@
         "6597f063a3d86d02e92b6b7729ead4036720879c",
         "f47f5ea372e7dfd216ed66278f769e9458f81559",
         "131fa813a3eb8afe202514d39806a964266c3777",
-        "ef738092571a5abad3cfa0aa6e78885027cddb35"
+        "ef738092571a5abad3cfa0aa6e78885027cddb35",
+        "37983959827"
       ]
     },
     {
       "id": "HN-I18N-AUDIT",
       "priority": "P3",
-      "state": "attacking",
+      "state": "verifying",
       "title": "Audit EN/ES usefulness, completeness and inbound navigation before keeping/removing routes",
       "depends_on": [
         "HN-LEARNING-LOOP"
@@ -222,25 +264,31 @@
       "inventory": {
         "en_routes": 12,
         "es_routes": 12
-      }
+      },
+      "evidence": [
+        "no Google Translate matches",
+        "native shells classified for all 24 routes",
+        "CI #562 reciprocal hreflang green",
+        "QA #72 green on representative international routes"
+      ]
     },
     {
       "id": "HN-DEPS-SECURITY",
       "priority": "P3",
-      "state": "queued",
+      "state": "done",
       "title": "Triage npm vulnerabilities without blind force upgrades",
-      "depends_on": []
+      "depends_on": [],
+      "decision": "triaged; defer compatible maintenance upgrade, no force"
     },
     {
       "id": "HN-RELEASE-PR78",
       "priority": "P4",
-      "state": "blocked",
+      "state": "attacking",
       "title": "Move PR #78 toward review/merge",
       "blocked_by": [
-        "HN-QA-MOBILE-PR78",
-        "HN-COHERENCE-15MIN",
-        "HN-LEARNING-LOOP",
-        "HN-I18N-AUDIT"
+        "PR remains draft",
+        "Cloudflare Workers external check still failing/unknown",
+        "final branch/base reconciliation"
       ]
     }
   ],
@@ -259,48 +307,48 @@
       },
       {
         "name": "Pedagogical architecture",
-        "estimate_percent": 94,
-        "state": "verifying"
+        "estimate_percent": 98,
+        "state": "done"
       },
       {
         "name": "Cross-page coherence",
-        "estimate_percent": 92,
-        "state": "verifying"
+        "estimate_percent": 96,
+        "state": "done"
       },
       {
         "name": "Responsive visual QA",
-        "estimate_percent": 80,
-        "state": "verifying"
+        "estimate_percent": 100,
+        "state": "done"
       },
       {
         "name": "Accessibility interaction QA",
-        "estimate_percent": 75,
+        "estimate_percent": 88,
         "state": "verifying"
       },
       {
         "name": "Language / redundant routes",
-        "estimate_percent": 70,
-        "state": "attacking"
+        "estimate_percent": 90,
+        "state": "verifying"
       },
       {
         "name": "Dependency security triage",
-        "estimate_percent": 20,
-        "state": "queued"
+        "estimate_percent": 100,
+        "state": "done"
       },
       {
         "name": "Merge / publication",
-        "estimate_percent": 0,
-        "state": "blocked"
+        "estimate_percent": 35,
+        "state": "attacking"
       },
       {
         "name": "Research assimilation",
-        "estimate_percent": 86,
-        "state": "verifying"
+        "estimate_percent": 92,
+        "state": "done"
       },
       {
         "name": "Comparison / curation",
-        "estimate_percent": 92,
-        "state": "verifying"
+        "estimate_percent": 100,
+        "state": "done"
       }
     ]
   },
@@ -461,24 +509,24 @@
   },
   "next_wave": {
     "critical_lane": {
-      "id": "HN-COMPARE-CURATE",
-      "state": "verifying",
-      "reason": "Comparison/curation is implemented and must pass integrated QA before another product mutation."
+      "id": "HN-RELEASE-READINESS",
+      "state": "attacking",
+      "reason": "Core product, research assimilation, microcuration and integrated responsive QA are green; remaining uncertainty is release hygiene and external checks."
     },
     "parallel_lanes": [
       {
-        "id": "HN-I18N-AUDIT",
-        "state": "read_only_support",
-        "type": "classification",
-        "rule": "Read-only keep/merge/remove classification may continue without touching shared navigation."
+        "id": "HN-I18N-FINAL-COPY",
+        "state": "ready_support",
+        "type": "read_only_then_small_copy",
+        "rule": "Only fix concrete remaining language defects; do not reopen route architecture."
       },
       {
-        "id": "HN-DEPS-SECURITY",
-        "state": "queued_support",
-        "type": "diagnostic_only",
-        "rule": "Do not mutate dependencies during the QA barrier."
+        "id": "HN-DEPS-MAINTENANCE",
+        "state": "deferred",
+        "type": "separate_maintenance_wave",
+        "rule": "Patch/upgrade with compatibility evidence outside the current product PR; no force."
       }
     ],
-    "barrier": "CI + responsive audit green on the explicit [qa:full] head."
+    "barrier": "Keep PR draft. No merge/publication claim until the final PR/base/external-check decision is explicit."
   }
 }
