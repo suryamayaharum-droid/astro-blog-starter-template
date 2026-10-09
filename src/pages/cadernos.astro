@@ -21,6 +21,15 @@ const visualSets=[
     <article><span>03</span><b>Registre</b><p>Anote uma decisão que funcionou e uma pergunta que ainda ficou aberta.</p></article>
   </div>
 </section>
+<section class="section compare-import" id="comparacao-importada" hidden aria-labelledby="compare-import-title">
+  <div class="journal"><div class="paper">
+    <div class="eyebrow" style="color:#8a734b">VINDO DA MESA DE COMPARAÇÃO</div>
+    <h2 id="compare-import-title">Sua relação entre referências chegou até aqui.</h2>
+    <p class="lead" id="compare-import-note"></p>
+    <p>Não transforme a nota em conclusão. Use-a como ponto de partida: faça um desenho que teste a decisão descrita e, depois, escreva o que precisou mudar quando a referência saiu da tela.</p>
+    <div class="actions"><a class="btn gold" href={base+'atelier'}>Testar no Ateliê →</a><a class="btn" href={base+'referencias#comparar'}>Voltar à comparação →</a><button class="btn" id="compare-import-clear" type="button">Descartar esta nota</button></div>
+  </div></div>
+</section>
 <nav class="notebook-index" aria-label="Escolher um caderno">{cadernos.map(c=><a href={'#'+c.slug}>{c.title}</a>)}</nav>
 {cadernos.map((c,i)=><section class="section editorial-split" id={c.slug}>
   <div class="card"><div class="card-media" style="aspect-ratio:4/3"><img src={`${base}noir/${c.image}`} alt={c.imageAlt} loading="lazy" decoding="async"/><span class="media-credit">Prancha editorial HARUM NOIR · estudo com assistência de IA</span></div></div>
@@ -29,6 +38,24 @@ const visualSets=[
 <section class="section"><div class="journal"><div class="paper"><h2>Um caderno não termina quando a folha termina.</h2><p class="lead">Leve uma pergunta para o próximo desenho.</p><p>O objetivo não é completar todos os exercícios. É perceber quais problemas continuam voltando e merecem virar estudo, aula ou projeto.</p><ol><li><b>O que funcionou?</b> Nomeie uma decisão que você repetiria.</li><li><b>O que voltou a incomodar?</b> Transforme o erro recorrente em pergunta de estudo.</li><li><b>O que vem depois?</b> Escolha uma única prática seguinte.</li></ol><div class="actions"><a class="btn gold" href={base+'atelier'}>Levar a pergunta para o Ateliê →</a><a class="btn" href={base+'maos#exercicio'}>Prática de mãos · 15 min →</a></div></div></div></section>
 <section class="section"><div class="panel"><div class="eyebrow">ARQUIVO VIVO</div><h2>O caderno como sequência de pensamento.</h2><p>Sketchbooks históricos ajudam a observar tentativa, pausa, repetição, anotação e retorno. Use a referência para entender como uma investigação continua entre páginas — não para transformar o caderno em galeria de peças prontas.</p><div class="actions"><a class="btn gold" href={base+'biblioteca#arquivo-vivo-sketchbooks'}>Abrir sketchbooks históricos →</a></div></div></section>
 <EcosystemRail current="cadernos" limit={5} />
+<script>
+try{
+  const key='harum_noir_compare_note_v1';
+  const note=localStorage.getItem(key)||'';
+  const section=document.querySelector('#comparacao-importada');
+  const output=document.querySelector('#compare-import-note');
+  const clear=document.querySelector('#compare-import-clear');
+  if(note.trim()&&section&&output){
+    output.textContent=note.trim();
+    section.hidden=false;
+  }
+  clear?.addEventListener('click',()=>{
+    localStorage.removeItem(key);
+    localStorage.removeItem('harum_noir_compare_refs_v1');
+    if(section) section.hidden=true;
+  });
+}catch{}
+</script>
 </main><Footer/></body></html>
 <style>
 .caderno-visual-set{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:20px 0 24px}.caderno-visual-set figure{min-width:0;margin:0;border:1px solid var(--line);background:#101010}.caderno-visual-set img{display:block;width:100%;height:clamp(130px,17vw,230px);object-fit:cover}.caderno-visual-set figcaption,.media-credit{display:block;padding:8px 10px;color:var(--paper-2);font-size:.68rem;line-height:1.45;border-top:1px solid var(--line)}
@@ -41,4 +68,7 @@ const visualSets=[
 .notebooks-composition .editorial-split h2{font-size:clamp(2.3rem,4vw,4rem);line-height:1.05}
 .notebooks-composition .editorial-split p{font-size:16px;line-height:1.7;max-width:54ch}
 @media(max-width:760px){.notebooks-composition .editorial-split{padding-top:32px;gap:20px}.notebook-index a{padding:10px 12px}.caderno-visual-set{gap:8px}.caderno-visual-set img{height:150px}}
-.caderno-start-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.caderno-start-grid article{padding:16px;border:1px solid var(--line);border-radius:4px;background:#101010}.caderno-start-grid span{display:block;color:var(--gold);font-size:.68rem;margin-bottom:14px}.caderno-start-grid b{display:block;font-size:1rem;margin-bottom:6px}.caderno-start-grid p{margin:0;color:var(--paper-2);font-size:.82rem;line-height:1.55}@media(max-width:760px){.caderno-start-grid{grid-template-columns:1fr}.caderno-start-grid article{padding:14px}}\n</style>
+.caderno-start-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.caderno-start-grid article{padding:16px;border:1px solid var(--line);border-radius:4px;background:#101010}.caderno-start-grid span{display:block;color:var(--gold);font-size:.68rem;margin-bottom:14px}.caderno-start-grid b{display:block;font-size:1rem;margin-bottom:6px}.caderno-start-grid p{margin:0;color:var(--paper-2);font-size:.82rem;line-height:1.55}@media(max-width:760px){.caderno-start-grid{grid-template-columns:1fr}.caderno-start-grid article{padding:14px}}\n
+.compare-import[hidden]{display:none}.compare-import .paper{border-left:3px solid var(--gold)}.compare-import .lead{white-space:pre-wrap}.compare-import button.btn{cursor:pointer;font:inherit;color:inherit}
+
+</style>
