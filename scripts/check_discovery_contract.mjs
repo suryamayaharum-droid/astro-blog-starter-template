@@ -2,6 +2,8 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 
 const failures=[];
+const studioCanonical='https://suryamayaharum-droid.github.io/astro-blog-starter-template/studio23/';
+const staleStudioHost='tattoostudio23.suryamaya-harum.chatgpt.site';
 const readJson=async(file)=>{
   try{return JSON.parse(await fs.readFile(path.resolve(file),'utf8'))}
   catch(error){failures.push(file+': '+String(error.message||error));return null}
@@ -23,6 +25,9 @@ if(catalog){
   expect(catalog.routes?.charcoalRitual?.endsWith('/ritual-do-carvao/'),'catalog must expose charcoalRitual');
   expect(catalog.routes?.students?.endsWith('/alunos/'),'catalog must expose students');
   expect(catalog.routes?.observationRituals?.endsWith('/rituais-de-olhar/'),'catalog must expose observationRituals');
+  expect(catalog.relatedSite===studioCanonical,'catalog relatedSite must use GitHub-hosted Studio 23 canonical URL');
+  expect(catalog.tattooService?.canonicalUrl===studioCanonical,'catalog tattooService canonical URL is stale');
+  expect(JSON.stringify(catalog).includes(staleStudioHost)===false,'catalog still exposes the old GPT-hosted Studio 23 URL');
 }
 
 if(knowledge){
@@ -32,6 +37,9 @@ if(knowledge){
   expect(knowledge.productStatus?.charcoalRitual?.state==='prelaunch','charcoal ritual must remain prelaunch');
   expect(knowledge.productStatus?.charcoalRitual?.purchaseOpen===false,'charcoal ritual purchase must remain closed');
   expect(knowledge.productStatus?.charcoalRitual?.freeSample==='/ritual-do-carvao/#amostra','charcoal ritual free sample route is stale');
+  expect(knowledge.tattooService?.canonicalUrl===studioCanonical,'site-knowledge tattooService canonical URL is stale');
+  expect((knowledge.entities||[]).find(entity=>entity.name==='Tattoo Studio 23')?.url===studioCanonical,'site-knowledge Tattoo Studio 23 entity URL is stale');
+  expect(JSON.stringify(knowledge).includes(staleStudioHost)===false,'site-knowledge still exposes the old GPT-hosted Studio 23 URL');
 }
 
 if(lume){
