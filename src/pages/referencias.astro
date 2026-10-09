@@ -90,14 +90,17 @@ const referenceSchema={
   <p>{col.subtitle}</p>
  </div>
   <div class="stream-rail">
-   {items.map(a=><a class="stream-card" href={base+'referencias/'+a!.slug}>
-    <div class="stream-card-media">
-      <img class="stream-fallback" src={base+'noir/visual-atlas/'+themedCover(a!)+'.webp'} alt="" loading="lazy" decoding="async" width="640" height="640" />
-      {a!.videoId&&a!.slug!=='zin-lim'&&<img class="stream-thumb" src={'https://i.ytimg.com/vi/'+a!.videoId+'/hqdefault.jpg'} alt={'Referência visual de '+a!.name} loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"/>}
-      <span class="stream-rank">{String(a!.rank).padStart(2,'0')}</span>
-    </div>
-    <div class="stream-card-body"><span>{a!.focus}</span><h3>{a!.name}</h3></div>
-   </a>)}
+   {items.map(a=><article class="stream-card reference-pick" data-ref-slug={a!.slug}>
+    <a class="stream-card-link" href={base+'referencias/'+a!.slug}>
+      <div class="stream-card-media">
+        <img class="stream-fallback" src={base+'noir/visual-atlas/'+themedCover(a!)+'.webp'} alt="" loading="lazy" decoding="async" width="640" height="640" />
+        {a!.videoId&&a!.slug!=='zin-lim'&&<img class="stream-thumb" src={'https://i.ytimg.com/vi/'+a!.videoId+'/hqdefault.jpg'} alt={'Referência visual de '+a!.name} loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"/>}
+        <span class="stream-rank">{String(a!.rank).padStart(2,'0')}</span>
+      </div>
+      <div class="stream-card-body"><span>{a!.focus}</span><h3>{a!.name}</h3></div>
+    </a>
+    <button class="compare-toggle" type="button" data-compare={a!.slug} aria-pressed="false">＋ Comparar</button>
+   </article>)}
   </div>
  </section>
 })}
@@ -107,6 +110,25 @@ const referenceSchema={
  <div class="stream-head"><div><span class="eyebrow">BUSCA</span><h2>Resultados</h2></div></div>
  <div id="search-grid" class="reference-grid"></div>
  <p id="search-empty" class="ref-empty">Nenhuma referência encontrada.</p>
+</section>
+
+<section class="section compare-lab" id="comparar" aria-labelledby="compare-title">
+  <div class="section-head">
+    <div><span class="eyebrow">MESA DE COMPARAÇÃO · 2–3 REFERÊNCIAS</span><h2 id="compare-title">Monte uma relação, não uma coleção infinita.</h2></div>
+    <p>Escolha duas ou três referências do Atlas. Compare decisões, escreva o elo entre elas e saia com uma pergunta de desenho.</p>
+  </div>
+  <div id="compare-slots" class="compare-grid" aria-live="polite"></div>
+  <div id="compare-empty" class="compare-empty">Use <b>＋ Comparar</b> nos cartões acima. A mesa guarda no máximo três referências neste aparelho.</div>
+  <div id="compare-work" class="compare-work" hidden>
+    <div class="compare-prompts">
+      <article><span>01</span><strong>O que permanece?</strong><p>Que decisão visual aparece nas referências escolhidas apesar de estilos diferentes?</p></article>
+      <article><span>02</span><strong>Onde divergem?</strong><p>Qual referência resolve o mesmo problema de maneira oposta ou mais econômica?</p></article>
+      <article><span>03</span><strong>O que vira seu?</strong><p>Escolha uma decisão para testar em outro assunto, sem copiar a superfície.</p></article>
+    </div>
+    <label class="compare-note-label" for="compare-note">Sua relação entre as referências</label>
+    <textarea id="compare-note" class="compare-note" rows="4" placeholder="Ex.: As três usam bordas perdidas para segurar a atenção, mas uma depende mais de massa do que de linha. Vou testar isso em uma figura diferente."></textarea>
+    <div class="actions"><a class="btn gold" href={base+'cadernos'}>Levar a descoberta ao Caderno →</a><a class="btn" href={base+'atelier'}>Testar no Ateliê →</a><button id="compare-clear" class="btn compare-clear" type="button">Limpar mesa</button></div>
+  </div>
 </section>
 
 <section class="section reference-protocol"><div class="section-head"><div><span class="eyebrow">PROTOCOLO DE ESTUDO · 10 MIN</span><h2>Não abra dez referências.</h2></div><p>Abra uma. Extraia uma decisão. Feche a tela e volte ao papel.</p></div><div class="path-index"><div class="path-index-card"><span>01</span><strong>Nomeie</strong><small>Qual problema você veio estudar: gesto, peso, borda, luz, estrutura?</small></div><div class="path-index-card"><span>02</span><strong>Isole</strong><small>Escolha uma única decisão do artista; não tente absorver o estilo inteiro.</small></div><div class="path-index-card"><span>03</span><strong>Teste</strong><small>Feche a referência e faça um estudo curto usando o princípio em outro assunto.</small></div><div class="path-index-card"><span>04</span><strong>Registre</strong><small>Anote o que mudou no seu desenho e leve essa pergunta ao Caderno.</small></div></div></section>
@@ -139,7 +161,7 @@ const referenceSchema={
  const empty=document.querySelector('#search-empty');
  const status=document.querySelector('#search-status');
  const fallback=(a)=>base+'noir/visual-atlas/'+a.cover+'.webp';
- const card=(a)=>'<a class="reference-card" href="'+base+'referencias/'+a.slug+'"><div class="reference-media"><img class="reference-fallback" src="'+fallback(a)+'" alt="" loading="lazy" decoding="async" width="640" height="640">'+(a.videoId?'<img class="reference-thumb" src="https://i.ytimg.com/vi/'+a.videoId+'/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()">':'')+'<span class="reference-rank">'+String(a.rank).padStart(2,'0')+'</span></div><div class="reference-body"><span class="card-kicker">'+a.focus+'</span><h2>'+a.name+'</h2><p>Entrar na ficha →</p></div></a>';
+ const card=(a)=>'<article class="reference-card reference-pick" data-ref-slug="'+a.slug+'"><a class="reference-card-link" href="'+base+'referencias/'+a.slug+'"><div class="reference-media"><img class="reference-fallback" src="'+fallback(a)+'" alt="" loading="lazy" decoding="async" width="640" height="640">'+(a.videoId?'<img class="reference-thumb" src="https://i.ytimg.com/vi/'+a.videoId+'/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()">':'')+'<span class="reference-rank">'+String(a.rank).padStart(2,'0')+'</span></div><div class="reference-body"><span class="card-kicker">'+a.focus+'</span><h2>'+a.name+'</h2><p>Entrar na ficha →</p></div></a><button class="compare-toggle" type="button" data-compare="'+a.slug+'" aria-pressed="false">＋ Comparar</button></article>';
  const apply=()=>{
    const q=(search?.value||'').toLowerCase().trim();
    if(!q){collections.hidden=false;searchView.hidden=true;status.textContent=data.length+' referências para explorar.';return;}
@@ -155,6 +177,62 @@ const referenceSchema={
  let raw;try{raw=JSON.parse(localStorage.getItem('noir_recent_refs')||'[]')}catch{raw=[]}
  const rec=(Array.isArray(raw)?raw:[]).filter(slug=>typeof slug==='string'&&data.some(a=>a.slug===slug)).slice(0,8);
  if(rec.length){const section=document.querySelector('#recent-section');const rail=document.querySelector('#recent-rail');rail.innerHTML=rec.map(slug=>card(data.find(a=>a.slug===slug))).join('');section.hidden=false;}
+
+ const compareSlots=document.querySelector('#compare-slots');
+ const compareEmpty=document.querySelector('#compare-empty');
+ const compareWork=document.querySelector('#compare-work');
+ const compareNote=document.querySelector('#compare-note');
+ const compareClear=document.querySelector('#compare-clear');
+ const compareKey='harum_noir_compare_refs_v1';
+ const compareNoteKey='harum_noir_compare_note_v1';
+ let selected=[];
+ try{
+   const saved=JSON.parse(localStorage.getItem(compareKey)||'[]');
+   selected=(Array.isArray(saved)?saved:[]).filter(slug=>typeof slug==='string'&&data.some(a=>a.slug===slug)).slice(0,3);
+   if(compareNote) compareNote.value=localStorage.getItem(compareNoteKey)||'';
+ }catch{}
+ const escapeHtml=(value)=>String(value||'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+ const syncCompareButtons=()=>{
+   document.querySelectorAll('[data-compare]').forEach(button=>{
+     const on=selected.includes(button.dataset.compare);
+     button.setAttribute('aria-pressed',String(on));
+     button.textContent=on?'✓ Na mesa':'＋ Comparar';
+   });
+ };
+ const paintCompare=()=>{
+   const refs=selected.map(slug=>data.find(a=>a.slug===slug)).filter(Boolean);
+   if(compareSlots) compareSlots.innerHTML=refs.map((a,index)=>'<article class="compare-card"><div class="compare-card-art"><img src="'+fallback(a)+'" alt="" loading="lazy"><span>'+String(index+1).padStart(2,'0')+'</span></div><div><small>'+escapeHtml(a.focus)+'</small><h3>'+escapeHtml(a.name)+'</h3><button type="button" data-remove-compare="'+a.slug+'">Remover</button></div></article>').join('');
+   if(compareEmpty) compareEmpty.hidden=refs.length>0;
+   if(compareWork) compareWork.hidden=refs.length<2;
+   try{localStorage.setItem(compareKey,JSON.stringify(selected))}catch{}
+   syncCompareButtons();
+ };
+ document.addEventListener('click',(event)=>{
+   const add=event.target.closest('[data-compare]');
+   if(add){
+     const slug=add.dataset.compare;
+     if(selected.includes(slug)) selected=selected.filter(x=>x!==slug);
+     else if(selected.length<3) selected=[...selected,slug];
+     else{
+       const old=add.textContent;
+       add.textContent='Máximo de 3';
+       setTimeout(()=>{add.textContent=old;syncCompareButtons()},900);
+       return;
+     }
+     paintCompare();
+     if(selected.length>=2) document.querySelector('#comparar')?.scrollIntoView({behavior:'smooth',block:'start'});
+   }
+   const remove=event.target.closest('[data-remove-compare]');
+   if(remove){selected=selected.filter(x=>x!==remove.dataset.removeCompare);paintCompare();}
+ });
+ compareNote?.addEventListener('input',()=>{try{localStorage.setItem(compareNoteKey,compareNote.value)}catch{}});
+ compareClear?.addEventListener('click',()=>{
+   selected=[];
+   if(compareNote) compareNote.value='';
+   try{localStorage.removeItem(compareKey);localStorage.removeItem(compareNoteKey)}catch{}
+   paintCompare();
+ });
+ paintCompare();
 })();
 </script>
 <EcosystemRail current="referencias" limit={5} />
@@ -197,4 +275,19 @@ const referenceSchema={
   .reference-composition .collection-head-hands>p{grid-column:1;grid-row:2;margin-top:0}
   .reference-composition .stream-card-body h3{font-size:1.12rem}
  }
+
+ .stream-card-link,.reference-card-link{display:block;color:inherit;text-decoration:none}
+ .compare-toggle{width:100%;margin-top:7px;padding:8px 10px;border:1px solid var(--line);border-radius:4px;background:#111214;color:var(--gold);font-size:.72rem;cursor:pointer}
+ .compare-toggle:hover,.compare-toggle:focus-visible,.compare-toggle[aria-pressed="true"]{border-color:var(--gold);background:rgba(179,154,105,.09);color:var(--paper)}
+ .compare-lab{scroll-margin-top:90px}
+ .compare-empty{padding:18px;border:1px dashed var(--line);border-radius:6px;color:var(--muted);font-size:.86rem}
+ .compare-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+ .compare-card{display:grid;grid-template-columns:110px 1fr;gap:14px;padding:12px;border:1px solid var(--line);border-radius:6px;background:#101011}
+ .compare-card-art{position:relative;aspect-ratio:1;overflow:hidden;background:#161616}.compare-card-art img{width:100%;height:100%;object-fit:cover}.compare-card-art span{position:absolute;left:8px;top:8px;padding:4px 6px;background:#090909cc;border:1px solid var(--line);border-radius:999px;font-size:.62rem}
+ .compare-card small{color:var(--gold);font-size:.66rem;line-height:1.4}.compare-card h3{font-size:1.35rem;line-height:1.05;margin:8px 0 14px}.compare-card button{border:0;background:none;color:var(--muted);padding:0;cursor:pointer;font-size:.7rem;text-decoration:underline}
+ .compare-work{margin-top:16px}.compare-prompts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.compare-prompts article{padding:16px;border-top:1px solid var(--line)}.compare-prompts span{color:var(--gold);font-size:.64rem}.compare-prompts strong{display:block;margin:10px 0 6px}.compare-prompts p{margin:0;color:var(--muted);font-size:.8rem;line-height:1.5}
+ .compare-note-label{display:block;margin:22px 0 8px;color:var(--gold);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase}.compare-note{width:100%;resize:vertical;padding:14px;border:1px solid var(--line);border-radius:6px;background:#101011;color:var(--paper);font:inherit;line-height:1.55}.compare-note:focus{border-color:var(--gold);outline:none}.compare-clear{cursor:pointer;color:var(--paper);font:inherit}
+ @media(max-width:900px){.compare-grid{grid-template-columns:1fr}.compare-prompts{grid-template-columns:1fr 1fr 1fr}}
+ @media(max-width:650px){.compare-card{grid-template-columns:82px 1fr}.compare-prompts{grid-template-columns:1fr}.compare-work .actions{align-items:stretch}.compare-work .actions>*{justify-content:center}}
+
 </style>
