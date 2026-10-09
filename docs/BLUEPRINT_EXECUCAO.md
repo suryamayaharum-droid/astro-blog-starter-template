@@ -267,3 +267,42 @@ Sem upgrade forçado
 BARREIRA DE INTEGRAÇÃO
 CI + contratos + QA responsivo do head integrado .... OBRIGATÓRIO
 ```
+
+
+## PESQUISA DE SITES COMO PROPOSTA — ASSIMILAÇÃO ATUAL
+
+A pesquisa não entra como lista de links. Cada referência externa precisa produzir uma mudança de método, navegação, repertório ou prática.
+
+### Padrões assimilados
+
+- **Project Zero / Harvard:** observação, evidência, pergunta e documentação do pensamento.
+- **MoMA:** desacelerar e variar o ponto de vista antes de interpretar.
+- **Smarthistory:** separar descrição formal de contexto e narrativa.
+- **Getty:** olhar, conferir a fonte, produzir e refletir.
+- **Rijksmuseum:** comparar, criar conjuntos e transformar acervo em relação.
+- **Smithsonian Open Access:** coleção aberta como matéria-prima para criação.
+- **Public Domain Review:** tema, época, mídia e curadoria como portas de entrada.
+- **Google Arts & Culture:** múltiplas entradas para quem ainda não sabe o nome do que procura.
+- **Royal Drawing School:** repertório + exercício + processo convivendo no mesmo arquivo.
+- **Art Prof:** trilhas auto-organizadas, continuidade e saídas concretas.
+- **Proko:** conceito → demonstração → projeto → crítica/retorno.
+
+### O que já virou produto
+
+```text
+/rituais-de-olhar ............. CRIADO
+Home → Observar ............... aponta para Rituais
+Ateliê ........................ ganhou preparação do olhar
+Museus ........................ conecta acervo a ritual
+Referências ................... conecta estudo a ritual
+Atlas ......................... 5 etapas: observar/pesquisar/estruturar/organizar/praticar
+Busca ......................... ganhou perguntas de entrada
+Radar ......................... novo repertório aberto + métodos de desenho
+llms.txt ...................... nova rota registrada
+```
+
+### Regra
+
+`PESQUISAR → EXTRAIR PRINCÍPIO → REESCREVER NA LINGUAGEM HARUM → APLICAR → VALIDAR`
+
+Não copiar texto, identidade, rotina nomeada ou arquitetura alheia. O valor está em **assimilar o mecanismo** e fazê-lo servir ao ciclo pedagógico HARUM NOIR.
