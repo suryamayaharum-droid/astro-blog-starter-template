@@ -180,6 +180,16 @@ jobs:
                   const brokenImages = [...document.images]
                     .filter(img => img.complete && img.naturalWidth === 0)
                     .map(img => img.currentSrc || img.src);
+                  const criticalTouchTargets = [...document.querySelectorAll('.save-current,.search-prompts button,.compare-toggle,.compare-card button,.school-clear,.school-intl-header nav a,.explore-menu summary,.explore-panel a,.intl-header nav a,.ih-header nav a,.ih-topics a,.intl-lesson-header a')]
+                    .filter(el => {
+                      const style=getComputedStyle(el);
+                      const r=el.getBoundingClientRect();
+                      return style.display!=='none' && style.visibility!=='hidden' && r.width>0 && r.height>0;
+                    })
+                    .map(el => {
+                      const r=el.getBoundingClientRect();
+                      return {text:(el.textContent||el.getAttribute('aria-label')||'').trim().slice(0,60),w:r.width,h:r.height};
+                    });
                   return {
                     title:document.title,
                     lang:document.documentElement.lang,
@@ -190,6 +200,7 @@ jobs:
                     dockVisible,
                     dockTargets,
                     brokenImages,
+                    criticalTouchTargets,
                     mobile,
                     expectDock
                   };
@@ -206,6 +217,7 @@ jobs:
                 if (info.overflow) failures.push({...row,reason:'horizontal-overflow'});
                 if (info.dockVisible !== expectedDock) failures.push({...row,reason:'mobile-dock-state'});
                 if (vp.mobile && info.dockTargets.some(x => x.h < 44 || x.w < 44)) failures.push({...row,reason:'dock-touch-target'});
+                if (vp.mobile && info.criticalTouchTargets.some(x => x.h < 44 || x.w < 44)) failures.push({...row,reason:'critical-touch-target',targets:info.criticalTouchTargets.filter(x => x.h < 44 || x.w < 44)});
                 if (info.brokenImages.length) failures.push({...row,reason:'broken-images'});
                 if (badResources.length) failures.push({...row,reason:'same-origin-resource'});
                 if (!info.title || info.textLength < 80) failures.push({...row,reason:'thin-or-untitled'});
