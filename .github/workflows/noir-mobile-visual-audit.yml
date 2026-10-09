@@ -244,6 +244,54 @@ jobs:
           })().catch(err => { console.error(err); process.exit(1); });
           NODE
 
+      - name: Ritual pre-launch commerce contract
+        run: |
+          node <<'NODE'
+          const { chromium } = require('playwright');
+
+          (async () => {
+            const browser = await chromium.launch({ headless: true });
+            const base = 'https://suryamayaharum-droid.github.io/astro-blog-starter-template';
+            const context = await browser.newContext({
+              viewport: { width: 390, height: 844 },
+              isMobile: true,
+              hasTouch: true,
+              locale: 'pt-BR',
+              reducedMotion: 'reduce'
+            });
+            const page = await context.newPage();
+            const failures = [];
+
+            let response = await page.goto(base + '/ritual-do-carvao/', { waitUntil:'networkidle', timeout:45000 });
+            const ritual = await page.evaluate(() => ({
+              text: document.body?.innerText || '',
+              links: [...document.querySelectorAll('a[href]')].map(a => a.href)
+            }));
+            if (!response || response.status() >= 400) failures.push({route:'ritual-do-carvao',reason:'http',status:response?.status()});
+            if (!ritual.text.includes('A compra ainda não está aberta.')) failures.push({route:'ritual-do-carvao',reason:'prelaunch-status-missing'});
+            const externalHotmart = ritual.links.filter(href => /hotmart\.com/i.test(href));
+            if (externalHotmart.length) failures.push({route:'ritual-do-carvao',reason:'premature-hotmart-link',links:externalHotmart});
+
+            response = await page.goto(base + '/alunos/', { waitUntil:'networkidle', timeout:45000 });
+            const students = await page.evaluate(() => ({
+              text: document.body?.innerText || '',
+              links: [...document.querySelectorAll('a[href]')].map(a => a.href)
+            }));
+            if (!response || response.status() >= 400) failures.push({route:'alunos',reason:'http',status:response?.status()});
+            if (!students.links.some(href => href.startsWith('https://consumer.hotmart.com/'))) failures.push({route:'alunos',reason:'student-hotmart-entry-missing'});
+            if (!students.text.includes('O Ritual do Carvão ainda está em preparação.')) failures.push({route:'alunos',reason:'ritual-status-mismatch'});
+
+            await context.close();
+            await browser.close();
+            if (failures.length) {
+              console.error('RITUAL_COMMERCE_CONTRACT_FAILURES');
+              console.error(JSON.stringify(failures,null,2));
+              process.exit(1);
+            }
+            console.log('Ritual pre-launch commerce contract: OK');
+          })().catch(err => { console.error(err); process.exit(1); });
+          NODE
+
       - name: International mobile smoke
         run: |
           node <<'NODE'
