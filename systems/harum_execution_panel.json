@@ -88,50 +88,55 @@
         "console-errors",
         "keyboard-focus"
       ],
-      "freshness": "fresh_for_product_surface",
-      "note": "Subsequent changes to execution-panel/docs do not touch the validated page surface."
+      "freshness": "stale_after_product_surface_changes",
+      "note": "Run #4 passed, but subsequent Home/School/Radar/Museus/navigation changes require a fresh responsive run before release."
+    },
+    "product_head_before_panel_update": "85e19e201a742eb7a4f5ebe37ebeb4ce23093dfa",
+    "latest_product_changes": [
+      "Home e Escola padronizadas em prática inicial de 15 minutos",
+      "Navegação 'ecossistema' convertida para linguagem de continuidade de estudo",
+      "Radar público consolidado sob HARUM NOIR",
+      "Museus agora termina com próximas práticas por EcosystemRail",
+      "Auditoria responsiva filtrada para commits com impacto real de interface"
+    ],
+    "i18n_inventory": {
+      "en_routes": 12,
+      "es_routes": 12,
+      "state": "inventory_complete_audit_pending"
     }
   },
   "primary_attack": {
-    "id": "HN-QA-MOBILE-PR78",
-    "priority": "P1",
-    "state": "done",
-    "title": "Responsive and interaction QA on the current PR branch",
-    "goal": "Prove the current learning surfaces work at 320/390/tablet/desktop without unintended overflow or interaction regressions.",
-    "required_evidence": [
-      "mobile_320",
-      "mobile_390",
-      "tablet",
-      "desktop",
-      "keyboard_focus",
-      "touch_targets",
-      "intentional_overflow"
+    "id": "HN-LEARNING-LOOP",
+    "priority": "P2",
+    "state": "attacking",
+    "title": "Close the learning loop across the main study surfaces",
+    "goal": "Make each major study surface end in a clear next action instead of exposing internal ecosystem jargon or dead-end navigation.",
+    "completed_slices": [
+      "Museus ends with a next-study rail",
+      "EcosystemRail default language is learner-facing",
+      "Radar public naming aligned to HARUM NOIR"
     ],
-    "next_action": "Promote the next highest-impact dependency-ready item while keeping verification/research lanes parallel only when scopes are independent.",
-    "strategy_note": "Terreno atual: PR branch-local. Concentração: QA responsivo. Inteligência: auditoria antiga não provava a PR. Manobra atual: validar a própria branch antes de qualquer nova frente.",
-    "metacognitive_state": {
-      "observation": "A auditoria histórica testava o GitHub Pages publicado e não necessariamente o head da PR.",
-      "hypothesis": "Uma auditoria branch-local elimina falso positivo de responsividade da PR.",
-      "confidence": "alta",
-      "falsifier": "O workflow branch-local não consegue reproduzir o site ou não detecta falhas conhecidas.",
-      "smallest_action": "Executar o workflow branch-local e inspecionar a primeira falha reproduzível."
-    },
-    "parallelism_horizon": "Responsive QA completed. Next critical mutation is serialized; research/verification may continue in parallel on disjoint scopes."
+    "next_action": "Audit Referências, Percursos, Cadernos and Ateliê for explicit output, self-check and next-step continuity; change only the weakest surface per slice.",
+    "parallelism_horizon": "I18N inventory and dependency diagnostics may proceed read-only while the learning-loop mutation lane remains singular."
   },
   "queue": [
     {
       "id": "HN-COHERENCE-15MIN",
       "priority": "P2",
-      "state": "queued",
+      "state": "done",
       "title": "Resolve 12 min × 15 min first-practice inconsistency",
       "depends_on": [
         "HN-QA-MOBILE-PR78"
+      ],
+      "evidence": [
+        "3534f5d4d078a2cb215cdeaa8718b46e86bf46b4",
+        "ad727bd4f0f4729aac444459c904a98b49f5834f"
       ]
     },
     {
       "id": "HN-LEARNING-LOOP",
       "priority": "P2",
-      "state": "queued",
+      "state": "attacking",
       "title": "Close the learning loop across Museus, Referências, Percursos, Ateliê and Cadernos",
       "depends_on": [
         "HN-COHERENCE-15MIN"
@@ -140,11 +145,15 @@
     {
       "id": "HN-I18N-AUDIT",
       "priority": "P3",
-      "state": "queued",
+      "state": "ready",
       "title": "Audit EN/ES usefulness, completeness and inbound navigation before keeping/removing routes",
       "depends_on": [
         "HN-LEARNING-LOOP"
-      ]
+      ],
+      "inventory": {
+        "en_routes": 12,
+        "es_routes": 12
+      }
     },
     {
       "id": "HN-DEPS-SECURITY",
@@ -181,18 +190,18 @@
       },
       {
         "name": "Pedagogical architecture",
-        "estimate_percent": 80,
-        "state": "verifying"
+        "estimate_percent": 86,
+        "state": "attacking"
       },
       {
         "name": "Cross-page coherence",
-        "estimate_percent": 70,
+        "estimate_percent": 82,
         "state": "attacking"
       },
       {
         "name": "Responsive visual QA",
-        "estimate_percent": 100,
-        "state": "done"
+        "estimate_percent": 85,
+        "state": "verifying"
       },
       {
         "name": "Accessibility interaction QA",
@@ -201,8 +210,8 @@
       },
       {
         "name": "Language / redundant routes",
-        "estimate_percent": 30,
-        "state": "queued"
+        "estimate_percent": 45,
+        "state": "ready"
       },
       {
         "name": "Dependency security triage",
@@ -373,24 +382,24 @@
   },
   "next_wave": {
     "critical_lane": {
-      "id": "HN-COHERENCE-15MIN",
-      "state": "ready",
-      "reason": "High user-facing coherence impact and blocks the learning-loop consolidation."
+      "id": "HN-LEARNING-LOOP",
+      "state": "attacking",
+      "reason": "15-minute inconsistency is resolved; the next user-facing bottleneck is continuity between study surfaces."
     },
     "parallel_lanes": [
       {
-        "id": "HN-DEPS-SECURITY",
+        "id": "HN-I18N-AUDIT",
         "state": "ready_support",
-        "type": "diagnostic_only",
-        "rule": "Audit dependencies without changing packages while the coherence edit is active."
+        "type": "read_only_inventory_plus_quality_audit",
+        "evidence": "12 EN routes + 12 ES routes currently exist."
       },
       {
-        "id": "HN-I18N-INVENTORY",
-        "state": "ready_support",
-        "type": "read_only_inventory",
-        "rule": "Inventory EN/ES routes and inbound links; defer deletions/rewrites until critical lane completes."
+        "id": "HN-DEPS-SECURITY",
+        "state": "queued_support",
+        "type": "diagnostic_only",
+        "rule": "Do not mutate package versions until the advisory chain can be reproduced."
       }
     ],
-    "barrier": "After the critical edit, integrate evidence, then rerun CI and route/mobile checks affected by the edit."
+    "barrier": "Fresh CI + responsive audit on the integrated product head after the current learning-loop slice."
   }
 }
