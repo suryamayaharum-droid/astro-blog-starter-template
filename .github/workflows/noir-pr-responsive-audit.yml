@@ -288,6 +288,32 @@ jobs:
               await context.close();
             }
 
+            // Product contract: Ritual pre-launch must be useful before purchase.
+            {
+              const context = await browser.newContext({
+                viewport:{width:390,height:844},
+                isMobile:true,
+                hasTouch:true,
+                locale:'pt-BR',
+                reducedMotion:'reduce'
+              });
+              const page = await context.newPage();
+              await page.goto(base + '/ritual-do-carvao/',{waitUntil:'domcontentloaded',timeout:45000});
+              const ritual = await page.evaluate(() => ({
+                hasSample: !!document.querySelector('#amostra'),
+                sampleText: document.querySelector('#amostra')?.textContent || '',
+                hotmartLinks: [...document.querySelectorAll('a[href]')].map(a=>a.href).filter(href=>/hotmart\.com/i.test(href)),
+                sampleButtons: [...document.querySelectorAll('#amostra .btn')].map(a=>(a.textContent||'').trim())
+              }));
+              if(!ritual.hasSample) failures.push({route:'ritual-do-carvao',reason:'free-sample-missing'});
+              if(!ritual.sampleText.includes('10 MIN')) failures.push({route:'ritual-do-carvao',reason:'sample-duration-missing'});
+              if(!ritual.sampleText.includes('Autoavaliação')) failures.push({route:'ritual-do-carvao',reason:'sample-self-check-missing'});
+              if(ritual.hotmartLinks.length) failures.push({route:'ritual-do-carvao',reason:'premature-commerce-link',links:ritual.hotmartLinks});
+              if(ritual.sampleButtons.length<2) failures.push({route:'ritual-do-carvao',reason:'sample-next-actions-missing'});
+              rows.push({viewport:'390',route:'ritual-sample-contract',...ritual});
+              await context.close();
+            }
+
             fs.writeFileSync('responsive-audit/metrics.json',JSON.stringify(rows,null,2));
             fs.writeFileSync('responsive-audit/failures.json',JSON.stringify(failures,null,2));
             console.log('Responsive audit rows:',rows.length);
