@@ -73,6 +73,15 @@ const catalog=JSON.stringify(items);
 
   <section class="stream-search-shell">
     <input id="global-search" class="stream-search" type="search" placeholder="Ex.: carvão, gesto, mãos, memória, Degas…" aria-label="Buscar no HARUM NOIR" autocomplete="off"/>
+    <div class="search-prompts" role="group" aria-label="Perguntas de entrada">
+      <span>PERGUNTAS DE ENTRADA</span>
+      <button type="button" data-search-prompt="gesto">Onde está a ação?</button>
+      <button type="button" data-search-prompt="peso">O que sustenta o corpo?</button>
+      <button type="button" data-search-prompt="carvão">Como a matéria constrói forma?</button>
+      <button type="button" data-search-prompt="sketchbook">Como um caderno pensa?</button>
+      <button type="button" data-search-prompt="mãos">Como a mão mostra intenção?</button>
+      <button type="button" data-search-prompt="open access">Quero uma fonte aberta</button>
+    </div>
   </section>
 
   <section class="section">
@@ -120,10 +129,19 @@ const catalog=JSON.stringify(items);
     const initial=new URLSearchParams(location.search).get('q')||'';
     if(input) input.value=initial;
     input?.addEventListener('input',apply);
+    document.querySelectorAll('[data-search-prompt]').forEach(button=>button.addEventListener('click',()=>{
+      if(!input) return;
+      input.value=button.dataset.searchPrompt||'';
+      input.focus();
+      apply();
+    }));
     apply();
   })();
   </script>
 </main>
 <Footer/>
+<style>
+.search-prompts{display:flex;gap:7px;align-items:center;overflow-x:auto;padding:10px 0 2px;scrollbar-width:none}.search-prompts::-webkit-scrollbar{display:none}.search-prompts>span{flex:0 0 auto;color:var(--gold);font-size:.62rem;letter-spacing:.13em}.search-prompts button{flex:0 0 auto;border:1px solid var(--line);border-radius:999px;background:#151517;color:var(--paper-2);padding:7px 10px;font-size:.72rem;cursor:pointer}.search-prompts button:hover,.search-prompts button:focus-visible{border-color:var(--gold);color:var(--paper)}
+</style>
 </body>
 </html>
