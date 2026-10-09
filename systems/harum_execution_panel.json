@@ -91,7 +91,7 @@
       "freshness": "stale_after_global_navigation_and_content_changes",
       "note": "A fresh PR responsive audit is required after global Header/InternationalHub and learning-surface changes."
     },
-    "product_head_before_panel_update": "278dc41f764f4ffc2def06ba81536c1c2e7a1024",
+    "product_head_before_panel_update": "ac276fb52bdd59fa94e267b2da47f3f6e55f82d0",
     "latest_product_changes": [
       "Primeira prática unificada em 15 minutos em Home e Escola PT/EN/ES",
       "Ateliê separa claramente porta de entrada de 15 min e exercício expandido 2/15/45",
@@ -113,23 +113,48 @@
         "EN/ES Brazilian visual culture self-links",
         "native language selectors"
       ]
+    },
+    "research_assimilation": {
+      "state": "attacking",
+      "sources": [
+        "Project Zero / Harvard",
+        "MoMA Slow Looking",
+        "Smarthistory visual analysis",
+        "Getty Looking and Learning",
+        "Rijksmuseum digital collection",
+        "Smithsonian Open Access",
+        "Public Domain Review",
+        "Google Arts & Culture",
+        "The Met Open Access",
+        "National Gallery of Art Open Access"
+      ],
+      "applied": [
+        "new /rituais-de-olhar route with six original HARUM NOIR protocols",
+        "Home observation step now enters through Rituais de Olhar",
+        "Atelier, Museus and Referencias connect to observation rituals",
+        "Atlas flow expanded to OBSERVAR → PESQUISAR → ESTRUTURAR → ORGANIZAR → PRATICAR",
+        "Global search gained question-based entry prompts",
+        "Radar gained new education-method and public-domain drawing entries",
+        "Rituais de Olhar added to public llms discovery map"
+      ],
+      "principle": "Assimilate principles, preserve source attribution, avoid copying named routines or source text."
     }
   },
   "primary_attack": {
-    "id": "HN-I18N-AUDIT",
-    "priority": "P3",
+    "id": "HN-RESEARCH-ASSIMILATION",
+    "priority": "P2",
     "state": "attacking",
-    "title": "Remove dead-end international navigation and keep only useful native routes",
-    "goal": "Make EN/ES pages useful entry points rather than self-linking summaries or machine-translation detours.",
+    "title": "Assimilate external art-learning and archive patterns into HARUM NOIR",
+    "goal": "Turn benchmark research into original learner-facing methods, routes, prompts and repertoire without copying source language or creating passive link dumps.",
     "completed_slices": [
-      "12 EN + 12 ES routes inventoried",
-      "native language switcher in InternationalHub",
-      "native EN/ES landing links in global Header",
-      "self-links fixed in references, museums, art history and Brazilian visual culture",
-      "Spanish drawing route now continues to collections"
+      "Rituais de Olhar created",
+      "site research principles documented with original HARUM NOIR framing",
+      "new public-domain repertoire added to Radar",
+      "Atlas flow and Search entry model updated",
+      "Home/Atelier/Museus/Referencias connected to the new method"
     ],
-    "next_action": "Audit remaining international collection and tattoo pages for duplicated/dead-end actions; then classify keep/merge/remove before deleting any route.",
-    "parallelism_horizon": "CI and responsive verification run in parallel; no second mutation lane touches shared navigation until current head is validated."
+    "next_action": "Verify the integrated head, then deepen one underpowered surface with compare/curate behavior rather than adding another generic route.",
+    "parallelism_horizon": "CI/responsive verification runs as support lane; no second shared-navigation mutation until barrier is green."
   },
   "queue": [
     {
@@ -241,6 +266,11 @@
         "name": "Merge / publication",
         "estimate_percent": 0,
         "state": "blocked"
+      },
+      {
+        "name": "Research assimilation",
+        "estimate_percent": 78,
+        "state": "attacking"
       }
     ]
   },
@@ -401,24 +431,24 @@
   },
   "next_wave": {
     "critical_lane": {
-      "id": "HN-I18N-AUDIT",
+      "id": "HN-RESEARCH-ASSIMILATION",
       "state": "attacking",
-      "reason": "Learning loop is now feature-complete pending fresh validation; international dead ends are the next visible coherence defect."
+      "reason": "Research has moved from notes into product; next gain is comparative/curatorial interaction, not more pages."
     },
     "parallel_lanes": [
       {
         "id": "HN-VERIFY-INTEGRATED",
         "state": "running_support",
         "type": "CI_and_responsive",
-        "rule": "Validate the integrated product head before promoting learning-loop work to DONE."
+        "rule": "Validate the current product head after new route/navigation/search/radar changes."
       },
       {
-        "id": "HN-DEPS-SECURITY",
-        "state": "queued_support",
-        "type": "diagnostic_only",
-        "rule": "Do not mutate dependency versions until advisories are reproduced and scoped."
+        "id": "HN-I18N-AUDIT",
+        "state": "ready_support",
+        "type": "read_only_quality_audit",
+        "rule": "Keep international classification read-only while shared navigation is verifying."
       }
     ],
-    "barrier": "CI + responsive audit green on an integrated head after global navigation changes."
+    "barrier": "CI + responsive audit green on integrated research-assimilation head."
   }
 }
