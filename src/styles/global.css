@@ -192,7 +192,7 @@ h1,h2,h3{font-family:"Cormorant Garamond",Georgia,"Times New Roman",serif;font-w
 .rail-shell:before{left:0;background:linear-gradient(90deg,rgba(8,8,8,.8),transparent)}
 .rail-shell:after{right:0;background:linear-gradient(-90deg,rgba(8,8,8,.8),transparent)}
 .rail-has-overflow:before,.rail-has-overflow:after{opacity:.75}
-.browse-rail:focus-visible,.feature-rail:focus-visible,.stream-rail:focus-visible,.rail:focus-visible,.bank-grid:focus-visible,.atlas-flow-rail:focus-visible,.path-index:focus-visible,.variable-rail:focus-visible,.hands-reference-rail:focus-visible,.player-queue:focus-visible,.collection-index:focus-visible,.ih-topics:focus-visible,.ph-topics:focus-visible,.browse-quick:focus-visible,.search-kinds:focus-visible,.museum-suggestions:focus-visible{outline:1px solid rgba(179,154,105,.48);outline-offset:4px;border-radius:14px}
+.browse-rail:focus-visible,.feature-rail:focus-visible,.stream-rail:focus-visible,.rail:focus-visible,.bank-grid:focus-visible,.atlas-flow-rail:focus-visible,.path-index:focus-visible,.variable-rail:focus-visible,.hands-reference-rail:focus-visible,.player-queue:focus-visible,.collection-index:focus-visible,.ih-topics:focus-visible,.ph-topics:focus-visible,.browse-quick:focus-visible,.search-kinds:focus-visible,.head-ref-rail:focus-visible,.relation-ref-rail:focus-visible,.body-language-nav:focus-visible,.museum-suggestions:focus-visible{outline:1px solid rgba(179,154,105,.48);outline-offset:4px;border-radius:14px}
 @media(max-width:760px){
   .rail-nav{display:none!important}
   .rail-shell:before,.rail-shell:after{display:none}
