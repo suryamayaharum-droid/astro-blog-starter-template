@@ -34,7 +34,7 @@ Truth rule:
 
 - **TENHO:** escola e coleções publicadas no GitHub Pages; PR [#90](https://github.com/suryamayaharum-droid/astro-blog-starter-template/pull/90) integrada em `12eb3c6`; PR [#91](https://github.com/suryamayaharum-droid/astro-blog-starter-template/pull/91) integrada em `6912b68`; PR [#92](https://github.com/suryamayaharum-droid/astro-blog-starter-template/pull/92) integrada em `85dfaa5`.
 - **PRONTO — móvel:** correção de medição de sobreposição após rolagem integrada pela PR #88. A auditoria pós-deploy #38002723488 passou; o retry de #38003813788 também passou em matriz, smoke internacional, limites responsivos e screenshots, após dois 503 transitórios em imagens existentes.
-- **FAZENDO — publicação:** a publicação após a PR #92 segue em andamento: Link Health #38005957795 passou; GitHub Pages #38006005402 e CI #38006005415 estão em execução. A auditoria móvel pós-deploy #38005500299 do deploy anterior também segue em execução.
+- **FAZENDO — publicação:** CI #38006005415, GitHub Pages #38006005402 e Link Health #38005957795 da PR #92 passaram. A auditoria móvel #38005500299 também passou; a captura pós-deploy seguinte (#38006094950, commit e631761) ainda está em execução.
 - **FAZENDO — editorial:** revisão manual em 43/74 rotas (58%). A varredura estrutural cobriu 74 arquivos de rota e o build gera 194 HTMLs. Veja `checkpoints/HARUM_NOIR_EDITORIAL_AUDIT_2026-10-09.md`.
 - **PASSO:** conferir fontes primárias e títulos das fichas de artistas, rotas restantes de História da Arte e demais páginas EN/ES; atualizar a barra por lote.
 
@@ -47,6 +47,6 @@ This pointer is intentionally small. The canonical HIVE carries the full tree, b
 - **TENHO:** PR #90, #91 e #92 integradas em `12eb3c6`, `6912b68` e `85dfaa5`. O PR #89 foi encerrado como versão substituída. Ver `checkpoints/HARUM_NOIR_EDITORIAL_AUDIT_2026-10-09.md`.
 - **PRONTO:** cinco fallbacks genéricos corrigidos; Olhar e Vestígio agora têm práticas com duração e saída; 15 links vidIQ foram removidos das fichas/JSON-LD; contagem da busca anuncia resultados com `role=status`.
 - **FAZENDO:** revisão manual de 37/74 rotas (50%). O Atlas gera 101 fichas e 208 referências. Os hubs EN/ES de História, Museus e Referências foram comparados; rotas só em PT estão identificadas.
-- **PRONTO — checks:** CI e auditoria responsiva do #91 passaram. A última auditoria móvel pós-deploy concluída (#38003813788 no retry) passou; a auditoria móvel #38005500299 segue em execução; a PR #92 está integrada; a revisão de Cultura Visual conectou os cards aos leques temáticos específicos.
+- **PRONTO — checks:** CI e auditoria responsiva do #91 passaram. A última auditoria móvel pós-deploy concluída (#38003813788 no retry) passou; a auditoria móvel #38005500299 passou; a captura #38006094950 segue em execução; PR #92 integrada e PR #93 em validação.
 - **PRONTO:** no perfil de Mark Crilley, substituí um segundo link genérico à home por sua página oficial de aparições, que descreve a demonstração “Thirty Second Drawing”; o exercício agora aponta a uma evidência específica.
 - **PASSO:** conferir fontes primárias e títulos por artista; continuar em História da Arte e completar paridade EN/ES.
