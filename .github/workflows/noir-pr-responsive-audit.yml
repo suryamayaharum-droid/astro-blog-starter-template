@@ -37,8 +37,12 @@ jobs:
         shell: bash
         run: |
           files="$(git diff --name-only HEAD^ HEAD || true)"
+          message="$(git log -1 --pretty=%B)"
           printf '%s\n' "$files"
-          if printf '%s\n' "$files" | grep -Eq '^(src/|public/noir/|astro\.config\.mjs$|package(-lock)?\.json$|\.github/workflows/noir-pr-responsive-audit\.yml$)'; then
+          if printf '%s\n' "$message" | grep -Fq '[qa:full]'; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+            echo "Explicit full QA barrier requested."
+          elif printf '%s\n' "$files" | grep -Eq '^(src/|public/noir/|astro\.config\.mjs$|package(-lock)?\.json$|\.github/workflows/noir-pr-responsive-audit\.yml$)'; then
             echo "run=true" >> "$GITHUB_OUTPUT"
           else
             echo "run=false" >> "$GITHUB_OUTPUT"
