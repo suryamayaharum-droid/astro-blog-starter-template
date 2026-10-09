@@ -13,7 +13,7 @@ const items=ordered.filter(item=>item.id!==current).slice(0,maxItems);
     <p>Escolha uma próxima etapa. Cada porta leva a uma página com uma pergunta de estudo clara.</p>
   </div>
   <div class="rail ecosystem-rail" aria-label="Próximas páginas do HARUM NOIR">
-    {items.map(item=><a class="card ecosystem-card" href={base+item.href}>
+    {items.map(item=><a class="card ecosystem-card" href={base+item.href} data-astro-prefetch>
       <div class="ecosystem-cover"><img src={base+'noir/visual-atlas/'+item.cover+'.webp'} alt="" width="640" height="400" loading="lazy"/></div>
       <div class="card-body"><span class="card-kicker">{item.kicker}</span><h3>{item.title}</h3><p>{item.description}</p><b>Entrar <span aria-hidden="true">↗</span></b></div>
     </a>)}
