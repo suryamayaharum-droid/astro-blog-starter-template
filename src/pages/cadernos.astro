@@ -13,6 +13,14 @@ const visualSets=[
 ---
 <!doctype html><html lang="pt-BR"><head><BaseHead title="Cadernos de Presença · Harum Noir" description="Uma série editorial de desenho, gesto, olhar, memória e vestígio."/></head><body><Header/><main class="history-composition notebooks-composition">
 <section class="page-hero"><div class="editorial-opening-copy"><div class="eyebrow">CADERNOS DE PRESENÇA</div><h1>Desenhar para permanecer.</h1><p>Os cadernos são investigações abertas: uma pergunta, uma prática e um vestígio para carregar ao próximo encontro.</p></div><EditorialScene image="open-sketchbook" alt="Caderno aberto em composição temática de ateliê"/></section>
+<section class="section notebook-start" aria-labelledby="notebook-start-title">
+  <div class="section-head"><div><div class="eyebrow">COMECE SEM COMPLICAR</div><h2 id="notebook-start-title">Uma página já basta.</h2></div><p>Não tente preencher todos os cadernos. Escolha uma pergunta, faça uma prática e deixe um vestígio que possa orientar o próximo desenho.</p></div>
+  <div class="caderno-start-grid">
+    <article><span>01</span><b>Escolha</b><p>Entre por um único caderno e transforme a pergunta dele em foco de estudo.</p></article>
+    <article><span>02</span><b>Faça</b><p>Execute a prática sem abrir novas referências no meio do exercício.</p></article>
+    <article><span>03</span><b>Registre</b><p>Anote uma decisão que funcionou e uma pergunta que ainda ficou aberta.</p></article>
+  </div>
+</section>
 <nav class="notebook-index" aria-label="Escolher um caderno">{cadernos.map(c=><a href={'#'+c.slug}>{c.title}</a>)}</nav>
 {cadernos.map((c,i)=><section class="section editorial-split" id={c.slug}>
   <div class="card"><div class="card-media" style="aspect-ratio:4/3"><img src={`${base}noir/${c.image}`} alt={c.imageAlt} loading="lazy" decoding="async"/><span class="media-credit">Prancha editorial HARUM NOIR · estudo com assistência de IA</span></div></div>
@@ -33,4 +41,4 @@ const visualSets=[
 .notebooks-composition .editorial-split h2{font-size:clamp(2.3rem,4vw,4rem);line-height:1.05}
 .notebooks-composition .editorial-split p{font-size:16px;line-height:1.7;max-width:54ch}
 @media(max-width:760px){.notebooks-composition .editorial-split{padding-top:32px;gap:20px}.notebook-index a{padding:10px 12px}.caderno-visual-set{gap:8px}.caderno-visual-set img{height:150px}}
-</style>
+.caderno-start-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.caderno-start-grid article{padding:16px;border:1px solid var(--line);border-radius:4px;background:#101010}.caderno-start-grid span{display:block;color:var(--gold);font-size:.68rem;margin-bottom:14px}.caderno-start-grid b{display:block;font-size:1rem;margin-bottom:6px}.caderno-start-grid p{margin:0;color:var(--paper-2);font-size:.82rem;line-height:1.55}@media(max-width:760px){.caderno-start-grid{grid-template-columns:1fr}.caderno-start-grid article{padding:14px}}\n</style>
