@@ -22,10 +22,10 @@ for(const ref of artist.refs){
 }
 const videoUrl=videoId?"https://www.youtube-nocookie.com/embed/"+videoId+"?rel=0&playsinline=1&hl=pt-BR":"";
 const officialSources=[artist.site,artist.youtube,artist.instagram].filter(Boolean);
-const displayedRefs=artist.refs.filter((ref:any,index:number,list:any[])=>list.findIndex(item=>item.url===ref.url)===index).map((ref:any)=>{
-  const externalAnalytics=new URL(ref.url).hostname.endsWith('vidiq.com');
-  return externalAnalytics?{...ref,type:'Análise externa · vidIQ',title:'Painel de análise do canal',observe:'Painel de terceiros com métricas do canal; não é o vídeo ou a obra citada. Use-o apenas como pista e confirme o conteúdo no canal oficial.'}:ref;
-});
+const displayedRefs=artist.refs.filter((ref:any)=>{
+  const host=new URL(ref.url).hostname.toLowerCase();
+  return host!=='vidiq.com'&&!host.endsWith('.vidiq.com');
+}).filter((ref:any,index:number,list:any[])=>list.findIndex(item=>item.url===ref.url)===index);
 const referenceSchema={
   '@context':'https://schema.org',
   '@type':'LearningResource',
@@ -77,7 +77,7 @@ const breadcrumbSchema={
  <div class="panel"><div class="eyebrow">LEITURA</div><div class="quote">{artist.archetype}</div><p>Use esta ficha como ponto de partida. O aprofundamento deve acontecer sempre nas fontes originais.</p></div>
 </section>
 {videoUrl&&<section class="section artist-player" data-artist-player><div class="stream-head"><div><span class="eyebrow">VÍDEO DA FONTE ORIGINAL</span><h2>Assistir a {artist.name}</h2></div><a class="btn" data-player-fallback href={"https://www.youtube.com/watch?v="+videoId} target="_blank" rel="noreferrer">Abrir no YouTube ↗</a></div><div class="player-frame"><iframe src={videoUrl} title={"Vídeo de referência de "+artist.name} loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>{videoChoices.length>1&&<div class="player-queue-shell"><div class="player-queue-label">Continuar assistindo</div><div class="player-queue" role="list" aria-label={"Vídeos selecionados de "+artist.name}>{videoChoices.map((video,index)=><button type="button" class="player-choice" data-player-choice data-video-id={video.id} data-video-title={video.title} aria-pressed={index===0?"true":"false"}><span class="player-choice-media"><img src={"https://i.ytimg.com/vi/"+video.id+"/mqdefault.jpg"} alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"/></span><span class="player-choice-copy"><small>{index===0?"EM REPRODUÇÃO":"VÍDEO"}</small><strong>{video.title}</strong></span></button>)}</div></div>}<p class="player-note">Vídeo da fonte original, sem reprodução automática. Alguns canais podem desativar a reprodução incorporada; nesse caso, use “Abrir no YouTube”.</p></section>}
-{displayedRefs.length>0&&<section class="stream-section"><div class="stream-head"><div><span class="eyebrow">REFERÊNCIAS SELECIONADAS</span><h2>Comece por estas</h2></div></div><div class="reference-grid">
+{displayedRefs.length>0&&<section class="stream-section"><div class="stream-head"><div><span class="eyebrow">FONTES PARA CONFERIR</span><h2>Abra o registro original</h2></div><p>Use as fontes para confirmar autoria, título e contexto. Links de métricas de terceiros, sem o vídeo ou a obra citados, não aparecem como referências de estudo.</p></div><div class="reference-grid">
  {displayedRefs.map(ref=><a class="archive-item ref-source" href={ref.url} target="_blank" rel="noreferrer"><span class="card-kicker">{ref.type}</span><h3>{ref.title}</h3><p>{ref.observe}</p><span class="source-arrow">Abrir fonte ↗</span></a>)}
 </div></section>}
 <section class="section reference-practice" aria-labelledby="reference-practice-title">

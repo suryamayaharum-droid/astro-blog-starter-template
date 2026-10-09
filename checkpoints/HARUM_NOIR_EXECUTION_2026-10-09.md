@@ -30,7 +30,7 @@ A nova aula ensina escala, luz, estrutura vegetal, composição e leitura respon
 
 | Prioridade | Item | Estado atual | Próxima ação |
 |---|---|---|---|
-| Alta | Auditoria editorial rota a rota para achar explicações genéricas, telas sem propósito e destinos com pouco conteúdo | Varredura estrutural concluída (74 rotas); revisão manual está em 33/74 (45%). PR #90 integrada; páginas coerentes foram mantidas e fragilidades concretas foram corrigidas com CI e auditoria responsiva verdes. | Continuar em lotes pequenos por tema; conferir fonte primária, destino de cada promessa e paridade editorial EN/ES. |
+| Alta | Auditoria editorial rota a rota para achar explicações genéricas, telas sem propósito e destinos com pouco conteúdo | Varredura estrutural concluída (74 rotas); revisão manual está em 34/74 (46%). PR #90 integrada; páginas coerentes foram mantidas e fragilidades concretas foram corrigidas com CI e auditoria responsiva verdes. | Continuar em lotes pequenos por tema; conferir fonte primária, destino de cada promessa e paridade editorial EN/ES. |
 | Média | Sketchbooks, bancos e navegação do ecossistema | A varredura técnica encontrou 74 arquivos de rota .astro e 194 páginas HTML no build. O acervo atual tem 13 galerias e 26 referências a imagens locais; não estão vazias. PRs #29 e #30 seguem divergentes, sem mergeabilidade, e propõem enriquecer algumas imagens e a navegação. A revisão de #30 também apontou termos de busca FR/IT não reconhecidos. | Comparar as imagens locais com as fontes externas propostas antes de escolher uma só implementação; reconciliar com main e corrigir o classificador FR/IT. Manter as galerias atuais até validação e CI + QA móvel. |
 | Média | Identidade de fonte de Jake Parker no Atlas | PR [#22](https://github.com/suryamayaharum-droid/astro-blog-starter-template/pull/22) permanece draft e não mergeável. | Atualizar a branch; manter canal oficial e deixar `videoId` vazio até validar um vídeo específico. |
 | Média · infra separada | Workers Builds no Cloudflare | Issue [#82](https://github.com/suryamayaharum-droid/astro-blog-starter-template/issues/82) aberta. Várias prévias falham; o detalhe decisivo está no dashboard autenticado. GitHub Pages continua sendo a publicação canônica. | Registrar a primeira mensagem de erro real no dashboard antes de alterar comando ou configuração. |
@@ -46,14 +46,14 @@ A nova aula ensina escala, luz, estrutura vegetal, composição e leitura respon
 
 ## Auditoria móvel pós-release · 9 out 2026
 
-**Estado: concluída com sucesso após a correção e publicação da PR #88.**
+**Estado: execução #38002723488 concluída com sucesso após a correção e publicação da PR #88. A nova auditoria pós-deploy #38003813788 passou no retry após a integração da PR #90; a tentativa inicial capturou dois 503 temporários em imagens existentes.**
 
 A execução #368 identificou 22 combinações de rota/largura com controles sob o dock na posição inicial. A correção ajustou o teste para distinguir sobreposição inicial de bloqueio persistente após rolagem, sem tratar `aria-hidden` ou `inert` como ocultação visual.
 
 PR [#88](https://github.com/suryamayaharum-droid/astro-blog-starter-template/pull/88) foi integrada; CI, GitHub Pages e a auditoria pós-deploy [#38002723488](https://github.com/suryamayaharum-droid/astro-blog-starter-template/actions/runs/38002723488) passaram. A matriz de rotas, o contrato de pré-lançamento, o smoke test internacional, os limites responsivos e o envio de screenshots terminaram com sucesso.
 
-**Gate móvel:** fechado em 9 out 2026. Reabrir apenas se uma alteração de layout ou evidência de produção indicar regressão.
+**Gate móvel:** fechado. A tentativa repetida de #38003813788 passou em matriz, smoke tests e screenshots depois de a publicação estabilizar.
 
 ## Próximo alvo
 
-O inventário estrutural cobriu 74 arquivos .astro; o build publica 194 HTMLs e a auditoria automática não encontrou links ou assets quebrados. A leitura editorial manual segue em lotes: 33/74 rotas verificadas; priorizar fontes primárias do Atlas, rotas históricas restantes e paridade EN/ES. Para sketchbooks, verificar se as imagens locais representam corretamente os registros antes de adotar as imagens externas propostas.
+O inventário estrutural cobriu 74 arquivos .astro; o build publica 194 HTMLs e a auditoria automática não encontrou links ou assets quebrados. A leitura editorial manual segue em lotes: 34/74 rotas verificadas; priorizar fontes primárias do Atlas, rotas históricas restantes e paridade EN/ES. Para sketchbooks, verificar se as imagens locais representam corretamente os registros antes de adotar as imagens externas propostas.
