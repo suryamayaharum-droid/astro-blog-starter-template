@@ -46,13 +46,13 @@ A nova aula ensina escala, luz, estrutura vegetal, composição e leitura respon
 
 ## Auditoria móvel pós-release · 9 out 2026
 
-**Estado: concluída com sucesso após a correção e publicação da PR #88.**
+**Estado: execução #38002723488 concluída com sucesso após a correção e publicação da PR #88. A nova auditoria pós-deploy #38003813788 está em execução após a integração da PR #90.**
 
 A execução #368 identificou 22 combinações de rota/largura com controles sob o dock na posição inicial. A correção ajustou o teste para distinguir sobreposição inicial de bloqueio persistente após rolagem, sem tratar `aria-hidden` ou `inert` como ocultação visual.
 
 PR [#88](https://github.com/suryamayaharum-droid/astro-blog-starter-template/pull/88) foi integrada; CI, GitHub Pages e a auditoria pós-deploy [#38002723488](https://github.com/suryamayaharum-droid/astro-blog-starter-template/actions/runs/38002723488) passaram. A matriz de rotas, o contrato de pré-lançamento, o smoke test internacional, os limites responsivos e o envio de screenshots terminaram com sucesso.
 
-**Gate móvel:** fechado em 9 out 2026. Reabrir apenas se uma alteração de layout ou evidência de produção indicar regressão.
+**Gate móvel:** a última auditoria concluída passou; a validação pós-PR #90 está pendente. A nova execução deve terminar antes de marcar este painel como atualizado.
 
 ## Próximo alvo
 
