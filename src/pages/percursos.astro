@@ -7,11 +7,11 @@ import {referenceArtists} from '../data/references';
 const base=import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 const find=(slug)=>referenceArtists.find(a=>a.slug===slug);
 const paths=[
-  {id:"carvao",n:"01",title:"Carvão & presença",text:"Matéria, gesto, borda, apagamento e a decisão de onde a figura realmente existe.",image:"visual-atlas/harum-noir-caderno-estudo.webp",refs:["mad-charcoal","silvie-mahdal","zin-lim","dirk-dzimirsky"],caderno:"presenca",temporada:"01",biblioteca:"atelier-historico-aberto"},
-  {id:"figura",n:"02",title:"Figura viva",text:"Peso, ritmo, centro de massa, anatomia e movimento antes do acabamento.",image:"visual-atlas/maos-seis-gestos.webp",refs:["proko","love-life-drawing","chommang","steve-huston"],caderno:"gesto",temporada:"01",biblioteca:"anatomias-do-mundo"},
-  {id:"silencio",n:"03",title:"Silêncio & processo",text:"Quando o processo, o tempo, a mão e o som do material carregam a narrativa.",image:"visual-atlas/drapery-still-life.webp",refs:["peter-draws","akihito-yoshitomi","daria-callie","jono-dry"],caderno:"vestigio",temporada:"07",biblioteca:"caderno-como-universo"},
-  {id:"estrutura",n:"04",title:"Estrutura & anatomia",text:"Construção, proporção, perspectiva, cabeça, mãos e organização antes da superfície.",image:"visual-atlas/harum-noir-caderno-olhar.webp",refs:["proko","sinix-design","moderndayjames","stephen-bauman","new-masters-academy"],caderno:"olhar",temporada:"03",biblioteca:"maos-sem-formula"},
-  {id:"mundo",n:"05",title:"Sketchbook & mundo autoral",text:"Caderno como laboratório, arquivo, narrativa e lugar onde uma linguagem começa a acumular memória.",image:"visual-atlas/open-sketchbook.webp",refs:["karl-kopinski","kim-jung-gi-super-ani","drawingwiffwaffles","aaron-blaise"],caderno:"memoria",temporada:"04",biblioteca:"caderno-como-universo"},
+  {id:"carvao",n:"01",title:"Carvão & presença",text:"Matéria, gesto, borda, apagamento e a decisão de onde a figura realmente existe.",image:"visual-atlas/harum-noir-caderno-estudo.webp",refs:["mad-charcoal","silvie-mahdal","zin-lim","dirk-dzimirsky"],caderno:"presenca",temporada:"01",biblioteca:"atelier-historico-aberto",time:"35 min",level:"entrada",output:"1 estudo de matéria + 3 decisões de borda"},
+  {id:"figura",n:"02",title:"Figura viva",text:"Peso, ritmo, centro de massa, anatomia e movimento antes do acabamento.",image:"visual-atlas/maos-seis-gestos.webp",refs:["proko","love-life-drawing","chommang","steve-huston"],caderno:"gesto",temporada:"01",biblioteca:"anatomias-do-mundo",time:"30 min",level:"entrada",output:"3 gestos + 1 nota sobre peso"},
+  {id:"silencio",n:"03",title:"Silêncio & processo",text:"Quando o processo, o tempo, a mão e o som do material carregam a narrativa.",image:"visual-atlas/drapery-still-life.webp",refs:["peter-draws","akihito-yoshitomi","daria-callie","jono-dry"],caderno:"vestigio",temporada:"07",biblioteca:"caderno-como-universo",time:"25 min",level:"intermediário",output:"1 estudo reduzido + 1 registro de processo"},
+  {id:"estrutura",n:"04",title:"Estrutura & anatomia",text:"Construção, proporção, perspectiva, cabeça, mãos e organização antes da superfície.",image:"visual-atlas/harum-noir-caderno-olhar.webp",refs:["proko","sinix-design","moderndayjames","stephen-bauman","new-masters-academy"],caderno:"olhar",temporada:"03",biblioteca:"maos-sem-formula",time:"40 min",level:"intermediário",output:"1 construção estrutural + 2 correções"},
+  {id:"mundo",n:"05",title:"Sketchbook & mundo autoral",text:"Caderno como laboratório, arquivo, narrativa e lugar onde uma linguagem começa a acumular memória.",image:"visual-atlas/open-sketchbook.webp",refs:["karl-kopinski","kim-jung-gi-super-ani","drawingwiffwaffles","aaron-blaise"],caderno:"memoria",temporada:"04",biblioteca:"caderno-como-universo",time:"30 min",level:"aberto",output:"1 página de recorrências autorais"},
 ];
 ---
 <!doctype html><html lang="pt-BR"><head><BaseHead title="Percursos · Harum Noir" description="Caminhos curatoriais que ligam referências, cadernos, ateliê, temporadas e prática."/></head>
@@ -27,7 +27,7 @@ const paths=[
  return <section class="journey" id={p.id}>
    <div class="journey-intro">
      <div class="journey-image"><img src={base+'noir/'+p.image} alt=""/></div>
-     <div><span class="eyebrow">PERCURSO {p.n}</span><h2>{p.title}</h2><p>{p.text}</p>
+     <div><span class="eyebrow">PERCURSO {p.n}</span><h2>{p.title}</h2><p>{p.text}</p><div class="journey-contract"><span><b>{p.time}</b><small>tempo sugerido</small></span><span><b>{p.level}</b><small>nível</small></span><span><b>{p.output}</b><small>saída concreta</small></span></div>
        <div class="actions"><a class="btn primary" href={base+'cadernos#'+p.caderno}>Abrir caderno</a><a class="btn" href={base+'biblioteca#'+p.biblioteca}>Abrir fontes</a></div>
        <p class="journey-next">Depois, se quiser aprofundar: <a href={base+'temporadas#t'+p.temporada}>temporada</a><a href={base+'atelier'}>ateliê</a></p>
      </div>
@@ -51,4 +51,4 @@ const paths=[
 
 <section class="section"><div class="journal"><div class="paper"><div class="eyebrow" style="color:#8a734b">UMA REGRA</div><h2>O percurso termina no papel.</h2><p class="lead">Navegar é só a primeira metade.</p><p>Escolha uma referência, extraia uma pergunta e faça um estudo. O jardim só funciona quando alguma coisa volta para a mão.</p><a href={base+'roubar-como-artista'}>Como estudar referência sem virar cópia →</a></div></div></section>
 <EcosystemRail current="percursos" limit={5} />
-</main><Footer/></body></html>
+</main><Footer/><style>.journey-contract{display:grid;grid-template-columns:.65fr .65fr 1.7fr;gap:8px;margin:18px 0}.journey-contract span{display:flex;flex-direction:column;gap:4px;padding:10px 12px;border:1px solid var(--line);border-radius:5px}.journey-contract b{font-size:.78rem;color:var(--paper)}.journey-contract small{font-size:.62rem;color:var(--muted)}@media(max-width:600px){.journey-contract{grid-template-columns:1fr 1fr}.journey-contract span:last-child{grid-column:1/-1}}</style></body></html>
