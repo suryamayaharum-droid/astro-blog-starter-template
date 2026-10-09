@@ -148,6 +148,16 @@ jobs:
                     const r = el.getBoundingClientRect();
                     return { x:r.x, y:r.y, width:r.width, height:r.height, right:r.right, bottom:r.bottom };
                   })() : null;
+                  const actuallyVisible = el => {
+                    for (let node = el; node && node.nodeType === 1; node = node.parentElement) {
+                      if (node.hasAttribute('hidden') || node.hasAttribute('inert') || node.getAttribute('aria-hidden') === 'true') return false;
+                      const style = getComputedStyle(node);
+                      if (style.display === 'none' || style.visibility === 'hidden' || Number(style.opacity || 1) === 0) return false;
+                      if (node.tagName === 'DETAILS' && !node.open && !el.closest('summary')) return false;
+                    }
+                    const r = el.getBoundingClientRect();
+                    return r.width > 0 && r.height > 0;
+                  };
                   return {
                     viewport: [window.innerWidth, window.innerHeight],
                     documentWidth: root.scrollWidth,
@@ -164,7 +174,6 @@ jobs:
                         .filter(el => !dock.contains(el))
                         .map(el => {
                           const r = el.getBoundingClientRect();
-                          const cs = getComputedStyle(el);
                           const ih = Math.max(0, Math.min(r.bottom, dr.bottom) - Math.max(r.top, dr.top));
                           const iw = Math.max(0, Math.min(r.right, dr.right) - Math.max(r.left, dr.left));
                           const area = Math.max(1, r.width * r.height);
@@ -173,7 +182,7 @@ jobs:
                             tag: el.tagName,
                             text: (el.textContent || el.getAttribute('aria-label') || '').trim().slice(0,80),
                             overlapRatio,
-                            visible: cs.display !== 'none' && cs.visibility !== 'hidden' && Number(cs.opacity || 1) > 0 && r.width > 0 && r.height > 0
+                            visible: actuallyVisible(el)
                           };
                         })
                         .filter(x => x.visible && x.overlapRatio > .25);
@@ -183,9 +192,7 @@ jobs:
                     brokenImages: [...document.images].filter(img => img.complete && img.naturalWidth === 0).map(img => img.currentSrc || img.src),
                     criticalTouchTargets: [...document.querySelectorAll('.save-current,.search-prompts button,.compare-toggle,.compare-card button,.school-clear,.school-intl-header nav a,.explore-menu summary,.explore-panel a,.intl-header nav a,.ih-header nav a,.ih-topics a,.intl-lesson-header a,.btn')]
                       .filter(el => {
-                        const cs = getComputedStyle(el);
-                        const r = el.getBoundingClientRect();
-                        return cs.display !== 'none' && cs.visibility !== 'hidden' && r.width > 0 && r.height > 0;
+                        return actuallyVisible(el);
                       })
                       .map(el => {
                         const r = el.getBoundingClientRect();
