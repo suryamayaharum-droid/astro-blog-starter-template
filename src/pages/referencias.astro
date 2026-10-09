@@ -170,6 +170,11 @@ const referenceSchema={
  .reference-composition .collection-hands-art{width:120px;display:grid;gap:5px;justify-items:center;margin:0}
  .reference-composition .collection-hands-art img{display:block;width:100%;aspect-ratio:1;object-fit:cover;border:1px solid var(--line);border-radius:4px}
  .reference-composition .collection-hands-art figcaption{font-size:.58rem;line-height:1.4;text-align:center;color:var(--muted)}
+ @media(max-width:900px){
+  .reference-composition .collection-head-hands{grid-template-columns:minmax(0,1fr) 120px;gap:16px}
+  .reference-composition .collection-head-hands .collection-hands-art{grid-column:2;grid-row:1/3;width:120px}
+  .reference-composition .collection-head-hands>p{grid-column:1;grid-row:2;margin-top:0}
+ }
  @media(max-width:760px){
   .reference-composition .stream-hero-copy .journey-next{font-size:.78rem;line-height:1.55}
   .collection-index{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin;padding-bottom:14px}
