@@ -33,7 +33,9 @@
 
 ## Correção aplicada neste lote
 
-A revisão também deixou uma melhoria didática nos cadernos Olhar e Vestígio: cada um agora abre com um roteiro curto, duração, saída e pergunta de conferência.\n\nFoi criado `src/components/LegacyRedirect.astro`. As cinco rotas antigas continuam direcionando às páginas canônicas, mas agora oferecem uma tela de contingência identificável caso o redirecionamento automático não aconteça:
+A revisão também deixou uma melhoria didática nos cadernos Olhar e Vestígio: cada um agora abre com um roteiro curto, duração, saída e pergunta de conferência.
+
+Foi criado `src/components/LegacyRedirect.astro`. As cinco rotas antigas continuam direcionando às páginas canônicas, mas agora oferecem uma tela de contingência identificável caso o redirecionamento automático não aconteça:
 
 - `/about/` → Sobre o HARUM NOIR;
 - `/artists/` → Referências;
@@ -49,4 +51,4 @@ Não encontrei texto “Lorem ipsum” nem páginas de conteúdo com placeholder
 
 ## Próximo lote
 
-Começar pelos Cadernos: verificar se cada título leva a uma prática própria, se a saída é verificável e se o link de retorno preserva o percurso. Depois revisar fichas de artistas com foco em fonte primária, status de vídeo e correspondência entre promessa e destino.
+Começar pelas fichas de artistas: conferir fonte primária, status de vídeo e correspondência entre promessa e destino. Depois revisar bancos/acervos e rotas de História da Arte; fechar com paridade EN/ES.
