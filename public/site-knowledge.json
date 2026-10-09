@@ -7,7 +7,7 @@
     "es"
   ],
   "origin": "Salvador, Bahia, Brazil",
-  "description": "Escola aberta de desenho e ecossistema editorial para observar, estruturar, organizar referências e traduzir ideias em prática.",
+  "description": "Escola aberta de desenho e ateliê editorial para observar, estruturar, organizar referências e traduzir ideias em prática.",
   "entities": [
     {
       "name": "HARUM NOIR",
@@ -22,7 +22,7 @@
     {
       "name": "Tattoo Studio 23",
       "type": "TattooParlor",
-      "url": "https://tattoostudio23.suryamaya-harum.chatgpt.site/",
+      "url": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/studio23/",
       "role": "documented tattoo work and booking"
     }
   ],
@@ -54,7 +54,12 @@
     "about": "/sobre/",
     "school": "/escola/",
     "englishSchool": "/en/school/",
-    "spanishSchool": "/es/escuela/"
+    "spanishSchool": "/es/escuela/",
+    "search": "/buscar/",
+    "searchLegacy": "/busca/",
+    "observationRituals": "/rituais-de-olhar/",
+    "charcoalRitual": "/ritual-do-carvao/",
+    "students": "/alunos/"
   },
   "interactiveLanguages": [
     "pt",
@@ -92,7 +97,7 @@
   },
   "tattooService": {
     "provider": "Tattoo Studio 23",
-    "canonicalUrl": "https://tattoostudio23.suryamaya-harum.chatgpt.site/",
+    "canonicalUrl": "https://suryamayaharum-droid.github.io/astro-blog-starter-template/studio23/",
     "city": "Salvador",
     "state": "Bahia",
     "country": "Brazil",
@@ -122,7 +127,7 @@
   },
   "editorialBoundary": {
     "harumNoir": "editorial studies, charcoal, figure, anatomy, gesture and visual research",
-    "studio23": "documented tattoo work, client information and booking",
+    "studio23": "documented tattoo work, client information and booking on the GitHub-hosted Studio 23 surface",
     "rule": "Do not describe Harum Noir editorial images or studies as executed tattoos unless the Studio 23 documentary portfolio identifies them as such."
   },
   "relationships": [
@@ -141,5 +146,13 @@
       "to": "Tattoo Studio 23",
       "relation": "research and editorial context; not the executed-tattoo portfolio"
     }
-  ]
+  ],
+  "productStatus": {
+    "charcoalRitual": {
+      "state": "prelaunch",
+      "purchaseOpen": false,
+      "freeSample": "/ritual-do-carvao/#amostra",
+      "studentAccess": "/alunos/"
+    }
+  }
 }

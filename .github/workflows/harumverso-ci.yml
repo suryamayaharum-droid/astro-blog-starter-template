@@ -47,5 +47,8 @@ jobs:
       - name: SEO metadata and JSON-LD surface
         run: node scripts/check_seo_surface.mjs
 
+      - name: Discovery map and pre-launch contract
+        run: node scripts/check_discovery_contract.mjs
+
       - name: Studio 23 ↔ Harum Noir ecosystem contract
         run: node scripts/check_ecosystem_contract.mjs

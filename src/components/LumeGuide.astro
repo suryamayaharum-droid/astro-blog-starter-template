@@ -42,6 +42,7 @@ const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
       <button type="button" data-lume-prompt="Como encontro obras nos museus?">Museus</button>
       <button type="button" data-lume-prompt="Quero estudar gesto e mãos">Gesto & mãos</button>
       <button type="button" data-lume-prompt="Onde vejo artistas de referência?">Referências</button>
+      <button type="button" data-lume-prompt="Quero experimentar carvão em 10 minutos">Carvão · 10 min</button>
     </div>
 
     <div class="lume-answer">
@@ -93,7 +94,8 @@ if (root) {
     references:{pt:'Abrir Referências →',en:'Open References →',es:'Abrir Referencias →',fr:'Ouvrir Références →',it:'Apri Riferimenti →',de:'Referenzen öffnen →',ja:'参考資料を開く →',ko:'레퍼런스 열기 →',zh:'打开参考资料 →',ar:'فتح المراجع ←'},
     journeys:{pt:'Abrir Percursos →',en:'Open Pathways →',es:'Abrir Recorridos →',fr:'Ouvrir Parcours →',it:'Apri Percorsi →',de:'Lernpfade öffnen →',ja:'学習ルートを開く →',ko:'학습 경로 열기 →',zh:'打开学习路径 →',ar:'فتح المسارات ←'},
     search:{pt:'Abrir Busca →',en:'Open Search →',es:'Abrir Búsqueda →',fr:'Ouvrir Recherche →',it:'Apri Ricerca →',de:'Suche öffnen →',ja:'検索を開く →',ko:'검색 열기 →',zh:'打开搜索 →',ar:'فتح البحث ←'},
-    school:{pt:'Abrir Escola de Desenho →',en:'Open Drawing School →',es:'Abrir Escuela de Dibujo →',fr:'Ouvrir École de dessin →',it:'Apri Scuola di disegno →',de:'Zeichenschule öffnen →',ja:'デッサン学校を開く →',ko:'드로잉 학교 열기 →',zh:'打开绘画学校 →',ar:'فتح مدرسة الرسم ←'}
+    school:{pt:'Abrir Escola de Desenho →',en:'Open Drawing School →',es:'Abrir Escuela de Dibujo →',fr:'Ouvrir École de dessin →',it:'Apri Scuola di disegno →',de:'Zeichenschule öffnen →',ja:'デッサン学校を開く →',ko:'드로잉 학교 열기 →',zh:'打开绘画学校 →',ar:'فتح مدرسة الرسم ←'},
+    ritual:{pt:'Fazer amostra de carvão · 10 min →',en:'Try the 10-minute charcoal sample →',es:'Probar la muestra de carbón · 10 min →'}
   });
   const destinations = Object.freeze({
     museums:{href:base+'museus/',label:destinationLabels.museums},
@@ -102,7 +104,8 @@ if (root) {
     notebooks:{href:base+'cadernos/',label:destinationLabels.notebooks},
     references:{href:base+'referencias/',label:destinationLabels.references},
     journeys:{href:base+'percursos/',label:destinationLabels.journeys},
-    search:{href:base+'busca/',label:destinationLabels.search}
+    search:{href:base+'buscar/',label:destinationLabels.search},
+    ritual:{href:base+'ritual-do-carvao/#amostra',label:destinationLabels.ritual}
   });
 
   const supportedLocales=new Set(['pt','en','es','fr','it','de','ja','ko','zh','ar']);
@@ -130,9 +133,9 @@ if (root) {
   };
 
   const messages=Object.freeze({
-    pt:{empty:'Escreva uma palavra ou escolha uma sugestão para eu indicar um caminho.',museums:'Na página Museus, pesquise por artista, obra ou tema e abra a fonte institucional.',gesture:'Para gesto e prática de desenho, comece pelos Cadernos ou use a busca do site.',references:'O Atlas de Referências reúne artistas, materiais de estudo e fontes originais.',journeys:'Os Percursos organizam o estudo em sequências curtas e verificadas.',search:'A Busca atravessa referências, cadernos, história, bancos, temporadas e percursos.',school:"A Escola Aberta organiza o estudo em quatro movimentos e oferece uma primeira prática guiada.",fallback:'Posso levar você aos Museus, ao Atlas de Referências ou aos Percursos.'},
-    en:{empty:'Write a word or choose a suggestion and I will point you to a verified path.',museums:'Use Museums to search by artist, artwork or theme, then open the original institution.',gesture:'For gesture and drawing practice, start with the Notebooks or use site search.',references:'The Reference Atlas gathers artists, study material and original sources.',journeys:'Pathways organize study into short verified sequences.',search:'Search covers references, notebooks, art history, image banks, seasons and pathways.',school:"The Open Drawing School gives you a four-step study plan and a guided first exercise.",fallback:'I can take you to Museums, the Reference Atlas or the study Pathways.'},
-    es:{empty:'Escribe una palabra o elige una sugerencia y te indicaré un camino verificado.',museums:'En Museos busca por artista, obra o tema y abre después la institución original.',gesture:'Para gesto y práctica de dibujo, empieza por los Cuadernos o usa la búsqueda.',references:'El Atlas de Referencias reúne artistas, materiales de estudio y fuentes originales.',journeys:'Los Recorridos organizan el estudio en secuencias breves y verificadas.',search:'La Búsqueda recorre referencias, cuadernos, historia del arte, bancos y recorridos.',school:"La Escuela Abierta propone cuatro pasos de estudio y un primer ejercicio guiado.",fallback:'Puedo llevarte a Museos, al Atlas de Referencias o a los Recorridos.'},
+    pt:{empty:'Escreva uma palavra ou escolha uma sugestão para eu indicar um caminho.',museums:'Na página Museus, pesquise por artista, obra ou tema e abra a fonte institucional.',gesture:'Para gesto e prática de desenho, comece pelos Cadernos ou use a busca do site.',references:'O Atlas de Referências reúne artistas, materiais de estudo e fontes originais.',journeys:'Os Percursos organizam o estudo em sequências curtas e verificadas.',search:'A Busca atravessa referências, cadernos, história, bancos, temporadas e percursos.',school:"A Escola Aberta organiza o estudo em quatro movimentos e oferece uma primeira prática guiada.",ritual:'O Ritual do Carvão está em preparação, mas já tem uma amostra gratuita de 10 minutos para testar pressão, massa e borda.',fallback:'Posso levar você aos Museus, ao Atlas de Referências ou aos Percursos.'},
+    en:{empty:'Write a word or choose a suggestion and I will point you to a verified path.',museums:'Use Museums to search by artist, artwork or theme, then open the original institution.',gesture:'For gesture and drawing practice, start with the Notebooks or use site search.',references:'The Reference Atlas gathers artists, study material and original sources.',journeys:'Pathways organize study into short verified sequences.',search:'Search covers references, notebooks, art history, image banks, seasons and pathways.',school:"The Open Drawing School gives you a four-step study plan and a guided first exercise.",ritual:'The Charcoal Ritual is still in pre-launch, but you can already try a free 10-minute sample on pressure, mass and edges.',fallback:'I can take you to Museums, the Reference Atlas or the study Pathways.'},
+    es:{empty:'Escribe una palabra o elige una sugerencia y te indicaré un camino verificado.',museums:'En Museos busca por artista, obra o tema y abre después la institución original.',gesture:'Para gesto y práctica de dibujo, empieza por los Cuadernos o usa la búsqueda.',references:'El Atlas de Referencias reúne artistas, materiales de estudio y fuentes originales.',journeys:'Los Recorridos organizan el estudio en secuencias breves y verificadas.',search:'La Búsqueda recorre referencias, cuadernos, historia del arte, bancos y recorridos.',school:"La Escuela Abierta propone cuatro pasos de estudio y un primer ejercicio guiado.",ritual:'El Ritual del Carbón sigue en prelanzamiento, pero ya puedes probar una muestra gratuita de 10 minutos sobre presión, masa y bordes.',fallback:'Puedo llevarte a Museos, al Atlas de Referencias o a los Recorridos.'},
     fr:{empty:'Écrivez un mot ou choisissez une suggestion et je vous indiquerai un chemin vérifié.',museums:'Dans Musées, cherchez un artiste, une œuvre ou un thème puis ouvrez la source institutionnelle.',gesture:'Pour le geste et le dessin, commencez par les Cahiers ou utilisez la recherche.',references:'L’Atlas de Références rassemble artistes, ressources d’étude et sources originales.',journeys:'Les Parcours organisent l’étude en séquences courtes et vérifiées.',search:'La Recherche parcourt références, cahiers, histoire de l’art, banques et parcours.',school:"L’École ouverte propose quatre étapes d’étude et un premier exercice guidé.",fallback:'Je peux vous guider vers les Musées, l’Atlas de Références ou les Parcours.'},
     it:{empty:'Scrivi una parola o scegli un suggerimento e ti indicherò un percorso verificato.',museums:'In Musei cerca artista, opera o tema e poi apri la fonte istituzionale.',gesture:'Per gesto e pratica del disegno, inizia dai Quaderni o usa la ricerca.',references:'L’Atlante dei Riferimenti raccoglie artisti, materiali di studio e fonti originali.',journeys:'I Percorsi organizzano lo studio in sequenze brevi e verificate.',search:'La Ricerca attraversa riferimenti, quaderni, storia dell’arte, archivi e percorsi.',school:"La Scuola aperta propone quattro fasi di studio e un primo esercizio guidato.",fallback:'Posso guidarti verso Musei, Atlante dei Riferimenti o Percorsi.'},
     de:{empty:'Schreiben Sie ein Wort oder wählen Sie einen Vorschlag; ich zeige einen geprüften Weg.',museums:'Unter Museen nach Künstler, Werk oder Thema suchen und anschließend die Originalquelle öffnen.',gesture:'Für Geste und Zeichenpraxis mit den Heften beginnen oder die Seitensuche nutzen.',references:'Der Referenzatlas bündelt Künstler, Studienmaterial und Originalquellen.',journeys:'Lernpfade ordnen das Studium in kurze geprüfte Sequenzen.',search:'Die Suche umfasst Referenzen, Hefte, Kunstgeschichte, Bildarchive und Lernpfade.',school:"Die offene Zeichenschule bietet vier Lernschritte und eine angeleitete erste Übung.",fallback:'Ich kann zu Museen, Referenzatlas oder Lernpfaden führen.'},
@@ -148,7 +151,8 @@ if (root) {
     references:['referencia','reference','référence','riferimento','referenz','参考','레퍼런스','مرجع','مراجع','atlas','artista','artist','artiste','künstler','kunstler','作家','艺术家','작가','فنان'],
     journeys:['percurso','recorrido','pathway','parcours','percorso','lernpfad','学習','学习路径','학습 경로','مسار','trilha','trail'],
     school:['escola','escuela','school','école','ecole','scuola','schule','学校','드로잉 학교','绘画学校','مدرسة','lesson','lessons','class','classes','aula','aulas','clase','clases','curso','courses'],
-    search:['busca','buscar','busqueda','search','recherche','ricerca','suche','検索','搜索','검색','بحث','pesquisa']
+    search:['busca','buscar','busqueda','search','recherche','ricerca','suche','検索','搜索','검색','بحث','pesquisa'],
+    ritual:['carvao','carvão','charcoal','carbon','carbón','fusain','charbon','kohle','木炭','炭','목탄','فحم','ritual']
   });
 
   const answerFor=(raw)=>{
@@ -157,6 +161,7 @@ if (root) {
     const text=String(raw||'').trim().toLocaleLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
     if(!text)return{message:m.empty,actions:[],locale};
     if(topicKeywords.museums.some(word=>text.includes(word)))return{message:m.museums,actions:['museums'],locale};
+    if(topicKeywords.ritual.some(word=>text.includes(word)))return{message:m.ritual||m.school,actions:['ritual'],locale};
     if(topicKeywords.school.some(word=>text.includes(word)))return{message:m.school,actions:['school','journeys'],locale};
     if(topicKeywords.gesture.some(word=>text.includes(word)))return{message:m.gesture,actions:['notebooks','gesture'],locale};
     if(topicKeywords.references.some(word=>text.includes(word)))return{message:m.references,actions:['references'],locale};
@@ -171,7 +176,8 @@ if (root) {
     references:topicKeywords.references,
     journeys:topicKeywords.journeys,
     school:topicKeywords.school,
-    search:topicKeywords.search
+    search:topicKeywords.search,
+    ritual:topicKeywords.ritual
   });
 
   const answerStaysOnRoute = (raw, actions) => {

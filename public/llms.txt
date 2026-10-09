@@ -1,6 +1,6 @@
 # HARUM NOIR · Arte Harum
 
-> Editorial atelier and visual research ecosystem from Salvador, Bahia, Brazil.
+> Open drawing school and editorial atelier from Salvador, Bahia, Brazil.
 
 ## Identity
 HARUM NOIR is the editorial arm of Arte Harum. It organizes drawing, charcoal, figure, anatomy, gesture, visual repertoire, art history, image-bank research and studio practice. Tattoo Studio 23 is the related tattoo practice and documented tattoo portfolio.
@@ -37,6 +37,8 @@ HARUM NOIR is the editorial arm of Arte Harum. It organizes drawing, charcoal, f
 
 ## High-value routes
 - /rituais-de-olhar/ — original observation rituals assimilated from art-education and museum research
+- /ritual-do-carvao/ — seven-day charcoal path in pre-launch, with a free 10-minute sample
+- /alunos/ — existing-student access guidance for HARUM NOIR products delivered through Hotmart
 - /referencias/ — artists and reference atlas
 - /historia-da-arte/ — art-history learning paths
 - /bancos/ — public/open-access image-bank map

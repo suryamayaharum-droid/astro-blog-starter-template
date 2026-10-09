@@ -51,10 +51,10 @@ jobs:
               ['colecao-lugares-es', `${base}/es/colecciones/lugares/`, false],
               ['estudo-tonal', `${base}/colecoes/estudo-tonal/`],
               ['figure-gesture-pt', `${base}/colecoes/gesto-figura/`],
-              ['figure-gesture-en', `${base}/en/collections/figure-gesture/`],
-              ['figure-gesture-es', `${base}/es/colecciones/gesto-figura/`],
-              ['tonal-study-en', `${base}/en/collections/tonal-study/`],
-              ['tonal-study-es', `${base}/es/colecciones/estudio-tonal/`],
+              ['figure-gesture-en', `${base}/en/collections/figure-gesture/`, false],
+              ['figure-gesture-es', `${base}/es/colecciones/gesto-figura/`, false],
+              ['tonal-study-en', `${base}/en/collections/tonal-study/`, false],
+              ['tonal-study-es', `${base}/es/colecciones/estudio-tonal/`, false],
               ['english-school', `${base}/en/school/`],
               ['spanish-school', `${base}/es/escuela/`],
               ['atlas', `${base}/atlas/`],
@@ -70,6 +70,8 @@ jobs:
               ['cadernos', `${base}/cadernos/`],
               ['caderno-memoria', `${base}/cadernos/memoria/`],
               ['atelier', `${base}/atelier/`],
+              ['ritual-do-carvao', `${base}/ritual-do-carvao/`],
+              ['alunos', `${base}/alunos/`],
               ['temporadas', `${base}/temporadas/`],
               ['noir', `${base}/noir/`],
               ['outliers', `${base}/outliers/`],
@@ -178,7 +180,17 @@ jobs:
                     })(),
                     hero: rect(hero),
                     title: document.title,
-                    brokenImages: [...document.images].filter(img => img.complete && img.naturalWidth === 0).map(img => img.currentSrc || img.src)
+                    brokenImages: [...document.images].filter(img => img.complete && img.naturalWidth === 0).map(img => img.currentSrc || img.src),
+                    criticalTouchTargets: [...document.querySelectorAll('.save-current,.search-prompts button,.compare-toggle,.compare-card button,.school-clear,.school-intl-header nav a,.explore-menu summary,.explore-panel a,.intl-header nav a,.ih-header nav a,.ih-topics a,.intl-lesson-header a,.btn')]
+                      .filter(el => {
+                        const cs = getComputedStyle(el);
+                        const r = el.getBoundingClientRect();
+                        return cs.display !== 'none' && cs.visibility !== 'hidden' && r.width > 0 && r.height > 0;
+                      })
+                      .map(el => {
+                        const r = el.getBoundingClientRect();
+                        return { text:(el.textContent || el.getAttribute('aria-label') || '').trim().slice(0,80), width:r.width, height:r.height };
+                      })
                   };
                 });
 
@@ -216,11 +228,21 @@ jobs:
                 (m.requiresDock && !m.dockVisible) ||
                 m.textLength < 40 ||
                 (m.brokenImages && m.brokenImages.length > 0) ||
-                (m.dockOcclusions && m.dockOcclusions.some(x => x.inHero)) ||
+                (m.dockOcclusions && m.dockOcclusions.length > 0) ||
+                (m.criticalTouchTargets && m.criticalTouchTargets.some(x => x.width < 44 || x.height < 44)) ||
                 sameOriginResourceFailures.length > 0 ||
                 (m.consoleErrors && m.consoleErrors.length > 0)
               );
             });
+
+            fs.writeFileSync('screenshots/failures.json', JSON.stringify(failures, null, 2));
+            fs.writeFileSync('screenshots/summary.json', JSON.stringify({
+              generatedAt: new Date().toISOString(),
+              routes: targets.length,
+              viewports: viewports.length,
+              checks: metrics.length,
+              failures: failures.length
+            }, null, 2));
 
             if (failures.length) {
               console.error('MOBILE_AUDIT_FAILURES');
@@ -230,6 +252,54 @@ jobs:
             }
 
             await browser.close();
+          })().catch(err => { console.error(err); process.exit(1); });
+          NODE
+
+      - name: Ritual pre-launch commerce contract
+        run: |
+          node <<'NODE'
+          const { chromium } = require('playwright');
+
+          (async () => {
+            const browser = await chromium.launch({ headless: true });
+            const base = 'https://suryamayaharum-droid.github.io/astro-blog-starter-template';
+            const context = await browser.newContext({
+              viewport: { width: 390, height: 844 },
+              isMobile: true,
+              hasTouch: true,
+              locale: 'pt-BR',
+              reducedMotion: 'reduce'
+            });
+            const page = await context.newPage();
+            const failures = [];
+
+            let response = await page.goto(base + '/ritual-do-carvao/', { waitUntil:'networkidle', timeout:45000 });
+            const ritual = await page.evaluate(() => ({
+              text: document.body?.innerText || '',
+              links: [...document.querySelectorAll('a[href]')].map(a => a.href)
+            }));
+            if (!response || response.status() >= 400) failures.push({route:'ritual-do-carvao',reason:'http',status:response?.status()});
+            if (!ritual.text.includes('A compra ainda não está aberta.')) failures.push({route:'ritual-do-carvao',reason:'prelaunch-status-missing'});
+            const externalHotmart = ritual.links.filter(href => /hotmart\.com/i.test(href));
+            if (externalHotmart.length) failures.push({route:'ritual-do-carvao',reason:'premature-hotmart-link',links:externalHotmart});
+
+            response = await page.goto(base + '/alunos/', { waitUntil:'networkidle', timeout:45000 });
+            const students = await page.evaluate(() => ({
+              text: document.body?.innerText || '',
+              links: [...document.querySelectorAll('a[href]')].map(a => a.href)
+            }));
+            if (!response || response.status() >= 400) failures.push({route:'alunos',reason:'http',status:response?.status()});
+            if (!students.links.some(href => href.startsWith('https://consumer.hotmart.com/'))) failures.push({route:'alunos',reason:'student-hotmart-entry-missing'});
+            if (!students.text.includes('O Ritual do Carvão ainda está em preparação.')) failures.push({route:'alunos',reason:'ritual-status-mismatch'});
+
+            await context.close();
+            await browser.close();
+            if (failures.length) {
+              console.error('RITUAL_COMMERCE_CONTRACT_FAILURES');
+              console.error(JSON.stringify(failures,null,2));
+              process.exit(1);
+            }
+            console.log('Ritual pre-launch commerce contract: OK');
           })().catch(err => { console.error(err); process.exit(1); });
           NODE
 
@@ -318,7 +388,7 @@ jobs:
           (async () => {
             const browser = await chromium.launch({ headless: true });
             const base = 'https://suryamayaharum-droid.github.io/astro-blog-starter-template';
-            const routes = ['/', '/atlas/', '/biblioteca/', '/maos/', '/corpo-em-relacao/', '/cabeca-expressao/', '/radar/', '/buscar/'];
+            const routes = ['/', '/atlas/', '/biblioteca/', '/maos/', '/corpo-em-relacao/', '/cabeca-expressao/', '/radar/', '/buscar/', '/ritual-do-carvao/', '/alunos/'];
             const widths = [
               { name: 'mobile-edge', width: 760, expectDock: true },
               { name: 'desktop-edge', width: 761, expectDock: false },

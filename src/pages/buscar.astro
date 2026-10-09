@@ -13,7 +13,7 @@ import { radarHarumverso, radarSlug } from '../data/radarHarumverso';
 const base=import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 
 const items=[
-  {type:"Percurso",title:"Ritual do Carvão · 7 dias",subtitle:"Percurso em preparação para gesto, matéria, massa, borda e composição.",href:"ritual-do-carvao/",terms:"carvão sete dias gesto matéria massa valor borda composição percurso prática"},
+  {type:"Percurso",title:"Ritual do Carvão · 7 dias",subtitle:"Percurso em preparação com amostra gratuita de 10 minutos para gesto, matéria, massa, borda e composição.",href:"ritual-do-carvao/",terms:"carvão sete dias gesto matéria massa valor borda composição percurso prática amostra gratuita 10 minutos dia zero"},
   {type:"Acesso",title:"Área de alunos · Hotmart",subtitle:"Entrada para quem já possui um produto HARUM NOIR liberado na Hotmart.",href:"alunos/",terms:"alunos hotmart acesso compra material curso produto"},
   ...radarHarumverso.map(x=>({type:"Radar",title:x.title,subtitle:x.creator+" · "+x.source,href:"radar#radar-"+radarSlug(x),terms:[x.kind,x.note,x.principle,x.destination,x.rights].join(" ")})),
   ...ecosystemHubs.map(x=>({
