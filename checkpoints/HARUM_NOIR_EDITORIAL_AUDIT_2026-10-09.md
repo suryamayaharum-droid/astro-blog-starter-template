@@ -4,7 +4,7 @@
 
 ## Progresso
 
-`███░░░░░░░ 32% · 24/74 arquivos de rota revisados manualmente`
+`███░░░░░░░ 34% · 25/74 arquivos de rota revisados manualmente`
 
 - [x] Varredura estrutural das 74 rotas Astro: títulos, presença de imagens, quantidade e rótulos de ações, marcadores de conteúdo provisório.
 - [x] Conferir o caminho de entrada: home → escola → primeira prática → museus.
@@ -13,7 +13,8 @@
 - [x] Revisar os cinco Cadernos e seus destinos; acrescentar roteiros com tempo, saída e conferência em Olhar e Vestígio.
 - [x] Revisar o molde do perfil de artista e conferir 101 fichas / 208 links cadastrados.
 - [ ] Conferir as promessas e a qualidade das fontes em cada ficha, substituindo intermediários por links primários quando possível.
-- [ ] Revisar páginas de bancos/acervos e as rotas de História da Arte.
+- [x] Revisar a página Atlas Histórico: períodos paralelos, práticas próprias, fontes institucionais e distinção de direitos; remover cifra volátil do Open Access da NGA.
+- [ ] Revisar páginas de bancos/acervos e as demais rotas de História da Arte.
 - [ ] Conferir paridade editorial EN/ES nas páginas prioritárias.
 - [ ] Fechar a auditoria móvel pós-release em painel próprio.
 
@@ -60,3 +61,8 @@ Começar pelas fichas de artistas: conferir fonte primária, status de vídeo e 
 A rota dinâmica `src/pages/referencias/[slug].astro` gera 101 fichas, apoiadas por 208 links. A inspeção estrutural encontrou 15 referências vidIQ em nove perfis: várias tinham título de vídeo, tutorial ou obra, mas o destino era um painel de estatísticas do canal; seis dessas referências repetiam um mesmo destino dentro do perfil. O card agora identifica vidIQ como análise externa, explica que não é a obra citada e elimina destinos duplicados. A ficha mantém o canal/fonte original em ação própria e mantém a prática de 10 minutos.
 
 Esta edição corrige a expectativa do clique sem alegar que cada URL externa foi verificada ao vivo. Próximo passo: conferir fontes primárias e títulos em lotes pequenos, começando pelos perfis que dependem de intermediários; depois revisar bancos/acervos e História da Arte.
+
+
+## Atlas Histórico · revisão de uma rota
+
+A rota `/historia-da-arte/` foi conferida junto com `src/data/artHistory.ts`: os períodos têm perguntas e práticas próprias, datas são qualificadas como aproximações, e a página explica que esta é uma rota inicial com trilhas paralelas. As fichas distinguem orientação de domínio público de direitos variáveis. Retirei a cifra “mais de 60 mil” da nota da NGA, porque é um total que pode envelhecer; a instrução de confirmar o status em cada objeto foi mantida.
