@@ -113,7 +113,11 @@ jobs:
             {name:'en-home',route:'/en/',dock:false},
             {name:'es-home',route:'/es/',dock:false},
             {name:'en-references',route:'/en/references/',dock:false},
-            {name:'es-references',route:'/es/referencias/',dock:false}
+            {name:'es-references',route:'/es/referencias/',dock:false},
+            {name:'en-gesture',route:'/en/collections/figure-gesture/',dock:false},
+            {name:'en-tonal',route:'/en/collections/tonal-study/',dock:false},
+            {name:'es-gesture',route:'/es/colecciones/gesto-figura/',dock:false},
+            {name:'es-tonal',route:'/es/colecciones/estudio-tonal/',dock:false}
           ];
           const viewports = [
             {name:'320',width:320,height:700,mobile:true},
