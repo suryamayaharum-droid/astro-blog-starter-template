@@ -88,39 +88,48 @@
         "console-errors",
         "keyboard-focus"
       ],
-      "freshness": "stale_after_product_surface_changes",
-      "note": "Run #4 passed, but subsequent Home/School/Radar/Museus/navigation changes require a fresh responsive run before release."
+      "freshness": "stale_after_global_navigation_and_content_changes",
+      "note": "A fresh PR responsive audit is required after global Header/InternationalHub and learning-surface changes."
     },
-    "product_head_before_panel_update": "6597f063a3d86d02e92b6b7729ead4036720879c",
+    "product_head_before_panel_update": "278dc41f764f4ffc2def06ba81536c1c2e7a1024",
     "latest_product_changes": [
-      "Home e Escola padronizadas em prática inicial de 15 minutos",
-      "Navegação 'ecossistema' convertida para linguagem de continuidade de estudo",
-      "Radar público consolidado sob HARUM NOIR",
-      "Museus agora termina com próximas práticas por EcosystemRail",
-      "Auditoria responsiva filtrada para commits com impacto real de interface",
-      "Percursos ganhou fechamento com autoavaliação e retorno ao Caderno/Ateliê"
+      "Primeira prática unificada em 15 minutos em Home e Escola PT/EN/ES",
+      "Ateliê separa claramente porta de entrada de 15 min e exercício expandido 2/15/45",
+      "Cadernos ganhou entrada simples: escolher → fazer → registrar",
+      "Referências ganhou entrega, conferência, registro e continuação",
+      "Museus e Percursos agora fecham o ciclo com próxima prática/autoavaliação",
+      "Seletores de idioma usam páginas nativas EN/ES em vez de Google Translate",
+      "Self-links improdutivos removidos em Referências, Museus, História da Arte e Cultura Visual Brasileira EN/ES"
     ],
     "i18n_inventory": {
       "en_routes": 12,
       "es_routes": 12,
-      "state": "inventory_complete_audit_pending"
+      "state": "active_quality_audit",
+      "fixed_issues": [
+        "EN/ES references self-links",
+        "ES drawing self-link",
+        "EN/ES museum hub self-links",
+        "EN/ES art-history self-links",
+        "EN/ES Brazilian visual culture self-links",
+        "native language selectors"
+      ]
     }
   },
   "primary_attack": {
-    "id": "HN-LEARNING-LOOP",
-    "priority": "P2",
+    "id": "HN-I18N-AUDIT",
+    "priority": "P3",
     "state": "attacking",
-    "title": "Close the learning loop across the main study surfaces",
-    "goal": "Make each major study surface end in a clear next action instead of exposing internal ecosystem jargon or dead-end navigation.",
+    "title": "Remove dead-end international navigation and keep only useful native routes",
+    "goal": "Make EN/ES pages useful entry points rather than self-linking summaries or machine-translation detours.",
     "completed_slices": [
-      "Home e Escola usam a mesma prática inicial de 15 minutos",
-      "Museus termina com próximas práticas",
-      "EcosystemRail usa linguagem centrada no aluno",
-      "Radar público usa HARUM NOIR em vez de jargão interno",
-      "Percursos termina com autoavaliação e registro no Caderno"
+      "12 EN + 12 ES routes inventoried",
+      "native language switcher in InternationalHub",
+      "native EN/ES landing links in global Header",
+      "self-links fixed in references, museums, art history and Brazilian visual culture",
+      "Spanish drawing route now continues to collections"
     ],
-    "next_action": "Revisar Cadernos e Ateliê como dupla: garantir que um registre a descoberta e o outro ofereça a próxima microprática sem repetir navegação genérica.",
-    "parallelism_horizon": "I18N inventory and dependency diagnostics may proceed read-only while the learning-loop mutation lane remains singular."
+    "next_action": "Audit remaining international collection and tattoo pages for duplicated/dead-end actions; then classify keep/merge/remove before deleting any route.",
+    "parallelism_horizon": "CI and responsive verification run in parallel; no second mutation lane touches shared navigation until current head is validated."
   },
   "queue": [
     {
@@ -139,16 +148,23 @@
     {
       "id": "HN-LEARNING-LOOP",
       "priority": "P2",
-      "state": "attacking",
+      "state": "verifying",
       "title": "Close the learning loop across Museus, Referências, Percursos, Ateliê and Cadernos",
       "depends_on": [
         "HN-COHERENCE-15MIN"
+      ],
+      "evidence": [
+        "85e19e201a742eb7a4f5ebe37ebeb4ce23093dfa",
+        "6597f063a3d86d02e92b6b7729ead4036720879c",
+        "f47f5ea372e7dfd216ed66278f769e9458f81559",
+        "131fa813a3eb8afe202514d39806a964266c3777",
+        "ef738092571a5abad3cfa0aa6e78885027cddb35"
       ]
     },
     {
       "id": "HN-I18N-AUDIT",
       "priority": "P3",
-      "state": "ready",
+      "state": "attacking",
       "title": "Audit EN/ES usefulness, completeness and inbound navigation before keeping/removing routes",
       "depends_on": [
         "HN-LEARNING-LOOP"
@@ -193,28 +209,28 @@
       },
       {
         "name": "Pedagogical architecture",
-        "estimate_percent": 90,
-        "state": "attacking"
+        "estimate_percent": 94,
+        "state": "verifying"
       },
       {
         "name": "Cross-page coherence",
-        "estimate_percent": 87,
-        "state": "attacking"
+        "estimate_percent": 92,
+        "state": "verifying"
       },
       {
         "name": "Responsive visual QA",
-        "estimate_percent": 85,
+        "estimate_percent": 80,
         "state": "verifying"
       },
       {
         "name": "Accessibility interaction QA",
-        "estimate_percent": 65,
+        "estimate_percent": 75,
         "state": "verifying"
       },
       {
         "name": "Language / redundant routes",
-        "estimate_percent": 45,
-        "state": "ready"
+        "estimate_percent": 70,
+        "state": "attacking"
       },
       {
         "name": "Dependency security triage",
@@ -385,24 +401,24 @@
   },
   "next_wave": {
     "critical_lane": {
-      "id": "HN-LEARNING-LOOP",
+      "id": "HN-I18N-AUDIT",
       "state": "attacking",
-      "reason": "Museus e Percursos já fecham o ciclo; próxima fatia é Cadernos ↔ Ateliê."
+      "reason": "Learning loop is now feature-complete pending fresh validation; international dead ends are the next visible coherence defect."
     },
     "parallel_lanes": [
       {
-        "id": "HN-I18N-AUDIT",
-        "state": "ready_support",
-        "type": "read_only_inventory_plus_quality_audit",
-        "evidence": "12 EN routes + 12 ES routes currently exist."
+        "id": "HN-VERIFY-INTEGRATED",
+        "state": "running_support",
+        "type": "CI_and_responsive",
+        "rule": "Validate the integrated product head before promoting learning-loop work to DONE."
       },
       {
         "id": "HN-DEPS-SECURITY",
         "state": "queued_support",
         "type": "diagnostic_only",
-        "rule": "Do not mutate package versions until the advisory chain can be reproduced."
+        "rule": "Do not mutate dependency versions until advisories are reproduced and scoped."
       }
     ],
-    "barrier": "Fresh CI + responsive audit on the integrated product head after the current learning-loop slice."
+    "barrier": "CI + responsive audit green on an integrated head after global navigation changes."
   }
 }
