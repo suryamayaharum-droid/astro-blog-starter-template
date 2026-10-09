@@ -47,6 +47,8 @@ jobs:
               ['radar', `${base}/radar/`],
               ['colecoes', `${base}/colecoes/`],
               ['colecao-lugares', `${base}/colecoes/lugares/`],
+              ['colecao-lugares-en', `${base}/en/collections/places/`, false],
+              ['colecao-lugares-es', `${base}/es/colecciones/lugares/`, false],
               ['estudo-tonal', `${base}/colecoes/estudo-tonal/`],
               ['figure-gesture-pt', `${base}/colecoes/gesto-figura/`],
               ['figure-gesture-en', `${base}/en/collections/figure-gesture/`],
