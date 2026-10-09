@@ -3,6 +3,13 @@ name: HARUM NOIR PR Responsive Audit
 on:
   pull_request:
     branches: [main]
+    paths:
+      - "src/**"
+      - "public/noir/**"
+      - "astro.config.mjs"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/noir-pr-responsive-audit.yml"
   workflow_dispatch:
 
 permissions:
