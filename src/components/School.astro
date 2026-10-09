@@ -64,7 +64,7 @@ const alternates=[{hreflang:'pt-BR',href:'escola/'},{hreflang:'en',href:'en/scho
 <html lang={c.locale}>
 <head><BaseHead title={c.pageTitle} description={c.description} locale={lang==='pt'?undefined:lang} alternates={alternates}/></head>
 <body>
-{lang==='pt' ? <Header/> : <header class="school-intl-header"><a href={to('home')}>HARUM NOIR</a><nav aria-label={c.language}><a href={base+'escola/'}>PT</a><a href={toLang('en')}>EN · Google ↗</a><a href={toLang('es')}>ES · Google ↗</a></nav></header>}
+{lang==='pt' ? <Header/> : <header class="school-intl-header"><a href={to('home')}>HARUM NOIR</a><nav aria-label={c.language}><a href={base+'escola/'}>PT</a><a href={toLang('en')}>EN</a><a href={toLang('es')}>ES</a></nav></header>}
 {lang!=='pt' && <nav class="mobile-dock school-intl-dock" aria-label={c.language}>
   <a href={to('home')}><b>⌂</b>{c.home}</a>
   <a href={to('school')} aria-current="page"><b>✎</b>{lang==='en'?'School':'Escuela'}</a>
@@ -121,7 +121,7 @@ const alternates=[{hreflang:'pt-BR',href:'escola/'},{hreflang:'en',href:'en/scho
     </div>
   </section>
 </main>
-<footer class="school-footer"><span>{c.footer}</span><nav><a href={to('home')}>{c.home}</a><a href={to('pathways')}>{c.routes}</a><a href={base+'escola/'}>PT</a><a href={toLang('en')}>EN · Google ↗</a><a href={toLang('es')}>ES · Google ↗</a></nav></footer>
+<footer class="school-footer"><span>{c.footer}</span><nav><a href={to('home')}>{c.home}</a><a href={to('pathways')}>{c.routes}</a><a href={base+'escola/'}>PT</a><a href={toLang('en')}>EN</a><a href={toLang('es')}>ES</a></nav></footer>
 <script>
 const storageKey='harum_noir_school_v1';
 const checkboxes=[...document.querySelectorAll('[data-school-task]')];
