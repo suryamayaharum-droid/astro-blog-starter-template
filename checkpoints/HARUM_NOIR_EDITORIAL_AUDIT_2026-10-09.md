@@ -18,7 +18,7 @@
 - [ ] Revisar outras rotas de História da Arte e conferir links institucionais individuais.
 - [x] Conferir paridade dos hubs EN/ES de História, Museus e Referências; destinos em PT estão rotulados.
 - [ ] Continuar a paridade EN/ES nas demais páginas prioritárias.
-- [ ] Fechar a auditoria móvel pós-release em painel próprio.
+- [x] Fechar auditoria móvel pós-release: execução #38002723488 passou em 9 out 2026.
 
 ## Revisão do primeiro percurso
 
@@ -55,7 +55,7 @@ Não encontrei texto “Lorem ipsum” nem páginas de conteúdo com placeholder
 
 ## Próximo lote
 
-Começar pelas fichas de artistas: conferir fonte primária, status de vídeo e correspondência entre promessa e destino. Depois revisar bancos/acervos e rotas de História da Arte; fechar com paridade EN/ES.
+Conferir fontes primárias e títulos das fichas de artistas, revisar as rotas restantes de História da Arte e completar a paridade EN/ES. Bancos/acervos e hubs EN/ES de História, Museus e Referências já foram revisados.
 
 
 ## Atlas de Referências · revisão do molde e inventário de fontes
@@ -78,3 +78,8 @@ As rotas `/bancos/` e `/bancos/[id]/` foram conferidas com o catálogo de instit
 ## Hubs internacionais · História, Museus e Referências
 
 Comparei as versões EN/ES dos três hubs. A estrutura de cartões e respostas mantém a mesma intenção editorial; caminhos para páginas que só existem em português informam “(PT)” no próprio rótulo. As páginas internacionais funcionam como portas explicativas, sem prometer tradução completa da busca viva ou do Atlas de artistas. Revisão concluída para estas seis rotas; outras páginas localizadas continuam na fila.
+
+
+## Integração e validação · PR #90
+
+PR [#90](https://github.com/suryamayaharum-droid/astro-blog-starter-template/pull/90) integrada em `12eb3c6` após CI e auditoria responsiva verdes. O PR #89 foi encerrado como substituído porque partia de uma base divergente. A revisão editorial continua em 33/74 rotas; a integração deste lote não marca a auditoria página a página como concluída.
