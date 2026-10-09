@@ -1,0 +1,209 @@
+name: HARUM NOIR PR Responsive Audit
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: harum-noir-responsive-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  responsive-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install site
+        run: npm ci
+
+      - name: Build branch
+        run: npm run build
+
+      - name: Prepare local GitHub Pages mount
+        run: |
+          mkdir -p preview-root/astro-blog-starter-template
+          cp -a dist/. preview-root/astro-blog-starter-template/
+
+      - name: Start local static server
+        run: |
+          python3 -m http.server 4173 --directory preview-root > /tmp/harum-preview.log 2>&1 &
+          echo $! > /tmp/harum-preview.pid
+          for i in {1..30}; do
+            if curl -fsS http://127.0.0.1:4173/astro-blog-starter-template/ >/dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/harum-preview.log
+          exit 1
+
+      - name: Install Playwright Chromium
+        run: |
+          npm install playwright@1.50.1 --no-save
+          npx playwright install --with-deps chromium
+
+      - name: Audit current PR routes
+        run: |
+          mkdir -p responsive-audit
+          node <<'NODE'
+          const fs = require('fs');
+          const path = require('path');
+          const { chromium } = require('playwright');
+
+          const base = 'http://127.0.0.1:4173/astro-blog-starter-template';
+          const routes = [
+            ['home','/'],
+            ['school','/escola/'],
+            ['hands','/maos/'],
+            ['atelier','/atelier/'],
+            ['notebooks','/cadernos/'],
+            ['museums','/museus/'],
+            ['paths','/percursos/'],
+            ['references','/referencias/']
+          ];
+          const viewports = [
+            {name:'320',width:320,height:700,mobile:true,expectDock:true},
+            {name:'390',width:390,height:844,mobile:true,expectDock:true},
+            {name:'761',width:761,height:900,mobile:false,expectDock:false},
+            {name:'1024',width:1024,height:900,mobile:false,expectDock:false}
+          ];
+
+          (async () => {
+            const browser = await chromium.launch({headless:true});
+            const rows = [];
+            const failures = [];
+
+            for (const vp of viewports) {
+              const context = await browser.newContext({
+                viewport:{width:vp.width,height:vp.height},
+                isMobile:vp.mobile,
+                hasTouch:vp.mobile,
+                locale:'pt-BR',
+                reducedMotion:'reduce'
+              });
+              const page = await context.newPage();
+
+              for (const [name, route] of routes) {
+                const badResources = [];
+                const consoleErrors = [];
+                page.removeAllListeners('response');
+                page.removeAllListeners('console');
+                page.on('response', response => {
+                  if (response.status() >= 400) {
+                    try {
+                      if (new URL(response.url()).origin === new URL(base).origin) {
+                        badResources.push({status:response.status(),url:response.url()});
+                      }
+                    } catch {}
+                  }
+                });
+                page.on('console', msg => {
+                  if (msg.type() === 'error') consoleErrors.push(msg.text());
+                });
+
+                const url = base + route;
+                const response = await page.goto(url,{waitUntil:'networkidle',timeout:45000});
+                await page.waitForTimeout(150);
+
+                const info = await page.evaluate(({expectDock,mobile}) => {
+                  const root = document.documentElement;
+                  const dock = document.querySelector('.mobile-dock');
+                  const dockVisible = !!dock && getComputedStyle(dock).display !== 'none';
+                  const dockTargets = dock ? [...dock.querySelectorAll('a,button')].map(el => {
+                    const r = el.getBoundingClientRect();
+                    return {text:(el.textContent||el.getAttribute('aria-label')||'').trim().slice(0,60),w:r.width,h:r.height};
+                  }) : [];
+                  const brokenImages = [...document.images]
+                    .filter(img => img.complete && img.naturalWidth === 0)
+                    .map(img => img.currentSrc || img.src);
+                  return {
+                    title:document.title,
+                    lang:document.documentElement.lang,
+                    textLength:(document.body?.innerText||'').trim().length,
+                    documentWidth:root.scrollWidth,
+                    viewportWidth:window.innerWidth,
+                    overflow:root.scrollWidth > window.innerWidth + 1,
+                    dockVisible,
+                    dockTargets,
+                    brokenImages,
+                    mobile,
+                    expectDock
+                  };
+                }, {expectDock:vp.expectDock,mobile:vp.mobile});
+
+                const row = {
+                  viewport:vp.name,route:name,url,
+                  status:response?.status() ?? null,
+                  ...info,badResources,consoleErrors
+                };
+                rows.push(row);
+
+                if (!response || response.status() >= 400) failures.push({...row,reason:'http'});
+                if (info.overflow) failures.push({...row,reason:'horizontal-overflow'});
+                if (info.dockVisible !== vp.expectDock) failures.push({...row,reason:'mobile-dock-state'});
+                if (vp.mobile && info.dockTargets.some(x => x.h < 44 || x.w < 44)) failures.push({...row,reason:'dock-touch-target'});
+                if (info.brokenImages.length) failures.push({...row,reason:'broken-images'});
+                if (badResources.length) failures.push({...row,reason:'same-origin-resource'});
+                if (!info.title || info.textLength < 80) failures.push({...row,reason:'thin-or-untitled'});
+                if (consoleErrors.length) failures.push({...row,reason:'console-error'});
+
+                const dir = path.join('responsive-audit',vp.name);
+                fs.mkdirSync(dir,{recursive:true});
+                await page.screenshot({path:path.join(dir,name+'.png'),fullPage:false});
+              }
+
+              if (!vp.mobile) {
+                await page.goto(base + '/',{waitUntil:'networkidle',timeout:45000});
+                let focusMoves = 0;
+                for (let i=0;i<8;i++) {
+                  await page.keyboard.press('Tab');
+                  const ok = await page.evaluate(() => {
+                    const el = document.activeElement;
+                    if (!el || el === document.body || el === document.documentElement) return false;
+                    const r = el.getBoundingClientRect();
+                    return r.width > 0 && r.height > 0;
+                  });
+                  if (ok) focusMoves++;
+                }
+                rows.push({viewport:vp.name,route:'keyboard-focus',focusMoves});
+                if (focusMoves < 4) failures.push({viewport:vp.name,route:'keyboard-focus',reason:'focus-sequence-too-short',focusMoves});
+              }
+
+              await context.close();
+            }
+
+            fs.writeFileSync('responsive-audit/metrics.json',JSON.stringify(rows,null,2));
+            fs.writeFileSync('responsive-audit/failures.json',JSON.stringify(failures,null,2));
+            console.log('Responsive audit rows:',rows.length);
+            console.log('Failures:',failures.length);
+            if (failures.length) {
+              console.error('HARUM_RESPONSIVE_FAILURES');
+              console.error(JSON.stringify(failures,null,2));
+              await browser.close();
+              process.exit(1);
+            }
+            await browser.close();
+          })().catch(err => { console.error(err); process.exit(1); });
+          NODE
+
+      - name: Upload responsive evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: harum-noir-pr-responsive-audit
+          path: responsive-audit
+          if-no-files-found: error
+          retention-days: 7
