@@ -67,6 +67,16 @@ const museumsSchema={
   </nav>
 
   <section class="section" id="radar-acervo"><div class="section-head"><div><div class="eyebrow">RADAR · ACERVO ABERTO</div><h2>Obras novas para estudar.</h2></div><p>Entradas recentes com direitos claros e um problema de desenho definido.</p></div><div class="museum-highlights__items">{radarAcervo.map(item=><a class="museum-highlight" href={item.url} target="_blank" rel="noreferrer"><small>{item.rights}</small><strong>{item.creator} · {item.title}</strong><span>{item.principle} →</span></a>)}</div><div class="actions" style="margin-top:18px"><a class="btn gold" href={base+'radar'}>Abrir Radar completo →</a></div></section>
+  <section class="section museum-study-loop" id="estudo-guiado">
+    <div class="section-head"><div><div class="eyebrow">ESTUDO GUIADO · 20 MIN</div><h2>Do acervo para o papel.</h2></div><p>Uma busca só vira aprendizagem quando termina em uma decisão desenhada.</p></div>
+    <div class="path-index">
+      <div class="path-index-card"><span>01 · 3 MIN</span><strong>Escolha uma pergunta</strong><small>Gesto, estrutura, luz, borda ou composição. Uma por vez.</small></div>
+      <div class="path-index-card"><span>02 · 5 MIN</span><strong>Leia a obra</strong><small>Abra a ficha institucional e localize autoria, técnica, contexto e direitos.</small></div>
+      <div class="path-index-card"><span>03 · 10 MIN</span><strong>Faça uma tradução</strong><small>Sem copiar a obra inteira: teste o princípio em outro assunto, pose ou composição.</small></div>
+      <div class="path-index-card"><span>04 · 2 MIN</span><strong>Registre a diferença</strong><small>Anote o que você percebeu antes e o que passou a perceber depois do estudo.</small></div>
+    </div>
+    <div class="actions" style="margin-top:18px"><a class="btn gold" href="#busca-viva">Escolher uma obra →</a><a class="btn" href={base+'cadernos'}>Registrar no Caderno →</a></div>
+  </section>
   <section class="section museum-intro">
     <div class="panel">
       <div class="eyebrow">REDE ABERTA</div>
@@ -148,140 +158,3 @@ const API_TIMEOUT_MS=12000;
 let requestSequence=0;
 let requestControllers=[];
 const setBadge=(id,state)=>{
-  const b=badges[id];
-  if(!b)return;
-  b.className='provider '+state;
-  b.dataset.state=state;
-  b.textContent=providerNames[id]+' · '+providerStates[state];
-};
-const safeHttpUrl=(value)=>{
-  try {
-    const url=new URL(String(value||''));
-    return url.protocol==='https:' ? url.href : '';
-  } catch {
-    return '';
-  }
-};
-const fallbackImage=new URL('noir/visual-atlas/museum-gallery.webp',document.querySelector('.brand-lockup')?.href||location.origin).href;
-async function fetchJson(url,parentSignal){
-  const controller=new AbortController();
-  const relayAbort=()=>controller.abort();
-  if(parentSignal?.aborted)controller.abort();
-  else parentSignal?.addEventListener('abort',relayAbort,{once:true});
-  const timer=setTimeout(()=>controller.abort(),API_TIMEOUT_MS);
-  try {
-    const response=await fetch(url,{signal:controller.signal,credentials:'omit',headers:{Accept:'application/json'}});
-    if(!response.ok)throw new Error('HTTP '+response.status);
-    return await response.json();
-  } finally {
-    clearTimeout(timer);
-    parentSignal?.removeEventListener('abort',relayAbort);
-  }
-}
-async function met(q,signal){
-  const url='https://collectionapi.metmuseum.org/public/collection/v1.1/search?q='+encodeURIComponent(q)+'&hasImages=true&isPublicDomain=true&offset=0&limit=8';
-  const search=await fetchJson(url,signal);
-  if(!Array.isArray(search.objectIDs))throw new Error('MET response unavailable');
-  const ids=search.objectIDs.slice(0,5);
-  if(!ids.length)return [];
-  const details=await Promise.allSettled(ids.map(async id=>{
-    const item=await fetchJson('https://collectionapi.metmuseum.org/public/collection/v1/objects/'+encodeURIComponent(id),signal);
-    if(!item.isPublicDomain||!(item.primaryImageSmall||item.primaryImage))return null;
-    return {museum:'The Met',title:item.title,artist:item.artistDisplayName||item.culture||'Autor não identificado',date:item.objectDate||'',image:item.primaryImageSmall||item.primaryImage,url:item.objectURL,rights:'Public Domain · Open Access'};
-  }));
-  if(details.every(result=>result.status==='rejected'))throw new Error('MET object records unavailable');
-  return details.flatMap(result=>result.status==='fulfilled'&&result.value?[result.value]:[]);
-}
-async function aic(q,signal){
-  const url='https://api.artic.edu/api/v1/artworks/search?q='+encodeURIComponent(q)+'&query%5Bterm%5D%5Bis_public_domain%5D=true&limit=6&fields=id,title,artist_title,date_display,image_id,is_public_domain';
-  const result=await fetchJson(url,signal);
-  if(!Array.isArray(result.data))throw new Error('AIC response unavailable');
-  const iiif=safeHttpUrl(result.config?.iiif_url)||'https://www.artic.edu/iiif/2';
-  return result.data.filter(item=>item.is_public_domain&&item.image_id).map(item=>({museum:'Art Institute of Chicago',title:item.title,artist:item.artist_title||'Autor não identificado',date:item.date_display||'',image:iiif+'/'+encodeURIComponent(item.image_id)+'/full/843,/0/default.jpg',url:'https://www.artic.edu/artworks/'+encodeURIComponent(item.id),rights:'Public Domain · IIIF'}));
-}
-async function cma(q,signal){
-  const url='https://openaccess-api.clevelandart.org/api/artworks/?q='+encodeURIComponent(q)+'&cc0&has_image=1&limit=6';
-  const result=await fetchJson(url,signal);
-  if(!Array.isArray(result.data))throw new Error('Cleveland response unavailable');
-  return result.data.filter(item=>item.share_license_status==='CC0'&&item.images?.web?.url).map(item=>({museum:'Cleveland Museum of Art',title:item.title,artist:item.creators?.[0]?.description||'Autor não identificado',date:item.creation_date||'',image:item.images.web.url,url:item.url,rights:'CC0 · Open Access'}));
-}
-function card(work){
-  const title=String(work.title||'').trim();
-  const museum=String(work.museum||'').trim();
-  const artist=String(work.artist||'Autor não identificado').trim();
-  const url=safeHttpUrl(work.url);
-  if(!title||!url)return '';
-  const image=safeHttpUrl(work.image);
-  const rights=String(work.rights||'Direitos conforme ficha institucional');
-  const mediaClass=image?'museum-work-media':'museum-work-media image-missing';
-  const mediaAttrs=image?'':' role="img" aria-label="Capa ilustrada de apoio; não representa a obra pesquisada."';
-  const imageMarkup=image?'<img class="museum-work-image" src="'+esc(image)+'" alt="'+esc(title+' — '+artist+', '+museum)+'" loading="lazy" decoding="async">':'';
-  return '<a class="museum-work" role="listitem" href="'+esc(url)+'" target="_blank" rel="noopener noreferrer"><div class="'+mediaClass+'"'+mediaAttrs+'><img class="museum-work-fallback" src="'+esc(fallbackImage)+'" alt="" aria-hidden="true">'+imageMarkup+'</div><div class="museum-work-body"><span>'+esc(museum)+'</span><h3>'+esc(title)+'</h3><p>'+esc(artist)+(work.date?' · '+esc(work.date):'')+'</p><small>'+esc(rights)+'</small></div></a>';
-}
-function attachImageFallbacks(){
-  out.querySelectorAll('.museum-work-image').forEach(image=>{
-    image.addEventListener('error',function(){
-      const media=this.closest('.museum-work-media');
-      if(media){
-        media.classList.add('image-missing');
-        media.setAttribute('role','img');
-        media.setAttribute('aria-label','Capa ilustrada de apoio; não representa a obra pesquisada.');
-      }
-      this.remove();
-    },{once:true});
-  });
-}
-async function run(query){
-  const runId=++requestSequence;
-  requestControllers.forEach(controller=>controller.abort());
-  requestControllers=[];
-  const q=String(query??input.value??'').trim();
-  if(q.length<2){
-    out.innerHTML='';
-    out.setAttribute('aria-busy','false');
-    providerIds.forEach(id=>setBadge(id,'ready'));
-    msg.textContent='Digite pelo menos 2 caracteres.';
-    return;
-  }
-  const controllers=providerIds.map(()=>new AbortController());
-  requestControllers=controllers;
-  out.innerHTML='';
-  out.setAttribute('aria-busy','true');
-  providerIds.forEach(id=>setBadge(id,'loading'));
-  msg.textContent='Consultando os três acervos abertos…';
-  const settled=await Promise.allSettled([met(q,controllers[0].signal),aic(q,controllers[1].signal),cma(q,controllers[2].signal)]);
-  if(runId!==requestSequence)return;
-  let works=[];
-  const available=[];
-  const unavailable=[];
-  settled.forEach((result,index)=>{
-    const id=providerIds[index];
-    if(result.status==='fulfilled'){
-      setBadge(id,'ok');
-      available.push(providerNames[id]);
-      works=works.concat(result.value);
-    }else{
-      setBadge(id,'down');
-      unavailable.push(providerNames[id]);
-    }
-  });
-  works=works.filter(work=>safeHttpUrl(work.url)&&String(work.title||'').trim());
-  const cards=works.map(card).filter(Boolean);
-  out.innerHTML=cards.join('');
-  attachImageFallbacks();
-  if(!available.length){
-    msg.textContent='Os três acervos estão indisponíveis agora. Tente novamente em instantes.';
-  }else if(!cards.length){
-    msg.textContent='Nenhuma ficha aberta utilizável foi encontrada nas fontes disponíveis'+(unavailable.length?'; fonte indisponível: '+unavailable.join(', '):'')+'.';
-  }else{
-    msg.textContent=cards.length+' resultados abertos reunidos de '+available.join(', ')+(unavailable.length?'. Indisponível nesta busca: '+unavailable.join(', ')+'.':'.');
-  }
-  out.setAttribute('aria-busy','false');
-  if(runId===requestSequence)requestControllers=[];
-}
-form?.addEventListener('submit',event=>{event.preventDefault();void run(input.value)});
-document.querySelectorAll('[data-q]').forEach(button=>button.addEventListener('click',()=>{input.value=button.dataset.q;void run(button.dataset.q)}));
-const incoming=new URLSearchParams(location.search).get('q');
-if(incoming&&incoming.trim().length>=2){input.value=incoming;void run(incoming)}
-</script>
-<style>.museum-card{overflow:hidden}.museum-card-visual{position:relative;aspect-ratio:16/9;margin:-1px -1px 18px;overflow:hidden;background:#111}.museum-card-visual img{width:100%;height:100%;object-fit:cover;filter:saturate(.38) contrast(1.08);transition:transform .28s ease,filter .28s ease}.museum-card:hover .museum-card-visual img{transform:scale(1.03);filter:saturate(.62) contrast(1.08)}.museum-card-visual .museum-mode{position:absolute;top:11px;left:11px;background:rgba(8,8,8,.78);backdrop-filter:blur(6px)}.museum-card-source{position:absolute;left:11px;bottom:10px;padding:5px 8px;border-radius:4px;background:rgba(8,8,8,.76);font-size:.64rem;color:var(--paper-2)}@media(prefers-reduced-motion:reduce){.museum-card-visual img{transition:none}.museum-card:hover .museum-card-visual img{transform:none}}</style>\n</body></html>
