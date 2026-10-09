@@ -7,7 +7,7 @@
     "es"
   ],
   "origin": "Salvador, Bahia, Brazil",
-  "description": "Escola aberta de desenho e ecossistema editorial para observar, estruturar, organizar referências e traduzir ideias em prática.",
+  "description": "Escola aberta de desenho e ateliê editorial para observar, estruturar, organizar referências e traduzir ideias em prática.",
   "entities": [
     {
       "name": "HARUM NOIR",
@@ -54,7 +54,12 @@
     "about": "/sobre/",
     "school": "/escola/",
     "englishSchool": "/en/school/",
-    "spanishSchool": "/es/escuela/"
+    "spanishSchool": "/es/escuela/",
+    "search": "/buscar/",
+    "searchLegacy": "/busca/",
+    "observationRituals": "/rituais-de-olhar/",
+    "charcoalRitual": "/ritual-do-carvao/",
+    "students": "/alunos/"
   },
   "interactiveLanguages": [
     "pt",
@@ -141,5 +146,13 @@
       "to": "Tattoo Studio 23",
       "relation": "research and editorial context; not the executed-tattoo portfolio"
     }
-  ]
+  ],
+  "productStatus": {
+    "charcoalRitual": {
+      "state": "prelaunch",
+      "purchaseOpen": false,
+      "freeSample": "/ritual-do-carvao/#amostra",
+      "studentAccess": "/alunos/"
+    }
+  }
 }
