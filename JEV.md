@@ -46,5 +46,5 @@ This pointer is intentionally small. The canonical HIVE carries the full tree, b
 
 - **TENHO:** PR #90 integrada no commit `12eb3c6`; o PR #89 foi encerrado como versão substituída. Ver `checkpoints/HARUM_NOIR_EDITORIAL_AUDIT_2026-10-09.md`.
 - **FAZENDO:** revisão manual de 34/74 arquivos de rota (46%). O Atlas gera 101 fichas e 208 referências; 15 links vidIQ em nove fichas agora aparecem explicitamente como análise de terceiros e destinos repetidos foram removidos do perfil.
-- **PRONTO:** CI e auditoria responsiva do PR #90 passaram. A auditoria móvel pós-deploy #38002723488 passou; nova auditoria após o deploy editorial #90 (#38003813788) está em execução.
+- **PRONTO:** CI e auditoria responsiva do PR #90 passaram. A auditoria móvel pós-deploy #38002723488 passou. A nova execução após PR #90 (#38003813788) também passou no retry; dois 503 temporários de imagem na tentativa inicial desapareceram após o deploy assentar.
 - **PASSO:** conferir fontes primárias e títulos de artista em lotes; revisar as rotas restantes de História da Arte e completar paridade EN/ES.
