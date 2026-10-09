@@ -49,5 +49,9 @@ export const radarHarumverso: RadarEntry[] = [
 {date:'2026-10-06',title:'Une saisie (A Seizure)',creator:'Jean-Louis Forain',kind:'Obra / narrativa corporal',source:'National Gallery of Art',url:'https://www.nga.gov/artworks/6955-une-saisie-seizure',rights:'Public Domain / Open Access',principle:'emoção pela postura + alternância silenciosa/densa',destination:'Editorial Radar → Figura narrativa → tensão / interior / duas figuras',note:'Posturas contrastantes e interior econômico criam tensão narrativa sem depender de descrição excessiva.',lane:'outlier'}
 ];
 
+export const radarSlug=(item:Pick<RadarEntry,'date'|'title'>)=>{
+  const title=item.title.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+  return item.date+'-'+title;
+};
 export const latestRadar=(count=8)=>radarHarumverso.slice(0,count);
 export const radarByLane=(lane:RadarEntry['lane'])=>radarHarumverso.filter(item=>item.lane===lane);
