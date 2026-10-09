@@ -54,10 +54,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 18
     steps:
-      - name: Checkout PR head
+      - name: Checkout integrated PR state
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 2
 
       - name: Node 22
