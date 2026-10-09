@@ -17,7 +17,9 @@ permissions:
 
 concurrency:
   group: harum-noir-responsive-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: true
+  # Preserve a product-surface audit already in flight. A later docs-only
+  # synchronization may skip its own heavy steps and must not erase that evidence.
+  cancel-in-progress: false
 
 jobs:
   responsive-audit:
