@@ -81,7 +81,14 @@ const referenceSchema={
 {referenceCollections.map(col=>{
  const items=col.ranks.map(byRank).filter(Boolean);
  return <section class="stream-section" id={col.id}>
-  <div class="stream-head"><div><span class="eyebrow">COLEÇÃO</span><h2>{col.title}</h2></div><p>{col.subtitle}</p></div>
+  <div class={col.id==='silencio-processo'?'stream-head collection-head-hands':'stream-head'}>
+  <div><span class="eyebrow">COLEÇÃO</span><h2>{col.title}</h2></div>
+  {col.id==='silencio-processo'&&<figure class="collection-hands-art">
+   <img src={base+'noir/visual-atlas/harum-noir-hands-study-v2.webp'} alt="Estudo de uma mão em carvão e grafite sobre papel." loading="lazy" decoding="async" width="640" height="640"/>
+   <figcaption>Estudo editorial HARUM NOIR, criado com assistência de IA.</figcaption>
+  </figure>}
+  <p>{col.subtitle}</p>
+ </div>
   <div class="stream-rail">
    {items.map(a=><a class="stream-card" href={base+'referencias/'+a!.slug}>
     <div class="stream-card-media">
@@ -159,11 +166,18 @@ const referenceSchema={
  .reference-composition .reference-card{border-radius:4px;text-decoration:none;color:inherit}
  .reference-composition .reference-body h2{font-size:1.5rem;line-height:1.2;overflow-wrap:anywhere}
  .reference-composition .reference-body p{min-height:0;margin-top:14px}
+ .reference-composition .collection-head-hands{display:grid;grid-template-columns:minmax(0,1fr) 120px minmax(0,490px);align-items:center;gap:18px}
+ .reference-composition .collection-hands-art{width:120px;display:grid;gap:5px;justify-items:center;margin:0}
+ .reference-composition .collection-hands-art img{display:block;width:100%;aspect-ratio:1;object-fit:cover;border:1px solid var(--line);border-radius:4px}
+ .reference-composition .collection-hands-art figcaption{font-size:.58rem;line-height:1.4;text-align:center;color:var(--muted)}
  @media(max-width:760px){
   .reference-composition .stream-hero-copy .journey-next{font-size:.78rem;line-height:1.55}
   .collection-index{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin;padding-bottom:14px}
   .collection-index a{flex-shrink:0}
   .reference-composition .stream-section{padding-top:26px}
+  .reference-composition .collection-head-hands{grid-template-columns:minmax(0,1fr) 82px;align-items:start;gap:8px}
+  .reference-composition .collection-head-hands .collection-hands-art{grid-column:2;grid-row:1/3;width:82px}
+  .reference-composition .collection-head-hands>p{grid-column:1;grid-row:2;margin-top:0}
   .reference-composition .stream-card-body h3{font-size:1.12rem}
  }
 </style>
