@@ -4,13 +4,13 @@
 
 ## Progresso
 
-`████░░░░░░ 23% · 17/74 arquivos de rota revisados manualmente`
+`███░░░░░░░ 31% · 23/74 arquivos de rota revisados manualmente`
 
 - [x] Varredura estrutural das 74 rotas Astro: títulos, presença de imagens, quantidade e rótulos de ações, marcadores de conteúdo provisório.
 - [x] Conferir o caminho de entrada: home → escola → primeira prática → museus.
 - [x] Revisar as portas centrais: Ateliê, busca, Museus, Referências, Biblioteca, Percursos e Sobre.
 - [x] Corrigir os cinco fallbacks de redirecionamento que mostravam apenas “Continuar”.
-- [ ] Revisar os cinco Cadernos e seus destinos.
+- [x] Revisar os cinco Cadernos e seus destinos; acrescentar roteiros com tempo, saída e conferência em Olhar e Vestígio.
 - [ ] Conferir fichas de artistas e promessas dos links externos.
 - [ ] Revisar páginas de bancos/acervos e as rotas de História da Arte.
 - [ ] Conferir paridade editorial EN/ES nas páginas prioritárias.
@@ -28,11 +28,12 @@
 | Referências | Orienta comparar duas ou três fontes, escrever a relação e sair com uma pergunta própria. A capa de IA é identificada como editorial. | Manter; revisar fichas individuais e links de vídeo depois. |
 | Biblioteca e Percursos | As ações retornam a fontes, Cadernos e prática. Os fragmentos `#carvao` e `#figura` da home correspondem a IDs criados pelos dados dos percursos. | Manter; conferir cada destino na varredura seguinte. |
 | Sobre | Diferencia Arte Harum, HARUM NOIR e Studio 23 e explica como pesquisa volta à prática. | Manter. |
+| Cadernos | O índice e os cinco cadernos têm perguntas e práticas próprias; Presença, Gesto e Memória já descrevem encontros com ações específicas. Olhar e Vestígio não apresentavam um tempo curto nem uma saída resumida no início. | Acrescentados roteiros de 20 e 15 minutos, respectivamente, com passos, resultado e pergunta de conferência. Manter o restante do texto, que já explica o fundamento de cada caderno. |
 | Redirects: `/about`, `/artists`, `/classics`, `/newsletter`, `/vault` | O redirecionamento automático estava correto, mas o fallback era sempre “Continuar” com o mesmo título genérico. | Corrigido neste lote: destino explicado, CTA específico, título contextual e apresentação acessível coerente com a marca. |
 
 ## Correção aplicada neste lote
 
-Foi criado `src/components/LegacyRedirect.astro`. As cinco rotas antigas continuam direcionando às páginas canônicas, mas agora oferecem uma tela de contingência identificável caso o redirecionamento automático não aconteça:
+A revisão também deixou uma melhoria didática nos cadernos Olhar e Vestígio: cada um agora abre com um roteiro curto, duração, saída e pergunta de conferência.\n\nFoi criado `src/components/LegacyRedirect.astro`. As cinco rotas antigas continuam direcionando às páginas canônicas, mas agora oferecem uma tela de contingência identificável caso o redirecionamento automático não aconteça:
 
 - `/about/` → Sobre o HARUM NOIR;
 - `/artists/` → Referências;
