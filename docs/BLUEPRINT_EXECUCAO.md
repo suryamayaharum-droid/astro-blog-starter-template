@@ -102,3 +102,42 @@ Após cada ataque:
 5. nunca declarar publicação sem evidência de deploy.
 
 Última evidência: CI HARUM NOIR run #481 concluído com sucesso após a correção de Museus.
+
+
+## TECNOLOGIA DO PAINEL — V2
+
+O painel deixou de ser apenas uma barra manual. O estado estruturado vive em `systems/harum_execution_panel.json` e segue quatro princípios pesquisados:
+
+- **Kanban:** visualizar trabalho, limitar WIP e tornar políticas explícitas.
+- **DORA:** mudanças pequenas, medir fluxo + estabilidade e atacar o maior gargalo.
+- **GitHub Projects:** estados e campos estruturados em vez de progresso enterrado em texto.
+- **ADR/MADR:** decisões duráveis ficam explícitas; histórico não é apagado silenciosamente.
+
+### Máquina de estados
+
+`QUEUED → READY → ATTACKING → VERIFYING → DONE`
+
+Saídas excepcionais: `BLOCKED` e `STALE`.
+
+### WIP
+
+- ataque principal: **máximo 1**;
+- investigações de apoio: **máximo 2**;
+- nenhum novo ataque principal enquanto o atual não entra em VERIFYING, DONE ou BLOCKED.
+
+### Progresso confiável
+
+A porcentagem é apenas orientação visual. O estado real vem de **evidência fresca**:
+`branch/CI ao vivo > teste recente > leitura do código > JEV/HIVE > checkpoint histórico > estimativa`.
+
+Se a evidência foi produzida para um head anterior e o código mudou na mesma superfície, o item volta para **STALE** até ser revalidado.
+
+### Próximo alvo
+
+O próximo ataque deve ser o item READY de maior impacto que:
+1. não esteja bloqueado por dependência;
+2. caiba em uma mudança pequena e reversível;
+3. tenha critério de conclusão verificável;
+4. reduza um gargalo real do produto.
+
+Estado estruturado atual: `systems/harum_execution_panel.json`.
