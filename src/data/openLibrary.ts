@@ -23,6 +23,26 @@ export type OpenLibraryCollection = {
 
 export const openLibraryCollections: OpenLibraryCollection[] = [
   {
+    id: "arquivo-para-o-caderno",
+    theme: "PROCESSO",
+    kicker: "ARQUIVO → PRÁTICA",
+    title: "Do arquivo ao caderno",
+    thesis: "Um acervo só se torna repertório quando a observação vira uma sequência de decisões e desenhos próprios.",
+    rule: "A fonte permanece identificada; o exercício transforma o que foi observado sem copiar a assinatura do artista.",
+    destination: "Escola · sketchbooks · desenho de observação",
+    practice: "Escolha cinco referências de um arquivo institucional. Registre origem e direitos. Faça cinco estudos de dez minutos, depois um sexto desenho de memória combinando apenas os princípios observados.",
+    nextHref: "sketchbooks",
+    nextLabel: "Explorar cadernos históricos",
+    sources: [
+      {creator:"Stefano da Verona",title:"Estudos de figuras · folha de caderno de modelos",source:"The Metropolitan Museum of Art",url:"https://www.metmuseum.org/art/collection",observe:"Compare posições, construção de figura e a passagem de estudos isolados para um vocabulário reutilizável. Pesquise o artista no catálogo.",rights:"Consultar ficha e marca Public Domain antes de reutilizar imagem"},
+      {creator:"Charles George Lewis",title:"Seville, Vigo, Bay of Biscay · sketchbook (1872)",source:"Art Institute of Chicago",url:"https://www.artic.edu/collection",observe:"Estude o caderno como memória de viagem, enquadramento e sequência; localize o objeto pelo título e confira seu manifesto IIIF.",rights:"Consultar ficha e status de domínio público da mídia"},
+      {creator:"Royal Drawing School",title:"Drawing from an Archive",source:"Royal Drawing School · Living Library",url:"https://royaldrawingschool.org/living-library/",observe:"Escolha cinco fontes, desenhe a partir delas e encontre uma relação entre as cinco imagens; consulte o exercício na biblioteca da escola.",rights:"Material educacional público para consulta; mídia não presumida livre"},
+      {creator:"Royal Drawing School",title:"Mark-making and Self Portraits",source:"Royal Drawing School · Living Library",url:"https://royaldrawingschool.org/living-library/",observe:"Crie um dicionário de marcas com carvão, borracha, pressão e velocidade antes de aplicá-lo ao autorretrato.",rights:"Material educacional público para consulta; mídia não presumida livre"},
+      {creator:"Royal Drawing School",title:"Hands and Flowers",source:"Royal Drawing School · Living Library",url:"https://royaldrawingschool.org/living-library/",observe:"Una gesto e botânica: três estudos rápidos de mãos e um desenho prolongado de uma mão segurando flor.",rights:"Material educacional público para consulta; mídia não presumida livre"}
+    ]
+  },
+
+  {
     id: "materia-como-linguagem",
     theme: "MATÉRIA",
     kicker: "MATERIAIS & PROCESSOS",
