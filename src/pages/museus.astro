@@ -2,6 +2,7 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import EcosystemRail from '../components/EcosystemRail.astro';
 import { museumCatalog } from '../data/museums';
 import { radarByLane } from '../data/radarHarumverso';
 import '../styles/museums.css';
@@ -142,6 +143,7 @@ const museumsSchema={
       <p><a href={base+'historia-da-arte'}>Aplicar isso no Atlas Histórico →</a></p>
     </div></div>
   </section>
+  <EcosystemRail current="museus" limit={4} title="Continue seu estudo" kicker="DEPOIS DO ACERVO" />
 </main>
 <Footer/>
 <script>
