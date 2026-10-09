@@ -12,6 +12,26 @@ const alternateHref = (href:string) => {
   return resolved === siteRoot.href ? canonicalRoot : resolved;
 };
 const { title, description, image = `${base}noir/visual-atlas/atelier-desk.webp`, locale = 'pt-BR', alternates = [] } = Astro.props;
+const wallpaperRoutes: Record<string,string> = {
+  '/':'home','/escola':'escola','/atlas':'atlas','/percursos':'percursos',
+  '/cadernos':'cadernos','/cadernos/gesto':'cadernos-gesto','/cadernos/memoria':'cadernos-memoria',
+  '/cadernos/olhar':'cadernos-olhar','/cadernos/presenca':'cadernos-presenca','/cadernos/vestigio':'cadernos-vestigio',
+  '/atelier':'atelier','/maos':'maos','/biblioteca':'biblioteca','/bancos':'bancos','/museus':'museus',
+  '/colecoes':'colecoes','/colecoes/estudo-tonal':'colecoes-estudo-tonal','/colecoes/gesto-figura':'colecoes-gesto-figura',
+  '/referencias':'referencias','/radar':'radar','/outliers':'outliers','/historia-da-arte':'historia-da-arte',
+  '/arquivo':'arquivo','/temporadas':'temporadas','/noir':'noir','/sobre':'sobre','/carta':'carta',
+  '/buscar':'buscar','/roubar-como-artista':'roubar-como-artista','/composicoes-autorais':'composicoes-autorais',
+  '/cultura-visual-brasileira':'cultura-visual-brasileira','/tatuagem-salvador':'tatuagem-salvador',
+  '/vault':'vault','/artists':'artists','/about':'about','/classics':'classics','/desenho':'desenho','/newsletter':'newsletter'
+};
+const basePath = base !== '/' && base.endsWith('/') ? base.slice(0, -1) : '';
+const pathname = Astro.url.pathname;
+const unbasedPath = basePath && (pathname === basePath || pathname.startsWith(basePath + '/')) ? pathname.slice(basePath.length) : pathname;
+const routePath = unbasedPath.length > 1 && unbasedPath.endsWith('/') ? unbasedPath.slice(0, -1) : unbasedPath || '/';
+const wallpaperKey = locale.toLowerCase().startsWith('pt')
+  ? (wallpaperRoutes[routePath] || (routePath.startsWith('/referencias/') ? 'referencia-perfil' : ''))
+  : '';
+const routeWallpaper = wallpaperKey ? `${base}noir/page-wallpapers/${wallpaperKey}.webp` : '';
 const ptAlternate=alternates.find(item=>item.hreflang.toLowerCase()==='pt-br');
 const xDefaultHref=ptAlternate ? alternateHref(ptAlternate.href) : (locale.toLowerCase()==='pt-br' ? canonicalURL.href : canonicalRoot);
 const imageURL = new URL(image, Astro.site);
@@ -92,3 +112,11 @@ const graph = {
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={imageURL} />
 <script type="application/ld+json" set:html={JSON.stringify(graph)} />
+{routeWallpaper && <meta name="harum-page-wallpaper" content={routeWallpaper} />}
+{routeWallpaper && <script is:inline>
+  const wallpaperMeta = document.querySelector('meta[name="harum-page-wallpaper"]');
+  if (wallpaperMeta) {
+    document.documentElement.dataset.routeWallpaper = 'true';
+    document.documentElement.style.setProperty('--page-wallpaper', 'url("' + wallpaperMeta.content + '")');
+  }
+</script>}
