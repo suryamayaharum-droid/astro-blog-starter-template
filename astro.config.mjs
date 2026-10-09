@@ -7,6 +7,7 @@ export default defineConfig({
   site: "https://suryamayaharum-droid.github.io",
   base: "/astro-blog-starter-template",
   output: "static",
+  redirects: { "/busca": "/buscar" },
   prefetch: { prefetchAll: false, defaultStrategy: "hover" },
   integrations: [mdx(), sitemap()],
 });
