@@ -74,7 +74,7 @@ for (const file of htmlFiles) {
     '<p>Esta página mudou de endereço. <a href="' + safeDestination + '">Abrir Arte Harum</a></p>',
     "<script>location.replace(" + JSON.stringify(destination) + ");</script>",
     "</body></html>"
-  ].join("\\n");
+  ].join("\n");
 
   await fs.mkdir(path.dirname(alias), { recursive: true });
   await fs.writeFile(alias, redirectPage);
