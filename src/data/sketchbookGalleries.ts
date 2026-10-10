@@ -282,7 +282,9 @@ export const sketchbookGalleries = [
     images: [
       { url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/12529/32332/main-image", href: "https://www.metmuseum.org/art/collection/search/12529", label: "Capa · caderno de viagem" },
       { url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/12529/12010/main-image", href: "https://www.metmuseum.org/art/collection/search/12529", label: "Folha do caderno · aquarela" },
-      { url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/12516/11982/main-image", href: "https://www.metmuseum.org/art/collection/search/12516", label: "Island of Lemnos · folha relacionada" }
+      { url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/12516/11982/main-image", href: "https://www.metmuseum.org/art/collection/search/12516", label: "Island of Lemnos · folha relacionada" },
+      { url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/16072/12057/main-image", href: "https://www.metmuseum.org/art/collection/search/16072", label: "Stromboli · aquarela e grafite" },
+      { url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/12523/11968/main-image", href: "https://www.metmuseum.org/art/collection/search/12523", label: "Leaving Athens · aquarela e grafite" }
     ]
   }
 ] as const;
