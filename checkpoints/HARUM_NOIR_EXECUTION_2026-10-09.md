@@ -30,7 +30,7 @@ A nova aula ensina escala, luz, estrutura vegetal, composição e leitura respon
 
 | Prioridade | Item | Estado atual | Próxima ação |
 |---|---|---|---|
-| Alta | Auditoria editorial rota a rota para achar explicações genéricas, telas sem propósito e destinos com pouco conteúdo | Varredura estrutural concluída (74 rotas); revisão manual está em 43/74 (58%). PRs #90, #91 e #92 integradas; PR #92 limpou três importações e corrigiu um destino genérico no Atlas. PR #93 integrou portas temáticas em Cultura Visual (commit `121270a`). CI e auditoria responsiva passaram. A auditoria móvel do deploy atual ainda está em execução. | Continuar em lotes pequenos por tema; conferir fonte primária, destino de cada promessa e paridade editorial EN/ES. |
+| Alta | Auditoria editorial rota a rota para achar explicações genéricas, telas sem propósito e destinos com pouco conteúdo | Varredura estrutural concluída (74 rotas); revisão manual está em 49/74 (66%). PRs #90, #91 e #92 integradas; PR #92 limpou três importações e corrigiu um destino genérico no Atlas. PR #93 integrou portas temáticas em Cultura Visual (commit `121270a`). CI e auditoria responsiva passaram. A auditoria móvel do deploy atual ainda está em execução. | Continuar em lotes pequenos por tema; conferir fonte primária, destino de cada promessa e paridade editorial EN/ES. |
 | Média | Sketchbooks, bancos e navegação do ecossistema | A varredura técnica encontrou 74 arquivos de rota .astro e 194 páginas HTML no build. O acervo atual tem 13 galerias e 26 referências a imagens locais; não estão vazias. PRs #29 e #30 seguem divergentes, sem mergeabilidade, e propõem enriquecer algumas imagens e a navegação. A revisão de #30 também apontou termos de busca FR/IT não reconhecidos. | Comparar as imagens locais com as fontes externas propostas antes de escolher uma só implementação; reconciliar com main e corrigir o classificador FR/IT. Manter as galerias atuais até validação e CI + QA móvel. |
 | Média | Identidade de fonte de Jake Parker no Atlas | PR [#22](https://github.com/suryamayaharum-droid/astro-blog-starter-template/pull/22) permanece draft e não mergeável. | Atualizar a branch; manter canal oficial e deixar `videoId` vazio até validar um vídeo específico. |
 | Média · infra separada | Workers Builds no Cloudflare | Issue [#82](https://github.com/suryamayaharum-droid/astro-blog-starter-template/issues/82) aberta. Várias prévias falham; o detalhe decisivo está no dashboard autenticado. GitHub Pages continua sendo a publicação canônica. | Registrar a primeira mensagem de erro real no dashboard antes de alterar comando ou configuração. |
@@ -56,9 +56,24 @@ PR [#88](https://github.com/suryamayaharum-droid/astro-blog-starter-template/pul
 
 ## Próximo alvo
 
-O inventário estrutural cobriu 74 arquivos .astro; o build publica 194 HTMLs e a auditoria automática não encontrou links ou assets quebrados. A leitura editorial manual segue em lotes: 43/74 rotas verificadas; priorizar fontes primárias do Atlas, rotas históricas restantes e paridade EN/ES. Para sketchbooks, verificar se as imagens locais representam corretamente os registros antes de adotar as imagens externas propostas.
+O inventário estrutural cobriu 74 arquivos .astro; o build publica 194 HTMLs e a auditoria automática não encontrou links ou assets quebrados. A leitura editorial manual segue em lotes: 49/74 rotas verificadas; priorizar destinos primários e duplicados no Atlas (PR #94), rotas históricas restantes e paridade EN/ES. Três rotas de linguagem corporal foram revisadas sem correção necessária. Para sketchbooks, verificar se as imagens locais representam corretamente os registros antes de adotar as imagens externas propostas.
 
 
 ## Revisão internacional · Cultura Visual e Tatuagem
 
 Seis rotas PT/EN/ES foram comparadas. Cultura Visual agora direciona para os leques específicos de memória gráfica, botânica e impressão; EN/ES deixam claro que esses três destinos ainda estão em português. A rota Tatuagem mantém o conteúdo e a distinção entre pesquisa HARUM NOIR e atendimento Studio 23, sem alteração editorial necessária.
+
+
+## Atlas · próxima correção de qualidade
+
+PR #94 corrige quatro destinos repetidos/genéricos em cinco fichas: Chloe Rose, Sycra, Emanuele Dascanio e New Masters Academy. O perfil do Sycra fica com um card para o vídeo, mais o canal; os outros passam a oferecer páginas oficiais mais específicas.
+
+
+## Revisão de três páginas didáticas
+
+Cabeça & Expressão, Mãos e Corpo em Relação oferecem práticas concretas, imagens contextualizadas e fontes/retornos coerentes. Permanecem sem mudanças cosméticas. Progresso estrutural/manual: 49/74 (66%).
+
+
+## Revisão dos hubs de Desenho
+
+Desenho PT/EN/ES apresenta entradas equivalentes para carvão, figura e coleções, com imagens vindas dos componentes compartilhados e rótulos/destinos adequados ao idioma. Revisão concluída sem alterações nas páginas. Progresso: 49/74 (66%).

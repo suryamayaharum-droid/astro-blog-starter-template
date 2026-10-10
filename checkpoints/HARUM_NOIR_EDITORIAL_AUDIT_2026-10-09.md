@@ -4,7 +4,7 @@
 
 ## Progresso
 
-`█████░░░░░ 58% · 43/74 arquivos de rota revisados manualmente`
+`███████░░░ 66% · 49/74 arquivos de rota revisados manualmente`
 
 - [x] Varredura estrutural das 74 rotas Astro: títulos, presença de imagens, quantidade e rótulos de ações, marcadores de conteúdo provisório.
 - [x] Conferir o caminho de entrada: home → escola → primeira prática → museus.
@@ -20,6 +20,8 @@
 - [x] Conferir paridade dos hubs EN/ES de História, Museus e Referências; destinos em PT estão rotulados.
 - [x] Revisar páginas EN/ES de Coleções tonal, figura e lugares; conferir tradução, prática, imagens e retorno entre línguas.
 - [x] Comparar Cultura Visual Brasileira e Tatuagem em Salvador nas versões PT/EN/ES; ligar cartões de cultura visual a leques específicos e confirmar que o material não traduzido está rotulado (PT).
+- [x] Revisar Cabeça & Expressão, Mãos e Corpo em Relação: imagens pertinentes, práticas acionáveis e fontes articuladas; sem alterações necessárias.
+- [x] Comparar os hubs de Desenho PT/EN/ES: cards equivalentes, imagens do componente compartilhado, rotas e rótulos de idioma coerentes.
 - [ ] Continuar a paridade EN/ES nas demais páginas prioritárias.
 - [x] Fechar auditoria móvel pós-release: execução #38002723488 passou em 9 out 2026.
 
@@ -130,3 +132,22 @@ Comparei as três versões de Cultura Visual Brasileira e as três de Tatuagem e
 ## Integração e validação · PR #93
 
 PR [#93](https://github.com/suryamayaharum-droid/astro-blog-starter-template/pull/93) integrada em `121270a`. CI e auditoria responsiva passaram no commit de interface; a captura móvel #38006094950 da publicação anterior passou. CI #38016057381 e GitHub Pages #38016057361 do merge #93 estão na fila; aguardar a auditoria móvel pós-deploy deste conteúdo.
+
+
+## Atlas de Referências · deduplicação e fontes primárias
+
+A varredura dos destinos repetidos encontrou uma segunda home em Chloe Rose, o mesmo vídeo em dois cards de Sycra, a mesma página de vídeos em dois cards de Emanuele Dascanio e a home de New Masters Academy repetida como se fosse referência de modelo vivo. PR #94 troca esses caminhos por catálogo oficial de produtos, vídeo único com prática explícita, portfólio oficial de desenhos e catálogo curricular de figura, respectivamente. A contagem de rotas Astro permanece 49/74; os perfis são dados gerados pela rota dinâmica já revisada.
+
+## Auditoria pós-deploy da PR #93 · estado
+
+A auditoria responsiva completa #131 e o CI #652 passaram antes do merge da PR #93. A captura móvel pós-deploy #38016153717 também passou. CI #38016078850 e Pages #38016078797 da publicação #93 passaram após as atualizações documentais.
+
+
+## Linguagem corporal · revisão de três rotas
+
+Revisei `/cabeca-expressao/`, `/maos/` e `/corpo-em-relacao/`. Cabeça separa estrutura de expressão e termina em exercício de cinco direções; Mãos parte da ação e do contato, oferece uma prática de 15 minutos e fontes institucionais identificadas; Corpo em Relação ensina apoio, distância, contato e forças com um laboratório de 20 minutos. As imagens e os links internos servem ao exercício; não encontrei um problema editorial que justificasse reescrita.
+
+
+## Desenho · revisão de três hubs PT/EN/ES
+
+Os hubs `/desenho/`, `/en/drawing/` e `/es/dibujo/` compartilham a entrada por carvão, figura, coleções de estudo e tatuagem autoral. Embora as rotas individuais não tenham tags de imagem, o componente `PortugueseTopicHub` injeta quatro imagens editoriais correspondentes nos cards; EN/ES usam o trilho visual do componente internacional. Os destinos e a promessa editorial equivalem entre idiomas. Nenhuma correção necessária.

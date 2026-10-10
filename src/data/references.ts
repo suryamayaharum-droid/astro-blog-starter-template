@@ -533,11 +533,11 @@ export const referenceArtists:PublicReference[]=[
         "tags": "produto; marca; arte"
       },
       {
-        "type": "Posicionamento",
-        "title": "About / storefront Chloe Rose Art",
-        "url": "https://chloerose.art/",
-        "observe": "O site descreve seu conteúdo como arte vibrante/whimsical com natureza, fantasia e semi-realismo.",
-        "tags": "posicionamento; identidade; catálogo"
+        "type": "Produtos / catálogo",
+        "title": "All Products — Chloe Rose Art",
+        "url": "https://chloerose.art/collections/all",
+        "observe": "Explore o catálogo oficial para ver como a identidade visual e os temas recorrentes se estendem a livros, adesivos e outros produtos.",
+        "tags": "produtos; identidade; catálogo"
       }
     ]
   },
@@ -889,7 +889,7 @@ export const referenceArtists:PublicReference[]=[
         "type": "Vídeo / método",
         "title": "Iterative Drawing — The Fastest Way to Improve",
         "url": "https://www.youtube.com/watch?v=k0ufz75UvHs",
-        "observe": "Repete um assunto, compara versões e ajusta conscientemente a próxima tentativa.",
+        "observe": "Assista ao método; faça três versões do mesmo motivo, alterando uma decisão por vez, e compare o que mudou.",
         "tags": "prática deliberada; repetição; evolução"
       },
       {
@@ -898,13 +898,6 @@ export const referenceArtists:PublicReference[]=[
         "url": "https://www.youtube.com/@sycra",
         "observe": "Aprofundamento analítico e raciocínio de desenho em vez de só acabamento.",
         "tags": "processo; análise; educação"
-      },
-      {
-        "type": "Método / referência",
-        "title": "Iterative Drawing Method",
-        "url": "https://www.youtube.com/watch?v=k0ufz75UvHs",
-        "observe": "A força está em tornar progresso observável dentro do próprio vídeo.",
-        "tags": "método; série; progresso"
       }
     ]
   },
@@ -1217,11 +1210,11 @@ export const referenceArtists:PublicReference[]=[
         "tags": "timelapse; horas; hiperrealismo; processo"
       },
       {
-        "type": "Conteúdo / obra",
-        "title": "Libertas? — 600 hours",
-        "url": "https://emanueledascanio.org/videos/",
-        "observe": "Uma obra extensa aparece em versões speed drawing e work-in-progress.",
-        "tags": "obra longa; série; reveal"
+        "type": "Portfólio / desenhos",
+        "title": "Drawings — Emanuele Dascanio",
+        "url": "https://emanueledascanio.org/drawings/",
+        "observe": "Compare desenhos finalizados e observe enquadramento, gradação tonal e controle de superfície; use a biblioteca de vídeos como fonte separada para o processo.",
+        "tags": "desenho; grafite; carvão; portfólio"
       },
       {
         "type": "Obra / rede",
@@ -1584,11 +1577,11 @@ export const referenceArtists:PublicReference[]=[
         "tags": "youtube; demonstração; mestres; escola"
       },
       {
-        "type": "Referência / modelo vivo",
-        "title": "Figure drawing resources",
-        "url": "https://www.nma.art/",
-        "observe": "Uso sistemático de referências de figura e modelo vivo como parte do método.",
-        "tags": "referência; modelo vivo; prática"
+        "type": "Currículo / figura",
+        "title": "Course Catalog — Figure Drawing Foundations",
+        "url": "https://www.nma.art/v3/course-catalog/",
+        "observe": "No módulo Drawing Foundations, compare as entradas de figura, construção da cabeça, perspectiva e gesto para entender a sequência curricular.",
+        "tags": "currículo; figura; gesto; fundamentos"
       }
     ]
   },
