@@ -156,3 +156,8 @@ Os hubs `/desenho/`, `/en/drawing/` e `/es/dibujo/` compartilham a entrada por c
 ## História da Arte · revisão dos hubs PT/EN/ES
 
 Comparei as três rotas internacionais e a página principal. O hub PT diferencia estudos editoriais de obras históricas e separa lentes de observação por período. Nos hubs EN/ES, o card “Study lenses / Lentes de estudio” prometia problemas formais, mas levava à busca de museus. Corrigi os destinos para a aula localizada de Figura e Gesto, e os rótulos agora anunciam a prática que o clique abre. A página PT e os demais cards ficam mantidos. A contagem sobe de 49/74 para 52/74; a base do Atlas permanece explicitamente como roteiro inicial de múltiplas regiões, sem alegar cobertura total.
+
+
+## Integração e validação · PR #95
+
+PR [#95](https://github.com/suryamayaharum-droid/astro-blog-starter-template/pull/95) integrada em `ec182fe`. O CI #38016764680 e a auditoria responsiva #38016764681 passaram. A captura móvel pós-deploy do conteúdo anterior (#38016761776) segue ativa na etapa “Capture mobile route matrix”; não houve falha reportada até a última leitura. O hub de História revisado totaliza 52/74 rotas manuais (70%).
