@@ -8,7 +8,7 @@ import { radarByLane } from '../data/radarHarumverso';
 import '../styles/browse.css';
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 const shelves = [...new Set(sketchbookGalleries.map((book) => book.shelf))];
-const totalSheets = sketchbookGalleries.reduce((total, book) => total + book.images.length, 0);
+const totalImages = sketchbookGalleries.reduce((total, book) => total + book.images.length, 0);
 const imageSource = (url: string) => url.startsWith('https://') ? url : base + url;
 const radarSketchbooks=radarByLane('sketchbook').slice(0,5);
 const galleryEntries=sketchbookGalleries.map((book)=>({book,companions:book.images.length<2?sketchbookCompanionsByShelf[book.shelf]??[]:[]}));
@@ -130,8 +130,13 @@ const galleryEntries=sketchbookGalleries.map((book)=>({book,companions:book.imag
     <div class="section-head"><div><div class="eyebrow">UM CADERNO, UM OLHAR</div><h2>Sequências para estudar, não para colecionar.</h2></div><p>Escolha a orientação da galeria: percorra as folhas na horizontal ou em coluna vertical. No celular, deslize; no computador, use as setas. Continue rolando para visitar as outras estantes.</p></div>
     <div class="archive-stats" aria-label="Resumo do acervo">
       <span><strong>{sketchbookGalleries.length}</strong> cadernos históricos</span>
-      <span><strong>{totalSheets}</strong> folhas ligadas às fontes</span>
+      <span><strong>{totalImages}</strong> imagens nesta seleção</span>
       <span><strong>2</strong> modos de navegação</span>
+    </div>
+    <div class="actions" style="margin-top:18px" aria-label="Continuar a pesquisa no Atlas">
+      <a class="btn gold" href={base+'atlas/'}>Voltar ao mapa do Atlas →</a>
+      <a class="btn" href={base+'artistas/'}>Biografias em foco</a>
+      <a class="btn" href={base+'museus/'}>Pesquisar nos museus</a>
     </div>
   </section>
 
@@ -149,18 +154,20 @@ const galleryEntries=sketchbookGalleries.map((book)=>({book,companions:book.imag
         <a class="btn" href={book.commonsUrl} target="_blank" rel="noreferrer">{book.commonsUrl.includes("commons.wikimedia.org") ? "Ver arquivos no Commons →" : "Abrir acervo completo →"}</a>
       </div>
     </div>
-    <div class="stream-head" style="margin-top:26px"><div><span class="eyebrow">{book.source}</span><h3>Folhas do caderno</h3></div><p>{book.images.length > 0 ? book.images.length + " " + (book.images.length === 1 ? "imagem" : "imagens") + " nesta seleção · abertura preservada na fonte." : "Acervo institucional conectado · imagens entram após validação individual do arquivo."}</p></div>
+    <div class="stream-head" style="margin-top:26px"><div><span class="eyebrow">{book.source}</span><h3>Imagens selecionadas</h3></div><p>{book.images.length > 0 ? book.images.length + " " + (book.images.length === 1 ? "imagem" : "imagens") + " nesta seleção · abertura preservada na fonte." : "Acervo institucional conectado · imagens entram após validação individual do arquivo."}</p></div>
     {book.images.length > 1 && <div class="gallery-view-controls" role="group" aria-label={"Modo de navegação da galeria " + book.title} data-gallery-controls data-gallery-track="original">
       <button type="button" data-gallery-axis="horizontal" aria-pressed="true">↔ Horizontal</button>
       <button type="button" data-gallery-axis="vertical" aria-pressed="false">↕ Vertical</button>
     </div>}
     {book.images.length > 0 ? <div class="browse-rail" data-gallery-role="original" role="region" aria-roledescription="carrossel" tabindex="0" aria-label={`Galeria original de ${book.title}`}>
-      {book.images.map((img,i)=><a class="browse-tile" href={imageSource(img.url)} target={img.url.startsWith('https://') ? '_blank' : undefined} rel={img.url.startsWith('https://') ? 'noreferrer' : undefined}>
+      {book.images.map((img,i)=><article class="browse-tile">
         <div class="card-media" style="aspect-ratio:4/5;background:#171614">
-          <img src={imageSource(img.url)} loading="lazy" decoding="async" alt={`${img.label}, ${book.title}, ${book.artist}`} style="width:100%;height:100%;object-fit:contain" />
+          <a href={imageSource(img.url)} target={img.url.startsWith('https://') ? '_blank' : undefined} rel={img.url.startsWith('https://') ? 'noreferrer' : undefined} aria-label={`Abrir imagem ampliada: ${img.label}`}>
+            <img src={imageSource(img.url)} loading="lazy" decoding="async" alt={`${img.label}, ${book.title}, ${book.artist}`} style="width:100%;height:100%;object-fit:contain" />
+          </a>
         </div>
-        <div class="browse-body"><span>{String(i+1).padStart(2,'0')} · {book.date}</span><h3>{img.label}</h3><p>{book.artist}</p><small style="color:#b39a69">{book.rights} · abrir imagem em tamanho ampliado →</small></div>
-      </a>)}
+        <div class="browse-body"><span>{String(i+1).padStart(2,'0')} · {book.date}</span><h3>{img.label}</h3><p>{book.artist}</p><small style="color:#b39a69">{book.rights} · <a href={imageSource(img.url)} target={img.url.startsWith('https://') ? '_blank' : undefined} rel={img.url.startsWith('https://') ? 'noreferrer' : undefined}>abrir imagem ampliada →</a> · <a href={img.href ?? book.originalUrl} target="_blank" rel="noreferrer">ficha no acervo ↗</a></small></div>
+      </article>)}
     </div> : <div class="panel" style="margin-top:18px"><p>Este caderno já faz parte do índice navegável. Use <strong>Abrir no museu</strong> para folheá-lo na fonte enquanto a seleção visual interna é validada página por página.</p></div>}
     {companions.length>0&&<div class="gallery-companion-set"><div class="stream-head" style="margin-top:28px"><div><span class="eyebrow">ESTUDOS COMPLEMENTARES · HARUM NOIR</span><h3>Variações para seguir olhando</h3></div><p>Pranchas temáticas independentes das folhas originais deste caderno.</p></div><div class="gallery-view-controls" role="group" aria-label={`Modo de navegação dos estudos complementares de ${book.title}`} data-gallery-controls data-gallery-track="companion"><button type="button" data-gallery-axis="horizontal" aria-pressed="true">↔ Horizontal</button><button type="button" data-gallery-axis="vertical" aria-pressed="false">↕ Vertical</button></div><div class="browse-rail companion-rail" data-gallery-role="companion" role="region" aria-roledescription="carrossel" tabindex="0" aria-label={`Estudos complementares para ${book.title}`}>{companions.map((item,i)=><article class="browse-tile companion-tile"><div class="card-media"><img src={base+item.file} alt={item.alt} loading="lazy" decoding="async"/></div><div class="browse-body"><span>{item.theme} · {String(i+1).padStart(2,'0')}</span><h4>{item.title}</h4><p>{item.caption}</p><a href={base+item.href}>{item.link} →</a></div></article>)}</div></div>}
   </section>

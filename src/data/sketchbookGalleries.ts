@@ -68,7 +68,11 @@ export const sketchbookGalleries = [
     originalUrl: "https://www.nga.gov/artworks/173183-sketchbook",
     commonsUrl: "https://www.nga.gov/artworks/173183-sketchbook",
     images: [
-      { url: "noir/sketchbooks/albert-bierstadt-sketchbook-01.webp", href: "https://www.nga.gov/artworks/173183-sketchbook", label: "Sketchbook · abertura" }
+      { url: "noir/sketchbooks/albert-bierstadt-sketchbook-01.webp", href: "https://www.nga.gov/artworks/173183-sketchbook", label: "Sketchbook · abertura" },
+      { url: "https://api.nga.gov/iiif/f20eaad9-a275-43f7-bfc8-5716d61832e2/full/%21800%2C800/0/default.jpg", href: "https://www.nga.gov/artworks/173183-sketchbook", label: "Folha digitalizada 02" },
+      { url: "https://api.nga.gov/iiif/113fcd62-3329-4d92-9bdd-58c5a8c5661d/full/%21800%2C800/0/default.jpg", href: "https://www.nga.gov/artworks/173183-sketchbook", label: "Folha digitalizada 03" },
+      { url: "https://api.nga.gov/iiif/db232c23-11bb-4123-836b-8303ca376806/full/%21800%2C800/0/default.jpg", href: "https://www.nga.gov/artworks/173183-sketchbook", label: "Folha digitalizada 04" },
+      { url: "https://api.nga.gov/iiif/806713ec-0af2-4876-8b90-010930422d97/full/%21800%2C800/0/default.jpg", href: "https://www.nga.gov/artworks/173183-sketchbook", label: "Folha digitalizada 05" }
     ]
   },
   {
@@ -221,21 +225,96 @@ export const sketchbookGalleries = [
     principle: "Percorrer um caderno de paisagem ajuda a comparar como um artista registra lugares distintos e transforma observação em repertório.",
     originalUrl: "https://www.metmuseum.org/art/collection/search/16611",
     commonsUrl: "https://www.metmuseum.org/art/collection/search/16611",
-    images: [{ url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/16611/22417/main-image", href: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/16611/22417/main-image", label: "Abertura · White Mountains e Hudson River" }]
+    images: [
+      { url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/16611/22417/main-image", href: "https://www.metmuseum.org/art/collection/search/16611", label: "Abertura · caderno de David Johnson" },
+      { url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/16611/30372/main-image", href: "https://www.metmuseum.org/art/collection/search/16611", label: "Folha digitalizada 01" },
+      { url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/16611/30373/main-image", href: "https://www.metmuseum.org/art/collection/search/16611", label: "Folha digitalizada 02" },
+      { url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/16611/30374/main-image", href: "https://www.metmuseum.org/art/collection/search/16611", label: "Folha digitalizada 03" }
+    ]
   },
   {
-    id: "george-elbert-burr-near-sion",
-    shelf: "Escultura & viagem",
+    id: "george-elbert-burr-swiss-journey",
+    shelf: "Paisagem & atmosfera",
     artist: "George Elbert Burr",
-    title: "Sketchbook · Near Sion",
+    title: "Caderno de viagem · folhas da Suíça",
     date: "1899",
-    medium: "Lápis, pena e tinta sobre papel",
+    medium: "Lápis sobre papel",
     source: "Smithsonian American Art Museum",
     rights: "Livre para uso — Smithsonian American Art Museum",
-    principle: "Desenho e viagem se encontram na mesma folha: observe como paisagem, arquitetura e figura dividem o espaço.",
-    originalUrl: "https://americanart.si.edu/artwork/sketchbook-near-sion-3323",
-    commonsUrl: "https://americanart.si.edu/artwork/sketchbook-near-sion-3323",
-    images: [{ url: "https://ids.si.edu/ids/deliveryService?id=SAAM-1983.83.221R-V_2&max=960", href: "https://americanart.si.edu/artwork/sketchbook-near-sion-3323", label: "Near Sion · frente e verso" }]
+    principle: "Uma sequência curada de folhas em torno do Lago de Genebra. Compare como escala, horizonte e arquitetura mudam de lugar para lugar.",
+    originalUrl: "https://americanart.si.edu/search/artworks?query=George%20Elbert%20Burr%20sketchbook",
+    commonsUrl: "https://americanart.si.edu/search/artworks?query=George%20Elbert%20Burr%20sketchbook",
+    images: [
+      { url: "https://ids.si.edu/ids/deliveryService?id=SAAM-1983.83.214_1&max=960", href: "https://americanart.si.edu/artwork/sketchbook-sierre-3305", label: "At Sierre" },
+      { url: "https://ids.si.edu/ids/deliveryService?id=SAAM-1983.83.223_1&max=960", href: "https://americanart.si.edu/artwork/sketchbook-vevey-3340", label: "Vevey" },
+      { url: "https://ids.si.edu/ids/deliveryService?id=SAAM-1983.83.227_1&max=960", href: "https://americanart.si.edu/artwork/sketchbook-lake-vevey-3315", label: "The Lake from Vevey" },
+      { url: "https://ids.si.edu/ids/deliveryService?id=SAAM-1983.83.231_1&max=960", href: "https://americanart.si.edu/artwork/sketchbook-ouchy-3314", label: "From Ouchy" },
+      { url: "https://ids.si.edu/ids/deliveryService?id=SAAM-1983.83.221R-V_2&max=960", href: "https://americanart.si.edu/artwork/sketchbook-near-sion-3323", label: "Near Sion" }
+    ]
+  },
+  {
+    id: "je-shadek-sketchbook",
+    shelf: "Memória & anotação",
+    artist: "J.E. Shadek",
+    title: "Sketch Book of J.E. Shadek · 93 desenhos",
+    date: "1861–62",
+    medium: "Volume encadernado com 93 desenhos em técnicas mistas",
+    source: "National Gallery of Art",
+    rights: "Domínio público — mídia indicada pela NGA",
+    principle: "O caderno reúne desenho e anotação de contexto militar; observe a variedade de assuntos e como o suporte portátil registra uma experiência situada.",
+    originalUrl: "https://www.nga.gov/artworks/59877-je-shadek-sketchbook",
+    commonsUrl: "https://www.nga.gov/artworks/59877-je-shadek-sketchbook",
+    images: [{ url: "https://api.nga.gov/iiif/d09065da-0164-470c-afc3-dd0290b97697/full/%21800%2C800/0/default.jpg", href: "https://www.nga.gov/artworks/59877-je-shadek-sketchbook", label: "Capa · Sketch Book of J.E. Shadek" }]
+  }
+  ,
+  {
+    id: "mary-newbold-sargent-travel-sketchbook",
+    shelf: "Escultura & viagem",
+    artist: "Mary Newbold Sargent",
+    title: "Sketchbook of Greek, Italian Islands, and Near East Subjects · 31 desenhos",
+    date: "1904",
+    medium: "Aquarela, grafite e guache sobre papel tonal, encadernado em linho",
+    source: "The Metropolitan Museum of Art",
+    rights: "Domínio público — The Met Open Access",
+    principle: "Uma viagem em páginas: compare como ruínas, ilhas e paisagens aparecem em registros rápidos feitos ao longo do percurso.",
+    originalUrl: "https://www.metmuseum.org/art/collection/search/12529",
+    commonsUrl: "https://www.metmuseum.org/art/collection/search/12529",
+    images: [
+      { url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/12529/32332/main-image", href: "https://www.metmuseum.org/art/collection/search/12529", label: "Capa · caderno de viagem" },
+      { url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/12529/12010/main-image", href: "https://www.metmuseum.org/art/collection/search/12529", label: "Folha do caderno · aquarela" },
+      { url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/12516/11982/main-image", href: "https://www.metmuseum.org/art/collection/search/12516", label: "Island of Lemnos · folha relacionada" },
+      { url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/16072/12057/main-image", href: "https://www.metmuseum.org/art/collection/search/16072", label: "Stromboli · aquarela e grafite" },
+      { url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/12523/11968/main-image", href: "https://www.metmuseum.org/art/collection/search/12523", label: "Leaving Athens · aquarela e grafite" },
+      { url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/16078/12013/main-image", href: "https://www.metmuseum.org/art/collection/search/16078", label: "Capri · estudo de viagem" },
+      { url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/16060/12038/main-image", href: "https://www.metmuseum.org/art/collection/search/16060", label: "Tomb, Plain of Sharon · grafite" },
+      { url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/16049/12025/main-image", href: "https://www.metmuseum.org/art/collection/search/16049", label: "Salonika · aquarela e grafite" },
+      { url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/12487/11953/main-image", href: "https://www.metmuseum.org/art/collection/search/12487", label: "Catene de Cattaro · estudo em grafite" },
+      { url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/12491/11992/main-image", href: "https://www.metmuseum.org/art/collection/search/12491", label: "Leaving Constantinople · estudo em grafite" },
+      { url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/12494/11961/main-image", href: "https://www.metmuseum.org/art/collection/search/12494", label: "Gulf of Corinth · aquarela e grafite" },
+      { url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/12496/11955/main-image", href: "https://www.metmuseum.org/art/collection/search/12496", label: "Village and Mountain · estudo em grafite" },
+      { url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/12481/11974/main-image", href: "https://www.metmuseum.org/art/collection/search/12481", label: "Temple of Minerva · aquarela e grafite" }
+    ]
+  }
+  ,
+  {
+    id: "souvenir-of-naples-sketchbook",
+    shelf: "Paisagem & atmosfera",
+    artist: "Artista desconhecido",
+    title: "Sketchbook: Souvenir of Naples · 56 vistas",
+    date: "após 1821",
+    medium: "28 folhas duplas com vistas em aquarela sobre grafite e guache",
+    source: "The Metropolitan Museum of Art",
+    rights: "Domínio público — The Met Open Access",
+    principle: "O álbum transforma a viagem em sequência: compare como arquitetura, costa e vulcão viram memória visual para quem percorre a cidade.",
+    originalUrl: "https://www.metmuseum.org/art/collection/search/461568",
+    commonsUrl: "https://www.metmuseum.org/art/collection/search/461568",
+    images: [
+      { url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/461568/912556/main-image", href: "https://www.metmuseum.org/art/collection/search/461568", label: "Abertura · Souvenir of Naples" },
+      { url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/461568/912561/main-image", href: "https://www.metmuseum.org/art/collection/search/461568", label: "Fólio digitalizado 01" },
+      { url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/461568/911945/main-image", href: "https://www.metmuseum.org/art/collection/search/461568", label: "Fólio digitalizado 02" },
+      { url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/461568/911944/main-image", href: "https://www.metmuseum.org/art/collection/search/461568", label: "Fólio digitalizado 03" },
+      { url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/461568/911946/main-image", href: "https://www.metmuseum.org/art/collection/search/461568", label: "Fólio digitalizado 04" }
+    ]
   }
 ] as const;
 
