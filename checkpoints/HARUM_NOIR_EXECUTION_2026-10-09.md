@@ -30,7 +30,7 @@ A nova aula ensina escala, luz, estrutura vegetal, composição e leitura respon
 
 | Prioridade | Item | Estado atual | Próxima ação |
 |---|---|---|---|
-| Alta | Auditoria editorial rota a rota para achar explicações genéricas, telas sem propósito e destinos com pouco conteúdo | Varredura estrutural concluída (74 rotas); revisão manual está em 49/74 (66%). PRs #90, #91 e #92 integradas; PR #92 limpou três importações e corrigiu um destino genérico no Atlas. PR #93 integrou portas temáticas em Cultura Visual (commit `121270a`). CI e auditoria responsiva passaram. A auditoria móvel do deploy atual ainda está em execução. | Continuar em lotes pequenos por tema; conferir fonte primária, destino de cada promessa e paridade editorial EN/ES. |
+| Alta | Auditoria editorial rota a rota para achar explicações genéricas, telas sem propósito e destinos com pouco conteúdo | Varredura estrutural concluída (74 rotas); revisão manual está em 52/74 (70%). PRs #90, #91 e #92 integradas; PR #92 limpou três importações e corrigiu um destino genérico no Atlas. PR #93 integrou portas temáticas em Cultura Visual (commit `121270a`). CI e auditoria responsiva passaram. A captura móvel pós-deploy da PR #93 (#38016153717) passou; a PR #94 também está integrada em `5a369bd` após CI, Link Health e responsivo verdes. | Continuar em lotes pequenos por tema; conferir fonte primária, destino de cada promessa e paridade editorial EN/ES. |
 | Média | Sketchbooks, bancos e navegação do ecossistema | A varredura técnica encontrou 74 arquivos de rota .astro e 194 páginas HTML no build. O acervo atual tem 13 galerias e 26 referências a imagens locais; não estão vazias. PRs #29 e #30 seguem divergentes, sem mergeabilidade, e propõem enriquecer algumas imagens e a navegação. A revisão de #30 também apontou termos de busca FR/IT não reconhecidos. | Comparar as imagens locais com as fontes externas propostas antes de escolher uma só implementação; reconciliar com main e corrigir o classificador FR/IT. Manter as galerias atuais até validação e CI + QA móvel. |
 | Média | Identidade de fonte de Jake Parker no Atlas | PR [#22](https://github.com/suryamayaharum-droid/astro-blog-starter-template/pull/22) permanece draft e não mergeável. | Atualizar a branch; manter canal oficial e deixar `videoId` vazio até validar um vídeo específico. |
 | Média · infra separada | Workers Builds no Cloudflare | Issue [#82](https://github.com/suryamayaharum-droid/astro-blog-starter-template/issues/82) aberta. Várias prévias falham; o detalhe decisivo está no dashboard autenticado. GitHub Pages continua sendo a publicação canônica. | Registrar a primeira mensagem de erro real no dashboard antes de alterar comando ou configuração. |
@@ -77,3 +77,8 @@ Cabeça & Expressão, Mãos e Corpo em Relação oferecem práticas concretas, i
 ## Revisão dos hubs de Desenho
 
 Desenho PT/EN/ES apresenta entradas equivalentes para carvão, figura e coleções, com imagens vindas dos componentes compartilhados e rótulos/destinos adequados ao idioma. Revisão concluída sem alterações nas páginas. Progresso: 49/74 (66%).
+
+
+## História da Arte · revisão internacional
+
+Os hubs EN/ES tinham o card “lentes de estudo” ligado à busca de museus. PR #95 redireciona a promessa para a aula localizada de Figura e Gesto, com rótulos específicos em cada idioma. Revisão manual: 52/74 rotas (70%). PR #94 foi integrada em `5a369bd`; validar CI e auditoria responsiva do próximo lote antes do merge.
