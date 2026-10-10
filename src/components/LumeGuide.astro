@@ -123,17 +123,18 @@ if (root) {
   };
   const detectLocale=(raw)=>{
     const value=String(raw||'').toLocaleLowerCase();
+    const localeText=value.replace(/\bbn\s?digital\b/g,'').trim();
     if(/[\u3040-\u30ff]/.test(value))return'ja';
     if(/[\uac00-\ud7af]/.test(value))return'ko';
     if(/[\u0600-\u06ff]/.test(value))return'ar';
     if(/[\u4e00-\u9fff]/.test(value))return'zh';
-    if(/\b(bibliotheque nationale du bresil)\b/.test(value))return'fr';
-    if(/\b(biblioteca nazionale del brasile)\b/.test(value))return'it';
-    if(/\b(brasilianische nationalbibliothek)\b/.test(value))return'de';
-    if(/\b(bndigital|bn\s+digital|banco de imagens|bancos de imagens|acervo digital|acervos digitais|biblioteca nacional do brasil|biblioteca nacional de brasil)\b/.test(value))return'pt';
-    if(/\b(image banks?|national library of brazil|digital image archive)\b/.test(value))return'en';
-    if(/\b(bancos? de im[aá]genes)\b/.test(value))return'es';
-    if(/\b(museu|museus|referência|referências|desenho|mãos|maos|onde|quero|estudar|caderno|cadernos|percurso|percursos|começar|comecar)\b/.test(value))return'pt';
+    if(/\b(bibliotheque nationale du bresil)\b/.test(localeText))return'fr';
+    if(/\b(biblioteca nazionale del brasile)\b/.test(localeText))return'it';
+    if(/\b(brasilianische nationalbibliothek)\b/.test(localeText))return'de';
+    if(/\b(bancos? de im[aá]genes|biblioteca nacional de brasil)\b/.test(localeText))return'es';
+    if(/\b(banco de imagens|bancos de imagens|acervo digital|acervos digitais|biblioteca nacional do brasil|biblioteca nacional brasileira)\b/.test(localeText))return'pt';
+    if(/\b(image banks?|national library of brazil|digital image archive)\b/.test(localeText))return'en';
+    if(/\b(museu|museus|referência|referências|desenho|mãos|maos|onde|quero|estudar|caderno|cadernos|percurso|percursos|começar|comecar)\b/.test(localeText))return'pt';
     if(/\b(musée|musées|référence|références|artiste|artistes|dessin|mains|recherche|chercher|où|comment|étudier|parcours)\b/.test(value))return'fr';
     if(/\b(museo|musei|riferimento|riferimenti|disegno|mani|ricerca|cercare|dove|come|studiare|percorso)\b/.test(value))return'it';
     if(/\b(museum|museen|referenz|referenzen|künstler|kunstler|zeichnung|hände|hande|suche|suchen|wo|wie|lernen|lernpfad)\b/.test(value))return'de';
