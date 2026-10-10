@@ -3,7 +3,8 @@ import path from 'node:path';
 
 const root=path.resolve('dist');
 const SITE_ORIGIN=new URL(process.env.PUBLIC_SITE_URL||'https://suryamayaharum-droid.github.io').origin;
-const SITE_BASE=process.env.PUBLIC_SITE_URL?'/':'/astro-blog-starter-template/';
+const SITE_BASE=process.env.PUBLIC_SITE_URL?'/':'/astro-blog-starter-template';
+const inSiteBase=(pathname)=>SITE_BASE==='/'?pathname.startsWith('/'):pathname===SITE_BASE||pathname.startsWith(SITE_BASE+'/');
 const htmlFiles=[];
 const walk=(dir)=>{
   for(const entry of fs.readdirSync(dir,{withFileTypes:true})){
@@ -40,9 +41,9 @@ for(const file of htmlFiles){
     else{
       try{
         const u=new URL(canonical,SITE_ORIGIN);
-        if(u.origin!==SITE_ORIGIN||!u.pathname.startsWith(SITE_BASE))errors.push(rel+': redirect canonical leaves site '+u.href);
+        if(u.origin!==SITE_ORIGIN||!inSiteBase(u.pathname))errors.push(rel+': redirect canonical leaves site '+u.href);
         else{
-          const sub=u.pathname.slice(SITE_BASE.length).replace(/^\/+|\/+$/g,'');
+          const sub=(SITE_BASE==='/'?u.pathname.slice(1):u.pathname===SITE_BASE?'':u.pathname.slice(SITE_BASE.length)).replace(/^\/+|\/+$/g,'');
           const target=sub?path.join(root,...sub.split('/'),'index.html'):path.join(root,'index.html');
           const directTarget=sub?path.join(root,...sub.split('/')):path.join(root,'index.html');
           if(!fs.existsSync(target)&&!fs.existsSync(directTarget))errors.push(rel+': redirect target missing '+u.pathname);
