@@ -3,7 +3,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { sketchbookGalleries } from '../data/sketchbookGalleries';
-const sketchbookCount=sketchbookGalleries.length;
+const sketchbookCount=sketchbookGalleries.length;\nconst sketchbookSheetCount=sketchbookGalleries.reduce((count,book)=>count+book.images.length,0);
 const base=import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 const covers=["harum-noir-escola-hero","harum-noir-caderno-olhar","tools-paper","harum-noir-caderno-estudo","museum-gallery","museum-gallery","drapery-still-life","open-sketchbook","open-sketchbook","tools-paper","moonlit-landscape","iris-study","harum-noir-caderno-estudo","atelier-desk","harum-noir-colecoes-atlas","maos-seis-gestos","figure-gesture","harum-noir-caderno-olhar","atelier-desk","museum-gallery"];
 const doors=[
@@ -15,7 +15,7 @@ const doors=[
 ["Bancos de Imagens","Portas de busca, direitos e períodos para pesquisar nas instituições de origem.","bancos/"],
 ["Atlas Histórico","Períodos, mestres, construção, pensamento e fontes abertas.","historia-da-arte"],
 ["Biblioteca Aberta","Sketchbooks, anatomia, matéria, ateliê e fontes institucionais.","biblioteca"],
-["Galerias de Sketchbooks",`${sketchbookCount} cadernos históricos com folhas ligadas aos acervos de origem.`,"sketchbooks/#galerias"],
+["Galerias de Sketchbooks",`${sketchbookCount} cadernos históricos e ${sketchbookSheetCount} folhas ligadas aos acervos de origem.`,"sketchbooks/#galerias"],
 ["Composições Autorais","Exercícios para transformar repertório em estrutura e escolha própria.","composicoes-autorais/"],
 ["Percursos","Caminhos que conectam referência, caderno, temporada e prática.","percursos"],
 ["Outliers","Referências que deslocam o olhar por matéria, silêncio, transferência e imaginação.","outliers"],
