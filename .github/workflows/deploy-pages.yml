@@ -16,6 +16,8 @@ concurrency:
 
 jobs:
   build:
+    env:
+      PUBLIC_SITE_URL: ${{ vars.PUBLIC_SITE_URL }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -33,6 +35,8 @@ jobs:
         run: node scripts/check_bank_controls.mjs
       - name: Build
         run: npm run build
+      - name: Prepare custom domain and legacy redirects
+        run: node scripts/prepare_custom_domain.mjs
       - name: Internal route and asset links
         run: node scripts/check_internal_links.mjs
       - name: Reciprocal hreflang
