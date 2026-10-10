@@ -2,8 +2,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const root=path.resolve('dist');
-const SITE_ORIGIN='https://suryamayaharum-droid.github.io';
-const SITE_BASE='/astro-blog-starter-template/';
+const SITE_ORIGIN=new URL(process.env.PUBLIC_SITE_URL||'https://suryamayaharum-droid.github.io').origin;
+const SITE_BASE=process.env.PUBLIC_SITE_URL?'/':'/astro-blog-starter-template/';
 const htmlFiles=[];
 const walk=(dir)=>{
   for(const entry of fs.readdirSync(dir,{withFileTypes:true})){
@@ -18,18 +18,18 @@ const errors=[];
 const warnings=[];
 const capture=(html,re)=>html.match(re)?.[1]?.trim()||'';
 const meta=(html,key)=>{
-  const esc=key.replace(/[.*+?^$(){}|[\]\\]/g,'\\$&');
+  const esc=key.replace(/[.*+?^$(){}|[\\]\\\\]/g,'\\\\$&');
   return capture(html,new RegExp('<meta[^>]+(?:name|property)="'+esc+'"[^>]+content="([^"]*)"[^>]*>','i'));
 };
 
 for(const file of htmlFiles){
   const html=fs.readFileSync(file,'utf8');
   const rel=path.relative(root,file).replaceAll(path.sep,'/');
-  const title=capture(html,/<title>([^<]*)<\/title>/i);
+  const title=capture(html,/<title>([^<]*)<\\/title>/i);
   const desc=meta(html,'description');
   const robots=meta(html,'robots');
-  const lang=capture(html,/<html[^>]*\blang="([^"]+)"/i);
-  const canonical=capture(html,/<link[^>]*\brel="canonical"[^>]*\bhref="([^"]+)"/i);
+  const lang=capture(html,/<html[^>]*\\blang="([^"]+)"/i);
+  const canonical=capture(html,/<link[^>]*\\brel="canonical"[^>]*\\bhref="([^"]+)"/i);
   const ogTitle=meta(html,'og:title');
   const ogDescription=meta(html,'og:description');
   const ogImage=meta(html,'og:image');
@@ -43,9 +43,10 @@ for(const file of htmlFiles){
         const u=new URL(canonical,SITE_ORIGIN);
         if(u.origin!==SITE_ORIGIN||!u.pathname.startsWith(SITE_BASE))errors.push(rel+': redirect canonical leaves site '+u.href);
         else{
-          const sub=u.pathname.slice(SITE_BASE.length).replace(/^\/+|\/+$/g,'');
+          const sub=u.pathname.slice(SITE_BASE.length).replace(/^\\/+|\\/+$/g,'');
           const target=sub?path.join(root,...sub.split('/'),'index.html'):path.join(root,'index.html');
-          if(!fs.existsSync(target))errors.push(rel+': redirect target missing '+u.pathname);
+          const fileTarget=sub?path.join(root,...sub.split('/')):path.join(root,'index.html');
+          if(!fs.existsSync(target)&&!fs.existsSync(fileTarget))errors.push(rel+': redirect target missing '+u.pathname);
         }
       }catch{errors.push(rel+': invalid redirect canonical '+canonical);}
     }
@@ -58,7 +59,10 @@ for(const file of htmlFiles){
   if(!lang)errors.push(rel+': missing html lang');
   if(!canonical)errors.push(rel+': missing canonical');
   else{
-    try{const u=new URL(canonical);if(!/^https?:$/.test(u.protocol))throw new Error();}catch{errors.push(rel+': invalid canonical '+canonical);}
+    try{
+      const u=new URL(canonical);
+      if(!/^https?:$/.test(u.protocol)||u.origin!==SITE_ORIGIN||!u.pathname.startsWith(SITE_BASE))throw new Error();
+    }catch{errors.push(rel+': invalid or noncanonical URL '+canonical);}
   }
   if(!robots)errors.push(rel+': missing robots meta');
   else if(/noindex/i.test(robots))errors.push(rel+': production page is noindex');
@@ -69,15 +73,15 @@ for(const file of htmlFiles){
   if(title.length>75)warnings.push(rel+': long title ('+title.length+')');
   if(desc.length>180)warnings.push(rel+': long description ('+desc.length+')');
 
-  const selfAlt=[...html.matchAll(/<link[^>]*\brel="alternate"[^>]*\bhreflang="([^"]+)"[^>]*\bhref="([^"]+)"/gi)].find(m=>m[1]===lang);
+  const selfAlt=[...html.matchAll(/<link[^>]*\\brel="alternate"[^>]*\\bhreflang="([^"]+)"[^>]*\\bhref="([^"]+)"/gi)].find(m=>m[1]===lang);
   if(!selfAlt)errors.push(rel+': missing self hreflang for '+lang);
 
-  for(const m of html.matchAll(/<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/gi)){
+  for(const m of html.matchAll(/<script[^>]*type="application\\/ld\\+json"[^>]*>([\\s\\S]*?)<\\/script>/gi)){
     const raw=m[1].trim();
     if(!raw){errors.push(rel+': empty JSON-LD block');continue;}
     try{
       const data=JSON.parse(raw);
-      if(!data || typeof data!=='object')errors.push(rel+': JSON-LD is not an object');
+      if(!data||typeof data!=='object')errors.push(rel+': JSON-LD is not an object');
     }catch(error){
       errors.push(rel+': invalid JSON-LD: '+String(error.message||error));
     }
