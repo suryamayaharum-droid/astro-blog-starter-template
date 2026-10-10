@@ -4,7 +4,7 @@
 
 ## Progresso
 
-`███████░░░ 71% · 53/75 arquivos de rota revisados manualmente`
+`███████░░░ 72% · 54/75 arquivos de rota revisados manualmente`
 
 - [x] Varredura estrutural das 75 rotas Astro: títulos, presença de imagens, quantidade e rótulos de ações, marcadores de conteúdo provisório.
 - [x] Conferir o caminho de entrada: home → escola → primeira prática → museus.
@@ -170,3 +170,10 @@ PR [#100](https://github.com/suryamayaharum-droid/astro-blog-starter-template/pu
 O Lume encaminha buscas de bancos e BNDigital para rotas locais, reconhece os termos em dez idiomas, preserva o idioma da visita quando a consulta contém apenas “BNDigital” e informa (PT) nas portas ainda disponíveis só em português. O contrato passou a exigir a presença e o destino da porta de artistas.
 
 CI #38078728950 e auditoria responsiva completa #38078728928 passaram antes do merge. O build produziu 414 páginas HTML e a auditoria interna verificou 17.543 destinos e 290 fragmentos, sem falhas. No estado desta atualização, CI #38078829381 e Pages #38078829417 do merge estão em andamento; acompanhar a captura móvel quando começar. Revisão manual: 53/75 (71%).
+
+
+## Outliers e Atlas · correções de fonte · 10 out 2026
+
+Revisei `/outliers/` e conferi os quatro registros institucionais (NGA e The Met), a separação entre obras citadas e estudos editoriais originais e a ligação entre cada referência e seu exercício. A revisão de PR #98 encontrou um dado ausente no cartão de Adolphe Appian; o título agora inclui a data **1868–70**, confirmada pelo registro do The Met. Os quatro registros permanecem com seus links institucionais diretos. A rota entra na contagem manual: **54/75 (72%)**.
+
+A ficha de Jake Parker no Atlas agora expõe o canal do YouTube que o site oficial aponta. O `videoId` continua vazio porque não foi selecionado um vídeo específico.
