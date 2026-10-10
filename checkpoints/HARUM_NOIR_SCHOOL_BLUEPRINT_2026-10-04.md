@@ -4,6 +4,14 @@ Data: 4 de outubro de 2026
 Repositório: suryam.../astro-blog-starter-template  
 Decisão de marca: **HARUM NOIR** é o nome público. **Harumverso** continua apenas como referência interna ao conjunto de projetos.
 
+## Estado atual do projeto · GitHub · 10 out 2026
+
+**Revisão editorial:** `███████░░░ 72% · 54/75 rotas revisadas manualmente`.  
+**Publicação:** CI #38079190116 e GitHub Pages #38079190149 aprovados.  
+**Auditoria móvel pós-deploy:** #38079254634 em andamento; a entrega não será marcada como encerrada até concluir.
+
+Desde o blueprint inicial, o Atlas nativo foi ampliado pela PR #100 com bancos, sketchbooks, composições autorais e artistas em foco. A rodada atual corrige a data de Appian na página Outliers (1868–70) e atualiza a ficha de Jake Parker com o canal oficial indicado pelo site dele. A próxima revisão deve manter a regra deste blueprint: imagem contextualizada, fonte primária e ação de estudo coerente.
+
 ## Barra de progresso
 
 **Entrega desta versão:** [██████████] 100% — CI e publicação concluídos. A auditoria móvel passou em 26 rotas nas larguras 320, 360, 390 e 412 px; 16 rotas EN/ES em 390 px; e 9 testes responsivos em 760, 761 e 1024 px. Nenhum overflow, imagem quebrada, erro de console ou recurso interno falho. Home, Escola, barra móvel e destinos das etapas foram conferidos ao vivo. [Ver auditoria final](https://github.com/suryamayaharum-droid/astro-blog-starter-template/actions/runs/37227696748).
