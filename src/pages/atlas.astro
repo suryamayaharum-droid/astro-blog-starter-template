@@ -3,7 +3,8 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { sketchbookGalleries } from '../data/sketchbookGalleries';
-const sketchbookCount=sketchbookGalleries.length;\nconst sketchbookSheetCount=sketchbookGalleries.reduce((count,book)=>count+book.images.length,0);
+const sketchbookCount=sketchbookGalleries.length;
+const sketchbookSheetCount=sketchbookGalleries.reduce((count,book)=>count+book.images.length,0);
 const base=import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 const covers=["harum-noir-escola-hero","harum-noir-caderno-olhar","tools-paper","harum-noir-caderno-estudo","museum-gallery","museum-gallery","drapery-still-life","open-sketchbook","open-sketchbook","tools-paper","moonlit-landscape","iris-study","harum-noir-caderno-estudo","atelier-desk","harum-noir-colecoes-atlas","maos-seis-gestos","figure-gesture","harum-noir-caderno-olhar","atelier-desk","museum-gallery"];
 const doors=[
