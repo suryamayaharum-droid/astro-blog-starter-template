@@ -68,7 +68,11 @@ export const sketchbookGalleries = [
     originalUrl: "https://www.nga.gov/artworks/173183-sketchbook",
     commonsUrl: "https://www.nga.gov/artworks/173183-sketchbook",
     images: [
-      { url: "noir/sketchbooks/albert-bierstadt-sketchbook-01.webp", href: "https://www.nga.gov/artworks/173183-sketchbook", label: "Sketchbook · abertura" }
+      { url: "noir/sketchbooks/albert-bierstadt-sketchbook-01.webp", href: "https://www.nga.gov/artworks/173183-sketchbook", label: "Sketchbook · abertura" },
+      { url: "https://api.nga.gov/iiif/f20eaad9-a275-43f7-bfc8-5716d61832e2/full/%21800%2C800/0/default.jpg", href: "https://www.nga.gov/artworks/173183-sketchbook", label: "Folha digitalizada 02" },
+      { url: "https://api.nga.gov/iiif/113fcd62-3329-4d92-9bdd-58c5a8c5661d/full/%21800%2C800/0/default.jpg", href: "https://www.nga.gov/artworks/173183-sketchbook", label: "Folha digitalizada 03" },
+      { url: "https://api.nga.gov/iiif/db232c23-11bb-4123-836b-8303ca376806/full/%21800%2C800/0/default.jpg", href: "https://www.nga.gov/artworks/173183-sketchbook", label: "Folha digitalizada 04" },
+      { url: "https://api.nga.gov/iiif/806713ec-0af2-4876-8b90-010930422d97/full/%21800%2C800/0/default.jpg", href: "https://www.nga.gov/artworks/173183-sketchbook", label: "Folha digitalizada 05" }
     ]
   },
   {
