@@ -4,7 +4,7 @@
 
 ## Progresso
 
-`█████░░░░░ 50% · 37/74 arquivos de rota revisados manualmente`
+`█████░░░░░ 58% · 43/74 arquivos de rota revisados manualmente`
 
 - [x] Varredura estrutural das 74 rotas Astro: títulos, presença de imagens, quantidade e rótulos de ações, marcadores de conteúdo provisório.
 - [x] Conferir o caminho de entrada: home → escola → primeira prática → museus.
@@ -19,6 +19,7 @@
 - [ ] Revisar outras rotas de História da Arte e conferir links institucionais individuais.
 - [x] Conferir paridade dos hubs EN/ES de História, Museus e Referências; destinos em PT estão rotulados.
 - [x] Revisar páginas EN/ES de Coleções tonal, figura e lugares; conferir tradução, prática, imagens e retorno entre línguas.
+- [x] Comparar Cultura Visual Brasileira e Tatuagem em Salvador nas versões PT/EN/ES; ligar cartões de cultura visual a leques específicos e confirmar que o material não traduzido está rotulado (PT).
 - [ ] Continuar a paridade EN/ES nas demais páginas prioritárias.
 - [x] Fechar auditoria móvel pós-release: execução #38002723488 passou em 9 out 2026.
 
@@ -84,7 +85,7 @@ Comparei as versões EN/ES dos três hubs. A estrutura de cartões e respostas m
 
 ## Integração e validação · PR #90
 
-PR [#90](https://github.com/suryamayaharum-droid/astro-blog-starter-template/pull/90) integrada em `12eb3c6` após CI e auditoria responsiva verdes. O PR #89 foi encerrado como substituído porque partia de uma base divergente. A revisão editorial continua em 37/74 rotas; a integração deste lote não marca a auditoria página a página como concluída.
+PR [#90](https://github.com/suryamayaharum-droid/astro-blog-starter-template/pull/90) integrada em `12eb3c6` após CI e auditoria responsiva verdes. O PR #89 foi encerrado como substituído porque partia de uma base divergente. A revisão editorial continua em 43/74 rotas; a integração deste lote não marca a auditoria página a página como concluída.
 
 
 ## Correção de fonte externa · PR #91 integrada
@@ -113,9 +114,14 @@ Comparei tonal, figura/gesto e lugares em inglês e espanhol. A intenção didá
 
 ## Mobile QA após PR #91 · acompanhamento
 
-O retry #38003813788 passou após a publicação anterior. A auditoria do deploy mais recente (#38005500299, commit `3c91c91`) estava em execução no momento desta edição; conferir antes de fechar o gate.
+O retry #38003813788 passou. A auditoria pós-deploy #38005500299 do commit `3c91c91` passou; a captura do deploy #92 (#38006094950, commit `e631761`) segue em execução.
 
 
 ## Atlas de Referências · correção pontual de destino
 
-Na ficha de Mark Crilley, dois cartões levavam à mesma página inicial, embora o segundo prometesse uma demonstração de 30 segundos. Conferi a página oficial de aparições e ela descreve a demonstração ao vivo; substituí o destino repetido por `https://www.markcrilley.com/publicappearancesbio.html` e ajustei o rótulo/observação ao que a página realmente oferece. O vídeo de tutorial permanece como fonte separada. A contagem 37/74 mede arquivos de rota Astro e não muda com esta correção de dado do Atlas.
+Na ficha de Mark Crilley, dois cartões levavam à mesma página inicial, embora o segundo prometesse uma demonstração de 30 segundos. Conferi a página oficial de aparições e ela descreve a demonstração ao vivo; substituí o destino repetido por `https://www.markcrilley.com/publicappearancesbio.html` e ajustei o rótulo/observação ao que a página realmente oferece. O vídeo de tutorial permanece como fonte separada. A contagem 43/74 mede arquivos de rota Astro e não muda com esta correção de dado do Atlas.
+
+
+## Cultura visual e tatuagem · revisão de seis rotas PT/EN/ES
+
+Comparei as três versões de Cultura Visual Brasileira e as três de Tatuagem em Salvador. A página de tatuagem mantém dados de atendimento coerentes e distingue HARUM NOIR (pesquisa editorial) de Studio 23 (portfólio e agendamento); não precisei alterar o conteúdo. Em Cultura Visual, Bahia, botânica e cultura impressa repetiam links a hubs amplos, apesar de já existirem destinos temáticos. As rotas PT agora apontam para `/bancos/brasil-memoria/`, `/bancos/flor-ornamento/` e `/bancos/arquivo-impressos/`. EN/ES apontam aos mesmos leques em português e identificam o idioma no próprio rótulo.
