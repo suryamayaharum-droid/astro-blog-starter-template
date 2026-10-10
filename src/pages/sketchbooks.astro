@@ -133,6 +133,11 @@ const galleryEntries=sketchbookGalleries.map((book)=>({book,companions:book.imag
       <span><strong>{totalSheets}</strong> folhas ligadas às fontes</span>
       <span><strong>2</strong> modos de navegação</span>
     </div>
+    <div class="actions" style="margin-top:18px" aria-label="Continuar a pesquisa no Atlas">
+      <a class="btn gold" href={base+'atlas/'}>Voltar ao mapa do Atlas →</a>
+      <a class="btn" href={base+'artistas/'}>Biografias em foco</a>
+      <a class="btn" href={base+'museus/'}>Pesquisar nos museus</a>
+    </div>
   </section>
 
   <section class="section" aria-labelledby="estantes-title"><div class="panel"><div class="eyebrow">ESTANTES VIVAS</div><h2 id="estantes-title">Entrar pelo problema de desenho.</h2><div class="actions">{shelves.map((shelf)=><a class="btn" href={`#shelf-${shelf.toLowerCase().normalize("NFD").replace(/[\\u0300-\\u036f]/g,"").replace(/[^a-z0-9]+/g,"-")}`}>{shelf}</a>)}</div></div></section>
