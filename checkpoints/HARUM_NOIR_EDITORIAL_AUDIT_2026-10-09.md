@@ -181,3 +181,7 @@ A ficha de Jake Parker no Atlas agora expõe o canal do YouTube que o site ofici
 ## Integração das correções · PR #102 · 10 out 2026
 
 PR [#102](https://github.com/suryamayaharum-droid/astro-blog-starter-template/pull/102) integrada em `36f178f`. A data 1868–70 consta agora no cartão de Appian; o Atlas apresenta o canal oficial canônico de Jake Parker. CI #38079650621, Link Health #38079650691 e Pages #38079650619 passaram. A auditoria móvel #38079254634 registrou um 503 ao carregar `buscar.webp`; a tentativa 2 segue em execução. Progresso manual: 54/75 (72%).
+
+## Gate móvel · publicação corrigida · 10 out 2026
+
+A auditoria pós-deploy #38079712568 passou após a integração da PR #102. A tentativa anterior #38079254634 encontrou um 503 transitório em `buscar.webp`; a captura do deploy corrigido concluiu sem falhas. Mantido o progresso editorial de 54/75 (72%).
