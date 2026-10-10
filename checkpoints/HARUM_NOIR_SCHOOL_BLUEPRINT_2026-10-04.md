@@ -10,7 +10,7 @@ Decisão de marca: **HARUM NOIR** é o nome público. **Harumverso** continua ap
 **Publicação:** CI #38079190116 e GitHub Pages #38079190149 aprovados.  
 **Auditoria móvel pós-deploy:** #38079254634 em andamento; a entrega não será marcada como encerrada até concluir.
 
-Desde o blueprint inicial, o Atlas nativo foi ampliado pela PR #100 com bancos, sketchbooks, composições autorais e artistas em foco. A rodada atual corrige a data de Appian na página Outliers (1868–70) e atualiza a ficha de Jake Parker com o canal oficial indicado pelo site dele. A próxima revisão deve manter a regra deste blueprint: imagem contextualizada, fonte primária e ação de estudo coerente.
+Desde o blueprint inicial, o Atlas nativo foi ampliado pela PR #100 com bancos, sketchbooks, composições autorais e artistas em foco. A PR #102 integrou a correção da data de Appian na página Outliers (1868–70) e atualizou a ficha de Jake Parker com o canal oficial indicado pelo site dele. CI, Link Health e Pages passaram; a auditoria móvel está em nova tentativa após um 503 transitório de asset. A próxima revisão deve manter a regra deste blueprint: imagem contextualizada, fonte primária e ação de estudo coerente.
 
 ## Barra de progresso
 
