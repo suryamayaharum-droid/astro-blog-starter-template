@@ -19,7 +19,7 @@ const norm=(value)=>{
   try{
     const u=new URL(value,SITE_ORIGIN);
     u.hash='';
-    if(u.pathname.length>1)u.pathname=u.pathname.replace(/\\/+$/,'');
+    if(u.pathname.length>1)u.pathname=u.pathname.replace(/\/+$/,'');
     return u.href;
   }catch{return value;}
 };
@@ -27,11 +27,11 @@ const pages=new Map();
 for(const file of htmlFiles){
   const html=fs.readFileSync(file,'utf8');
   if(/<meta[^>]*http-equiv="refresh"[^>]*>/i.test(html))continue;
-  const lang=html.match(/<html[^>]*\\blang="([^"]+)"/i)?.[1]||'';
-  const canonical=html.match(/<link[^>]*\\brel="canonical"[^>]*\\bhref="([^"]+)"/i)?.[1]||'';
+  const lang=html.match(/<html[^>]*\blang="([^"]+)"/i)?.[1]||'';
+  const canonical=html.match(/<link[^>]*\brel="canonical"[^>]*\bhref="([^"]+)"/i)?.[1]||'';
   if(!canonical)continue;
   const alternates=new Map();
-  const re=/<link[^>]*\\brel="alternate"[^>]*\\bhreflang="([^"]+)"[^>]*\\bhref="([^"]+)"[^>]*>/gi;
+  const re=/<link[^>]*\brel="alternate"[^>]*\bhreflang="([^"]+)"[^>]*\bhref="([^"]+)"[^>]*>/gi;
   for(const m of html.matchAll(re))alternates.set(m[1],norm(m[2]));
   pages.set(norm(canonical),{file,lang,canonical:norm(canonical),alternates});
 }
@@ -46,23 +46,23 @@ for(const page of pages.values()){
     checked++;
     const target=pages.get(norm(href));
     if(!target){
-      errors.push(`missing target: ${page.canonical} [${hreflang}] -> ${href}`);
+      errors.push(\`missing target: \${page.canonical} [\${hreflang}] -> \${href}\`);
       continue;
     }
     const back=target.alternates.get(page.lang);
     if(!back){
-      errors.push(`missing reciprocal: ${href} has no hreflang="${page.lang}" back to ${page.canonical}`);
+      errors.push(\`missing reciprocal: \${href} has no hreflang="\${page.lang}" back to \${page.canonical}\`);
       continue;
     }
     if(norm(back)!==page.canonical){
-      errors.push(`wrong reciprocal: ${href} [${page.lang}] -> ${back}, expected ${page.canonical}`);
+      errors.push(\`wrong reciprocal: \${href} [\${page.lang}] -> \${back}, expected \${page.canonical}\`);
     }
   }
 }
 
-console.log(`hreflang health: ${pages.size} canonical HTML pages | ${checked} localized relations checked | ${errors.length} errors`);
+console.log(\`hreflang health: \${pages.size} canonical HTML pages | \${checked} localized relations checked | \${errors.length} errors\`);
 if(errors.length){
   for(const error of errors.slice(0,50))console.error('HREFLANG:',error);
-  if(errors.length>50)console.error(`... ${errors.length-50} more`);
+  if(errors.length>50)console.error(\`... \${errors.length-50} more\`);
   process.exit(1);
 }
