@@ -54,7 +54,7 @@ if (!footer.includes("href={STUDIO_NOIR}")) {
 }
 
 
-const requiredAtlasHubs = ["bancos", "sketchbooks", "composicoes-autorais"];
+const requiredAtlasHubs = ["bancos", "sketchbooks", "composicoes-autorais", "artistas"];
 for (const slug of requiredAtlasHubs) {
   const hubLine = ecosystem.split("\n").find((line) => line.includes('id:"' + slug + '"'));
   if (!hubLine || !hubLine.includes('href:"' + slug + '/"')) failures.push("ecosystem hub missing or misrouted: " + slug);
