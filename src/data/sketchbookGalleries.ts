@@ -287,7 +287,12 @@ export const sketchbookGalleries = [
       { url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/12523/11968/main-image", href: "https://www.metmuseum.org/art/collection/search/12523", label: "Leaving Athens · aquarela e grafite" },
       { url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/16078/12013/main-image", href: "https://www.metmuseum.org/art/collection/search/16078", label: "Capri · estudo de viagem" },
       { url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/16060/12038/main-image", href: "https://www.metmuseum.org/art/collection/search/16060", label: "Tomb, Plain of Sharon · grafite" },
-      { url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/16049/12025/main-image", href: "https://www.metmuseum.org/art/collection/search/16049", label: "Salonika · aquarela e grafite" }
+      { url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/16049/12025/main-image", href: "https://www.metmuseum.org/art/collection/search/16049", label: "Salonika · aquarela e grafite" },
+      { url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/12487/11953/main-image", href: "https://www.metmuseum.org/art/collection/search/12487", label: "Catene de Cattaro · estudo em grafite" },
+      { url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/12491/11992/main-image", href: "https://www.metmuseum.org/art/collection/search/12491", label: "Leaving Constantinople · estudo em grafite" },
+      { url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/12494/11961/main-image", href: "https://www.metmuseum.org/art/collection/search/12494", label: "Gulf of Corinth · aquarela e grafite" },
+      { url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/12496/11955/main-image", href: "https://www.metmuseum.org/art/collection/search/12496", label: "Village and Mountain · estudo em grafite" },
+      { url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/12481/11974/main-image", href: "https://www.metmuseum.org/art/collection/search/12481", label: "Temple of Minerva · aquarela e grafite" }
     ]
   }
   ,
