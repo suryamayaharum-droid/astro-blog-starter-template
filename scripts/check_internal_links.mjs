@@ -2,7 +2,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 
 const DIST = path.resolve("dist");
-const BASE = "/astro-blog-starter-template";
+const BASE = process.env.PUBLIC_SITE_URL ? "" : "/astro-blog-starter-template";
 
 const htmlFiles = [];
 async function walk(dir) {
