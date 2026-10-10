@@ -32,7 +32,9 @@ let rewritten = 0;
 for (const file of files) {
   if (!textExtensions.has(path.extname(file).toLowerCase())) continue;
   const original = await fs.readFile(file, "utf8");
-  const updated = original.replaceAll(oldSitePrefix, site.origin);
+  const updated = original
+    .replaceAll(oldSitePrefix, site.origin)
+    .replaceAll("/astro-blog-starter-template", "");
   if (updated !== original) {
     await fs.writeFile(file, updated);
     rewritten += 1;
