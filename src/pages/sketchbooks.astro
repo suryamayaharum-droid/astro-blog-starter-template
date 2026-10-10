@@ -155,7 +155,7 @@ const galleryEntries=sketchbookGalleries.map((book)=>({book,companions:book.imag
       <button type="button" data-gallery-axis="vertical" aria-pressed="false">↕ Vertical</button>
     </div>}
     {book.images.length > 0 ? <div class="browse-rail" data-gallery-role="original" role="region" aria-roledescription="carrossel" tabindex="0" aria-label={`Galeria original de ${book.title}`}>
-      {book.images.map((img,i)=><a class="browse-tile" href={img.href ?? imageSource(img.url)} target={img.href?.startsWith('https://') ? '_blank' : undefined} rel={img.href?.startsWith('https://') ? 'noreferrer' : undefined}>
+      {book.images.map((img,i)=><a class="browse-tile" href={imageSource(img.url)} target={img.url.startsWith('https://') ? '_blank' : undefined} rel={img.url.startsWith('https://') ? 'noreferrer' : undefined}>
         <div class="card-media" style="aspect-ratio:4/5;background:#171614">
           <img src={imageSource(img.url)} loading="lazy" decoding="async" alt={`${img.label}, ${book.title}, ${book.artist}`} style="width:100%;height:100%;object-fit:contain" />
         </div>
