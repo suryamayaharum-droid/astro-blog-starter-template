@@ -56,9 +56,14 @@ PR [#88](https://github.com/suryamayaharum-droid/astro-blog-starter-template/pul
 
 ## Próximo alvo
 
-O inventário estrutural cobriu 74 arquivos .astro; o build publica 194 HTMLs e a auditoria automática não encontrou links ou assets quebrados. A leitura editorial manual segue em lotes: 43/74 rotas verificadas; priorizar fontes primárias do Atlas, rotas históricas restantes e paridade EN/ES. Para sketchbooks, verificar se as imagens locais representam corretamente os registros antes de adotar as imagens externas propostas.
+O inventário estrutural cobriu 74 arquivos .astro; o build publica 194 HTMLs e a auditoria automática não encontrou links ou assets quebrados. A leitura editorial manual segue em lotes: 43/74 rotas verificadas; priorizar destinos primários e duplicados no Atlas (PR #94), rotas históricas restantes e paridade EN/ES. Para sketchbooks, verificar se as imagens locais representam corretamente os registros antes de adotar as imagens externas propostas.
 
 
 ## Revisão internacional · Cultura Visual e Tatuagem
 
 Seis rotas PT/EN/ES foram comparadas. Cultura Visual agora direciona para os leques específicos de memória gráfica, botânica e impressão; EN/ES deixam claro que esses três destinos ainda estão em português. A rota Tatuagem mantém o conteúdo e a distinção entre pesquisa HARUM NOIR e atendimento Studio 23, sem alteração editorial necessária.
+
+
+## Atlas · próxima correção de qualidade
+
+PR #94 corrige quatro destinos repetidos/genéricos em cinco fichas: Chloe Rose, Sycra, Emanuele Dascanio e New Masters Academy. O perfil do Sycra fica com um card para o vídeo, mais o canal; os outros passam a oferecer páginas oficiais mais específicas.
