@@ -287,6 +287,27 @@ export const sketchbookGalleries = [
       { url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/12523/11968/main-image", href: "https://www.metmuseum.org/art/collection/search/12523", label: "Leaving Athens · aquarela e grafite" }
     ]
   }
+  ,
+  {
+    id: "souvenir-of-naples-sketchbook",
+    shelf: "Paisagem & atmosfera",
+    artist: "Artista desconhecido",
+    title: "Sketchbook: Souvenir of Naples · 56 vistas",
+    date: "após 1821",
+    medium: "28 folhas duplas com vistas em aquarela sobre grafite e guache",
+    source: "The Metropolitan Museum of Art",
+    rights: "Domínio público — The Met Open Access",
+    principle: "O álbum transforma a viagem em sequência: compare como arquitetura, costa e vulcão viram memória visual para quem percorre a cidade.",
+    originalUrl: "https://www.metmuseum.org/art/collection/search/461568",
+    commonsUrl: "https://www.metmuseum.org/art/collection/search/461568",
+    images: [
+      { url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/461568/912556/main-image", href: "https://www.metmuseum.org/art/collection/search/461568", label: "Abertura · Souvenir of Naples" },
+      { url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/461568/912561/main-image", href: "https://www.metmuseum.org/art/collection/search/461568", label: "Fólio digitalizado 01" },
+      { url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/461568/911945/main-image", href: "https://www.metmuseum.org/art/collection/search/461568", label: "Fólio digitalizado 02" },
+      { url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/461568/911944/main-image", href: "https://www.metmuseum.org/art/collection/search/461568", label: "Fólio digitalizado 03" },
+      { url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/461568/911946/main-image", href: "https://www.metmuseum.org/art/collection/search/461568", label: "Fólio digitalizado 04" }
+    ]
+  }
 ] as const;
 
 export const commonsImage = (file: string, width = 900) =>
