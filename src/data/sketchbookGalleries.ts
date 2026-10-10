@@ -208,6 +208,35 @@ export const sketchbookGalleries = [
       { url: "noir/sketchbooks/william-trost-richards-sketchbook-vii-05.webp", file: "Sketch_of_Trees_(Clouds%3F)_(from_Sketchbook_VII)_MET_257761.jpg", label: "Árvores / nuvens" }
     ]
   }
+  ,
+  {
+    id: "david-johnson-hudson-river-sketchbook",
+    shelf: "Paisagem & atmosfera",
+    artist: "David Johnson",
+    title: "Sketchbook of White Mountains and Hudson River Subjects",
+    date: "década de 1860",
+    medium: "Desenhos a grafite em papel, encadernados em tecido e couro",
+    source: "The Metropolitan Museum of Art",
+    rights: "Domínio público — The Met Open Access",
+    principle: "Percorrer um caderno de paisagem ajuda a comparar como um artista registra lugares distintos e transforma observação em repertório.",
+    originalUrl: "https://www.metmuseum.org/art/collection/search/16611",
+    commonsUrl: "https://www.metmuseum.org/art/collection/search/16611",
+    images: [{ url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/16611/22417/main-image", href: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/16611/22417/main-image", label: "Abertura · White Mountains e Hudson River" }]
+  },
+  {
+    id: "george-elbert-burr-near-sion",
+    shelf: "Escultura & viagem",
+    artist: "George Elbert Burr",
+    title: "Sketchbook · Near Sion",
+    date: "1899",
+    medium: "Lápis, pena e tinta sobre papel",
+    source: "Smithsonian American Art Museum",
+    rights: "Livre para uso — Smithsonian American Art Museum",
+    principle: "Desenho e viagem se encontram na mesma folha: observe como paisagem, arquitetura e figura dividem o espaço.",
+    originalUrl: "https://americanart.si.edu/artwork/sketchbook-near-sion-3323",
+    commonsUrl: "https://americanart.si.edu/artwork/sketchbook-near-sion-3323",
+    images: [{ url: "https://ids.si.edu/ids/deliveryService?id=SAAM-1983.83.221R-V_2&max=960", href: "https://americanart.si.edu/artwork/sketchbook-near-sion-3323", label: "Near Sion · frente e verso" }]
+  }
 ] as const;
 
 export const commonsImage = (file: string, width = 900) =>
