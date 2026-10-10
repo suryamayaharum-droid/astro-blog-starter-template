@@ -16,7 +16,7 @@
 - https://suryamayaharum-droid.github.io/astro-blog-starter-template/studio23/servicos/ — artistic tattoo process and services.
 - https://suryamayaharum-droid.github.io/astro-blog-starter-template/studio23/agendar/ — booking/contact path.
 - https://suryamayaharum-droid.github.io/astro-blog-starter-template/studio23/faq/ — project, location and workflow questions.
-- https://suryamayaharum-droid.github.io/astro-blog-starter-template/referencias/ — Atlas 1001 inspiration and reference ecosystem.
+- https://suryamayaharum-droid.github.io/astro-blog-starter-template/atlas/ — Atlas 1101: 101 artists, 11 collections and 5 editorial journeys.
 
 ## Topics
 authorial tattoo, fine line, blackwork, sketch tattoo, charcoal drawing, live model, artistic anatomy, classical sculpture, botanical composition, visual repertoire, art history, Salvador tattoo studio, Bahia tattoo artist.
