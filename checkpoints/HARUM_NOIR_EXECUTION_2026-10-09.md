@@ -94,3 +94,13 @@ PR [#95](https://github.com/suryamayaharum-droid/astro-blog-starter-template/pul
 PR [#100](https://github.com/suryamayaharum-droid/astro-blog-starter-template/pull/100) integrada em `7e2e6fa`. Bancos, Sketchbooks, Composições Autorais e Artistas em Foco aparecem no Atlas e no índice compartilhado; 15 cadernos e três perfis de artistas são apresentados com fontes institucionais e práticas. O Lume ganhou encaminhamento local para Bancos/BNDigital em dez idiomas, rótulos (PT) para páginas sem tradução e detecção mais fiel do idioma de consulta.
 
 Estado observado: CI #38078728950 e auditoria responsiva #38078728928 passaram. CI #38078829381 e Pages #38078829417 do merge estão ativos; esperar a publicação e a captura móvel antes de marcar o gate como fechado. Progresso editorial: 53/75 (71%).
+
+
+## Estado observado · qualidade editorial e publicação · 10 out 2026
+
+**Barra editorial:** `███████░░░ 72% · 54/75 rotas revisadas manualmente`.
+
+- **PRONTO:** Outliers revisada com fontes institucionais; Appian agora exibe 1868–70. O Atlas inclui o canal oficial canônico do Jake Parker, sem atribuir vídeo não verificado.
+- **PRONTO:** CI #38079190116 e GitHub Pages #38079190149 passaram.
+- **FAZENDO:** auditoria móvel pós-deploy #38079254634 ainda está em execução.
+- **PASSO:** acompanhar o resultado móvel e continuar a fila editorial com fonte, imagem e prática verificáveis.
