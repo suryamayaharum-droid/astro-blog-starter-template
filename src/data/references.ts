@@ -2777,7 +2777,7 @@ export const referenceArtists:PublicReference[]=[
     "site": "https://www.mrjakeparker.com/",
     "lane": "Ink / narrativa",
     "videoId": "",
-    "youtube": "",
+    "youtube": "https://www.youtube.com/channel/UCwJheV30gHVOjBps2DU7k9A",
     "instagram": "",
     "refs": [
       {
