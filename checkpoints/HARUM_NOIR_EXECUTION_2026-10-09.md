@@ -101,6 +101,6 @@ Estado observado: CI #38078728950 e auditoria responsiva #38078728928 passaram. 
 **Barra editorial:** `███████░░░ 72% · 54/75 rotas revisadas manualmente`.
 
 - **PRONTO:** Outliers revisada com fontes institucionais; Appian agora exibe 1868–70. O Atlas inclui o canal oficial canônico do Jake Parker, sem atribuir vídeo não verificado.
-- **PRONTO:** CI #38079190116 e GitHub Pages #38079190149 passaram.
-- **FAZENDO:** auditoria móvel pós-deploy #38079254634 ainda está em execução.
+- **PRONTO:** PR #102 integrada em `36f178f`; CI #38079650621, Link Health #38079650691 e GitHub Pages #38079650619 passaram.
+- **FAZENDO:** auditoria móvel pós-deploy #38079254634 teve um 503 transitório ao carregar `buscar.webp`; a tentativa 2 segue em execução.
 - **PASSO:** acompanhar o resultado móvel e continuar a fila editorial com fonte, imagem e prática verificáveis.
