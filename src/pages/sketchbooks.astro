@@ -8,7 +8,7 @@ import { radarByLane } from '../data/radarHarumverso';
 import '../styles/browse.css';
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 const shelves = [...new Set(sketchbookGalleries.map((book) => book.shelf))];
-const totalSheets = sketchbookGalleries.reduce((total, book) => total + book.images.length, 0);
+const totalImages = sketchbookGalleries.reduce((total, book) => total + book.images.length, 0);
 const imageSource = (url: string) => url.startsWith('https://') ? url : base + url;
 const radarSketchbooks=radarByLane('sketchbook').slice(0,5);
 const galleryEntries=sketchbookGalleries.map((book)=>({book,companions:book.images.length<2?sketchbookCompanionsByShelf[book.shelf]??[]:[]}));
@@ -130,7 +130,7 @@ const galleryEntries=sketchbookGalleries.map((book)=>({book,companions:book.imag
     <div class="section-head"><div><div class="eyebrow">UM CADERNO, UM OLHAR</div><h2>Sequências para estudar, não para colecionar.</h2></div><p>Escolha a orientação da galeria: percorra as folhas na horizontal ou em coluna vertical. No celular, deslize; no computador, use as setas. Continue rolando para visitar as outras estantes.</p></div>
     <div class="archive-stats" aria-label="Resumo do acervo">
       <span><strong>{sketchbookGalleries.length}</strong> cadernos históricos</span>
-      <span><strong>{totalSheets}</strong> folhas ligadas às fontes</span>
+      <span><strong>{totalImages}</strong> imagens nesta seleção</span>
       <span><strong>2</strong> modos de navegação</span>
     </div>
     <div class="actions" style="margin-top:18px" aria-label="Continuar a pesquisa no Atlas">
@@ -154,7 +154,7 @@ const galleryEntries=sketchbookGalleries.map((book)=>({book,companions:book.imag
         <a class="btn" href={book.commonsUrl} target="_blank" rel="noreferrer">{book.commonsUrl.includes("commons.wikimedia.org") ? "Ver arquivos no Commons →" : "Abrir acervo completo →"}</a>
       </div>
     </div>
-    <div class="stream-head" style="margin-top:26px"><div><span class="eyebrow">{book.source}</span><h3>Folhas do caderno</h3></div><p>{book.images.length > 0 ? book.images.length + " " + (book.images.length === 1 ? "imagem" : "imagens") + " nesta seleção · abertura preservada na fonte." : "Acervo institucional conectado · imagens entram após validação individual do arquivo."}</p></div>
+    <div class="stream-head" style="margin-top:26px"><div><span class="eyebrow">{book.source}</span><h3>Imagens selecionadas</h3></div><p>{book.images.length > 0 ? book.images.length + " " + (book.images.length === 1 ? "imagem" : "imagens") + " nesta seleção · abertura preservada na fonte." : "Acervo institucional conectado · imagens entram após validação individual do arquivo."}</p></div>
     {book.images.length > 1 && <div class="gallery-view-controls" role="group" aria-label={"Modo de navegação da galeria " + book.title} data-gallery-controls data-gallery-track="original">
       <button type="button" data-gallery-axis="horizontal" aria-pressed="true">↔ Horizontal</button>
       <button type="button" data-gallery-axis="vertical" aria-pressed="false">↕ Vertical</button>
