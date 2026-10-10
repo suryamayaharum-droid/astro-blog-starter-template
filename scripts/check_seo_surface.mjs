@@ -18,18 +18,17 @@ const errors=[];
 const warnings=[];
 const capture=(html,re)=>html.match(re)?.[1]?.trim()||'';
 const meta=(html,key)=>{
-  const esc=key.replace(/[.*+?^$(){}|[\\]\\\\]/g,'\\\\$&');
-  return capture(html,new RegExp('<meta[^>]+(?:name|property)="'+esc+'"[^>]+content="([^"]*)"[^>]*>','i'));
+  return capture(html,new RegExp('<meta[^>]+(?:name|property)="'+key+'"[^>]+content="([^"]*)"[^>]*>','i'));
 };
 
 for(const file of htmlFiles){
   const html=fs.readFileSync(file,'utf8');
   const rel=path.relative(root,file).replaceAll(path.sep,'/');
-  const title=capture(html,/<title>([^<]*)<\\/title>/i);
+  const title=capture(html,/<title>([^<]*)<\/title>/i);
   const desc=meta(html,'description');
   const robots=meta(html,'robots');
-  const lang=capture(html,/<html[^>]*\\blang="([^"]+)"/i);
-  const canonical=capture(html,/<link[^>]*\\brel="canonical"[^>]*\\bhref="([^"]+)"/i);
+  const lang=capture(html,/<html[^>]*\blang="([^"]+)"/i);
+  const canonical=capture(html,/<link[^>]*\brel="canonical"[^>]*\bhref="([^"]+)"/i);
   const ogTitle=meta(html,'og:title');
   const ogDescription=meta(html,'og:description');
   const ogImage=meta(html,'og:image');
@@ -43,10 +42,10 @@ for(const file of htmlFiles){
         const u=new URL(canonical,SITE_ORIGIN);
         if(u.origin!==SITE_ORIGIN||!u.pathname.startsWith(SITE_BASE))errors.push(rel+': redirect canonical leaves site '+u.href);
         else{
-          const sub=u.pathname.slice(SITE_BASE.length).replace(/^\\/+|\\/+$/g,'');
+          const sub=u.pathname.slice(SITE_BASE.length).replace(/^\/+|\/+$/g,'');
           const target=sub?path.join(root,...sub.split('/'),'index.html'):path.join(root,'index.html');
-          const fileTarget=sub?path.join(root,...sub.split('/')):path.join(root,'index.html');
-          if(!fs.existsSync(target)&&!fs.existsSync(fileTarget))errors.push(rel+': redirect target missing '+u.pathname);
+          const directTarget=sub?path.join(root,...sub.split('/')):path.join(root,'index.html');
+          if(!fs.existsSync(target)&&!fs.existsSync(directTarget))errors.push(rel+': redirect target missing '+u.pathname);
         }
       }catch{errors.push(rel+': invalid redirect canonical '+canonical);}
     }
@@ -73,10 +72,10 @@ for(const file of htmlFiles){
   if(title.length>75)warnings.push(rel+': long title ('+title.length+')');
   if(desc.length>180)warnings.push(rel+': long description ('+desc.length+')');
 
-  const selfAlt=[...html.matchAll(/<link[^>]*\\brel="alternate"[^>]*\\bhreflang="([^"]+)"[^>]*\\bhref="([^"]+)"/gi)].find(m=>m[1]===lang);
+  const selfAlt=[...html.matchAll(/<link[^>]*\brel="alternate"[^>]*\bhreflang="([^"]+)"[^>]*\bhref="([^"]+)"/gi)].find(m=>m[1]===lang);
   if(!selfAlt)errors.push(rel+': missing self hreflang for '+lang);
 
-  for(const m of html.matchAll(/<script[^>]*type="application\\/ld\\+json"[^>]*>([\\s\\S]*?)<\\/script>/gi)){
+  for(const m of html.matchAll(/<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/gi)){
     const raw=m[1].trim();
     if(!raw){errors.push(rel+': empty JSON-LD block');continue;}
     try{
