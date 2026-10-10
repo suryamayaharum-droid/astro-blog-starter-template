@@ -65,12 +65,13 @@ if (!lume.includes("bndigital:{href:base+'bancos/bndigital/'")) failures.push("L
 const coversStart = atlas.indexOf("const covers=") + "const covers=".length;
 const coversEnd = atlas.indexOf(";", coversStart);
 const doorsStart = atlas.indexOf("const doors=[");
-const doorsEnd = atlas.indexOf("\\n];", doorsStart);
+const lineBreak = String.fromCharCode(10);
+const doorsEnd = atlas.indexOf(lineBreak + "];", doorsStart);
 if (coversStart < "const covers=".length || coversEnd < 0 || doorsStart < 0 || doorsEnd < 0) {
   failures.push("Atlas navigation arrays could not be inspected");
 } else {
   const coverCount = JSON.parse(atlas.slice(coversStart, coversEnd)).length;
-  const doorLines = atlas.slice(doorsStart, doorsEnd).split("\\n").slice(1);
+  const doorLines = atlas.slice(doorsStart, doorsEnd).split(lineBreak).slice(1);
   const doorCount = doorLines.filter((line) => line.startsWith('["')).length;
   if (coverCount !== doorCount) failures.push("Atlas has " + doorCount + " doors but " + coverCount + " covers");
 }
