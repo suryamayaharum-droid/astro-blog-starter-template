@@ -32,11 +32,12 @@ Truth rule:
 
 ## Current HARUM NOIR GitHub checkpoint · 10 out 2026
 
-- **TENHO:** PRs #90–#100 integradas. PR #96 conectou as páginas locais do Studio 23 ao Atlas 1101; PR #97 preparou arquivos de domínio sem alterar a URL pública; PR #100 ampliou o Atlas com Bancos, 15 sketchbooks, Composições Autorais e Artistas em Foco.
-- **PRONTO — PR #100:** entrou em `7e2e6fa`. CI #38078728950 e auditoria responsiva completa #38078728928 passaram. O CI contou 75 arquivos Astro e 414 HTMLs publicados, verificou 17.543 href/src e 290 fragmentos: zero links, fragmentos ou imagens inválidos.
-- **FAZENDO — publicação:** CI #38078829381 e GitHub Pages #38078829417 estão processando o merge. A captura móvel pós-deploy desta publicação ainda precisa iniciar e passar.
-- **FAZENDO — editorial:** 53/75 rotas revisadas (71%). A página nova Artistas em Foco foi revisada e sua porta entra tanto no Atlas quanto no índice do ecossistema.
-- **PASSO:** confirmar o deploy e a auditoria móvel; depois reconciliar as propostas abertas de Outliers (#98) e Jake Parker (#99) com a main atual.
+- **TENHO:** PRs #90–#101 integradas; PR #101 sincronizou JEV, auditoria, painel e blueprint após o Atlas nativo da #100.
+- **PRONTO — publicação:** CI #38079190116 e GitHub Pages #38079190149 do checkpoint atual passaram. O build anterior do Atlas gerou 75 rotas Astro e 414 HTMLs, com 17.543 destinos e 290 fragmentos sem falhas.
+- **FAZENDO — mobile:** auditoria pós-deploy #38079254634 segue em execução; não registrar como concluída até o resultado final.
+- **FAZENDO — editorial:** 54/75 rotas revisadas (72%), incluindo Outliers após corrigir a data de Appian (1868–70) e conferir quatro registros institucionais.
+- **PRONTO — Atlas:** Jake Parker agora aponta ao canal oficial canônico do YouTube indicado pelo próprio site.
+- **PASSO:** aguardar a auditoria móvel e prosseguir com páginas prioritárias, mantendo fontes primárias, imagem pertinente e exercício ligado a cada destino.
 
 Do not persist secrets, credentials, cookies, private keys or hidden chain-of-thought.
 
@@ -44,7 +45,7 @@ This pointer is intentionally small. The canonical HIVE carries the full tree, b
 
 ## Editorial audit · atualização · 10 out 2026
 
-Após a PR #100, a auditoria manual está em 53/75 rotas (71%). O build conta 414 HTMLs e a checagem interna passou com zero links quebrados. CI e deploy do merge `7e2e6fa` estão em execução; o próximo gate é a captura móvel pós-deploy.
+A revisão manual está em 54/75 rotas (72%). O checkpoint mais recente tem CI #38079190116 e Pages #38079190149 aprovados; a auditoria móvel pós-deploy #38079254634 continua em andamento.
 
-- **PRONTO:** PR #100 integrou Bancos, Sketchbooks, Composições Autorais e Artistas em Foco ao Atlas; ampliou as galerias para 15 cadernos e corrigiu o encaminhamento e os rótulos de idioma do Lume.
-- **PASSO:** confirmar publicação e mobile; reconciliar #98 (Outliers) e #99 (Jake Parker) antes de integrar novas propostas.
+- **PRONTO:** Outliers revisada; a ficha de Appian agora inclui 1868–70, conforme o registro do Met. Jake Parker ganhou o canal oficial canônico no Atlas.
+- **PASSO:** fechar o registro móvel quando a execução terminar e continuar a revisão página a página sem alterações cosméticas onde o conteúdo já funciona.
