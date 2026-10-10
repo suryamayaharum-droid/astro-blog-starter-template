@@ -537,7 +537,7 @@ export const referenceArtists:PublicReference[]=[
         "title": "All Products — Chloe Rose Art",
         "url": "https://chloerose.art/collections/all",
         "observe": "Explore o catálogo oficial para ver como a identidade visual e os temas recorrentes se estendem a livros, adesivos e outros produtos.",
-        "tags": "posicionamento; identidade; catálogo"
+        "tags": "produtos; identidade; catálogo"
       }
     ]
   },
@@ -1214,7 +1214,7 @@ export const referenceArtists:PublicReference[]=[
         "title": "Drawings — Emanuele Dascanio",
         "url": "https://emanueledascanio.org/drawings/",
         "observe": "Compare desenhos finalizados e observe enquadramento, gradação tonal e controle de superfície; use a biblioteca de vídeos como fonte separada para o processo.",
-        "tags": "obra longa; série; reveal"
+        "tags": "desenho; grafite; carvão; portfólio"
       },
       {
         "type": "Obra / rede",
@@ -1581,7 +1581,7 @@ export const referenceArtists:PublicReference[]=[
         "title": "Course Catalog — Figure Drawing Foundations",
         "url": "https://www.nma.art/v3/course-catalog/",
         "observe": "No módulo Drawing Foundations, compare as entradas de figura, construção da cabeça, perspectiva e gesto para entender a sequência curricular.",
-        "tags": "referência; modelo vivo; prática"
+        "tags": "currículo; figura; gesto; fundamentos"
       }
     ]
   },
