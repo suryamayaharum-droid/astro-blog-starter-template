@@ -140,7 +140,7 @@ A varredura dos destinos repetidos encontrou uma segunda home em Chloe Rose, o m
 
 ## Auditoria pós-deploy da PR #93 · estado
 
-A auditoria responsiva completa #131 passou antes do merge; o CI #652 também passou. A publicação após o merge foi substituída por atualizações documentais subsequentes. A auditoria móvel que passou (#38006094950) cobriu o deploy anterior (#92); os jobs pós-deploy #38016083431/81932 foram ignorados no commit documental. A captura móvel específica após PR #93 continua como gate aberto.
+A auditoria responsiva completa #131 e o CI #652 passaram antes do merge da PR #93. A captura móvel pós-deploy #38016153717 também passou. CI #38016078850 e Pages #38016078797 da publicação #93 passaram após as atualizações documentais.
 
 
 ## Linguagem corporal · revisão de três rotas
