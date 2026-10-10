@@ -13,24 +13,19 @@ Uma frente só recebe **CONCLUÍDO** quando há evidência. Build verde não sig
 ## PAINEL GERAL
 
 ```text
-HARUM NOIR · GITHUB PAGES
-Progresso estrutural estimado: 97%
+HARUM NOIR · GITHUB PAGES · estado 10 out 2026
+Rotas Astro: 75 · HTMLs do build: 414 · auditoria de destinos: 0 erros
 
-[████████████████████] CI / Astro / TypeScript ........ CONCLUÍDO
-[████████████████████] Cloudflare dry-run ............. CONCLUÍDO
-[████████████████████] Links internos / assets ........ CONCLUÍDO pelo CI
-[████████████████████] hreflang recíproco ............. CONCLUÍDO pelo CI
-[████████████████████] SEO estrutural / JSON-LD ....... CONCLUÍDO pelo CI
-[████████████████████] contrato Studio23 ↔ Noir ....... CONCLUÍDO pelo CI
-[████████████████████] ciclo pedagógico ............... CONCLUÍDO / QA VERDE
-[███████████████████░] coerência entre páginas ........ 96% / CONCLUÍDO
-[████████████████████] responsividade visual .......... QA #72 VERDE
-[████████████████████] acessibilidade visual/teclado .. QA #88 VERDE
-[███████████████████░] EN/ES / redundâncias .......... 96% / CONCLUÍDO
-[████████████████████] dependências / segurança ...... TRIAGEM CONCLUÍDA
-[███████████░░░░░░░░░] merge/publicação .............. 55% / DRAFT
+[████████████████████] PR #100 · Atlas nativo ........... INTEGRADA em 7e2e6fa
+[████████████████████] CI PR #100 ....................... VERDE #38078728950
+[████████████████████] Responsivo PR #100 ............... VERDE #38078728928
+[████████████████████] Links internos / imagens ......... 17.543 destinos · 0 falhas
+[████████████████████] Fragmentos internos .............. 290 verificados · 0 falhas
+[███████████████████░] Revisão editorial página a página  71% · 53/75
+[██████████████░░░░░░] Deploy do merge .................. EM ANDAMENTO #38078829417
+[░░░░░░░░░░░░░░░░░░░░] Mobile pós-deploy ................. AGUARDAR publicação
+[██████████████████░░] Fusão com Atlas 1101 ............. STUDIO 23 + rotas nativas integradas
 ```
-
 ## ESTADO DA PR #78
 
 - Branch: `melhoria/escola-primeira-pratica-2026-10-09`
@@ -369,3 +364,12 @@ Workers Builds externo .................... FALHA / CAUSA NÃO PROVADA
 O QA #88 tornou a acessibilidade mais exigente: a primeira execução do novo gate detectou alvos pequenos no chrome internacional; a correção foi aplicada e a repetição passou. Assim, o verde atual não é apenas herdado de um teste antigo.
 
 Regra de release: manter a PR em rascunho enquanto o check externo Workers Builds continuar sem diagnóstico autenticado. O `Cloudflare dry-run` interno permanece verde e o GitHub Pages é a superfície pública canônica desta frente.
+
+
+## Atualização de estado · Atlas nativo · 10 out 2026
+
+PR [#96](https://github.com/suryamayaharum-droid/astro-blog-starter-template/pull/96) integra as páginas locais do Studio 23 ao ecossistema do HARUM NOIR e ao Atlas 1101. PR [#97](https://github.com/suryamayaharum-droid/astro-blog-starter-template/pull/97) preparou o domínio personalizado sem trocar a URL pública.
+
+PR [#100](https://github.com/suryamayaharum-droid/astro-blog-starter-template/pull/100) está integrada em `7e2e6fa`: Bancos de Imagens, Sketchbooks, Composições Autorais e Artistas em Foco foram conectados ao Atlas e ao índice compartilhado; 15 sketchbooks e três perfis artísticos agora têm portas nativas. Lume encaminha buscas de bancos/BNDigital e informa quando o destino permanece em português.
+
+CI e responsivo do PR passaram; o build gerou 414 HTMLs e a checagem de links registrou zero falhas. O CI e o deploy do merge ainda estavam em andamento no último acompanhamento; a captura móvel pós-deploy é o próximo gate. Revisão editorial: 53/75 rotas (71%). PRs #98 (Outliers) e #99 (Jake Parker) permanecem propostas abertas para reconciliar com a main.

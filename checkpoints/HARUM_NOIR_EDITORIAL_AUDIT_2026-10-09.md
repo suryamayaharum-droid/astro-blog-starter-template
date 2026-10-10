@@ -4,9 +4,9 @@
 
 ## Progresso
 
-`████████░░ 70% · 52/74 arquivos de rota revisados manualmente`
+`███████░░░ 71% · 53/75 arquivos de rota revisados manualmente`
 
-- [x] Varredura estrutural das 74 rotas Astro: títulos, presença de imagens, quantidade e rótulos de ações, marcadores de conteúdo provisório.
+- [x] Varredura estrutural das 75 rotas Astro: títulos, presença de imagens, quantidade e rótulos de ações, marcadores de conteúdo provisório.
 - [x] Conferir o caminho de entrada: home → escola → primeira prática → museus.
 - [x] Revisar as portas centrais: Ateliê, busca, Museus, Referências, Biblioteca, Percursos e Sobre.
 - [x] Revisar a busca transversal: chips, acentos, parâmetro `q`, estado vazio e destinos da coleção.
@@ -161,3 +161,12 @@ Comparei as três rotas internacionais e a página principal. O hub PT diferenci
 ## Integração e validação · PR #95
 
 PR [#95](https://github.com/suryamayaharum-droid/astro-blog-starter-template/pull/95) integrada em `ec182fe`. O CI #38016764680 e a auditoria responsiva #38016764681 passaram. A captura móvel pós-deploy do conteúdo anterior (#38016761776) segue ativa na etapa “Capture mobile route matrix”; não houve falha reportada até a última leitura. O hub de História revisado totaliza 52/74 rotas manuais (70%).
+
+
+## Atlas nativo · PR #100 integrada · 10 out 2026
+
+PR [#100](https://github.com/suryamayaharum-droid/astro-blog-starter-template/pull/100) entrou em `7e2e6fa`. O Atlas e o índice de ecossistema agora incluem Bancos, Sketchbooks, Composições Autorais e Artistas em Foco. As galerias locais reúnem 15 cadernos com links institucionais; a nova página de artistas apresenta Banksy, Modigliani e Kandinsky com fontes e exercícios próprios. Removi uma anotação nominal interna da leitura de Kandinsky e converti-a numa proposta prática para qualquer visitante.
+
+O Lume encaminha buscas de bancos e BNDigital para rotas locais, reconhece os termos em dez idiomas, preserva o idioma da visita quando a consulta contém apenas “BNDigital” e informa (PT) nas portas ainda disponíveis só em português. O contrato passou a exigir a presença e o destino da porta de artistas.
+
+CI #38078728950 e auditoria responsiva completa #38078728928 passaram antes do merge. O build produziu 414 páginas HTML e a auditoria interna verificou 17.543 destinos e 290 fragmentos, sem falhas. No estado desta atualização, CI #38078829381 e Pages #38078829417 do merge estão em andamento; acompanhar a captura móvel quando começar. Revisão manual: 53/75 (71%).
