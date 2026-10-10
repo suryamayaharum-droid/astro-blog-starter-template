@@ -221,21 +221,46 @@ export const sketchbookGalleries = [
     principle: "Percorrer um caderno de paisagem ajuda a comparar como um artista registra lugares distintos e transforma observação em repertório.",
     originalUrl: "https://www.metmuseum.org/art/collection/search/16611",
     commonsUrl: "https://www.metmuseum.org/art/collection/search/16611",
-    images: [{ url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/16611/22417/main-image", href: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/16611/22417/main-image", label: "Abertura · White Mountains e Hudson River" }]
+    images: [
+      { url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/16611/22417/main-image", href: "https://www.metmuseum.org/art/collection/search/16611", label: "Abertura · caderno de David Johnson" },
+      { url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/16611/30372/main-image", href: "https://www.metmuseum.org/art/collection/search/16611", label: "Folha digitalizada 01" },
+      { url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/16611/30373/main-image", href: "https://www.metmuseum.org/art/collection/search/16611", label: "Folha digitalizada 02" },
+      { url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/16611/30374/main-image", href: "https://www.metmuseum.org/art/collection/search/16611", label: "Folha digitalizada 03" }
+    ]
   },
   {
-    id: "george-elbert-burr-near-sion",
-    shelf: "Escultura & viagem",
+    id: "george-elbert-burr-swiss-journey",
+    shelf: "Paisagem & atmosfera",
     artist: "George Elbert Burr",
-    title: "Sketchbook · Near Sion",
+    title: "Caderno de viagem · folhas da Suíça",
     date: "1899",
-    medium: "Lápis, pena e tinta sobre papel",
+    medium: "Lápis sobre papel",
     source: "Smithsonian American Art Museum",
     rights: "Livre para uso — Smithsonian American Art Museum",
-    principle: "Desenho e viagem se encontram na mesma folha: observe como paisagem, arquitetura e figura dividem o espaço.",
-    originalUrl: "https://americanart.si.edu/artwork/sketchbook-near-sion-3323",
-    commonsUrl: "https://americanart.si.edu/artwork/sketchbook-near-sion-3323",
-    images: [{ url: "https://ids.si.edu/ids/deliveryService?id=SAAM-1983.83.221R-V_2&max=960", href: "https://americanart.si.edu/artwork/sketchbook-near-sion-3323", label: "Near Sion · frente e verso" }]
+    principle: "Uma sequência curada de folhas em torno do Lago de Genebra. Compare como escala, horizonte e arquitetura mudam de lugar para lugar.",
+    originalUrl: "https://americanart.si.edu/search/artworks?query=George%20Elbert%20Burr%20sketchbook",
+    commonsUrl: "https://americanart.si.edu/search/artworks?query=George%20Elbert%20Burr%20sketchbook",
+    images: [
+      { url: "https://ids.si.edu/ids/deliveryService?id=SAAM-1983.83.214_1&max=960", href: "https://americanart.si.edu/artwork/sketchbook-sierre-3305", label: "At Sierre" },
+      { url: "https://ids.si.edu/ids/deliveryService?id=SAAM-1983.83.223_1&max=960", href: "https://americanart.si.edu/artwork/sketchbook-vevey-3340", label: "Vevey" },
+      { url: "https://ids.si.edu/ids/deliveryService?id=SAAM-1983.83.227_1&max=960", href: "https://americanart.si.edu/artwork/sketchbook-lake-vevey-3315", label: "The Lake from Vevey" },
+      { url: "https://ids.si.edu/ids/deliveryService?id=SAAM-1983.83.231_1&max=960", href: "https://americanart.si.edu/artwork/sketchbook-ouchy-3314", label: "From Ouchy" },
+      { url: "https://ids.si.edu/ids/deliveryService?id=SAAM-1983.83.221R-V_2&max=960", href: "https://americanart.si.edu/artwork/sketchbook-near-sion-3323", label: "Near Sion" }
+    ]
+  },
+  {
+    id: "je-shadek-sketchbook",
+    shelf: "Memória & anotação",
+    artist: "J.E. Shadek",
+    title: "Sketch Book of J.E. Shadek · 93 desenhos",
+    date: "1861–62",
+    medium: "Volume encadernado com 93 desenhos em técnicas mistas",
+    source: "National Gallery of Art",
+    rights: "Domínio público — mídia indicada pela NGA",
+    principle: "O caderno reúne desenho e anotação de contexto militar; observe a variedade de assuntos e como o suporte portátil registra uma experiência situada.",
+    originalUrl: "https://www.nga.gov/artworks/59877-je-shadek-sketchbook",
+    commonsUrl: "https://www.nga.gov/artworks/59877-je-shadek-sketchbook",
+    images: [{ url: "https://api.nga.gov/iiif/d09065da-0164-470c-afc3-dd0290b97697/full/%21800%2C800/0/default.jpg", href: "https://www.nga.gov/artworks/59877-je-shadek-sketchbook", label: "Capa · Sketch Book of J.E. Shadek" }]
   }
 ] as const;
 
