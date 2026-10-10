@@ -3,7 +3,8 @@ import path from 'node:path';
 
 const root=path.resolve('dist');
 const SITE_ORIGIN=new URL(process.env.PUBLIC_SITE_URL||'https://suryamayaharum-droid.github.io').origin;
-const SITE_BASE=process.env.PUBLIC_SITE_URL?'/':'/astro-blog-starter-template/';
+const SITE_BASE=process.env.PUBLIC_SITE_URL?'/':'/astro-blog-starter-template';
+const inSiteBase=(pathname)=>SITE_BASE==='/'?pathname.startsWith('/'):pathname===SITE_BASE||pathname.startsWith(SITE_BASE+'/');
 
 const htmlFiles=[];
 const walk=(dir)=>{
@@ -42,7 +43,7 @@ for(const page of pages.values()){
   for(const [hreflang,href] of page.alternates){
     if(hreflang==='x-default'||hreflang===page.lang)continue;
     const u=new URL(href);
-    if(u.origin!==SITE_ORIGIN||!u.pathname.startsWith(SITE_BASE))continue;
+    if(u.origin!==SITE_ORIGIN||!inSiteBase(u.pathname))continue;
     checked++;
     const target=pages.get(norm(href));
     if(!target){
