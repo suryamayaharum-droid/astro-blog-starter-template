@@ -4,7 +4,7 @@
 
 ## Progresso
 
-`████████░░ 70% · 52/74 arquivos de rota revisados manualmente`
+`███████░░░ 72% · 53/74 arquivos de rota revisados manualmente`
 
 - [x] Varredura estrutural das 74 rotas Astro: títulos, presença de imagens, quantidade e rótulos de ações, marcadores de conteúdo provisório.
 - [x] Conferir o caminho de entrada: home → escola → primeira prática → museus.
@@ -161,3 +161,8 @@ Comparei as três rotas internacionais e a página principal. O hub PT diferenci
 ## Integração e validação · PR #95
 
 PR [#95](https://github.com/suryamayaharum-droid/astro-blog-starter-template/pull/95) integrada em `ec182fe`. O CI #38016764680 e a auditoria responsiva #38016764681 passaram. A captura móvel pós-deploy do conteúdo anterior (#38016761776) segue ativa na etapa “Capture mobile route matrix”; não houve falha reportada até a última leitura. O hub de História revisado totaliza 52/74 rotas manuais (70%).
+
+
+## Outliers · revisão de ficha, fonte e direitos · 10 out 2026
+
+Revisei a rota `/outliers/` e conferi os quatro registros diretamente nos acervos: Odilon Redon, *The Book of Light* (1893), National Gallery of Art; Adolphe Appian, *A Pond with a Fisherman along the River Ain* (1868–70), The Met; Jean-Auguste-Dominique Ingres, *Study for the Figure of Stratonice* (1834–40), The Met; e Annibale Carracci, *Crawling Male Figure (Study for Cacus)* (1593), The Met. Títulos, artistas, datas e destinos correspondem aos registros institucionais. A página identifica as imagens exibidas como estudos editoriais HARUM NOIR, separa-as das obras citadas e oferece um link direto para cada instituição. O exercício acompanha o princípio visual anunciado em cada ficha. Nenhuma correção de conteúdo necessária; a revisão manual passa a 53/74 rotas (72%).
