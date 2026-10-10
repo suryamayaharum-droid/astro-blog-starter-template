@@ -62,6 +62,15 @@ for (const slug of requiredAtlasHubs) {
 }
 if (!lume.includes("banks:{href:base+'bancos/'")) failures.push("Lume must route image-bank queries to the bank catalog");
 if (!lume.includes("bndigital:{href:base+'bancos/bndigital/'")) failures.push("Lume must route BNDigital queries to its detail page");
+const atlasCovers = atlas.match(/const covers=(\\[[^\\]]+\\]);/);
+const atlasDoors = atlas.match(/const doors=\\[([\\s\\S]*?)\\n\\];/);
+if (!atlasCovers || !atlasDoors) {
+  failures.push("Atlas navigation arrays could not be inspected");
+} else {
+  const coverCount = JSON.parse(atlasCovers[1]).length;
+  const doorCount = (atlasDoors[1].match(/^\\["/gm) || []).length;
+  if (coverCount !== doorCount) failures.push("Atlas has " + doorCount + " doors but " + coverCount + " covers");
+}
 
 const directUrlFiles = [];
 async function walk(dir) {
