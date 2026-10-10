@@ -82,3 +82,8 @@ Desenho PT/EN/ES apresenta entradas equivalentes para carvão, figura e coleçõ
 ## História da Arte · revisão internacional
 
 Os hubs EN/ES tinham o card “lentes de estudo” ligado à busca de museus. PR #95 redireciona a promessa para a aula localizada de Figura e Gesto, com rótulos específicos em cada idioma. Revisão manual: 52/74 rotas (70%). PR #94 foi integrada em `5a369bd`; validar CI e auditoria responsiva do próximo lote antes do merge.
+
+
+## Integração editorial · PR #95
+
+PR [#95](https://github.com/suryamayaharum-droid/astro-blog-starter-template/pull/95) integrada em `ec182fe`. O card de lentes de estudo nos hubs EN/ES de História agora leva à aula localizada de Figura e Gesto. CI #38016764680 e auditoria responsiva #38016764681 passaram. A captura móvel do deploy da PR #94 (#38016761776) permanece em execução; acompanhar até concluir. Revisão editorial: 52/74 rotas (70%).
