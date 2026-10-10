@@ -30,25 +30,16 @@ Before opening new work, check for compatible `work_id` / `intent_key`, active o
 Truth rule:
 `live read after write > write receipt > canonical HIVE > JEV/projected state > plan > assumption`
 
-## Current HARUM NOIR GitHub checkpoint · 9 out 2026
+## Current HARUM NOIR GitHub checkpoint · 10 out 2026
 
-- **TENHO:** escola e coleções publicadas no GitHub Pages; PR [#90](https://github.com/suryamayaharum-droid/astro-blog-starter-template/pull/90) integrada em `12eb3c6`; PR [#91](https://github.com/suryamayaharum-droid/astro-blog-starter-template/pull/91) integrada em `6912b68`; PR [#92](https://github.com/suryamayaharum-droid/astro-blog-starter-template/pull/92) em `85dfaa5`; PR [#93](https://github.com/suryamayaharum-droid/astro-blog-starter-template/pull/93) integrada em `121270a`.
-- **PRONTO — móvel:** correção de medição de sobreposição após rolagem integrada pela PR #88. A auditoria pós-deploy #38002723488 passou; o retry de #38003813788 também passou em matriz, smoke internacional, limites responsivos e screenshots, após dois 503 transitórios em imagens existentes.
-- **FAZENDO — publicação:** A PR #92 passou CI, Pages e Link Health; a auditoria móvel #38006094950 do deploy passou. A PR #93 passou CI e auditoria responsiva e foi integrada em `121270a`; CI #38016078850, Pages #38016078797 e a captura móvel pós-deploy #38016153717 passaram para a publicação da PR #93.
-- **FAZENDO — editorial:** revisão manual em 49/74 rotas (66%). A varredura estrutural cobriu 74 arquivos de rota e o build gera 194 HTMLs. Veja `checkpoints/HARUM_NOIR_EDITORIAL_AUDIT_2026-10-09.md`.
-- **FAZENDO:** PR #94 corrige referências repetidas/genéricas em Chloe Rose, Sycra, Emanuele Dascanio e New Masters Academy. CI #38016194638, Link Health #38016185381 e responsivo #38016194772 passaram no commit de conteúdo; CI #38016609306 e detector de escopo #38016609313 dos commits documentais estão na fila.
-- **PRONTO:** Cabeça & Expressão, Mãos, Corpo em Relação e os hubs de Desenho PT/EN/ES revisados; mantidos sem reescrita, com práticas, imagens e destinos coerentes.
-- **PASSO:** conferir outras fontes primárias do Atlas, rotas restantes de História da Arte e demais páginas EN/ES; atualizar a barra por lote.
+- **TENHO:** escola e coleções publicadas no GitHub Pages; PRs #90–#94 integradas. A PR #94 entrou em `5a369bd`, corrigindo destinos repetidos/genéricos de quatro fichas do Atlas.
+- **PRONTO — publicação:** PR #93 passou CI #38016078850, Pages #38016078797 e auditoria móvel pós-deploy #38016153717. PR #94 passou CI #38016639788, Link Health #38016185381 e auditoria responsiva completa #38016194772 antes da integração.
+- **FAZENDO — editorial:** revisão manual em 52/74 rotas (70%). A varredura estrutural cobre 74 arquivos Astro e o build gera 194 HTMLs. Veja o checkpoint editorial.
+- **PRONTO:** Cabeça & Expressão, Mãos, Corpo em Relação, hubs de Desenho PT/EN/ES e História da Arte PT/EN/ES revisados. Os hubs internacionais agora levam a aula de Figura e Gesto no idioma correspondente.
+- **PASSO:** conferir fontes primárias restantes no Atlas, rotas restantes de História da Arte e paridade EN/ES; registrar mudanças em lotes pequenos.
 
 Do not persist secrets, credentials, cookies, private keys or hidden chain-of-thought.
 
 This pointer is intentionally small. The canonical HIVE carries the full tree, blueprint, state and evidence.
 
-## Editorial audit · atualização · 9 out 2026
-
-- **TENHO:** PR #90, #91 e #92 integradas em `12eb3c6`, `6912b68` e `85dfaa5`. O PR #89 foi encerrado como versão substituída. Ver `checkpoints/HARUM_NOIR_EDITORIAL_AUDIT_2026-10-09.md`.
-- **PRONTO:** cinco fallbacks genéricos corrigidos; Olhar e Vestígio agora têm práticas com duração e saída; 15 links vidIQ foram removidos das fichas/JSON-LD; contagem da busca anuncia resultados com `role=status`.
-- **FAZENDO:** revisão manual de 37/74 rotas (50%). O Atlas gera 101 fichas e 208 referências. Os hubs EN/ES de História, Museus e Referências foram comparados; rotas só em PT estão identificadas.
-- **PRONTO — checks:** CI e auditoria responsiva do #91 passaram. A última auditoria móvel pós-deploy concluída (#38003813788 no retry) passou; a auditoria móvel #38006094950 passou; PR #93 integrada em `121270a`, CI e auditoria responsiva verdes; a verificação móvel do novo deploy fica pendente.
-- **PRONTO:** no perfil de Mark Crilley, substituí um segundo link genérico à home por sua página oficial de aparições, que descreve a demonstração “Thirty Second Drawing”; o exercício agora aponta a uma evidência específica.
-- **PASSO:** conferir fontes primárias e títulos por artista; continuar em História da Arte e completar paridade EN/ES.
+## Editorial audit · atualização · 10 out 2026\n\nA revisão chegou a 52/74 rotas (70%). PR #94 foi integrada em `5a369bd`; PR #93 segue com a captura móvel pós-deploy aprovada. O lote seguinte corrige os hubs internacionais de História: a chamada “lentes de estudo” agora abre Figura e Gesto (EN/ES), em vez de levar à busca de museus.\n\n- **PASSO:** continuar pelas rotas restantes de História da Arte e revisar fontes por perfil no Atlas.\n
