@@ -56,7 +56,7 @@ if (!footer.includes("href={STUDIO_NOIR}")) {
 
 const requiredAtlasHubs = ["bancos", "sketchbooks", "composicoes-autorais"];
 for (const slug of requiredAtlasHubs) {
-  const hubLine = ecosystem.split("\\n").find((line) => line.includes('id:"' + slug + '"'));
+  const hubLine = ecosystem.split("\n").find((line) => line.includes('id:"' + slug + '"'));
   if (!hubLine || !hubLine.includes('href:"' + slug + '/"')) failures.push("ecosystem hub missing or misrouted: " + slug);
   if (!atlas.includes('"' + slug + '/"')) failures.push("Atlas door missing or misrouted: " + slug);
 }
