@@ -1,0 +1,82 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
+const artists = [
+  { id: 'banksy', number: '01', name: 'Banksy', years: 'ativo desde os anos 1990', field: 'Arte urbana · estêncil · sátira', cover: 'museum-gallery' },
+  { id: 'modigliani', number: '02', name: 'Amedeo Modigliani', years: '1884–1920', field: 'Retrato · desenho · escultura', cover: 'figure-gesture' },
+  { id: 'kandinsky', number: '03', name: 'Wassily Kandinsky', years: '1866–1944', field: 'Abstração · cor · ritmo', cover: 'iris-study' },
+];
+---
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <BaseHead title="Artistas em foco · Harum Noir" description="Biografias curtas, leituras visuais e portas para os acervos de Banksy, Amedeo Modigliani e Wassily Kandinsky." />
+  <style is:global>
+    body.artist-focus { background:#090909;color:#eee7dc }
+    .artist-focus main { max-width:1500px;margin:auto;padding:0 clamp(18px,5vw,76px) 80px }
+    .artist-focus .page-hero { padding-top:clamp(76px,12vw,150px);border:0 }
+    .artist-focus .page-hero h1 { max-width:11ch;font-size:clamp(3.7rem,9vw,8rem) }
+    .artist-intro { max-width:62ch;color:#bdb5aa;line-height:1.75 }
+    .artist-index { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:36px 0 82px }
+    .artist-index a { padding:22px;border:1px solid rgba(238,231,220,.14);background:linear-gradient(145deg,#171615,#0d0d0d);color:inherit;text-decoration:none;border-radius:12px;min-height:150px }
+    .artist-index span,.artist-kicker { color:#b39a69;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase }
+    .artist-index h2 { font:400 clamp(1.7rem,3vw,2.5rem)/1.05 Georgia,serif;margin:20px 0 8px }
+    .artist-index p { color:#aaa197;font-size:.82rem;margin:0 }
+    .artist-profile { display:grid;grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);gap:clamp(24px,6vw,90px);padding:46px 0;border-top:1px solid rgba(238,231,220,.16);scroll-margin-top:90px }
+    .artist-profile h2 { font:400 clamp(2.8rem,6vw,5.8rem)/.95 Georgia,serif;margin:12px 0 }
+    .artist-years { color:#b39a69;font-size:.8rem }
+    .artist-copy p { color:#c8c1b8;line-height:1.75;max-width:66ch }
+    .artist-reading { padding:16px 18px;border-left:2px solid #b39a69;background:#12110f;margin:22px 0;color:#ded5c9 }
+    .artist-links { display:flex;flex-wrap:wrap;gap:10px;margin-top:22px }
+    .artist-links a { padding:10px 14px;border:1px solid rgba(238,231,220,.2);border-radius:999px;color:#eee7dc;text-decoration:none;font-size:.78rem }
+    .artist-links a:hover,.artist-index a:hover { border-color:#b39a69 }
+    .artist-note { color:#8f8981;font-size:.76rem;line-height:1.6;margin-top:32px }
+    @media(max-width:760px){.artist-index{grid-template-columns:1fr}.artist-index a{min-height:auto}.artist-profile{grid-template-columns:1fr;gap:10px;padding:34px 0}.artist-focus .page-hero{padding-top:60px}}
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+  </style>
+</head>
+<body class="artist-focus">
+<Header />
+<main>
+  <section class="page-hero">
+    <div class="eyebrow">ATLAS · ARTISTAS EM FOCO</div>
+    <h1>Três modos de mudar o olhar.</h1>
+    <p class="artist-intro">Biografias de entrada, perguntas para observar e acervos institucionais para continuar a pesquisa. As obras permanecem ligadas às instituições que as guardam e documentam.</p>
+    <div class="actions"><a class="btn primary" href="#banksy">Começar a leitura</a><a class="btn" href={base+'atlas/'}>Voltar ao Atlas</a></div>
+  </section>
+  <nav class="artist-index" aria-label="Ir para artista">
+    {artists.map((artist)=><a href={'#'+artist.id}><span>{artist.number} · {artist.years}</span><h2>{artist.name}</h2><p>{artist.field}</p></a>)}
+  </nav>
+  <section class="artist-profile" id="banksy" aria-labelledby="banksy-title">
+    <div><div class="artist-kicker">01 · Reino Unido</div><h2 id="banksy-title">Banksy</h2><div class="artist-years">Artista urbano pseudônimo · Bristol</div></div>
+    <div class="artist-copy">
+      <p>Banksy é um artista urbano cuja identidade permanece não confirmada publicamente. Associado à cena de Bristol, construiu uma linguagem de intervenções em espaços públicos que combina estêncil, humor e comentário social. Suas imagens dialogam com publicidade, poder, conflito e vida cotidiana; o lugar onde aparecem faz parte da leitura.</p>
+      <div class="artist-reading"><strong>Para observar:</strong> como a escala, o suporte urbano e a distância do observador alteram a leitura de uma imagem? O que muda quando ela sai da rua e entra no museu?</div>
+      <div class="artist-links"><a href="https://www.banksy.co.uk/" target="_blank" rel="noreferrer">Arquivo oficial de trabalhos ↗</a><a href="https://hirshhorn.si.edu/exhibitions/basquiat-x-banksy/" target="_blank" rel="noreferrer">Banksy no Hirshhorn / Smithsonian ↗</a><a href="https://pestcontroloffice.com/" target="_blank" rel="noreferrer">Pest Control · autenticação ↗</a></div>
+      <p class="artist-note">A página do Hirshhorn descreve Banksy como artista anônimo nascido perto de Bristol e apresenta a obra em diálogo com Basquiat. Reproduções e imagens de obras não são incorporadas aqui; consulte os registros e avisos de direitos nas fontes.</p>
+    </div>
+  </section>
+  <section class="artist-profile" id="modigliani" aria-labelledby="modigliani-title">
+    <div><div class="artist-kicker">02 · Itália e França</div><h2 id="modigliani-title">Amedeo Modigliani</h2><div class="artist-years">Livorno, 1884 · Paris, 1920</div></div>
+    <div class="artist-copy">
+      <p>Pintor, desenhista e escultor italiano, Modigliani chegou a Paris em 1906 e participou do ambiente artístico internacional da cidade. Em seus retratos e nus, contorno econômico, proporções alongadas e simplificação das formas criam uma presença visual própria. O trabalho atravessa referências da arte italiana e diálogos com escultura e outras tradições visuais, sem se reduzir a uma única influência.</p>
+      <div class="artist-reading"><strong>Para observar:</strong> acompanhe o contorno do rosto, a inclinação do pescoço e a relação entre olhos, nariz e fundo. Que escolhas tornam o retrato reconhecível sem depender de detalhe naturalista?</div>
+      <div class="artist-links"><a href="https://www.metmuseum.org/art/collection/search#!?q=Amedeo%20Modigliani" target="_blank" rel="noreferrer">Obras no acervo do Met ↗</a><a href="https://www.metmuseum.org/art/collection/search/488927" target="_blank" rel="noreferrer">The Italian Woman · ficha do Met ↗</a><a href="https://www.metmuseum.org/pt/essays/school-of-paris" target="_blank" rel="noreferrer">Contexto: Escola de Paris ↗</a></div>
+      <p class="artist-note">O Met registra sua trajetória de Livorno a Paris e mantém obras com fichas individuais, materiais e contexto. A disponibilidade de reprodução e direitos varia por objeto.</p>
+    </div>
+  </section>
+  <section class="artist-profile" id="kandinsky" aria-labelledby="kandinsky-title">
+    <div><div class="artist-kicker">03 · Rússia, Alemanha e França</div><h2 id="kandinsky-title">Wassily Kandinsky</h2><div class="artist-years">Moscou, 1866 · Neuilly-sur-Seine, 1944</div></div>
+    <div class="artist-copy">
+      <p>Kandinsky iniciou estudos e carreira em direito e economia antes de se dedicar à pintura, mudando-se para Munique aos 30 anos. Tornou-se figura decisiva na formação da abstração moderna. Em sua pesquisa, cor, forma e ritmo podiam organizar a imagem sem depender da representação literal; música e percepção sensorial também foram referências centrais. Seu percurso inclui o grupo Der Blaue Reiter e o período da Bauhaus.</p>
+      <div class="artist-reading"><strong>Para praticar:</strong> escolha uma composição abstrata de Kandinsky e teste, em um estudo próprio, como três formas e duas cores podem criar ritmo e equilíbrio sem copiar o arranjo da obra.</div>
+      <div class="artist-links"><a href="https://www.centrepompidou.fr/en/ressources/personne/co46yKq" target="_blank" rel="noreferrer">Biografia e obras · Centre Pompidou ↗</a><a href="https://www.guggenheim.org/artwork/artist/vasily-kandinsky" target="_blank" rel="noreferrer">Obras · Guggenheim ↗</a><a href="https://www.centrepompidou.fr/en/collection/the-kandinsky-library" target="_blank" rel="noreferrer">Bibliothèque Kandinsky ↗</a></div>
+      <p class="artist-note">O Centre Pompidou descreve sua trajetória e conserva um amplo conjunto de obras e documentos; o Guggenheim oferece fichas de obras e contexto. Use as fichas institucionais para conferir contexto, materiais e disponibilidade de cada obra.</p>
+    </div>
+  </section>
+</main>
+<Footer />
+</body>
+</html>

@@ -9,11 +9,17 @@ const EXPECTED = {
 const constsPath = path.resolve("src/consts.ts");
 const headerPath = path.resolve("src/components/Header.astro");
 const footerPath = path.resolve("src/components/Footer.astro");
+const ecosystemPath = path.resolve("src/data/ecosystem.ts");
+const atlasPath = path.resolve("src/pages/atlas.astro");
+const lumePath = path.resolve("src/components/LumeGuide.astro");
 
-const [consts, header, footer] = await Promise.all([
+const [consts, header, footer, ecosystem, atlas, lume] = await Promise.all([
   fs.readFile(constsPath, "utf8"),
   fs.readFile(headerPath, "utf8"),
   fs.readFile(footerPath, "utf8"),
+  fs.readFile(ecosystemPath, "utf8"),
+  fs.readFile(atlasPath, "utf8"),
+  fs.readFile(lumePath, "utf8"),
 ]);
 
 const failures = [];
@@ -45,6 +51,29 @@ if (!footer.includes("href={STUDIO_SITE}")) {
 }
 if (!footer.includes("href={STUDIO_NOIR}")) {
   failures.push("Footer must expose the canonical Studio 23 Harum Noir bridge");
+}
+
+
+const requiredAtlasHubs = ["bancos", "sketchbooks", "composicoes-autorais", "artistas"];
+for (const slug of requiredAtlasHubs) {
+  const hubLine = ecosystem.split("\n").find((line) => line.includes('id:"' + slug + '"'));
+  if (!hubLine || !hubLine.includes('href:"' + slug + '/"')) failures.push("ecosystem hub missing or misrouted: " + slug);
+  if (!atlas.includes('"' + slug + '/"') && !atlas.includes('"' + slug + '/#')) failures.push("Atlas door missing or misrouted: " + slug);
+}
+if (!lume.includes("banks:{href:base+'bancos/'")) failures.push("Lume must route image-bank queries to the bank catalog");
+if (!lume.includes("bndigital:{href:base+'bancos/bndigital/'")) failures.push("Lume must route BNDigital queries to its detail page");
+const coversStart = atlas.indexOf("const covers=") + "const covers=".length;
+const coversEnd = atlas.indexOf(";", coversStart);
+const doorsStart = atlas.indexOf("const doors=[");
+const lineBreak = String.fromCharCode(10);
+const doorsEnd = atlas.indexOf(lineBreak + "];", doorsStart);
+if (coversStart < "const covers=".length || coversEnd < 0 || doorsStart < 0 || doorsEnd < 0) {
+  failures.push("Atlas navigation arrays could not be inspected");
+} else {
+  const coverCount = JSON.parse(atlas.slice(coversStart, coversEnd)).length;
+  const doorLines = atlas.slice(doorsStart, doorsEnd).split(lineBreak).slice(1);
+  const doorCount = doorLines.filter((line) => line.startsWith('["')).length;
+  if (coverCount !== doorCount) failures.push("Atlas has " + doorCount + " doors but " + coverCount + " covers");
 }
 
 const directUrlFiles = [];
@@ -123,6 +152,7 @@ const summary = {
   footerSiteBridge: footer.includes("href={STUDIO_SITE}"),
   footerNoirBridge: footer.includes("href={STUDIO_NOIR}"),
   duplicatedCanonicalUrlFiles: directUrlFiles,
+  requiredAtlasHubs,
   studioBundleFiles: sourceBundle.files.length,
   studioImageFiles: sourceBundle.imageFiles,
   studioBundleRoutes: STUDIO_ROUTE_FILES.length,
@@ -136,4 +166,4 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log("Ecosystem contract passed: Harum Noir ↔ Studio 23 canonical bridges are centralized and intact.");
+console.log("Ecosystem contract passed: Studio bridges and native Atlas routes are intact.");
