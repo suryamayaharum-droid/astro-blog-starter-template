@@ -4,7 +4,7 @@
 
 ## Progresso
 
-`█████░░░░░ 58% · 43/74 arquivos de rota revisados manualmente`
+`██████░░░░ 62% · 46/74 arquivos de rota revisados manualmente`
 
 - [x] Varredura estrutural das 74 rotas Astro: títulos, presença de imagens, quantidade e rótulos de ações, marcadores de conteúdo provisório.
 - [x] Conferir o caminho de entrada: home → escola → primeira prática → museus.
@@ -20,6 +20,7 @@
 - [x] Conferir paridade dos hubs EN/ES de História, Museus e Referências; destinos em PT estão rotulados.
 - [x] Revisar páginas EN/ES de Coleções tonal, figura e lugares; conferir tradução, prática, imagens e retorno entre línguas.
 - [x] Comparar Cultura Visual Brasileira e Tatuagem em Salvador nas versões PT/EN/ES; ligar cartões de cultura visual a leques específicos e confirmar que o material não traduzido está rotulado (PT).
+- [x] Revisar Cabeça & Expressão, Mãos e Corpo em Relação: imagens pertinentes, práticas acionáveis e fontes articuladas; sem alterações necessárias.
 - [ ] Continuar a paridade EN/ES nas demais páginas prioritárias.
 - [x] Fechar auditoria móvel pós-release: execução #38002723488 passou em 9 out 2026.
 
@@ -134,8 +135,13 @@ PR [#93](https://github.com/suryamayaharum-droid/astro-blog-starter-template/pul
 
 ## Atlas de Referências · deduplicação e fontes primárias
 
-A varredura dos destinos repetidos encontrou uma segunda home em Chloe Rose, o mesmo vídeo em dois cards de Sycra, a mesma página de vídeos em dois cards de Emanuele Dascanio e a home de New Masters Academy repetida como se fosse referência de modelo vivo. PR #94 troca esses caminhos por catálogo oficial de produtos, vídeo único com prática explícita, portfólio oficial de desenhos e catálogo curricular de figura, respectivamente. A contagem de rotas Astro permanece 43/74; os perfis são dados gerados pela rota dinâmica já revisada.
+A varredura dos destinos repetidos encontrou uma segunda home em Chloe Rose, o mesmo vídeo em dois cards de Sycra, a mesma página de vídeos em dois cards de Emanuele Dascanio e a home de New Masters Academy repetida como se fosse referência de modelo vivo. PR #94 troca esses caminhos por catálogo oficial de produtos, vídeo único com prática explícita, portfólio oficial de desenhos e catálogo curricular de figura, respectivamente. A contagem de rotas Astro permanece 46/74; os perfis são dados gerados pela rota dinâmica já revisada.
 
 ## Auditoria pós-deploy da PR #93 · estado
 
 A auditoria responsiva completa #131 passou antes do merge; o CI #652 também passou. A publicação após o merge foi substituída por atualizações documentais subsequentes. A auditoria móvel que passou (#38006094950) cobriu o deploy anterior (#92); os jobs pós-deploy #38016083431/81932 foram ignorados no commit documental. A captura móvel específica após PR #93 continua como gate aberto.
+
+
+## Linguagem corporal · revisão de três rotas
+
+Revisei `/cabeca-expressao/`, `/maos/` e `/corpo-em-relacao/`. Cabeça separa estrutura de expressão e termina em exercício de cinco direções; Mãos parte da ação e do contato, oferece uma prática de 15 minutos e fontes institucionais identificadas; Corpo em Relação ensina apoio, distância, contato e forças com um laboratório de 20 minutos. As imagens e os links internos servem ao exercício; não encontrei um problema editorial que justificasse reescrita.
