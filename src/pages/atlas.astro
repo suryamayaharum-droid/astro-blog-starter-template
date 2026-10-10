@@ -5,7 +5,7 @@ import Footer from '../components/Footer.astro';
 import { sketchbookGalleries } from '../data/sketchbookGalleries';
 const sketchbookCount=sketchbookGalleries.length;
 const base=import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
-const covers=["harum-noir-escola-hero","harum-noir-caderno-olhar","tools-paper","harum-noir-caderno-estudo","museum-gallery","museum-gallery","drapery-still-life","open-sketchbook","open-sketchbook","tools-paper","moonlit-landscape","iris-study","harum-noir-caderno-estudo","atelier-desk","harum-noir-colecoes-atlas","maos-seis-gestos","figure-gesture","harum-noir-caderno-olhar","atelier-desk"];
+const covers=["harum-noir-escola-hero","harum-noir-caderno-olhar","tools-paper","harum-noir-caderno-estudo","museum-gallery","museum-gallery","drapery-still-life","open-sketchbook","open-sketchbook","tools-paper","moonlit-landscape","iris-study","harum-noir-caderno-estudo","atelier-desk","harum-noir-colecoes-atlas","maos-seis-gestos","figure-gesture","harum-noir-caderno-olhar","atelier-desk","museum-gallery"];
 const doors=[
 ["Escola Aberta","Um plano simples para observar, estruturar, organizar referências e desenhar.","escola/"],
 ["Rituais de Olhar","Protocolos autorais para desacelerar, sustentar uma leitura com evidência e devolver a pesquisa ao papel.","rituais-de-olhar/"],
@@ -26,6 +26,7 @@ const doors=[
 ["Corpo em Relação","Duas figuras, apoio, distância, contato, resistência e peso compartilhado.","corpo-em-relacao/"],
 ["Cabeça & Expressão","Crânio, inclinação, perfil, olhar e expressão sem perder a estrutura.","cabeca-expressao/"],
 ["Studio 23","Ateliê de tatuagem autoral em Salvador, com portfólio, serviços e agendamento próprios.","studio23/"],
+["Artistas em foco","Biografias, leituras visuais e portas para os acervos de Banksy, Modigliani e Kandinsky.","artistas/"],
 ];
 ---
 <!doctype html><html lang="pt-BR"><head><BaseHead title="Atlas · Harum Noir" description="Mapa de entrada para referências, museus, bancos de imagens, sketchbooks, composições autorais, história da arte, percursos e arquivo do Harum Noir."/></head><body class="has-page-wallpaper" style={"--page-wallpaper: url('" + base + "noir/visual-atlas/tools-paper.webp')"}><Header/><main class="atlas-composition">
