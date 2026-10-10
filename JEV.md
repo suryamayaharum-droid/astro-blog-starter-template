@@ -32,11 +32,11 @@ Truth rule:
 
 ## Current HARUM NOIR GitHub checkpoint · 10 out 2026
 
-- **TENHO:** escola e coleções publicadas no GitHub Pages; PRs #90–#95 integradas. PR #94 entrou em `5a369bd`, corrigindo destinos repetidos/genéricos de quatro fichas do Atlas; PR #95 entrou em `ec182fe`, alinhando os cards de História EN/ES aos destinos de Figura e Gesto.
-- **PRONTO — publicação:** PR #93 passou CI #38016078850, Pages #38016078797 e auditoria móvel pós-deploy #38016153717. PR #94 passou CI #38016639788, Link Health #38016185381 e auditoria responsiva completa #38016194772 antes da integração.
-- **FAZENDO — editorial:** revisão manual em 52/74 rotas (70%). A varredura estrutural cobre 74 arquivos Astro e o build gera 194 HTMLs. Veja o checkpoint editorial.
-- **PRONTO:** Cabeça & Expressão, Mãos, Corpo em Relação, hubs de Desenho PT/EN/ES e História da Arte PT/EN/ES revisados. Os hubs internacionais agora levam a aula de Figura e Gesto no idioma correspondente.
-- **PASSO:** conferir fontes primárias restantes no Atlas, rotas restantes de História da Arte e paridade EN/ES; registrar mudanças em lotes pequenos.
+- **TENHO:** PRs #90–#100 integradas. PR #96 conectou as páginas locais do Studio 23 ao Atlas 1101; PR #97 preparou arquivos de domínio sem alterar a URL pública; PR #100 ampliou o Atlas com Bancos, 15 sketchbooks, Composições Autorais e Artistas em Foco.
+- **PRONTO — PR #100:** entrou em `7e2e6fa`. CI #38078728950 e auditoria responsiva completa #38078728928 passaram. O CI contou 75 arquivos Astro e 414 HTMLs publicados, verificou 17.543 href/src e 290 fragmentos: zero links, fragmentos ou imagens inválidos.
+- **FAZENDO — publicação:** CI #38078829381 e GitHub Pages #38078829417 estão processando o merge. A captura móvel pós-deploy desta publicação ainda precisa iniciar e passar.
+- **FAZENDO — editorial:** 53/75 rotas revisadas (71%). A página nova Artistas em Foco foi revisada e sua porta entra tanto no Atlas quanto no índice do ecossistema.
+- **PASSO:** confirmar o deploy e a auditoria móvel; depois reconciliar as propostas abertas de Outliers (#98) e Jake Parker (#99) com a main atual.
 
 Do not persist secrets, credentials, cookies, private keys or hidden chain-of-thought.
 
@@ -44,6 +44,7 @@ This pointer is intentionally small. The canonical HIVE carries the full tree, b
 
 ## Editorial audit · atualização · 10 out 2026
 
-A revisão chegou a 52/74 rotas (70%). PR #94 foi integrada em `5a369bd`; PR #93 segue com a captura móvel pós-deploy aprovada. PR #95 foi integrado em `ec182fe`; seu CI #38016764680 e a auditoria responsiva #38016764681 passaram. A captura móvel do deploy anterior (#38016761776) segue em execução na matriz de rotas.
+Após a PR #100, a auditoria manual está em 53/75 rotas (71%). O build conta 414 HTMLs e a checagem interna passou com zero links quebrados. CI e deploy do merge `7e2e6fa` estão em execução; o próximo gate é a captura móvel pós-deploy.
 
-- **PASSO:** continuar pelas rotas restantes de História da Arte e revisar fontes por perfil no Atlas.
+- **PRONTO:** PR #100 integrou Bancos, Sketchbooks, Composições Autorais e Artistas em Foco ao Atlas; ampliou as galerias para 15 cadernos e corrigiu o encaminhamento e os rótulos de idioma do Lume.
+- **PASSO:** confirmar publicação e mobile; reconciliar #98 (Outliers) e #99 (Jake Parker) antes de integrar novas propostas.
