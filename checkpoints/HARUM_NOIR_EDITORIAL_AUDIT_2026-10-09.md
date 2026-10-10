@@ -130,3 +130,12 @@ Comparei as três versões de Cultura Visual Brasileira e as três de Tatuagem e
 ## Integração e validação · PR #93
 
 PR [#93](https://github.com/suryamayaharum-droid/astro-blog-starter-template/pull/93) integrada em `121270a`. CI e auditoria responsiva passaram no commit de interface; a captura móvel #38006094950 da publicação anterior passou. CI #38016057381 e GitHub Pages #38016057361 do merge #93 estão na fila; aguardar a auditoria móvel pós-deploy deste conteúdo.
+
+
+## Atlas de Referências · deduplicação e fontes primárias
+
+A varredura dos destinos repetidos encontrou uma segunda home em Chloe Rose, o mesmo vídeo em dois cards de Sycra, a mesma página de vídeos em dois cards de Emanuele Dascanio e a home de New Masters Academy repetida como se fosse referência de modelo vivo. PR #94 troca esses caminhos por catálogo oficial de produtos, vídeo único com prática explícita, portfólio oficial de desenhos e catálogo curricular de figura, respectivamente. A contagem de rotas Astro permanece 43/74; os perfis são dados gerados pela rota dinâmica já revisada.
+
+## Auditoria pós-deploy da PR #93 · estado
+
+A auditoria responsiva completa #131 passou antes do merge; o CI #652 também passou. A publicação após o merge foi substituída por atualizações documentais subsequentes. A auditoria móvel que passou (#38006094950) cobriu o deploy anterior (#92); os jobs pós-deploy #38016083431/81932 foram ignorados no commit documental. A captura móvel específica após PR #93 continua como gate aberto.
