@@ -2,8 +2,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const root=path.resolve('dist');
-const SITE_ORIGIN='https://suryamayaharum-droid.github.io';
-const SITE_BASE='/astro-blog-starter-template/';
+const SITE_ORIGIN=new URL(process.env.PUBLIC_SITE_URL||'https://suryamayaharum-droid.github.io').origin;
+const SITE_BASE=process.env.PUBLIC_SITE_URL?'/':'/astro-blog-starter-template/';
 
 const htmlFiles=[];
 const walk=(dir)=>{
@@ -19,18 +19,19 @@ const norm=(value)=>{
   try{
     const u=new URL(value,SITE_ORIGIN);
     u.hash='';
-    if(u.pathname.length>1)u.pathname=u.pathname.replace(/\/+$/,'');
+    if(u.pathname.length>1)u.pathname=u.pathname.replace(/\\/+$/,'');
     return u.href;
   }catch{return value;}
 };
 const pages=new Map();
 for(const file of htmlFiles){
   const html=fs.readFileSync(file,'utf8');
-  const lang=html.match(/<html[^>]*\blang="([^"]+)"/i)?.[1]||'';
-  const canonical=html.match(/<link[^>]*\brel="canonical"[^>]*\bhref="([^"]+)"/i)?.[1]||'';
+  if(/<meta[^>]*http-equiv="refresh"[^>]*>/i.test(html))continue;
+  const lang=html.match(/<html[^>]*\\blang="([^"]+)"/i)?.[1]||'';
+  const canonical=html.match(/<link[^>]*\\brel="canonical"[^>]*\\bhref="([^"]+)"/i)?.[1]||'';
   if(!canonical)continue;
   const alternates=new Map();
-  const re=/<link[^>]*\brel="alternate"[^>]*\bhreflang="([^"]+)"[^>]*\bhref="([^"]+)"[^>]*>/gi;
+  const re=/<link[^>]*\\brel="alternate"[^>]*\\bhreflang="([^"]+)"[^>]*\\bhref="([^"]+)"[^>]*>/gi;
   for(const m of html.matchAll(re))alternates.set(m[1],norm(m[2]));
   pages.set(norm(canonical),{file,lang,canonical:norm(canonical),alternates});
 }
