@@ -262,6 +262,25 @@ export const sketchbookGalleries = [
     commonsUrl: "https://www.nga.gov/artworks/59877-je-shadek-sketchbook",
     images: [{ url: "https://api.nga.gov/iiif/d09065da-0164-470c-afc3-dd0290b97697/full/%21800%2C800/0/default.jpg", href: "https://www.nga.gov/artworks/59877-je-shadek-sketchbook", label: "Capa · Sketch Book of J.E. Shadek" }]
   }
+  ,
+  {
+    id: "mary-newbold-sargent-travel-sketchbook",
+    shelf: "Escultura & viagem",
+    artist: "Mary Newbold Sargent",
+    title: "Sketchbook of Greek, Italian Islands, and Near East Subjects · 31 desenhos",
+    date: "1904",
+    medium: "Aquarela, grafite e guache sobre papel tonal, encadernado em linho",
+    source: "The Metropolitan Museum of Art",
+    rights: "Domínio público — The Met Open Access",
+    principle: "Uma viagem em páginas: compare como ruínas, ilhas e paisagens aparecem em registros rápidos feitos ao longo do percurso.",
+    originalUrl: "https://www.metmuseum.org/art/collection/search/12529",
+    commonsUrl: "https://www.metmuseum.org/art/collection/search/12529",
+    images: [
+      { url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/12529/32332/main-image", href: "https://www.metmuseum.org/art/collection/search/12529", label: "Capa · caderno de viagem" },
+      { url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/12529/12010/main-image", href: "https://www.metmuseum.org/art/collection/search/12529", label: "Folha do caderno · aquarela" },
+      { url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/12516/11982/main-image", href: "https://www.metmuseum.org/art/collection/search/12516", label: "Island of Lemnos · folha relacionada" }
+    ]
+  }
 ] as const;
 
 export const commonsImage = (file: string, width = 900) =>
