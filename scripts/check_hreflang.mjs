@@ -46,23 +46,23 @@ for(const page of pages.values()){
     checked++;
     const target=pages.get(norm(href));
     if(!target){
-      errors.push(\`missing target: \${page.canonical} [\${hreflang}] -> \${href}\`);
+      errors.push('missing target: '+page.canonical+' ['+hreflang+'] -> '+href);
       continue;
     }
     const back=target.alternates.get(page.lang);
     if(!back){
-      errors.push(\`missing reciprocal: \${href} has no hreflang="\${page.lang}" back to \${page.canonical}\`);
+      errors.push('missing reciprocal: '+href+' has no hreflang="'+page.lang+'" back to '+page.canonical);
       continue;
     }
     if(norm(back)!==page.canonical){
-      errors.push(\`wrong reciprocal: \${href} [\${page.lang}] -> \${back}, expected \${page.canonical}\`);
+      errors.push('wrong reciprocal: '+href+' ['+page.lang+'] -> '+back+', expected '+page.canonical);
     }
   }
 }
 
-console.log(\`hreflang health: \${pages.size} canonical HTML pages | \${checked} localized relations checked | \${errors.length} errors\`);
+console.log('hreflang health: '+pages.size+' canonical HTML pages | '+checked+' localized relations checked | '+errors.length+' errors');
 if(errors.length){
   for(const error of errors.slice(0,50))console.error('HREFLANG:',error);
-  if(errors.length>50)console.error(\`... \${errors.length-50} more\`);
+  if(errors.length>50)console.error('... '+(errors.length-50)+' more');
   process.exit(1);
 }
