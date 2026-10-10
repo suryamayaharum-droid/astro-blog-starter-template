@@ -125,3 +125,8 @@ Na ficha de Mark Crilley, dois cartões levavam à mesma página inicial, embora
 ## Cultura visual e tatuagem · revisão de seis rotas PT/EN/ES
 
 Comparei as três versões de Cultura Visual Brasileira e as três de Tatuagem em Salvador. A página de tatuagem mantém dados de atendimento coerentes e distingue HARUM NOIR (pesquisa editorial) de Studio 23 (portfólio e agendamento); não precisei alterar o conteúdo. Em Cultura Visual, Bahia, botânica e cultura impressa repetiam links a hubs amplos, apesar de já existirem destinos temáticos. As rotas PT agora apontam para `/bancos/brasil-memoria/`, `/bancos/flor-ornamento/` e `/bancos/arquivo-impressos/`. EN/ES apontam aos mesmos leques em português e identificam o idioma no próprio rótulo.
+
+
+## Integração e validação · PR #93
+
+PR [#93](https://github.com/suryamayaharum-droid/astro-blog-starter-template/pull/93) integrada em `121270a`. CI e auditoria responsiva passaram no commit de interface; a captura móvel #38006094950 da publicação anterior passou. CI #38016057381 e GitHub Pages #38016057361 do merge #93 estão na fila; aguardar a auditoria móvel pós-deploy deste conteúdo.
