@@ -4,7 +4,7 @@
 
 ## Progresso
 
-`███████░░░ 66% · 49/74 arquivos de rota revisados manualmente`
+`████████░░ 70% · 52/74 arquivos de rota revisados manualmente`
 
 - [x] Varredura estrutural das 74 rotas Astro: títulos, presença de imagens, quantidade e rótulos de ações, marcadores de conteúdo provisório.
 - [x] Conferir o caminho de entrada: home → escola → primeira prática → museus.
@@ -151,3 +151,8 @@ Revisei `/cabeca-expressao/`, `/maos/` e `/corpo-em-relacao/`. Cabeça separa es
 ## Desenho · revisão de três hubs PT/EN/ES
 
 Os hubs `/desenho/`, `/en/drawing/` e `/es/dibujo/` compartilham a entrada por carvão, figura, coleções de estudo e tatuagem autoral. Embora as rotas individuais não tenham tags de imagem, o componente `PortugueseTopicHub` injeta quatro imagens editoriais correspondentes nos cards; EN/ES usam o trilho visual do componente internacional. Os destinos e a promessa editorial equivalem entre idiomas. Nenhuma correção necessária.
+
+
+## História da Arte · revisão dos hubs PT/EN/ES
+
+Comparei as três rotas internacionais e a página principal. O hub PT diferencia estudos editoriais de obras históricas e separa lentes de observação por período. Nos hubs EN/ES, o card “Study lenses / Lentes de estudio” prometia problemas formais, mas levava à busca de museus. Corrigi os destinos para a aula localizada de Figura e Gesto, e os rótulos agora anunciam a prática que o clique abre. A página PT e os demais cards ficam mantidos. A contagem sobe de 49/74 para 52/74; a base do Atlas permanece explicitamente como roteiro inicial de múltiplas regiões, sem alegar cobertura total.
