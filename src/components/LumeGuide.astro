@@ -128,7 +128,7 @@ if (root) {
     if(/[\uac00-\ud7af]/.test(value))return'ko';
     if(/[\u0600-\u06ff]/.test(value))return'ar';
     if(/[\u4e00-\u9fff]/.test(value))return'zh';
-    if(/\b(bibliotheque nationale du bresil)\b/.test(localeText))return'fr';
+    if(/\b(biblioth[eè]que nationale du br[eé]sil|banques? d['’]images)\b/.test(localeText))return'fr';
     if(/\b(biblioteca nazionale del brasile)\b/.test(localeText))return'it';
     if(/\b(brasilianische nationalbibliothek)\b/.test(localeText))return'de';
     if(/\b(bancos? de im[aá]genes|biblioteca nacional de brasil)\b/.test(localeText))return'es';
