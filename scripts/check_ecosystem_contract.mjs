@@ -58,7 +58,7 @@ const requiredAtlasHubs = ["bancos", "sketchbooks", "composicoes-autorais"];
 for (const slug of requiredAtlasHubs) {
   const hubLine = ecosystem.split("\n").find((line) => line.includes('id:"' + slug + '"'));
   if (!hubLine || !hubLine.includes('href:"' + slug + '/"')) failures.push("ecosystem hub missing or misrouted: " + slug);
-  if (!atlas.includes('"' + slug + '/"')) failures.push("Atlas door missing or misrouted: " + slug);
+  if (!atlas.includes('"' + slug + '/"') && !atlas.includes('"' + slug + '/#')) failures.push("Atlas door missing or misrouted: " + slug);
 }
 if (!lume.includes("banks:{href:base+'bancos/'")) failures.push("Lume must route image-bank queries to the bank catalog");
 if (!lume.includes("bndigital:{href:base+'bancos/bndigital/'")) failures.push("Lume must route BNDigital queries to its detail page");
