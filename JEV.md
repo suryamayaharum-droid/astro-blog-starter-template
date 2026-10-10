@@ -32,9 +32,9 @@ Truth rule:
 
 ## Current HARUM NOIR GitHub checkpoint · 10 out 2026
 
-- **TENHO:** PRs #90–#101 integradas; PR #101 sincronizou JEV, auditoria, painel e blueprint após o Atlas nativo da #100.
-- **PRONTO — publicação:** CI #38079190116 e GitHub Pages #38079190149 do checkpoint atual passaram. O build anterior do Atlas gerou 75 rotas Astro e 414 HTMLs, com 17.543 destinos e 290 fragmentos sem falhas.
-- **FAZENDO — mobile:** auditoria pós-deploy #38079254634 segue em execução; não registrar como concluída até o resultado final.
+- **TENHO:** PRs #90–#102 integradas. PR #102 corrigiu a data de Appian em Outliers, acrescentou o canal oficial de Jake Parker e sincronizou os documentos de continuidade.
+- **PRONTO — publicação:** PR #102 entrou em `36f178f`; CI #38079650621, Link Health #38079650691 e GitHub Pages #38079650619 passaram. O build anterior do Atlas gerou 75 rotas Astro e 414 HTMLs, com 17.543 destinos e 290 fragmentos sem falhas.
+- **FAZENDO — mobile:** auditoria pós-deploy #38079254634 teve um 503 transitório ao carregar `buscar.webp`; a repetição (tentativa 2) segue em execução.
 - **FAZENDO — editorial:** 54/75 rotas revisadas (72%), incluindo Outliers após corrigir a data de Appian (1868–70) e conferir quatro registros institucionais.
 - **PRONTO — Atlas:** Jake Parker agora aponta ao canal oficial canônico do YouTube indicado pelo próprio site.
 - **PASSO:** aguardar a auditoria móvel e prosseguir com páginas prioritárias, mantendo fontes primárias, imagem pertinente e exercício ligado a cada destino.
@@ -45,7 +45,7 @@ This pointer is intentionally small. The canonical HIVE carries the full tree, b
 
 ## Editorial audit · atualização · 10 out 2026
 
-A revisão manual está em 54/75 rotas (72%). O checkpoint mais recente tem CI #38079190116 e Pages #38079190149 aprovados; a auditoria móvel pós-deploy #38079254634 continua em andamento.
+A revisão manual está em 54/75 rotas (72%). PR #102 entrou em `36f178f`; CI #38079650621, Link Health #38079650691 e Pages #38079650619 passaram. A auditoria móvel pós-deploy #38079254634 teve um 503 transitório em `buscar.webp`; a repetição continua em andamento.
 
 - **PRONTO:** Outliers revisada; a ficha de Appian agora inclui 1868–70, conforme o registro do Met. Jake Parker ganhou o canal oficial canônico no Atlas.
 - **PASSO:** fechar o registro móvel quando a execução terminar e continuar a revisão página a página sem alterações cosméticas onde o conteúdo já funciona.
