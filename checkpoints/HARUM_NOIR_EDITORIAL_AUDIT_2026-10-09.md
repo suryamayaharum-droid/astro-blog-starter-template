@@ -177,3 +177,7 @@ CI #38078728950 e auditoria responsiva completa #38078728928 passaram antes do m
 Revisei `/outliers/` e conferi os quatro registros institucionais (NGA e The Met), a separação entre obras citadas e estudos editoriais originais e a ligação entre cada referência e seu exercício. A revisão de PR #98 encontrou um dado ausente no cartão de Adolphe Appian; o título agora inclui a data **1868–70**, confirmada pelo registro do The Met. Os quatro registros permanecem com seus links institucionais diretos. A rota entra na contagem manual: **54/75 (72%)**.
 
 A ficha de Jake Parker no Atlas agora expõe o canal do YouTube que o site oficial aponta. O `videoId` continua vazio porque não foi selecionado um vídeo específico.
+
+## Integração das correções · PR #102 · 10 out 2026
+
+PR [#102](https://github.com/suryamayaharum-droid/astro-blog-starter-template/pull/102) integrada em `36f178f`. A data 1868–70 consta agora no cartão de Appian; o Atlas apresenta o canal oficial canônico de Jake Parker. CI #38079650621, Link Health #38079650691 e Pages #38079650619 passaram. A auditoria móvel #38079254634 registrou um 503 ao carregar `buscar.webp`; a tentativa 2 segue em execução. Progresso manual: 54/75 (72%).
