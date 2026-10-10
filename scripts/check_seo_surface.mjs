@@ -2,8 +2,9 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const root=path.resolve('dist');
-const SITE_ORIGIN='https://suryamayaharum-droid.github.io';
-const SITE_BASE='/astro-blog-starter-template/';
+const SITE_ORIGIN=new URL(process.env.PUBLIC_SITE_URL||'https://suryamayaharum-droid.github.io').origin;
+const SITE_BASE=process.env.PUBLIC_SITE_URL?'/':'/astro-blog-starter-template';
+const inSiteBase=(pathname)=>SITE_BASE==='/'?pathname.startsWith('/'):pathname===SITE_BASE||pathname.startsWith(SITE_BASE+'/');
 const htmlFiles=[];
 const walk=(dir)=>{
   for(const entry of fs.readdirSync(dir,{withFileTypes:true})){
@@ -18,8 +19,7 @@ const errors=[];
 const warnings=[];
 const capture=(html,re)=>html.match(re)?.[1]?.trim()||'';
 const meta=(html,key)=>{
-  const esc=key.replace(/[.*+?^$(){}|[\]\\]/g,'\\$&');
-  return capture(html,new RegExp('<meta[^>]+(?:name|property)="'+esc+'"[^>]+content="([^"]*)"[^>]*>','i'));
+  return capture(html,new RegExp('<meta[^>]+(?:name|property)="'+key+'"[^>]+content="([^"]*)"[^>]*>','i'));
 };
 
 for(const file of htmlFiles){
@@ -41,11 +41,12 @@ for(const file of htmlFiles){
     else{
       try{
         const u=new URL(canonical,SITE_ORIGIN);
-        if(u.origin!==SITE_ORIGIN||!u.pathname.startsWith(SITE_BASE))errors.push(rel+': redirect canonical leaves site '+u.href);
+        if(u.origin!==SITE_ORIGIN||!inSiteBase(u.pathname))errors.push(rel+': redirect canonical leaves site '+u.href);
         else{
-          const sub=u.pathname.slice(SITE_BASE.length).replace(/^\/+|\/+$/g,'');
+          const sub=(SITE_BASE==='/'?u.pathname.slice(1):u.pathname===SITE_BASE?'':u.pathname.slice(SITE_BASE.length)).replace(/^\/+|\/+$/g,'');
           const target=sub?path.join(root,...sub.split('/'),'index.html'):path.join(root,'index.html');
-          if(!fs.existsSync(target))errors.push(rel+': redirect target missing '+u.pathname);
+          const directTarget=sub?path.join(root,...sub.split('/')):path.join(root,'index.html');
+          if(!fs.existsSync(target)&&!fs.existsSync(directTarget))errors.push(rel+': redirect target missing '+u.pathname);
         }
       }catch{errors.push(rel+': invalid redirect canonical '+canonical);}
     }
@@ -58,7 +59,10 @@ for(const file of htmlFiles){
   if(!lang)errors.push(rel+': missing html lang');
   if(!canonical)errors.push(rel+': missing canonical');
   else{
-    try{const u=new URL(canonical);if(!/^https?:$/.test(u.protocol))throw new Error();}catch{errors.push(rel+': invalid canonical '+canonical);}
+    try{
+      const u=new URL(canonical);
+      if(!/^https?:$/.test(u.protocol)||u.origin!==SITE_ORIGIN||!u.pathname.startsWith(SITE_BASE))throw new Error();
+    }catch{errors.push(rel+': invalid or noncanonical URL '+canonical);}
   }
   if(!robots)errors.push(rel+': missing robots meta');
   else if(/noindex/i.test(robots))errors.push(rel+': production page is noindex');
@@ -77,7 +81,7 @@ for(const file of htmlFiles){
     if(!raw){errors.push(rel+': empty JSON-LD block');continue;}
     try{
       const data=JSON.parse(raw);
-      if(!data || typeof data!=='object')errors.push(rel+': JSON-LD is not an object');
+      if(!data||typeof data!=='object')errors.push(rel+': JSON-LD is not an object');
     }catch(error){
       errors.push(rel+': invalid JSON-LD: '+String(error.message||error));
     }

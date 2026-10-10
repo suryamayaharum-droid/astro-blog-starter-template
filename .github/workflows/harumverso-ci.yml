@@ -52,3 +52,13 @@ jobs:
 
       - name: Studio 23 ↔ Harum Noir ecosystem contract
         run: node scripts/check_ecosystem_contract.mjs
+
+      - name: Custom-domain build and migration checks
+        env:
+          PUBLIC_SITE_URL: https://arteharum.com.br
+        run: |
+          npm run build
+          node scripts/prepare_custom_domain.mjs
+          node scripts/check_internal_links.mjs
+          node scripts/check_hreflang.mjs
+          node scripts/check_seo_surface.mjs

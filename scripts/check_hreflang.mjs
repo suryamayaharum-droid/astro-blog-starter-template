@@ -2,8 +2,9 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const root=path.resolve('dist');
-const SITE_ORIGIN='https://suryamayaharum-droid.github.io';
-const SITE_BASE='/astro-blog-starter-template/';
+const SITE_ORIGIN=new URL(process.env.PUBLIC_SITE_URL||'https://suryamayaharum-droid.github.io').origin;
+const SITE_BASE=process.env.PUBLIC_SITE_URL?'/':'/astro-blog-starter-template';
+const inSiteBase=(pathname)=>SITE_BASE==='/'?pathname.startsWith('/'):pathname===SITE_BASE||pathname.startsWith(SITE_BASE+'/');
 
 const htmlFiles=[];
 const walk=(dir)=>{
@@ -26,6 +27,7 @@ const norm=(value)=>{
 const pages=new Map();
 for(const file of htmlFiles){
   const html=fs.readFileSync(file,'utf8');
+  if(/<meta[^>]*http-equiv="refresh"[^>]*>/i.test(html))continue;
   const lang=html.match(/<html[^>]*\blang="([^"]+)"/i)?.[1]||'';
   const canonical=html.match(/<link[^>]*\brel="canonical"[^>]*\bhref="([^"]+)"/i)?.[1]||'';
   if(!canonical)continue;
@@ -41,27 +43,27 @@ for(const page of pages.values()){
   for(const [hreflang,href] of page.alternates){
     if(hreflang==='x-default'||hreflang===page.lang)continue;
     const u=new URL(href);
-    if(u.origin!==SITE_ORIGIN||!u.pathname.startsWith(SITE_BASE))continue;
+    if(u.origin!==SITE_ORIGIN||!inSiteBase(u.pathname))continue;
     checked++;
     const target=pages.get(norm(href));
     if(!target){
-      errors.push(`missing target: ${page.canonical} [${hreflang}] -> ${href}`);
+      errors.push('missing target: '+page.canonical+' ['+hreflang+'] -> '+href);
       continue;
     }
     const back=target.alternates.get(page.lang);
     if(!back){
-      errors.push(`missing reciprocal: ${href} has no hreflang="${page.lang}" back to ${page.canonical}`);
+      errors.push('missing reciprocal: '+href+' has no hreflang="'+page.lang+'" back to '+page.canonical);
       continue;
     }
     if(norm(back)!==page.canonical){
-      errors.push(`wrong reciprocal: ${href} [${page.lang}] -> ${back}, expected ${page.canonical}`);
+      errors.push('wrong reciprocal: '+href+' ['+page.lang+'] -> '+back+', expected '+page.canonical);
     }
   }
 }
 
-console.log(`hreflang health: ${pages.size} canonical HTML pages | ${checked} localized relations checked | ${errors.length} errors`);
+console.log('hreflang health: '+pages.size+' canonical HTML pages | '+checked+' localized relations checked | '+errors.length+' errors');
 if(errors.length){
   for(const error of errors.slice(0,50))console.error('HREFLANG:',error);
-  if(errors.length>50)console.error(`... ${errors.length-50} more`);
+  if(errors.length>50)console.error('... '+(errors.length-50)+' more');
   process.exit(1);
 }
