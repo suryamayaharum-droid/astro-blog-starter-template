@@ -41,6 +41,13 @@ const galleryEntries=sketchbookGalleries.map((book)=>({book,companions:book.imag
       font-size: .72rem;
     }
     body.sketchbooks-page .archive-stats strong { color: #e9dfd0; font-weight: 700; }
+    body.sketchbooks-page .sketchbook-filters{display:grid;grid-template-columns:minmax(220px,2fr) minmax(220px,1fr) auto;gap:12px;align-items:end;margin-top:20px;padding:18px;border:1px solid rgba(238,231,220,.12);border-radius:14px;background:rgba(8,8,8,.62)}
+    body.sketchbooks-page .sketchbook-filters label{display:grid;gap:6px;color:#c9c1b5;font-size:.75rem}
+    body.sketchbooks-page .sketchbook-filters input,body.sketchbooks-page .sketchbook-filters select{width:100%;min-height:44px;padding:10px 12px;border:1px solid rgba(238,231,220,.2);border-radius:8px;background:#111214;color:#eee7dc;font:inherit}
+    body.sketchbooks-page .sketchbook-filters p{grid-column:1/-1;margin:0;color:#bcb5ac;font-size:.78rem}
+    body.sketchbooks-page .sketchbook-filters [hidden],body.sketchbooks-page [data-sketchbook-card][hidden],body.sketchbooks-page [data-shelf-heading][hidden]{display:none}
+    body.sketchbooks-page .sketchbook-filters :focus-visible{outline:2px solid #c6aa73;outline-offset:3px}
+    @media(max-width:680px){body.sketchbooks-page .sketchbook-filters{grid-template-columns:1fr}body.sketchbooks-page .sketchbook-filters p{grid-column:auto}}
     body.sketchbooks-page .gallery-view-controls {
       display: flex;
       flex-wrap: wrap;
@@ -133,6 +140,13 @@ const galleryEntries=sketchbookGalleries.map((book)=>({book,companions:book.imag
       <span><strong>{totalImages}</strong> imagens nesta seleção</span>
       <span><strong>2</strong> modos de navegação</span>
     </div>
+    <div class="sketchbook-filters" role="search" aria-label="Filtrar cadernos">
+      <label>Buscar<input type="search" data-sketchbook-search placeholder="Artista, caderno ou acervo" autocomplete="off" /></label>
+      <label>Estante<select data-sketchbook-shelf><option value="">Todas as estantes</option>{shelves.map((shelf)=><option value={shelf}>{shelf}</option>)}</select></label>
+      <button class="btn" type="button" data-sketchbook-reset>Limpar filtros</button>
+      <p data-sketchbook-count aria-live="polite">{sketchbookGalleries.length} cadernos</p>
+      <p data-sketchbook-empty hidden>Nenhum caderno encontrado. Tente outro termo ou estante.</p>
+    </div>
     <div class="actions" style="margin-top:18px" aria-label="Continuar a pesquisa no Atlas">
       <a class="btn gold" href={base+'atlas/'}>Voltar ao mapa do Atlas →</a>
       <a class="btn" href={base+'artistas/'}>Biografias em foco</a>
@@ -143,8 +157,8 @@ const galleryEntries=sketchbookGalleries.map((book)=>({book,companions:book.imag
   <section class="section" aria-labelledby="estantes-title"><div class="panel"><div class="eyebrow">ESTANTES VIVAS</div><h2 id="estantes-title">Entrar pelo problema de desenho.</h2><div class="actions">{shelves.map((shelf)=><a class="btn" href={`#shelf-${shelf.toLowerCase().normalize("NFD").replace(/[\\u0300-\\u036f]/g,"").replace(/[^a-z0-9]+/g,"-")}`}>{shelf}</a>)}</div></div></section>
 
   {galleryEntries.map(({book,companions},index)=><Fragment>
-    {(index === 0 || galleryEntries[index-1].book.shelf !== book.shelf) && <div id={`shelf-${book.shelf.toLowerCase().normalize("NFD").replace(/[\\u0300-\\u036f]/g,"").replace(/[^a-z0-9]+/g,"-")}`} class="section" style="padding-bottom:0"><div class="eyebrow">ESTANTE · {book.shelf}</div></div>}
-    <section class="section sketchbook-gallery" id={book.id} aria-labelledby={"heading-" + book.id}>
+    {(index === 0 || galleryEntries[index-1].book.shelf !== book.shelf) && <div id={`shelf-${book.shelf.toLowerCase().normalize("NFD").replace(/[\\u0300-\\u036f]/g,"").replace(/[^a-z0-9]+/g,"-")}`} class="section" style="padding-bottom:0" data-shelf-heading={book.shelf}><div class="eyebrow">ESTANTE · {book.shelf}</div></div>}
+    <section class="section sketchbook-gallery" id={book.id} aria-labelledby={"heading-" + book.id} data-sketchbook-card data-artist={book.artist} data-title={book.title} data-shelf={book.shelf} data-source={book.source}>
     <div class="panel">
       <div class="eyebrow">{book.date} · {book.rights}</div>
       <h2 id={"heading-" + book.id}>{book.artist} · {book.title}</h2>
@@ -177,6 +191,51 @@ const galleryEntries=sketchbookGalleries.map((book)=>({book,companions:book.imag
 </main>
 <Footer/>
 <script>
+  const initSketchbookFilters = () => {
+    const filters = document.querySelector(".sketchbook-filters");
+    if (!(filters instanceof HTMLElement) || filters.dataset.initialized === "true") return;
+    const search = filters.querySelector("[data-sketchbook-search]");
+    const shelf = filters.querySelector("[data-sketchbook-shelf]");
+    const reset = filters.querySelector("[data-sketchbook-reset]");
+    const count = filters.querySelector("[data-sketchbook-count]");
+    const empty = filters.querySelector("[data-sketchbook-empty]");
+    const cards = [...document.querySelectorAll("[data-sketchbook-card]")];
+    const headings = [...document.querySelectorAll("[data-shelf-heading]")];
+    if (!(search instanceof HTMLInputElement) || !(shelf instanceof HTMLSelectElement) || !(reset instanceof HTMLButtonElement) || !(count instanceof HTMLElement) || !(empty instanceof HTMLElement)) return;
+    filters.dataset.initialized = "true";
+    const normalize = (value) => value.toLocaleLowerCase("pt-BR").normalize("NFD").replace(/[\\u0300-\\u036f]/g, "");
+    const apply = () => {
+      const query = normalize(search.value.trim());
+      const selectedShelf = shelf.value;
+      const visibleShelves = new Set();
+      let visible = 0;
+      cards.forEach((card) => {
+        const matches = (!selectedShelf || card.dataset.shelf === selectedShelf) &&
+          normalize([card.dataset.artist, card.dataset.title, card.dataset.source, card.dataset.shelf].join(" ")).includes(query);
+        card.hidden = !matches;
+        if (matches) {
+          visible += 1;
+          visibleShelves.add(card.dataset.shelf);
+        }
+      });
+      headings.forEach((heading) => { heading.hidden = !visibleShelves.has(heading.dataset.shelfHeading); });
+      count.textContent = visible + (visible === 1 ? " caderno exibido" : " cadernos exibidos") + " de " + cards.length;
+      empty.hidden = visible !== 0;
+    };
+    search.addEventListener("input", apply);
+    shelf.addEventListener("change", apply);
+    reset.addEventListener("click", () => {
+      search.value = "";
+      shelf.value = "";
+      apply();
+      search.focus();
+    });
+    apply();
+  };
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", initSketchbookFilters, { once: true });
+  else initSketchbookFilters();
+  document.addEventListener("astro:page-load", initSketchbookFilters);
+
   const initSketchbookViews = () => {
     document.querySelectorAll("[data-gallery-controls]").forEach((controls) => {
       if (!(controls instanceof HTMLElement) || controls.dataset.initialized === "true") return;
