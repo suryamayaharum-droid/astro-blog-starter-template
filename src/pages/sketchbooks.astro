@@ -8,6 +8,7 @@ import { radarByLane } from '../data/radarHarumverso';
 import '../styles/browse.css';
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 const shelves = [...new Set(sketchbookGalleries.map((book) => book.shelf))];
+const shelfAnchor = (value: string) => value.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 const totalImages = sketchbookGalleries.reduce((total, book) => total + book.images.length, 0);
 const imageSource = (url: string) => url.startsWith('https://') ? url : base + url;
 const radarSketchbooks=radarByLane('sketchbook').slice(0,5);
@@ -154,10 +155,10 @@ const galleryEntries=sketchbookGalleries.map((book)=>({book,companions:book.imag
     </div>
   </section>
 
-  <section class="section" aria-labelledby="estantes-title"><div class="panel"><div class="eyebrow">ESTANTES VIVAS</div><h2 id="estantes-title">Entrar pelo problema de desenho.</h2><div class="actions">{shelves.map((shelf)=><a class="btn" href={`#shelf-${shelf.toLowerCase().normalize("NFD").replace(/[\\u0300-\\u036f]/g,"").replace(/[^a-z0-9]+/g,"-")}`}>{shelf}</a>)}</div></div></section>
+  <section class="section" aria-labelledby="estantes-title"><div class="panel"><div class="eyebrow">ESTANTES VIVAS</div><h2 id="estantes-title">Entrar pelo problema de desenho.</h2><div class="actions">{shelves.map((shelf)=><a class="btn" href={`#shelf-${shelfAnchor(shelf)}`}>{shelf}</a>)}</div></div></section>
 
   {galleryEntries.map(({book,companions},index)=><Fragment>
-    {(index === 0 || galleryEntries[index-1].book.shelf !== book.shelf) && <div id={`shelf-${book.shelf.toLowerCase().normalize("NFD").replace(/[\\u0300-\\u036f]/g,"").replace(/[^a-z0-9]+/g,"-")}`} class="section" style="padding-bottom:0" data-shelf-heading={book.shelf}><div class="eyebrow">ESTANTE · {book.shelf}</div></div>}
+    {(index === 0 || galleryEntries[index-1].book.shelf !== book.shelf) && <div id={`shelf-${shelfAnchor(book.shelf)}`} class="section" style="padding-bottom:0" data-shelf-heading={book.shelf}><div class="eyebrow">ESTANTE · {book.shelf}</div></div>}
     <section class="section sketchbook-gallery" id={book.id} aria-labelledby={"heading-" + book.id} data-sketchbook-card data-artist={book.artist} data-title={book.title} data-shelf={book.shelf} data-source={book.source}>
     <div class="panel">
       <div class="eyebrow">{book.date} · {book.rights}</div>
@@ -203,7 +204,7 @@ const galleryEntries=sketchbookGalleries.map((book)=>({book,companions:book.imag
     const headings = [...document.querySelectorAll("[data-shelf-heading]")];
     if (!(search instanceof HTMLInputElement) || !(shelf instanceof HTMLSelectElement) || !(reset instanceof HTMLButtonElement) || !(count instanceof HTMLElement) || !(empty instanceof HTMLElement)) return;
     filters.dataset.initialized = "true";
-    const normalize = (value) => value.toLocaleLowerCase("pt-BR").normalize("NFD").replace(/[\\u0300-\\u036f]/g, "");
+    const normalize = (value) => value.toLocaleLowerCase("pt-BR").normalize("NFD").replace(/\p{Diacritic}/gu, "");
     const apply = () => {
       const query = normalize(search.value.trim());
       const selectedShelf = shelf.value;
@@ -211,7 +212,7 @@ const galleryEntries=sketchbookGalleries.map((book)=>({book,companions:book.imag
       let visible = 0;
       cards.forEach((card) => {
         const matches = (!selectedShelf || card.dataset.shelf === selectedShelf) &&
-          normalize([card.dataset.artist, card.dataset.title, card.dataset.source, card.dataset.shelf].join(" ")).includes(query);
+          query.split(/\s+/).every((term) => normalize([card.dataset.artist, card.dataset.title, card.dataset.source, card.dataset.shelf].join(" ")).includes(term));
         card.hidden = !matches;
         if (matches) {
           visible += 1;
