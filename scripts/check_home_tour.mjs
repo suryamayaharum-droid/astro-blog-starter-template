@@ -12,10 +12,11 @@ const [home, ecosystem] = await Promise.all([
 
 const tourHubs = ["escola", "atlas", "percursos", "cadernos", "sketchbooks", "biblioteca"];
 
-const orderMatch = home.match(/const tourHubOrder = \\[(.*?)\\];/s);
-const declaredOrder = [...(orderMatch?.[1] ?? "").matchAll(/'([^']+)'/g)].map((match) => match[1]);
+const orderStart = home.indexOf("const tourHubOrder = [");
+const orderEnd = home.indexOf("];", orderStart);
+const declaredOrder = (home.slice(orderStart, orderEnd).match(/'[^']+'/g) ?? []).map((item) => item.slice(1, -1));
 if (JSON.stringify(declaredOrder) !== JSON.stringify(tourHubs)) failures.push("tour hubs must follow the curated pedagogical order");
-if (!/\\.sort\\(\\(a, b\\) => tourHubOrder\\.indexOf\\(a\\.id\\) - tourHubOrder\\.indexOf\\(b\\.id\\)\\)/.test(home)) failures.push("tour hub cards must sort from the editorial order");
+if (!home.includes(".sort((a, b) => tourHubOrder.indexOf(a.id) - tourHubOrder.indexOf(b.id))")) failures.push("tour hub cards must sort from the editorial order");
 
 if (!home.includes("Começar o tour")) failures.push("home needs a visible Começar o tour CTA");
 if (!home.includes('href="#tour"')) failures.push("tour CTA must point to #tour");
