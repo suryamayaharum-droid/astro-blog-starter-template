@@ -8,7 +8,8 @@ import { radarByLane } from '../data/radarHarumverso';
 import '../styles/browse.css';
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 const shelves = [...new Set(sketchbookGalleries.map((book) => book.shelf))];
-const totalSheets = sketchbookGalleries.reduce((total, book) => total + book.images.length, 0);
+const shelfAnchor = (value: string) => value.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+const totalImages = sketchbookGalleries.reduce((total, book) => total + book.images.length, 0);
 const imageSource = (url: string) => url.startsWith('https://') ? url : base + url;
 const radarSketchbooks=radarByLane('sketchbook').slice(0,5);
 const galleryEntries=sketchbookGalleries.map((book)=>({book,companions:book.images.length<2?sketchbookCompanionsByShelf[book.shelf]??[]:[]}));
@@ -41,6 +42,13 @@ const galleryEntries=sketchbookGalleries.map((book)=>({book,companions:book.imag
       font-size: .72rem;
     }
     body.sketchbooks-page .archive-stats strong { color: #e9dfd0; font-weight: 700; }
+    body.sketchbooks-page .sketchbook-filters{display:grid;grid-template-columns:minmax(220px,2fr) minmax(220px,1fr) auto;gap:12px;align-items:end;margin-top:20px;padding:18px;border:1px solid rgba(238,231,220,.12);border-radius:14px;background:rgba(8,8,8,.62)}
+    body.sketchbooks-page .sketchbook-filters label{display:grid;gap:6px;color:#c9c1b5;font-size:.75rem}
+    body.sketchbooks-page .sketchbook-filters input,body.sketchbooks-page .sketchbook-filters select{width:100%;min-height:44px;padding:10px 12px;border:1px solid rgba(238,231,220,.2);border-radius:8px;background:#111214;color:#eee7dc;font:inherit}
+    body.sketchbooks-page .sketchbook-filters p{grid-column:1/-1;margin:0;color:#bcb5ac;font-size:.78rem}
+    body.sketchbooks-page .sketchbook-filters [hidden],body.sketchbooks-page [data-sketchbook-card][hidden],body.sketchbooks-page [data-shelf-heading][hidden]{display:none}
+    body.sketchbooks-page .sketchbook-filters :focus-visible{outline:2px solid #c6aa73;outline-offset:3px}
+    @media(max-width:680px){body.sketchbooks-page .sketchbook-filters{grid-template-columns:1fr}body.sketchbooks-page .sketchbook-filters p{grid-column:auto}}
     body.sketchbooks-page .gallery-view-controls {
       display: flex;
       flex-wrap: wrap;
@@ -130,16 +138,28 @@ const galleryEntries=sketchbookGalleries.map((book)=>({book,companions:book.imag
     <div class="section-head"><div><div class="eyebrow">UM CADERNO, UM OLHAR</div><h2>Sequências para estudar, não para colecionar.</h2></div><p>Escolha a orientação da galeria: percorra as folhas na horizontal ou em coluna vertical. No celular, deslize; no computador, use as setas. Continue rolando para visitar as outras estantes.</p></div>
     <div class="archive-stats" aria-label="Resumo do acervo">
       <span><strong>{sketchbookGalleries.length}</strong> cadernos históricos</span>
-      <span><strong>{totalSheets}</strong> folhas ligadas às fontes</span>
+      <span><strong>{totalImages}</strong> imagens nesta seleção</span>
       <span><strong>2</strong> modos de navegação</span>
+    </div>
+    <div class="sketchbook-filters" role="search" aria-label="Filtrar cadernos">
+      <label>Buscar<input type="search" data-sketchbook-search placeholder="Artista, caderno ou acervo" autocomplete="off" /></label>
+      <label>Estante<select data-sketchbook-shelf><option value="">Todas as estantes</option>{shelves.map((shelf)=><option value={shelf}>{shelf}</option>)}</select></label>
+      <button class="btn" type="button" data-sketchbook-reset>Limpar filtros</button>
+      <p data-sketchbook-count aria-live="polite">{sketchbookGalleries.length} cadernos</p>
+      <p data-sketchbook-empty hidden>Nenhum caderno encontrado. Tente outro termo ou estante.</p>
+    </div>
+    <div class="actions" style="margin-top:18px" aria-label="Continuar a pesquisa no Atlas">
+      <a class="btn gold" href={base+'atlas/'}>Voltar ao mapa do Atlas →</a>
+      <a class="btn" href={base+'artistas/'}>Biografias em foco</a>
+      <a class="btn" href={base+'museus/'}>Pesquisar nos museus</a>
     </div>
   </section>
 
-  <section class="section" aria-labelledby="estantes-title"><div class="panel"><div class="eyebrow">ESTANTES VIVAS</div><h2 id="estantes-title">Entrar pelo problema de desenho.</h2><div class="actions">{shelves.map((shelf)=><a class="btn" href={`#shelf-${shelf.toLowerCase().normalize("NFD").replace(/[\\u0300-\\u036f]/g,"").replace(/[^a-z0-9]+/g,"-")}`}>{shelf}</a>)}</div></div></section>
+  <section class="section" aria-labelledby="estantes-title"><div class="panel"><div class="eyebrow">ESTANTES VIVAS</div><h2 id="estantes-title">Entrar pelo problema de desenho.</h2><div class="actions">{shelves.map((shelf)=><a class="btn" href={`#shelf-${shelfAnchor(shelf)}`}>{shelf}</a>)}</div></div></section>
 
   {galleryEntries.map(({book,companions},index)=><Fragment>
-    {(index === 0 || galleryEntries[index-1].book.shelf !== book.shelf) && <div id={`shelf-${book.shelf.toLowerCase().normalize("NFD").replace(/[\\u0300-\\u036f]/g,"").replace(/[^a-z0-9]+/g,"-")}`} class="section" style="padding-bottom:0"><div class="eyebrow">ESTANTE · {book.shelf}</div></div>}
-    <section class="section sketchbook-gallery" id={book.id} aria-labelledby={"heading-" + book.id}>
+    {(index === 0 || galleryEntries[index-1].book.shelf !== book.shelf) && <div id={`shelf-${shelfAnchor(book.shelf)}`} class="section" style="padding-bottom:0" data-shelf-heading={book.shelf}><div class="eyebrow">ESTANTE · {book.shelf}</div></div>}
+    <section class="section sketchbook-gallery" id={book.id} aria-labelledby={"heading-" + book.id} data-sketchbook-card data-artist={book.artist} data-title={book.title} data-shelf={book.shelf} data-source={book.source}>
     <div class="panel">
       <div class="eyebrow">{book.date} · {book.rights}</div>
       <h2 id={"heading-" + book.id}>{book.artist} · {book.title}</h2>
@@ -149,18 +169,20 @@ const galleryEntries=sketchbookGalleries.map((book)=>({book,companions:book.imag
         <a class="btn" href={book.commonsUrl} target="_blank" rel="noreferrer">{book.commonsUrl.includes("commons.wikimedia.org") ? "Ver arquivos no Commons →" : "Abrir acervo completo →"}</a>
       </div>
     </div>
-    <div class="stream-head" style="margin-top:26px"><div><span class="eyebrow">{book.source}</span><h3>Folhas do caderno</h3></div><p>{book.images.length > 0 ? book.images.length + " " + (book.images.length === 1 ? "imagem" : "imagens") + " nesta seleção · abertura preservada na fonte." : "Acervo institucional conectado · imagens entram após validação individual do arquivo."}</p></div>
+    <div class="stream-head" style="margin-top:26px"><div><span class="eyebrow">{book.source}</span><h3>Imagens selecionadas</h3></div><p>{book.images.length > 0 ? book.images.length + " " + (book.images.length === 1 ? "imagem" : "imagens") + " nesta seleção · abertura preservada na fonte." : "Acervo institucional conectado · imagens entram após validação individual do arquivo."}</p></div>
     {book.images.length > 1 && <div class="gallery-view-controls" role="group" aria-label={"Modo de navegação da galeria " + book.title} data-gallery-controls data-gallery-track="original">
       <button type="button" data-gallery-axis="horizontal" aria-pressed="true">↔ Horizontal</button>
       <button type="button" data-gallery-axis="vertical" aria-pressed="false">↕ Vertical</button>
     </div>}
     {book.images.length > 0 ? <div class="browse-rail" data-gallery-role="original" role="region" aria-roledescription="carrossel" tabindex="0" aria-label={`Galeria original de ${book.title}`}>
-      {book.images.map((img,i)=><a class="browse-tile" href={imageSource(img.url)} target={img.url.startsWith('https://') ? '_blank' : undefined} rel={img.url.startsWith('https://') ? 'noreferrer' : undefined}>
+      {book.images.map((img,i)=><article class="browse-tile">
         <div class="card-media" style="aspect-ratio:4/5;background:#171614">
-          <img src={imageSource(img.url)} loading="lazy" decoding="async" alt={`${img.label}, ${book.title}, ${book.artist}`} style="width:100%;height:100%;object-fit:contain" />
+          <a href={imageSource(img.url)} target={img.url.startsWith('https://') ? '_blank' : undefined} rel={img.url.startsWith('https://') ? 'noreferrer' : undefined} aria-label={`Abrir imagem ampliada: ${img.label}`}>
+            <img src={imageSource(img.url)} loading="lazy" decoding="async" alt={`${img.label}, ${book.title}, ${book.artist}`} style="width:100%;height:100%;object-fit:contain" />
+          </a>
         </div>
-        <div class="browse-body"><span>{String(i+1).padStart(2,'0')} · {book.date}</span><h3>{img.label}</h3><p>{book.artist}</p><small style="color:#b39a69">{book.rights} · abrir imagem em tamanho ampliado →</small></div>
-      </a>)}
+        <div class="browse-body"><span>{String(i+1).padStart(2,'0')} · {book.date}</span><h3>{img.label}</h3><p>{book.artist}</p><small style="color:#b39a69">{book.rights} · <a href={imageSource(img.url)} target={img.url.startsWith('https://') ? '_blank' : undefined} rel={img.url.startsWith('https://') ? 'noreferrer' : undefined}>abrir imagem ampliada →</a> · <a href={img.href ?? book.originalUrl} target="_blank" rel="noreferrer">ficha no acervo ↗</a></small></div>
+      </article>)}
     </div> : <div class="panel" style="margin-top:18px"><p>Este caderno já faz parte do índice navegável. Use <strong>Abrir no museu</strong> para folheá-lo na fonte enquanto a seleção visual interna é validada página por página.</p></div>}
     {companions.length>0&&<div class="gallery-companion-set"><div class="stream-head" style="margin-top:28px"><div><span class="eyebrow">ESTUDOS COMPLEMENTARES · HARUM NOIR</span><h3>Variações para seguir olhando</h3></div><p>Pranchas temáticas independentes das folhas originais deste caderno.</p></div><div class="gallery-view-controls" role="group" aria-label={`Modo de navegação dos estudos complementares de ${book.title}`} data-gallery-controls data-gallery-track="companion"><button type="button" data-gallery-axis="horizontal" aria-pressed="true">↔ Horizontal</button><button type="button" data-gallery-axis="vertical" aria-pressed="false">↕ Vertical</button></div><div class="browse-rail companion-rail" data-gallery-role="companion" role="region" aria-roledescription="carrossel" tabindex="0" aria-label={`Estudos complementares para ${book.title}`}>{companions.map((item,i)=><article class="browse-tile companion-tile"><div class="card-media"><img src={base+item.file} alt={item.alt} loading="lazy" decoding="async"/></div><div class="browse-body"><span>{item.theme} · {String(i+1).padStart(2,'0')}</span><h4>{item.title}</h4><p>{item.caption}</p><a href={base+item.href}>{item.link} →</a></div></article>)}</div></div>}
   </section>
@@ -170,6 +192,51 @@ const galleryEntries=sketchbookGalleries.map((book)=>({book,companions:book.imag
 </main>
 <Footer/>
 <script>
+  const initSketchbookFilters = () => {
+    const filters = document.querySelector(".sketchbook-filters");
+    if (!(filters instanceof HTMLElement) || filters.dataset.initialized === "true") return;
+    const search = filters.querySelector("[data-sketchbook-search]");
+    const shelf = filters.querySelector("[data-sketchbook-shelf]");
+    const reset = filters.querySelector("[data-sketchbook-reset]");
+    const count = filters.querySelector("[data-sketchbook-count]");
+    const empty = filters.querySelector("[data-sketchbook-empty]");
+    const cards = [...document.querySelectorAll("[data-sketchbook-card]")];
+    const headings = [...document.querySelectorAll("[data-shelf-heading]")];
+    if (!(search instanceof HTMLInputElement) || !(shelf instanceof HTMLSelectElement) || !(reset instanceof HTMLButtonElement) || !(count instanceof HTMLElement) || !(empty instanceof HTMLElement)) return;
+    filters.dataset.initialized = "true";
+    const normalize = (value) => value.toLocaleLowerCase("pt-BR").normalize("NFD").replace(/\p{Diacritic}/gu, "");
+    const apply = () => {
+      const query = normalize(search.value.trim());
+      const selectedShelf = shelf.value;
+      const visibleShelves = new Set();
+      let visible = 0;
+      cards.forEach((card) => {
+        const matches = (!selectedShelf || card.dataset.shelf === selectedShelf) &&
+          query.split(/\s+/).every((term) => normalize([card.dataset.artist, card.dataset.title, card.dataset.source, card.dataset.shelf].join(" ")).includes(term));
+        card.hidden = !matches;
+        if (matches) {
+          visible += 1;
+          visibleShelves.add(card.dataset.shelf);
+        }
+      });
+      headings.forEach((heading) => { heading.hidden = !visibleShelves.has(heading.dataset.shelfHeading); });
+      count.textContent = visible + (visible === 1 ? " caderno exibido" : " cadernos exibidos") + " de " + cards.length;
+      empty.hidden = visible !== 0;
+    };
+    search.addEventListener("input", apply);
+    shelf.addEventListener("change", apply);
+    reset.addEventListener("click", () => {
+      search.value = "";
+      shelf.value = "";
+      apply();
+      search.focus();
+    });
+    apply();
+  };
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", initSketchbookFilters, { once: true });
+  else initSketchbookFilters();
+  document.addEventListener("astro:page-load", initSketchbookFilters);
+
   const initSketchbookViews = () => {
     document.querySelectorAll("[data-gallery-controls]").forEach((controls) => {
       if (!(controls instanceof HTMLElement) || controls.dataset.initialized === "true") return;
