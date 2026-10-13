@@ -44,7 +44,7 @@ const lessonGuide = {
  es:{prepare:'Antes de dibujar',materials:'Prepara papel y lápiz o carboncillo, una referencia sencilla y quince minutos. No necesitas materiales especiales.',result:'Qué vas a producir',resultCopy:'Cuatro estudios pequeños y una frase sobre la forma que simplificaste y por qué.',check:'Revisa tu estudio',checkItems:['¿Se entiende el gesto antes de los detalles?','¿Se distinguen las tres masas principales?','¿Hay un borde nítido y otro suave?'],next:'Continúa desde tu dibujo',nextCopy:'Elige un solo camino. Aprender es observar, practicar y volver al papel.',hands:'Estudiar manos y gesto',notebooks:'Crear tu cuaderno de estudios'}
 }[lang];
 
-const processResources=radarByLane('processo').slice(0,6);
+const processResources=[...radarByLane('processo').slice(0,6),...radarByLane('escola').slice(0,2)];
 const routes = {
   pt:{home:'',school:'escola/',museums:'museus/',hands:'maos/',notebooks:'cadernos/',sketchbooks:'sketchbooks/',pathways:'percursos/',references:'referencias/',practice:'escola/#primeira-pratica'},
   en:{home:'en/',school:'en/school/',museums:'en/museums/',hands:'en/drawing/',notebooks:'en/references/',sketchbooks:'en/drawing/',pathways:'en/drawing/',references:'en/references/',practice:'en/school/#primeira-pratica'},
@@ -85,7 +85,7 @@ const alternates=[{hreflang:'pt-BR',href:'escola/'},{hreflang:'en',href:'en/scho
     </a>)}</div>
   </section>
   {lang==='pt' && <section class="school-section" id="processos" aria-labelledby="school-process-title">
-    <div class="school-section-head"><div><span class="school-kicker">BIBLIOTECA DE PROCESSOS · RADAR</span><h2 id="school-process-title">Ver como a matéria muda.</h2></div><p>Vídeos e recursos públicos selecionados para observar carvão, transferência, metalpoint e construção. Abra a fonte original e leve uma decisão para a prática.</p></div>
+    <div class="school-section-head"><div><span class="school-kicker">BIBLIOTECA DE PROCESSOS · RADAR</span><h2 id="school-process-title">Ver como o desenho se transforma.</h2></div><p>Vídeos e exercícios públicos para observar carvão, gesto, composição, transferência e construção. Abra a fonte original e leve uma decisão para a prática.</p></div>
     <div class="school-steps">{processResources.map((item,i)=><a class="school-step" href={item.url} target="_blank" rel="noreferrer">
       <div class="school-step-art"><img src={base+'noir/visual-atlas/'+(['harum-noir-caderno-estudo','tools-paper','drapery-still-life','open-sketchbook','exercicio-quatro-decisoes','harum-noir-escola-hero'][i%6])+'.webp'} alt="" width="900" height="600" loading="lazy"/><span>{String(i+1).padStart(2,'0')}</span></div>
       <div class="school-step-copy"><small>{item.source}</small><h3>{item.title}</h3><p>{item.note}</p><b>Abrir fonte original <span aria-hidden="true">↗</span></b></div>
