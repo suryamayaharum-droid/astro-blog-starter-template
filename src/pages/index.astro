@@ -12,7 +12,8 @@ const lessons = [
   {n:'03', title:'Organizar', question:'O que merece permanecer?', text:'Use o caderno para comparar, editar e guardar descobertas que possam voltar ao desenho.', image:'open-sketchbook', href:'sketchbooks/', alt:'Caderno aberto preparado para organizar estudos e observações.'},
   {n:'04', title:'Traduzir', question:'Como a observação vira desenho?', text:'Escolha uma matéria, teste uma decisão e termine com algo feito pela sua mão.', image:'harum-noir-caderno-estudo', href:'percursos/#carvao', alt:'Estudo editorial com carvão: modelo articulado, mão em ação, tecido e caderno.'}
 ];
-const tourHubs = ecosystemHubs.filter((hub) => ['escola','atlas','percursos','cadernos','sketchbooks','biblioteca'].includes(hub.id));
+const tourHubOrder = ['escola','atlas','percursos','cadernos','sketchbooks','biblioteca'];
+const tourHubs = ecosystemHubs.filter((hub) => tourHubOrder.includes(hub.id)).sort((a, b) => tourHubOrder.indexOf(a.id) - tourHubOrder.indexOf(b.id));
 ---
 <!doctype html>
 <html lang="pt-BR">
