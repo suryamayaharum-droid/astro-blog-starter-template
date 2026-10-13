@@ -7,7 +7,7 @@ const base=import.meta.env.BASE_URL.endsWith('/')?import.meta.env.BASE_URL:impor
 const laneLabels={processo:'PROCESSO',acervo:'ACERVO ABERTO',sketchbook:'SKETCHBOOK',outlier:'OUTLIER',escola:'ESCOLA'};
 const grouped=['processo','acervo','sketchbook','escola','outlier'] as const;
 const coveredRadar=radarHarumverso.filter(item=>item.cover);
-const laneDestination={processo:base+'escola#radar-processos',acervo:base+'museus#radar-acervo',sketchbook:base+'sketchbooks',outlier:base+'outliers',escola:base+'escola'} as const;
+const laneDestination={processo:base+'escola',acervo:base+'museus#radar-acervo',sketchbook:base+'sketchbooks',outlier:base+'outliers',escola:base+'escola'} as const;
 ---
 <!doctype html><html lang="pt-BR"><head><BaseHead title="Radar · HARUM NOIR" description="Descobertas verificadas para o HARUM NOIR: desenho, carvão, figura, sketchbooks, processos, cursos, acervos e desvios editoriais."/></head><body class="has-page-wallpaper" style={"--page-wallpaper: url('" + base + "noir/visual-atlas/harum-cover-metalpoint.webp')"}><Header/><main class="radar-page">
 <section class="page-hero"><div class="eyebrow">RADAR HARUM NOIR · PESQUISA VIVA</div><h1>O que entra no radar precisa voltar para a mão.</h1><p>{radarHarumverso.length} descobertas recentes, verificadas em fontes institucionais e organizadas pelo problema de desenho que ajudam a investigar. Cada cartão preserva fonte, direitos, princípio Noir e destino editorial.</p><div class="actions"><a class="btn gold" href="#ultimas">Ver últimas descobertas ↓</a><a class="btn" href={base+'biblioteca'}>Abrir Biblioteca</a></div></section>
