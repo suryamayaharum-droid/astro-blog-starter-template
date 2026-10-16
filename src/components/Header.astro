@@ -39,6 +39,7 @@ const links = [
     </a>
     <div class="nav-links">
       {links.filter(([,path])=>primaryPaths.has(path)).map(([label,path]) => <a href={`${base}${path}`} data-astro-prefetch>{label}</a>)}
+      <a href="https://suryamayaharum-droid.github.io/explorar/">Mapa geral ↗</a>
       <a href={STUDIO_SITE} target="_blank" rel="noreferrer">Studio 23 ↗</a>
       <span class="locale-inline" aria-label="Idiomas"><a href={base} lang="pt-BR">PT</a><a href={base+'en/'} lang="en">EN</a><a href={base+'es/'} lang="es">ES</a></span>
     </div>
@@ -47,6 +48,8 @@ const links = [
       <nav class="explore-panel" aria-label="Explorar a escola">
         <span class="explore-title">Mapa de estudo</span>
         {links.map(([label,path])=><a href={`${base}${path}`} data-astro-prefetch>{label}</a>)}
+        <a href="https://suryamayaharum-droid.github.io/explorar/">Todas as coleções Arte Harum ↗</a>
+        <a href="https://suryamayaharum-droid.github.io/noivas/">Noivas · Retratos e estudos ↗</a>
         <a href={STUDIO_SITE} target="_blank" rel="noreferrer">Studio 23 ↗</a>
         <span class="explore-title locale-title">Idiomas · Languages</span>
         <a href={base} data-astro-prefetch lang="pt-BR">Português</a><a href={base+'en/'} data-astro-prefetch lang="en">English</a><a href={base+'es/'} data-astro-prefetch lang="es">Español</a>
