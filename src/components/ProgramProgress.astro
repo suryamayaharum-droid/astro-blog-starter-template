@@ -1,0 +1,32 @@
+<aside class="regular-progress" aria-labelledby="regular-progress-title">
+  <div><span class="eyebrow">SEU CADERNO DE PRÁTICA</span><h2 id="regular-progress-title">Um estudo de cada vez.</h2>
+  <p>Marque depois de produzir e revisar o exercício. O registro fica apenas neste navegador; não é uma avaliação docente nem um certificado.</p></div>
+  <div><label for="regular-progress-bar" data-program-count aria-live="polite">0 de 33 práticas registradas</label>
+  <progress id="regular-progress-bar" max="33" value="0">0 de 33</progress>
+  <p data-program-storage role="status">O progresso pode ser marcado nas aulas ou na lista do programa.</p></div>
+</aside>
+<script>
+  const key='harum_regular_33_v1';
+  const boxes=Array.from(document.querySelectorAll<HTMLInputElement>('[data-program-task]'));
+  const bar=document.querySelector<HTMLProgressElement>('#regular-progress-bar');
+  const count=document.querySelector<HTMLElement>('[data-program-count]');
+  const status=document.querySelector<HTMLElement>('[data-program-storage]');
+  const valid=new Set((document.querySelector<HTMLElement>('[data-program-ids]')?.dataset.programIds||'').split(','));
+  let done=new Set<string>();
+  try { const saved=JSON.parse(localStorage.getItem(key)||'[]'); if(Array.isArray(saved)) done=new Set(saved.filter((id):id is string=>typeof id==='string'&&valid.has(id))); }
+  catch { if(status) status.textContent='Não foi possível recuperar o registro. Você pode continuar estudando normalmente.'; }
+  const render=()=>{
+    boxes.forEach(box=>{box.checked=done.has(box.dataset.programTask||'')});
+    if(bar) bar.value=done.size;
+    if(count) count.textContent=`${done.size} de 33 práticas registradas · ${Math.round(done.size/33*100)}%`;
+  };
+  boxes.forEach(box=>box.addEventListener('change',()=>{
+    const id=box.dataset.programTask||'';
+    if(!valid.has(id))return;
+    if(box.checked)done.add(id);else done.delete(id);
+    try { localStorage.setItem(key,JSON.stringify([...done])); if(status)status.textContent='Registro salvo neste navegador.'; }
+    catch { if(status)status.textContent='O navegador não permitiu salvar. As marcações desta visita continuam disponíveis.'; }
+    render();
+  }));
+  render();
+</script>

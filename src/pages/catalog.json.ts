@@ -2,6 +2,7 @@ import { referenceArtists } from '../data/references';
 import { imageBanks } from '../data/imageBanks';
 import { museumCatalog } from '../data/museums';
 import { STUDIO_SITE } from '../consts';
+import { regularLessons, programBrief } from '../data/regularProgram';
 
 const SITE='https://suryamayaharum-droid.github.io/astro-blog-starter-template/';
 const STUDIO_CANONICAL=new URL(STUDIO_SITE,SITE).href;
@@ -24,6 +25,7 @@ export async function GET(){
     routes:{
       home:SITE,
       school:SITE+'escola/',
+      regularProgram:SITE+'escola/programa-regular/',
       englishSchool:SITE+'en/school/',
       spanishSchool:SITE+'es/escuela/',
       english:SITE+'en/',
@@ -55,6 +57,13 @@ export async function GET(){
       observationRituals:SITE+'rituais-de-olhar/',
       charcoalRitual:SITE+'ritual-do-carvao/',
       students:SITE+'alunos/'
+    },
+    regularProgram:{
+      title:programBrief.title,
+      hours:programBrief.hours,
+      suggestedWeeks:programBrief.weeks,
+      origin:programBrief.origin,
+      lessons:regularLessons.map(l=>({number:l.id,title:l.title,module:l.module,url:SITE+'escola/programa-regular/'+l.slug+'/'}))
     },
     references:referenceArtists.map(a=>({
       name:a.name,
