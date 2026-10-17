@@ -104,6 +104,8 @@ jobs:
 
           const base = 'http://127.0.0.1:4173/astro-blog-starter-template';
           const routes = [
+            {name:'regular-program',route:'/escola/programa-regular/',dock:true},
+            {name:'regular-lesson',route:'/escola/programa-regular/contorno-observado/',dock:true},
             {name:'home',route:'/',dock:true},
             {name:'school',route:'/escola/',dock:true},
             {name:'rituals',route:'/rituais-de-olhar/',dock:true},
@@ -358,6 +360,9 @@ jobs:
             await browser.close();
           })().catch(err => { console.error(err); process.exit(1); });
           NODE
+
+      - name: Regular program learning flow
+        run: node scripts/check_regular_program_browser.mjs
 
       - name: Upload responsive evidence
         if: always()

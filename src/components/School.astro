@@ -77,6 +77,11 @@ const alternates=[{hreflang:'pt-BR',href:'escola/'},{hreflang:'en',href:'en/scho
     <figure class="school-hero-art"><img src={base+'noir/visual-atlas/harum-noir-escola-hero.webp'} alt={c.heroAlt} width="1200" height="485" fetchpriority="high"/><figcaption>{lang==='pt'?'Cenário editorial criado com assistência de IA':lang==='en'?'Editorial scene created with AI assistance':'Escena editorial creada con asistencia de IA'}</figcaption></figure>
     <div class="school-hero-copy"><span class="school-kicker">{c.heroKicker}</span><h1>{c.heroTitle}</h1><p>{c.heroLead}</p><div class="school-actions"><a class="school-primary" href="#primeira-pratica">{c.start} <span aria-hidden="true">↗</span></a><a href="#fundamentos">{c.map}</a></div></div>
   </section>
+  {lang==='pt' && <section class="school-section" id="programa-regular" aria-labelledby="regular-school-title">
+    <div class="school-section-head"><div><span class="school-kicker">PROGRAMA REGULAR · 33 AULAS ABERTAS</span><h2 id="regular-school-title">Linha, matéria, cor e autoria.</h2></div><p>Seis módulos de desenho e pintura, 24 semanas sugeridas e 96 horas de estudo. Cada técnica tem materiais, prática guiada, referências visuais e critérios de revisão.</p></div>
+    <p>Um percurso independente da Harum Noir: comece pelo desenho, avance pela água e pela pintura, experimente impressão e textura e termine com uma composição autoral. O progresso fica salvo apenas neste navegador.</p>
+    <div class="school-actions"><a class="school-primary" href={base+'escola/programa-regular/'}>Abrir as 33 técnicas →</a><a href={base+'escola/programa-regular/contorno-observado/'}>Começar a aula 01</a></div>
+  </section>}
   <section class="school-section" id="fundamentos" aria-labelledby="school-map-title">
     <div class="school-section-head"><div><span class="school-kicker">{c.courseLabel}</span><h2 id="school-map-title">{c.mapTitle}</h2></div><p>{c.mapLead}</p></div>
     <div class="school-steps">{steps.map(step=><a class="school-step" href={to(step.href)}>
