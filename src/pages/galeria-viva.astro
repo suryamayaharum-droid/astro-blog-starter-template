@@ -1,0 +1,119 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { sketchbookGalleries } from '../data/sketchbookGalleries';
+import { programReferences } from '../data/programReferences';
+import { visualStudyCollection } from '../data/visualStudyCollection';
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const historical = sketchbookGalleries.flatMap((book) => book.images.map((picture, index) => ({
+ id:book.id+'-'+index, kind:'historico',room:'cadernos',name:book.title,artist:book.artist,image:picture.url,alt:picture.label||('Folha de estudo de '+book.artist),source:book.source,rights:book.rights,sourceUrl:picture.href||book.originalUrl,question:book.principle
+})));
+const classics = programReferences.map((ref) => ({
+ id:'obra-'+ref.module,kind:'historico',room:'mestres',name:ref.title,artist:ref.artist,image:ref.image,alt:ref.alt,source:ref.source,rights:ref.rights,sourceUrl:ref.url,question:ref.observe
+}));
+const originals = visualStudyCollection.map((study) => ({
+ id:'estudo-'+study.id,kind:'editorial',room:'ateliê',name:study.title,artist:'HARUM NOIR · estudo editorial',image:study.file,alt:study.alt,source:'HARUM NOIR · produção editorial',rights:study.generated?'Composição criada com assistência de IA; não é documento histórico.':'Imagem de estudo editorial; confira a ficha da coleção.',sourceUrl:base+study.href,question:study.caption
+}));
+const entries = [...new Map([...historical,...classics,...originals].map((entry)=>[entry.image,entry])).values()];
+const historicCount = entries.filter(item=>item.kind==='historico').length;
+const editorialCount = entries.filter(item=>item.kind==='editorial').length;
+const exhibitionRooms = [
+  {id:'todos',title:'Percurso completo',description:'Do acervo documentado ao estudo autoral.'},
+  {id:'cadernos',title:'Sala dos cadernos',description:'Pensamento em páginas, gestos e repetições.'},
+  {id:'mestres',title:'Sala dos mestres',description:'Cor, superfície e composição como perguntas.'},
+  {id:'ateliê',title:'Ateliê aberto',description:'Estudos editoriais, esboços e experimentações.'}
+];
+---
+<!doctype html><html lang="pt-BR"><head><BaseHead title="Galeria Viva · HARUM NOIR" description="Galeria imersiva de Harum Noir: cadernos históricos de domínio público, obras documentadas, exercícios e estudos editoriais com fontes, busca, filtros e navegação progressiva." /></head>
+<body class="living-gallery"><Header/><main>
+<section class="gallery-entrance">
+ <div class="gallery-entrance-copy"><span class="eyebrow">HARUM NOIR · MUSEU DE PROCESSOS</span><h1>Entre na obra.<br/><em>Saia desenhando.</em></h1><p>Um corredor contínuo entre acervos públicos, folhas históricas, observação e criação. Cada imagem conserva sua origem. Cada sala sugere o próximo desenho.</p><div class="gallery-totals"><span><strong>{entries.length}</strong> imagens catalogadas</span><span><strong>{historicCount}</strong> registros históricos</span><span><strong>{editorialCount}</strong> estudos editoriais</span></div><div class="gallery-actions"><a class="btn gold" href="#salas">Percorrer salas ↓</a><a class="btn" href={base+'metodo-harum-noir/'}>Conhecer o método ↗</a></div></div>
+ <figure><img src={base+'noir/visual-atlas/museum-gallery.webp'} alt="Espaço de galeria em uma composição editorial da HARUM NOIR." width="1200" height="700" fetchpriority="high"/><figcaption>Imagem de ambientação editorial; não representa um museu ou coleção específica.</figcaption></figure>
+</section>
+<section class="gallery-preface"><p>Não é um feed sem fim: as imagens disponíveis são exibidas progressivamente, sem repetir obras para simular abundância. Ao terminar uma sala, o percurso continua pelo Método, Cadernos, Escola e Studio 23.</p><nav aria-label="Saídas da galeria"><a href={base+'escola/programa-regular/'}>33 técnicas ↗</a><a href={base+'sketchbooks/'}>Folhear sketchbooks ↗</a><a href={base+'cadernos/'}>Cadernos ↗</a><a href={base+'studio23/'}>Studio 23 ↗</a><a href="https://suryamayaharum-droid.github.io/noivas/">Coleção Noivas ↗</a></nav></section>
+<section class="gallery-walk" id="salas" aria-labelledby="salas-title">
+ <div class="gallery-section-head"><div><span class="eyebrow">SALAS INTERLIGADAS</span><h2 id="salas-title">Escolha uma porta ou caminhe sem pressa.</h2></div><p>Toque em uma obra para ampliá-la e consultar sua fonte.</p></div>
+ <div class="gallery-controls">
+  <div class="gallery-room-list" role="group" aria-label="Filtrar salas">{exhibitionRooms.map((r,i)=><button type="button" class="gallery-room" data-room={r.id} aria-pressed={i===0?'true':'false'}><b>{r.title}</b><small>{r.description}</small></button>)}</div>
+  <label class="gallery-search-label" for="gallery-search">Encontrar artista, tema ou título <input id="gallery-search" type="search" placeholder="Ex.: carvão, Toulouse-Lautrec, botânica…" autocomplete="off" /></label>
+ </div>
+ <div class="gallery-status" role="status" aria-live="polite" id="gallery-status">Explore os registros com procedência identificada.</div>
+ <div class="gallery-masonry" id="gallery-masonry">{entries.map((entry,index)=><article class="gallery-frame" data-gallery-card data-room={entry.room} data-index={index} data-search={(entry.name+' '+entry.artist+' '+entry.room+' '+entry.source).toLocaleLowerCase('pt-BR')}>
+   <button class="gallery-artwork" type="button" data-expand aria-label={'Ampliar '+entry.name+' · '+entry.artist}>
+     <img src={base+entry.image} alt={entry.alt} width="780" height="650" loading={index<4?'eager':'lazy'} decoding="async"/>
+     <span class="gallery-artwork-tag">{entry.kind==='historico'?'ACERVO · FONTE IDENTIFICADA':'ESTUDO EDITORIAL'}</span>
+   </button>
+   <div class="gallery-frame-meta"><span>{String(index+1).padStart(2,'0')} / {entry.room}</span><h3>{entry.name}</h3><p class="gallery-artist">{entry.artist}</p><p class="gallery-exercise">{entry.question}</p><p class="gallery-rights">{entry.rights}</p><a href={entry.sourceUrl} target={entry.sourceUrl.startsWith('https://')?'_blank':undefined} rel={entry.sourceUrl.startsWith('https://')?'noopener noreferrer':undefined}>Abrir ficha / página da coleção ↗</a></div>
+  </article>)}</div>
+ <div class="gallery-load"><p id="gallery-end" hidden>Você chegou ao fim das obras desta seleção. A pesquisa continua pelas outras portas.</p><button id="gallery-more" class="btn gold" type="button">Ver mais obras ↓</button><div id="gallery-sentinel" aria-hidden="true"></div></div>
+</section>
+<section class="gallery-exit"><span class="eyebrow">O PERCURSO CONTINUA</span><h2>O próximo quadro é o seu.</h2><p>Escolha uma obra histórica e investigue apenas uma decisão de linha, massa ou composição. Depois produza uma nova cena observada. Guarde a fonte, a tentativa e a revisão como três documentos diferentes.</p><div class="gallery-actions"><a class="btn gold" href={base+'metodo-harum-noir/'}>Praticar Harum Noir Method →</a><a class="btn" href={base+'atlas/'}>Voltar ao mapa →</a><a class="btn" href="https://suryamayaharum-droid.github.io/explorar/">Explorar todo o ecossistema ↗</a></div></section>
+</main>
+<dialog id="gallery-dialog" class="gallery-dialog" aria-label="Obra ampliada"><button type="button" id="gallery-dialog-close" class="gallery-close" aria-label="Fechar ampliação">✕ Fechar</button><figure><img id="gallery-dialog-image" alt="" /><figcaption><strong id="gallery-dialog-name"></strong><span id="gallery-dialog-attribution"></span><span id="gallery-dialog-license"></span><a id="gallery-dialog-source" href="#">Consultar fonte original ↗</a></figcaption></figure></dialog>
+<Footer/>
+<script>
+(() => {
+ const cards=Array.from(document.querySelectorAll('[data-gallery-card]'));
+ const buttons=Array.from(document.querySelectorAll('[data-room]'));
+ const search=document.getElementById('gallery-search');
+ const more=document.getElementById('gallery-more');
+ const status=document.getElementById('gallery-status');
+ const sentinel=document.getElementById('gallery-sentinel');
+ const end=document.getElementById('gallery-end');
+ const dialog=document.getElementById('gallery-dialog');
+ const close=document.getElementById('gallery-dialog-close');
+ const dImg=document.getElementById('gallery-dialog-image');
+ const dName=document.getElementById('gallery-dialog-name');
+ const dAttribution=document.getElementById('gallery-dialog-attribution');
+ const dLicense=document.getElementById('gallery-dialog-license');
+ const dSource=document.getElementById('gallery-dialog-source');
+ let active='todos',shown=12,query='';
+ const normalize=s => String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+ const paint=()=>{
+  const matches=cards.filter(c=>(active==='todos'||c.dataset.room===active)&&normalize(c.dataset.search).includes(query));
+  const seen=new Set(matches.slice(0,shown));
+  cards.forEach(c=>{c.hidden=!seen.has(c);});
+  const count=Math.min(shown,matches.length);
+  status.textContent= count+' de '+matches.length+' obras nesta seleção';
+  more.hidden= count>=matches.length;
+  end.hidden= count<matches.length;
+  return count;
+ };
+ buttons.forEach(button=>button.addEventListener('click',()=>{
+  active=button.dataset.room||'todos';shown=12;
+  buttons.forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
+  paint();
+ }));
+ search?.addEventListener('input',()=>{query=normalize(search.value.trim());shown=12;paint();});
+ const append=()=>{if(!more.hidden){shown+=12;paint();}};
+ more?.addEventListener('click',append);
+ if('IntersectionObserver' in window&&sentinel){
+  const observer=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting))append();},{rootMargin:'300px 0px'});
+  observer.observe(sentinel);
+ }
+ const escapeDialog=()=>{if(dialog&&dialog.open)dialog.close();};
+ close?.addEventListener('click',escapeDialog);
+ document.querySelectorAll('[data-expand]').forEach(btn=>btn.addEventListener('click',()=>{
+  const card=btn.closest('[data-gallery-card]');
+  if(!card||!(dialog instanceof HTMLDialogElement))return;
+  const thumb=card.querySelector('img');
+  const source=card.querySelector('.gallery-frame-meta a');
+  dImg.src=thumb.src;dImg.alt=thumb.alt;
+  dName.textContent=card.querySelector('h3')?.textContent||'Obra';
+  dAttribution.textContent=card.querySelector('.gallery-artist')?.textContent||'';
+  dLicense.textContent=card.querySelector('.gallery-rights')?.textContent||'';
+  dSource.href=source?.href||'#';
+  dSource.target=source?.target||'_self';
+  dSource.rel='noopener noreferrer';
+  dialog.showModal();
+ }));
+ dialog?.addEventListener('click',e=>{if(e.target===dialog)escapeDialog();});
+ paint();
+})();
+</script>
+<style>
+.living-gallery main{width:min(1600px,100%);padding:0 clamp(18px,4vw,65px) 100px}.gallery-entrance{min-height:540px;display:grid;grid-template-columns:.95fr 1.05fr;align-items:center;gap:32px;padding:42px 0 60px;border-bottom:1px solid var(--line)}.gallery-entrance h1{font-size:clamp(4rem,7vw,7.5rem);line-height:.9;letter-spacing:-.06em;margin:17px 0}.gallery-entrance h1 em{font-weight:400;color:var(--gold)}.gallery-entrance-copy>p{max-width:55ch;color:var(--paper-2);font-size:1.02rem;line-height:1.8}.gallery-entrance figure{position:relative;margin:0;border:1px solid var(--line);background:#111}.gallery-entrance figure img{height:480px;width:100%;object-fit:cover;filter:saturate(.48)}.gallery-entrance figcaption{padding:10px;color:var(--muted);font-size:.7rem}.gallery-totals{display:flex;flex-wrap:wrap;gap:18px;margin:26px 0}.gallery-totals span{display:flex;flex-direction:column;color:var(--paper-2);font-size:.7rem}.gallery-totals strong{font:400 2.1rem Georgia,serif;color:var(--gold)}.gallery-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}.gallery-preface{padding:28px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:.9fr 1.1fr;gap:35px}.gallery-preface p{margin:0;color:var(--paper-2);line-height:1.7;max-width:70ch}.gallery-preface nav{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:12px}.gallery-preface a{color:var(--gold);text-decoration:none;border-bottom:1px solid var(--gold-dim);font-size:.78rem}.gallery-walk{padding:70px 0}.gallery-section-head{display:flex;justify-content:space-between;align-items:end;gap:30px}.gallery-section-head h2,.gallery-exit h2{font-size:clamp(2.6rem,5vw,5.4rem);line-height:1;letter-spacing:-.04em;margin:11px 0 24px}.gallery-section-head>p{max-width:30ch;color:var(--paper-2)}.gallery-controls{display:grid;grid-template-columns:1fr 280px;align-items:end;gap:24px;margin:15px 0 28px}.gallery-room-list{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px}.gallery-room{min-height:100px;padding:14px;text-align:left;border:1px solid var(--line);border-radius:5px;background:#111;color:var(--paper);cursor:pointer}.gallery-room[aria-pressed=true]{border-color:var(--gold);background:#221e18}.gallery-room b{display:block;font-size:.88rem}.gallery-room small{display:block;margin-top:7px;color:var(--muted);font-size:.7rem;line-height:1.4}.gallery-room:focus-visible,.gallery-artwork:focus-visible,.gallery-dialog button:focus-visible{outline:2px solid var(--gold);outline-offset:3px}.gallery-search-label{font-size:.7rem;color:var(--gold)}.gallery-search-label input{display:block;width:100%;margin-top:7px;min-height:48px;padding:12px 14px;background:#151515;border:1px solid var(--line);color:var(--paper);font:inherit;font-size:.82rem}.gallery-status{color:var(--muted);font-size:.78rem;margin:17px 0}.gallery-masonry{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.gallery-frame{min-width:0;background:#111;border:1px solid var(--line);border-radius:5px;overflow:hidden}.gallery-frame[hidden]{display:none!important}.gallery-artwork{display:block;padding:0;margin:0;border:0;background:#171717;width:100%;position:relative;cursor:zoom-in}.gallery-artwork img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;filter:saturate(.67)}.gallery-frame:nth-child(7n+2) .gallery-artwork img,.gallery-frame:nth-child(7n+5) .gallery-artwork img{aspect-ratio:4/4.2}.gallery-artwork-tag{position:absolute;bottom:10px;left:10px;padding:5px 7px;background:#090909cf;border:1px solid #ffffff2e;color:#eee7dc;font-size:.62rem;letter-spacing:.08em}.gallery-frame-meta{padding:18px}.gallery-frame-meta>span{color:var(--gold);font-size:.67rem;text-transform:uppercase;letter-spacing:.1em}.gallery-frame h3{font-size:clamp(1.3rem,2vw,2rem);line-height:1.06;margin:10px 0}.gallery-artist{color:var(--paper);font-size:.85rem;margin:0 0 15px}.gallery-exercise{color:var(--paper-2);font-size:.78rem;line-height:1.6;max-height:5em;overflow:auto}.gallery-rights{margin:15px 0;color:var(--muted);font-size:.67rem}.gallery-frame-meta a{display:block;border-top:1px solid var(--line);padding-top:13px;text-decoration:none;color:var(--gold);font-size:.77rem}.gallery-load{text-align:center;min-height:120px;padding:40px 0}.gallery-load p{color:var(--paper-2)}.gallery-exit{max-width:1080px;padding:60px 0 20px;border-top:1px solid var(--line)}.gallery-exit p{max-width:68ch;color:var(--paper-2);line-height:1.7}.gallery-dialog{width:min(1050px,96vw);max-height:94dvh;padding:20px;background:#101010;color:var(--paper);border:1px solid var(--gold-dim)}.gallery-dialog::backdrop{background:#050505ec;backdrop-filter:blur(9px)}.gallery-dialog figure{margin:0;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(230px,.8fr);gap:25px;align-items:center}.gallery-dialog img{display:block;max-height:75dvh;max-width:100%;margin:auto;object-fit:contain}.gallery-dialog figcaption{display:flex;flex-direction:column;gap:12px;color:var(--paper-2);font-size:.86rem}.gallery-dialog figcaption strong{font:400 2.1rem Georgia,serif;color:var(--paper)}.gallery-dialog figcaption a{color:var(--gold)}.gallery-close{display:block;margin-left:auto;margin-bottom:12px;background:#242424;color:var(--paper);border:1px solid var(--line);padding:9px 14px;cursor:pointer}
+@media(max-width:1080px){.gallery-controls{grid-template-columns:1fr}.gallery-masonry{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:750px){.gallery-entrance{grid-template-columns:1fr}.gallery-entrance figure img{height:260px}.gallery-preface{grid-template-columns:1fr}.gallery-preface nav{justify-content:flex-start}.gallery-room-list{grid-template-columns:1fr 1fr}.gallery-section-head{display:block}.gallery-dialog figure{grid-template-columns:1fr}.gallery-dialog img{max-height:50dvh}}@media(max-width:540px){.gallery-masonry{grid-template-columns:1fr}.gallery-room{min-height:82px}.gallery-entrance h1{font-size:3.4rem}.gallery-totals{gap:14px}.gallery-exit .btn,.gallery-actions .btn{flex:1 1 100%;justify-content:center}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
