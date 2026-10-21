@@ -1,0 +1,47 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
+---
+<!doctype html>
+<html lang="pt-BR">
+<head><BaseHead title="Nova — console de integração | HARUM NOIR" description="Console de integração da Nova com o ecossistema HARUM NOIR. Estado explícito, arquitetura modular e conexão segura." /></head>
+<body>
+<Header />
+<main class="nova-shell">
+  <header class="nova-hero">
+    <p class="eyebrow">HARUM NOIR · NOVA / MEAW</p>
+    <h1>Uma interface.<br/><em>Um núcleo verificável.</em></h1>
+    <p class="intro">Este console é a camada pública de acompanhamento da integração. A interface pode existir sem fingir que o runtime está conectado: cada capacidade recebe um estado explícito e só muda após uma verificação real.</p>
+    <div class="status"><span class="dot" aria-hidden="true"></span><div><b>Runtime não conectado</b><small>O site atual é estático. Nenhuma execução da Nova é iniciada por esta página.</small></div></div>
+  </header>
+  <section class="panel" aria-labelledby="architecture-title">
+    <div class="section-heading"><p class="eyebrow">01 / ARQUITETURA</p><h2 id="architecture-title">Camadas previstas</h2></div>
+    <div class="module-grid">
+      <article><span class="num">A</span><h3>MEAW · coordenação</h3><p>Seleciona ferramentas permitidas, organiza etapas e mantém o fluxo observável.</p><span class="tag">Contrato documentado</span></article>
+      <article><span class="num">B</span><h3>Memory Castle</h3><p>Persistência com identidade explícita, limites de acesso e trilha de auditoria.</p><span class="tag">Runtime externo necessário</span></article>
+      <article><span class="num">C</span><h3>Adaptadores</h3><p>Integrações específicas com permissões mínimas; segredos permanecem no servidor.</p><span class="tag">Não conectado</span></article>
+      <article><span class="num">D</span><h3>Verificação</h3><p>Testes limitados, registros de evidência e separação entre código criado e comportamento validado.</p><span class="tag">Testes pendentes</span></article>
+    </div>
+  </section>
+  <section class="panel" aria-labelledby="protocol-title">
+    <div class="section-heading"><p class="eyebrow">02 / PROTOCOLO</p><h2 id="protocol-title">Como a ponte será ativada</h2></div>
+    <ol class="steps">
+      <li><b>Descobrir o componente antigo</b><span>A auditoria da página inicial e da navegação não encontrou referências diretas a Lumi/Lume no código examinado. A substituição do componente original ainda depende de localizar onde ele realmente vive.</span></li>
+      <li><b>Definir o contrato do gateway</b><span>Um endpoint autenticado, com lista de operações permitidas, limites de tamanho/tempo e respostas sem segredos.</span></li>
+      <li><b>Conectar sem expor credenciais</b><span>Tokens apenas no runtime servidor; nunca em JavaScript público, HTML, commits ou logs.</span></li>
+      <li><b>Testar antes de promover</b><span>Verificar desconexão, timeout, respostas inválidas e permissões negadas. Só então atualizar o estado para conectado.</span></li>
+    </ol>
+  </section>
+  <section class="panel next-panel">
+    <div><p class="eyebrow">03 / PRÓXIMA ETAPA</p><h2>Runtime antes de autonomia</h2><p>O repositório HARUM NOIR usa geração estática. Para conectar a Nova de verdade, precisamos escolher um serviço de execução autorizado e implementar uma ponte de servidor compatível com a hospedagem, sem adicionar credenciais ao cliente.</p></div>
+    <a class="source-link" href="https://github.com/suryamayaharum-droid/SARASWATI-HIVE-MIND/tree/nova/nexus-c-bridge">Ver núcleo Nova no GitHub ↗</a>
+  </section>
+</main>
+<Footer />
+<style>
+:global(body){background:#0b0b0c;color:#eee9df}.nova-shell{max-width:1160px;margin:0 auto;padding:clamp(24px,5vw,72px) 22px 90px}.nova-hero{padding:30px 0 58px;border-bottom:1px solid #35302a}.eyebrow{font-size:.68rem;letter-spacing:.19em;color:#c8a96a;text-transform:uppercase}.nova-hero h1{font-size:clamp(3rem,8vw,6.8rem);letter-spacing:-.065em;line-height:.93;font-weight:500;margin:22px 0}.nova-hero h1 em{font-family:Georgia,serif;font-weight:400;color:#c8a96a}.intro{max-width:680px;color:#bdb8ae;font-size:1.06rem;line-height:1.8}.status{display:flex;gap:14px;align-items:flex-start;margin-top:28px;padding:18px 20px;border:1px solid #4c4030;background:#141210;max-width:680px}.dot{width:10px;height:10px;flex:0 0 10px;margin-top:5px;border-radius:50%;background:#d0a04d;box-shadow:0 0 14px #d0a04d55}.status b,.status small{display:block}.status b{font-size:.95rem}.status small{color:#a8a198;line-height:1.6;margin-top:5px}.panel{padding:48px 0;border-bottom:1px solid #35302a}.section-heading h2,.next-panel h2{font-size:clamp(2rem,4vw,3.7rem);letter-spacing:-.045em;line-height:1.05;font-weight:500;margin:12px 0 26px}.module-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.module-grid article{padding:24px;border:1px solid #302c27;background:#111112;min-height:210px}.num{font-family:Georgia,serif;color:#c8a96a;font-size:1.2rem}.module-grid h3{font-size:1.2rem;font-weight:500;margin:24px 0 9px}.module-grid p,.next-panel p{color:#bdb8ae;line-height:1.7;max-width:65ch}.tag{display:inline-block;margin-top:12px;padding:6px 9px;border:1px solid #51432e;color:#d9c49c;font-size:.72rem}.steps{list-style:none;counter-reset:steps;padding:0;margin:0;display:grid;gap:0}.steps li{counter-increment:steps;display:grid;grid-template-columns:minmax(190px,.7fr) 1.3fr;gap:25px;padding:22px 0;border-top:1px solid #302c27}.steps li:before{content:'0' counter(steps);grid-column:1;color:#c8a96a;font-size:.72rem;letter-spacing:.12em}.steps li b{grid-column:1;font-size:1rem;font-weight:500}.steps li span{grid-column:2;grid-row:1 / span 2;color:#bdb8ae;line-height:1.7}.next-panel{display:flex;align-items:center;justify-content:space-between;gap:32px}.next-panel h2{margin-bottom:14px}.source-link{flex:0 0 auto;display:inline-block;padding:13px 17px;border:1px solid #9d814e;color:#e5d0a3;text-decoration:none}.source-link:hover{background:#c8a96a;color:#17130c}@media(max-width:700px){.module-grid{grid-template-columns:1fr}.steps li{grid-template-columns:1fr;gap:10px}.steps li:before,.steps li b,.steps li span{grid-column:1;grid-row:auto}.next-panel{align-items:flex-start;flex-direction:column}.nova-hero{padding-top:18px}}
+</style>
+</body>
+</html>
